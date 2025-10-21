@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Initialize Coś Context",
+      "type": "shell",
+      "command": "echo '[AI NOTE] Wczytaj PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md i ustaw kontekst w ChatGPT VS Code.'",
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Coś Session",
+      "type": "shell",
+      "command": "echo '[SESSION::START] Proszę zainicjalizować dziennik i zapytać o cel bieżącej sesji.'",
+      "problemMatcher": []
+    },
+    {
+      "label": "Snapshot Memory (Nyx)",
+      "type": "shell",
+      "command": "echo '[AGENT::NYX] [TASK::LOG] Proszę utworzyć snapshot pamięci agentów.'",
+      "problemMatcher": []
+    }
+  ]
+}
