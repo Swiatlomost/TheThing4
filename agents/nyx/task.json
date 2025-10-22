@@ -1,0 +1,42 @@
+{
+    "agent": "Nyx",
+    "current_tasks": [],
+    "completed_tasks": [
+        {
+            "task_id": "NYX-20251021-001",
+            "parent_task_id": "ORIN-20251021-002",
+            "title": "Snapshot pamieci po standaryzacji log/task/memory",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Pamiec zaktualizowana o checklisty build APK oraz kronike Scribe."
+        },
+        {
+            "task_id": "NYX-20251021-002",
+            "parent_task_id": "ORIN-20251021-005",
+            "title": "Dodac heurystyke dot. checklisty zamkniecia zadan",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Pamiec Orina/Scribe uzupelniona o kroki: task.json -> log.md -> agents/status.md; monitorowac w przyszlych snapshotach."
+        },
+        {
+            "task_id": "NYX-20251021-003",
+            "parent_task_id": "ORIN-20251021-006",
+            "title": "Aktualizowac pamiec po testach emulatora",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Dodano heurystyke o emulatorze Pixel_5 i braku androidTest; TODO na smoke test wpisane."
+        }
+    ],
+    "_template": {
+        "task_id": "NYX-YYYYMMDD-XXX",
+        "parent_task_id": "ORIN-YYYYMMDD-XXX",
+        "title": "",
+        "status": "pending|in_progress|done",
+        "assigned_at": "YYYY-MM-DD",
+        "last_update": "YYYY-MM-DD",
+        "notes": ""
+    }
+}

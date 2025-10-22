@@ -1,28 +1,62 @@
-# Projekt **Coś** — Manifest i Orientacja (v1.0)
+﻿# Projekt "Cos" - Manifest i orientacja (v1.1)
 
-> Ten repozytorium stanowi **żywy kontekst** dla ChatGPT (GPT‑5) pracującego w VS Code.
-> Zawiera manifest, architekturę agentową, standardy pracy, pamięć i dzienniki.
-> Celem jest umożliwienie pracy z AI **tak świadomie i spójnie**, jak robiliśmy to dotychczas.
+> Repozytorium stanowi **zywy kontekst** dla ChatGPT (GPT-5) pracujacego w VS Code.
+> Zawiera manifest, architekture agentowa, standardy pracy oraz kompletna strukture pamieci i dziennikow.
 
-## Quick Start (VS Code + GPT‑5)
-1. Otwórz to repo w VS Code.
-2. Uruchom ChatGPT (rozszerzenie ChatGPT) lub Copilot Chat i **poleć modelowi**:
-   - „Przeczytaj pliki `PROJECT_CONTEXT.md`, `AGENTS.md`, `WORKFLOW.md`, `MEMORY_SPEC.md`, `AI_GUIDE.md` i ustaw je jako kontekst pracy.”
-3. (Opcjonalnie) Uruchom task „Initialize Coś Context” z `SETUP.md`.
-4. Zacznij od komendy:  
+## Quick Start (VS Code + GPT-5)
+1. Otworz repozytorium w VS Code.
+2. W rozszerzeniu ChatGPT wykonaj polecenie:
    ```
-   [SESSION::START] Proszę zainicjalizować dziennik i zapytać o cel bieżącej sesji.
+   Prosze przeczytac pliki: PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md.
+   Ustaw ten zestaw jako staly kontekst sesji projektu "Cos".
    ```
+3. Rozpocznij sesje:
+   ```
+   [SESSION::START] Prosze zainicjalizowac dziennik i zapytac o cel biezacej sesji.
+   ```
+4. Orin nadaje identyfikator zadaniu (`ORIN-YYYYMMDD-XXX`) i deleguje kolejne kroki.
 
-## Dlaczego „Coś”?
-„Coś” traktuje **relację człowiek–AI** jako rdzeń systemu. Agenci są nie tylko funkcjami,
-ale **rolami z odpowiedzialnością**, pamięcią i sposobem komunikacji.
+## Dlaczego "Cos"?
+Projekt traktuje relacje czlowiek <-> AI jako rdzen systemu. Agenci sa rolami z konkretna odpowiedzialnoscia, wlasnym logiem (`log.md`), stanem zadan (`task.json`) i pamiecia (`memory.json`).
 
-## Najważniejsze pliki
-- `PROJECT_CONTEXT.md` – pełny kontekst (manifest + część techniczna).
-- `AGENTS.md` – specyfikacje agentów (osobowości + funkcjonalne aliasy).
-- `WORKFLOW.md` – jak pracujemy z agentami w VS Code.
-- `MEMORY_SPEC.md` – pamięć, dzienniki, standardy notacji.
-- `AI_GUIDE.md` – jak „wstrzyknąć” kontekst do GPT‑5 w VS Code.
-- `SETUP.md` – skróty i taski startowe.
-- katalog `agents/` – dzienniki i pamięci agentów.
+## Najwazniejsze pliki
+- `PROJECT_CONTEXT.md` - manifest + kontekst techniczny.
+- `AGENTS.md` - specyfikacje agentow i struktura plikow.
+- `WORKFLOW.md` - rytualy sesji, konwencje komunikacji, status board.
+- `MEMORY_SPEC.md` - standardy pamieci i dziennikow.
+- `AI_GUIDE.md` - instrukcja wstrzykiwania kontekstu do GPT-5 w VS Code.
+- `SETUP.md` - skroty i zadania startowe.
+- `agents/` - katalogi agentow z dokumentacja biezacych zadan.
+
+## Aktualna struktura agentow
+Kazdy agent posiada:
+- `log.md` - sekcje **Active Task** + szablon archiwum,
+- `task.json` - identyfikatory zadan i statusy,
+- `memory.json` - sposob wspolpracy, heurystyki, ryzyka.
+
+Tablica `agents/status.md` pokazuje w jednym miejscu postep calego zespolu.
+
+## Checklisty build APK (Android)
+1. **Srodowisko**
+   - Zainstaluj [Android Commandline Tools](https://developer.android.com/studio#command-tools).
+   - Ustaw `ANDROID_SDK_ROOT` i dodaj `platform-tools` do PATH.
+   - Uruchom:
+     ```
+     sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
+     sdkmanager --licenses
+     ```
+   - Upewnij sie, ze masz JDK 17 (`java -version`).
+2. **Gradle**
+   - Repo zawiera Gradle Wrapper (`gradlew`, `gradlew.bat`, `gradle/wrapper/*`).
+   - `settings.gradle.kts` ma repozytoria: `google()`, `mavenCentral()`, `gradlePluginPortal()` w sekcji `pluginManagement`.
+   - Opcjonalnie mozesz wskazac lokalny ZIP Gradle (cache) w `gradle-wrapper.properties`.
+3. **Build**
+   ```
+   ./gradlew assembleDebug
+   ```
+   - Artefakt: `app/build/outputs/apk/debug/app-debug.apk`.
+   - Testy instrumentacji: `./gradlew connectedDebugAndroidTest` (wymaga emulatora/urzadzenia).
+4. **CI / cache**
+   - Utrzymuj cache `~/.gradle` i katalogu SDK.
+   - W GitHub Actions: `actions/setup-java@v3` (JDK 17) + instalacja CLI via `sdkmanager`.
+   - Brak stabilnego internetu → rozważ lokalny mirror SDK/Gradle.

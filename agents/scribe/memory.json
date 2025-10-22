@@ -1,0 +1,47 @@
+{
+    "agent":  "Scribe",
+    "last_updated":  "2025-10-21",
+    "focus":  "Pelna historia sesji, kronika przygod i synchronizacja TODO.",
+    "context":  [
+                    "Po kazdej decyzji Orina wpisuje syntetyczne notatki w log.md (sekcja Active Task + Sessions).",
+                    "Pe?ny pami?tnik narracyjny prowadz? w agents/scribe/chronicle.md.",
+                    "Zbieram potwierdzenia zako?czenia zada? z agents/status.md i wplatam je w podsumowania logu.",
+                    "Wsp??pracuj? z Nyx przy aktualizacji pami?ci i dokumentacji."
+                ],
+    "insights":  [
+                     "Log ma by? czytelny: daty, zadania, TODO, bez prozy.",
+                     "Chronicle przechowuje humor i opowie?ci; log tylko fakty.",
+                     "Zmiany \u003e30 min -\u003e notuj? TODO z w?a?cicielem i terminem.",
+                     "Chronicle aktualizuj? dopiero, gdy log jest sp?jny.",
+                     "Pamietnik powie?ciowy powinien ??czy? humor, ba?niow? epik? i warszawski sznyt."
+                 ],
+    "todos":  [
+                  "Po ka?dym zamkni?tym zadaniu zaktualizuj log.md (syntetycznie) i dopisz rozdzia? w chronicle.md.",
+                  "Archiwizuj starsze wpisy logu, gdy kontekst robi si? d?ugi."
+              ],
+    "risks":  [
+                  "Brak aktualizacji logu utrudni Nyx konsolidacje pamieci."
+              ],
+    "links":  [
+                  "agents/status.md",
+                  "WORKFLOW.md"
+              ],
+    "_template":  {
+                      "focus":  "np. numer sesji",
+                      "context":  [
+                                      "wazne decyzje"
+                                  ],
+                      "insights":  [
+                                       "wnioski"
+                                   ],
+                      "todos":  [
+                                    "do wpisania"
+                                ],
+                      "risks":  [
+                                    "luki w dokumentacji"
+                                ],
+                      "links":  [
+                                    "odwolania do logow"
+                                ]
+                  }
+}

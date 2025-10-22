@@ -1,0 +1,78 @@
+{
+    "agent": "Scribe",
+    "current_tasks": [],
+    "completed_tasks": [
+        {
+            "task_id": "SCRIBE-20251021-002",
+            "parent_task_id": "ORIN-20251021-002",
+            "title": "Dodac wzmianke o kronice Scribe do dokumentacji",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "AGENTS.md/WORKFLOW.md zawieraja informacje o kronice powiesciowej."
+        },
+        {
+            "task_id": "SCRIBE-20251021-003",
+            "parent_task_id": "ORIN-20251021-003",
+            "title": "Zapisac wynik kontroli narzedzi (Kai)",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Notatka o brakach CLI/wrappera dodana do logu i kroniki."
+        },
+        {
+            "task_id": "SCRIBE-20251021-001",
+            "parent_task_id": "ORIN-20251021-001",
+            "title": "Zapis sesji APK tooling",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Wpis sesyjny i kronika zakonczone; kontynuowac powiesc przy kolejnych zadaniach."
+        },
+        {
+            "task_id": "SCRIBE-20251021-004",
+            "parent_task_id": "ORIN-20251021-004",
+            "title": "Opracowac wpis po instalacji narzedzi build APK",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Kronika #3 dopisana (instalacja CLI, wrapper, assembleDebug)."
+        },
+        {
+            "task_id": "SCRIBE-20251021-005",
+            "parent_task_id": "ORIN-20251021-005",
+            "title": "Uspojnic log z task.json po zamknieciu zadania",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Status SCRIBE-20251021-004 poprawiony; dopisana notatka, checklist wprowadzona."
+        },
+        {
+            "task_id": "SCRIBE-20251021-006",
+            "parent_task_id": "ORIN-20251021-006",
+            "title": "Zanotowac przebieg testow emulatora",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Dodano wpis dziennika i kronike dot. testow emulatora Pixel_5; odnotowano brak androidTest."
+        },
+        {
+            "task_id": "SCRIBE-20251021-007",
+            "parent_task_id": "ORIN-20251021-007",
+            "title": "Udokumentowac commit stabilizacyjny",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Log zaktualizowany o Session #Repo-Commit, kronika ma wpis #5 z podsumowaniem drogi."
+        }
+    ],
+    "_template": {
+        "task_id": "SCRIBE-YYYYMMDD-XXX",
+        "parent_task_id": "ORIN-YYYYMMDD-XXX",
+        "title": "",
+        "status": "pending|in_progress|done",
+        "assigned_at": "YYYY-MM-DD",
+        "last_update": "YYYY-MM-DD",
+        "notes": ""
+    }
+}

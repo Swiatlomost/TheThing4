@@ -1,0 +1,44 @@
+﻿{
+    "agent":  "Nodus",
+    "current_tasks":  [
+
+                      ],
+    "completed_tasks":  [
+                            {
+                                "task_id":  "NODUS-20251021-003",
+                                "parent_task_id":  "ORIN-20251021-006",
+                                "title":  "Przygotowac srodowisko emulatora Android",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  "Emulator Pixel_5 uruchomiony (`emulator.exe -avd Pixel_5`); `adb devices` widzi emulator-5554."
+                            },
+                            {
+                                "task_id":  "NODUS-20251021-001",
+                                "parent_task_id":  "ORIN-20251021-001",
+                                "title":  "Checklisty setupu build APK",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  "Checklisty przekazane Orinowi i Scribe."
+                            },
+                            {
+                                "task_id":  "NODUS-20251021-002",
+                                "parent_task_id":  "ORIN-20251021-004",
+                                "title":  "Instalacja Android Commandline Tools",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  "Android CLI zainstalowane; sdkmanager --list dziala, pakiety platform-tools/platforms;android-34/build-tools;34.0.0 obecne, licencje zaakceptowane."
+                            }
+                        ],
+    "_template":  {
+                      "task_id":  "NODUS-YYYYMMDD-XXX",
+                      "parent_task_id":  "ORIN-YYYYMMDD-XXX",
+                      "title":  "",
+                      "status":  "pending|in_progress|done",
+                      "assigned_at":  "YYYY-MM-DD",
+                      "last_update":  "YYYY-MM-DD",
+                      "notes":  ""
+                  }
+}

@@ -1,0 +1,16 @@
+# Scribe Chronicle (Prose)
+
+## Entry #1 — "Pergaminy w szafie na miotły"
+W dniu, gdy echo z dysków — nomen omen Echo — rozbrzmiało jak stukot klawiatury o pradawną kupę plików, Scribe oznajmił, że katalog agentów nie może dalej wyglądać jak piwnica po przeprowadzce. Zebrano zatem logi, taski i pamięci, każde zawinięte w wstążki z cyframi dat niczym listy z Rivendell, tylko bardziej JSONowe. W powietrzu wisiał zapach kawy i ironii, a Nyx mruczała coś o snapshotach, przypominając starego kronikarza z Czerniakowa, który w notesie kręcił strzałki między kumplami. Echo, odziany w sweter z drobnych faktów, zanotował, że do wykuwania APK potrzeba nie tylko młotka Gradla, ale i rytuału `JAVA_HOME`. Nodus obiecał checklistę tak klarowną, że nawet smok z Mordoru by jej nie spalił. Wieczorem wzniesiono toast trzema słowami: "Next step, przyjaciele".
+
+## Entry #2 — "Checklista, smok i kubek emalii"
+Nodus powrócił z wyprawy w dzikie ostępy SDK niczym rzemieślnik z kieszeniami pełnymi śrubek. Przywiózł zaklęcia `sdkmanager`, `gradlew` oraz tajemną formułę cache’owania, która powstrzymuje serwery Gradle przed płaczem. Echo przytaknął, bo harmonia wersji to jego domena, a Lumen ucieszył się, że APK będzie klepane jak piosenka przy ognisku. Scribe zapisał w zajeździe na Słowackiego, czyli w README, gdzie leży JDK 17. Na koniec Orin spojrzał na status board jak na plan bitwy o Ankh-Morpork i mruknął, że wkrótce będzie gotowy do zamknięcia.
+
+## Entry #3 — "Smok z pliku gradlew"
+Niebo nad repo rozbłysło kolejnym buildem. Nodus przytargał w plecaku narzędzia CLI, a `sdkmanager --list` zabrzmiał jak fanfara zwycięstwa. Lumen, niczym bard z lutnią Gradle, wzniósł moduł Android i schował wrapper 8.7 jak skarb w sejfie. Gdy `./gradlew assembleDebug` wypluł wreszcie APK, Orin mrugnął: "No, to logujemy to, przyjaciele". Gdzieś między wierszami zapisano plan dodania smoczych emoji, gdy tylko Nyx zaakceptuje nowy styl.
+
+## Entry #4 — "Symulator z mgiełki pikseli"
+Pixel 5, upleciony z pakietów binarnych i kawałków chmur, przebudził się po zaklęciu `emulator.exe -avd Pixel_5`. Nodus, jak wróżbita w kitlu DevOps, czuwał nad parametrami GPU, a Echo potwierdził przez `adb devices`, że po liście strażników kroczy `emulator-5554`. Lumen, prowadzony przez rytm Gradle, zagrał `connectedDebugAndroidTest`: scena przejrzysta, widownia jeszcze pusta, ale to znaczy, że kurtyna działa. Kai zanotował: "Brak nut, bo nie ma androidTest", a Nyx dopisała heurystykę o symulatorowych smokach na marginesie pamięci. Scribe zaś odłożył pióro z satysfakcją, że kronika otrzymała nowe rozdziały.
+
+## Entry #5 � "Kamien Milowy i Zebra w Kratke"
+Orin zebral wszystkie pergaminy, logi i zipy niczym miejskiego kwartalnika wydawca. Echo dopilnowal, by kazdy raport mial numer zadania, Nodus trzymal emulator na kr�tkiej smyczy, a Lumen z dum� pokazywal, ze TheThing instaluje sie jak �wie�a apka z bazaru Ho�ysz�w. Kai odhaczyl test SmokeTest jak stra�ak pr�bny alarm, Nyx wpi�a nowe heurystyki w pamiec, a ja � Scribe � przepakowalem kronike do osobnego tomu, �eby log nie ton�� w metaforach. Gdy Orin szykowal commit, wszyscy poczuli, ze to pierwszy prawdziwy kamien milowy: od teraz droga otwarta na funkcje, historie i kolejne rozdzialy.

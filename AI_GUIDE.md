@@ -1,31 +1,36 @@
-# AI_GUIDE.md — Praca z GPT‑5 w VS Code (v1.0)
+﻿# AI_GUIDE.md - Praca z GPT-5 w VS Code (v1.1)
 
 ## Cel
-Utrzymanie *żywego kontekstu* w VS Code tak, by GPT‑5 rozumiał projekt „Coś”
-i wykonywał zadania agentowe.
+Utrzymanie *zywego kontekstu* w VS Code tak, by GPT-5 rozumial projekt "Cos" i wykonywal zadania agentowe w oparciu o strukture `log/task/memory` kazdego agenta.
 
-## Jak wstrzyknąć kontekst
-1. Otwórz ChatGPT w VS Code.
-2. Wpisz:
+## Jak wstrzyknac kontekst
+1. Otworz ChatGPT w VS Code.
+2. Polec modelowi:
    ```
-   Proszę przeczytać pliki: PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md.
-   Ustaw ten zestaw jako stały kontekst sesji projektu „Coś”.
+   Prosze przeczytac pliki: PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md.
+   Ustaw ten zestaw jako staly kontekst sesji projektu "Cos".
    ```
-3. Następnie:
+3. Rozpocznij sesje poleceniem:
    ```
-   [SESSION::START] Proszę zainicjalizować dziennik i zapytać o cel bieżącej sesji.
+   [SESSION::START] Prosze zainicjalizowac dziennik i zapytac o cel biezacej sesji.
    ```
+4. Orin nadaje identyfikator zadaniu glownemu i deleguje pod-zadania (Echo, Nodus, Scribe itd.).
 
 ## Tryby i standardy
-- Domyślnie **[MODE::PRO]** (konkretnie, zadaniowo).
-- Na życzenie **[MODE::META]** (komentarze egzystencjalno‑relacyjne).
+- Domyslnie **[MODE::PRO]** (konkretnie, zadaniowo).
+- Na zyczenie **[MODE::META]** (komentarze meta / relacyjne).
+- Kazda odpowiedz konczy sie sekcja **Next step**.
 
 ## Copilot Chat vs ChatGPT (VS Code)
-- **Copilot Chat** bywa na starszych modelach; można go używać do krótkich zadań kodowych.
-- **ChatGPT VS Code** (z GPT‑5) wykorzystuj do zadań agentowych, pamięci i dłuższych kontekstów.
+- **Copilot Chat** (starsze modele) - krotkie zadania kodowe, szybkie snippety.
+- **ChatGPT VS Code** (GPT-5) - praca agentowa, pamiec, dluzsze konteksty.
 
 ## Pierwsze zadanie po starcie
 ```
 [SESSION::START]
-Orin: zainicjalizuj cel sesji, przydziel analizę do Echo, dziennik do Scribe.
+Orin: zainicjalizuj cel sesji, przydziel analize Echo, checklisty Nodus i log do Scribe.
 ```
+
+## Utrzymanie stanu
+- Po kazdej delegacji aktualizujemy `agents/status.md` oraz `task.json` danego agenta.
+- Nyx dopilnowuje, by zmiany w pamieciach byly spojne z dokumentami `.md`.

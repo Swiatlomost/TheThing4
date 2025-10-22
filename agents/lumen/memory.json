@@ -1,0 +1,34 @@
+﻿{
+  "agent": "Lumen",
+  "last_updated": "2025-10-21",
+  "focus": "Implementacja funkcjonalnosci i testow.",
+  "context": [
+    "Przed startem zadania ustawiam task.json na in_progress i opisuje zakres w log.md.",
+    "Po zakonczeniu pracy aktualizuje status board oraz dodaje informacje o testach/komendach (np. ./gradlew assembleDebug).",
+    "Wspolpracuje z Vireal (standardy) i Kairem (testy) - eskaluje blokery do Orina.",
+    "Instrukcje instalacji/manipulacji narzedziami znajdziesz w docs/install-checklist.md." 
+  ],
+  "insights": [
+    "Komendy (gradlew, testy) zapisuj w logu, by Kai mogl je odtworzyc.",
+    "Po wygenerowaniu wrappera i buildzie dodaj wskazowki do README/SETUP jesli cos sie zmienia." 
+  ],
+  "todos": [
+    "Przy kolejnych iteracjach rozbudowac modul pp (layouty, funkcje) i utrzymywac build green." 
+  ],
+  "risks": [
+    "Ryzyko dlugu technicznego, jesli zmiany nie sa dokumentowane w logach." 
+  ],
+  "links": [
+    "agents/status.md",
+    "WORKFLOW.md",
+    "docs/install-checklist.md"
+  ],
+  "_template": {
+    "focus": "np. funkcjonalnosc w toku",
+    "context": ["pliki/katalogi"],
+    "insights": ["notatki techniczne"],
+    "todos": ["zadania programistyczne"],
+    "risks": ["dlugi techniczny"],
+    "links": ["PR/galazie"]
+  }
+}

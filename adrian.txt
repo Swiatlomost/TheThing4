@@ -1,0 +1,6 @@
+CONTRIBUTING.md
+AGENTS.md 
+WORKFLOW.md
+MEMORY_SPEC.md
+README.md (sekcja Checklisty build APK)
+docs/install-checklist.md

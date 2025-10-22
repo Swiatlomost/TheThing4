@@ -1,0 +1,49 @@
+{
+    "agent":  "Orin",
+    "last_updated":  "2025-10-21",
+    "focus":  "Koordynacja zadan i utrzymanie spojnosci planu.",
+    "context":  [
+                    "Pracujemy z identyfikatorami ORIN-YYYYMMDD-XXX oraz AGENT-YYYYMMDD-XXX zapisanymi w task.json.",
+                    "Po delegacji Orin aktualizuje agents/status.md i sekcje Active Task w agents/orin/log.md.",
+                    "Status board ma byc szybka lista wszystkich zadan (aktywnych i zakonczonych), aby zespol nie musial potwierdzac stanu w katalogach agentow.",
+                    "Monitoruje, czy agenci aktualizuja swoje logi, pamiec i statusy po zakonczeniu pracy.",
+                    "Pilnuje rytualu cooldown: zamkniete zadanie -\u003e wpis Scribe, status DONE, ewentualny snapshot Nyx, archiwizacja logu."
+                ],
+    "insights":  [
+                     "Utrzymuj minimalny WIP - deleguj tylko tyle zadan, ile mozna sledzic w status board.",
+                     "Zadania \u003e30 min wymagaja wpisu Scribe oraz synchronizacji z Nyx.",
+                     "Po kazdym zadaniu przypomnij agentom o archiwizacji (Scribe) i zebraniu snapshotu (Nyx) aby resetowac kontekst.",
+                     "Cooldown obejmuje kontrole checklisty zamkniecia: task.json -\u003e log.md -\u003e agents/status.md.",
+                     "Sesje emulatorowe wymagaja aktywnego AVD (Pixel_5) oraz kontroli czy  `connectedDebugAndroidTest` uruchamia realne testy. "
+                 ],
+    "todos":  [
+                  "Przy kolejnych zadaniach sprawdzaj, czy cooldown (log Scribe + snapshot Nyx) zostal wykonany.",
+                  "Po kazdej aktualizacji task.json u siebie lub agentow uaktualnij agents/status.md (aktywny -\u003e done) i dopisz brakujace rekordy.",
+                  "Przy zamknieciu zadania potwierdz ze Scribe oznaczyl status w logu zanim oglosisz DONE."
+              ],
+    "risks":  [
+                  "Ryzyko rozjazdu statusow, jesli agenci nie aktualizuja task.json po zmianach."
+              ],
+    "links":  [
+                  "agents/status.md",
+                  "WORKFLOW.md"
+              ],
+    "_template":  {
+                      "focus":  "np. aktualny cel sesji",
+                      "context":  [
+                                      "skrot ostatnich decyzji"
+                                  ],
+                      "insights":  [
+                                       "wnioski koordynacyjne"
+                                   ],
+                      "todos":  [
+                                    "kolejne delegacje"
+                                ],
+                      "risks":  [
+                                    "blokery"
+                                ],
+                      "links":  [
+                                    "powiazania do agentow lub dokumentow"
+                                ]
+                  }
+}

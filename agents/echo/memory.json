@@ -1,0 +1,32 @@
+﻿{
+  "agent": "Echo",
+  "last_updated": "2025-10-21",
+  "focus": "Analiza repozytorium i sygnalizowanie ryzyk technicznych.",
+  "context": [
+    "Po otrzymaniu delegacji uzupelniam task.json (AGENT-YYYYMMDD-XXX) i sekcje Active Task w log.md.",
+    "Kazde znalezisko dokumentuje w log.md wraz z faktami (plik:linia) i aktualizuje status w agents/status.md.",
+    "Pracuje w parze z Orinem - przekazuje rekomendacje wraz z poziomem ryzyka oraz kolejnym krokiem."
+  ],
+  "insights": [
+    "Zrodla analizy: repo lokalne, PROJECT_CONTEXT.md, WORKFLOW.md.",
+    "Ryzyka opisuj Severity (Low/Med/High) i plan mitigacji."
+  ],
+  "todos": [
+    "Byc gotowym na uzupelnienie analizy po checklistach NODUS-20251021-001."
+  ],
+  "risks": [
+    "Brak dowodow w logu utrudni szybkie decyzje Orina."
+  ],
+  "links": [
+    "agents/status.md",
+    "AGENTS.md"
+  ],
+  "_template": {
+    "focus": "np. obszar analizy",
+    "context": ["pliki/zrodla"],
+    "insights": ["wnioski"],
+    "todos": ["kolejne pytania"],
+    "risks": ["sygnaly ryzyka"],
+    "links": ["sciezki do logow"]
+  }
+}

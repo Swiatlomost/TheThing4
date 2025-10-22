@@ -1,0 +1,49 @@
+{
+    "agent":  "Nyx",
+    "last_updated":  "2025-10-21",
+    "focus":  "Konsolidacja pamieci i standardow procesu.",
+    "context":  [
+                    "Monitoruje zmiany w .md, logach oraz task.json - pilnuje, aby byly spojne.",
+                    "Co wazniejszy milestone -\u003e snapshot stanu agentow oraz dokumentow referencyjnych.",
+                    "Wspolpracuje ze Scribe (dzienniki) i Orinem (status board), aby pamiec odzwierciedlala realne dzialania.",
+                    "Checklisty build APK przeniesione do README/SETUP, kronika Scribe uwzgledniona w dokumentacji."
+                ],
+    "insights":  [
+                     "Jesli zmieniamy standard, dopisz adnotacje w WORKFLOW.md i poinformuj agenta, ktorego dotyczy.",
+                     "Utrzymuj liste linkow do kluczowych dokumentow - ulatwia szybkie odtworzenie kontekstu.",
+                     "Snapshot po 2025-10-21 zapisany: log/task/memory per agent, checklisty build APK.",
+                     "Checklist zamkniecia zadania = task.json (status) -\u003e log.md (status + notatka) -\u003e agents/status.md (potwierdzenie Orina).",
+                     "Testy emulatora: trzymaj gotowy AVD Pixel_5, raportuj brak androidTest jako ryzyko pokrycia."
+                 ],
+    "todos":  [
+                  "Co sesje sprawdzac, czy dokumentacja buildowa jest aktualna po zmianach narzedzi.",
+                  "Monitoruj rozszerzanie zestawu androidTest (obecnie SmokeTest.kt) przy kolejnych funkcjach."
+              ],
+    "risks":  [
+                  "Ryzyko rozjazdu miedzy pamiecia a logami, jesli snapshoty nie beda aktualizowane."
+              ],
+    "links":  [
+                  "agents/status.md",
+                  "MEMORY_SPEC.md",
+                  "README.md",
+                  "SETUP.md"
+              ],
+    "_template":  {
+                      "focus":  "co konsolidujemy",
+                      "context":  [
+                                      "pliki"
+                                  ],
+                      "insights":  [
+                                       "wnioski"
+                                   ],
+                      "todos":  [
+                                    "przyszle snapshoty"
+                                ],
+                      "risks":  [
+                                    "ryzyka utraty pamieci"
+                                ],
+                      "links":  [
+                                    "skladowanie"
+                                ]
+                  }
+}

@@ -1,0 +1,35 @@
+{
+    "agent":  "Kai",
+    "current_tasks":  [
+
+                      ],
+    "completed_tasks":  [
+                            {
+                                "task_id":  "KAI-20251021-001",
+                                "parent_task_id":  "ORIN-20251021-003",
+                                "title":  "Weryfikacja zainstalowanych narzedzi build APK",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  "JDK 17 OK; brak sdkmanager/Commandline Tools i Gradle Wrapper w repo."
+                            },
+                            {
+                                "task_id":  "KAI-20251021-002",
+                                "parent_task_id":  "ORIN-20251021-006",
+                                "title":  "Zweryfikowac wyniki testow emulatora",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  " `connectedDebugAndroidTest` PASS (1 test, SmokeTest.kt); rekomendacja: rozbudowac zestaw androidTest. "
+                            }
+                        ],
+    "_template":  {
+                      "task_id":  "KAI-YYYYMMDD-XXX",
+                      "parent_task_id":  "ORIN-YYYYMMDD-XXX",
+                      "title":  "",
+                      "status":  "pending|in_progress|done",
+                      "assigned_at":  "YYYY-MM-DD",
+                      "last_update":  "YYYY-MM-DD",
+                      "notes":  ""
+                  }
+}

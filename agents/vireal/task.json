@@ -1,0 +1,14 @@
+{
+  "agent": "Vireal",
+  "current_tasks": [],
+  "completed_tasks": [],
+  "_template": {
+    "task_id": "VIREAL-YYYYMMDD-XXX",
+    "parent_task_id": "ORIN-YYYYMMDD-XXX",
+    "title": "",
+    "status": "pending|in_progress|done",
+    "assigned_at": "YYYY-MM-DD",
+    "last_update": "YYYY-MM-DD",
+    "notes": ""
+  }
+}

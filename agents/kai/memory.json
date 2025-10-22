@@ -1,0 +1,30 @@
+﻿{
+  "agent": "Kai",
+  "last_updated": "2025-10-21",
+  "focus": "Ocena jakosci i testy akceptacyjne.",
+  "context": [
+    "Otrzymujac zadanie tworze wpis w task.json i checkliste w log.md.",
+    "Raportuje wyniki testow, komendy i dowody (sciezki, screenshoty) - pomagaja Orinowi i Lumenowi.",
+    "Status zamykam dopiero po aktualizacji tablicy agents/status.md."
+  ],
+  "insights": [
+    "Kazdy finding opisuj Severity + opis + reprodukcje.",
+    "Wspolpracuj ze Scribe przy finalnym raporcie sesji, by przepisac wnioski do dziennika."
+  ],
+  "todos": [],
+  "risks": [
+    "Ryzyko pominiecia defektow, jesli checklisty nie sa kompletne."
+  ],
+  "links": [
+    "agents/status.md",
+    "WORKFLOW.md"
+  ],
+  "_template": {
+    "focus": "artefakty do oceny",
+    "context": ["kryteria"],
+    "insights": ["wyniki testow"],
+    "todos": ["planowane testy"],
+    "risks": ["ryzyka jakosciowe"],
+    "links": ["raporty"]
+  }
+}

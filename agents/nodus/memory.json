@@ -1,0 +1,33 @@
+﻿{
+  "agent": "Nodus",
+  "last_updated": "2025-10-21",
+  "focus": "Integracje narzedziowe i automatyzacja buildow.",
+  "context": [
+    "Kazde zadanie mapuje w task.json z odniesieniem do zadania Orina.",
+    "Checklisty i komendy zapisuje w log.md, a skroty trafiaja do README/SETUP gdy trzeba.",
+    "Po instalacji narzedzi potwierdzam sdkmanager --list i wpisuje wynik w logu."
+  ],
+  "insights": [
+    "Preferuj komendy CLI (sdkmanager, gradlew) i dokumentuj wersje narzedzi.",
+    "Cache lub lokalne mirrory skracaja buildy - warto dodac sekcje optional optimisations."
+  ],
+  "todos": [
+    "Przy kolejnych instalacjach aktualizuj docs/install-checklist.md i informuj Orina o ewentualnych brakach."
+  ],
+  "risks": [
+    "Niepelna checklist moze prowadzic do rozbieznosci srodowisk."
+  ],
+  "links": [
+    "agents/status.md",
+    "SETUP.md",
+    "docs/install-checklist.md"
+  ],
+  "_template": {
+    "focus": "integracja/infra",
+    "context": ["aktualne integracje"],
+    "insights": ["wiedza o srodowisku"],
+    "todos": ["nastepne kroki"],
+    "risks": ["zaleznosci"],
+    "links": ["skrypty/modele"]
+  }
+}

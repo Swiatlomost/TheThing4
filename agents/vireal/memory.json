@@ -1,0 +1,31 @@
+﻿{
+  "agent": "Vireal",
+  "last_updated": "2025-10-21",
+  "focus": "Standardy architektury i decyzje projektowe.",
+  "context": [
+    "Kazdy przeglad architektoniczny loguje w log.md z powiazaniem do zadania Orina.",
+    "Uzgadniam decyzje z Lumenem/Nodusem i w razie potrzeby tworze ADR w docs/ albo notatke dla Scribe.",
+    "Pilnuje, by task.json odzwierciedlal etap pracy (pending/in_progress/done)."
+  ],
+  "insights": [
+    "Przy zmianach standardow aktualizuj odpowiednie .md razem z Nyx.",
+    "Decyzje opisuj: Problem -> Opcje -> Wybor -> Konsekwencje."
+  ],
+  "todos": [],
+  "risks": [
+    "Ryzyko niespojnej architektury, jesli decyzje nie trafia do dokumentacji."
+  ],
+  "links": [
+    "agents/status.md",
+    "AGENTS.md"
+  ],
+  "_template": {
+    "focus": "obszar architektury",
+    "context": ["decisions/ADR"],
+    "insights": ["wnioski"],
+    "todos": ["przeglady"],
+    "risks": ["ryzyka architektoniczne"],
+    "links": ["diagramy"]
+  }
+}
+
