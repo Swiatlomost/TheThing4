@@ -1,25 +1,25 @@
-﻿{
+{
     "agent":  "Nodus",
     "current_tasks":  [
-        {
-            "task_id":  "NODUS-20251022-001",
-            "parent_task_id":  "ORIN-20251022-002",
-            "title":  "Konfiguracja trybu plywajacego",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "last_update":  "2025-10-22",
-            "notes":  "Przygotowac manifest, overlay permission UX i polaczenie z glowna aplikacja."
-        },
-        {
-            "task_id":  "NODUS-20251022-002",
-            "parent_task_id":  "ORIN-20251022-007",
-            "title":  "Integracja serwisu zycia w tle",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "last_update":  "2025-10-22",
-            "notes":  "Skonfigurowac foreground service/background tasks i synchronizacje danych z aplikacja."
-        }
-    ],
+                          {
+                              "task_id":  "NODUS-20251022-001",
+                              "parent_task_id":  "ORIN-20251022-002",
+                              "title":  "Konfiguracja trybu plywajacego",
+                              "status":  "done",
+                              "assigned_at":  "2025-10-22",
+                              "last_update":  "2025-10-22",
+                              "notes":  "Manifest + OverlayPermissionActivity + overlay toggle przygotowane."
+                          },
+                          {
+                              "task_id":  "NODUS-20251022-002",
+                              "parent_task_id":  "ORIN-20251022-007",
+                              "title":  "Integracja serwisu zycia w tle",
+                              "status":  "done",
+                              "assigned_at":  "2025-10-22",
+                              "last_update":  "2025-10-22",
+                              "notes":  "LifecycleOverlayService jako foreground service (notification, WindowManager)."
+                          }
+                      ],
     "completed_tasks":  [
                             {
                                 "task_id":  "NODUS-20251021-003",

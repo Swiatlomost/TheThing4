@@ -54,7 +54,7 @@ fun CosLifecycleScreen(
 }
 
 @Composable
-private fun LifecycleCanvas(stage: CellStage?, modifier: Modifier = Modifier) {
+fun LifecycleCanvas(stage: CellStage?, modifier: Modifier = Modifier) {
     val infiniteTransition = rememberInfiniteTransition(label = "pulse")
     val pulseScale by infiniteTransition.animateFloat(
         initialValue = 0.94f,
@@ -121,3 +121,4 @@ private val CellStage.readableName: String
         is CellStage.Bud -> "Dojrzewanie (${(progress * 100).toInt()}%)"
         is CellStage.Mature -> "Dojrzałość"
     }
+

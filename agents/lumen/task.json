@@ -1,70 +1,70 @@
 {
     "agent":  "Lumen",
     "current_tasks":  [
-        {
-            "task_id":  "LUMEN-20251022-001",
-            "parent_task_id":  "ORIN-20251022-001",
-            "title":  "Implementacja cyklu zycia komorki",
-            "status":  "done",
-            "assigned_at":  "2025-10-22",
-            "last_update":  "2025-10-22",
-            "notes":  "Compose UI + core/time/core/cell wdrozone; `CellLifecycleStateMachine` + testy jednostkowe, wyniki w ./gradlew test."
-        },
-        {
-            "task_id":  "LUMEN-20251022-002",
-            "parent_task_id":  "ORIN-20251022-002",
-            "title":  "Tryb plywajacy UI",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "last_update":  "2025-10-22",
-            "notes":  "Stworzyc overlay service + widok Compose/Views z pulsem, drag i double tap -> start Activity."
-        },
-        {
-            "task_id":  "LUMEN-20251022-003",
-            "parent_task_id":  "ORIN-20251022-003",
-            "title":  "Tryb obserwacji w aplikacji",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "last_update":  "2025-10-22",
-            "notes":  "Dostarczyc ekran z calym organizmem, wspolnym przesunieciem i wskaznikiem dojrzalosci."
-        },
-        {
-            "task_id":  "LUMEN-20251022-004",
-            "parent_task_id":  "ORIN-20251022-004",
-            "title":  "Mechanika paczkowania",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "last_update":  "2025-10-22",
-            "notes":  "Implementowac dodawanie komorek (manual/auto), walidacje styku i restart saturacji nowej komorki."
-        },
-        {
-            "task_id":  "LUMEN-20251022-005",
-            "parent_task_id":  "ORIN-20251022-005",
-            "title":  "Tryb edycji i ksztalty",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "last_update":  "2025-10-22",
-            "notes":  "Wlaczyc edytor komorek (drag pojedyncze, reshape z zachowaniem pola, kasowanie/dodawanie) wraz z walidatorem."
-        },
-        {
-            "task_id":  "LUMEN-20251022-006",
-            "parent_task_id":  "ORIN-20251022-006",
-            "title":  "System szablonow",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "last_update":  "2025-10-22",
-            "notes":  "Zaimplementowac repozytorium szablonow, UI zapisu/nazewnictwa i odtwarzanie organizmu ze wzorca."
-        },
-        {
-            "task_id":  "LUMEN-20251022-007",
-            "parent_task_id":  "ORIN-20251022-007",
-            "title":  "Synchronizacja trybow",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "last_update":  "2025-10-22",
-            "notes":  "Dostarczac serwis utrzymujacy saturacje w tle oraz synchronizacje stanu przy powrotach do aplikacji."
-        }
-    ],
+                          {
+                              "task_id":  "LUMEN-20251022-001",
+                              "parent_task_id":  "ORIN-20251022-001",
+                              "title":  "Implementacja cyklu zycia komorki",
+                              "status":  "done",
+                              "assigned_at":  "2025-10-22",
+                              "last_update":  "2025-10-22",
+                              "notes":  "Compose UI + core/time/core/cell wdrozone; `CellLifecycleStateMachine` + testy jednostkowe, wyniki w ./gradlew test."
+                          },
+                          {
+                              "task_id":  "LUMEN-20251022-002",
+                              "parent_task_id":  "ORIN-20251022-002",
+                              "title":  "Tryb plywajacy UI",
+                              "status":  "done",
+                              "assigned_at":  "2025-10-22",
+                              "last_update":  "2025-10-22",
+                              "notes":  "Overlay UI + toggle implementowane w MainActivity, OverlayCosLifecycleScreen, CellLifecycleCoordinator."
+                          },
+                          {
+                              "task_id":  "LUMEN-20251022-003",
+                              "parent_task_id":  "ORIN-20251022-003",
+                              "title":  "Tryb obserwacji w aplikacji",
+                              "status":  "pending",
+                              "assigned_at":  "2025-10-22",
+                              "last_update":  "2025-10-22",
+                              "notes":  "Dostarczyc ekran z calym organizmem, wspolnym przesunieciem i wskaznikiem dojrzalosci."
+                          },
+                          {
+                              "task_id":  "LUMEN-20251022-004",
+                              "parent_task_id":  "ORIN-20251022-004",
+                              "title":  "Mechanika paczkowania",
+                              "status":  "pending",
+                              "assigned_at":  "2025-10-22",
+                              "last_update":  "2025-10-22",
+                              "notes":  "Implementowac dodawanie komorek (manual/auto), walidacje styku i restart saturacji nowej komorki."
+                          },
+                          {
+                              "task_id":  "LUMEN-20251022-005",
+                              "parent_task_id":  "ORIN-20251022-005",
+                              "title":  "Tryb edycji i ksztalty",
+                              "status":  "pending",
+                              "assigned_at":  "2025-10-22",
+                              "last_update":  "2025-10-22",
+                              "notes":  "Wlaczyc edytor komorek (drag pojedyncze, reshape z zachowaniem pola, kasowanie/dodawanie) wraz z walidatorem."
+                          },
+                          {
+                              "task_id":  "LUMEN-20251022-006",
+                              "parent_task_id":  "ORIN-20251022-006",
+                              "title":  "System szablonow",
+                              "status":  "pending",
+                              "assigned_at":  "2025-10-22",
+                              "last_update":  "2025-10-22",
+                              "notes":  "Zaimplementowac repozytorium szablonow, UI zapisu/nazewnictwa i odtwarzanie organizmu ze wzorca."
+                          },
+                          {
+                              "task_id":  "LUMEN-20251022-007",
+                              "parent_task_id":  "ORIN-20251022-007",
+                              "title":  "Synchronizacja trybow",
+                              "status":  "pending",
+                              "assigned_at":  "2025-10-22",
+                              "last_update":  "2025-10-22",
+                              "notes":  "Dostarczac serwis utrzymujacy saturacje w tle oraz synchronizacje stanu przy powrotach do aplikacji."
+                          }
+                      ],
     "completed_tasks":  [
                             {
                                 "task_id":  "LUMEN-20251021-003",

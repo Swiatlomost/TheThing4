@@ -8,7 +8,8 @@
                     "Wspolpracuje ze Scribe (dzienniki) i Orinem (status board), aby pamiec odzwierciedlala realne dzialania.",
                     "Checklisty build APK przeniesione do README/SETUP, kronika Scribe uwzgledniona w dokumentacji.",
                     "Aktualna sesja: wprowadzamy wytyczne Android (architektura, testy, CI).",
-                    "Nowy cykl zycia Cosia: Compose + Core (core/cell, core/time) jako zrodlo prawdy."
+                    "Nowy cykl zycia Cosia: Compose + Core (core/cell, core/time) jako zrodlo prawdy.",
+                    "Tryb plywajacy: overlay controller + service dzieli stan komorek (CellLifecycleCoordinator)."
                 ],
     "insights":  [
                      "Jesli zmieniamy standard, dopisz adnotacje w WORKFLOW.md i poinformuj agenta, ktorego dotyczy.",
@@ -18,11 +19,14 @@
                      "Testy emulatora: trzymaj gotowy AVD Pixel_5 i monitoruj zestaw androidTest (SmokeTest).",
                      "Nowe wytyczne Android w docs/android-guidelines (research, architecture, checklist).",
                      "Liczymy wiek komorek na `TimeProvider` (SystemClock.elapsedRealtime) — brak resetu po przejsciu w tle.",
-                     "State machine Seed/Bud/Mature opisany w docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md — referencja dla kolejnych trybow."
+                     "State machine Seed/Bud/Mature opisany w docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md — referencja dla kolejnych trybow.",
+                     "Uprawnienie SYSTEM_ALERT_WINDOW i foreground service typu specialUse wymagane dla overlay.",
+                     "OverlayCosLifecycleScreen korzysta z tego samego state machine; DataStore na pozycje do rozwa¿enia."
                  ],
     "todos":  [
                   "Monitorowac, kiedy dodamy repozytorium wielokomorkowe i tryb A — przygotowac snapshot.",
-                  "Po testach manualnych na Pixel_5 zapisac obserwacje saturacji w pamieci."
+                  "Po testach manualnych na Pixel_5 zapisac obserwacje saturacji w pamieci.",
+                  "Po wdro¿eniu synchronizacji trybów zapisaæ heurystyki dla serwisu w tle."
               ],
     "risks":  [
                   "Ryzyko rozjazdu miedzy pamiecia a logami, jesli snapshoty nie beda aktualizowane."
@@ -37,7 +41,10 @@
                   "SETUP.md",
                   "docs/cos/lifecycle-analysis.md",
                   "docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md",
-                  "docs/cos/test-plan-lifecycle.md"
+                  "docs/cos/test-plan-lifecycle.md",
+                  "docs/cos/floating-overlay-research.md",
+                  "docs/cos/adr/ADR-2025-10-22-floating-overlay.md",
+                  "docs/cos/test-plan-overlay.md"
               ],
     "_template":  {
                       "focus":  "co konsolidujemy",

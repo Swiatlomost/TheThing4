@@ -1,297 +1,297 @@
 {
     "agent":  "Orin",
     "current_tasks":  [
-        {
-            "task_id":  "ORIN-20251022-001",
-            "title":  "Cykl zycia podstawowy Cosia",
-            "status":  "done",
-            "assigned_at":  "2025-10-22",
-            "parent_task_id":  null,
-            "linked_agent_tasks":  [
-                                       {
-                                           "agent":  "Echo",
-                                           "task_id":  "ECHO-20251022-001",
-                                           "status":  "done"
-                                       },
-                                       {
-                                           "agent":  "Vireal",
-                                           "task_id":  "VIREAL-20251022-001",
-                                           "status":  "done"
-                                       },
-                                       {
-                                           "agent":  "Lumen",
-                                           "task_id":  "LUMEN-20251022-001",
-                                           "status":  "done"
-                                       },
-                                       {
-                                           "agent":  "Kai",
-                                           "task_id":  "KAI-20251022-001",
-                                           "status":  "done"
-                                       },
-                                       {
-                                           "agent":  "Scribe",
-                                           "task_id":  "SCRIBE-20251022-001",
-                                           "status":  "done"
-                                       },
-                                       {
-                                           "agent":  "Nyx",
-                                           "task_id":  "NYX-20251022-001",
-                                           "status":  "done"
-                                       }
-                                   ],
-            "notes":  "State machine + Compose UI wdrozone; ./gradlew test PASS; MAN-CL-001..003 Pixel_5 OK."
-        },
-        {
-            "task_id":  "ORIN-20251022-002",
-            "title":  "Tryb plywajacy CoSia",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "parent_task_id":  null,
-            "linked_agent_tasks":  [
-                                       {
-                                           "agent":  "Echo",
-                                           "task_id":  "ECHO-20251022-002",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Vireal",
-                                           "task_id":  "VIREAL-20251022-002",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Lumen",
-                                           "task_id":  "LUMEN-20251022-002",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Nodus",
-                                           "task_id":  "NODUS-20251022-001",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Kai",
-                                           "task_id":  "KAI-20251022-002",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Scribe",
-                                           "task_id":  "SCRIBE-20251022-002",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Nyx",
-                                           "task_id":  "NYX-20251022-002",
-                                           "status":  "pending"
-                                       }
-                                   ],
-            "notes":  "Cel: dostarczyc tryb A jako okno nakladkowe z przesuwaniem, pulsowaniem i przejsciem double tap do aplikacji. Testy: UI test nakladki + manualny scenariusz na Pixel_5."
-        },
-        {
-            "task_id":  "ORIN-20251022-003",
-            "title":  "Tryb obserwacji w aplikacji",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "parent_task_id":  null,
-            "linked_agent_tasks":  [
-                                       {
-                                           "agent":  "Echo",
-                                           "task_id":  "ECHO-20251022-003",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Vireal",
-                                           "task_id":  "VIREAL-20251022-003",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Lumen",
-                                           "task_id":  "LUMEN-20251022-003",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Kai",
-                                           "task_id":  "KAI-20251022-003",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Scribe",
-                                           "task_id":  "SCRIBE-20251022-003",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Nyx",
-                                           "task_id":  "NYX-20251022-003",
-                                           "status":  "pending"
-                                       }
-                                   ],
-            "notes":  "Cel: zbudowac tryb obserwacji z przesuwaniem calego organizmu, pulsem i warunkiem dojrzalosci przed paczkowaniem. Testy: instrumented UI dla gestu drag calego Cosia + manualny check Pixel_5."
-        },
-        {
-            "task_id":  "ORIN-20251022-004",
-            "title":  "Mechanika paczkowania",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "parent_task_id":  null,
-            "linked_agent_tasks":  [
-                                       {
-                                           "agent":  "Echo",
-                                           "task_id":  "ECHO-20251022-004",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Vireal",
-                                           "task_id":  "VIREAL-20251022-004",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Lumen",
-                                           "task_id":  "LUMEN-20251022-004",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Kai",
-                                           "task_id":  "KAI-20251022-004",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Scribe",
-                                           "task_id":  "SCRIBE-20251022-004",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Nyx",
-                                           "task_id":  "NYX-20251022-004",
-                                           "status":  "pending"
-                                       }
-                                   ],
-            "notes":  "Cel: manualne i warunkowe paczkowanie dojrzalych komorek z walidacja styku struktury. Testy: jednostkowe reguly styku + scenariusz Espresso budujacy nowa komorke na Pixel_5."
-        },
-        {
-            "task_id":  "ORIN-20251022-005",
-            "title":  "Tryb edycji i ksztalty",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "parent_task_id":  null,
-            "linked_agent_tasks":  [
-                                       {
-                                           "agent":  "Echo",
-                                           "task_id":  "ECHO-20251022-005",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Vireal",
-                                           "task_id":  "VIREAL-20251022-005",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Lumen",
-                                           "task_id":  "LUMEN-20251022-005",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Kai",
-                                           "task_id":  "KAI-20251022-005",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Scribe",
-                                           "task_id":  "SCRIBE-20251022-005",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Nyx",
-                                           "task_id":  "NYX-20251022-005",
-                                           "status":  "pending"
-                                       }
-                                   ],
-            "notes":  "Cel: uruchomic tryb edycji z gestami na komorki, zachowaniem pola i walidacja spojnosci po zapisaniu. Testy: jednostkowe powierzchni, UI test edycji + manualny scenariusz Pixel_5."
-        },
-        {
-            "task_id":  "ORIN-20251022-006",
-            "title":  "Biblioteka szablonow Cosia",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "parent_task_id":  null,
-            "linked_agent_tasks":  [
-                                       {
-                                           "agent":  "Echo",
-                                           "task_id":  "ECHO-20251022-006",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Vireal",
-                                           "task_id":  "VIREAL-20251022-006",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Lumen",
-                                           "task_id":  "LUMEN-20251022-006",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Kai",
-                                           "task_id":  "KAI-20251022-006",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Scribe",
-                                           "task_id":  "SCRIBE-20251022-006",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Nyx",
-                                           "task_id":  "NYX-20251022-006",
-                                           "status":  "pending"
-                                       }
-                                   ],
-            "notes":  "Cel: zapis/wczytanie form z metadanymi i trwaloscia miedzy sesjami. Testy: jednostkowe serializacji + instrumented restore, manualny Pixel_5 (nowa forma z szablonu)."
-        },
-        {
-            "task_id":  "ORIN-20251022-007",
-            "title":  "Ciaglosc zycia i synchronizacja trybow",
-            "status":  "pending",
-            "assigned_at":  "2025-10-22",
-            "parent_task_id":  null,
-            "linked_agent_tasks":  [
-                                       {
-                                           "agent":  "Echo",
-                                           "task_id":  "ECHO-20251022-007",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Vireal",
-                                           "task_id":  "VIREAL-20251022-007",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Lumen",
-                                           "task_id":  "LUMEN-20251022-007",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Nodus",
-                                           "task_id":  "NODUS-20251022-002",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Kai",
-                                           "task_id":  "KAI-20251022-007",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Scribe",
-                                           "task_id":  "SCRIBE-20251022-007",
-                                           "status":  "pending"
-                                       },
-                                       {
-                                           "agent":  "Nyx",
-                                           "task_id":  "NYX-20251022-007",
-                                           "status":  "pending"
-                                       }
-                                   ],
-            "notes":  "Cel: utrzymac zycie Cosia poza aplikacja, synchronizowac stan miedzy trybami i przy wznowieniu. Testy: integracja serwisu w tle + e2e scenariusz Pixel_5 (zamknij aplikacje -> tryb A kontynuuje nasycanie)."
-        }
-    ],
+                          {
+                              "task_id":  "ORIN-20251022-001",
+                              "title":  "Cykl zycia podstawowy Cosia",
+                              "status":  "done",
+                              "assigned_at":  "2025-10-22",
+                              "parent_task_id":  null,
+                              "linked_agent_tasks":  [
+                                                         {
+                                                             "agent":  "Echo",
+                                                             "task_id":  "ECHO-20251022-001",
+                                                             "status":  "done"
+                                                         },
+                                                         {
+                                                             "agent":  "Vireal",
+                                                             "task_id":  "VIREAL-20251022-001",
+                                                             "status":  "done"
+                                                         },
+                                                         {
+                                                             "agent":  "Lumen",
+                                                             "task_id":  "LUMEN-20251022-001",
+                                                             "status":  "done"
+                                                         },
+                                                         {
+                                                             "agent":  "Kai",
+                                                             "task_id":  "KAI-20251022-001",
+                                                             "status":  "done"
+                                                         },
+                                                         {
+                                                             "agent":  "Scribe",
+                                                             "task_id":  "SCRIBE-20251022-001",
+                                                             "status":  "done"
+                                                         },
+                                                         {
+                                                             "agent":  "Nyx",
+                                                             "task_id":  "NYX-20251022-001",
+                                                             "status":  "done"
+                                                         }
+                                                     ],
+                              "notes":  "State machine + Compose UI wdrozone; ./gradlew test PASS; MAN-CL-001..003 Pixel_5 OK."
+                          },
+                          {
+                              "task_id":  "ORIN-20251022-002",
+                              "title":  "Tryb plywajacy CoSia",
+                              "status":  "done",
+                              "assigned_at":  "2025-10-22",
+                              "parent_task_id":  null,
+                              "linked_agent_tasks":  [
+                                                         {
+                                                             "agent":  "Echo",
+                                                             "task_id":  "ECHO-20251022-002",
+                                                             "status":  "done"
+                                                         },
+                                                         {
+                                                             "agent":  "Vireal",
+                                                             "task_id":  "VIREAL-20251022-002",
+                                                             "status":  "done"
+                                                         },
+                                                         {
+                                                             "agent":  "Lumen",
+                                                             "task_id":  "LUMEN-20251022-002",
+                                                             "status":  "done"
+                                                         },
+                                                         {
+                                                             "agent":  "Nodus",
+                                                             "task_id":  "NODUS-20251022-001",
+                                                             "status":  "done"
+                                                         },
+                                                         {
+                                                             "agent":  "Kai",
+                                                             "task_id":  "KAI-20251022-002",
+                                                             "status":  "done"
+                                                         },
+                                                         {
+                                                             "agent":  "Scribe",
+                                                             "task_id":  "SCRIBE-20251022-002",
+                                                             "status":  "done"
+                                                         },
+                                                         {
+                                                             "agent":  "Nyx",
+                                                             "task_id":  "NYX-20251022-002",
+                                                             "status":  "done"
+                                                         }
+                                                     ],
+                              "notes":  "Cel: dostarczyc tryb A jako okno nakladkowe z przesuwaniem, pulsowaniem i przejsciem double tap do aplikacji. Testy: UI test nakladki + manualny scenariusz na Pixel_5."
+                          },
+                          {
+                              "task_id":  "ORIN-20251022-003",
+                              "title":  "Tryb obserwacji w aplikacji",
+                              "status":  "pending",
+                              "assigned_at":  "2025-10-22",
+                              "parent_task_id":  null,
+                              "linked_agent_tasks":  [
+                                                         {
+                                                             "agent":  "Echo",
+                                                             "task_id":  "ECHO-20251022-003",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Vireal",
+                                                             "task_id":  "VIREAL-20251022-003",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Lumen",
+                                                             "task_id":  "LUMEN-20251022-003",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Kai",
+                                                             "task_id":  "KAI-20251022-003",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Scribe",
+                                                             "task_id":  "SCRIBE-20251022-003",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Nyx",
+                                                             "task_id":  "NYX-20251022-003",
+                                                             "status":  "pending"
+                                                         }
+                                                     ],
+                              "notes":  "Cel: zbudowac tryb obserwacji z przesuwaniem calego organizmu, pulsem i warunkiem dojrzalosci przed paczkowaniem. Testy: instrumented UI dla gestu drag calego Cosia + manualny check Pixel_5."
+                          },
+                          {
+                              "task_id":  "ORIN-20251022-004",
+                              "title":  "Mechanika paczkowania",
+                              "status":  "pending",
+                              "assigned_at":  "2025-10-22",
+                              "parent_task_id":  null,
+                              "linked_agent_tasks":  [
+                                                         {
+                                                             "agent":  "Echo",
+                                                             "task_id":  "ECHO-20251022-004",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Vireal",
+                                                             "task_id":  "VIREAL-20251022-004",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Lumen",
+                                                             "task_id":  "LUMEN-20251022-004",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Kai",
+                                                             "task_id":  "KAI-20251022-004",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Scribe",
+                                                             "task_id":  "SCRIBE-20251022-004",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Nyx",
+                                                             "task_id":  "NYX-20251022-004",
+                                                             "status":  "pending"
+                                                         }
+                                                     ],
+                              "notes":  "Cel: manualne i warunkowe paczkowanie dojrzalych komorek z walidacja styku struktury. Testy: jednostkowe reguly styku + scenariusz Espresso budujacy nowa komorke na Pixel_5."
+                          },
+                          {
+                              "task_id":  "ORIN-20251022-005",
+                              "title":  "Tryb edycji i ksztalty",
+                              "status":  "pending",
+                              "assigned_at":  "2025-10-22",
+                              "parent_task_id":  null,
+                              "linked_agent_tasks":  [
+                                                         {
+                                                             "agent":  "Echo",
+                                                             "task_id":  "ECHO-20251022-005",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Vireal",
+                                                             "task_id":  "VIREAL-20251022-005",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Lumen",
+                                                             "task_id":  "LUMEN-20251022-005",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Kai",
+                                                             "task_id":  "KAI-20251022-005",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Scribe",
+                                                             "task_id":  "SCRIBE-20251022-005",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Nyx",
+                                                             "task_id":  "NYX-20251022-005",
+                                                             "status":  "pending"
+                                                         }
+                                                     ],
+                              "notes":  "Cel: uruchomic tryb edycji z gestami na komorki, zachowaniem pola i walidacja spojnosci po zapisaniu. Testy: jednostkowe powierzchni, UI test edycji + manualny scenariusz Pixel_5."
+                          },
+                          {
+                              "task_id":  "ORIN-20251022-006",
+                              "title":  "Biblioteka szablonow Cosia",
+                              "status":  "pending",
+                              "assigned_at":  "2025-10-22",
+                              "parent_task_id":  null,
+                              "linked_agent_tasks":  [
+                                                         {
+                                                             "agent":  "Echo",
+                                                             "task_id":  "ECHO-20251022-006",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Vireal",
+                                                             "task_id":  "VIREAL-20251022-006",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Lumen",
+                                                             "task_id":  "LUMEN-20251022-006",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Kai",
+                                                             "task_id":  "KAI-20251022-006",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Scribe",
+                                                             "task_id":  "SCRIBE-20251022-006",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Nyx",
+                                                             "task_id":  "NYX-20251022-006",
+                                                             "status":  "pending"
+                                                         }
+                                                     ],
+                              "notes":  "Cel: zapis/wczytanie form z metadanymi i trwaloscia miedzy sesjami. Testy: jednostkowe serializacji + instrumented restore, manualny Pixel_5 (nowa forma z szablonu)."
+                          },
+                          {
+                              "task_id":  "ORIN-20251022-007",
+                              "title":  "Ciaglosc zycia i synchronizacja trybow",
+                              "status":  "pending",
+                              "assigned_at":  "2025-10-22",
+                              "parent_task_id":  null,
+                              "linked_agent_tasks":  [
+                                                         {
+                                                             "agent":  "Echo",
+                                                             "task_id":  "ECHO-20251022-007",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Vireal",
+                                                             "task_id":  "VIREAL-20251022-007",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Lumen",
+                                                             "task_id":  "LUMEN-20251022-007",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Nodus",
+                                                             "task_id":  "NODUS-20251022-002",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Kai",
+                                                             "task_id":  "KAI-20251022-007",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Scribe",
+                                                             "task_id":  "SCRIBE-20251022-007",
+                                                             "status":  "pending"
+                                                         },
+                                                         {
+                                                             "agent":  "Nyx",
+                                                             "task_id":  "NYX-20251022-007",
+                                                             "status":  "pending"
+                                                         }
+                                                     ],
+                              "notes":  "Cel: utrzymac zycie Cosia poza aplikacja, synchronizowac stan miedzy trybami i przy wznowieniu. Testy: integracja serwisu w tle + e2e scenariusz Pixel_5 (zamknij aplikacje -\u003e tryb A kontynuuje nasycanie)."
+                          }
+                      ],
     "completed_tasks":  [
                             {
                                 "task_id":  "ORIN-20251021-001",

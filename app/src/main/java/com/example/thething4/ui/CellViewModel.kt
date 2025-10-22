@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.thething4.core.cell.CellLifecycle
+import com.example.thething4.core.cell.CellLifecycleCoordinator
 import com.example.thething4.core.cell.CellLifecycleStateMachine
 import com.example.thething4.core.cell.CellSnapshot
 import com.example.thething4.core.time.TimeProvider
@@ -31,7 +32,7 @@ class CellViewModel(
 ) : ViewModel() {
 
     private val lifecycles: List<CellLifecycle> =
-        listOf(CellLifecycle.default(timeProvider.now()))
+        listOf(CellLifecycleCoordinator.lifecycle())
 
     private val _uiState = MutableStateFlow(CellUiState())
     val uiState: StateFlow<CellUiState> = _uiState.asStateFlow()
@@ -70,5 +71,12 @@ class CellViewModelFactory(
             ) as T
         }
         throw IllegalArgumentException("Unsupported ViewModel class: ${modelClass.name}")
+    }
+
+    companion object {
+        fun default(): CellViewModelFactory = CellViewModelFactory(
+            timeProvider = CellLifecycleCoordinator.timeProvider,
+            stateMachine = CellLifecycleCoordinator.stateMachine()
+        )
     }
 }

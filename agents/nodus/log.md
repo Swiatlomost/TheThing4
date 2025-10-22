@@ -1,74 +1,55 @@
-ï»¿# Nodus Log (Integrator)
+# Nodus Log (Integrator)
 
 ## Active Tasks
 ### NODUS-20251021-003 - Przygotowac srodowisko emulatora Android
 - Parent Task: ORIN-20251021-006
 - Status: [ ] Pending [ ] In Progress [x] Done
 - Scope:
-  - OceniÄ‡, czy w obecnym Å›rodowisku dostepny jest Android Emulator (AVD) lub alternatywne urzÄ…dzenie.
-  - UruchomiÄ‡ dostÄ™pny AVD i potwierdziÄ‡ widocznoÅ›Ä‡ przez `adb`.
+  - Oceniæ, czy w obecnym œrodowisku dostêpny jest Android Emulator (AVD) lub alternatywne urz¹dzenie.
+  - Uruchomiæ dostêpny AVD i potwierdziæ widocznoœæ przez db.
 - Notes:
-  - Uruchomiono `emulator.exe -avd Pixel_5`; emulator Å‚aduje siÄ™ poprawnie (Android 14, Google APIs, x86_64).
-  - `adb devices` zgÅ‚asza `emulator-5554 device`; gotowe do testÃ³w.
-  - Brak dodatkowych obejÅ›Ä‡ potrzebnych; pozostaje utrzymaÄ‡ emulator w trakcie testÃ³w Lumen.
-  - Next: przekazano Lumenowi informacjÄ™ o dostÄ™pnoÅ›ci emulatora.
-
----
+  - Uruchomiono emulator.exe -avd Pixel_5; emulator ³aduje siê poprawnie (Android 14, Google APIs, x86_64).
+  - db devices zg³asza emulator-5554 device; gotowe do testów.
+  - Brak dodatkowych obejœæ potrzebnych; pozostaje utrzymaæ emulator w trakcie testów Lumen.
+  - Next: przekazano Lumenowi informacjê o dostêpnoœci emulatora.
 
 ### NODUS-20251021-002 - Instalacja Android CLI
 - Parent Task: ORIN-20251021-004
 - Status: [ ] Pending [ ] In Progress [x] Done
 - Scope:
-  - Zainstalowac Android Commandline Tools (sdkmanager) lokalnie.
-  - Skonfigurowac pakiety: platform-tools, platforms;android-34, build-tools;34.0.0.
-  - Zaktualizowac README/SETUP (w razie zmian sciezek) i potwierdzic dzialanie `sdkmanager --list`.
+  - Zainstalowaæ Android Commandline Tools (sdkmanager) lokalnie.
+  - Skonfigurowaæ pakiety: platform-tools, platforms;android-34, build-tools;34.0.0.
+  - Zaktualizowaæ README/SETUP (w razie zmian œcie¿ek) i potwierdziæ dzia³anie sdkmanager --list.
 - Notes:
-  - Dependencje: dostep do internetu, sciezki SDK w systemie.
-  - Progress: SDK zainstalowane, `sdkmanager --list` dziala; pakiety platform-tools/platforms;android-34/build-tools;34.0.0 pobrane i licencje zaakceptowane.
-  - Next: przekazano potwierdzenie do Orina i Scribe, zadanie zamkniete.
+  - Dependencies: dostêp do internetu, œcie¿ki SDK w systemie.
+  - Progress: SDK zainstalowane, sdkmanager --list dzia³a; pakiety platform-tools/platforms;android-34/build-tools;34.0.0 pobrane i licencje zaakceptowane.
+  - Next: przekazano potwierdzenie do Orina i Scribe, zadanie zamkniête.
 
 ---
 
 ## Completed Tasks
+### NODUS-20251022-001 - Konfiguracja trybu plywajacego
+- Status: Done (2025-10-22)
+- Scope:
+  - Dodano uprawnienie SYSTEM_ALERT_WINDOW i zarejestrowano LifecycleOverlayService w manifestie.
+  - Przygotowano OverlayPermissionActivity oraz integracjê prze³¹cznika w MainActivity.
+- Notes:
+  - Kolejny krok: monitorowaæ zgodê u¿ytkownika i zachowanie overlay w tle.
+
+### NODUS-20251022-002 - Integracja serwisu zycia w tle
+- Status: In Progress (2025-10-22)
+- Scope:
+  - Utworzono serwis foreground z powiadomieniem i obs³ug¹ WindowManager.
+  - Pozycjonowanie overlay dzia³a; synchronizacja z trybem B i DataStore pozostaje do wykonania.
+- Notes:
+  - Koordynowaæ z Orinem przy zadaniu ORIN-20251022-007.
+
 ### NODUS-20251021-001 - Checklisty instalacji i automatyzacji
 - Status: Done (2025-10-21)
 - Zakres: Przygotowano checklisty instalacji Android SDK/CLI oraz konfiguracji Gradle.
 - Notatki:
-  - Dependencies: Wnioski Echo (narzedzia i ryzyka).
+  - Dependencies: Wnioski Echo (narzêdzia i ryzyka).
   - Next: Przekazano checklisty Orinowi i Scribe.
-
-### Checklisty i komendy
-1. **Instalacja narzedzi**:
-   - Zainstaluj [Android Commandline Tools](https://developer.android.com/studio#command-tools).
-   - Ustaw zmienne srodowiskowe: `ANDROID_SDK_ROOT` oraz dodaj `platform-tools` do PATH.
-   - Uruchom `sdkmanager` z pakietami:
-     ```
-     sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
-     sdkmanager --licenses
-     ```
-   - Wymagana wersja JDK: 17 (sprawdz `java -version`).
-
-2. **Konfiguracja Gradle**:
-   - Repozytorium musi zawierac Gradle Wrapper (`gradlew`, `gradlew.bat`, `gradle/wrapper/*`).
-   - `settings.gradle.kts` z repozytoriami: `google()`, `mavenCentral()`, `gradlePluginPortal()` w `pluginManagement`.
-   - `gradle/wrapper/gradle-wrapper.properties` moze wskazywac na lokalny plik ZIP (offline) lub `https://services.gradle.org/distributions/gradle-8.6-bin.zip`.
-
-3. **Srodowisko buildowe**:
-   - Zmienna `JAVA_HOME` wskazujaca na JDK 17.
-   - Opcjonalny cache: pobierz `gradle-8.6-bin.zip` raz i skonfiguruj `distributionUrl=file:///...`.
-   - Dla CI: przechowuj `~/.gradle` oraz katalog SDK jako cache.
-
-4. **Budowa APK**:
-   ```
-   ./gradlew assembleDebug
-   ```
-   - Wynik: `app/build/outputs/apk/debug/app-debug.apk`.
-   - Do testow instrumentacji: `./gradlew connectedDebugAndroidTest` (wymaga emulatora/urzadzenia).
-
-5. **Dodatkowe wskazowki**:
-   - Dokumentuj wersje narzedzi w README/SETUP.
-   - W CI (np. GitHub Actions) konfiguruj `actions/setup-java@v3` z JDK 17 oraz instalacje CLI via `sdkmanager`.
-   - Brak stabilnego internetu -> dostarcz lokalny mirror SDK/Gradle.
 
 ---
 
@@ -86,7 +67,7 @@
 > Note: record credentials/config requirements separately (never store secrets here).
 
 ### Log dzialan
-- 2025-10-21 16:05 Rozpoczeto instalacje Android Commandline Tools (sdkmanager). Instrukcja: docs/install-checklist.md
-- 2025-10-21 23:25 `sdkmanager --list` potwierdzil instalacje; pakiety platform-tools, platforms;android-34, build-tools;34.0.0 zainstalowane; licencje zaakceptowane.
+- 2025-10-21 16:05 Rozpoczêto instalacjê Android Commandline Tools (sdkmanager). Instrukcja: docs/install-checklist.md
+- 2025-10-21 23:25 sdkmanager --list potwierdzi³ instalacjê; pakiety platform-tools, platforms;android-34, build-tools;34.0.0 zainstalowane; licencje zaakceptowane.
 
 ---

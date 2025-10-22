@@ -13,6 +13,7 @@
 - **Artefakty:** `docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md`, `docs/cos/test-plan-lifecycle.md`, kronika Entry #8.
 - **TODO:** [x] Po manualnych testach Pixel_5 dopisac obserwacje do logu i kroniki.
 
+$entry
 ### 2025-10-21 – Session #APK-Tooling
 - **Goal:** Ustalic standard pracy agentow i przygotowac repo pod build APK.
 - **Decyzje:** Echo zebrala wymagania narzedziowe; Nodus przygotowal checklisty; Orin zatwierdzil standard log/task/memory.
@@ -52,4 +53,5 @@
 - **TODO:** [ ] ...
 
 > Note: pelna proza i anegdoty trafia do agents/scribe/chronicle.md; log pozostaje syntetyczny i audytowalny.
+
 

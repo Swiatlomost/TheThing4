@@ -15,6 +15,18 @@
 - (none)
 
 ## Archive Entry
+- Task ID: VIREAL-20251022-002
+- Parent Task: ORIN-20251022-002
+- Status: [ ] Pending [ ] In Progress [x] Done (2025-10-22)
+- Scope:
+  - Przygotowano ADR `docs/cos/adr/ADR-2025-10-22-floating-overlay.md` (serwis, repo, UX).
+- Notes:
+  - Wymaga integracji z overlay controllerem i DataStore.
+- Next:
+  - Wsparcie Lumen/Nodus przy implementacji.
+
+---
+## Archive Entry
 - Task ID: VIREAL-20251022-001
 - Parent Task: ORIN-20251022-001
 - Status: [ ] Pending [ ] In Progress [x] Done (2025-10-22)
@@ -51,4 +63,5 @@
   - ...
 
 > Note: refer to architecture diagrams and ADRs w agents/vireal/.
+
 

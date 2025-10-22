@@ -1,9 +1,6 @@
 # Orin Log (Coordinator)
 
 ## Active Tasks
-- ORIN-20251022-002 - Tryb plywajacy Cosia
-  - Why: Tryb A daje ciaglosc zycia poza aplikacja i jest wymagany do testow emocjonalnych.
-  - Next: Echo/Nodus potwierdzaja uprawnienia, Vireal szkicuje modul, Lumen buduje overlay, Kai planuje scenariusze.
 - ORIN-20251022-003 - Tryb obserwacji w aplikacji
   - Why: To podstawowa scena pracy uzytkownika i punkt startowy dla paczkowania.
   - Next: Vireal ustala layout, Lumen wdraza ekran, Kai przygotowuje test przesuniecia calego organizmu.
@@ -23,6 +20,11 @@
 ---
 
 ## Completed Tasks (najnowsze na gorze)
+### ORIN-20251022-002 - Tryb plywajacy Cosia
+- Status: Done (2025-10-22)
+- Delegacje: Echo (research), Vireal (ADR overlay), Lumen (UI Compose + toggle), Nodus (permission + service), Kai (plan testów overlay), Nyx (pamiêæ), Scribe (log/kronika).
+- Notatki: ./gradlew test & installDebug PASS; uprawnienie overlay i serwis foreground dzia³aj¹; dokumenty w docs/cos/.
+
 ### ORIN-20251022-001 - Cykl zycia podstawowy Cosia
 - Status: Done (2025-10-22)
 - Delegacje: Echo (analiza), Vireal (ADR state machine), Lumen (Compose + core/time/cell), Kai (plan + manual Pixel_5), Nyx (pamiec), Scribe (log/kronika).
@@ -69,6 +71,12 @@
 - Notatki: Standard log/task/memory wdrozony; checklisty zatwierdzone.
 
 > Note: keep priorities, blockers, and next checkpoints visible.
+
+
+
+
+
+
 
 
 

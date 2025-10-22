@@ -33,6 +33,18 @@
 ---
 
 ## Archive Entry
+- Task ID: ECHO-20251022-002
+- Parent Task: ORIN-20251022-002
+- Status: [ ] Pending [ ] In Progress [x] Done (2025-10-22)
+- Summary:
+  - Dokument `docs/cos/floating-overlay-research.md` opisuje wymagania SYSTEM_ALERT_WINDOW, architekturê serwisu, gesty i testy.
+- Recommendations:
+  - Wdro¿yæ wskazany przep³yw w ADR Vireal.
+  - Przygotowaæ UX prompt do zgody na nak³adkê.
+- Next: Czekam na dalsze zlecenia.
+
+---
+## Archive Entry
 - Task ID: ECHO-20251021-003
 - Parent Task: ORIN-20251021-006
 - Status: [ ] Pending [ ] In Progress [x] Done (2025-10-21)
@@ -103,4 +115,5 @@
 - Next: ...
 
 > Note: capture evidence (file:line) when possible.
+
 

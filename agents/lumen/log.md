@@ -6,6 +6,16 @@
 ---
 
 ## Completed Tasks
+### LUMEN-20251022-002 - Tryb plywajacy UI
+- Status: Done (2025-10-22)
+- Summary:
+  - Dodano sterowanie trybem p³ywaj¹cym w `MainActivity` (Compose) oraz dedykowany ekran overlay (`OverlayCosLifecycleScreen`).
+  - Utworzono `CellLifecycleCoordinator` i wspólny toggle, aktualizuj¹c Compose temat oraz przyciski.
+- Testy:
+  - `./gradlew test` (PASS po wdro¿eniu overlay).
+- Notes:
+  - Kolejny etap: wspó³dzielony repozytorium do wielu komórek.
+
 ### LUMEN-20251022-001 - Implementacja cyklu zycia komorki
 - Status: Done (2025-10-22)
 - Summary:
@@ -63,3 +73,4 @@
   - Blockers/Next:
 
 > Note: include commands run and file paths touched.
+

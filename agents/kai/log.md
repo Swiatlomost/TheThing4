@@ -6,6 +6,14 @@
 ---
 
 ## Completed Tasks
+### KAI-20251022-002 - Testy trybu plywajacego
+- Status: Done (2025-10-22)
+- Review Target:
+  - Zaplanowaæ automaty/UiAutomator oraz manualne scenariusze dla overlay.
+- Notes:
+  - Plan testów: `docs/cos/test-plan-overlay.md` (UT-OV, IT-OV, MAN-OV).
+  - Manual: MAN-OV-001..003 gotowe do realizacji na Pixel_5.
+
 ### KAI-20251022-001 - Plan testow cyklu zycia
 - Status: Done (2025-10-22)
 - Review Target:
@@ -19,6 +27,14 @@
 ---
 
 ## Completed Tasks
+### KAI-20251022-002 - Testy trybu plywajacego
+- Status: Done (2025-10-22)
+- Review Target:
+  - Zaplanowaæ automaty/UiAutomator oraz manualne scenariusze dla overlay.
+- Notes:
+  - Plan testów: `docs/cos/test-plan-overlay.md` (UT-OV, IT-OV, MAN-OV).
+  - Manual: MAN-OV-001..003 gotowe do realizacji na Pixel_5.
+
 ### KAI-20251022-001 - Plan testow cyklu zycia
 - Status: Done (2025-10-22)
 - Review Target:
@@ -59,5 +75,6 @@
   - Next: ...
 
 > Note: include test commands, reproduction steps, or evidence paths.
+
 
 
