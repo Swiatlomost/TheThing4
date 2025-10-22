@@ -11,7 +11,7 @@
    sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
    sdkmanager --licenses
    ```
-5. Potwierdz dzialanie: `sdkmanager --list`.
+5. Potwierdz dzialanie: ``sdkmanager --list``.
 
 ### 2. Gradle Wrapper w repo
 1. W katalogu projektu uruchom (wymagany lokalny Gradle lub wrapper z innego repo):

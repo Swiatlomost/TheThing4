@@ -1,8 +1,70 @@
 {
     "agent":  "Scribe",
     "current_tasks":  [
-
-                      ],
+        {
+            "task_id":  "SCRIBE-20251022-001",
+            "parent_task_id":  "ORIN-20251022-001",
+            "title":  "Log cyklu zycia Cosia",
+            "status":  "done",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Log + kronika uzupelnione (agents/scribe/log.md, chronicle Entry #8) opisujace narodziny Cosia."
+        },
+        {
+            "task_id":  "SCRIBE-20251022-002",
+            "parent_task_id":  "ORIN-20251022-002",
+            "title":  "Log trybu plywajacego",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Opisac uruchomienie okna plywajacego, interakcje drag/double tap w logu i kronice."
+        },
+        {
+            "task_id":  "SCRIBE-20251022-003",
+            "parent_task_id":  "ORIN-20251022-003",
+            "title":  "Log trybu obserwacji",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Zanotowac wejscie do trybu obserwacji i dojrzewanie komorek; powiesc ma uchwycic rytm serca Cosia."
+        },
+        {
+            "task_id":  "SCRIBE-20251022-004",
+            "parent_task_id":  "ORIN-20251022-004",
+            "title":  "Log paczkowania",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Udokumentowac pierwsze paczkowanie (manual/auto) wraz z efektem narracyjnym."
+        },
+        {
+            "task_id":  "SCRIBE-20251022-005",
+            "parent_task_id":  "ORIN-20251022-005",
+            "title":  "Log trybu edycji",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Opisac warsztat edytora i transformacje ksztaltu; dopisac scenke do chronicle."
+        },
+        {
+            "task_id":  "SCRIBE-20251022-006",
+            "parent_task_id":  "ORIN-20251022-006",
+            "title":  "Log szablonow",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Zapisac historie pierwszego szablonu, opisac katalog form w kronice."
+        },
+        {
+            "task_id":  "SCRIBE-20251022-007",
+            "parent_task_id":  "ORIN-20251022-007",
+            "title":  "Log ciaglosci zycia",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Udokumentowac jak Cos trwal poza aplikacja i powrocil bez utraty rytmu."
+        }
+    ],
     "completed_tasks":  [
                             {
                                 "task_id":  "SCRIBE-20251021-002",

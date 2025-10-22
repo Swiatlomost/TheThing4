@@ -1,24 +1,31 @@
 # Nyx Log (Memory)
 
-## Active Task
+## Active Tasks
 - (brak)
 
 ---
 
 ## Archive Entries
-### NYX-20251021-004 ? Aktualizowac pamiec o wytycznych
+### NYX-20251022-001 - Pamiec cyklu zycia
+- Status: Done (2025-10-22)
+- Notes:
+  - memory.json zaktualizowane (monotoniczny `TimeProvider`, stan Seed/Bud/Mature, linki do ADR i test planu).
+  - Dodano TODO monitorujace repozytorium wielokomorkowe i manualne obserwacje Pixel_5.
+  - Manual Pixel_5: rozklad saturacji potwierdzony, wpis w pamiêci nie wymaga korekt.
+
+### NYX-20251021-004 - Aktualizowac pamiec o wytycznych
 - Status: Done (2025-10-21)
 - Notes: memory.json zaktualizowane o linki docs/ux-guidelines/* i heurystyki dla UX/UI.
 
-### NYX-20251021-003 ? Aktualizowac pamiec po testach emulatora
+### NYX-20251021-003 - Aktualizowac pamiec po testach emulatora
 - Status: Done (2025-10-21)
 - Notes: Heurystyka emulatora Pixel_5 i smoke test dodane; monitoruj rozbudowe androidTest.
 
-### NYX-20251021-002 ? Dodac heurystyke dot. checklisty zamkniecia zadan
+### NYX-20251021-002 - Dodac heurystyke dot. checklisty zamkniecia zadan
 - Status: Done (2025-10-21)
 - Notes: Checklist cooldown w pamieciach Orina/Scribe; obserwuj wykonanie przy snapshotach.
 
-### NYX-20251021-001 ? Snapshot pamieci po standaryzacji log/task/memory
+### NYX-20251021-001 - Snapshot pamieci po standaryzacji log/task/memory
 - Status: Done (2025-10-21)
 - Notes: README/SETUP + kronika Scribe uwzglednione; struktura log/task/memory spojna.
 
@@ -36,3 +43,4 @@
   - ...
 
 > Note: mention when memory files sa aktualizowane o nowe heurystyki.
+

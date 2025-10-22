@@ -6,6 +6,17 @@
 ---
 
 ## Completed Tasks
+### LUMEN-20251022-001 - Implementacja cyklu zycia komorki
+- Status: Done (2025-10-22)
+- Summary:
+  - Przeniesiono glowny ekran na Compose (`MainActivity.kt`, `ui/`), wykorzystano Material3 oraz dedykowany motyw.
+  - Dodano `core/time` z monotonicznym `TimeProvider` oraz `core/cell` z modelami i `CellLifecycleStateMachine`.
+  - Dostarczono `CellViewModel` z petla odswiezania i ekran `CosLifecycleScreen` wizualizujacy pulsujaca komorke.
+- Testy:
+  - `./gradlew test` PASS — `CellLifecycleStateMachineTest` obejmuje przejscia Seed/Bud/Mature.
+- Notes:
+  - Kolejny krok: repozytorium wielokomorkowe i integracja z trybem A oraz mechanika paczkowania.
+
 ### LUMEN-20251021-004 - Plan wdrozenia wytycznych Android
 - Status: Done (2025-10-21)
 - Summary:

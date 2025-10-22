@@ -1,8 +1,70 @@
 {
     "agent":  "Vireal",
     "current_tasks":  [
-
-                      ],
+        {
+            "task_id":  "VIREAL-20251022-001",
+            "parent_task_id":  "ORIN-20251022-001",
+            "title":  "Model stanu cyklu zycia",
+            "status":  "done",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "ADR-2025-10-22-cell-lifecycle-state-machine.md dokumentuje model i zaleznosci state machine."
+        },
+        {
+            "task_id":  "VIREAL-20251022-002",
+            "parent_task_id":  "ORIN-20251022-002",
+            "title":  "Architektura trybu plywajacego",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Zaprojektowac modul overlay (service + composable), definicje kontraktow komunikacji z aplikacja."
+        },
+        {
+            "task_id":  "VIREAL-20251022-003",
+            "parent_task_id":  "ORIN-20251022-003",
+            "title":  "Projekt sceny obserwacji",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Opisac layout, stany UI i zaleznosci modulowe dla trybu obserwacji; uwzglednic gating paczkowania."
+        },
+        {
+            "task_id":  "VIREAL-20251022-004",
+            "parent_task_id":  "ORIN-20251022-004",
+            "title":  "Algorytm paczkowania",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Zdefiniowac reguly styku, zuzycia energii i walidacji ciaglosci; przygotowac pseudokod."
+        },
+        {
+            "task_id":  "VIREAL-20251022-005",
+            "parent_task_id":  "ORIN-20251022-005",
+            "title":  "Specyfikacja trybu edycji",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Okreslic kontrakty gestow, ograniczenia zachowania pola i walidacje zapisujaca zmiany."
+        },
+        {
+            "task_id":  "VIREAL-20251022-006",
+            "parent_task_id":  "ORIN-20251022-006",
+            "title":  "Model danych szablonow",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Przygotowac struktury danych, wersjonowanie i API repozytorium szablonow."
+        },
+        {
+            "task_id":  "VIREAL-20251022-007",
+            "parent_task_id":  "ORIN-20251022-007",
+            "title":  "Architektura synchronizacji trybow",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Rozpisac przeplywy danych miedzy trybem A/B, serwisem w tle i storage; okreslic punkty testow."
+        }
+    ],
     "completed_tasks":  [
                             {
                                 "task_id":  "VIREAL-20251021-001",

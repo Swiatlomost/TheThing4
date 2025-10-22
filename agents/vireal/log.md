@@ -11,6 +11,22 @@
 ---
 # Vireal Log (Architect)
 
+## Active Entry
+- (none)
+
+## Archive Entry
+- Task ID: VIREAL-20251022-001
+- Parent Task: ORIN-20251022-001
+- Status: [ ] Pending [ ] In Progress [x] Done (2025-10-22)
+- Scope:
+  - Przygotowano ADR `docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md` definiujący modele, state machine, repozytorium i zależności czasowe.
+  - Zaproponowano interfejs `TimeProvider`, strukturę `CellLifecycle` oraz plan integracji z Compose i DataStore.
+- Notes:
+  - Wymaga dalszych decyzji Nodus/Orin dot. serwisu w tle oraz ewentualnej modularyzacji core.
+  - Przekazać Lumenowi i Kai plan implementacji/testów.
+
+---
+
 ## Archive Entry
 - Task ID: VIREAL-20251021-001
 - Parent Task: ORIN-20251021-008

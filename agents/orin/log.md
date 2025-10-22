@@ -1,11 +1,33 @@
 # Orin Log (Coordinator)
 
 ## Active Tasks
-- (brak aktywnych zadan)
+- ORIN-20251022-002 - Tryb plywajacy Cosia
+  - Why: Tryb A daje ciaglosc zycia poza aplikacja i jest wymagany do testow emocjonalnych.
+  - Next: Echo/Nodus potwierdzaja uprawnienia, Vireal szkicuje modul, Lumen buduje overlay, Kai planuje scenariusze.
+- ORIN-20251022-003 - Tryb obserwacji w aplikacji
+  - Why: To podstawowa scena pracy uzytkownika i punkt startowy dla paczkowania.
+  - Next: Vireal ustala layout, Lumen wdraza ekran, Kai przygotowuje test przesuniecia calego organizmu.
+- ORIN-20251022-004 - Mechanika paczkowania
+  - Why: Rozmnazanie to kluczowy rytual Cosia i warunek v1.0.
+  - Next: Echo/Vireal definiuja reguly energii i styku, Lumen implementuje, Kai tworzy testy walidacyjne.
+- ORIN-20251022-005 - Tryb edycji i ksztalty
+  - Why: Uzytkownik musi modelowac organizm, zachowujac organiczna spojnosci.
+  - Next: Echo bada gesty, Vireal opisuje kontrakty, Lumen dostarcza edytor, Kai weryfikuje reshape i walidacje.
+- ORIN-20251022-006 - Biblioteka szablonow Cosia
+  - Why: Szablony zapewniaja trwalosc tworzonych form i iteracje projektowe.
+  - Next: Echo/Vireal wybieraja storage, Lumen implementuje repozytorium, Kai przygotowuje testy zapisu/wczytania.
+- ORIN-20251022-007 - Ciaglosc zycia i synchronizacja trybow
+  - Why: Cos musi trwac poza aplikacja zgodnie z wizja produktu.
+  - Next: Vireal i Nodus projektuja przeplywy, Lumen integruje serwis w tle, Kai planuje scenariusze background/foreground.
 
 ---
 
 ## Completed Tasks (najnowsze na gorze)
+### ORIN-20251022-001 - Cykl zycia podstawowy Cosia
+- Status: Done (2025-10-22)
+- Delegacje: Echo (analiza), Vireal (ADR state machine), Lumen (Compose + core/time/cell), Kai (plan + manual Pixel_5), Nyx (pamiec), Scribe (log/kronika).
+- Notatki: ./gradlew test PASS; MAN-CL-001..003 na Pixel_5 potwierdzone; dokumenty w docs/cos/.
+
 ### ORIN-20251021-009 - Zbadac standardy UX/UI i przeszkolic zespol
 - Status: Done (2025-10-21)
 - Delegacje: Echo (research UX/UI), Vireal (design system), Lumen (checklisty), Nyx (pamiec), Scribe (log/kronika).
@@ -47,6 +69,7 @@
 - Notatki: Standard log/task/memory wdrozony; checklisty zatwierdzone.
 
 > Note: keep priorities, blockers, and next checkpoints visible.
+
 
 
 

@@ -1,37 +1,50 @@
-ï»¿# Kai Log (Evaluator)
+# Kai Log (Evaluator)
 
-## Active Task
-- Task ID: KAI-20251021-002
-- Parent Task: ORIN-20251021-006
-- Status: [ ] Pending [ ] In Progress [x] Done
+## Active Tasks
+- (brak)
+
+---
+
+## Completed Tasks
+### KAI-20251022-001 - Plan testow cyklu zycia
+- Status: Done (2025-10-22)
+- Review Target:
+  - Opracowanie testow jednostkowych i manualnych dla stanu Seed/Bud/Mature oraz synchronizacji czasu.
+- Notes:
+  - Dokument testowy: `docs/cos/test-plan-lifecycle.md` (UT-CL-001..003, MAN-CL-001..003, UI TODO).
+  - Potwierdzono `./gradlew test` (unit) – `CellLifecycleStateMachineTest` obejmuje przejscia Seed/Bud/Mature.
+  - Manual: MAN-CL-001..003 wykonane na Pixel_5 (status OK, saturacja zgodna po poprawce UI).
+  - Instalacja: `./gradlew installDebug` na emulatorze Pixel_5.
+
+---
+
+## Completed Tasks
+### KAI-20251022-001 - Plan testow cyklu zycia
+- Status: Done (2025-10-22)
+- Review Target:
+  - Opracowanie testow jednostkowych i manualnych dla stanu Seed/Bud/Mature oraz synchronizacji czasu.
+- Notes:
+  - Dokument testowy: `docs/cos/test-plan-lifecycle.md` (UT-CL-001..003, MAN-CL-001..003, UI TODO).
+  - Potwierdzono `./gradlew test` (unit) – wyniki z `CellLifecycleStateMachineTest`.
+  - Manualny scenariusz Pixel_5 gotowy do wykonania po synchro Nyx/Scribe.
+
+### KAI-20251021-002 - Zweryfikowac wyniki testow emulatora
+- Status: Done (2025-10-21)
 - Review Target:
   - Raporty z `connectedDebugAndroidTest` / logcat oraz wynik builda na emulatorze.
 - Notes:
   - Wynik: `./gradlew connectedDebugAndroidTest` -> BUILD SUCCESSFUL; uruchomiono 1 test (`SmokeTest.kt`) potwierdzajacy stan RESUMED.
   - Emulator Pixel_5 widoczny jako `emulator-5554`; brak bledow w logu Gradle.
   - Rekomendacja: rozbudowac smoke test o dodatkowe asercje UI przy kolejnych funkcjach.
-  - Next: przekazano Orinowi i Scribe uwagi dot. pokrycia.
 
----
-
-## Active Task
-- Task ID: KAI-20251021-001
-- Parent Task: ORIN-20251021-003
-- Status: [ ] Pending [ ] In Progress [x] Done
+### KAI-20251021-001 - Weryfikacja zainstalowanych narzedzi build APK
+- Status: Done (2025-10-21)
 - Review Target:
   - Artefakt: srodowisko build APK.
   - Kryteria akceptacji: JDK 17, Android SDK 34 (platform + build-tools), Gradle Wrapper 8.6.
 - Notes:
-  - Checklist:
-    - `java -version` -> **OK** (Temurin 17.0.16).
-    - `sdkmanager --list` -> **FAIL** (polecenie nie znalezione; brak Android Commandline Tools / PATH).
-    - `./gradlew --version` -> **FAIL** (brak wrappera w repo).
-  - Znalezione problemy:
-    - Android SDK CLI nie jest zainstalowane lub nie ma go w PATH.
-    - Repozytorium nie posiada Gradle Wrapper (plik `gradlew` nie istnieje).
-  - Rekomendacja:
-    - Zainstalowac Android Commandline Tools, pobrac pakiety `platforms;android-34`, `build-tools;34.0.0` i zaktualizowac README/SETUP o lokalne sciezki.
-    - Dodac Gradle Wrapper (np. `gradle wrapper --gradle-version 8.6`) do repo przed pierwszym buildem.
+  - Checklist: `java -version` -> OK, `sdkmanager --list` -> FAIL (brak CLI), `./gradlew --version` -> FAIL (brak wrappera).
+  - Rekomendacja: zainstalowac Android Commandline Tools, dodac Gradle Wrapper.
 
 ---
 
@@ -46,3 +59,5 @@
   - Next: ...
 
 > Note: include test commands, reproduction steps, or evidence paths.
+
+

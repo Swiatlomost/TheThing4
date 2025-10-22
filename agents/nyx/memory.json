@@ -1,13 +1,14 @@
 {
     "agent":  "Nyx",
-    "last_updated":  "2025-10-21",
+    "last_updated":  "2025-10-22",
     "focus":  "Konsolidacja pamieci i standardow procesu.",
     "context":  [
                     "Monitoruje zmiany w .md, logach oraz task.json - pilnuje, aby byly spojne.",
                     "Co wazniejszy milestone -\u003e snapshot stanu agentow oraz dokumentow referencyjnych.",
                     "Wspolpracuje ze Scribe (dzienniki) i Orinem (status board), aby pamiec odzwierciedlala realne dzialania.",
                     "Checklisty build APK przeniesione do README/SETUP, kronika Scribe uwzgledniona w dokumentacji.",
-                    "Aktualna sesja: wprowadzamy wytyczne Android (architektura, testy, CI)."
+                    "Aktualna sesja: wprowadzamy wytyczne Android (architektura, testy, CI).",
+                    "Nowy cykl zycia Cosia: Compose + Core (core/cell, core/time) jako zrodlo prawdy."
                 ],
     "insights":  [
                      "Jesli zmieniamy standard, dopisz adnotacje w WORKFLOW.md i poinformuj agenta, ktorego dotyczy.",
@@ -15,12 +16,13 @@
                      "Snapshot po 2025-10-21 zapisany: log/task/memory per agent, checklisty build APK.",
                      "Checklist zamkniecia zadania = task.json (status) -\u003e log.md (status + notatka) -\u003e agents/status.md (potwierdzenie Orina).",
                      "Testy emulatora: trzymaj gotowy AVD Pixel_5 i monitoruj zestaw androidTest (SmokeTest).",
-                     "Nowe wytyczne Android w docs/android-guidelines (research, architecture, checklist)."
+                     "Nowe wytyczne Android w docs/android-guidelines (research, architecture, checklist).",
+                     "Liczymy wiek komorek na `TimeProvider` (SystemClock.elapsedRealtime) — brak resetu po przejsciu w tle.",
+                     "State machine Seed/Bud/Mature opisany w docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md — referencja dla kolejnych trybow."
                  ],
     "todos":  [
-                  "Co sesje sprawdzac, czy dokumentacja buildowa jest aktualna po zmianach narzedzi.",
-                  "Monitoruj rozszerzanie zestawu androidTest (obecnie SmokeTest.kt) przy kolejnych funkcjach.",
-                  "Po zatwierdzeniu wytycznych Android dopisz sekcje do memory.json i linki referencyjne."
+                  "Monitorowac, kiedy dodamy repozytorium wielokomorkowe i tryb A — przygotowac snapshot.",
+                  "Po testach manualnych na Pixel_5 zapisac obserwacje saturacji w pamieci."
               ],
     "risks":  [
                   "Ryzyko rozjazdu miedzy pamiecia a logami, jesli snapshoty nie beda aktualizowane."
@@ -32,7 +34,10 @@
                   "agents/status.md",
                   "MEMORY_SPEC.md",
                   "README.md",
-                  "SETUP.md"
+                  "SETUP.md",
+                  "docs/cos/lifecycle-analysis.md",
+                  "docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md",
+                  "docs/cos/test-plan-lifecycle.md"
               ],
     "_template":  {
                       "focus":  "co konsolidujemy",

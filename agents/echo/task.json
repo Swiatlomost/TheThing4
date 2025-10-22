@@ -1,8 +1,70 @@
 {
     "agent":  "Echo",
     "current_tasks":  [
-
-                      ],
+        {
+            "task_id":  "ECHO-20251022-001",
+            "parent_task_id":  "ORIN-20251022-001",
+            "title":  "Analiza cyklu zycia Cosia (czas, animacje)",
+            "status":  "done",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Analiza dostarczona w docs/cos/lifecycle-analysis.md; zawiera model stanu, rekomendacje Compose i referencje do dokumentacji Android."
+        },
+        {
+            "task_id":  "ECHO-20251022-002",
+            "parent_task_id":  "ORIN-20251022-002",
+            "title":  "Research trybu nakladki Android",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Zweryfikowac wymagane uprawnienia, ograniczenia OEM i wzorce UX dla okien plynacych; przygotowac notatke zaleceń."
+        },
+        {
+            "task_id":  "ECHO-20251022-003",
+            "parent_task_id":  "ORIN-20251022-003",
+            "title":  "Analiza trybu obserwacji",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Okreslic potrzeby danych (poziom dojrzalosci, wspolne przesuniecie), inspiracje motion design i wymagania dostepnosci."
+        },
+        {
+            "task_id":  "ECHO-20251022-004",
+            "parent_task_id":  "ORIN-20251022-004",
+            "title":  "Research energii i warunkow paczkowania",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Spisac mozliwe heurystyki zuzycia energii oraz limity tempa paczkowania, wskazac referencje do gier/organizmow."
+        },
+        {
+            "task_id":  "ECHO-20251022-005",
+            "parent_task_id":  "ORIN-20251022-005",
+            "title":  "Research UX gestow edycji",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Zebrac dobre praktyki dla drag/reshape komorek, rekomendowac feedback dotykowy i ograniczenia by zachowac organiczny charakter."
+        },
+        {
+            "task_id":  "ECHO-20251022-006",
+            "parent_task_id":  "ORIN-20251022-006",
+            "title":  "Analiza szablonow i trwalosci",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Porownac storage (Room, Proto DataStore) dla zapisu form, wskazac wymagania dot. migracji i nazw uzytkownika."
+        },
+        {
+            "task_id":  "ECHO-20251022-007",
+            "parent_task_id":  "ORIN-20251022-007",
+            "title":  "Analiza ciaglosci zycia",
+            "status":  "pending",
+            "assigned_at":  "2025-10-22",
+            "last_update":  "2025-10-22",
+            "notes":  "Zidentyfikowac wymagania platformowe dla serwisu w tle, ograniczenia baterii i polityki Android 14 (foreground service)."
+        }
+    ],
     "completed_tasks":  [
                             {
                                 "task_id":  "ECHO-20251021-001",
