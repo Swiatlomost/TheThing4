@@ -4,7 +4,7 @@
 | Agent | Task ID | Title | Parent | Status | Last Update |
 | --- | --- | --- | --- | --- | --- |
 | Orin | ORIN-20251022-001 | Cykl zycia podstawowy Cosia | - | in_progress | 2025-10-22 |
-| Orin | ORIN-20251022-002 | Tryb plywajacy Cosia | - | pending | 2025-10-22 |
+| Orin | ORIN-20251022-002 | Tryb plywajacy Cosia | - | done | 2025-10-22 |
 | Orin | ORIN-20251022-003 | Tryb obserwacji w aplikacji | - | pending | 2025-10-22 |
 | Orin | ORIN-20251022-004 | Mechanika paczkowania | - | pending | 2025-10-22 |
 | Orin | ORIN-20251022-005 | Tryb edycji i ksztalty | - | pending | 2025-10-22 |
@@ -18,14 +18,14 @@
 | Echo | ECHO-20251022-006 | Analiza szablonow i trwalosci | ORIN-20251022-006 | pending | 2025-10-22 |
 | Echo | ECHO-20251022-007 | Analiza ciaglosci zycia | ORIN-20251022-007 | pending | 2025-10-22 |
 | Vireal | VIREAL-20251022-001 | Model stanu cyklu zycia | ORIN-20251022-001 | done | 2025-10-22 |
-| Vireal | VIREAL-20251022-002 | Architektura trybu plywajacego | ORIN-20251022-002 | pending | 2025-10-22 |
+| Vireal | VIREAL-20251022-002 | Architektura trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 |
 | Vireal | VIREAL-20251022-003 | Projekt sceny obserwacji | ORIN-20251022-003 | pending | 2025-10-22 |
 | Vireal | VIREAL-20251022-004 | Algorytm paczkowania | ORIN-20251022-004 | pending | 2025-10-22 |
 | Vireal | VIREAL-20251022-005 | Specyfikacja trybu edycji | ORIN-20251022-005 | pending | 2025-10-22 |
 | Vireal | VIREAL-20251022-006 | Model danych szablonow | ORIN-20251022-006 | pending | 2025-10-22 |
 | Vireal | VIREAL-20251022-007 | Architektura synchronizacji trybow | ORIN-20251022-007 | pending | 2025-10-22 |
 | Lumen | LUMEN-20251022-001 | Implementacja cyklu zycia komorki | ORIN-20251022-001 | done | 2025-10-22 |
-| Lumen | LUMEN-20251022-002 | Tryb plywajacy UI | ORIN-20251022-002 | pending | 2025-10-22 |
+| Lumen | LUMEN-20251022-002 | Tryb plywajacy UI | ORIN-20251022-002 | done | 2025-10-22 |
 | Lumen | LUMEN-20251022-003 | Tryb obserwacji w aplikacji | ORIN-20251022-003 | pending | 2025-10-22 |
 | Lumen | LUMEN-20251022-004 | Mechanika paczkowania | ORIN-20251022-004 | pending | 2025-10-22 |
 | Lumen | LUMEN-20251022-005 | Tryb edycji i ksztalty | ORIN-20251022-005 | pending | 2025-10-22 |
@@ -61,7 +61,7 @@
 | Task ID | Agent | Title | Parent | Status | Last Update | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | ORIN-20251022-001 | Orin | Cykl zycia podstawowy Cosia | - | done | 2025-10-22 | Compose seed->bud->mature + ./gradlew test + Pixel_5 manual PASS. |
-| ORIN-20251022-002 | Orin | Tryb plywajacy Cosia | - | done | 2025-10-22 | Nakladka z pulsem, drag, double tap; testy UI i Pixel. |
+| ORIN-20251022-002 | Orin | Tryb plywajacy Cosia | - | done | 2025-10-22 | Overlay service + ./gradlew connectedDebugAndroidTest; manual Pixel_5 w przygotowaniu. |
 | ORIN-20251022-003 | Orin | Tryb obserwacji w aplikacji | - | pending | 2025-10-22 | Obserwacja calego organizmu, przesuwanie i gating dojrzalosci. |
 | ORIN-20251022-004 | Orin | Mechanika paczkowania | - | pending | 2025-10-22 | Paczkowanie dojrzalych komorek z walidacja styku i energii. |
 | ORIN-20251022-005 | Orin | Tryb edycji i ksztalty | - | pending | 2025-10-22 | Edytor ksztaltu z zachowaniem pola i walidacja spojnosci. |
@@ -91,7 +91,7 @@
 | NODUS-20251022-001 | Nodus | Konfiguracja trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 | Manifest + OverlayPermissionActivity + toggle integracja. |
 | NODUS-20251022-002 | Nodus | Integracja serwisu zycia w tle | ORIN-20251022-007 | in_progress | 2025-10-22 | Foreground service (LifecycleOverlayService) rozpoczêty, czeka na synchronizacjê danych. |
 | KAI-20251022-001 | Kai | Plan testow cyklu zycia | ORIN-20251022-001 | done | 2025-10-22 | docs/cos/test-plan-lifecycle.md + ./gradlew test (CellLifecycleStateMachineTest). |
-| KAI-20251022-002 | Kai | Testy trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 | docs/cos/test-plan-overlay.md (UiAutomator + manual). |
+| KAI-20251022-002 | Kai | Testy trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 | Plan + IT-OV-001 (`connectedDebugAndroidTest`). |
 | KAI-20251022-003 | Kai | Testy trybu obserwacji | ORIN-20251022-003 | pending | 2025-10-22 | Testy przesuniecia i gating dojrzalosci. |
 | KAI-20251022-004 | Kai | Testy paczkowania | ORIN-20251022-004 | pending | 2025-10-22 | Testy styku i manual Pixel. |
 | KAI-20251022-005 | Kai | Testy trybu edycji | ORIN-20251022-005 | pending | 2025-10-22 | Testy reshape/usuniecia i odrzucenia struktur. |
@@ -145,6 +145,9 @@
 | SCRIBE-20251021-003 | Scribe | Wynik kontroli narzedzi (Kai) | ORIN-20251021-003 | done | 2025-10-21 | Braki CLI/wrapper odnotowane. |
 | SCRIBE-20251021-002 | Scribe | Kronika checklist build APK | ORIN-20251021-002 | done | 2025-10-21 | Kronika + log. |
 | SCRIBE-20251021-001 | Scribe | Sesja APK tooling | ORIN-20251021-001 | done | 2025-10-21 | Log + narracja. |
+
+
+
 
 
 

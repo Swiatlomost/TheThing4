@@ -6,12 +6,19 @@
 ---
 
 ## Archive Entries
+### NYX-20251022-002 - Pamiec trybu plywajacego
+- Status: Done (2025-10-22)
+- Notes:
+  - memory.json zaktualizowane (overlay permissions, serwis foreground, plan testow + linki do docs/cos/*).
+  - Zanotowano IT-OV-001 (connectedDebugAndroidTest) jako weryfikacje start/stop.
+  - TODO: DataStore pozycji i synchronizacja trybow (ORIN-20251022-007).
+
 ### NYX-20251022-001 - Pamiec cyklu zycia
 - Status: Done (2025-10-22)
 - Notes:
-  - memory.json zaktualizowane (monotoniczny `TimeProvider`, stan Seed/Bud/Mature, linki do ADR i test planu).
+  - memory.json zaktualizowane (monotoniczny TimeProvider, stan Seed/Bud/Mature, linki do ADR i test planu).
   - Dodano TODO monitorujace repozytorium wielokomorkowe i manualne obserwacje Pixel_5.
-  - Manual Pixel_5: rozklad saturacji potwierdzony, wpis w pamiêci nie wymaga korekt.
+  - Manual Pixel_5: rozklad saturacji potwierdzony, wpis w pamieci nie wymaga korekt.
 
 ### NYX-20251021-004 - Aktualizowac pamiec o wytycznych
 - Status: Done (2025-10-21)
@@ -43,4 +50,3 @@
   - ...
 
 > Note: mention when memory files sa aktualizowane o nowe heurystyki.
-

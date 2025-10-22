@@ -84,7 +84,7 @@
                                                              "status":  "done"
                                                          }
                                                      ],
-                              "notes":  "Cel: dostarczyc tryb A jako okno nakladkowe z przesuwaniem, pulsowaniem i przejsciem double tap do aplikacji. Testy: UI test nakladki + manualny scenariusz na Pixel_5."
+                              "notes":  "Overlay mode gotowe: research/ADR, implementacja, ./gradlew test \u0026 connectedDebugAndroidTest PASS; MAN-OV-001..003 do wykonania na Pixel_5."
                           },
                           {
                               "task_id":  "ORIN-20251022-003",

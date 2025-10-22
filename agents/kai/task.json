@@ -17,7 +17,7 @@
                               "status":  "done",
                               "assigned_at":  "2025-10-22",
                               "last_update":  "2025-10-22",
-                              "notes":  "Plan testów overlay w docs/cos/test-plan-overlay.md; manual Pixel_5 scenariusze opisane."
+                              "notes":  "Plan oraz test IT-OV-001 wykonany (`./gradlew connectedDebugAndroidTest`), manualne scenariusze przygotowane."
                           },
                           {
                               "task_id":  "KAI-20251022-003",

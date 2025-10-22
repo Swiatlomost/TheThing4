@@ -34,6 +34,7 @@ class OverlayPermissionActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         if (Settings.canDrawOverlays(this)) {
+            OverlayController.start(this)
             setResult(RESULT_OK)
             finish()
         }
