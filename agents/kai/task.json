@@ -2,24 +2,6 @@
     "agent":  "Kai",
     "current_tasks":  [
                           {
-                              "task_id":  "KAI-20251022-001",
-                              "parent_task_id":  "ORIN-20251022-001",
-                              "title":  "Plan testow cyklu zycia",
-                              "status":  "done",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Test plan w docs/cos/test-plan-lifecycle.md, unit tests pokryte w ./gradlew test; manualny scenariusz Pixel_5 opisany."
-                          },
-                          {
-                              "task_id":  "KAI-20251022-002",
-                              "parent_task_id":  "ORIN-20251022-002",
-                              "title":  "Testy trybu plywajacego",
-                              "status":  "done",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Plan oraz test IT-OV-001 wykonany (`./gradlew connectedDebugAndroidTest`), manualne scenariusze przygotowane."
-                          },
-                          {
                               "task_id":  "KAI-20251022-003",
                               "parent_task_id":  "ORIN-20251022-003",
                               "title":  "Testy trybu obserwacji",
@@ -67,6 +49,24 @@
                       ],
     "completed_tasks":  [
                             {
+                                "task_id":  "KAI-20251022-002",
+                                "parent_task_id":  "ORIN-20251022-002",
+                                "title":  "Testy trybu plywajacego",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-22",
+                                "last_update":  "2025-10-22",
+                                "notes":  "Plan oraz test IT-OV-001 wykonany (`./gradlew connectedDebugAndroidTest`), manualne scenariusze przygotowane."
+                            },
+                            {
+                                "task_id":  "KAI-20251022-001",
+                                "parent_task_id":  "ORIN-20251022-001",
+                                "title":  "Plan testow cyklu zycia",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-22",
+                                "last_update":  "2025-10-22",
+                                "notes":  "Test plan w docs/cos/test-plan-lifecycle.md, unit tests pokryte w ./gradlew test; manualny scenariusz Pixel_5 opisany."
+                            },
+                            {
                                 "task_id":  "KAI-20251021-001",
                                 "parent_task_id":  "ORIN-20251021-003",
                                 "title":  "Weryfikacja zainstalowanych narzedzi build APK",
@@ -92,6 +92,13 @@
                       "status":  "pending|in_progress|done",
                       "assigned_at":  "YYYY-MM-DD",
                       "last_update":  "YYYY-MM-DD",
-                      "notes":  ""
+                      "notes":  "",
+                      "cooldown_checklist": {
+                          "status_updated_to_done": false,
+                          "moved_to_completed_tasks": false,
+                          "log_entry_added": false,
+                          "orin_notified": false,
+                          "memory_updated": false
+                      }
                   }
 }

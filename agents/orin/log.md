@@ -20,10 +20,29 @@
 ---
 
 ## Completed Tasks (najnowsze na gorze)
+### ORIN-20251022-IMPROVEMENTS - Usprawnienia systemu agentowego
+- Status: Done (2025-10-22)
+- Zakres: Wdrożenie 5 kluczowych usprawnień systemu pracy z agentami
+- Deliverables:
+  1. ✅ **Dashboard z metrykami** - agents/dashboard.md z postępem sprint v1.0
+  2. ✅ **Atomowy cooldown checklist** - cooldown_checklist w _template task.json (8 agentów)
+  3. ✅ **Pre-task validation** - checklist w WORKFLOW.md przed rozpoczęciem zadań
+  4. ✅ **Skrypt walidacji sync** - scripts/validate-agent-sync.ps1 dla Windows
+  5. ✅ **Procedura conflict resolution** - eskalacja konfliktów w AGENTS.md
+- Impact: Znacznie zwiększona odporność na błędy synchronizacji i procedury zamknięcia zadań
+- Next: System gotowy do wznowienia pracy nad ORIN-20251022-003
+
+### ORIN-20251022-SYNC - Naprawa synchronizacji task.json po zadaniach 001-002
+- Status: Done (2025-10-22)
+- Incydent: Wszystkie agenci (Echo, Vireal, Lumen, Kai, Scribe, Nyx, Nodus) mialy zadania "done" w current_tasks zamiast completed_tasks
+- Root cause: Nie wykonano checklisty cooldown z WORKFLOW.md - brak przeniesienia ukończonych zadań
+- Akcje: 1) Przeniesienie ukończonych zadań do completed_tasks w 8 plikach task.json 2) Aktualizacja agents/status.md 3) Doprecyzowanie procedury cooldown w WORKFLOW.md
+- Next: Monitorować spójność w przyszłych zadaniach, delegować zamknięcie zadań zgodnie z checklistą
+
 ### ORIN-20251022-002 - Tryb plywajacy Cosia
 - Status: Done (2025-10-22)
-- Delegacje: Echo (research), Vireal (ADR overlay), Lumen (UI Compose + toggle), Nodus (permission + service), Kai (plan test�w overlay), Nyx (pami��), Scribe (log/kronika).
-- Notatki: ./gradlew test & installDebug PASS; uprawnienie overlay i serwis foreground dzia�aj�; dokumenty w docs/cos/.
+- Delegacje: Echo (research), Vireal (ADR overlay), Lumen (UI Compose + toggle), Nodus (permission + service), Kai (plan test�w overlay), Nyx (pami��), Scribe (log/kronika).
+- Notatki: ./gradlew test & installDebug PASS; uprawnienie overlay i serwis foreground dzia�aj�; dokumenty w docs/cos/.
 
 ### ORIN-20251022-001 - Cykl zycia podstawowy Cosia
 - Status: Done (2025-10-22)

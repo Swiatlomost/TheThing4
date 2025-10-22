@@ -3,52 +3,36 @@
 ## Active Work
 | Agent | Task ID | Title | Parent | Status | Last Update |
 | --- | --- | --- | --- | --- | --- |
-| Orin | ORIN-20251022-001 | Cykl zycia podstawowy Cosia | - | in_progress | 2025-10-22 |
-| Orin | ORIN-20251022-002 | Tryb plywajacy Cosia | - | done | 2025-10-22 |
 | Orin | ORIN-20251022-003 | Tryb obserwacji w aplikacji | - | pending | 2025-10-22 |
 | Orin | ORIN-20251022-004 | Mechanika paczkowania | - | pending | 2025-10-22 |
 | Orin | ORIN-20251022-005 | Tryb edycji i ksztalty | - | pending | 2025-10-22 |
 | Orin | ORIN-20251022-006 | Biblioteka szablonow Cosia | - | pending | 2025-10-22 |
 | Orin | ORIN-20251022-007 | Ciaglosc zycia i synchronizacja trybow | - | pending | 2025-10-22 |
-| Echo | ECHO-20251022-001 | Analiza cyklu zycia Cosia (czas, animacje) | ORIN-20251022-001 | done | 2025-10-22 |
-| Echo | ECHO-20251022-002 | Research trybu nakladki Android | ORIN-20251022-002 | done | 2025-10-22 |
 | Echo | ECHO-20251022-003 | Analiza trybu obserwacji | ORIN-20251022-003 | pending | 2025-10-22 |
 | Echo | ECHO-20251022-004 | Research energii i warunkow paczkowania | ORIN-20251022-004 | pending | 2025-10-22 |
 | Echo | ECHO-20251022-005 | Research UX gestow edycji | ORIN-20251022-005 | pending | 2025-10-22 |
 | Echo | ECHO-20251022-006 | Analiza szablonow i trwalosci | ORIN-20251022-006 | pending | 2025-10-22 |
 | Echo | ECHO-20251022-007 | Analiza ciaglosci zycia | ORIN-20251022-007 | pending | 2025-10-22 |
-| Vireal | VIREAL-20251022-001 | Model stanu cyklu zycia | ORIN-20251022-001 | done | 2025-10-22 |
-| Vireal | VIREAL-20251022-002 | Architektura trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 |
 | Vireal | VIREAL-20251022-003 | Projekt sceny obserwacji | ORIN-20251022-003 | pending | 2025-10-22 |
 | Vireal | VIREAL-20251022-004 | Algorytm paczkowania | ORIN-20251022-004 | pending | 2025-10-22 |
 | Vireal | VIREAL-20251022-005 | Specyfikacja trybu edycji | ORIN-20251022-005 | pending | 2025-10-22 |
 | Vireal | VIREAL-20251022-006 | Model danych szablonow | ORIN-20251022-006 | pending | 2025-10-22 |
 | Vireal | VIREAL-20251022-007 | Architektura synchronizacji trybow | ORIN-20251022-007 | pending | 2025-10-22 |
-| Lumen | LUMEN-20251022-001 | Implementacja cyklu zycia komorki | ORIN-20251022-001 | done | 2025-10-22 |
-| Lumen | LUMEN-20251022-002 | Tryb plywajacy UI | ORIN-20251022-002 | done | 2025-10-22 |
 | Lumen | LUMEN-20251022-003 | Tryb obserwacji w aplikacji | ORIN-20251022-003 | pending | 2025-10-22 |
 | Lumen | LUMEN-20251022-004 | Mechanika paczkowania | ORIN-20251022-004 | pending | 2025-10-22 |
 | Lumen | LUMEN-20251022-005 | Tryb edycji i ksztalty | ORIN-20251022-005 | pending | 2025-10-22 |
 | Lumen | LUMEN-20251022-006 | System szablonow | ORIN-20251022-006 | pending | 2025-10-22 |
 | Lumen | LUMEN-20251022-007 | Synchronizacja trybow | ORIN-20251022-007 | pending | 2025-10-22 |
-| Nodus | NODUS-20251022-001 | Konfiguracja trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 |
-| Nodus | NODUS-20251022-002 | Integracja serwisu zycia w tle | ORIN-20251022-007 | in_progress | 2025-10-22 |
-| Kai | KAI-20251022-001 | Plan testow cyklu zycia | ORIN-20251022-001 | done | 2025-10-22 |
-| Kai | KAI-20251022-002 | Testy trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 |
 | Kai | KAI-20251022-003 | Testy trybu obserwacji | ORIN-20251022-003 | pending | 2025-10-22 |
 | Kai | KAI-20251022-004 | Testy paczkowania | ORIN-20251022-004 | pending | 2025-10-22 |
 | Kai | KAI-20251022-005 | Testy trybu edycji | ORIN-20251022-005 | pending | 2025-10-22 |
 | Kai | KAI-20251022-006 | Testy szablonow | ORIN-20251022-006 | pending | 2025-10-22 |
 | Kai | KAI-20251022-007 | Testy ciaglosci zycia | ORIN-20251022-007 | pending | 2025-10-22 |
-| Nyx | NYX-20251022-001 | Pamiec cyklu zycia | ORIN-20251022-001 | in_progress | 2025-10-22 |
-| Nyx | NYX-20251022-002 | Pamiec trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 |
 | Nyx | NYX-20251022-003 | Pamiec trybu obserwacji | ORIN-20251022-003 | pending | 2025-10-22 |
 | Nyx | NYX-20251022-004 | Pamiec paczkowania | ORIN-20251022-004 | pending | 2025-10-22 |
 | Nyx | NYX-20251022-005 | Pamiec trybu edycji | ORIN-20251022-005 | pending | 2025-10-22 |
 | Nyx | NYX-20251022-006 | Pamiec szablonow | ORIN-20251022-006 | pending | 2025-10-22 |
 | Nyx | NYX-20251022-007 | Pamiec ciaglosci zycia | ORIN-20251022-007 | pending | 2025-10-22 |
-| Scribe | SCRIBE-20251022-001 | Log cyklu zycia Cosia | ORIN-20251022-001 | in_progress | 2025-10-22 |
-| Scribe | SCRIBE-20251022-002 | Log trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 |
 | Scribe | SCRIBE-20251022-003 | Log trybu obserwacji | ORIN-20251022-003 | pending | 2025-10-22 |
 | Scribe | SCRIBE-20251022-004 | Log paczkowania | ORIN-20251022-004 | pending | 2025-10-22 |
 | Scribe | SCRIBE-20251022-005 | Log trybu edycji | ORIN-20251022-005 | pending | 2025-10-22 |
@@ -82,14 +66,14 @@
 | VIREAL-20251022-006 | Vireal | Model danych szablonow | ORIN-20251022-006 | pending | 2025-10-22 | Struktury danych i repo szablonow. |
 | VIREAL-20251022-007 | Vireal | Architektura synchronizacji trybow | ORIN-20251022-007 | pending | 2025-10-22 | Przeplywy danych miedzy trybami i serwisem. |
 | LUMEN-20251022-001 | Lumen | Implementacja cyklu zycia komorki | ORIN-20251022-001 | done | 2025-10-22 | Compose UI + core/time/core/cell + unit tests (`./gradlew test`). |
-| LUMEN-20251022-002 | Lumen | Tryb plywajacy UI | ORIN-20251022-002 | pending | 2025-10-22 | Overlay z pulsem, drag i double tap. |
+| LUMEN-20251022-002 | Lumen | Tryb plywajacy UI | ORIN-20251022-002 | done | 2025-10-22 | Overlay UI + toggle implementowane w MainActivity, OverlayCosLifecycleScreen, CellLifecycleCoordinator. |
 | LUMEN-20251022-003 | Lumen | Tryb obserwacji w aplikacji | ORIN-20251022-003 | pending | 2025-10-22 | Ekran obserwacji i gating dojrzalosci. |
 | LUMEN-20251022-004 | Lumen | Mechanika paczkowania | ORIN-20251022-004 | pending | 2025-10-22 | Dodawanie komorek ze stykiem i restartem cyklu. |
 | LUMEN-20251022-005 | Lumen | Tryb edycji i ksztalty | ORIN-20251022-005 | pending | 2025-10-22 | Edytor komorek z reshape i walidacja. |
 | LUMEN-20251022-006 | Lumen | System szablonow | ORIN-20251022-006 | pending | 2025-10-22 | Repo i UI zapisu/odczytu szablonow. |
 | LUMEN-20251022-007 | Lumen | Synchronizacja trybow | ORIN-20251022-007 | pending | 2025-10-22 | Serwis w tle i synchronizacja stanu. |
 | NODUS-20251022-001 | Nodus | Konfiguracja trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 | Manifest + OverlayPermissionActivity + toggle integracja. |
-| NODUS-20251022-002 | Nodus | Integracja serwisu zycia w tle | ORIN-20251022-007 | in_progress | 2025-10-22 | Foreground service (LifecycleOverlayService) rozpoczêty, czeka na synchronizacjê danych. |
+| NODUS-20251022-002 | Nodus | Integracja serwisu zycia w tle | ORIN-20251022-007 | done | 2025-10-22 | LifecycleOverlayService jako foreground service (notification, WindowManager). |
 | KAI-20251022-001 | Kai | Plan testow cyklu zycia | ORIN-20251022-001 | done | 2025-10-22 | docs/cos/test-plan-lifecycle.md + ./gradlew test (CellLifecycleStateMachineTest). |
 | KAI-20251022-002 | Kai | Testy trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 | Plan + IT-OV-001 (`connectedDebugAndroidTest`). |
 | KAI-20251022-003 | Kai | Testy trybu obserwacji | ORIN-20251022-003 | pending | 2025-10-22 | Testy przesuniecia i gating dojrzalosci. |
@@ -105,7 +89,7 @@
 | NYX-20251022-006 | Nyx | Pamiec szablonow | ORIN-20251022-006 | pending | 2025-10-22 | Opis systemu szablonow i formatow. |
 | NYX-20251022-007 | Nyx | Pamiec ciaglosci zycia | ORIN-20251022-007 | pending | 2025-10-22 | Synchronizacja trybow i monitor saturacji. |
 | SCRIBE-20251022-001 | Scribe | Log cyklu zycia Cosia | ORIN-20251022-001 | done | 2025-10-22 | Log 2025-10-22 + chronicle Entry #8 (Compose narodziny). |
-| SCRIBE-20251022-002 | Scribe | Log trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 | Log Entry #9 + kronika opisuj¹ overlay. |
+| SCRIBE-20251022-002 | Scribe | Log trybu plywajacego | ORIN-20251022-002 | done | 2025-10-22 | Log Entry #9 + kronika opisujï¿½ overlay. |
 | SCRIBE-20251022-003 | Scribe | Log trybu obserwacji | ORIN-20251022-003 | pending | 2025-10-22 | Kronika rytmu w trybie obserwacji. |
 | SCRIBE-20251022-004 | Scribe | Log paczkowania | ORIN-20251022-004 | pending | 2025-10-22 | Opis pierwszego paczkowania. |
 | SCRIBE-20251022-005 | Scribe | Log trybu edycji | ORIN-20251022-005 | pending | 2025-10-22 | Narracja warsztatu edycji ksztaltow. |

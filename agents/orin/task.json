@@ -2,91 +2,6 @@
     "agent":  "Orin",
     "current_tasks":  [
                           {
-                              "task_id":  "ORIN-20251022-001",
-                              "title":  "Cykl zycia podstawowy Cosia",
-                              "status":  "done",
-                              "assigned_at":  "2025-10-22",
-                              "parent_task_id":  null,
-                              "linked_agent_tasks":  [
-                                                         {
-                                                             "agent":  "Echo",
-                                                             "task_id":  "ECHO-20251022-001",
-                                                             "status":  "done"
-                                                         },
-                                                         {
-                                                             "agent":  "Vireal",
-                                                             "task_id":  "VIREAL-20251022-001",
-                                                             "status":  "done"
-                                                         },
-                                                         {
-                                                             "agent":  "Lumen",
-                                                             "task_id":  "LUMEN-20251022-001",
-                                                             "status":  "done"
-                                                         },
-                                                         {
-                                                             "agent":  "Kai",
-                                                             "task_id":  "KAI-20251022-001",
-                                                             "status":  "done"
-                                                         },
-                                                         {
-                                                             "agent":  "Scribe",
-                                                             "task_id":  "SCRIBE-20251022-001",
-                                                             "status":  "done"
-                                                         },
-                                                         {
-                                                             "agent":  "Nyx",
-                                                             "task_id":  "NYX-20251022-001",
-                                                             "status":  "done"
-                                                         }
-                                                     ],
-                              "notes":  "State machine + Compose UI wdrozone; ./gradlew test PASS; MAN-CL-001..003 Pixel_5 OK."
-                          },
-                          {
-                              "task_id":  "ORIN-20251022-002",
-                              "title":  "Tryb plywajacy CoSia",
-                              "status":  "done",
-                              "assigned_at":  "2025-10-22",
-                              "parent_task_id":  null,
-                              "linked_agent_tasks":  [
-                                                         {
-                                                             "agent":  "Echo",
-                                                             "task_id":  "ECHO-20251022-002",
-                                                             "status":  "done"
-                                                         },
-                                                         {
-                                                             "agent":  "Vireal",
-                                                             "task_id":  "VIREAL-20251022-002",
-                                                             "status":  "done"
-                                                         },
-                                                         {
-                                                             "agent":  "Lumen",
-                                                             "task_id":  "LUMEN-20251022-002",
-                                                             "status":  "done"
-                                                         },
-                                                         {
-                                                             "agent":  "Nodus",
-                                                             "task_id":  "NODUS-20251022-001",
-                                                             "status":  "done"
-                                                         },
-                                                         {
-                                                             "agent":  "Kai",
-                                                             "task_id":  "KAI-20251022-002",
-                                                             "status":  "done"
-                                                         },
-                                                         {
-                                                             "agent":  "Scribe",
-                                                             "task_id":  "SCRIBE-20251022-002",
-                                                             "status":  "done"
-                                                         },
-                                                         {
-                                                             "agent":  "Nyx",
-                                                             "task_id":  "NYX-20251022-002",
-                                                             "status":  "done"
-                                                         }
-                                                     ],
-                              "notes":  "Overlay mode gotowe: research/ADR, implementacja, ./gradlew test \u0026 connectedDebugAndroidTest PASS; MAN-OV-001..003 do wykonania na Pixel_5."
-                          },
-                          {
                               "task_id":  "ORIN-20251022-003",
                               "title":  "Tryb obserwacji w aplikacji",
                               "status":  "pending",
@@ -293,6 +208,91 @@
                           }
                       ],
     "completed_tasks":  [
+                            {
+                                "task_id":  "ORIN-20251022-002",
+                                "title":  "Tryb plywajacy CoSia",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-22",
+                                "parent_task_id":  null,
+                                "linked_agent_tasks":  [
+                                                           {
+                                                               "agent":  "Echo",
+                                                               "task_id":  "ECHO-20251022-002",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Vireal",
+                                                               "task_id":  "VIREAL-20251022-002",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Lumen",
+                                                               "task_id":  "LUMEN-20251022-002",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Nodus",
+                                                               "task_id":  "NODUS-20251022-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Kai",
+                                                               "task_id":  "KAI-20251022-002",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Scribe",
+                                                               "task_id":  "SCRIBE-20251022-002",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Nyx",
+                                                               "task_id":  "NYX-20251022-002",
+                                                               "status":  "done"
+                                                           }
+                                                       ],
+                                "notes":  "Overlay mode gotowe: research/ADR, implementacja, ./gradlew test \u0026 connectedDebugAndroidTest PASS; MAN-OV-001..003 do wykonania na Pixel_5."
+                            },
+                            {
+                                "task_id":  "ORIN-20251022-001",
+                                "title":  "Cykl zycia podstawowy Cosia",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-22",
+                                "parent_task_id":  null,
+                                "linked_agent_tasks":  [
+                                                           {
+                                                               "agent":  "Echo",
+                                                               "task_id":  "ECHO-20251022-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Vireal",
+                                                               "task_id":  "VIREAL-20251022-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Lumen",
+                                                               "task_id":  "LUMEN-20251022-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Kai",
+                                                               "task_id":  "KAI-20251022-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Scribe",
+                                                               "task_id":  "SCRIBE-20251022-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Nyx",
+                                                               "task_id":  "NYX-20251022-001",
+                                                               "status":  "done"
+                                                           }
+                                                       ],
+                                "notes":  "State machine + Compose UI wdrozone; ./gradlew test PASS; MAN-CL-001..003 Pixel_5 OK."
+                            },
                             {
                                 "task_id":  "ORIN-20251021-001",
                                 "title":  "Koordynacja analizy narzedzi APK",
@@ -552,6 +552,14 @@
                                                      "status":  "pending"
                                                  }
                                              ],
-                      "notes":  ""
+                      "notes":  "",
+                      "cooldown_checklist": {
+                          "status_updated_to_done": false,
+                          "moved_to_completed_tasks": false,
+                          "log_entry_added": false,
+                          "status_board_updated": false,
+                          "memory_consolidated": false,
+                          "linked_agents_verified": false
+                      }
                   }
 }
