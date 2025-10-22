@@ -7,7 +7,8 @@
                     "Po delegacji Orin aktualizuje agents/status.md i sekcje Active Task w agents/orin/log.md.",
                     "Status board ma byc szybka lista wszystkich zadan (aktywnych i zakonczonych), aby zespol nie musial potwierdzac stanu w katalogach agentow.",
                     "Monitoruje, czy agenci aktualizuja swoje logi, pamiec i statusy po zakonczeniu pracy.",
-                    "Pilnuje rytualu cooldown: zamkniete zadanie -\u003e wpis Scribe, status DONE, ewentualny snapshot Nyx, archiwizacja logu."
+                    "Pilnuje rytualu cooldown: zamkniete zadanie -\u003e wpis Scribe, status DONE, ewentualny snapshot Nyx, archiwizacja logu.",
+                    "Aktualna sesja: zebranie najlepszych praktyk Android i wdrozenie ich w zespole."
                 ],
     "insights":  [
                      "Utrzymuj minimalny WIP - deleguj tylko tyle zadan, ile mozna sledzic w status board.",

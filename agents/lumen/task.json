@@ -30,6 +30,15 @@
                                 "assigned_at":  "2025-10-21",
                                 "last_update":  "2025-10-21",
                                 "notes":  "Wrapper 8.7 dodany, ./gradlew assembleDebug --no-daemon zakonczony sukcesem; apk w app/build/outputs/apk/debug/app-debug.apk."
+                            },
+                            {
+                                "task_id":  "LUMEN-20251021-004",
+                                "parent_task_id":  "ORIN-20251021-008",
+                                "title":  "Plan wdrozenia wytycznych Android",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  "Checklist przygotowana w docs/android-guidelines/implementation-checklist.md (implementacja, testy, CI)."
                             }
                         ],
     "_template":  {

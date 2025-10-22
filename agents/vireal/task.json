@@ -1,14 +1,35 @@
 {
-  "agent": "Vireal",
-  "current_tasks": [],
-  "completed_tasks": [],
-  "_template": {
-    "task_id": "VIREAL-YYYYMMDD-XXX",
-    "parent_task_id": "ORIN-YYYYMMDD-XXX",
-    "title": "",
-    "status": "pending|in_progress|done",
-    "assigned_at": "YYYY-MM-DD",
-    "last_update": "YYYY-MM-DD",
-    "notes": ""
-  }
+    "agent":  "Vireal",
+    "current_tasks":  [
+
+                      ],
+    "completed_tasks":  [
+                            {
+                                "task_id":  "VIREAL-20251021-001",
+                                "parent_task_id":  "ORIN-20251021-008",
+                                "title":  "Zaprojektowac wytyczne architektury Android",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  "Draft w docs/android-guidelines/architecture.md (warstwy, modularyzacja, DI, testy)."
+                            },
+                            {
+                                "task_id":  "VIREAL-20251021-002",
+                                "parent_task_id":  "ORIN-20251021-009",
+                                "title":  "Zdefiniowac wytyczne UX/UI (design system)",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  "docs/ux-guidelines/design-system.md opisuje kolory, typografie, komponenty, motion, accessibility."
+                            }
+                        ],
+    "_template":  {
+                      "task_id":  "VIREAL-YYYYMMDD-XXX",
+                      "parent_task_id":  "ORIN-YYYYMMDD-XXX",
+                      "title":  "",
+                      "status":  "pending|in_progress|done",
+                      "assigned_at":  "YYYY-MM-DD",
+                      "last_update":  "YYYY-MM-DD",
+                      "notes":  ""
+                  }
 }

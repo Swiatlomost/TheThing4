@@ -1,42 +1,62 @@
 {
-    "agent": "Echo",
-    "current_tasks": [],
-    "completed_tasks": [
-        {
-            "task_id": "ECHO-20251021-001",
-            "parent_task_id": "ORIN-20251021-001",
-            "title": "Analiza narzedzi do budowy APK",
-            "status": "done",
-            "assigned_at": "2025-10-21",
-            "last_update": "2025-10-21",
-            "notes": "Raport przekazany Orinowi."
-        },
-        {
-            "task_id": "ECHO-20251021-002",
-            "parent_task_id": "ORIN-20251021-005",
-            "title": "Zdiagnozowac rozjazd status board vs log Scribe",
-            "status": "done",
-            "assigned_at": "2025-10-21",
-            "last_update": "2025-10-21",
-            "notes": "Root cause: brak checklisty zamkniecia (task.json -> log.md -> status.md). Rekomendacja: checklist zamykajaca plus kontrola Orina."
-        },
-        {
-            "task_id": "ECHO-20251021-003",
-            "parent_task_id": "ORIN-20251021-006",
-            "title": "Ocenic wymagania do testow APK na emulatorze",
-            "status": "done",
-            "assigned_at": "2025-10-21",
-            "last_update": "2025-10-21",
-            "notes": "Repo zbudowane, apk-debug gotowe; emulator Pixel_5 dostepny, wymagany start `emulator.exe -avd Pixel_5`, brak aktywnego urzadzenia przed uruchomieniem."
-        }
-    ],
-    "_template": {
-        "task_id": "ECHO-YYYYMMDD-XXX",
-        "parent_task_id": "ORIN-YYYYMMDD-XXX",
-        "title": "",
-        "status": "pending|in_progress|done",
-        "assigned_at": "YYYY-MM-DD",
-        "last_update": "YYYY-MM-DD",
-        "notes": ""
-    }
+    "agent":  "Echo",
+    "current_tasks":  [
+
+                      ],
+    "completed_tasks":  [
+                            {
+                                "task_id":  "ECHO-20251021-001",
+                                "parent_task_id":  "ORIN-20251021-001",
+                                "title":  "Analiza narzedzi do budowy APK",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  "Raport przekazany Orinowi."
+                            },
+                            {
+                                "task_id":  "ECHO-20251021-002",
+                                "parent_task_id":  "ORIN-20251021-005",
+                                "title":  "Zdiagnozowac rozjazd status board vs log Scribe",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  "Root cause: brak checklisty zamkniecia (task.json -\u003e log.md -\u003e status.md). Rekomendacja: checklist zamykajaca plus kontrola Orina."
+                            },
+                            {
+                                "task_id":  "ECHO-20251021-003",
+                                "parent_task_id":  "ORIN-20251021-006",
+                                "title":  "Ocenic wymagania do testow APK na emulatorze",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  "Repo zbudowane, apk-debug gotowe; emulator Pixel_5 dostepny, wymagany start `emulator.exe -avd Pixel_5`, brak aktywnego urzadzenia przed uruchomieniem."
+                            },
+                            {
+                                "task_id":  "ECHO-20251021-004",
+                                "parent_task_id":  "ORIN-20251021-008",
+                                "title":  "Research best practices Android (architektura, standardy kodu)",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  "Podsumowanie w docs/android-guidelines/research.md (architektura, DI, testy, tooling)."
+                            },
+                            {
+                                "task_id":  "ECHO-20251021-005",
+                                "parent_task_id":  "ORIN-20251021-009",
+                                "title":  "Research UX/UI best practices",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "last_update":  "2025-10-21",
+                                "notes":  "docs/ux-guidelines/research.md streszcza Material Design, accessibility, motion, narzedzia."
+                            }
+                        ],
+    "_template":  {
+                      "task_id":  "ECHO-YYYYMMDD-XXX",
+                      "parent_task_id":  "ORIN-YYYYMMDD-XXX",
+                      "title":  "",
+                      "status":  "pending|in_progress|done",
+                      "assigned_at":  "YYYY-MM-DD",
+                      "last_update":  "YYYY-MM-DD",
+                      "notes":  ""
+                  }
 }

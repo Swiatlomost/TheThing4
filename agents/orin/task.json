@@ -161,7 +161,7 @@
                                                                "task_id":  "NYX-20251021-003",
                                                                "status":  "done"
                                                            }
-                                                      ],
+                                                       ],
                                 "notes":  "Emulator Pixel_5 wystartowany,  `connectedDebugAndroidTest` PASS z SmokeTest.kt; kontynuowac rozbudowe androidTest przy nowych funkcjach. "
                             },
                             {
@@ -178,6 +178,76 @@
                                                            }
                                                        ],
                                 "notes":  "Commit startowy przygotowany (zawiera dokumentacje agentow, aplikacje TheThing i smoke test)."
+                            },
+                            {
+                                "task_id":  "ORIN-20251021-008",
+                                "title":  "Zbadac standardy Android (architektura)",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "parent_task_id":  null,
+                                "linked_agent_tasks":  [
+                                                           {
+                                                               "agent":  "Echo",
+                                                               "task_id":  "ECHO-20251021-004",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Vireal",
+                                                               "task_id":  "VIREAL-20251021-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Lumen",
+                                                               "task_id":  "LUMEN-20251021-004",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Nyx",
+                                                               "task_id":  "NYX-20251021-004",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Scribe",
+                                                               "task_id":  "SCRIBE-20251021-008",
+                                                               "status":  "done"
+                                                           }
+                                                       ],
+                                "notes":  "Research + wytyczne zapisane w docs/android-guidelines/. Zesp?? przeszkolony do dalszych funkcji."
+                            },
+                            {
+                                "task_id":  "ORIN-20251021-009",
+                                "title":  "Zbadac standardy UX/UI i przeszkolic zespol",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-21",
+                                "parent_task_id":  null,
+                                "linked_agent_tasks":  [
+                                                           {
+                                                               "agent":  "Echo",
+                                                               "task_id":  "ECHO-20251021-005",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Vireal",
+                                                               "task_id":  "VIREAL-20251021-002",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Lumen",
+                                                               "task_id":  "LUMEN-20251021-004",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Nyx",
+                                                               "task_id":  "NYX-20251021-004",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Scribe",
+                                                               "task_id":  "SCRIBE-20251021-008",
+                                                               "status":  "done"
+                                                           }
+                                                       ],
+                                "notes":  "UX/UI research, design system i checklisty udokumentowane w docs/ux-guidelines/; pamiec i kronika zaktualizowane."
                             }
                         ],
     "_template":  {

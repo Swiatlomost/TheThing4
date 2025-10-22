@@ -10,6 +10,7 @@
 ## Task Summary Snapshot
 | Task ID | Agent | Title | Parent | Status | Last Update | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
+| ORIN-20251021-008 | Orin | Zbadac standardy Android (architektura) | - | done | 2025-10-21 | Dokumenty w docs/android-guidelines/, pami?? zaktualizowana. |
 | ORIN-20251021-007 | Orin | Zapisac dotychczasowy stan w repo (commit) | - | done | 2025-10-21 | Commit startowy z dokumentacja, agentami i aplikacja TheThing. |
 | ORIN-20251021-006 | Orin | Przetestowac APK na emulatorze | - | done | 2025-10-21 | Emulator Pixel_5 uruchomiony, `connectedDebugAndroidTest` PASS (SmokeTest.kt). |
 | ORIN-20251021-005 | Orin | Zamknac petle synchronizacji statusow po zadaniu | - | done | 2025-10-21 | Checklist zamkniecia wdrozona (Echo/Scribe/Nyx). |
@@ -20,6 +21,9 @@
 | ECHO-20251021-003 | Echo | Ocenic wymagania do testow APK na emulatorze | ORIN-20251021-006 | done | 2025-10-21 | Repo gotowe, emulator Pixel_5 dostepny; zalecenie -> odpalic emulator przed testami. |
 | ECHO-20251021-002 | Echo | Zdiagnozowac rozjazd status board vs log Scribe | ORIN-20251021-005 | done | 2025-10-21 | Wnioski -> checklist zamkniecia. |
 | ECHO-20251021-001 | Echo | Analiza narzedzi do budowy APK | ORIN-20251021-001 | done | 2025-10-21 | Raport przeslany Orinowi. |
+| ECHO-20251021-004 | Echo | Research best practices Android | ORIN-20251021-008 | done | 2025-10-21 | `docs/android-guidelines/research.md` (architektura, DI, testy, tooling). |
+| VIREAL-20251021-001 | Vireal | Zaprojektowac wytyczne architektury Android | ORIN-20251021-008 | done | 2025-10-21 | Draft w `docs/android-guidelines/architecture.md` (warstwy, modularyzacja, DI). |
+| LUMEN-20251021-004 | Lumen | Plan wdrozenia wytycznych Android | ORIN-20251021-008 | done | 2025-10-21 | Checklisty implementacyjne w `docs/android-guidelines/implementation-checklist.md`. |
 | LUMEN-20251021-003 | Lumen | Uruchomic testy APK na emulatorze | ORIN-20251021-006 | done | 2025-10-21 | `./gradlew connectedDebugAndroidTest` PASS (SmokeTest.kt, 1 test). |
 | LUMEN-20251021-002 | Lumen | Dodanie Gradle Wrapper i test build APK | ORIN-20251021-004 | done | 2025-10-21 | Wrapper 8.7 + `assembleDebug`. |
 | LUMEN-20251021-001 | Lumen | Aktualizacja README/SETUP o checklisty build APK | ORIN-20251021-002 | done | 2025-10-21 | Dokumentacja uzupelniona. |
@@ -28,6 +32,7 @@
 | NODUS-20251021-001 | Nodus | Checklisty setupu build APK | ORIN-20251021-001 | done | 2025-10-21 | Przekazane dalej. |
 | KAI-20251021-002 | Kai | Zweryfikowac wyniki testow emulatora | ORIN-20251021-006 | done | 2025-10-21 | `connectedDebugAndroidTest` PASS (SmokeTest.kt); rozbudowa zestawu w planie. |
 | KAI-20251021-001 | Kai | Weryfikacja zainstalowanych narzedzi build APK | ORIN-20251021-003 | done | 2025-10-21 | Potrzebny CLI + wrapper (zrealizowane pozniej). |
+| NYX-20251021-004 | Nyx | Aktualizowac pamiec o wytycznych | ORIN-20251021-008 | done | 2025-10-21 | memory.json zaktualizowane; linki do dokumentow w `docs/android-guidelines/`. |
 | NYX-20251021-003 | Nyx | Aktualizowac pamiec po testach emulatora | ORIN-20251021-006 | done | 2025-10-21 | Heurystyka: emulator Pixel_5; monitoruj rozbudowe androidTest. |
 | NYX-20251021-002 | Nyx | Dodac heurystyke dot. checklisty zamkniecia zadan | ORIN-20251021-005 | done | 2025-10-21 | Pamiec uzupelniona o kolejnosc krokow. |
 | NYX-20251021-001 | Nyx | Snapshot pamieci po standaryzacji | ORIN-20251021-002 | done | 2025-10-21 | Checklisty + kronika zapisane. |
@@ -38,3 +43,6 @@
 | SCRIBE-20251021-003 | Scribe | Wynik kontroli narzedzi (Kai) | ORIN-20251021-003 | done | 2025-10-21 | Braki CLI/wrapper odnotowane. |
 | SCRIBE-20251021-002 | Scribe | Kronika checklist build APK | ORIN-20251021-002 | done | 2025-10-21 | Kronika + log. |
 | SCRIBE-20251021-001 | Scribe | Sesja APK tooling | ORIN-20251021-001 | done | 2025-10-21 | Log + narracja. |
+
+
+

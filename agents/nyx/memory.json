@@ -6,23 +6,29 @@
                     "Monitoruje zmiany w .md, logach oraz task.json - pilnuje, aby byly spojne.",
                     "Co wazniejszy milestone -\u003e snapshot stanu agentow oraz dokumentow referencyjnych.",
                     "Wspolpracuje ze Scribe (dzienniki) i Orinem (status board), aby pamiec odzwierciedlala realne dzialania.",
-                    "Checklisty build APK przeniesione do README/SETUP, kronika Scribe uwzgledniona w dokumentacji."
+                    "Checklisty build APK przeniesione do README/SETUP, kronika Scribe uwzgledniona w dokumentacji.",
+                    "Aktualna sesja: wprowadzamy wytyczne Android (architektura, testy, CI)."
                 ],
     "insights":  [
                      "Jesli zmieniamy standard, dopisz adnotacje w WORKFLOW.md i poinformuj agenta, ktorego dotyczy.",
                      "Utrzymuj liste linkow do kluczowych dokumentow - ulatwia szybkie odtworzenie kontekstu.",
                      "Snapshot po 2025-10-21 zapisany: log/task/memory per agent, checklisty build APK.",
                      "Checklist zamkniecia zadania = task.json (status) -\u003e log.md (status + notatka) -\u003e agents/status.md (potwierdzenie Orina).",
-                     "Testy emulatora: trzymaj gotowy AVD Pixel_5, raportuj brak androidTest jako ryzyko pokrycia."
+                     "Testy emulatora: trzymaj gotowy AVD Pixel_5 i monitoruj zestaw androidTest (SmokeTest).",
+                     "Nowe wytyczne Android w docs/android-guidelines (research, architecture, checklist)."
                  ],
     "todos":  [
                   "Co sesje sprawdzac, czy dokumentacja buildowa jest aktualna po zmianach narzedzi.",
-                  "Monitoruj rozszerzanie zestawu androidTest (obecnie SmokeTest.kt) przy kolejnych funkcjach."
+                  "Monitoruj rozszerzanie zestawu androidTest (obecnie SmokeTest.kt) przy kolejnych funkcjach.",
+                  "Po zatwierdzeniu wytycznych Android dopisz sekcje do memory.json i linki referencyjne."
               ],
     "risks":  [
                   "Ryzyko rozjazdu miedzy pamiecia a logami, jesli snapshoty nie beda aktualizowane."
               ],
     "links":  [
+                  "docs/android-guidelines/research.md",
+                  "docs/android-guidelines/architecture.md",
+                  "docs/android-guidelines/implementation-checklist.md",
                   "agents/status.md",
                   "MEMORY_SPEC.md",
                   "README.md",

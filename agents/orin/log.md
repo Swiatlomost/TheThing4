@@ -6,6 +6,16 @@
 ---
 
 ## Completed Tasks (najnowsze na gorze)
+### ORIN-20251021-009 - Zbadac standardy UX/UI i przeszkolic zespol
+- Status: Done (2025-10-21)
+- Delegacje: Echo (research UX/UI), Vireal (design system), Lumen (checklisty), Nyx (pamiec), Scribe (log/kronika).
+- Notatki: Dokumenty w docs/ux-guidelines/ (research, design-system, implementation checklist); pamiec i kronika zaktualizowane wpisem #7.
+
+### ORIN-20251021-008 - Zbadac standardy Android (architektura)
+- Status: Done (2025-10-21)
+- Delegacje: Echo (research), Vireal (architektura), Lumen (checklisty), Nyx (pamiec), Scribe (log/kronika).
+- Notatki: Dokumenty w docs/android-guidelines/ (research, architecture, implementation checklist); pami?? zaktualizowana, kronika wpis #6.
+
 ### ORIN-20251021-006 - Przetestowac APK na emulatorze
 - Status: Done (2025-10-21)
 - Delegacje: Echo (ocena wymagan), Nodus (emulator), Lumen (connectedDebugAndroidTest), Kai (walidacja), Scribe (log/kronika), Nyx (pamiec).
@@ -37,5 +47,12 @@
 - Notatki: Standard log/task/memory wdrozony; checklisty zatwierdzone.
 
 > Note: keep priorities, blockers, and next checkpoints visible.
+
+
+
+
+
+
+
 
 

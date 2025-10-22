@@ -1,3 +1,18 @@
+## Archive Entry
+- Task ID: ECHO-20251021-005
+- Parent Task: ORIN-20251021-009
+- Status: [ ] Pending [ ] In Progress [x] Done (2025-10-21)
+- Summary:
+  - Zebrano Material Design 3, accessibility, motion, responsive layout best practices.
+  - Dokument researchowy: docs/ux-guidelines/research.md.
+- Recommendations:
+  - Aktualizowac przy nowych wydaniach Google/Material.
+  - Uzgodnic z Vireal modul design-system oraz accessibility checklist.
+- Next: Przekazano Vireal/Lumen/Nyx do dalszych prac.
+
+---
+# Echo Log (Analyst)
+
 # Echo Log (Analyst)
 
 ## Archive Entry
@@ -45,6 +60,20 @@
 
 ---
 
+## Archive Entry
+- Task ID: ECHO-20251021-004
+- Parent Task: ORIN-20251021-008
+- Status: [ ] Pending [ ] In Progress [x] Done (2025-10-21)
+- Summary:
+  - Zebrano kluczowe zrodla: Android Developers, Now in Android, MAD Skills, Clean Architecture.
+  - Dokument `docs/android-guidelines/research.md` opisuje architekture, DI, testy i tooling.
+- Recommendations:
+  - Utrzymywac dokument zywy (aktualizacje przy nowych wydaniach Google).
+  - Referencje do sample `nowinandroid` i modularyzacji feature'owej.
+- Next: Materia??y przekazane Vireal i Lumenowi do dalszych dzialan.
+
+---
+
 ## Archive Template
 - Task ID: ECHO-YYYYMMDD-XXX
 - Parent Task: ORIN-YYYYMMDD-XXX
@@ -57,3 +86,4 @@
 - Next: ...
 
 > Note: capture evidence (file:line) when possible.
+
