@@ -23,11 +23,11 @@
 - Parent Task: ORIN-20251022-001
 - Status: [ ] Pending [ ] In Progress [x] Done (2025-10-22)
 - Summary:
-  - Dostarczono analizę cyklu życia w `docs/cos/lifecycle-analysis.md` (model stanów, wymogi czasowe, rekomendacje Compose).
-  - Zidentyfikowano braki w repo (brak ViewModel, brak Compose) i zdefiniowano zależności dla Vireal/Lumen/Kai/Nyx.
+  - Dostarczono analizÄ™ cyklu ĹĽycia w `docs/cos/lifecycle-analysis.md` (model stanĂłw, wymogi czasowe, rekomendacje Compose).
+  - Zidentyfikowano braki w repo (brak ViewModel, brak Compose) i zdefiniowano zaleĹĽnoĹ›ci dla Vireal/Lumen/Kai/Nyx.
 - Recommendations:
-  - Wprowadzić `TimeProvider` z monotonicznym zegarem i przygotować ADR state machine (Vireal).
-  - Lumen powinien zacząć od migracji na Compose oraz implementacji `CellState`.
+  - WprowadziÄ‡ `TimeProvider` z monotonicznym zegarem i przygotowaÄ‡ ADR state machine (Vireal).
+  - Lumen powinien zaczÄ…Ä‡ od migracji na Compose oraz implementacji `CellState`.
 - Next: czekam na kolejne zlecenie Orina.
 
 ---
@@ -37,10 +37,10 @@
 - Parent Task: ORIN-20251022-002
 - Status: [ ] Pending [ ] In Progress [x] Done (2025-10-22)
 - Summary:
-  - Dokument `docs/cos/floating-overlay-research.md` opisuje wymagania SYSTEM_ALERT_WINDOW, architektur� serwisu, gesty i testy.
+  - Dokument `docs/cos/floating-overlay-research.md` opisuje wymagania SYSTEM_ALERT_WINDOW, architekturę serwisu, gesty i testy.
 - Recommendations:
-  - Wdro�y� wskazany przep�yw w ADR Vireal.
-  - Przygotowa� UX prompt do zgody na nak�adk�.
+  - Wdrożyć wskazany przepływ w ADR Vireal.
+  - Przygotować UX prompt do zgody na nakładkę.
 - Next: Czekam na dalsze zlecenia.
 
 ---
@@ -117,3 +117,16 @@
 > Note: capture evidence (file:line) when possible.
 
 
+
+---
+## Archive Entry
+- Task ID: ECHO-20251022-003
+- Parent Task: ORIN-20251022-003
+- Status: [ ] Pending [ ] In Progress [x] Done (2025-10-23)
+- Summary:
+  - Raport obserwacji w docs/cos/observation-mode-analysis.md (gesty, gating, timeline, ryzyka).
+  - Zgrano wymagania z ADR-2025-10-23-observation-mode-ui-and-gestures.md oraz implementacja Lumen/ObservationViewModel.
+- Recommendations:
+  - Monitorowac wdrozenie testow Compose (Kai TODO w docs/cos/test-plan-observation.md).
+  - Wspolpracowac z Nyx nad snapshotem ObservationRepository (transformacje organizmu).
+- Next: Wnioski przekazane Vireal, Lumen, Kai.

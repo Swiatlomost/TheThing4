@@ -1,104 +1,104 @@
 {
-    "agent":  "Kai",
-    "current_tasks":  [
-                          {
-                              "task_id":  "KAI-20251022-003",
-                              "parent_task_id":  "ORIN-20251022-003",
-                              "title":  "Testy trybu obserwacji",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Przygotowac Espresso/Compose rule dla przesuniecia calego organizmu oraz walidacji stanu dojrzalosci."
-                          },
-                          {
-                              "task_id":  "KAI-20251022-004",
-                              "parent_task_id":  "ORIN-20251022-004",
-                              "title":  "Testy paczkowania",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Opracowac testy jednostkowe walidacji styku i scenariusz manualny Pixel_5 (dodanie nowej komorki)."
-                          },
-                          {
-                              "task_id":  "KAI-20251022-005",
-                              "parent_task_id":  "ORIN-20251022-005",
-                              "title":  "Testy trybu edycji",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Przygotowac przypadki dla reshape, usuniecia komorki i odrzucenia niepolaczonych struktur."
-                          },
-                          {
-                              "task_id":  "KAI-20251022-006",
-                              "parent_task_id":  "ORIN-20251022-006",
-                              "title":  "Testy szablonow",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Zaplanowac testy integracyjne zapisu/wczytania i checkliste regresji po restarcie aplikacji."
-                          },
-                          {
-                              "task_id":  "KAI-20251022-007",
-                              "parent_task_id":  "ORIN-20251022-007",
-                              "title":  "Testy ciaglosci zycia",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Zaprojektowac scenariusze background/foreground, pomiar saturacji po zamknieciu i powrocie."
-                          }
-                      ],
-    "completed_tasks":  [
-                            {
-                                "task_id":  "KAI-20251022-002",
-                                "parent_task_id":  "ORIN-20251022-002",
-                                "title":  "Testy trybu plywajacego",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-22",
-                                "last_update":  "2025-10-22",
-                                "notes":  "Plan oraz test IT-OV-001 wykonany (`./gradlew connectedDebugAndroidTest`), manualne scenariusze przygotowane."
-                            },
-                            {
-                                "task_id":  "KAI-20251022-001",
-                                "parent_task_id":  "ORIN-20251022-001",
-                                "title":  "Plan testow cyklu zycia",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-22",
-                                "last_update":  "2025-10-22",
-                                "notes":  "Test plan w docs/cos/test-plan-lifecycle.md, unit tests pokryte w ./gradlew test; manualny scenariusz Pixel_5 opisany."
-                            },
-                            {
-                                "task_id":  "KAI-20251021-001",
-                                "parent_task_id":  "ORIN-20251021-003",
-                                "title":  "Weryfikacja zainstalowanych narzedzi build APK",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "last_update":  "2025-10-21",
-                                "notes":  "JDK 17 OK; brak sdkmanager/Commandline Tools i Gradle Wrapper w repo."
-                            },
-                            {
-                                "task_id":  "KAI-20251021-002",
-                                "parent_task_id":  "ORIN-20251021-006",
-                                "title":  "Zweryfikowac wyniki testow emulatora",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "last_update":  "2025-10-21",
-                                "notes":  " `connectedDebugAndroidTest` PASS (1 test, SmokeTest.kt); rekomendacja: rozbudowac zestaw androidTest. "
-                            }
-                        ],
-    "_template":  {
-                      "task_id":  "KAI-YYYYMMDD-XXX",
-                      "parent_task_id":  "ORIN-YYYYMMDD-XXX",
-                      "title":  "",
-                      "status":  "pending|in_progress|done",
-                      "assigned_at":  "YYYY-MM-DD",
-                      "last_update":  "YYYY-MM-DD",
-                      "notes":  "",
-                      "cooldown_checklist": {
-                          "status_updated_to_done": false,
-                          "moved_to_completed_tasks": false,
-                          "log_entry_added": false,
-                          "orin_notified": false,
-                          "memory_updated": false
-                      }
-                  }
+    "agent": "Kai",
+    "current_tasks": [
+        {
+            "task_id": "KAI-20251022-004",
+            "parent_task_id": "ORIN-20251022-004",
+            "title": "Testy paczkowania",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Opracowac testy jednostkowe walidacji styku i scenariusz manualny Pixel_5 (dodanie nowej komorki)."
+        },
+        {
+            "task_id": "KAI-20251022-005",
+            "parent_task_id": "ORIN-20251022-005",
+            "title": "Testy trybu edycji",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Przygotowac przypadki dla reshape, usuniecia komorki i odrzucenia niepolaczonych struktur."
+        },
+        {
+            "task_id": "KAI-20251022-006",
+            "parent_task_id": "ORIN-20251022-006",
+            "title": "Testy szablonow",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Zaplanowac testy integracyjne zapisu/wczytania i checkliste regresji po restarcie aplikacji."
+        },
+        {
+            "task_id": "KAI-20251022-007",
+            "parent_task_id": "ORIN-20251022-007",
+            "title": "Testy ciaglosci zycia",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Zaprojektowac scenariusze background/foreground, pomiar saturacji po zamknieciu i powrocie."
+        }
+    ],
+    "completed_tasks": [
+        {
+            "task_id": "KAI-20251022-003",
+            "parent_task_id": "ORIN-20251022-003",
+            "title": "Testy trybu obserwacji",
+            "status": "done",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-23",
+            "notes": "Test plan observation mode (docs/cos/test-plan-observation.md); UT PASS, MAN PASS, IT TODO zaplanowane."
+        },
+        {
+            "task_id": "KAI-20251022-002",
+            "parent_task_id": "ORIN-20251022-002",
+            "title": "Testy trybu plywajacego",
+            "status": "done",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Plan oraz test IT-OV-001 wykonany (`./gradlew connectedDebugAndroidTest`), manualne scenariusze przygotowane."
+        },
+        {
+            "task_id": "KAI-20251022-001",
+            "parent_task_id": "ORIN-20251022-001",
+            "title": "Plan testow cyklu zycia",
+            "status": "done",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Test plan w docs/cos/test-plan-lifecycle.md, unit tests pokryte w ./gradlew test; manualny scenariusz Pixel_5 opisany."
+        },
+        {
+            "task_id": "KAI-20251021-001",
+            "parent_task_id": "ORIN-20251021-003",
+            "title": "Weryfikacja zainstalowanych narzedzi build APK",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "JDK 17 OK; brak sdkmanager/Commandline Tools i Gradle Wrapper w repo."
+        },
+        {
+            "task_id": "KAI-20251021-002",
+            "parent_task_id": "ORIN-20251021-006",
+            "title": "Zweryfikowac wyniki testow emulatora",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": " `connectedDebugAndroidTest` PASS (1 test, SmokeTest.kt); rekomendacja: rozbudowac zestaw androidTest. "
+        }
+    ],
+    "_template": {
+        "task_id": "KAI-YYYYMMDD-XXX",
+        "parent_task_id": "ORIN-YYYYMMDD-XXX",
+        "title": "",
+        "status": "pending|in_progress|done",
+        "assigned_at": "YYYY-MM-DD",
+        "last_update": "YYYY-MM-DD",
+        "notes": "",
+        "cooldown_checklist": {
+            "status_updated_to_done": false,
+            "moved_to_completed_tasks": false,
+            "log_entry_added": false,
+            "orin_notified": false,
+            "memory_updated": false
+        }
+    }
 }

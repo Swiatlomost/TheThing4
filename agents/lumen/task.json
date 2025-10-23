@@ -1,122 +1,122 @@
 {
-    "agent":  "Lumen",
-    "current_tasks":  [
-                          {
-                              "task_id":  "LUMEN-20251022-003",
-                              "parent_task_id":  "ORIN-20251022-003",
-                              "title":  "Tryb obserwacji w aplikacji",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Dostarczyc ekran z calym organizmem, wspolnym przesunieciem i wskaznikiem dojrzalosci."
-                          },
-                          {
-                              "task_id":  "LUMEN-20251022-004",
-                              "parent_task_id":  "ORIN-20251022-004",
-                              "title":  "Mechanika paczkowania",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Implementowac dodawanie komorek (manual/auto), walidacje styku i restart saturacji nowej komorki."
-                          },
-                          {
-                              "task_id":  "LUMEN-20251022-005",
-                              "parent_task_id":  "ORIN-20251022-005",
-                              "title":  "Tryb edycji i ksztalty",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Wlaczyc edytor komorek (drag pojedyncze, reshape z zachowaniem pola, kasowanie/dodawanie) wraz z walidatorem."
-                          },
-                          {
-                              "task_id":  "LUMEN-20251022-006",
-                              "parent_task_id":  "ORIN-20251022-006",
-                              "title":  "System szablonow",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Zaimplementowac repozytorium szablonow, UI zapisu/nazewnictwa i odtwarzanie organizmu ze wzorca."
-                          },
-                          {
-                              "task_id":  "LUMEN-20251022-007",
-                              "parent_task_id":  "ORIN-20251022-007",
-                              "title":  "Synchronizacja trybow",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Dostarczac serwis utrzymujacy saturacje w tle oraz synchronizacje stanu przy powrotach do aplikacji."
-                          }
-                      ],
-    "completed_tasks":  [
-                            {
-                                "task_id":  "LUMEN-20251022-002",
-                                "parent_task_id":  "ORIN-20251022-002",
-                                "title":  "Tryb plywajacy UI",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-22",
-                                "last_update":  "2025-10-22",
-                                "notes":  "Overlay UI + toggle implementowane w MainActivity, OverlayCosLifecycleScreen, CellLifecycleCoordinator."
-                            },
-                            {
-                                "task_id":  "LUMEN-20251022-001",
-                                "parent_task_id":  "ORIN-20251022-001",
-                                "title":  "Implementacja cyklu zycia komorki",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-22",
-                                "last_update":  "2025-10-22",
-                                "notes":  "Compose UI + core/time/core/cell wdrozone; `CellLifecycleStateMachine` + testy jednostkowe, wyniki w ./gradlew test."
-                            },
-                            {
-                                "task_id":  "LUMEN-20251021-003",
-                                "parent_task_id":  "ORIN-20251021-006",
-                                "title":  "Uruchomic testy APK na emulatorze",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "last_update":  "2025-10-21",
-                                "notes":  " `./gradlew connectedDebugAndroidTest` zakonczone sukcesem z nowym smoke testem (SmokeTest.kt); apk zainstalowana na emulatorze Pixel_5. "
-                            },
-                            {
-                                "task_id":  "LUMEN-20251021-001",
-                                "parent_task_id":  "ORIN-20251021-002",
-                                "title":  "Aktualizacja README/SETUP o checklisty build APK",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "last_update":  "2025-10-21",
-                                "notes":  "README i SETUP zaktualizowane o kroki instalacji, build i cache."
-                            },
-                            {
-                                "task_id":  "LUMEN-20251021-002",
-                                "parent_task_id":  "ORIN-20251021-004",
-                                "title":  "Dodanie Gradle Wrapper i test build APK",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "last_update":  "2025-10-21",
-                                "notes":  "Wrapper 8.7 dodany, ./gradlew assembleDebug --no-daemon zakonczony sukcesem; apk w app/build/outputs/apk/debug/app-debug.apk."
-                            },
-                            {
-                                "task_id":  "LUMEN-20251021-004",
-                                "parent_task_id":  "ORIN-20251021-008",
-                                "title":  "Plan wdrozenia wytycznych Android",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "last_update":  "2025-10-21",
-                                "notes":  "Checklist przygotowana w docs/android-guidelines/implementation-checklist.md (implementacja, testy, CI)."
-                            }
-                        ],
-    "_template":  {
-                      "task_id":  "LUMEN-YYYYMMDD-XXX",
-                      "parent_task_id":  "ORIN-YYYYMMDD-XXX",
-                      "title":  "",
-                      "status":  "pending|in_progress|done",
-                      "assigned_at":  "YYYY-MM-DD",
-                      "last_update":  "YYYY-MM-DD",
-                      "notes":  "",
-                    "cooldown_checklist": {
-                        "status_updated_to_done": false,
-                        "moved_to_completed_tasks": false,
-                        "log_entry_added": false,
-                        "orin_notified": false,
-                        "memory_updated": false
-                    }
-                  }
+    "agent": "Lumen",
+    "current_tasks": [
+        {
+            "task_id": "LUMEN-20251022-004",
+            "parent_task_id": "ORIN-20251022-004",
+            "title": "Mechanika paczkowania",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Implementowac dodawanie komorek (manual/auto), walidacje styku i restart saturacji nowej komorki."
+        },
+        {
+            "task_id": "LUMEN-20251022-005",
+            "parent_task_id": "ORIN-20251022-005",
+            "title": "Tryb edycji i ksztalty",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Wlaczyc edytor komorek (drag pojedyncze, reshape z zachowaniem pola, kasowanie/dodawanie) wraz z walidatorem."
+        },
+        {
+            "task_id": "LUMEN-20251022-006",
+            "parent_task_id": "ORIN-20251022-006",
+            "title": "System szablonow",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Zaimplementowac repozytorium szablonow, UI zapisu/nazewnictwa i odtwarzanie organizmu ze wzorca."
+        },
+        {
+            "task_id": "LUMEN-20251022-007",
+            "parent_task_id": "ORIN-20251022-007",
+            "title": "Synchronizacja trybow",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Dostarczac serwis utrzymujacy saturacje w tle oraz synchronizacje stanu przy powrotach do aplikacji."
+        }
+    ],
+    "completed_tasks": [
+        {
+            "task_id": "LUMEN-20251022-003",
+            "parent_task_id": "ORIN-20251022-003",
+            "title": "Tryb obserwacji w aplikacji",
+            "status": "done",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-23",
+            "notes": "ObservationModeScreen + ObservationViewModel + ObservationRepository wdrozone; transform persist i gating cooldown gotowe."
+        },
+        {
+            "task_id": "LUMEN-20251022-002",
+            "parent_task_id": "ORIN-20251022-002",
+            "title": "Tryb plywajacy UI",
+            "status": "done",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Overlay UI + toggle implementowane w MainActivity, OverlayCosLifecycleScreen, CellLifecycleCoordinator."
+        },
+        {
+            "task_id": "LUMEN-20251022-001",
+            "parent_task_id": "ORIN-20251022-001",
+            "title": "Implementacja cyklu zycia komorki",
+            "status": "done",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Compose UI + core/time/core/cell wdrozone; `CellLifecycleStateMachine` + testy jednostkowe, wyniki w ./gradlew test."
+        },
+        {
+            "task_id": "LUMEN-20251021-003",
+            "parent_task_id": "ORIN-20251021-006",
+            "title": "Uruchomic testy APK na emulatorze",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": " `./gradlew connectedDebugAndroidTest` zakonczone sukcesem z nowym smoke testem (SmokeTest.kt); apk zainstalowana na emulatorze Pixel_5. "
+        },
+        {
+            "task_id": "LUMEN-20251021-001",
+            "parent_task_id": "ORIN-20251021-002",
+            "title": "Aktualizacja README/SETUP o checklisty build APK",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "README i SETUP zaktualizowane o kroki instalacji, build i cache."
+        },
+        {
+            "task_id": "LUMEN-20251021-002",
+            "parent_task_id": "ORIN-20251021-004",
+            "title": "Dodanie Gradle Wrapper i test build APK",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Wrapper 8.7 dodany, ./gradlew assembleDebug --no-daemon zakonczony sukcesem; apk w app/build/outputs/apk/debug/app-debug.apk."
+        },
+        {
+            "task_id": "LUMEN-20251021-004",
+            "parent_task_id": "ORIN-20251021-008",
+            "title": "Plan wdrozenia wytycznych Android",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Checklist przygotowana w docs/android-guidelines/implementation-checklist.md (implementacja, testy, CI)."
+        }
+    ],
+    "_template": {
+        "task_id": "LUMEN-YYYYMMDD-XXX",
+        "parent_task_id": "ORIN-YYYYMMDD-XXX",
+        "title": "",
+        "status": "pending|in_progress|done",
+        "assigned_at": "YYYY-MM-DD",
+        "last_update": "YYYY-MM-DD",
+        "notes": "",
+        "cooldown_checklist": {
+            "status_updated_to_done": false,
+            "moved_to_completed_tasks": false,
+            "log_entry_added": false,
+            "orin_notified": false,
+            "memory_updated": false
+        }
+    }
 }

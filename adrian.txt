@@ -8,6 +8,7 @@ Jako agent **Orin**, przedstawiam optymalne procedury rozpoczynania i kończenia
 ```
 Proszę przeczytać pliki: PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md.
 Ustaw ten zestaw jako stały kontekst sesji projektu "Coś".
+Zapoznaj sie rowniez z plikiem ostatniej sesji z katalogu sessions
 ```
 
 ### **2. Pre-session validation**

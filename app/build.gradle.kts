@@ -89,4 +89,14 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
 
+tasks.withType<Test> {
+    testLogging {
+        events("started", "passed", "skipped", "failed")
+        showStandardStreams = true
+    }
+    maxParallelForks = (Runtime.getRuntime().availableProcessors()).coerceAtLeast(2)
+    maxHeapSize = "1536m"
+    jvmArgs("-Xms768m")
+}
+
 

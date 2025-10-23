@@ -1,122 +1,122 @@
 {
-    "agent":  "Nyx",
-    "current_tasks":  [
-                          {
-                              "task_id":  "NYX-20251022-003",
-                              "parent_task_id":  "ORIN-20251022-003",
-                              "title":  "Pamiec trybu obserwacji",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Dodac struktury danych obserwacji, kryteria dojrzalosci i gating paczkowania."
-                          },
-                          {
-                              "task_id":  "NYX-20251022-004",
-                              "parent_task_id":  "ORIN-20251022-004",
-                              "title":  "Pamiec paczkowania",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Opisac heurystyki energii, styku i restartu cyklu dla nowych komorek."
-                          },
-                          {
-                              "task_id":  "NYX-20251022-005",
-                              "parent_task_id":  "ORIN-20251022-005",
-                              "title":  "Pamiec trybu edycji",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Zachowac wiedze o gestach, ograniczeniach powierzchni i walidacji spojnosci."
-                          },
-                          {
-                              "task_id":  "NYX-20251022-006",
-                              "parent_task_id":  "ORIN-20251022-006",
-                              "title":  "Pamiec szablonow",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Dodac opis systemu szablonow, format danych i scenariusze odtworzenia."
-                          },
-                          {
-                              "task_id":  "NYX-20251022-007",
-                              "parent_task_id":  "ORIN-20251022-007",
-                              "title":  "Pamiec ciaglosci zycia",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "last_update":  "2025-10-22",
-                              "notes":  "Zapisac heurystyki synchronizacji trybow, pracy w tle i monitoringu saturacji."
-                          }
-                      ],
-    "completed_tasks":  [
-                            {
-                                "task_id":  "NYX-20251022-002",
-                                "parent_task_id":  "ORIN-20251022-002",
-                                "title":  "Pamiec trybu plywajacego",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-22",
-                                "last_update":  "2025-10-22",
-                                "notes":  "Pamiec uzupelniona o heurystyki overlay oraz linki do docs/cos/."
-                            },
-                            {
-                                "task_id":  "NYX-20251022-001",
-                                "parent_task_id":  "ORIN-20251022-001",
-                                "title":  "Pamiec cyklu zycia",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-22",
-                                "last_update":  "2025-10-22",
-                                "notes":  "memory.json zaktualizowane (monotoniczny czas, stan Seed/Bud/Mature) + linki do docs/cos/*."
-                            },
-                            {
-                                "task_id":  "NYX-20251021-001",
-                                "parent_task_id":  "ORIN-20251021-002",
-                                "title":  "Snapshot pamieci po standaryzacji log/task/memory",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "last_update":  "2025-10-21",
-                                "notes":  "Pamiec zaktualizowana o checklisty build APK oraz kronike Scribe."
-                            },
-                            {
-                                "task_id":  "NYX-20251021-002",
-                                "parent_task_id":  "ORIN-20251021-005",
-                                "title":  "Dodac heurystyke dot. checklisty zamkniecia zadan",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "last_update":  "2025-10-21",
-                                "notes":  "Pamiec Orina/Scribe uzupelniona o kroki: task.json -\u003e log.md -\u003e agents/status.md; monitorowac w przyszlych snapshotach."
-                            },
-                            {
-                                "task_id":  "NYX-20251021-003",
-                                "parent_task_id":  "ORIN-20251021-006",
-                                "title":  "Aktualizowac pamiec po testach emulatora",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "last_update":  "2025-10-21",
-                                "notes":  "Dodano heurystyke o emulatorze Pixel_5 i braku androidTest; TODO na smoke test wpisane."
-                            },
-                            {
-                                "task_id":  "NYX-20251021-004",
-                                "parent_task_id":  "ORIN-20251021-008",
-                                "title":  "Aktualizowac pamiec o wytycznych",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "last_update":  "2025-10-21",
-                                "notes":  "memory.json zaktualizowane (linki do docs/android-guidelines/*)."
-                            }
-                        ],
-    "_template":  {
-                      "task_id":  "NYX-YYYYMMDD-XXX",
-                      "parent_task_id":  "ORIN-YYYYMMDD-XXX",
-                      "title":  "",
-                      "status":  "pending|in_progress|done",
-                      "assigned_at":  "YYYY-MM-DD",
-                      "last_update":  "YYYY-MM-DD",
-                      "notes":  "",
-                      "cooldown_checklist": {
-                          "status_updated_to_done": false,
-                          "moved_to_completed_tasks": false,
-                          "log_entry_added": false,
-                          "orin_notified": false,
-                          "memory_updated": false
-                      }
-                  }
+    "agent": "Nyx",
+    "current_tasks": [
+        {
+            "task_id": "NYX-20251022-004",
+            "parent_task_id": "ORIN-20251022-004",
+            "title": "Pamiec paczkowania",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Opisac heurystyki energii, styku i restartu cyklu dla nowych komorek."
+        },
+        {
+            "task_id": "NYX-20251022-005",
+            "parent_task_id": "ORIN-20251022-005",
+            "title": "Pamiec trybu edycji",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Zachowac wiedze o gestach, ograniczeniach powierzchni i walidacji spojnosci."
+        },
+        {
+            "task_id": "NYX-20251022-006",
+            "parent_task_id": "ORIN-20251022-006",
+            "title": "Pamiec szablonow",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Dodac opis systemu szablonow, format danych i scenariusze odtworzenia."
+        },
+        {
+            "task_id": "NYX-20251022-007",
+            "parent_task_id": "ORIN-20251022-007",
+            "title": "Pamiec ciaglosci zycia",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Zapisac heurystyki synchronizacji trybow, pracy w tle i monitoringu saturacji."
+        }
+    ],
+    "completed_tasks": [
+        {
+            "task_id": "NYX-20251022-003",
+            "parent_task_id": "ORIN-20251022-003",
+            "title": "Pamiec trybu obserwacji",
+            "status": "done",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-23",
+            "notes": "Memory snapshot zaktualizowany (agents/nyx/memory.json) dla observation mode, transformacji i cooldownu."
+        },
+        {
+            "task_id": "NYX-20251022-002",
+            "parent_task_id": "ORIN-20251022-002",
+            "title": "Pamiec trybu plywajacego",
+            "status": "done",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "Pamiec uzupelniona o heurystyki overlay oraz linki do docs/cos/."
+        },
+        {
+            "task_id": "NYX-20251022-001",
+            "parent_task_id": "ORIN-20251022-001",
+            "title": "Pamiec cyklu zycia",
+            "status": "done",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-22",
+            "notes": "memory.json zaktualizowane (monotoniczny czas, stan Seed/Bud/Mature) + linki do docs/cos/*."
+        },
+        {
+            "task_id": "NYX-20251021-001",
+            "parent_task_id": "ORIN-20251021-002",
+            "title": "Snapshot pamieci po standaryzacji log/task/memory",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Pamiec zaktualizowana o checklisty build APK oraz kronike Scribe."
+        },
+        {
+            "task_id": "NYX-20251021-002",
+            "parent_task_id": "ORIN-20251021-005",
+            "title": "Dodac heurystyke dot. checklisty zamkniecia zadan",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Pamiec Orina/Scribe uzupelniona o kroki: task.json -> log.md -> agents/status.md; monitorowac w przyszlych snapshotach."
+        },
+        {
+            "task_id": "NYX-20251021-003",
+            "parent_task_id": "ORIN-20251021-006",
+            "title": "Aktualizowac pamiec po testach emulatora",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "Dodano heurystyke o emulatorze Pixel_5 i braku androidTest; TODO na smoke test wpisane."
+        },
+        {
+            "task_id": "NYX-20251021-004",
+            "parent_task_id": "ORIN-20251021-008",
+            "title": "Aktualizowac pamiec o wytycznych",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "last_update": "2025-10-21",
+            "notes": "memory.json zaktualizowane (linki do docs/android-guidelines/*)."
+        }
+    ],
+    "_template": {
+        "task_id": "NYX-YYYYMMDD-XXX",
+        "parent_task_id": "ORIN-YYYYMMDD-XXX",
+        "title": "",
+        "status": "pending|in_progress|done",
+        "assigned_at": "YYYY-MM-DD",
+        "last_update": "YYYY-MM-DD",
+        "notes": "",
+        "cooldown_checklist": {
+            "status_updated_to_done": false,
+            "moved_to_completed_tasks": false,
+            "log_entry_added": false,
+            "orin_notified": false,
+            "memory_updated": false
+        }
+    }
 }

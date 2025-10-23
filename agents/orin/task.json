@@ -1,565 +1,566 @@
 {
-    "agent":  "Orin",
-    "current_tasks":  [
-                          {
-                              "task_id":  "ORIN-20251022-003",
-                              "title":  "Tryb obserwacji w aplikacji",
-                              "status":  "in_progress",
-                              "assigned_at":  "2025-10-22",
-                              "parent_task_id":  null,
-                              "linked_agent_tasks":  [
-                                                         {
-                                                             "agent":  "Echo",
-                                                             "task_id":  "ECHO-20251022-003",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Vireal",
-                                                             "task_id":  "VIREAL-20251022-003",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Lumen",
-                                                             "task_id":  "LUMEN-20251022-003",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Kai",
-                                                             "task_id":  "KAI-20251022-003",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Scribe",
-                                                             "task_id":  "SCRIBE-20251022-003",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Nyx",
-                                                             "task_id":  "NYX-20251022-003",
-                                                             "status":  "pending"
-                                                         }
-                                                     ],
-                              "notes":  "Cel: zbudowac tryb obserwacji z przesuwaniem calego organizmu, pulsem i warunkiem dojrzalosci przed paczkowaniem. Testy: instrumented UI dla gestu drag calego Cosia + manualny check Pixel_5. Session spec: sessions/ORIN-20251023-003-observation-mode.md"
-                          },
-                          {
-                              "task_id":  "ORIN-20251022-004",
-                              "title":  "Mechanika paczkowania",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "parent_task_id":  null,
-                              "linked_agent_tasks":  [
-                                                         {
-                                                             "agent":  "Echo",
-                                                             "task_id":  "ECHO-20251022-004",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Vireal",
-                                                             "task_id":  "VIREAL-20251022-004",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Lumen",
-                                                             "task_id":  "LUMEN-20251022-004",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Kai",
-                                                             "task_id":  "KAI-20251022-004",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Scribe",
-                                                             "task_id":  "SCRIBE-20251022-004",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Nyx",
-                                                             "task_id":  "NYX-20251022-004",
-                                                             "status":  "pending"
-                                                         }
-                                                     ],
-                              "notes":  "Cel: manualne i warunkowe paczkowanie dojrzalych komorek z walidacja styku struktury. Testy: jednostkowe reguly styku + scenariusz Espresso budujacy nowa komorke na Pixel_5."
-                          },
-                          {
-                              "task_id":  "ORIN-20251022-005",
-                              "title":  "Tryb edycji i ksztalty",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "parent_task_id":  null,
-                              "linked_agent_tasks":  [
-                                                         {
-                                                             "agent":  "Echo",
-                                                             "task_id":  "ECHO-20251022-005",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Vireal",
-                                                             "task_id":  "VIREAL-20251022-005",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Lumen",
-                                                             "task_id":  "LUMEN-20251022-005",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Kai",
-                                                             "task_id":  "KAI-20251022-005",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Scribe",
-                                                             "task_id":  "SCRIBE-20251022-005",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Nyx",
-                                                             "task_id":  "NYX-20251022-005",
-                                                             "status":  "pending"
-                                                         }
-                                                     ],
-                              "notes":  "Cel: uruchomic tryb edycji z gestami na komorki, zachowaniem pola i walidacja spojnosci po zapisaniu. Testy: jednostkowe powierzchni, UI test edycji + manualny scenariusz Pixel_5."
-                          },
-                          {
-                              "task_id":  "ORIN-20251022-006",
-                              "title":  "Biblioteka szablonow Cosia",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "parent_task_id":  null,
-                              "linked_agent_tasks":  [
-                                                         {
-                                                             "agent":  "Echo",
-                                                             "task_id":  "ECHO-20251022-006",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Vireal",
-                                                             "task_id":  "VIREAL-20251022-006",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Lumen",
-                                                             "task_id":  "LUMEN-20251022-006",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Kai",
-                                                             "task_id":  "KAI-20251022-006",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Scribe",
-                                                             "task_id":  "SCRIBE-20251022-006",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Nyx",
-                                                             "task_id":  "NYX-20251022-006",
-                                                             "status":  "pending"
-                                                         }
-                                                     ],
-                              "notes":  "Cel: zapis/wczytanie form z metadanymi i trwaloscia miedzy sesjami. Testy: jednostkowe serializacji + instrumented restore, manualny Pixel_5 (nowa forma z szablonu)."
-                          },
-                          {
-                              "task_id":  "ORIN-20251022-007",
-                              "title":  "Ciaglosc zycia i synchronizacja trybow",
-                              "status":  "pending",
-                              "assigned_at":  "2025-10-22",
-                              "parent_task_id":  null,
-                              "linked_agent_tasks":  [
-                                                         {
-                                                             "agent":  "Echo",
-                                                             "task_id":  "ECHO-20251022-007",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Vireal",
-                                                             "task_id":  "VIREAL-20251022-007",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Lumen",
-                                                             "task_id":  "LUMEN-20251022-007",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Nodus",
-                                                             "task_id":  "NODUS-20251022-002",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Kai",
-                                                             "task_id":  "KAI-20251022-007",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Scribe",
-                                                             "task_id":  "SCRIBE-20251022-007",
-                                                             "status":  "pending"
-                                                         },
-                                                         {
-                                                             "agent":  "Nyx",
-                                                             "task_id":  "NYX-20251022-007",
-                                                             "status":  "pending"
-                                                         }
-                                                     ],
-                              "notes":  "Cel: utrzymac zycie Cosia poza aplikacja, synchronizowac stan miedzy trybami i przy wznowieniu. Testy: integracja serwisu w tle + e2e scenariusz Pixel_5 (zamknij aplikacje -\u003e tryb A kontynuuje nasycanie)."
-                          }
-                      ],
-    "completed_tasks":  [
-                            {
-                                "task_id":  "ORIN-20251022-002",
-                                "title":  "Tryb plywajacy CoSia",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-22",
-                                "parent_task_id":  null,
-                                "linked_agent_tasks":  [
-                                                           {
-                                                               "agent":  "Echo",
-                                                               "task_id":  "ECHO-20251022-002",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Vireal",
-                                                               "task_id":  "VIREAL-20251022-002",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Lumen",
-                                                               "task_id":  "LUMEN-20251022-002",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Nodus",
-                                                               "task_id":  "NODUS-20251022-001",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Kai",
-                                                               "task_id":  "KAI-20251022-002",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Scribe",
-                                                               "task_id":  "SCRIBE-20251022-002",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Nyx",
-                                                               "task_id":  "NYX-20251022-002",
-                                                               "status":  "done"
-                                                           }
-                                                       ],
-                                "notes":  "Overlay mode gotowe: research/ADR, implementacja, ./gradlew test \u0026 connectedDebugAndroidTest PASS; MAN-OV-001..003 do wykonania na Pixel_5."
-                            },
-                            {
-                                "task_id":  "ORIN-20251022-001",
-                                "title":  "Cykl zycia podstawowy Cosia",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-22",
-                                "parent_task_id":  null,
-                                "linked_agent_tasks":  [
-                                                           {
-                                                               "agent":  "Echo",
-                                                               "task_id":  "ECHO-20251022-001",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Vireal",
-                                                               "task_id":  "VIREAL-20251022-001",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Lumen",
-                                                               "task_id":  "LUMEN-20251022-001",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Kai",
-                                                               "task_id":  "KAI-20251022-001",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Scribe",
-                                                               "task_id":  "SCRIBE-20251022-001",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Nyx",
-                                                               "task_id":  "NYX-20251022-001",
-                                                               "status":  "done"
-                                                           }
-                                                       ],
-                                "notes":  "State machine + Compose UI wdrozone; ./gradlew test PASS; MAN-CL-001..003 Pixel_5 OK."
-                            },
-                            {
-                                "task_id":  "ORIN-20251021-001",
-                                "title":  "Koordynacja analizy narzedzi APK",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "parent_task_id":  null,
-                                "linked_agent_tasks":  [
-                                                           {
-                                                               "agent":  "Echo",
-                                                               "task_id":  "ECHO-20251021-001",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Nodus",
-                                                               "task_id":  "NODUS-20251021-001",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Scribe",
-                                                               "task_id":  "SCRIBE-20251021-001",
-                                                               "status":  "done"
-                                                           }
-                                                       ],
-                                "notes":  "Checklisty i wpis kroniki przekazane do dalszego uzycia (README/SETUP, snapshot Nyx)."
-                            },
-                            {
-                                "task_id":  "ORIN-20251021-002",
-                                "title":  "Utrwalic checklisty build APK w dokumentacji",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "parent_task_id":  null,
-                                "linked_agent_tasks":  [
-                                                           {
-                                                               "agent":  "Lumen",
-                                                               "task_id":  "LUMEN-20251021-001",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Nyx",
-                                                               "task_id":  "NYX-20251021-001",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Scribe",
-                                                               "task_id":  "SCRIBE-20251021-002",
-                                                               "status":  "done"
-                                                           }
-                                                       ],
-                                "notes":  "Checklisty i powiesc opisane w dokumentacji; Nyx zapisala snapshot."
-                            },
-                            {
-                                "task_id":  "ORIN-20251021-003",
-                                "title":  "Zweryfikowac narzedzia/wersje do build APK",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "parent_task_id":  null,
-                                "linked_agent_tasks":  [
-                                                           {
-                                                               "agent":  "Kai",
-                                                               "task_id":  "KAI-20251021-001",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Scribe",
-                                                               "task_id":  "SCRIBE-20251021-003",
-                                                               "status":  "done"
-                                                           }
-                                                       ],
-                                "notes":  "JDK 17 dostepne; brak CLI/wrappera naprawiony w kolejnym zadaniu."
-                            },
-                            {
-                                "task_id":  "ORIN-20251021-004",
-                                "title":  "Doprowadzic instalacje narzedzi build APK do dzialania",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "parent_task_id":  null,
-                                "linked_agent_tasks":  [
-                                                           {
-                                                               "agent":  "Lumen",
-                                                               "task_id":  "LUMEN-20251021-002",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Nodus",
-                                                               "task_id":  "NODUS-20251021-002",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Scribe",
-                                                               "task_id":  "SCRIBE-20251021-004",
-                                                               "status":  "done"
-                                                           }
-                                                       ],
-                                "notes":  "Android CLI i Gradle Wrapper zainstalowane; build assembleDebug potwierdzony."
-                            },
-                            {
-                                "task_id":  "ORIN-20251021-005",
-                                "title":  "Zamknac petle synchronizacji statusow po zadaniu",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "parent_task_id":  null,
-                                "linked_agent_tasks":  [
-                                                           {
-                                                               "agent":  "Echo",
-                                                               "task_id":  "ECHO-20251021-002",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Scribe",
-                                                               "task_id":  "SCRIBE-20251021-005",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Nyx",
-                                                               "task_id":  "NYX-20251021-002",
-                                                               "status":  "done"
-                                                           }
-                                                       ],
-                                "notes":  "Checklist na cooldown wdrozona: task.json -\u003e log.md -\u003e agents/status.md."
-                            },
-                            {
-                                "task_id":  "ORIN-20251021-006",
-                                "title":  "Przetestowac APK na emulatorze",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "parent_task_id":  null,
-                                "linked_agent_tasks":  [
-                                                           {
-                                                               "agent":  "Echo",
-                                                               "task_id":  "ECHO-20251021-003",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Nodus",
-                                                               "task_id":  "NODUS-20251021-003",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Lumen",
-                                                               "task_id":  "LUMEN-20251021-003",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Kai",
-                                                               "task_id":  "KAI-20251021-002",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Scribe",
-                                                               "task_id":  "SCRIBE-20251021-006",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Nyx",
-                                                               "task_id":  "NYX-20251021-003",
-                                                               "status":  "done"
-                                                           }
-                                                       ],
-                                "notes":  "Emulator Pixel_5 wystartowany,  `connectedDebugAndroidTest` PASS z SmokeTest.kt; kontynuowac rozbudowe androidTest przy nowych funkcjach. "
-                            },
-                            {
-                                "task_id":  "ORIN-20251021-007",
-                                "title":  "Zapisac dotychczasowy stan w repo (commit)",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "parent_task_id":  null,
-                                "linked_agent_tasks":  [
-                                                           {
-                                                               "agent":  "Scribe",
-                                                               "task_id":  "SCRIBE-20251021-007",
-                                                               "status":  "done"
-                                                           }
-                                                       ],
-                                "notes":  "Commit startowy przygotowany (zawiera dokumentacje agentow, aplikacje TheThing i smoke test)."
-                            },
-                            {
-                                "task_id":  "ORIN-20251021-008",
-                                "title":  "Zbadac standardy Android (architektura)",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "parent_task_id":  null,
-                                "linked_agent_tasks":  [
-                                                           {
-                                                               "agent":  "Echo",
-                                                               "task_id":  "ECHO-20251021-004",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Vireal",
-                                                               "task_id":  "VIREAL-20251021-001",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Lumen",
-                                                               "task_id":  "LUMEN-20251021-004",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Nyx",
-                                                               "task_id":  "NYX-20251021-004",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Scribe",
-                                                               "task_id":  "SCRIBE-20251021-008",
-                                                               "status":  "done"
-                                                           }
-                                                       ],
-                                "notes":  "Research + wytyczne zapisane w docs/android-guidelines/. Zesp?? przeszkolony do dalszych funkcji."
-                            },
-                            {
-                                "task_id":  "ORIN-20251021-009",
-                                "title":  "Zbadac standardy UX/UI i przeszkolic zespol",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "parent_task_id":  null,
-                                "linked_agent_tasks":  [
-                                                           {
-                                                               "agent":  "Echo",
-                                                               "task_id":  "ECHO-20251021-005",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Vireal",
-                                                               "task_id":  "VIREAL-20251021-002",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Lumen",
-                                                               "task_id":  "LUMEN-20251021-004",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Nyx",
-                                                               "task_id":  "NYX-20251021-004",
-                                                               "status":  "done"
-                                                           },
-                                                           {
-                                                               "agent":  "Scribe",
-                                                               "task_id":  "SCRIBE-20251021-008",
-                                                               "status":  "done"
-                                                           }
-                                                       ],
-                                "notes":  "UX/UI research, design system i checklisty udokumentowane w docs/ux-guidelines/; pamiec i kronika zaktualizowane."
-                            }
-                        ],
-    "_template":  {
-                      "task_id":  "ORIN-YYYYMMDD-XXX",
-                      "title":  "",
-                      "status":  "pending|in_progress|done",
-                      "assigned_at":  "YYYY-MM-DD",
-                      "parent_task_id":  null,
-                      "linked_agent_tasks":  [
-                                                 {
-                                                     "agent":  "",
-                                                     "task_id":  "AGENT-YYYYMMDD-XXX",
-                                                     "status":  "pending"
-                                                 }
-                                             ],
-                      "notes":  "",
-                      "cooldown_checklist": {
-                          "status_updated_to_done": false,
-                          "moved_to_completed_tasks": false,
-                          "log_entry_added": false,
-                          "status_board_updated": false,
-                          "memory_consolidated": false,
-                          "linked_agents_verified": false
-                      }
-                  }
+    "agent": "Orin",
+    "current_tasks": [
+        {
+            "task_id": "ORIN-20251022-004",
+            "title": "Mechanika paczkowania",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Echo",
+                    "task_id": "ECHO-20251022-004",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Vireal",
+                    "task_id": "VIREAL-20251022-004",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251022-004",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Kai",
+                    "task_id": "KAI-20251022-004",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251022-004",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251022-004",
+                    "status": "pending"
+                }
+            ],
+            "notes": "Cel: manualne i warunkowe paczkowanie dojrzalych komorek z walidacja styku struktury. Testy: jednostkowe reguly styku + scenariusz Espresso budujacy nowa komorke na Pixel_5."
+        },
+        {
+            "task_id": "ORIN-20251022-005",
+            "title": "Tryb edycji i ksztalty",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Echo",
+                    "task_id": "ECHO-20251022-005",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Vireal",
+                    "task_id": "VIREAL-20251022-005",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251022-005",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Kai",
+                    "task_id": "KAI-20251022-005",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251022-005",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251022-005",
+                    "status": "pending"
+                }
+            ],
+            "notes": "Cel: uruchomic tryb edycji z gestami na komorki, zachowaniem pola i walidacja spojnosci po zapisaniu. Testy: jednostkowe powierzchni, UI test edycji + manualny scenariusz Pixel_5."
+        },
+        {
+            "task_id": "ORIN-20251022-006",
+            "title": "Biblioteka szablonow Cosia",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Echo",
+                    "task_id": "ECHO-20251022-006",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Vireal",
+                    "task_id": "VIREAL-20251022-006",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251022-006",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Kai",
+                    "task_id": "KAI-20251022-006",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251022-006",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251022-006",
+                    "status": "pending"
+                }
+            ],
+            "notes": "Cel: zapis/wczytanie form z metadanymi i trwaloscia miedzy sesjami. Testy: jednostkowe serializacji + instrumented restore, manualny Pixel_5 (nowa forma z szablonu)."
+        },
+        {
+            "task_id": "ORIN-20251022-007",
+            "title": "Ciaglosc zycia i synchronizacja trybow",
+            "status": "pending",
+            "assigned_at": "2025-10-22",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Echo",
+                    "task_id": "ECHO-20251022-007",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Vireal",
+                    "task_id": "VIREAL-20251022-007",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251022-007",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Nodus",
+                    "task_id": "NODUS-20251022-002",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Kai",
+                    "task_id": "KAI-20251022-007",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251022-007",
+                    "status": "pending"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251022-007",
+                    "status": "pending"
+                }
+            ],
+            "notes": "Cel: utrzymac zycie Cosia poza aplikacja, synchronizowac stan miedzy trybami i przy wznowieniu. Testy: integracja serwisu w tle + e2e scenariusz Pixel_5 (zamknij aplikacje -> tryb A kontynuuje nasycanie)."
+        }
+    ],
+    "completed_tasks": [
+        {
+            "task_id": "ORIN-20251022-003",
+            "title": "Tryb obserwacji w aplikacji",
+            "status": "done",
+            "assigned_at": "2025-10-22",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Echo",
+                    "task_id": "ECHO-20251022-003",
+                    "status": "done"
+                },
+                {
+                    "agent": "Vireal",
+                    "task_id": "VIREAL-20251022-003",
+                    "status": "done"
+                },
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251022-003",
+                    "status": "done"
+                },
+                {
+                    "agent": "Kai",
+                    "task_id": "KAI-20251022-003",
+                    "status": "done"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251022-003",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251022-003",
+                    "status": "done"
+                }
+            ],
+            "notes": "Observation mode wydany: group drag, gating cooldown, puls. Artefakty: docs/cos/observation-mode-analysis.md, ADR-2025-10-23, ObservationModeScreen, test-plan-observation.md, agents/scribe/log.md, agents/nyx/memory.json.",
+            "completed_at": "2025-10-23"
+        },
+        {
+            "task_id": "ORIN-20251022-002",
+            "title": "Tryb plywajacy CoSia",
+            "status": "done",
+            "assigned_at": "2025-10-22",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Echo",
+                    "task_id": "ECHO-20251022-002",
+                    "status": "done"
+                },
+                {
+                    "agent": "Vireal",
+                    "task_id": "VIREAL-20251022-002",
+                    "status": "done"
+                },
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251022-002",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nodus",
+                    "task_id": "NODUS-20251022-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Kai",
+                    "task_id": "KAI-20251022-002",
+                    "status": "done"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251022-002",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251022-002",
+                    "status": "done"
+                }
+            ],
+            "notes": "Overlay mode gotowe: research/ADR, implementacja, ./gradlew test & connectedDebugAndroidTest PASS; MAN-OV-001..003 do wykonania na Pixel_5."
+        },
+        {
+            "task_id": "ORIN-20251022-001",
+            "title": "Cykl zycia podstawowy Cosia",
+            "status": "done",
+            "assigned_at": "2025-10-22",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Echo",
+                    "task_id": "ECHO-20251022-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Vireal",
+                    "task_id": "VIREAL-20251022-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251022-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Kai",
+                    "task_id": "KAI-20251022-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251022-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251022-001",
+                    "status": "done"
+                }
+            ],
+            "notes": "State machine + Compose UI wdrozone; ./gradlew test PASS; MAN-CL-001..003 Pixel_5 OK."
+        },
+        {
+            "task_id": "ORIN-20251021-001",
+            "title": "Koordynacja analizy narzedzi APK",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Echo",
+                    "task_id": "ECHO-20251021-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nodus",
+                    "task_id": "NODUS-20251021-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251021-001",
+                    "status": "done"
+                }
+            ],
+            "notes": "Checklisty i wpis kroniki przekazane do dalszego uzycia (README/SETUP, snapshot Nyx)."
+        },
+        {
+            "task_id": "ORIN-20251021-002",
+            "title": "Utrwalic checklisty build APK w dokumentacji",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251021-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251021-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251021-002",
+                    "status": "done"
+                }
+            ],
+            "notes": "Checklisty i powiesc opisane w dokumentacji; Nyx zapisala snapshot."
+        },
+        {
+            "task_id": "ORIN-20251021-003",
+            "title": "Zweryfikowac narzedzia/wersje do build APK",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Kai",
+                    "task_id": "KAI-20251021-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251021-003",
+                    "status": "done"
+                }
+            ],
+            "notes": "JDK 17 dostepne; brak CLI/wrappera naprawiony w kolejnym zadaniu."
+        },
+        {
+            "task_id": "ORIN-20251021-004",
+            "title": "Doprowadzic instalacje narzedzi build APK do dzialania",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251021-002",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nodus",
+                    "task_id": "NODUS-20251021-002",
+                    "status": "done"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251021-004",
+                    "status": "done"
+                }
+            ],
+            "notes": "Android CLI i Gradle Wrapper zainstalowane; build assembleDebug potwierdzony."
+        },
+        {
+            "task_id": "ORIN-20251021-005",
+            "title": "Zamknac petle synchronizacji statusow po zadaniu",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Echo",
+                    "task_id": "ECHO-20251021-002",
+                    "status": "done"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251021-005",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251021-002",
+                    "status": "done"
+                }
+            ],
+            "notes": "Checklist na cooldown wdrozona: task.json -> log.md -> agents/status.md."
+        },
+        {
+            "task_id": "ORIN-20251021-006",
+            "title": "Przetestowac APK na emulatorze",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Echo",
+                    "task_id": "ECHO-20251021-003",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nodus",
+                    "task_id": "NODUS-20251021-003",
+                    "status": "done"
+                },
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251021-003",
+                    "status": "done"
+                },
+                {
+                    "agent": "Kai",
+                    "task_id": "KAI-20251021-002",
+                    "status": "done"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251021-006",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251021-003",
+                    "status": "done"
+                }
+            ],
+            "notes": "Emulator Pixel_5 wystartowany,  `connectedDebugAndroidTest` PASS z SmokeTest.kt; kontynuowac rozbudowe androidTest przy nowych funkcjach. "
+        },
+        {
+            "task_id": "ORIN-20251021-007",
+            "title": "Zapisac dotychczasowy stan w repo (commit)",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251021-007",
+                    "status": "done"
+                }
+            ],
+            "notes": "Commit startowy przygotowany (zawiera dokumentacje agentow, aplikacje TheThing i smoke test)."
+        },
+        {
+            "task_id": "ORIN-20251021-008",
+            "title": "Zbadac standardy Android (architektura)",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Echo",
+                    "task_id": "ECHO-20251021-004",
+                    "status": "done"
+                },
+                {
+                    "agent": "Vireal",
+                    "task_id": "VIREAL-20251021-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251021-004",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251021-004",
+                    "status": "done"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251021-008",
+                    "status": "done"
+                }
+            ],
+            "notes": "Research + wytyczne zapisane w docs/android-guidelines/. Zesp?? przeszkolony do dalszych funkcji."
+        },
+        {
+            "task_id": "ORIN-20251021-009",
+            "title": "Zbadac standardy UX/UI i przeszkolic zespol",
+            "status": "done",
+            "assigned_at": "2025-10-21",
+            "parent_task_id": null,
+            "linked_agent_tasks": [
+                {
+                    "agent": "Echo",
+                    "task_id": "ECHO-20251021-005",
+                    "status": "done"
+                },
+                {
+                    "agent": "Vireal",
+                    "task_id": "VIREAL-20251021-002",
+                    "status": "done"
+                },
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251021-004",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251021-004",
+                    "status": "done"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251021-008",
+                    "status": "done"
+                }
+            ],
+            "notes": "UX/UI research, design system i checklisty udokumentowane w docs/ux-guidelines/; pamiec i kronika zaktualizowane."
+        }
+    ],
+    "_template": {
+        "task_id": "ORIN-YYYYMMDD-XXX",
+        "title": "",
+        "status": "pending|in_progress|done",
+        "assigned_at": "YYYY-MM-DD",
+        "parent_task_id": null,
+        "linked_agent_tasks": [
+            {
+                "agent": "",
+                "task_id": "AGENT-YYYYMMDD-XXX",
+                "status": "pending"
+            }
+        ],
+        "notes": "",
+        "cooldown_checklist": {
+            "status_updated_to_done": false,
+            "moved_to_completed_tasks": false,
+            "log_entry_added": false,
+            "status_board_updated": false,
+            "memory_consolidated": false,
+            "linked_agents_verified": false
+        }
+    }
 }

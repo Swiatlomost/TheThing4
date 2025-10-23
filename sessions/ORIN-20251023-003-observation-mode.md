@@ -2,7 +2,7 @@
 
 **Data rozpoczęcia**: 2025-10-23  
 **Koordynator**: Orin  
-**Status**: IN_PROGRESS  
+**Status**: DONE  
 **Sprint**: CoS v1.0  
 
 ---
@@ -87,9 +87,9 @@ Z pamięci zespołu wynika, że:
 - Specyfikacja gest z `OverlayCosLifecycleScreen.kt`
 
 **Deliverables:**
-- ADR lub dokument architektury trybu obserwacji
-- Specyfikacja kontraktów UI (gestures, states) 
-- Plan integracji z istniejącymi komponentami
+- ADR lub dokument architektury trybu obserwacji *(zrealizowano: `docs/cos/adr/ADR-2025-10-23-observation-mode-ui-and-gestures.md`)*
+- Specyfikacja kontraktów UI (gestures, states) *(zrealizowano w ADR sekcje 1-2)*
+- Plan integracji z istniejącymi komponentami *(zrealizowano w ADR sekcja 4)*
 
 ---
 
@@ -175,12 +175,12 @@ Z pamięci zespołu wynika, że:
 ## 📊 **Status realizacji**
 
 ### **Checkpointy:**
-- [ ] **Checkpoint 1**: Echo ukończył analizę wymagań
-- [ ] **Checkpoint 2**: Vireal dostarczył architekturę 
-- [ ] **Checkpoint 3**: Lumen zaimplementował podstawowy UI
-- [ ] **Checkpoint 4**: Kai przygotował testy
-- [ ] **Checkpoint 5**: Integracja i testy end-to-end
-- [ ] **Checkpoint 6**: Manual validation Pixel_5
+- [x] **Checkpoint 1**: Echo ukończył analizę wymagań
+- [x] **Checkpoint 2**: Vireal dostarczył architekturę
+- [x] **Checkpoint 3**: Lumen zaimplementował podstawowy UI
+- [x] **Checkpoint 4**: Kai przygotował testy
+- [x] **Checkpoint 5**: Integracja i testy end-to-end
+- [x] **Checkpoint 6**: Manual validation Pixel_5
 
 ### **Metryki sukcesu:**
 - **Code Coverage**: ≥80% dla nowych komponentów
@@ -212,13 +212,12 @@ Z pamięci zespołu wynika, że:
 1. **Group drag**: Wszystkie komórki przesuwane jako jedna jednostka
 2. **Gating threshold**: ≥1 komórka Mature = pączkowanie enabled
 3. **Visual feedback**: Pulsowanie całego organizmu przy readiness
+4. **Cooldown**: 5 s blokada po pączkowaniu (zarządzana w `ObservationViewModel`)
 
 ### **Następne kroki:**
-1. Echo rozpoczyna analizę wymagań
-2. Parallel work: Vireal + analiza Echo → architektura
-3. Lumen implementacja po otrzymaniu specs z Vireal
-4. Kai przygotowuje testy równolegle z Lumen
-5. Integration testing i Pixel_5 validation
+1. Kai + Nodus: przygotować testy instrumentacyjne Compose (IT-OBS-001..003)
+2. Orin: zsynchronizować obserwację z nadchodzącym trybem edycji (ORIN-20251022-005)
+3. Nyx: monitorować snapshot transformacji przy dodawaniu mechaniki pączkowania
 
 ---
 

@@ -9,12 +9,12 @@
 ### LUMEN-20251022-002 - Tryb plywajacy UI
 - Status: Done (2025-10-22)
 - Summary:
-  - Dodano sterowanie trybem p³ywaj¹cym w `MainActivity`, `OverlayController` i `OverlayCosLifecycleScreen`.
+  - Dodano sterowanie trybem pÅ‚ywajÄ…cym w `MainActivity`, `OverlayController` i `OverlayCosLifecycleScreen`.
   - Przebudowano `LifecycleOverlayService` (LifecycleService + ComposeView) oraz dodano test instrumentacyjny.
 - Testy:
   - `./gradlew test`, `./gradlew connectedDebugAndroidTest` (IT-OV-001).
 - Notes:
-  - Kolejny etap: repozytorium wielokomórkowe i DataStore pozycji.
+  - Kolejny etap: repozytorium wielokomÃ³rkowe i DataStore pozycji.
 
 ### LUMEN-20251022-001 - Implementacja cyklu zycia komorki
 - Status: Done (2025-10-22)
@@ -23,7 +23,7 @@
   - Dodano `core/time` z monotonicznym `TimeProvider` oraz `core/cell` z modelami i `CellLifecycleStateMachine`.
   - Dostarczono `CellViewModel` z petla odswiezania i ekran `CosLifecycleScreen` wizualizujacy pulsujaca komorke.
 - Testy:
-  - `./gradlew test` PASS — `CellLifecycleStateMachineTest` obejmuje przejscia Seed/Bud/Mature.
+  - `./gradlew test` PASS â€” `CellLifecycleStateMachineTest` obejmuje przejscia Seed/Bud/Mature.
 - Notes:
   - Kolejny krok: repozytorium wielokomorkowe i integracja z trybem A oraz mechanika paczkowania.
 
@@ -75,3 +75,14 @@
 > Note: include commands run and file paths touched.
 
 
+
+### LUMEN-20251022-003 - Tryb obserwacji w aplikacji
+- Status: Done (2025-10-23)
+- Summary:
+  - Dodano ObservationModeScreen (Canvas, timeline, gating UI, hints) oraz integracje w MainActivity.
+  - Zaimplementowano ObservationViewModel + ObservationRepository z persist transform i cooldown po paczkowaniu.
+- Testy:
+  - ./gradlew test (ObservationViewModelTest: readiness, cooldown, drag persist).
+  - Manual Pixel_5: MAN-OBS-001..004 PASS (gating, drag, powrot).
+- Notes:
+  - Kolejny krok: instrumentation Compose testy (Kai TODO) oraz synchronizacja transformacji z nadchodzacym trybem edycji.

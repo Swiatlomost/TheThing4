@@ -1,9 +1,6 @@
 # Orin Log (Coordinator)
 
 ## Active Tasks
-- ORIN-20251022-003 - Tryb obserwacji w aplikacji
-  - Why: To podstawowa scena pracy uzytkownika i punkt startowy dla paczkowania.
-  - Next: Vireal ustala layout, Lumen wdraza ekran, Kai przygotowuje test przesuniecia calego organizmu.
 - ORIN-20251022-004 - Mechanika paczkowania
   - Why: Rozmnazanie to kluczowy rytual Cosia i warunek v1.0.
   - Next: Echo/Vireal definiuja reguly energii i styku, Lumen implementuje, Kai tworzy testy walidacyjne.
@@ -20,6 +17,32 @@
 ---
 
 ## Completed Tasks (najnowsze na gorze)
+### ORIN-20251022-003 - Tryb obserwacji w aplikacji
+- Status: Done (2025-10-23)
+- Deliverables:
+  - Echo: docs/cos/observation-mode-analysis.md (gesty, gating, timeline, ryzyka).
+  - Vireal: ADR-2025-10-23-observation-mode-ui-and-gestures.md (layout, kontrakty repozytorium).
+  - Lumen: ObservationModeScreen + ObservationViewModel + ObservationRepository + integracja w MainActivity.
+  - Kai: docs/cos/test-plan-observation.md (UT-OBS-001..003 PASS, MAN-OBS-001..004 PASS, IT TODO zaplanowane).
+  - Nyx: agents/nyx/memory.json z heurystyka transformacji i cooldownu.
+  - Scribe: log Entry #10 + chronicle Entry #10.
+- Tests:
+  - ./gradlew test (ObservationViewModelTest) PASS.
+  - Manual Pixel_5: MAN-OBS-001..004 wykonane 2025-10-23 (PASS).
+- Notes:
+  - Instrumentacyjne testy Compose (IT-OBS-001..003) pozostaja TODO (Kai/Nodus).
+  - Transformacja organizmu zapisuje sie w ObservationRepository i bedzie dzielona z mechanika paczkowania (ORIN-20251022-004).
+
+#### [TASK::COOLDOWN] Checklist zamknięcia zadania ORIN-20251022-003
+- [x] Status updated w task.json (Echo, Vireal, Lumen, Kai, Scribe, Nyx)
+- [x] Przeniesienie do completed_tasks
+- [x] Wpis w log.md (wszystkie agenty)
+- [x] Aktualizacja agents/status.md
+- [x] Konsolidacja memory.json (Nyx)
+
+**Podsumowanie:**
+Zadanie ORIN-20251022-003 zamknięte zgodnie z procedurą cooldown. Wszystkie deliverables dostarczone, statusy zsynchronizowane, pamięć i logi zaktualizowane. Pozostały tylko testy instrumentacyjne Compose (Kai/Nodus) jako TODO na kolejny sprint.
+
 ### ORIN-20251022-IMPROVEMENTS - Usprawnienia systemu agentowego
 - Status: Done (2025-10-22)
 - Zakres: Wdrożenie 5 kluczowych usprawnień systemu pracy z agentami

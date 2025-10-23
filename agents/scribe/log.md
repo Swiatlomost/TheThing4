@@ -7,38 +7,45 @@
 
 ## Session Notes
 
-### 2025-10-22 � Entry #8 "Narodziny z Pulsujacego Platka"
+### 2025-10-23 - Entry #10 Pod szklem obserwatora
+- **Goal:** Udokumentowac wydanie trybu obserwacji (drag calego organizmu, gating, timeline).
+- **Decyzje:** Echo dostarczyla brief, Vireal zamknal ADR, Lumen wdrozyl UI/VM, Kai potwierdzil testy (UT+MAN), Nyx zaktualizowala pamiec.
+- **Artefakty:** docs/cos/observation-mode-analysis.md, docs/cos/adr/ADR-2025-10-23-observation-mode-ui-and-gestures.md, docs/cos/test-plan-observation.md, app/src/test/java/com/example/thething4/observation/ObservationViewModelTest.kt.
+- **TODO:** [ ] Kai/Nodus: dodac instrumentacyjne testy Compose (IT-OBS-001..003).
+
+
+### 2025-10-22 â€“ Entry #8 "Narodziny z Pulsujacego Platka"
 - **Goal:** Udokumentowac pierwsza iteracje cyklu zycia Cosia (Compose + state machine).
 - **Decyzje:** Lumen wdrozyl Compose UI i core/cell; Vireal dostarczyl ADR; Kai przygotowal test plan; Nyx zaktualizowala pamiec; manualny test Pixel_5 potwierdzil pulsacje Seed/Bud/Mature.
 - **Artefakty:** `docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md`, `docs/cos/test-plan-lifecycle.md`, kronika Entry #8.
 - **TODO:** [x] Po manualnych testach Pixel_5 dopisac obserwacje do logu i kroniki.
 
 $entry
-### 2025-10-21 � Session #APK-Tooling
+### 2025-10-21 â€“ Session #APK-Tooling
 - **Goal:** Ustalic standard pracy agentow i przygotowac repo pod build APK.
 - **Decyzje:** Echo zebrala wymagania narzedziowe; Nodus przygotowal checklisty; Orin zatwierdzil standard log/task/memory.
 - **Artefakty:** README/SETUP uzupelnione checklistami; kronika przeniesiona do agents/scribe/chronicle.md.
-- **TODO:** (brak) � snapshot Nyx wykonany.
+- **TODO:** (brak) â€“ snapshot Nyx wykonany.
 
-### 2025-10-21 � Session #APK-Emulator
+### 2025-10-21 â€“ Session #APK-Emulator
 - **Goal:** Uruchomic emulator Pixel_5 i zweryfikowac connectedDebugAndroidTest.
 - **Decyzje:** Nodus utrzymywal emulator, Lumen uruchomil testy, Kai ocenil wynik (dodano smoke test), Nyx zaktualizowala pamiec.
 - **Artefakty:** Logi Gradle (connectedDebugAndroidTest PASS), wpis w kronice #4 (agents/scribe/chronicle.md).
 - **TODO:** [x] Przygotowac pierwszy test instrumentacyjny (Owner: Lumen, Done: 2025-10-21, file: app/src/androidTest/java/com/example/thething4/SmokeTest.kt)
 
-### 2025-10-21 � Session #Repo-Commit
+### 2025-10-21 â€“ Session #Repo-Commit
 - **Goal:** Uporzadkowac repo i przygotowac commit otwierajacy dalszy rozwoj.
 - **Decyzje:** Orin agreguje zmiany agentow; Scribe dokumentuje; commit ma zachowac standard [AGENT::...] z sekcjami Why/Next.
 - **Artefakty:** Pelen stan agentow (agents/<name>/), dokumenty procesowe, aplikacja TheThing z smoke testem.
 - **TODO:** [x] Zapisac wpis w kronice o drodze do pierwszego commitu (Entry #5).
 
-### 2025-10-21 � Session #Android-Standards
+### 2025-10-21 â€“ Session #Android-Standards
 - **Goal:** Zebrac najlepsze praktyki Android i przygotowac wytyczne dla zespolu.
 - **Decyzje:** Echo prowadzi research; Vireal projektuje architekture; Lumen przygotowuje checklisty; Nyx utrwala w pamieci.
 - **Artefakty:** Dokumenty w docs/android-guidelines/ (research, architecture, implementation checklist).
 - **TODO:** [x] Skonsolidowac research i wytyczne w pakiet szkoleniowy.
 
-### 2025-10-21 � Session #UX-UI-Standards
+### 2025-10-21 â€“ Session #UX-UI-Standards
 - **Goal:** Zebrac najlepsze praktyki UX/UI dla TheThing i wprowadzic je do procesu.
 - **Decyzje:** Echo bada Material Design i UX; Vireal ksztaltuje design system; Lumen tworzy checklisty wdrozen; Nyx aktualizuje pamiec.
 - **Artefakty:** Dokumenty w docs/ux-guidelines/ (research, design-system, implementation checklist).

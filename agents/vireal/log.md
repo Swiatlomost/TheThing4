@@ -31,11 +31,11 @@
 - Parent Task: ORIN-20251022-001
 - Status: [ ] Pending [ ] In Progress [x] Done (2025-10-22)
 - Scope:
-  - Przygotowano ADR `docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md` definiujący modele, state machine, repozytorium i zależności czasowe.
-  - Zaproponowano interfejs `TimeProvider`, strukturę `CellLifecycle` oraz plan integracji z Compose i DataStore.
+  - Przygotowano ADR `docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md` definiujÄ…cy modele, state machine, repozytorium i zaleĹĽnoĹ›ci czasowe.
+  - Zaproponowano interfejs `TimeProvider`, strukturÄ™ `CellLifecycle` oraz plan integracji z Compose i DataStore.
 - Notes:
   - Wymaga dalszych decyzji Nodus/Orin dot. serwisu w tle oraz ewentualnej modularyzacji core.
-  - Przekazać Lumenowi i Kai plan implementacji/testów.
+  - PrzekazaÄ‡ Lumenowi i Kai plan implementacji/testĂłw.
 
 ---
 
@@ -65,3 +65,16 @@
 > Note: refer to architecture diagrams and ADRs w agents/vireal/.
 
 
+
+---
+## Archive Entry
+- Task ID: VIREAL-20251022-003
+- Parent Task: ORIN-20251022-003
+- Status: [ ] Pending [ ] In Progress [x] Done (2025-10-23)
+- Scope:
+  - ADR docs/cos/adr/ADR-2025-10-23-observation-mode-ui-and-gestures.md (layout, gestures, repository kontrakty).
+  - Zdefiniowano ObservationUiState, ObservationGestures, ObservationRepository oraz integracje z MainActivity.
+- Notes:
+  - Wymaga dalszej integracji z repozytorium (persist transform) i synchronizacji z przyszlym trybem edycji.
+- Next:
+  - Wsparcie dla Lumen przy implementacji ObservationModeScreen oraz dla Kai w budowie testow Compose.

@@ -1,67 +1,73 @@
 {
-    "agent":  "Nyx",
-    "last_updated":  "2025-10-22",
-    "focus":  "Konsolidacja pamieci i standardow procesu.",
-    "context":  [
-                    "Monitoruje zmiany w .md, logach oraz task.json - pilnuje, aby byly spojne.",
-                    "Co wazniejszy milestone -\u003e snapshot stanu agentow oraz dokumentow referencyjnych.",
-                    "Wspolpracuje ze Scribe (dzienniki) i Orinem (status board), aby pamiec odzwierciedlala realne dzialania.",
-                    "Checklisty build APK przeniesione do README/SETUP, kronika Scribe uwzgledniona w dokumentacji.",
-                    "Aktualna sesja: wprowadzamy wytyczne Android (architektura, testy, CI).",
-                    "Nowy cykl zycia Cosia: Compose + Core (core/cell, core/time) jako zrodlo prawdy.",
-                    "Tryb plywajacy: overlay controller + service dzieli stan komorek (CellLifecycleCoordinator)."
-                ],
-    "insights":  [
-                     "Jesli zmieniamy standard, dopisz adnotacje w WORKFLOW.md i poinformuj agenta, ktorego dotyczy.",
-                     "Utrzymuj liste linkow do kluczowych dokumentow - ulatwia szybkie odtworzenie kontekstu.",
-                     "Snapshot po 2025-10-21 zapisany: log/task/memory per agent, checklisty build APK.",
-                     "Checklist zamkniecia zadania = task.json (status) -\u003e log.md (status + notatka) -\u003e agents/status.md (potwierdzenie Orina).",
-                     "Testy emulatora: trzymaj gotowy AVD Pixel_5 i monitoruj zestaw androidTest (SmokeTest).",
-                     "Nowe wytyczne Android w docs/android-guidelines (research, architecture, checklist).",
-                     "Liczymy wiek komorek na `TimeProvider` (SystemClock.elapsedRealtime) — brak resetu po przejsciu w tle.",
-                     "State machine Seed/Bud/Mature opisany w docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md — referencja dla kolejnych trybow.",
-                     "Uprawnienie SYSTEM_ALERT_WINDOW i foreground service typu specialUse wymagane dla overlay.",
-                     "OverlayCosLifecycleScreen korzysta z tego samego state machine; DataStore na pozycje do rozwa¿enia."
-                 ],
-    "todos":  [
-                  "Monitorowac, kiedy dodamy repozytorium wielokomorkowe i tryb A — przygotowac snapshot.",
-                  "Po testach manualnych na Pixel_5 zapisac obserwacje saturacji w pamieci.",
-                  "Po wdro¿eniu synchronizacji trybów zapisaæ heurystyki dla serwisu w tle."
-              ],
-    "risks":  [
-                  "Ryzyko rozjazdu miedzy pamiecia a logami, jesli snapshoty nie beda aktualizowane."
-              ],
-    "links":  [
-                  "docs/android-guidelines/research.md",
-                  "docs/android-guidelines/architecture.md",
-                  "docs/android-guidelines/implementation-checklist.md",
-                  "agents/status.md",
-                  "MEMORY_SPEC.md",
-                  "README.md",
-                  "SETUP.md",
-                  "docs/cos/lifecycle-analysis.md",
-                  "docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md",
-                  "docs/cos/test-plan-lifecycle.md",
-                  "docs/cos/floating-overlay-research.md",
-                  "docs/cos/adr/ADR-2025-10-22-floating-overlay.md",
-                  "docs/cos/test-plan-overlay.md"
-              ],
-    "_template":  {
-                      "focus":  "co konsolidujemy",
-                      "context":  [
-                                      "pliki"
-                                  ],
-                      "insights":  [
-                                       "wnioski"
-                                   ],
-                      "todos":  [
-                                    "przyszle snapshoty"
-                                ],
-                      "risks":  [
-                                    "ryzyka utraty pamieci"
-                                ],
-                      "links":  [
-                                    "skladowanie"
-                                ]
-                  }
+  "agent": "Nyx",
+  "last_updated": "2025-10-23",
+  "focus": "Konsolidacja pamieci i standardow procesu.",
+  "context": [
+    "Monitoruje zmiany w logach .md i task.json oraz pilnuje spojnosc.",
+    "Milestony -> snapshot stanu agentow + dokumentow.",
+    "Wspolpraca ze Scribe (dzienniki) i Orinem (status board).",
+    "Checklisty build APK sa w README/SETUP, kronika Scribe ma aktualne wpisy.",
+    "Cykl zycia Cosia: Compose + core/time jako zrodlo prawdy.",
+    "Tryb plywajacy: overlay controller + service dziela stan komorek (CellLifecycleCoordinator).",
+    "Tryb obserwacji: ObservationModeScreen + ObservationViewModel obejmuja caly organizm (drag, timeline, gating)."
+  ],
+  "insights": [
+    "Jesli zmieniamy standard, dopisz adnotacje w WORKFLOW.md i poinformuj odpowiadajacego agenta.",
+    "Utrzymuj liste linkow do kluczowych dokumentow, pomaga odtworzyc kontekst.",
+    "Snapshot po 2025-10-21 zawiera log/task/memory oraz checklisty build APK.",
+    "Checklist zamkniecia: task.json -> log.md -> agents/status.md.",
+    "Testy emulatora: miej gotowy AVD Pixel_5 i monitoruj androidTest (SmokeTest).",
+    "Android guidelines sa w docs/android-guidelines/* (research, architecture, implementation).",
+    "Liczymy wiek komorek na TimeProvider (elapsedRealtime) bez resetu w tle.",
+    "State machine Seed/Bud/Mature opisany w ADR-2025-10-22-cell-lifecycle-state-machine.md.",
+    "OverlayCosLifecycleScreen korzysta z tego samego state machine; DataStore na pozycje do rozwarzenia.",
+    "ObservationRepository utrzymuje transformacje organizmu - wymagane spojnosc z przyszlym trybem edycji.",
+    "Cooldown po paczkowaniu (5 s) musi byc zsynchronizowany miedzy trybami; monitorowac przy ORIN-20251022-004.",
+    "Brak jeszcze testow instrumentacyjnych dla Observation Mode - Kai planuje createAndroidComposeRule (TODO w test-plan-observation)."
+  ],
+  "todos": [
+    "Przygotowac snapshot po wdrozeniu repozytorium wielokomorkowego + obserwacji (persist transform).",
+    "Po testach manualnych Pixel_5 dopisac obserwacje saturacji do pamieci.",
+    "Monitorowac wdrozenie testow Compose (Kai/Nodus) i dodac linki do skryptow.",
+    "Po wdrozeniu synchronizacji trybow zapisac heurystyki dla serwisu w tle."
+  ],
+  "risks": [
+    "Rozjazd pamieci vs logi gdy snapshoty sa nieaktualne."
+  ],
+  "links": [
+    "docs/android-guidelines/research.md",
+    "docs/android-guidelines/architecture.md",
+    "docs/android-guidelines/implementation-checklist.md",
+    "agents/status.md",
+    "MEMORY_SPEC.md",
+    "README.md",
+    "SETUP.md",
+    "docs/cos/lifecycle-analysis.md",
+    "docs/cos/adr/ADR-2025-10-22-cell-lifecycle-state-machine.md",
+    "docs/cos/test-plan-lifecycle.md",
+    "docs/cos/observation-mode-analysis.md",
+    "docs/cos/floating-overlay-research.md",
+    "docs/cos/adr/ADR-2025-10-22-floating-overlay.md",
+    "docs/cos/test-plan-overlay.md",
+    "docs/cos/adr/ADR-2025-10-23-observation-mode-ui-and-gestures.md",
+    "docs/cos/test-plan-observation.md"
+  ],
+  "_template": {
+    "focus": "co konsolidujemy",
+    "context": [
+      "pliki"
+    ],
+    "insights": [
+      "wnioski"
+    ],
+    "todos": [
+      "przyszle snapshoty"
+    ],
+    "risks": [
+      "ryzyka utraty pamieci"
+    ],
+    "links": [
+      "skladowanie"
+    ]
+  }
 }

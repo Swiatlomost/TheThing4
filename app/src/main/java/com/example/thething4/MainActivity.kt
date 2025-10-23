@@ -14,8 +14,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -23,13 +25,16 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.thething4.core.cell.CellLifecycleCoordinator
 import com.example.thething4.core.cell.CellSnapshot
 import com.example.thething4.core.cell.CellStage
+import com.example.thething4.observation.ObservationUiState
+import com.example.thething4.observation.ObservationViewModel
+import com.example.thething4.observation.ObservationViewModelFactory
 import com.example.thething4.overlay.OverlayController
 import com.example.thething4.ui.CellUiState
 import com.example.thething4.ui.CellViewModel
 import com.example.thething4.ui.CellViewModelFactory
 import com.example.thething4.ui.CosLifecycleScreen
+import com.example.thething4.ui.ObservationModeScreen
 import com.example.thething4.ui.theme.CosTheme
-import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 
 class MainActivity : ComponentActivity() {
@@ -37,19 +42,50 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CosTheme {
-                val viewModel: CellViewModel = viewModel(factory = CellViewModelFactory.default())
-                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                CosLifecycleApp(uiState = uiState)
+                val lifecycleViewModel: CellViewModel = viewModel(factory = CellViewModelFactory.default())
+                val observationViewModel: ObservationViewModel = viewModel(factory = ObservationViewModelFactory.default())
+
+                val lifecycleUiState by lifecycleViewModel.uiState.collectAsStateWithLifecycle()
+                val observationUiState by observationViewModel.uiState.collectAsStateWithLifecycle()
+                val overlayRunning by OverlayController.state.collectAsStateWithLifecycle()
+
+                var showObservation by rememberSaveable { mutableStateOf(false) }
+
+                if (showObservation) {
+                    ObservationModeScreen(
+                        uiState = observationUiState,
+                        gestures = observationViewModel.gestures,
+                        onBack = { showObservation = false },
+                        onBudding = observationViewModel::onBuddingRequested
+                    )
+                } else {
+                    CosLifecycleApp(
+                        uiState = lifecycleUiState,
+                        overlayRunning = overlayRunning,
+                        onToggleOverlay = {
+                            if (overlayRunning) {
+                                OverlayController.stop(this@MainActivity)
+                            } else {
+                                OverlayController.start(this@MainActivity)
+                            }
+                        },
+                        onStopOverlay = { OverlayController.stop(this@MainActivity) },
+                        onEnterObservation = { showObservation = true }
+                    )
+                }
             }
         }
     }
 }
 
 @Composable
-private fun CosLifecycleApp(uiState: CellUiState) {
-    val context = LocalContext.current
-    val overlayRunning by OverlayController.state.collectAsStateWithLifecycle()
-
+private fun CosLifecycleApp(
+    uiState: CellUiState,
+    overlayRunning: Boolean,
+    onToggleOverlay: () -> Unit,
+    onStopOverlay: () -> Unit,
+    onEnterObservation: () -> Unit
+) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -66,15 +102,12 @@ private fun CosLifecycleApp(uiState: CellUiState) {
             )
             OverlayToggleSection(
                 overlayRunning = overlayRunning,
-                onToggle = {
-                    if (overlayRunning) {
-                        OverlayController.stop(context)
-                    } else {
-                        OverlayController.start(context)
-                    }
-                },
-                onStop = { OverlayController.stop(context) }
+                onToggle = onToggleOverlay,
+                onStop = onStopOverlay
             )
+            Button(onClick = onEnterObservation) {
+                Text("Enter observation mode")
+            }
         }
     }
 }
@@ -92,7 +125,11 @@ private fun CosLifecyclePreview() {
             uiState = CellUiState(
                 cells = listOf(snapshot),
                 now = 12.seconds
-            )
+            ),
+            overlayRunning = false,
+            onToggleOverlay = {},
+            onStopOverlay = {},
+            onEnterObservation = {}
         )
     }
 }
@@ -117,4 +154,3 @@ private fun OverlayToggleSection(
         }
     }
 }
-
