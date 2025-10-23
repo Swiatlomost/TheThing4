@@ -1,13 +1,13 @@
 ﻿# WORKFLOW.md - Proces pracy z agentami (v1.1)
 
 ## Rytual sesji
-1. `[SESSION::START]` - **Pre-task validation** → Sprawdź spójność task.json i status.md
+1. `[SESSION::START]` - **Pre-task validation** → Sprawdź spójność task.json i status.json
 2. **Orin Session Initialization** → Dla każdego nowego zadania ORIN-YYYYMMDD-XXX:
    - Załaduj pamięć z poprzednich prac (memory.json wszystkich agentów)
    - Opisz szczegółowo wymagania oraz kryteria sukcesu  
    - **Utwórz plik sesji** `sessions/ORIN-YYYYMMDD-XXX-{nazwa}.md` z kompletną specyfikacją
    - Przypisz poszczególne zadania dla agentów z precyzyjnymi delegacjami
-   - Aktualizuj task.json (status: pending → in_progress) i agents/status.md
+  - Aktualizuj task.json (status: pending → in_progress) i agents/status.json
 3. Analiza -> `[TASK::ANALYZE]` do Echo / Vireal.
 4. Budowa -> `[TASK::BUILD]` do Lumen / Nodus.
 5. Przeglad -> `[TASK::REVIEW]` do Kai.
@@ -18,8 +18,8 @@
 **Przed rozpoczęciem każdego nowego zadania Orin wykonuje:**
 
 ### ✅ **Synchronizacja Statusów**
-- [ ] Sprawdź czy wszystkie zadania "done" są w `completed_tasks` (nie w `current_tasks`)
-- [ ] Zweryfikuj zgodność `agents/status.md` z rzeczywistymi statusami w task.json
+- [ ] Sprawdź czy wszystkie zadania "done" są w `completed_tasks` (nie w `active_tasks`)
+- [ ] Zweryfikuj zgodność `agents/status.json` (sekcja `active_tasks`) z rzeczywistymi statusami w task.json agentów
 - [ ] Potwierdź że linked_agent_tasks mają spójne statusy
 
 ### ✅ **Pamięć i Logi**
@@ -46,7 +46,7 @@
   - `log.md` - biezacy wpis + szablon archiwum,
   - `task.json` - lista zadan (status, identyfikatory, powiazania),
   - `memory.json` - sposob wspolpracy, kontekst i heurystyki.
-- `agents/status.md` jest tablica kontrolna: agent, rola, task_id, status, timestamp.
+- `agents/status.json` jest tablicą kontrolną: zawiera sekcje `active_tasks` (tylko aktywne zadania) oraz `completed_tasks` (historia ukończonych), z szablonem `_template`. Każdy wpis: {agent, task_id, title, parent, status, last_update[, notes]}.
 - Scribe prowadzi faktograficzny log w `agents/scribe/log.md`, a prozowa kronika (humor/epika/Grzesiuk) trafia do `agents/scribe/chronicle.md`.
 
 ## Przyklady promptow
@@ -62,19 +62,19 @@
 ### 📋 Checklist zakończenia zadania (obowiązkowy dla wszystkich agentów):
 1. **Agent wykonawczy**: Po zakończeniu pracy oznacza status zadania jako "done" w swoim `task.json` i dopisuje notatki
 2. **Orin**: Przenosi ukończone zadania z `current_tasks` do `completed_tasks` w `agents/orin/task.json`
-3. **Orin**: Aktualizuje `agents/status.md` - usuwa ukończone zadania z sekcji "Active Work"
+3. **Orin**: Aktualizuje `agents/status.json` - usuwa ukończone zadania z sekcji `active_tasks`, przenosi do `completed_tasks`
 4. **Scribe**: Dopisuje podsumowanie (log + kronika) oraz oznacza swoje zadanie jako DONE
 5. **Nyx**: Gdy zaszła istotna zmiana stanu, aktualizuje `memory.json` i snapshot
 6. **Wszystkich agenci**: Wykonują kroki 1-3 z sekcji "Relacje i zasady" z AGENTS.md
 
 ### ⚠️ Symptomy błędnej procedury cooldown:
-- Zadania ze statusem "done" pozostają w sekcji `current_tasks`
-- Niezgodność między `task.json` agentów a `agents/status.md`
+- Zadania ze statusem "done" pozostają w sekcji `active_tasks` w status.json
+- Niezgodność między `task.json` agentów a `agents/status.json`
 - Brak wpisów zamknięcia w logach agentów
 
 ### 🔄 W przypadku wykrycia niezgodności:
 1. Orin naprawia wszystkie pliki `task.json` przenosząc ukończone zadania
-2. Aktualizuje `agents/status.md` 
+2. Aktualizuje `agents/status.json` (usuwa z `active_tasks`, przenosi do `completed_tasks`)
 3. Zapisuje incydent w swoim logu wraz z przyczynami błędu
 
 ## Template pliku sesji

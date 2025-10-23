@@ -5,10 +5,10 @@
             "task_id": "LUMEN-20251022-004",
             "parent_task_id": "ORIN-20251022-004",
             "title": "Mechanika paczkowania",
-            "status": "pending",
+            "status": "done",
             "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
-            "notes": "Implementowac dodawanie komorek (manual/auto), walidacje styku i restart saturacji nowej komorki."
+            "last_update": "2025-10-23",
+            "notes": "Implementacja i testy jednostkowe mechaniki paczkowania zakończone."
         },
         {
             "task_id": "LUMEN-20251022-005",

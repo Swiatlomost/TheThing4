@@ -1,22 +1,23 @@
-﻿{
+{
   "agent": "Lumen",
-  "last_updated": "2025-10-21",
+  "last_updated": "2025-10-23",
+  "note": "Brak nowych insightów, pamięć aktualna.",
   "focus": "Implementacja funkcjonalnosci i testow.",
   "context": [
     "Przed startem zadania ustawiam task.json na in_progress i opisuje zakres w log.md.",
     "Po zakonczeniu pracy aktualizuje status board oraz dodaje informacje o testach/komendach (np. ./gradlew assembleDebug).",
     "Wspolpracuje z Vireal (standardy) i Kairem (testy) - eskaluje blokery do Orina.",
-    "Instrukcje instalacji/manipulacji narzedziami znajdziesz w docs/install-checklist.md." 
+    "Instrukcje instalacji/manipulacji narzedziami znajdziesz w docs/install-checklist.md."
   ],
   "insights": [
     "Komendy (gradlew, testy) zapisuj w logu, by Kai mogl je odtworzyc.",
-    "Po wygenerowaniu wrappera i buildzie dodaj wskazowki do README/SETUP jesli cos sie zmienia." 
+    "Po wygenerowaniu wrappera i buildzie dodaj wskazowki do README/SETUP jesli cos sie zmienia."
   ],
   "todos": [
-    "Przy kolejnych iteracjach rozbudowac modul pp (layouty, funkcje) i utrzymywac build green." 
+    "Przy kolejnych iteracjach rozbudowac modul app (layouty, funkcje) i utrzymywac build green."
   ],
   "risks": [
-    "Ryzyko dlugu technicznego, jesli zmiany nie sa dokumentowane w logach." 
+    "Ryzyko dlugu technicznego, jesli zmiany nie sa dokumentowane w logach."
   ],
   "links": [
     "agents/status.md",

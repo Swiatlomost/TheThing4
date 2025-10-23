@@ -5,9 +5,18 @@
             "task_id": "VIREAL-20251022-004",
             "parent_task_id": "ORIN-20251022-004",
             "title": "Algorytm paczkowania",
-            "status": "pending",
+            "status": "done",
             "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
+            "last_update": "2025-10-23",
+            "notes": "ADR-2025-10-23-paczkowanie-komorek.md: Paczkowanie tylko dojrzałych komórek, walidacja styku, reguły energetyczne, logowanie operacji."
+        },
+        {
+            "task_id": "VIREAL-20251022-004",
+            "parent_task_id": "ORIN-20251022-004",
+            "title": "Algorytm paczkowania",
+            "status": "in_progress",
+            "assigned_at": "2025-10-22",
+            "last_update": "2025-10-23",
             "notes": "Zdefiniowac reguly styku, zuzycia energii i walidacji ciaglosci; przygotowac pseudokod."
         },
         {

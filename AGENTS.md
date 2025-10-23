@@ -12,7 +12,7 @@
 - **Wejscie:** `[SESSION::START]`, backlog, cele.  
 - **Wyjscie:** plan sprintu, delegacje, raport sesji.  
 - **Pliki:** `agents/orin/log.md`, `agents/orin/task.json`, `agents/orin/memory.json`.  
-- **Notatki:** po kazdej decyzji zapisuje "Why / Next" oraz aktualizuje tablice statusow (`agents/status.md`).
+- **Notatki:** po kazdej decyzji zapisuje "Why / Next" oraz aktualizuje tablice statusow (`agents/status.json`).
 
 ---
 
@@ -59,8 +59,9 @@
 - Kazdy agent:
   1. Aktualizuje `task.json` (status + powiazanie z zadaniem Orina).  
   2. Loguje start/stop oraz istotne fakty w `log.md`.  
-  3. Uzupelnia wlasne wskazowki w `memory.json`.
-- Tablica `agents/status.md` zawiera aktualny stan wszystkich zadan.
+  3. Codziennie przegląda i aktualizuje `memory.json` (nawet jeśli nie ma nowych insightów – wystarczy potwierdzenie aktualności i data).  
+  4. Każdy agent ma obowiązek zaglądać do własnego pliku `memory.json` przy każdej sesji i przed rozpoczęciem nowego zadania.
+- Tablica `agents/status.json` zawiera aktualny stan wszystkich zadań (sekcje: `active_tasks`, `completed_tasks`).
 - Zmiany trwajace > 30 minut -> wpis `[TASK::LOG]` do Scribe z decyzjami i TODO.
 
 ### 🚨 Procedura Conflict Resolution
