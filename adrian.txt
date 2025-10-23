@@ -1,6 +1,169 @@
-CONTRIBUTING.md
-AGENTS.md 
-WORKFLOW.md
-MEMORY_SPEC.md
-README.md (sekcja Checklisty build APK)
-docs/install-checklist.md
+# Procedury rozpoczynania i kończenia sesji AI
+
+Jako agent **Orin**, przedstawiam optymalne procedury rozpoczynania i kończenia sesji AI w naszym systemie:
+
+## 🚀 **Rozpoczynanie sesji AI**
+
+### **1. Ładowanie kontekstu (zawsze pierwsze)**
+```
+Proszę przeczytać pliki: PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md.
+Ustaw ten zestaw jako stały kontekst sesji projektu "Coś".
+```
+
+### **2. Pre-session validation**
+```
+[SESSION::START] Wykonaj pre-task validation:
+1. Uruchom scripts/validate-agent-sync.ps1
+2. Sprawdź agents/dashboard.md - aktualny sprint progress
+3. Przejrzyj agents/status.md - czy są niespójności?
+4. Potwierdź gotowość infrastruktury (emulator, build tools)
+```
+
+### **3. Określenie celu sesji**
+```
+Cele na dzisiejszą sesję:
+- [Konkretne zadanie, np. "ORIN-20251022-003 - Tryb obserwacji"]
+- [Oczekiwane deliverables]
+- [Kryteria sukcesu]
+```
+
+### **4. Aktywacja agenta głównego**
+```
+Orin, zainicjuj sesję i załaduj pamięć z poprzednich prac.
+Opisz szczegółowo wymagania oraz kryteria sukcesu dla zadania ORIN-YYYYMMDD-XXX,
+następnie przypisz poszczególne zadania dla agentów.
+```
+**Procedura Orina obejmuje:**
+- Załadowanie memory.json wszystkich agentów
+- Utworzenie pliku sessions/ORIN-YYYYMMDD-XXX-{nazwa}.md z pełną specyfikacją
+- Precyzyjne delegacje z deliverables dla każdego agenta  
+- Aktualizację task.json i agents/status.md
+
+---
+
+## 🎯 **Podczas sesji**
+
+### **Delegacja zadań:**
+- `[AGENT::ECHO] [TASK::ANALYZE] ...`
+- `[AGENT::LUMEN] [TASK::BUILD] ...`
+- `[AGENT::KAI] [TASK::REVIEW] ...`
+
+### **Monitorowanie postępu:**
+- Sprawdzanie [`agents/status.md`](agents/status.md )
+- Aktualizacja [`agents/dashboard.md`](agents/dashboard.md )
+- Walidacja po każdym większym milestone
+
+---
+
+## 🏁 **Kończenie sesji AI**
+
+### **1. Cooldown checklist (Orin)**
+```
+[TASK::COOLDOWN] Wykonaj dla każdego zakończonego zadania:
+□ Status updated w task.json
+□ Przeniesienie do completed_tasks  
+□ Wpis w log.md
+□ Aktualizacja agents/status.md
+□ Konsolidacja memory.json (Nyx)
+```
+
+### **2. Session summary (Scribe)**
+```
+[AGENT::SCRIBE] [TASK::LOG] Zapisz podsumowanie sesji:
+- Co ukończono
+- Główne decyzje
+- TODO na następną sesję
+- Blokery/ryzyka
+```
+
+### **3. Final validation**
+```
+Uruchom ponownie scripts/validate-agent-sync.ps1
+Potwierdź spójność agents/status.md vs task.json
+```
+
+### **4. Snapshot stanu (Nyx)**
+```
+[AGENT::NYX] Jeśli istotne zmiany - zapisz snapshot:
+- Aktualizuj memory.json dla agentów
+- Zanotuj kluczowe insights
+- Przygotuj kontekst na następną sesję
+```
+
+### **5. Commit (jeśli zmiany w kodzie)**
+```
+git add .
+git commit -m "[AGENT::...] opis zmian
+
+# Why
+Powód zmian
+
+# Next  
+Następny krok"
+```
+
+---
+
+## 📋 **Template początku sesji**
+
+```markdown
+## [SESSION::START] 2025-MM-DD
+
+### Kontekst
+□ Pliki procesowe załadowane
+□ Pre-task validation: PASS/FAIL
+□ Dashboard review: X/7 zadań (Y% complete)
+□ Infrastruktura: OK/ISSUES
+
+### Cel sesji
+- [ ] Zadanie: ORIN-YYYYMMDD-XXX
+- [ ] Deliverables: ...
+- [ ] Success criteria: ...
+
+### Delegacje
+- Echo: ...
+- Vireal: ...  
+- Lumen: ...
+- Kai: ...
+```
+
+---
+
+## 📋 **Template końca sesji**
+
+```markdown
+## [SESSION::END] 2025-MM-DD
+
+### Ukończono
+✅ ORIN-YYYYMMDD-XXX: ...
+✅ Artefakty: ...
+
+### Decyzje
+- Decyzja 1: ... (Why: ..., Next: ...)
+- Decyzja 2: ... (Why: ..., Next: ...)
+
+### TODO następna sesja
+- [ ] ...
+- [ ] ...
+
+### Blokery/Ryzyka
+- ...
+
+### Status sync
+□ Cooldown checklist wykonana
+□ agents/status.md aktualne  
+□ Validation: PASS
+□ Commit: [hash] lub N/A
+```
+
+---
+
+## 🎯 **Key Success Factors**
+
+1. **Zawsze ładuj kontekst** - AI nie pamięta między sesjami
+2. **Pre-task validation** - zapobiega pracy na nieaktualnych danych
+3. **Atomowe cooldowny** - używaj checklist dla każdego zadania
+4. **Dokumentuj decyzje** - każda ważna decyzja → Why + Next
+5. **Końcowa walidacja** - nie zostawiaj rozjazdów
+
+**Motto**: *"Clean start → Focused work → Clean finish"* ✨

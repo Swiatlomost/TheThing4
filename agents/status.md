@@ -3,7 +3,7 @@
 ## Active Work
 | Agent | Task ID | Title | Parent | Status | Last Update |
 | --- | --- | --- | --- | --- | --- |
-| Orin | ORIN-20251022-003 | Tryb obserwacji w aplikacji | - | pending | 2025-10-22 |
+| Orin | ORIN-20251022-003 | Tryb obserwacji w aplikacji | - | in_progress | 2025-10-23 |
 | Orin | ORIN-20251022-004 | Mechanika paczkowania | - | pending | 2025-10-22 |
 | Orin | ORIN-20251022-005 | Tryb edycji i ksztalty | - | pending | 2025-10-22 |
 | Orin | ORIN-20251022-006 | Biblioteka szablonow Cosia | - | pending | 2025-10-22 |

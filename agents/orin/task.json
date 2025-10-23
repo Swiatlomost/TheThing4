@@ -4,7 +4,7 @@
                           {
                               "task_id":  "ORIN-20251022-003",
                               "title":  "Tryb obserwacji w aplikacji",
-                              "status":  "pending",
+                              "status":  "in_progress",
                               "assigned_at":  "2025-10-22",
                               "parent_task_id":  null,
                               "linked_agent_tasks":  [
@@ -39,7 +39,7 @@
                                                              "status":  "pending"
                                                          }
                                                      ],
-                              "notes":  "Cel: zbudowac tryb obserwacji z przesuwaniem calego organizmu, pulsem i warunkiem dojrzalosci przed paczkowaniem. Testy: instrumented UI dla gestu drag calego Cosia + manualny check Pixel_5."
+                              "notes":  "Cel: zbudowac tryb obserwacji z przesuwaniem calego organizmu, pulsem i warunkiem dojrzalosci przed paczkowaniem. Testy: instrumented UI dla gestu drag calego Cosia + manualny check Pixel_5. Session spec: sessions/ORIN-20251023-003-observation-mode.md"
                           },
                           {
                               "task_id":  "ORIN-20251022-004",

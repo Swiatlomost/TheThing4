@@ -14,7 +14,13 @@ Utrzymanie *zywego kontekstu* w VS Code tak, by GPT-5 rozumial projekt "Cos" i w
    ```
    [SESSION::START] Prosze zainicjalizowac dziennik i zapytac o cel biezacej sesji.
    ```
-4. Orin nadaje identyfikator zadaniu glownemu i deleguje pod-zadania (Echo, Nodus, Scribe itd.).
+4. **Orin Session Procedure** (OBOWIĄZKOWA dla nowych zadań):
+   ```
+   Orin: Zainicjuj sesję i załaduj pamięć z poprzednich prac. 
+   Opisz szczegółowo wymagania oraz kryteria sukcesu dla zadania ORIN-YYYYMMDD-XXX, 
+   następnie przypisz poszczególne zadania dla agentów.
+   ```
+5. Orin tworzy plik `sessions/ORIN-YYYYMMDD-XXX-{nazwa}.md` z kompletną specyfikacją i deleguje pod-zadania (Echo, Vireal, Lumen, Kai, Scribe, Nyx).
 
 ## Tryby i standardy
 - Domyslnie **[MODE::PRO]** (konkretnie, zadaniowo).
@@ -28,8 +34,18 @@ Utrzymanie *zywego kontekstu* w VS Code tak, by GPT-5 rozumial projekt "Cos" i w
 ## Pierwsze zadanie po starcie
 ```
 [SESSION::START]
-Orin: zainicjalizuj cel sesji, przydziel analize Echo, checklisty Nodus i log do Scribe.
+Orin: zainicjalizuj cel sesji, załaduj pamięć poprzednich prac, 
+utwórz plik sessions/ z pełną specyfikacją i przydziel delegacje wszystkim agentom.
 ```
+
+## Standard pliku sesji
+**Każde zadanie ORIN-YYYYMMDD-XXX musi mieć:**
+- Plik `sessions/ORIN-YYYYMMDD-XXX-{nazwa}.md`
+- Szczegółowe wymagania funkcjonalne
+- Kryteria sukcesu (funkcjonalne/techniczne/jakościowe)
+- Precyzyjne delegacje dla każdego agenta
+- Status realizacji z checkpointami
+- Ryzyka i mitygacje
 
 ## Utrzymanie stanu
 - Po kazdej delegacji aktualizujemy `agents/status.md` oraz `task.json` danego agenta.
