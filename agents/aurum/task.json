@@ -1,4 +1,4 @@
-﻿{
+{
     "agent":  "Aurum",
     "current_tasks":  [
 
@@ -11,7 +11,7 @@
                                 "status":  "done",
                                 "assigned_at":  "2025-10-21",
                                 "last_update":  "2025-10-21",
-                                "notes":  "Raport przygotowany; czysty start -\u003e AGENTS, WORKFLOW, README checklist, install-checklist, log Orin, status board."
+                                "notes":  "Raport przygotowany; czysty start -> AGENTS, WORKFLOW, README checklist, install-checklist, log Orin, status board."
                             }
                         ],
     "_template":  {

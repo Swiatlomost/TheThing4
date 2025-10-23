@@ -9,16 +9,16 @@
 ### NODUS-20251022-001 - Konfiguracja trybu plywajacego
 - Status: Done (2025-10-22)
 - Scope:
-  - Manifest uzupe³niony o SYSTEM_ALERT_WINDOW, FOREGROUND_SERVICE i SPECIAL_USE.
+  - Manifest uzupeÅ‚niony o SYSTEM_ALERT_WINDOW, FOREGROUND_SERVICE i SPECIAL_USE.
   - OverlayPermissionActivity po nadaniu zgody od razu uruchamia serwis.
 - Notes:
-  - Monitorowaæ UX zgody oraz notyfikacjê foreground.
+  - MonitorowaÄ‡ UX zgody oraz notyfikacji foreground.
 
 ### NODUS-20251022-002 - Integracja serwisu zycia w tle
 - Status: Done (2025-10-22)
 - Scope:
   - LifecycleOverlayService jako LifecycleService z Compose (WindowManager, powiadomienie, SavedState tags).
-  - `./gradlew connectedDebugAndroidTest` (IT-OV-001) potwierdzi³ brak crashy przy starcie/stop.
+  - `./gradlew connectedDebugAndroidTest` (IT-OV-001) potwierdziÅ‚ brak crashy przy starcie/stop.
 - Notes:
   - Kolejny etap: DataStore pozycji + synchronizacja ORIN-20251022-007.
 

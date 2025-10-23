@@ -4,39 +4,39 @@
         {
             "task_id": "ORIN-20251022-004",
             "title": "Mechanika paczkowania",
-            "status": "pending",
+            "status": "in_progress",
             "assigned_at": "2025-10-22",
             "parent_task_id": null,
             "linked_agent_tasks": [
                 {
                     "agent": "Echo",
                     "task_id": "ECHO-20251022-004",
-                    "status": "pending"
+                    "status": "in_progress"
                 },
                 {
                     "agent": "Vireal",
                     "task_id": "VIREAL-20251022-004",
-                    "status": "pending"
+                    "status": "done"
                 },
                 {
                     "agent": "Lumen",
                     "task_id": "LUMEN-20251022-004",
-                    "status": "pending"
+                    "status": "done"
                 },
                 {
                     "agent": "Kai",
                     "task_id": "KAI-20251022-004",
-                    "status": "pending"
+                    "status": "in_progress"
                 },
                 {
                     "agent": "Scribe",
                     "task_id": "SCRIBE-20251022-004",
-                    "status": "pending"
+                    "status": "in_progress"
                 },
                 {
                     "agent": "Nyx",
                     "task_id": "NYX-20251022-004",
-                    "status": "pending"
+                    "status": "in_progress"
                 }
             ],
             "notes": "Cel: manualne i warunkowe paczkowanie dojrzalych komorek z walidacja styku struktury. Testy: jednostkowe reguly styku + scenariusz Espresso budujacy nowa komorke na Pixel_5."
@@ -146,7 +146,7 @@
                 {
                     "agent": "Nodus",
                     "task_id": "NODUS-20251022-002",
-                    "status": "pending"
+                    "status": "done"
                 },
                 {
                     "agent": "Kai",

@@ -14,7 +14,7 @@ Zapoznaj sie rowniez z plikiem ostatniej sesji z katalogu sessions
 ### **2. Pre-session validation**
 ```
 [SESSION::START] Wykonaj pre-task validation:
-1. Uruchom scripts/validate-agent-sync.ps1
+1. Uruchom python scripts/validate-agent-sync.py
 2. Sprawdź agents/dashboard.md - aktualny sprint progress
 3. Przejrzyj agents/status.md - czy są niespójności?
 4. Potwierdź gotowość infrastruktury (emulator, build tools)
@@ -79,7 +79,7 @@ następnie przypisz poszczególne zadania dla agentów.
 
 ### **3. Final validation**
 ```
-Uruchom ponownie scripts/validate-agent-sync.ps1
+Uruchom ponownie python scripts/validate-agent-sync.py
 Potwierdź spójność agents/status.md vs task.json
 ```
 
