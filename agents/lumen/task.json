@@ -1,21 +1,25 @@
 {
     "agent": "Lumen",
-    "current_tasks": [
+    "current_tasks": [],
+    "completed_tasks": [
         {
             "task_id": "LUMEN-20251024-001",
             "parent_task_id": "ORIN-20251024-001",
             "title": "Implementacja cyklu Cos v0.1",
-            "status": "pending",
+            "status": "done",
             "assigned_at": "2025-10-24",
             "last_update": "2025-10-24",
-            "notes": "Implementuj kod aplikacji Cos v0.1 wedlug nowej architektury",
+            "notes": "Struktura projektu i podstawowa implementacja Cos v0.1 dodane.",
             "deliverables": [
-                "Kod funkcjonalny",
-                "Testy jednostkowe/prototyp UI"
-            ]
+                "app/",
+                "feature/cos-lifecycle/",
+                "feature/cos-overlay/",
+                "core/designsystem/",
+                "Prototyp Compose + test jednostkowy"
+            ],
+            "completed_at": "2025-10-24"
         }
     ],
-    "completed_tasks": [],
     "_template": {
         "current_tasks": [
             {

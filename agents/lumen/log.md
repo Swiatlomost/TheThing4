@@ -6,12 +6,13 @@
 ## Decision Journal
 | date | topic | outcome | next |
 |------|-------|---------|------|
+| 2025-10-24 | Implementacja Cos v0.1 | Struktura projektu + prototyp dodane | Przekazac do testow Kai |
 
 
 ## PDCA Snapshot
-- **Plan**: Przygotowac implementacje cyklu 2x10 s, gestow oraz generacji potomka.
-- **Do**: Opracowac wspolna logike Compose/overlay, plan testow jednostkowych.
-- **Check**: Prototyp gotowy do demo, testy jednostkowe do uruchomienia.
-- **Act**: Uzyskac feedback od Kai i iterowac jesli potrzeba.
+- **Plan**: Dostarczyc implementacje cyklu 2x10 s, gestow i strukturê projektu.
+- **Do**: Utworzyc moduly, repository/state machine, overlay service i Compose UI.
+- **Check**: Kod, manifest, gradle oraz test jednostkowy gotowe; projekt buduje sie lokalnie.
+- **Act**: Wspierac Kai w testach, iterowac po feedbacku.
 ## Archive
 - move closed notes here for future reference

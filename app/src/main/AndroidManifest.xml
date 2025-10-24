@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:name=".CosApplication"
+        android:allowBackup="false"
+        android:theme="@style/Theme.Cos">
+        <activity android:name="com.example.cos.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service
+            android:name="com.example.cos.overlay.LifecycleOverlayService"
+            android:exported="false"
+            android:permission="android.permission.SYSTEM_ALERT_WINDOW"/>
+    </application>
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+</manifest>
