@@ -1,5 +1,6 @@
 package com.example.cos.lifecycle
 
+import androidx.compose.ui.geometry.Offset
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -10,19 +11,26 @@ import kotlinx.coroutines.launch
 import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.sin
 
-enum class CellPhase { Seed, Bud, Mature }
+sealed class CellStage(val progress: Float) {
+    class Seed(progress: Float) : CellStage(progress)
+    class Bud(progress: Float) : CellStage(progress)
+    object Mature : CellStage(1f)
+}
 
 data class CellSnapshot(
     val id: String,
-    val phase: CellPhase,
-    val contacts: Set<String>,
-    val elapsedMillis: Long
+    val stage: CellStage,
+    val elapsedMillis: Long,
+    val center: Offset,
+    val parentId: String? = null
 )
 
-data class CosLifecycleState(
-    val cells: List<CellSnapshot>
-)
+data class CosLifecycleState(val cells: List<CellSnapshot>)
 
 interface CosLifecycleEngine {
     val state: StateFlow<CosLifecycleState>
@@ -41,9 +49,7 @@ class DefaultCosLifecycleEngine @Inject constructor(
 
     private var tickJob: Job? = null
 
-    init {
-        resume()
-    }
+    init { resume() }
 
     override fun pause() {
         tickJob?.cancel()
@@ -64,9 +70,10 @@ class DefaultCosLifecycleEngine @Inject constructor(
         cells = listOf(
             CellSnapshot(
                 id = ROOT_CELL_ID,
-                phase = CellPhase.Seed,
-                contacts = emptySet(),
-                elapsedMillis = 0L
+                stage = CellStage.Seed(progress = 0f),
+                elapsedMillis = 0L,
+                center = Offset.Zero,
+                parentId = null
             )
         )
     )
@@ -74,38 +81,38 @@ class DefaultCosLifecycleEngine @Inject constructor(
     private fun advanceState(state: CosLifecycleState): CosLifecycleState {
         val evolved = state.cells.map { cell ->
             val nextElapsed = cell.elapsedMillis + TICK_MS
-            val nextPhase = when {
-                cell.phase == CellPhase.Seed && nextElapsed >= SEED_DURATION -> CellPhase.Bud
-                cell.phase == CellPhase.Bud && nextElapsed >= BUD_DURATION -> CellPhase.Mature
-                else -> cell.phase
+            val nextStage = when (cell.stage) {
+                is CellStage.Seed -> {
+                    val progress = (nextElapsed / SEED_DURATION).coerceIn(0f, 1f)
+                    if (progress >= 1f) CellStage.Bud(0f) else CellStage.Seed(progress)
+                }
+                is CellStage.Bud -> {
+                    val progress = ((nextElapsed - SEED_DURATION) / BUD_DURATION).coerceIn(0f, 1f)
+                    if (progress >= 1f) CellStage.Mature else CellStage.Bud(progress)
+                }
+                CellStage.Mature -> CellStage.Mature
             }
-            cell.copy(phase = nextPhase, elapsedMillis = nextElapsed)
+            cell.copy(stage = nextStage, elapsedMillis = nextElapsed)
         }.toMutableList()
 
-        val matureCells = evolved.filter { it.phase == CellPhase.Mature }
-        val hasDetached = evolved.any { snapshot ->
-            snapshot.contacts.isNotEmpty() && snapshot.contacts.none { contactId ->
-                evolved.any { it.id == contactId }
-            }
-        }
-        if (hasDetached) {
-            // remove detached cells to preserve contact rule
-            evolved.removeIf { snapshot ->
-                snapshot.contacts.isNotEmpty() && snapshot.contacts.none { contactId ->
-                    evolved.any { it.id == contactId }
-                }
-            }
-        }
-        if (matureCells.isNotEmpty()) {
-            val parent = matureCells.random()
-            val alreadySpawned = evolved.any { parent.id in it.contacts }
-            if (!alreadySpawned) {
+        val matureCells = evolved.filter { it.stage is CellStage.Mature }
+        if (matureCells.size < MAX_CELLS && matureCells.isNotEmpty()) {
+            val parent = matureCells.first()
+            val hasChild = evolved.any { it.parentId == parent.id }
+            if (!hasChild) {
+                val existingChildren = state.cells.count { it.parentId == parent.id }
+                val direction = CONTACT_DIRECTIONS[existingChildren % CONTACT_DIRECTIONS.size]
+                val newCenter = Offset(
+                    parent.center.x + direction.x * CELL_OFFSET,
+                    parent.center.y + direction.y * CELL_OFFSET
+                )
                 evolved.add(
                     CellSnapshot(
                         id = UUID.randomUUID().toString(),
-                        phase = CellPhase.Seed,
-                        contacts = setOf(parent.id),
-                        elapsedMillis = 0L
+                        stage = CellStage.Seed(0f),
+                        elapsedMillis = 0L,
+                        center = newCenter,
+                        parentId = parent.id
                     )
                 )
             }
@@ -116,7 +123,14 @@ class DefaultCosLifecycleEngine @Inject constructor(
     companion object {
         private const val ROOT_CELL_ID = "root"
         private const val TICK_MS = 1_000L
-        private const val SEED_DURATION = 10_000L
-        private const val BUD_DURATION = 20_000L
+        private const val SEED_DURATION = 10_000f
+        private const val BUD_DURATION = 10_000f
+        private const val CELL_OFFSET = 2f
+        private const val MAX_CELLS = 8
+
+        private val CONTACT_DIRECTIONS = List(8) { index ->
+            val angle = (index / 8f) * 2f * PI.toFloat()
+            Offset(cos(angle), sin(angle))
+        }
     }
 }
