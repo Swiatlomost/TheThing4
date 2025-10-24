@@ -1,0 +1,47 @@
+{
+    "date": "2025-10-24",
+    "title": "CoS v0.1 vision intake",
+    "why": [
+        "Stworzyc zywy organizm dzialajacy identycznie w aplikacji i overlayu, budujacy spokojna, organiczna relacje.",
+        "\"Jedna zasada - w wielu formach\": uzytkownik ma czuc, ze to ten sam byt niezaleznie od kontekstu."
+    ],
+    "what": [
+        "Cykl zycia: kropka (10 s) -> pusty okrag (10 s) -> wypelniony okrag, nastepnie potomstwo w styku z komorka macierzysta.",
+        "Kazda komorka (poza pierwsza) musi miec fizyczny styk z inna; brak przyzwolenia na utrate styku.",
+        "Sterowanie dotykiem w obu trybach; double tap przelacza aplikacja <-> overlay.",
+        "Startujemy od nieruchomego organizmu; w przyszlosci planowany ped i odbijanie od krawedzi.",
+        "Czas faz jest na razie staly (2 x 10 s), w przyszlosci parametry bedzie sterowal inny system.",
+        "Kazda komorka otrzymuje unikalny identyfikator; pauzowanie reprodukcji pojawi sie w kolejnych iteracjach."
+    ],
+    "how": [
+        "Wspolna logika stanu i animacje dla obu trybow, z minimalnym wypelnianiem kolorem.",
+        "Obsluga gestow: tap, double tap, spawn potomka z komorki dojrzalej.",
+        "Mecanizm kontroli styku (np. sprawdzanie odleglosci) i wspolny timer faz."
+    ],
+    "pdca": {
+        "plan": "Okreslic wymagania dla Cos v0.1 oraz przygotowac propozycje zadan do sesji Orina.",
+        "do": "Rozmowa o cyklu, gestach, identyfikatorach i ograniczeniach obu trybow.",
+        "check": "Potwierdzone: 2 x 10 s fazy, obowiazkowy styk, identyczne zachowanie w obu trybach, brak historii rozmieszczen.",
+        "act": "Przekazac brief Orinowi, zasugerowac zadania dla agentow i przygotowac teren pod kolejne iteracje (ped, pauza)."
+    },
+    "questions": [
+        "Czy minimalne animacje (plynne wypelnianie) wystarcza na MVP?",
+        "Czy UI overlay wymaga dodatkowych wskazowek dla uzytkownika?"
+    ],
+    "recommendations": [
+        "Utworzyc sesje ORIN-20251024-001 (robocza nazwa) dla Cos v0.1.",
+        "ECHO: ryzyka braku styku, pauzy cyklu, gestow overlay.",
+        "VIREAL: architektura stanu organizmu i API overlay.",
+        "LUMEN: implementacja cyklu, animacji, identyfikatorow i gestow.",
+        "KAI: testy czasu animacji, double tap, spawnowania potomka.",
+        "SCRIBE: wpis \"Jedna zasada - w wielu formach\" w logu i kronice.",
+        "NYX: snapshot pamieci (ID komorek, parametry faz).",
+        "NODUS (opcjonalnie): weryfikacja uprawnien overlay."
+    ],
+    "open_items": [
+        "Pauzowanie cyklu i eksperymenty w trybie edycji po MVP.",
+        "Historia rozmieszczen/timeline - na razie tylko ID.",
+        "Ped i odbijanie od krawedzi do rozplanowania po walidacji MVP."
+    ],
+    "next_step": "Orin tworzy sesje na podstawie briefu, deleguje zadania agentom i uruchamia ich PDCA."
+}

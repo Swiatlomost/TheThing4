@@ -1,8 +1,9 @@
-# WORKFLOW.md - Process (v2.0)
+﻿# WORKFLOW.md - Process (v2.0)
 
 ## Session Ritual
 1. `[SESSION::START]` - run pre-task validation (status, logs, memories).
 2. Mira (Storywright) destyluje rozmowe z wlascicielem wizji i przygotowuje brief dla Orina.
+   - Storywright zapisuje brief w `agents/storywright/briefs/`; Orin siega po niego przy planowaniu.
 3. Orin loads memories, drafts the session file, and assigns agent tasks.
 4. Echo & Vireal analyse and propose options.
 5. Lumen & Nodus implement and integrate.

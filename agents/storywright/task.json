@@ -11,11 +11,12 @@
                 "status": "pending",
                 "assigned_at": "YYYY-MM-DD",
                 "last_update": "YYYY-MM-DD",
-                "notes": "Streszcz rozmowe i przygotuj sekcje do pliku sesji.",
+                "notes": "Streszcz rozmowę, przygotuj sekcje do pliku sesji i zapisz brief w JSON.",
                 "deliverables": [
                     "Conversation log (opcjonalnie)",
                     "Session brief dla Orina",
-                    "Lista pytan/ryzyk"
+                    "Lista pytan/ryzyk",
+                    "Draft pliku w sessions/ wraz z PDCA agentów"
                 ]
             }
         ],
