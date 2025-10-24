@@ -9,6 +9,7 @@
 - Multi-agent workflow (Orin, Echo, Vireal, Lumen, Kai, Scribe, Nyx, Nodus, Aurum, Mira).
 - Shared templates for sessions, ADRs, test reports, and retros.
 - Tooling to keep task boards, logs, and memories in sync.
+- Reference library under `docs/reference/` for architecture, UX, overlay, and tooling notes.
 
 ## Prompt Conventions
 - `[SESSION::START]` launch a new session.
