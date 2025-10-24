@@ -1,21 +1,22 @@
 {
     "agent": "Vireal",
-    "current_tasks": [
+    "current_tasks": [],
+    "completed_tasks": [
         {
             "task_id": "VIREAL-20251024-001",
             "parent_task_id": "ORIN-20251024-001",
             "title": "Architektura cyklu Cos v0.1",
-            "status": "pending",
+            "status": "done",
             "assigned_at": "2025-10-24",
             "last_update": "2025-10-24",
-            "notes": "Przygotuj od zera architekture Cos v0.1 wraz z modu\u0142ami app/overlay",
+            "notes": "ADR i diagram architektury gotowe.",
             "deliverables": [
-                "ADR architektury",
-                "Diagram przeplywu"
-            ]
+                "docs/architecture/ADR-2025-10-24-cos-architecture.md",
+                "Diagram integracji overlay/app"
+            ],
+            "completed_at": "2025-10-24"
         }
     ],
-    "completed_tasks": [],
     "_template": {
         "current_tasks": [
             {

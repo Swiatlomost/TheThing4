@@ -65,15 +65,6 @@
             "notes": "Notuj obserwacje do retro o nowym pipeline (Mira/PDCA)."
         },
         {
-            "agent": "Vireal",
-            "task_id": "VIREAL-20251024-001",
-            "title": "Architektura cyklu Cos v0.1",
-            "parent": "ORIN-20251024-001",
-            "status": "pending",
-            "last_update": "2025-10-24",
-            "notes": "Architektura w toku (ADR + diagram do przygotowania)."
-        },
-        {
             "agent": "Lumen",
             "task_id": "LUMEN-20251024-001",
             "title": "Implementacja cyklu Cos v0.1",
@@ -92,6 +83,15 @@
             "status": "done",
             "last_update": "2025-10-24",
             "notes": "Zidentyfikuj ryzyka styku, pauzy cyklu i gestow overlay. (analiza zakonczona)"
+        },
+        {
+            "agent": "Vireal",
+            "task_id": "VIREAL-20251024-001",
+            "title": "Architektura cyklu Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-24",
+            "notes": "ADR i diagram architektury gotowe."
         }
     ],
     "_template": {
