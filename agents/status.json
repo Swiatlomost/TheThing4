@@ -63,15 +63,6 @@
             "status": "pending",
             "last_update": "2025-10-24",
             "notes": "Notuj obserwacje do retro o nowym pipeline (Mira/PDCA)."
-        },
-        {
-            "agent": "Lumen",
-            "task_id": "LUMEN-20251024-001",
-            "title": "Implementacja cyklu Cos v0.1",
-            "parent": "ORIN-20251024-001",
-            "status": "pending",
-            "last_update": "2025-10-24",
-            "notes": "Implementacja do wykonania (prototyp + testy)."
         }
     ],
     "completed_tasks": [
@@ -92,6 +83,15 @@
             "status": "done",
             "last_update": "2025-10-24",
             "notes": "ADR i diagram architektury gotowe."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251024-001",
+            "title": "Implementacja cyklu Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-24",
+            "notes": "Implementacja bazowa Cos v0.1 + struktura modulu."
         }
     ],
     "_template": {
