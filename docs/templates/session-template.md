@@ -16,6 +16,7 @@
 ## Inputs
 - Key context files to review
 - Links to earlier decisions or sessions
+- Storywright brief: `agents/storywright/briefs/YYYY-MM-DD-*.json`
 
 ## Delegation Plan
 | Agent | Task ID | Scope | Deliverable |

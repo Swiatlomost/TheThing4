@@ -1,0 +1,17 @@
+﻿{
+  "date": "YYYY-MM-DD",
+  "title": "Coś v0.1 vision intake",
+  "why": "Dlaczego temat jest wazny teraz",
+  "what": "Kluczowe fakty i ograniczenia",
+  "how": "Proponowane kroki / pomysly",
+  "what_if": "Otwarte pytania i warianty",
+  "pdca": {
+    "plan": "Co zamierzamy osiagnac",
+    "do": "Jakie dzialania wykonamy",
+    "check": "Jak sprawdzimy wynik",
+    "act": "Jakie decyzje po walidacji"
+  },
+  "questions": ["Lista pytan do doprecyzowania"],
+  "recommendations": ["Propozycje zadan dla Orina"],
+  "session_hint": "ORIN-YYYYMMDD-XXX"
+}
