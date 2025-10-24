@@ -11,15 +11,6 @@
             "notes": "Deleguje prace nad cyklem Cos."
         },
         {
-            "agent": "Kai",
-            "task_id": "KAI-20251024-001",
-            "title": "Plan testow Cos v0.1",
-            "parent": "ORIN-20251024-001",
-            "status": "pending",
-            "last_update": "2025-10-24",
-            "notes": "Czeka na wynik implementacji (plan testow w kolejce)."
-        },
-        {
             "agent": "Scribe",
             "task_id": "SCRIBE-20251024-001",
             "title": "Dokumentacja Cos v0.1",
@@ -92,6 +83,15 @@
             "status": "done",
             "last_update": "2025-10-24",
             "notes": "Implementacja bazowa Cos v0.1 + struktura modulu."
+        },
+        {
+            "agent": "Kai",
+            "task_id": "KAI-20251024-001",
+            "title": "Plan testow Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-24",
+            "notes": "Plan testow Cos v0.1 oraz raport wynikow dostarczone."
         }
     ],
     "_template": {

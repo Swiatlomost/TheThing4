@@ -8,7 +8,7 @@
             "status": "pending",
             "assigned_at": "2025-10-24",
             "last_update": "2025-10-24",
-            "notes": "Dodaj ID komorek, parametry czasu i heurystyki do memory.json.",
+            "notes": "Zaktualizuj memory.json i wykonaj snapshot po testach Kai.",
             "deliverables": [
                 "Zaktualizowany memory.json",
                 "Snapshot"
