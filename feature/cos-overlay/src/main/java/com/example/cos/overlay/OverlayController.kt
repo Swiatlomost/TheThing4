@@ -4,10 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.provider.Settings
 import androidx.core.content.ContextCompat
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class OverlayController @Inject constructor(
-    private val context: Context
+    @ApplicationContext private val context: Context
 ) {
     fun hasPermission(): Boolean = Settings.canDrawOverlays(context)
 
