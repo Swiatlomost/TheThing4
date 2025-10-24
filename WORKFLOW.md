@@ -5,6 +5,7 @@
 2. Mira (Storywright) destyluje rozmowe z wlascicielem wizji i przygotowuje brief dla Orina.
    - Storywright zapisuje brief w `agents/storywright/briefs/`; Orin siega po niego przy planowaniu.
 3. Orin loads memories, drafts the session file, and assigns agent tasks.
+   - Po aktywacji sesji mechanizm koordynacji (asystent) wysyla zlecenia `[AGENT::...]` wedlug planu; Orin interweniuje tylko przy decyzjach lub eskalacjach.
 4. Echo & Vireal analyse and propose options.
 5. Lumen & Nodus implement and integrate.
 6. Kai reviews quality gates.
