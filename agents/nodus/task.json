@@ -1,6 +1,20 @@
 {
     "agent": "Nodus",
-    "current_tasks": [],
+    "current_tasks": [
+        {
+            "task_id": "NODUS-20251024-001",
+            "parent_task_id": "ORIN-20251024-001",
+            "title": "Overlay tooling check",
+            "status": "pending",
+            "assigned_at": "2025-10-24",
+            "last_update": "2025-10-24",
+            "notes": "Zweryfikuj uprawnienia overlay i konfiguracje FGS/manifest.",
+            "deliverables": [
+                "Raport kompatybilnosci",
+                "Checklist TODO"
+            ]
+        }
+    ],
     "completed_tasks": [],
     "_template": {
         "current_tasks": [
