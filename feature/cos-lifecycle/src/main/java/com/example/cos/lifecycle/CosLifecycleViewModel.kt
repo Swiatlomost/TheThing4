@@ -17,7 +17,7 @@ class CosLifecycleViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _state = mutableStateOf(repository.initialState())
-    val state: State<CosLifecycleState> = _state
+    val state: State<CosLifecycleState> get() = _state
 
     private var tickJob: Job? = null
 
