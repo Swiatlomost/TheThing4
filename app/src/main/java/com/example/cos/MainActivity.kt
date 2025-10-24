@@ -3,29 +3,45 @@ package com.example.cos
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.cos.designsystem.theme.CosTheme
 import com.example.cos.lifecycle.CosLifecycleScreen
 import com.example.cos.lifecycle.CosLifecycleViewModel
+import com.example.cos.overlay.OverlayController
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject lateinit var overlayController: OverlayController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CosApp()
+            CosApp(overlayController = overlayController)
         }
     }
 }
 
 @Composable
-fun CosApp(viewModel: CosLifecycleViewModel = hiltViewModel()) {
-    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-        CosLifecycleScreen(state = viewModel.state)
+fun CosApp(
+    overlayController: OverlayController,
+    viewModel: CosLifecycleViewModel = hiltViewModel()
+) {
+    val lifecycleState by viewModel.state.collectAsState()
+    CosTheme {
+        CosLifecycleScreen(
+            state = lifecycleState,
+            onToggleOverlay = {
+                if (overlayController.hasPermission()) {
+                    overlayController.startOverlayService()
+                } else {
+                    overlayController.requestPermission()
+                }
+            }
+        )
     }
 }

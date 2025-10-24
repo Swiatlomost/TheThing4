@@ -1,41 +1,21 @@
 package com.example.cos.lifecycle
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
 class CosLifecycleViewModel @Inject constructor(
-    private val repository: CosLifecycleRepository,
-    private val timeProvider: TimeProvider
+    private val engine: CosLifecycleEngine
 ) : ViewModel() {
 
-    private val _state = mutableStateOf(repository.initialState())
-    val state: State<CosLifecycleState> get() = _state
+    val state: StateFlow<CosLifecycleState> =
+        engine.state.stateIn(viewModelScope, SharingStarted.Eagerly, engine.state.value)
 
-    private var tickJob: Job? = null
-
-    init {
-        resumeCycle()
-    }
-
-    fun pauseCycle() {
-        tickJob?.cancel()
-    }
-
-    fun resumeCycle() {
-        tickJob?.cancel()
-        tickJob = viewModelScope.launch {
-            while (true) {
-                delay(timeProvider.tickMillis())
-                _state.value = repository.advanceState(_state.value)
-            }
-        }
-    }
+    fun pauseCycle() = engine.pause()
+    fun resumeCycle() = engine.resume()
 }

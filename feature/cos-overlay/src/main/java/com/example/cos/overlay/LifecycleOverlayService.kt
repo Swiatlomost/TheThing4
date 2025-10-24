@@ -11,23 +11,35 @@ import android.os.IBinder
 import android.view.Gravity
 import android.view.WindowManager
 import android.widget.FrameLayout
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.input.pointer.consumeAllChanges
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.example.cos.designsystem.theme.CosTheme
+import com.example.cos.lifecycle.CosLifecycleCanvas
+import com.example.cos.lifecycle.CosLifecycleEngine
+import com.example.cos.lifecycle.CosLifecycleState
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.EntryPointAccessors
 
 @AndroidEntryPoint
 class LifecycleOverlayService : android.app.Service() {
 
-    // TODO: obtain shared CosLifecycleViewModel via EntryPoint + ViewModelProvider
     private lateinit var windowManager: WindowManager
     private var overlayView: FrameLayout? = null
+    private var layoutParams: WindowManager.LayoutParams? = null
+
+    private val engine: CosLifecycleEngine by lazy {
+        EntryPointAccessors.fromApplication(applicationContext, OverlayEntryPoint::class.java).engine()
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -42,35 +54,75 @@ class LifecycleOverlayService : android.app.Service() {
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
             PixelFormat.TRANSLUCENT
         ).apply {
             gravity = Gravity.TOP or Gravity.START
-            x = 50
-            y = 50
+            x = 120
+            y = 120
         }
+        layoutParams = params
 
         overlayView = FrameLayout(this).apply {
-            val composeView = ComposeView(context).apply {
-                setContent { OverlayPreview() }
+            val composeView = androidx.compose.ui.platform.ComposeView(context).apply {
+                setContent {
+                    val lifecycleState by engine.state.collectAsState()
+                    CosTheme {
+                        OverlayContent(
+                            state = lifecycleState,
+                            onDrag = { dx, dy -> updatePosition(dx, dy) },
+                            onDismiss = { launchApp(); stopSelf() }
+                        )
+                    }
+                }
             }
             addView(composeView)
         }
         windowManager.addView(overlayView, params)
     }
 
-    @Composable
-    private fun OverlayPreview() {
-        Box(modifier = Modifier.size(120.dp)) {
-            // TODO: render CosLifecycleScreen with shared state
+    private fun updatePosition(dx: Float, dy: Float) {
+        val params = layoutParams ?: return
+        params.x += dx.toInt()
+        params.y += dy.toInt()
+        windowManager.updateViewLayout(overlayView, params)
+    }
+
+    private fun launchApp() {
+        val launchIntent = packageManager.getLaunchIntentForPackage(packageName)?.apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
+        if (launchIntent != null) {
+            startActivity(launchIntent)
+        }
+    }
+
+    @Composable
+    private fun OverlayContent(
+        state: CosLifecycleState,
+        onDrag: (Float, Float) -> Unit,
+        onDismiss: () -> Unit
+    ) {
+        CosLifecycleCanvas(
+            state = state,
+            modifier = Modifier
+                .size(160.dp)
+                .pointerInput(Unit) {
+                    detectDragGestures { change, dragAmount ->
+                        change.consumeAllChanges()
+                        onDrag(dragAmount.x, dragAmount.y)
+                    }
+                }
+                .pointerInput(Unit) {
+                    detectTapGestures(onDoubleTap = { onDismiss() })
+                }
+        )
     }
 
     private fun buildNotification(): Notification = NotificationCompat.Builder(this, CHANNEL_ID)
         .setContentTitle("Cos overlay active")
         .setSmallIcon(android.R.drawable.ic_menu_info_details)
         .setOngoing(true)
-        .setColor(Color.Magenta.hashCode())
         .build()
 
     private fun createNotificationChannel() {
