@@ -1,21 +1,22 @@
 {
     "agent": "Kai",
-    "current_tasks": [
+    "current_tasks": [],
+    "completed_tasks": [
         {
             "task_id": "KAI-20251024-001",
             "parent_task_id": "ORIN-20251024-001",
             "title": "Plan testow Cos v0.1",
-            "status": "pending",
+            "status": "done",
             "assigned_at": "2025-10-24",
             "last_update": "2025-10-24",
-            "notes": "Zdefiniuj i uruchom testy dla nowej implementacji",
+            "notes": "Plan testow Cos v0.1 oraz raport wynikow dostarczone.",
             "deliverables": [
-                "Plan testow",
-                "Raport wynikow"
-            ]
+                "docs/testing/cos-v0.1-test-plan.md",
+                "Raport wynikow (Kai)"
+            ],
+            "completed_at": "2025-10-24"
         }
     ],
-    "completed_tasks": [],
     "_template": {
         "current_tasks": [
             {
