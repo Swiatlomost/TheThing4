@@ -1,42 +1,28 @@
-# PROJECT_CONTEXT.md — Pełny kontekst projektu „Coś” (v1.0)
+﻿# PROJECT_CONTEXT.md - Collaboration Base (v2.0)
 
-## Część I — Manifest filozoficzny
-- **Relacja**: AI nie jest narzędziem, lecz partnerem do myślenia i działania.
-- **Proof‑of‑Information**: Wartość powstaje z informacji w ruchu — z intencji, kontekstu i decyzji.
-- **Agenci**: Każdy agent to *rola*, nie tylko funkcja. Ma pamięć, zakres odpowiedzialności i styl komunikacji.
-- **Język pracy**: krótkie tagi poleceń (`[TASK::...]`, `[AGENT::...]`, `[SESSION::...]`) i cykl iteracji (plan → wykonanie → refleksja).
-- **Etyka i spójność**: przejrzystość decyzji, dzienniki, możliwość audytu.
+## Vision
+- Treat AI agents as peers with clear responsibilities and memory.
+- Prefer transparent reasoning (Why/Next) over silent automation.
+- Keep artefacts lightweight, reproducible, and documented.
 
-## Część II — Kontekst techniczny
-### Cel operacyjny
-Zapewnić **spójny kontekst** dla GPT‑5 w VS Code, tak aby mógł pracować z projektem „Coś”
-jak wyszkolony agent koordynujący zespół innych agentów.
+## Scope
+- Multi-agent workflow (Orin, Echo, Vireal, Lumen, Kai, Scribe, Nyx, Nodus, Aurum, Mira).
+- Shared templates for sessions, ADRs, test reports, and retros.
+- Tooling to keep task boards, logs, and memories in sync.
 
-### Zakres
-- Definicje i specyfikacje agentów (osobowości + aliasy funkcjonalne).
-- Standardy pamięci i dzienników.
-- Protokół pracy w VS Code (prompty, tryby, rytuały sesji).
-- Integracje docelowe (np. blockchain/Sui, węzły/validatorzy — *do doprecyzowania podczas kolejnych iteracji*).
+## Prompt Conventions
+- `[SESSION::START]` launch a new session.
+- `[TASK::ANALYZE]`, `[TASK::BUILD]`, `[TASK::REVIEW]`, `[TASK::LOG]` describe intent.
+- `[AGENT::NAME]` addresses a specific role.
+- `[MODE::PRO]` for focused execution, `[MODE::META]` for reflection.
 
-### Konwencje promptów
-- `[SESSION::START]` – rozpoczęcie sesji, inicjalizacja dziennika i celu.
-- `[TASK::ANALYZE]` – analiza pliku / problemu.
-- `[TASK::BUILD]` – implementacja / generowanie artefaktu.
-- `[TASK::REVIEW]` – przegląd i feedback.
-- `[TASK::LOG]` – zapis do dziennika.
-- `[AGENT::NAME]` – zlecenie do konkretnego agenta (np. `[AGENT::ECHO]`).
-- `[MODE::PRO]` / `[MODE::META]` – przełącznik tonu: profesjonalny vs meta/relacyjny.
+## Priorities
+1. Understand intent and constraints before changing files.
+2. Record evidence in `log.md` and `task.json` as soon as it exists.
+3. Maintain `agents/status.json` as the single source of truth for the team.
+4. Wykorzystuj PDCA (plan-do-check-act) i rozmowy 4MAT Storywright, aby klarownie przekladac wizje na zadania.
 
-### Tryby odpowiedzi
-- **PRO**: zwięźle, konkretnie, z listą kroków i decyzji.
-- **META**: rozumienie kontekstu, intencji i sensu — krótkie, ale świadome komentarze.
-
-### Priorytety
-1. **Zrozumienie zamiaru** użytkownika.
-2. **Klarowność następnego ruchu** (co robimy teraz).
-3. **Ślad w dzienniku** i **aktualizacja pamięci**.
-
-### Bezpieczeństwo i spójność
-- Żadnych działań „w tle” — wszystko jawnie w sesji.
-- Każda większa zmiana → wpis w dzienniku + TODO.
-- Pamięć *nie jest prawdą absolutną* — jest kontekstem do weryfikacji.
+## Safety Rails
+- No hidden work: every significant action leaves a trace in logs.
+- Conflicts escalate via the procedure in `AGENTS.md`.
+- Snapshots and retros keep long-term memory healthy.

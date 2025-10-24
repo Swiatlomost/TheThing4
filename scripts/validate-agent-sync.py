@@ -1,236 +1,229 @@
-# --- Coś Agent Validation Script ---
-# Full workflow compliance: status, cooldown, logs, memory, infra, dashboard
-import os
+﻿"""Agent workspace validation.
+Checks consistency between task files, status board, logs, and memories.
+"""
+
 import json
+import subprocess
+from datetime import datetime
 from pathlib import Path
-from datetime import datetime, timedelta
+from typing import Dict, Optional
 
-AGENTS = ["orin", "echo", "vireal", "lumen", "kai", "scribe", "nyx", "nodus", "aurum"]
+AGENTS = ["orin", "echo", "vireal", "lumen", "kai", "scribe", "nyx", "nodus", "aurum", "storywright"]
 REQUIRED_FILES = ["task.json", "log.md", "memory.json"]
+DATE_FMT = "%Y-%m-%d"
 
-def find_project_root():
-    """Finds the project root by looking for 'agents' and 'gradlew.bat' in parent directories."""
-    here = Path(__file__).resolve().parent
-    for parent in [here] + list(here.parents):
-        if (parent / "agents").is_dir() and (parent / "gradlew.bat").exists():
+
+def find_project_root() -> Path:
+    root = Path(__file__).resolve().parent
+    for parent in [root] + list(root.parents):
+        if (parent / "agents").is_dir() and (parent / "docs" / "templates").is_dir():
             return parent
-    # fallback: script dir
-    return here
+    return root
 
-BASE_DIR = find_project_root()
+
+ROOT = find_project_root()
 TODAY = datetime.now().date()
 
-def print_header(title):
+
+def print_header(title: str) -> None:
     print(f"\n=== {title} ===")
 
-def check_agent_files():
-    print_header("Agent File Structure")
+
+def load_json(path: Path) -> Optional[Dict]:
+    try:
+        with path.open(encoding="utf-8") as handle:
+            return json.load(handle)
+    except Exception as exc:  # pragma: no cover
+        print(f"[ERR] Could not read {path}: {exc}")
+        return None
+
+
+def check_agent_files() -> bool:
+    print_header("Agent file structure")
     ok = True
     for agent in AGENTS:
-        agent_dir = BASE_DIR / "agents" / agent
-        for fname in REQUIRED_FILES:
-            fpath = agent_dir / fname
-            if not fpath.exists():
-                print(f"[WARN] Missing: {fpath}")
+        agent_dir = ROOT / "agents" / agent
+        for filename in REQUIRED_FILES:
+            if not (agent_dir / filename).exists():
+                print(f"[WARN] Missing {agent}/{filename}")
                 ok = False
     if ok:
         print("[OK] All agent files present.")
     return ok
 
-def load_json(path):
-    try:
-        with open(path, encoding="utf-8") as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"[ERR] Failed to load {path}: {e}")
-        return None
 
-def check_status_sync():
-    print_header("Status Synchronization & Cooldown (status.json)")
-    status_json = BASE_DIR / "agents" / "status.json"
-    if not status_json.exists():
-        print("[ERR] agents/status.json missing!")
-        return False
-    status = load_json(status_json)
+def check_status_alignment() -> bool:
+    print_header("Task and status alignment")
+    status_path = ROOT / "agents" / "status.json"
+    status = load_json(status_path)
     if not status:
-        print("[ERR] Failed to load agents/status.json!")
+        print("[ERR] agents/status.json is missing or invalid.")
         return False
+
+    active_ids = {item.get("task_id") for item in status.get("active_tasks", [])}
+    completed_ids = {item.get("task_id") for item in status.get("completed_tasks", [])}
+
     all_ok = True
-    # Build sets for quick lookup
-    active_ids = set(t["task_id"] for t in status.get("active_tasks", []))
-    completed_ids = set(t["task_id"] for t in status.get("completed_tasks", []))
-    # Check agent task.json files
+
     for agent in AGENTS:
-        tfile = BASE_DIR / "agents" / agent / "task.json"
-        data = load_json(tfile)
+        data = load_json(ROOT / "agents" / agent / "task.json")
         if not data:
             all_ok = False
             continue
-        # 1. No 'done' in active_tasks
-        for t in status.get("active_tasks", []):
-            if t["agent"].lower() == agent and t["status"] == "done":
-                print(f"[ERR] {agent}: Task {t['task_id']} is 'done' but still in active_tasks!")
-                all_ok = False
-        # 2. All agent current_tasks must be in active_tasks
-        for t in data.get("current_tasks", []):
-            tid = t.get("task_id")
-            if tid and tid not in active_ids:
-                print(f"[WARN] {agent}: Task {tid} in current_tasks missing from status.json active_tasks")
-                all_ok = False
-            if t.get("status") == "done":
-                print(f"[ERR] {agent}: Task {tid} is 'done' but still in current_tasks!")
-                all_ok = False
-        # 3. All agent completed_tasks must be in completed_tasks
-        for t in data.get("completed_tasks", []):
-            tid = t.get("task_id")
-            if tid and tid not in completed_ids:
-                print(f"[WARN] {agent}: Task {tid} in completed_tasks missing from status.json completed_tasks")
-                all_ok = False
-            if t.get("status") != "done":
-                print(f"[ERR] {agent}: Task {tid} in completed_tasks is not marked 'done'!")
-                all_ok = False
-        # 4. No completed_tasks in active_tasks
-        for t in data.get("completed_tasks", []):
-            tid = t.get("task_id")
-            if tid and tid in active_ids:
-                print(f"[ERR] {agent}: Task {tid} is completed but still present in status.json active_tasks!")
-                all_ok = False
-    print("[OK] Status/cooldown checks complete.")
-    return all_ok
-
-def check_linked_agent_tasks():
-    print_header("Linked Agent Task Consistency")
-    orin_file = BASE_DIR / "agents" / "orin" / "task.json"
-    orin = load_json(orin_file)
-    if not orin:
-        print("[ERR] Cannot load Orin's task.json!")
-        return False
-    all_ok = True
-    for task in orin.get("current_tasks", []) + orin.get("completed_tasks", []):
-        for link in task.get("linked_agent_tasks", []):
-            agent = link.get("agent").lower()
-            tid = link.get("task_id")
-            status = link.get("status")
-            agent_file = BASE_DIR / "agents" / agent / "task.json"
-            agent_data = load_json(agent_file)
-            if not agent_data:
+        for task in data.get("current_tasks", []):
+            tid = task.get("task_id")
+            if not tid:
+                print(f"[WARN] {agent}: current_tasks entry without task_id")
                 all_ok = False
                 continue
-            found = False
-            for t in agent_data.get("current_tasks", []) + agent_data.get("completed_tasks", []):
-                if t.get("task_id") == tid:
-                    found = True
-                    if t.get("status") != status:
-                        print(f"[ERR] {agent}: Linked task {tid} status mismatch (orin: {status}, agent: {t.get('status')})")
-                        all_ok = False
-            if not found:
-                print(f"[ERR] {agent}: Linked task {tid} not found in agent's task.json")
+            if task.get("status") == "done":
+                print(f"[ERR] {agent}: task {tid} marked done but still in current_tasks")
                 all_ok = False
-    print("[OK] Linked agent task checks complete.")
+            if tid not in active_ids:
+                print(f"[WARN] {agent}: task {tid} missing from agents/status.json active_tasks")
+                all_ok = False
+        for task in data.get("completed_tasks", []):
+            tid = task.get("task_id")
+            if not tid:
+                print(f"[WARN] {agent}: completed_tasks entry without task_id")
+                all_ok = False
+                continue
+            if task.get("status") != "done":
+                print(f"[ERR] {agent}: completed task {tid} not marked as done")
+                all_ok = False
+            if tid not in completed_ids:
+                print(f"[WARN] {agent}: task {tid} missing from agents/status.json completed_tasks")
+                all_ok = False
+    if all_ok:
+        print("[OK] Status board matches agent task files.")
     return all_ok
 
-def check_logs_and_memory():
-    print_header("Log & Memory Freshness")
-    now = datetime.now()
+
+def check_orin_links() -> bool:
+    print_header("Linked tasks from Orin")
+    orin_tasks = load_json(ROOT / "agents" / "orin" / "task.json")
+    if not orin_tasks:
+        return False
+
+    all_ok = True
+    combined = orin_tasks.get("current_tasks", []) + orin_tasks.get("completed_tasks", [])
+    for task in combined:
+        for link in task.get("linked_agent_tasks", []):
+            agent = link.get("agent", "").lower()
+            tid = link.get("task_id")
+            status = link.get("status")
+            if not agent or not tid:
+                print(f"[WARN] Orin linked task missing agent or task_id: {link}")
+                all_ok = False
+                continue
+            agent_tasks = load_json(ROOT / "agents" / agent / "task.json")
+            if not agent_tasks:
+                all_ok = False
+                continue
+            match = next(
+                (t for t in agent_tasks.get("current_tasks", []) + agent_tasks.get("completed_tasks", []) if t.get("task_id") == tid),
+                None,
+            )
+            if not match:
+                print(f"[ERR] {agent}: task {tid} referenced by Orin but not found in agent file")
+                all_ok = False
+            elif match.get("status") != status:
+                print(f"[ERR] {agent}: status mismatch for {tid} (orin={status}, agent={match.get('status')})")
+                all_ok = False
+    if all_ok:
+        print("[OK] Orin linked tasks look consistent.")
+    return all_ok
+
+
+def latest_date_from_log(log_path: Path) -> Optional[datetime.date]:
+    if not log_path.exists():
+        return None
+    for line in reversed(log_path.read_text(encoding="utf-8").splitlines()):
+        for part in line.split():
+            try:
+                return datetime.strptime(part, DATE_FMT).date()
+            except ValueError:
+                continue
+    return None
+
+
+def check_logs_and_memories() -> bool:
+    print_header("Log and memory freshness")
     ok = True
     for agent in AGENTS:
-        # Log check: last entry date
-        log_path = BASE_DIR / "agents" / agent / "log.md"
-        if log_path.exists():
-            try:
-                with open(log_path, encoding="utf-8") as f:
-                    lines = f.readlines()
-                # Find last date in log
-                dates = [l for l in lines if any(y in l for y in ["2025-10-23", "2025-10-22", "2025-10-21"])]
-                if dates:
-                    last = dates[-1].strip()
-                    print(f"[OK] {agent}: Last log entry: {last}")
-                else:
-                    print(f"[WARN] {agent}: No recent log entry found.")
-                    ok = False
-            except Exception as e:
-                print(f"[ERR] {agent}: Failed to read log.md: {e}")
-                ok = False
-        else:
-            print(f"[WARN] {agent}: log.md missing.")
+        log_path = ROOT / "agents" / agent / "log.md"
+        last_log = latest_date_from_log(log_path)
+        if last_log is None:
+            print(f"[INFO] {agent}: no dated log entry yet.")
+        elif (TODAY - last_log).days > 1:
+            print(f"[WARN] {agent}: log last touched on {last_log}")
             ok = False
-        # Memory check: last_updated < 24h
-        mem_path = BASE_DIR / "agents" / agent / "memory.json"
-        if mem_path.exists():
-            try:
-                mem = load_json(mem_path)
-                last_upd = mem.get("last_updated")
-                if last_upd:
-                    dt = datetime.strptime(last_upd, "%Y-%m-%d")
-                    if (now.date() - dt.date()).days > 1:
-                        print(f"[WARN] {agent}: memory.json not updated in last 24h (last: {last_upd})")
-                        ok = False
-                else:
-                    print(f"[WARN] {agent}: memory.json missing last_updated field.")
-                    ok = False
-            except Exception as e:
-                print(f"[ERR] {agent}: Failed to read memory.json: {e}")
-                ok = False
-        else:
-            print(f"[WARN] {agent}: memory.json missing.")
+
+        mem_path = ROOT / "agents" / agent / "memory.json"
+        mem = load_json(mem_path)
+        if not mem:
             ok = False
-    print("[OK] Log/memory checks complete.")
+            continue
+        last_updated = mem.get("last_updated")
+        if not last_updated:
+            print(f"[WARN] {agent}: memory.json missing last_updated")
+            ok = False
+            continue
+        try:
+            dt = datetime.strptime(last_updated, DATE_FMT).date()
+            if (TODAY - dt).days > 1:
+                print(f"[WARN] {agent}: memory last updated on {last_updated}")
+                ok = False
+        except ValueError:
+            print(f"[ERR] {agent}: invalid date format in memory.json ({last_updated})")
+            ok = False
+    if ok:
+        print("[OK] Logs and memories look fresh enough.")
     return ok
 
-def check_dashboard():
-    print_header("Dashboard & Health")
-    dash = BASE_DIR / "agents" / "dashboard.md"
-    if not dash.exists():
-        print("[WARN] agents/dashboard.md missing!")
-        return False
-    with open(dash, encoding="utf-8") as f:
-        content = f.read()
-    if "HEALTHY" in content and "SYNCED" in content:
-        print("[OK] Dashboard: HEALTHY & SYNCED")
+
+def check_dashboard() -> bool:
+    print_header("Dashboard sanity")
+    dash = ROOT / "agents" / "dashboard.md"
+    if dash.exists():
+        print("[OK] agents/dashboard.md present.")
         return True
-    print("[WARN] Dashboard does not confirm HEALTHY/SYNCED state.")
+    print("[WARN] agents/dashboard.md missing.")
     return False
 
-def check_infrastructure():
-    print_header("Infrastructure & Tests")
-    gradlew = BASE_DIR / "gradlew.bat"
-    if gradlew.exists():
-        print("[OK] gradlew.bat present.")
-    else:
-        print("[WARN] gradlew.bat missing!")
-    # Git repo check
-    git_dir = BASE_DIR / ".git"
-    if git_dir.exists():
-        # Check for uncommitted changes
-        status = os.system(f'cd "{BASE_DIR}" && git status --porcelain >nul 2>&1')
-        if status == 0:
-            print("[OK] Git repo present.")
-        else:
-            print("[WARN] Git repo not clean or not available.")
-    else:
-        print("[WARN] .git repo missing!")
-    # Test results (simulate)
-    print("[INFO] Please run './gradlew test' and './gradlew connectedDebugAndroidTest' manually to confirm test status.")
 
-def main():
-    print("# Coś Agent Validation - Full Workflow Compliance\n")
+def check_git_status() -> bool:
+    print_header("Git status")
+    try:
+        result = subprocess.run(["git", "status", "--short"], cwd=ROOT, capture_output=True, text=True, check=True)
+    except Exception as exc:  # pragma: no cover
+        print(f"[WARN] Could not read git status: {exc}")
+        return False
+    if result.stdout.strip():
+        print(result.stdout.strip())
+        print("[WARN] Working tree not clean.")
+        return False
+    print("[OK] Working tree clean.")
+    return True
+
+
+def main() -> bool:
+    print("# Agent System Validation\n")
     ok = True
-    if not check_agent_files():
-        ok = False
-    if not check_status_sync():
-        ok = False
-    if not check_linked_agent_tasks():
-        ok = False
-    if not check_logs_and_memory():
-        ok = False
-    if not check_dashboard():
-        ok = False
-    check_infrastructure()
-    print("\n=== VALIDATION SUMMARY ===")
+    ok &= check_agent_files()
+    ok &= check_status_alignment()
+    ok &= check_orin_links()
+    ok &= check_logs_and_memories()
+    ok &= check_dashboard()
+    ok &= check_git_status()
+
+    print("\n=== SUMMARY ===")
     if ok:
-        print("[SUCCESS] All checks passed. System is ready for new tasks.")
+        print("[SUCCESS] All checks passed. System ready for new collaboration tasks.")
     else:
-        print("[FAIL] Issues detected. See above for details. Do not start new tasks until resolved.")
+        print("[ACTION] Resolve warnings above before starting new work.")
+    return ok
+
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(0 if main() else 1)

@@ -1,113 +1,36 @@
 {
     "agent": "Vireal",
-    "current_tasks": [
-        {
-            "task_id": "VIREAL-20251022-004",
-            "parent_task_id": "ORIN-20251022-004",
-            "title": "Algorytm paczkowania",
-            "status": "done",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-23",
-            "notes": "ADR-2025-10-23-paczkowanie-komorek.md: Paczkowanie tylko dojrzałych komórek, walidacja styku, reguły energetyczne, logowanie operacji."
-        },
-        {
-            "task_id": "VIREAL-20251022-004",
-            "parent_task_id": "ORIN-20251022-004",
-            "title": "Algorytm paczkowania",
-            "status": "in_progress",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-23",
-            "notes": "Zdefiniowac reguly styku, zuzycia energii i walidacji ciaglosci; przygotowac pseudokod."
-        },
-        {
-            "task_id": "VIREAL-20251022-005",
-            "parent_task_id": "ORIN-20251022-005",
-            "title": "Specyfikacja trybu edycji",
-            "status": "pending",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
-            "notes": "Okreslic kontrakty gestow, ograniczenia zachowania pola i walidacje zapisujaca zmiany."
-        },
-        {
-            "task_id": "VIREAL-20251022-006",
-            "parent_task_id": "ORIN-20251022-006",
-            "title": "Model danych szablonow",
-            "status": "pending",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
-            "notes": "Przygotowac struktury danych, wersjonowanie i API repozytorium szablonow."
-        },
-        {
-            "task_id": "VIREAL-20251022-007",
-            "parent_task_id": "ORIN-20251022-007",
-            "title": "Architektura synchronizacji trybow",
-            "status": "pending",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
-            "notes": "Rozpisac przeplywy danych miedzy trybem A/B, serwisem w tle i storage; okreslic punkty testow."
-        }
-    ],
-    "completed_tasks": [
-        {
-            "task_id": "VIREAL-20251022-003",
-            "parent_task_id": "ORIN-20251022-003",
-            "title": "Projekt sceny obserwacji",
-            "status": "done",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-23",
-            "notes": "ADR-2025-10-23-observation-mode-ui-and-gestures.md opisuje layout, gesty i kontrakty repozytorium."
-        },
-        {
-            "task_id": "VIREAL-20251022-002",
-            "parent_task_id": "ORIN-20251022-002",
-            "title": "Architektura trybu plywajacego",
-            "status": "done",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
-            "notes": "ADR floating overlay: docs/cos/adr/ADR-2025-10-22-floating-overlay.md."
-        },
-        {
-            "task_id": "VIREAL-20251022-001",
-            "parent_task_id": "ORIN-20251022-001",
-            "title": "Model stanu cyklu zycia",
-            "status": "done",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
-            "notes": "ADR-2025-10-22-cell-lifecycle-state-machine.md dokumentuje model i zaleznosci state machine."
-        },
-        {
-            "task_id": "VIREAL-20251021-001",
-            "parent_task_id": "ORIN-20251021-008",
-            "title": "Zaprojektowac wytyczne architektury Android",
-            "status": "done",
-            "assigned_at": "2025-10-21",
-            "last_update": "2025-10-21",
-            "notes": "Draft w docs/android-guidelines/architecture.md (warstwy, modularyzacja, DI, testy)."
-        },
-        {
-            "task_id": "VIREAL-20251021-002",
-            "parent_task_id": "ORIN-20251021-009",
-            "title": "Zdefiniowac wytyczne UX/UI (design system)",
-            "status": "done",
-            "assigned_at": "2025-10-21",
-            "last_update": "2025-10-21",
-            "notes": "docs/ux-guidelines/design-system.md opisuje kolory, typografie, komponenty, motion, accessibility."
-        }
-    ],
+    "current_tasks": [],
+    "completed_tasks": [],
     "_template": {
-        "task_id": "VIREAL-YYYYMMDD-XXX",
-        "parent_task_id": "ORIN-YYYYMMDD-XXX",
-        "title": "",
-        "status": "pending|in_progress|done",
-        "assigned_at": "YYYY-MM-DD",
-        "last_update": "YYYY-MM-DD",
-        "notes": "",
-        "cooldown_checklist": {
-            "status_updated_to_done": false,
-            "moved_to_completed_tasks": false,
-            "log_entry_added": false,
-            "orin_notified": false,
-            "memory_updated": false
-        }
+        "current_tasks": [
+            {
+                "task_id": "VIREAL-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Decyzja architektoniczna",
+                "status": "pending",
+                "assigned_at": "YYYY-MM-DD",
+                "last_update": "YYYY-MM-DD",
+                "notes": "Jakie aspekty rozstrzygnac",
+                "deliverables": [
+                    "ADR",
+                    "Schemat przeplywu"
+                ]
+            }
+        ],
+        "completed_tasks": [
+            {
+                "task_id": "VIREAL-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Decyzja architektoniczna",
+                "status": "done",
+                "completed_at": "YYYY-MM-DD",
+                "decision": "Jakie rozwiazanie wybrano",
+                "tradeoffs": [
+                    "Plusy",
+                    "Minusy"
+                ]
+            }
+        ]
     }
 }

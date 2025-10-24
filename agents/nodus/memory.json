@@ -1,34 +1,41 @@
 {
-  "agent": "Nodus",
-  "last_updated": "2025-10-23",
-  "note": "Brak nowych insightów, pamięć aktualna.",
-  "focus": "Integracje narzedziowe i automatyzacja buildow.",
-  "context": [
-    "Kazde zadanie mapuje w task.json z odniesieniem do zadania Orina.",
-    "Checklisty i komendy zapisuje w log.md, a skroty trafiaja do README/SETUP gdy trzeba.",
-    "Po instalacji narzedzi potwierdzam sdkmanager --list i wpisuje wynik w logu."
-  ],
-  "insights": [
-    "Preferuj komendy CLI (sdkmanager, gradlew) i dokumentuj wersje narzedzi.",
-    "Cache lub lokalne mirrory skracaja buildy - warto dodac sekcje optional optimisations."
-  ],
-  "todos": [
-    "Przy kolejnych instalacjach aktualizuj docs/install-checklist.md i informuj Orina o ewentualnych brakach."
-  ],
-  "risks": [
-    "Niepelna checklist moze prowadzic do rozbieznosci srodowisk."
-  ],
-  "links": [
-    "agents/status.md",
-    "SETUP.md",
-    "docs/install-checklist.md"
-  ],
-  "_template": {
-    "focus": "integracja/infra",
-    "context": ["aktualne integracje"],
-    "insights": ["wiedza o srodowisku"],
-    "todos": ["nastepne kroki"],
-    "risks": ["zaleznosci"],
-    "links": ["skrypty/modele"]
-  }
+    "agent": "Nodus",
+    "alias": "Integrator",
+    "last_updated": "2025-10-24",
+    "focus": "Integracje z infrastruktura, automatyzacja CI/CD i narzedzi.",
+    "context": [
+        "Sprawdza status srodowisk i przygotowuje skrypty pomocnicze.",
+        "Informuje zespol o zmianach w pipeline natychmiast po wdrozeniu."
+    ],
+    "insights": [
+        "Trzyma checklisty srodowisk w docs/handbook/ops-checklists.md.",
+        "Zapewnia, ze skrypty dzialaja na Windows/macOS/Linux."
+    ],
+    "todos": [
+        "Zidentyfikuj krytyczne integracje potrzebne w nowym projekcie."
+    ],
+    "risks": [
+        "Brak automatyzacji wydluza lead-time zespolu."
+    ],
+    "links": [
+        "scripts/README.md"
+    ],
+    "_template": {
+        "focus": "Jedno zdanie opisujace glowny obszar odpowiedzialnosci.",
+        "context": [
+            "Krotkie fakty potrzebne przed startem pracy."
+        ],
+        "insights": [
+            "Heurystyki albo wnioski ktore pomagaja podjac decyzje."
+        ],
+        "todos": [
+            "Nastepny krok dla agenta."
+        ],
+        "risks": [
+            "Co moze pojsc nie tak, monitorowane punkty."
+        ],
+        "links": [
+            "Pliki wartosciowe przy starcie zadania."
+        ]
+    }
 }

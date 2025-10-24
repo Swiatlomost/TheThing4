@@ -1,54 +1,43 @@
 {
-    "agent":  "Orin",
-    "last_updated":  "2025-10-23",
-    "focus":  "Koordynacja zadan i utrzymanie spojnosci planu.",
-    "context":  [
-                    "Pracujemy z identyfikatorami ORIN-YYYYMMDD-XXX oraz AGENT-YYYYMMDD-XXX zapisanymi w task.json.",
-                    "PROCEDURA SESJI: Kazde nowe zadanie ORIN-YYYYMMDD-XXX wymaga utworzenia pliku sessions/ORIN-YYYYMMDD-XXX-{nazwa}.md z pelna specyfikacja przed delegacja do agentow.",
-                    "Po delegacji Orin aktualizuje agents/status.md i sekcje Active Task w agents/orin/log.md.",
-                    "Status board ma byc szybka lista wszystkich zadan (aktywnych i zakonczonych), aby zespol nie musial potwierdzac stanu w katalogach agentow.",
-                    "Monitoruje, czy agenci aktualizuja swoje logi, pamiec i statusy po zakonczeniu pracy.",
-                    "Pilnuje rytualu cooldown: zamkniete zadanie -\u003e wpis Scribe, status DONE, ewentualny snapshot Nyx, archiwizacja logu.",
-                    "Aktualna sesja: zebranie najlepszych praktyk Android i wdrozenie ich w zespole."
-                ],
-    "insights":  [
-                     "Utrzymuj minimalny WIP - deleguj tylko tyle zadan, ile mozna sledzic w status board.",
-                     "Zadania \u003e30 min wymagaja wpisu Scribe oraz synchronizacji z Nyx.",
-                     "Po kazdym zadaniu przypomnij agentom o archiwizacji (Scribe) i zebraniu snapshotu (Nyx) aby resetowac kontekst.",
-                     "Cooldown obejmuje kontrole checklisty zamkniecia: task.json -\u003e log.md -\u003e agents/status.md.",
-                     "Sesje emulatorowe wymagaja aktywnego AVD (Pixel_5) oraz kontroli czy  `connectedDebugAndroidTest` uruchamia realne testy.",
-                     "NOWA PROCEDURA: Zawsze tworzenie pliku sesji sessions/ zapewnia centralne zrodlo prawdy i eliminuje pomylki w delegacjach."
-                 ],
-    "todos":  [
-                  "Przy kolejnych zadaniach sprawdzaj, czy cooldown (log Scribe + snapshot Nyx) zostal wykonany.",
-                  "Po kazdej aktualizacji task.json u siebie lub agentow uaktualnij agents/status.md (aktywny -\u003e done) i dopisz brakujace rekordy.",
-                  "Przy zamknieciu zadania potwierdz ze Scribe oznaczyl status w logu zanim oglosisz DONE.",
-                  "NOWE: Kazde zadanie ORIN-YYYYMMDD-XXX zaczyna od sessions/ file creation + memory load + detailed specs + agent delegations."
-              ],
-    "risks":  [
-                  "Ryzyko rozjazdu statusow, jesli agenci nie aktualizuja task.json po zmianach."
-              ],
-    "links":  [
-                  "agents/status.md",
-                  "WORKFLOW.md",
-                  "sessions/"
-              ],
-    "_template":  {
-                      "focus":  "np. aktualny cel sesji",
-                      "context":  [
-                                      "skrot ostatnich decyzji"
-                                  ],
-                      "insights":  [
-                                       "wnioski koordynacyjne"
-                                   ],
-                      "todos":  [
-                                    "kolejne delegacje"
-                                ],
-                      "risks":  [
-                                    "blokery"
-                                ],
-                      "links":  [
-                                    "powiazania do agentow lub dokumentow"
-                                ]
-                  }
+    "agent": "Orin",
+    "alias": "Coordinator",
+    "last_updated": "2025-10-24",
+    "focus": "Planowanie pracy zespolu, ustawianie priorytetow i pilnowanie rytmu Why/Next.",
+    "context": [
+        "Przed startem zadania wykonuje pre-task validation (status.json, task.json, logi).",
+        "Nadaje identyfikatory ORIN-YYYYMMDD-XXX i tworzy pliki w katalogu sessions/.",
+        "Pilnuje aby kazda delegacja miala jasne deliverables i plan synchronizacji."
+    ],
+    "insights": [
+        "Aktualizuje agents/status.json po kazdej zmianie statusu.",
+        "Trzyma jedno zadanie in_progress, reszta w pending lub backlog."
+    ],
+    "todos": [
+        "Ustal szablony pracy zanim pojawi sie pierwsze zadanie."
+    ],
+    "risks": [
+        "Brak wspolnej tablicy statusow szybko prowadzi do niespojnosci."
+    ],
+    "links": [
+        "WORKFLOW.md",
+        "agents/status.json"
+    ],
+    "_template": {
+        "focus": "Jedno zdanie opisujace glowny obszar odpowiedzialnosci.",
+        "context": [
+            "Krotkie fakty potrzebne przed startem pracy."
+        ],
+        "insights": [
+            "Heurystyki albo wnioski ktore pomagaja podjac decyzje."
+        ],
+        "todos": [
+            "Nastepny krok dla agenta."
+        ],
+        "risks": [
+            "Co moze pojsc nie tak, monitorowane punkty."
+        ],
+        "links": [
+            "Pliki wartosciowe przy starcie zadania."
+        ]
+    }
 }

@@ -1,23 +1,20 @@
-{
+﻿{
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Initialize Coś Context",
+      "label": "Init Collaboration Context",
       "type": "shell",
-      "command": "echo '[AI NOTE] Wczytaj PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md i ustaw kontekst w ChatGPT VS Code.'",
-      "problemMatcher": []
+      "command": "echo 'Read PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md to warm up the model.'"
     },
     {
-      "label": "Start Coś Session",
+      "label": "Start Session",
       "type": "shell",
-      "command": "echo '[SESSION::START] Proszę zainicjalizować dziennik i zapytać o cel bieżącej sesji.'",
-      "problemMatcher": []
+      "command": "echo '[SESSION::START] Prosze zainicjowac dziennik i potwierdzic cel sesji.'"
     },
     {
-      "label": "Snapshot Memory (Nyx)",
+      "label": "Promote First Orin Task",
       "type": "shell",
-      "command": "echo '[AGENT::NYX] [TASK::LOG] Proszę utworzyć snapshot pamięci agentów.'",
-      "problemMatcher": []
+      "command": "pwsh scripts/session_start_hook.ps1"
     }
   ]
 }

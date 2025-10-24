@@ -1,42 +1,43 @@
-﻿# MEMORY_SPEC.md - Pamiec i dzienniki (v1.1)
+# MEMORY_SPEC.md - Memory & Journals (v2.0)
 
-## Struktura per agent
-Kazdy agent posiada katalog `agents/<name>/` zawierajacy:
+## Files per Agent
+Every agent keeps three mandatory files inside `agents/<name>/`:
 
-| Plik | Przeznaczenie |
-| ---- | ------------- |
-| `log.md` | Biezacy wpis (sekcja **Active Task**) oraz szablon archiwum. Logujemy start/stop, fakty i decyzje. |
-| `task.json` | Lista zadan z identyfikatorami (`AGENT-YYYYMMDD-XXX`), powiazaniem z zadaniem Orina oraz statusem `pending / in_progress / done`. |
-| `memory.json` | Opis sposobu wspolpracy: fokus, ustalenia globalne, heurystyki agenta, ryzyka do monitorowania. |
+| File | Purpose |
+|------|---------|
+| `log.md` | Running notes (timestamped facts, decisions, next steps).
+| `task.json` | Tasks owned by the agent with status `pending / in_progress / done` and parent Orin task.
+| `memory.json` | Semi-stable heuristics, agreements, risks, and helpful links.
 
-Tablica `agents/status.md` agreguje najwazniejsze pola z `task.json`, by Orin widzial stan calego zespolu.
+`agents/status.json` + `agents/status.md` provide the shared board for Orin.
 
-## Minimalny schemat `memory.json`
-```json
+## Memory JSON Skeleton
+```
 {
   "agent": "Echo",
+  "alias": "Analyst",
   "last_updated": "YYYY-MM-DD",
   "focus": "Obszar odpowiedzialnosci",
-  "context": ["Najwazniejsze ustalenia wspolpracy"],
-  "insights": ["Wnioski / heurystyki"],
-  "todos": ["Nastepne dzialania"],
-  "risks": ["Ryzyka do monitorowania"],
-  "links": ["agents/status.md"],
+  "context": ["Najwazniejsze fakty do startu pracy"],
+  "insights": ["Heurystyki pomagajace podejmowac decyzje"],
+  "todos": ["Kolejny krok"],
+  "risks": ["Co monitorowac"],
+  "links": ["Przydatne sciezki"],
   "_template": { "...": "instrukcje utrzymania szablonu" }
 }
 ```
 
-## Zasady pracy z pamiecia
-- Zwiezlosc ponad objetosc - krotkie frazy zamiast dlugich akapitow.
-- Aktualizujemy `memory.json` po istotnej decyzji lub zmianie procesu.
-- Nyx dba o konsolidacje i snapshoty, szczegolnie przed wiekszymi milestone'ami.
-- Jesli zmieniamy standard, synchronizujemy logi, `task.json` oraz tablice statusow.
+## Hygiene
+- Keep entries short; prefer bullet points to paragraphs.
+- Update `last_updated` whenever content changes or you confirm it stays valid.
+- Nyx coordinates snapshots before milestones and after major incidents.
+- When workflow standards evolve, sync log entries, task files, and `agents/status.json` in the same session.
+- Przed oznaczeniem zadania jako `in_progress` wypelnij PDCA w `log.md` (szablon: `docs/templates/pdca-template.md`).
 
-## Przyklad wpisu Scribe
+## Sample Log Snippet (Scribe)
 ```
-## 2025-10-21 - Sesja #01
-Cel: inicjalizacja kontekstu w VS Code.
-Decyzje: tryb PRO jako domyslny, META na zyczenie; zadanie ORIN-20251021-001 rozbite na Echo/Nodus/Scribe.
-TODO: [ ] NODUS-20251021-001 - checklisty build APK (due 2025-10-22)
-Next: Orin zbiera wyniki i planuje testy.
+## 2025-10-24 - Fresh Start
+Decyzje: Repo wyczyszczone z kodu aplikacji; utrzymano tylko proces agentowy.
+TODO: [ ] ORIN-XXXX - przygotowac plan pierwszego zadania.
+Next: Orin wyznacza cel i tworzy plik sessions/.
 ```

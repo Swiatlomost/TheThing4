@@ -1,52 +1,30 @@
-﻿# AI_GUIDE.md - Praca z GPT-5 w VS Code (v1.1)
+# AI_GUIDE.md - Working With ChatGPT (v2.0)
 
-## Cel
-Utrzymanie *zywego kontekstu* w VS Code tak, by GPT-5 rozumial projekt "Cos" i wykonywal zadania agentowe w oparciu o strukture `log/task/memory` kazdego agenta.
+## Goal
+Maintain a live context in VS Code so GPT-5 understands the collaboration framework and can act as the agents defined in `AGENTS.md`.
 
-## Jak wstrzyknac kontekst
-1. Otworz ChatGPT w VS Code.
-2. Polec modelowi:
+## Bootstrapping
+1. Ask ChatGPT:
    ```
-   Prosze przeczytac pliki: PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md.
-   Ustaw ten zestaw jako staly kontekst sesji projektu "Cos".
+   Prosze przeczytac PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md.
+   Zostan w tym kontekscie dopoki nie powiem inaczej.
    ```
-3. Rozpocznij sesje poleceniem:
-   ```
-   [SESSION::START] Prosze zainicjalizowac dziennik i zapytac o cel biezacej sesji.
-   ```
-4. **Orin Session Procedure** (OBOWIĄZKOWA dla nowych zadań):
-   ```
-   Orin: Zainicjuj sesję i załaduj pamięć z poprzednich prac. 
-   Opisz szczegółowo wymagania oraz kryteria sukcesu dla zadania ORIN-YYYYMMDD-XXX, 
-   następnie przypisz poszczególne zadania dla agentów.
-   ```
-5. Orin tworzy plik `sessions/ORIN-YYYYMMDD-XXX-{nazwa}.md` z kompletną specyfikacją i deleguje pod-zadania (Echo, Vireal, Lumen, Kai, Scribe, Nyx).
+2. Trigger `[SESSION::START]` to begin the ritual.
+3. Gdy potrzebujesz rozmowy o wizji, zapros `[AGENT::MIRA] [TASK::ANALYZE]` - Storywright zbierze narracje i przygotuje brief dla Orina.
+4. Orin przygotowuje plik sesji, przydziela zadania i sygnalizuje agentom kolejne ruchy.
 
-## Tryby i standardy
-- Domyslnie **[MODE::PRO]** (konkretnie, zadaniowo).
-- Na zyczenie **[MODE::META]** (komentarze meta / relacyjne).
-- Kazda odpowiedz konczy sie sekcja **Next step**.
+## Response Modes
+- **PRO**: focused execution, bullet points, actionable next steps.
+- **META**: reflection, relationship checks, broader questions.
 
-## Copilot Chat vs ChatGPT (VS Code)
-- **Copilot Chat** (starsze modele) - krotkie zadania kodowe, szybkie snippety.
-- **ChatGPT VS Code** (GPT-5) - praca agentowa, pamiec, dluzsze konteksty.
+## Collaboration Tips
+- Confirm the current task ID before modifying files.
+- Wypelnij PDCA zanim oznaczysz zadanie jako `in_progress` (szablon: `docs/templates/pdca-template.md`).
+- When uncertain, propose options plus risks instead of pausing work.
+- Use the templates in `docs/templates/` for structured outputs.
+- Close every message with `Next step:` so Orin can plan the flow.
 
-## Pierwsze zadanie po starcie
-```
-[SESSION::START]
-Orin: zainicjalizuj cel sesji, załaduj pamięć poprzednich prac, 
-utwórz plik sessions/ z pełną specyfikacją i przydziel delegacje wszystkim agentom.
-```
-
-## Standard pliku sesji
-**Każde zadanie ORIN-YYYYMMDD-XXX musi mieć:**
-- Plik `sessions/ORIN-YYYYMMDD-XXX-{nazwa}.md`
-- Szczegółowe wymagania funkcjonalne
-- Kryteria sukcesu (funkcjonalne/techniczne/jakościowe)
-- Precyzyjne delegacje dla każdego agenta
-- Status realizacji z checkpointami
-- Ryzyka i mitygacje
-
-## Utrzymanie stanu
-- Po kazdej delegacji aktualizujemy `agents/status.md` oraz `task.json` danego agenta.
-- Nyx dopilnowuje, by zmiany w pamieciach byly spojne z dokumentami `.md`.
+## Memory Hygiene
+- Nyx ensures `memory.json` entries reflect the latest process decisions.
+- After significant updates, mention which files changed so Orin can log them.
+- Use `scripts/validate-agent-sync.py` to detect stale metadata.

@@ -1,10 +1,10 @@
-# Orin Log (Coordinator)
+# Storywright Log (Interpreter)
 
 ## Active Focus
 - (update when you accept a task)
 
 ## Decision Journal
-| date | topic | outcome | next |
+| date | topic | insight | next |
 |------|-------|---------|------|
 
 ## PDCA Snapshot
