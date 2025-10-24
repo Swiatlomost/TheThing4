@@ -1,26 +1,39 @@
 {
-    "agent":  "Aurum",
-    "current_tasks":  [
-
-                      ],
-    "completed_tasks":  [
-                            {
-                                "task_id":  "AURUM-20251021-001",
-                                "parent_task_id":  null,
-                                "title":  "Przeglad sesji APK i wytyczne",
-                                "status":  "done",
-                                "assigned_at":  "2025-10-21",
-                                "last_update":  "2025-10-21",
-                                "notes":  "Raport przygotowany; czysty start -> AGENTS, WORKFLOW, README checklist, install-checklist, log Orin, status board."
-                            }
-                        ],
-    "_template":  {
-                      "task_id":  "AURUM-YYYYMMDD-XXX",
-                      "parent_task_id":  null,
-                      "title":  "",
-                      "status":  "pending|in_progress|done",
-                      "assigned_at":  "YYYY-MM-DD",
-                      "last_update":  "YYYY-MM-DD",
-                      "notes":  ""
-                  }
+    "agent": "Aurum",
+    "current_tasks": [],
+    "completed_tasks": [],
+    "_template": {
+        "current_tasks": [
+            {
+                "task_id": "AURUM-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Retrospekcja",
+                "status": "pending",
+                "assigned_at": "YYYY-MM-DD",
+                "last_update": "YYYY-MM-DD",
+                "scope": [
+                    "Jakie obszary oceniasz"
+                ],
+                "deliverables": [
+                    "Raport retro",
+                    "Lista usprawnien"
+                ]
+            }
+        ],
+        "completed_tasks": [
+            {
+                "task_id": "AURUM-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Retrospekcja",
+                "status": "done",
+                "completed_at": "YYYY-MM-DD",
+                "lessons": [
+                    "Najwazniejsze wnioski"
+                ],
+                "follow_up": [
+                    "Kto ma zrobic nastepne kroki"
+                ]
+            }
+        ]
+    }
 }

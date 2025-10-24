@@ -1,62 +1,37 @@
-﻿# Projekt "Cos" - Manifest i orientacja (v1.1)
+# Collaboration Starter Kit
 
-> Repozytorium stanowi **zywy kontekst** dla ChatGPT (GPT-5) pracujacego w VS Code.
-> Zawiera manifest, architekture agentowa, standardy pracy oraz kompletna strukture pamieci i dziennikow.
+This branch contains only the multi-agent workflow, templates, and automation used by the team. Application code and historical project data were removed to give us a clean foundation.
 
-## Quick Start (VS Code + GPT-5)
-1. Otworz repozytorium w VS Code.
-2. W rozszerzeniu ChatGPT wykonaj polecenie:
+## Quick Start (VS Code + ChatGPT)
+1. Open the repository in VS Code.
+2. In ChatGPT for VS Code run:
    ```
-   Prosze przeczytac pliki: PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md.
-   Ustaw ten zestaw jako staly kontekst sesji projektu "Cos".
+   Prosze przeczytac PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md.
+   Ustaw ten zestaw jako staly kontekst sesji.
    ```
-3. Rozpocznij sesje:
-   ```
-   [SESSION::START] Prosze zainicjalizowac dziennik i zapytac o cel biezacej sesji.
-   ```
-4. Orin nadaje identyfikator zadaniu (`ORIN-YYYYMMDD-XXX`) i deleguje kolejne kroki.
+3. Trigger the task `Start Session` from `.vscode/tasks.json` or manually send `[SESSION::START]`.
+4. Orin registers the first `ORIN-YYYYMMDD-XXX` entry and creates a session file from `docs/templates/session-template.md`.
 
-## Dlaczego "Cos"?
-Projekt traktuje relacje czlowiek <-> AI jako rdzen systemu. Agenci sa rolami z konkretna odpowiedzialnoscia, wlasnym logiem (`log.md`), stanem zadan (`task.json`) i pamiecia (`memory.json`).
+## Repository Map
+- `PROJECT_CONTEXT.md` - manifesto and priorities.
+- `AGENTS.md` - role definitions, conflict resolution.
+- `WORKFLOW.md` - session ritual, cooldown procedure, communication rules.
+- `AI_GUIDE.md` - how to work with ChatGPT inside VS Code.
+- `MEMORY_SPEC.md` - standards for log/task/memory files.
+- `docs/` - handbooks and templates for recurring rituals.
+- `docs/templates/chronicle-entry.md` - framework for Scribe's narrative chapters.
+- `docs/templates/pdca-template.md` - karta planowania PDCA dla kazdego zadania.
+- `docs/templates/storywright-brief.md` - szablon rozmowy 4MAT i briefu przygotowywanego przez Mire.
+- `agents/` - per-agent workspaces with fresh templates.
+- `scripts/` - automation to keep the system in sync.
+- `sessions/` - create one file per Orin task using the provided template.
 
-## Najwazniejsze pliki
-- `PROJECT_CONTEXT.md` - manifest + kontekst techniczny.
-- `AGENTS.md` - specyfikacje agentow i struktura plikow.
-- `WORKFLOW.md` - rytualy sesji, konwencje komunikacji, status board.
-- `MEMORY_SPEC.md` - standardy pamieci i dziennikow.
-- `AI_GUIDE.md` - instrukcja wstrzykiwania kontekstu do GPT-5 w VS Code.
-- `SETUP.md` - skroty i zadania startowe.
-- `agents/` - katalogi agentow z dokumentacja biezacych zadan.
+## How To Use It
+- Run `python scripts/validate-agent-sync.py` before starting new work.
+- Start from a short PDCA using `docs/templates/pdca-template.md` before flipping any task to `in_progress`.
+- Start a new topic by talking to `[AGENT::MIRA]`, who will prepare a brief for Orin.
+- Keep `log.md` entries short (date, observation, decision, next step).
+- Update `task.json` and `agents/status.json` together to avoid drift.
+- Ask Scribe and Nyx to document major changes at the end of each day.
 
-## Aktualna struktura agentow
-Kazdy agent posiada:
-- `log.md` - sekcje **Active Task** + szablon archiwum,
-- `task.json` - identyfikatory zadan i statusy,
-- `memory.json` - sposob wspolpracy, heurystyki, ryzyka.
-
-Tablica `agents/status.md` pokazuje w jednym miejscu postep calego zespolu.
-
-## Checklisty build APK (Android)
-1. **Srodowisko**
-   - Zainstaluj [Android Commandline Tools](https://developer.android.com/studio#command-tools).
-   - Ustaw `ANDROID_SDK_ROOT` i dodaj `platform-tools` do PATH.
-   - Uruchom:
-     ```
-     sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
-     sdkmanager --licenses
-     ```
-   - Upewnij sie, ze masz JDK 17 (`java -version`).
-2. **Gradle**
-   - Repo zawiera Gradle Wrapper (`gradlew`, `gradlew.bat`, `gradle/wrapper/*`).
-   - `settings.gradle.kts` ma repozytoria: `google()`, `mavenCentral()`, `gradlePluginPortal()` w sekcji `pluginManagement`.
-   - Opcjonalnie mozesz wskazac lokalny ZIP Gradle (cache) w `gradle-wrapper.properties`.
-3. **Build**
-   ```
-   ./gradlew assembleDebug
-   ```
-   - Artefakt: `app/build/outputs/apk/debug/app-debug.apk`.
-   - Testy instrumentacji: `./gradlew connectedDebugAndroidTest` (wymaga emulatora/urzadzenia).
-4. **CI / cache**
-   - Utrzymuj cache `~/.gradle` i katalogu SDK.
-   - W GitHub Actions: `actions/setup-java@v3` (JDK 17) + instalacja CLI via `sdkmanager`.
-   - Brak stabilnego internetu → rozważ lokalny mirror SDK/Gradle.
+Contributions should focus on better procedures, tooling, or documentation that help the agents collaborate.

@@ -1,33 +1,35 @@
 {
-    "agent": "Nyx",
+    "agent": "Mira",
     "current_tasks": [],
     "completed_tasks": [],
     "_template": {
         "current_tasks": [
             {
-                "task_id": "NYX-YYYYMMDD-XXX",
+                "task_id": "MIRA-YYYYMMDD-XXX",
                 "parent_task_id": "ORIN-YYYYMMDD-XXX",
-                "title": "Aktualizacja pamieci",
+                "title": "Brief dla sesji",
                 "status": "pending",
                 "assigned_at": "YYYY-MM-DD",
                 "last_update": "YYYY-MM-DD",
-                "notes": "Co nalezy zsyntezowac",
+                "notes": "Streszcz rozmowe i przygotuj sekcje do pliku sesji.",
                 "deliverables": [
-                    "memory.json",
-                    "snapshot"
+                    "Conversation log (opcjonalnie)",
+                    "Session brief dla Orina",
+                    "Lista pytan/ryzyk"
                 ]
             }
         ],
         "completed_tasks": [
             {
-                "task_id": "NYX-YYYYMMDD-XXX",
+                "task_id": "MIRA-YYYYMMDD-XXX",
                 "parent_task_id": "ORIN-YYYYMMDD-XXX",
-                "title": "Aktualizacja pamieci",
+                "title": "Brief dla sesji",
                 "status": "done",
                 "completed_at": "YYYY-MM-DD",
-                "summary": "Co zostalo zachowane",
+                "summary": "Co przekazano Orinowi",
                 "references": [
-                    "Pliki powiazane"
+                    "sessions/ORIN-YYYYMMDD-XXX-*.md",
+                    "agents/status.json"
                 ]
             }
         ]

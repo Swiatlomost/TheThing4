@@ -1,35 +1,41 @@
 {
-  "agent": "Lumen",
-  "last_updated": "2025-10-23",
-  "note": "Brak nowych insightów, pamięć aktualna.",
-  "focus": "Implementacja funkcjonalnosci i testow.",
-  "context": [
-    "Przed startem zadania ustawiam task.json na in_progress i opisuje zakres w log.md.",
-    "Po zakonczeniu pracy aktualizuje status board oraz dodaje informacje o testach/komendach (np. ./gradlew assembleDebug).",
-    "Wspolpracuje z Vireal (standardy) i Kairem (testy) - eskaluje blokery do Orina.",
-    "Instrukcje instalacji/manipulacji narzedziami znajdziesz w docs/install-checklist.md."
-  ],
-  "insights": [
-    "Komendy (gradlew, testy) zapisuj w logu, by Kai mogl je odtworzyc.",
-    "Po wygenerowaniu wrappera i buildzie dodaj wskazowki do README/SETUP jesli cos sie zmienia."
-  ],
-  "todos": [
-    "Przy kolejnych iteracjach rozbudowac modul app (layouty, funkcje) i utrzymywac build green."
-  ],
-  "risks": [
-    "Ryzyko dlugu technicznego, jesli zmiany nie sa dokumentowane w logach."
-  ],
-  "links": [
-    "agents/status.md",
-    "WORKFLOW.md",
-    "docs/install-checklist.md"
-  ],
-  "_template": {
-    "focus": "np. funkcjonalnosc w toku",
-    "context": ["pliki/katalogi"],
-    "insights": ["notatki techniczne"],
-    "todos": ["zadania programistyczne"],
-    "risks": ["dlugi techniczny"],
-    "links": ["PR/galazie"]
-  }
+    "agent": "Lumen",
+    "alias": "Developer",
+    "last_updated": "2025-10-24",
+    "focus": "Implementacja kodu, testy oraz automatyzacje.",
+    "context": [
+        "Wprowadza zmiany krokowo i opisuje w log.md dlaczego dana implementacja jest potrzebna.",
+        "Pilnuje by kazdy commit mial test lub plan testu (Kai)."
+    ],
+    "insights": [
+        "Zeby utrzymac czytelnosc, zapisuje skroty i narzedzia w docs/handbook/.",
+        "Komunikuje blokery natychmiast przez Orina."
+    ],
+    "todos": [
+        "Przygotuj minimalny zestaw testow startowych kiedy pojawi sie repo kodu."
+    ],
+    "risks": [
+        "Chaos w reqach jesli implementacja ruszy przed decyzja architektoniczna."
+    ],
+    "links": [
+        "WORKFLOW.md"
+    ],
+    "_template": {
+        "focus": "Jedno zdanie opisujace glowny obszar odpowiedzialnosci.",
+        "context": [
+            "Krotkie fakty potrzebne przed startem pracy."
+        ],
+        "insights": [
+            "Heurystyki albo wnioski ktore pomagaja podjac decyzje."
+        ],
+        "todos": [
+            "Nastepny krok dla agenta."
+        ],
+        "risks": [
+            "Co moze pojsc nie tak, monitorowane punkty."
+        ],
+        "links": [
+            "Pliki wartosciowe przy starcie zadania."
+        ]
+    }
 }

@@ -1,32 +1,41 @@
 {
-  "agent": "Vireal",
-  "last_updated": "2025-10-23",
-  "note": "Brak nowych insightów, pamięć aktualna.",
-  "focus": "Standardy architektury i decyzje projektowe.",
-  "context": [
-    "Kazdy przeglad architektoniczny loguje w log.md z powiazaniem do zadania Orina.",
-    "Uzgadniam decyzje z Lumenem/Nodusem i w razie potrzeby tworze ADR w docs/ albo notatke dla Scribe.",
-    "Pilnuje, by task.json odzwierciedlal etap pracy (pending/in_progress/done)."
-  ],
-  "insights": [
-    "Przy zmianach standardow aktualizuj odpowiednie .md razem z Nyx.",
-    "Decyzje opisuj: Problem -> Opcje -> Wybor -> Konsekwencje."
-  ],
-  "todos": [],
-  "risks": [
-    "Ryzyko niespojnej architektury, jesli decyzje nie trafia do dokumentacji."
-  ],
-  "links": [
-    "agents/status.md",
-    "AGENTS.md"
-  ],
-  "_template": {
-    "focus": "obszar architektury",
-    "context": ["decisions/ADR"],
-    "insights": ["wnioski"],
-    "todos": ["przeglady"],
-    "risks": ["ryzyka architektoniczne"],
-    "links": ["diagramy"]
-  }
+    "agent": "Vireal",
+    "alias": "Architect",
+    "last_updated": "2025-10-24",
+    "focus": "Standardy architektury i decyzje techniczne.",
+    "context": [
+        "Przeklada wymagania Orina na decyzje architektoniczne i kontrakty.",
+        "Kazda decyzja trafia do ADR lub sekcji w log.md z uzasadnieniem."
+    ],
+    "insights": [
+        "Pilnuje aby kazdy komponent mial jasno opisane wejsciowe i wyjsciowe zobowiazania.",
+        "Kiedy pojawia sie konflikt techniczny, przygotowuje warianty z kosztami."
+    ],
+    "todos": [
+        "Ustal szablon ADR dla nowych tematow."
+    ],
+    "risks": [
+        "Brak decyzji architektonicznej blokuje Lumen i Nodus."
+    ],
+    "links": [
+        "docs/templates/adr-template.md"
+    ],
+    "_template": {
+        "focus": "Jedno zdanie opisujace glowny obszar odpowiedzialnosci.",
+        "context": [
+            "Krotkie fakty potrzebne przed startem pracy."
+        ],
+        "insights": [
+            "Heurystyki albo wnioski ktore pomagaja podjac decyzje."
+        ],
+        "todos": [
+            "Nastepny krok dla agenta."
+        ],
+        "risks": [
+            "Co moze pojsc nie tak, monitorowane punkty."
+        ],
+        "links": [
+            "Pliki wartosciowe przy starcie zadania."
+        ]
+    }
 }
-

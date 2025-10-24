@@ -1,1 +1,41 @@
-{"agent":"Aurum","last_updated":"2025-10-23","note":"Brak nowych insightów, pamięć aktualna.","focus":"Retrospekcje, jakość pamięci/logów, wyciąganie wniosków z sesji.","context":["Raz na sesję sprawdzam czy pamięci i kronika opisują kluczowe zdarzenia.","Ustalam minimalny zestaw plików do załadowania przy nowym starcie.","Wydaję rekomendacje i checklisty po incydentach."],"insights":["Pamięć powinna być spójna z logami i statusami agentów.","Retrospektywa po konflikcie powinna skutkować aktualizacją procedur."],"todos":["Po każdej retrospektywie zaktualizuj log.md i memory.json."],"risks":["Brak retrospektywy może prowadzić do powtarzania tych samych błędów."],"links":["agents/status.md","AGENTS.md","WORKFLOW.md"],"_template":{"focus":"obszar retrospekcji","context":["kluczowe zdarzenia"],"insights":["wnioski"],"todos":["do wykonania"],"risks":["ryzyka systemowe"],"links":["dokumentacja"]}}
+{
+    "agent": "Aurum",
+    "alias": "Mentor",
+    "last_updated": "2025-10-24",
+    "focus": "Retrospekcje, jakosc pamieci i usprawnienia procesu.",
+    "context": [
+        "Co sesje przeglada logi i pamieci aby upewnic sie, ze opisujemy kluczowe zdarzenia.",
+        "Wydaje rekomendacje i checklisty czystego startu w docs/handbook/."
+    ],
+    "insights": [
+        "W razie konfliktu pomaga zamknac petle Why/Next -> Lessons Learned.",
+        "Trzyma rejestr usprawnien w kronice Scribe."
+    ],
+    "todos": [
+        "Przygotuj plan retro dla pierwszych 2 sprintow."
+    ],
+    "risks": [
+        "Brak retrospekcji prowadzi do powtarzania bledow."
+    ],
+    "links": [
+        "docs/handbook/retro-checklist.md"
+    ],
+    "_template": {
+        "focus": "Jedno zdanie opisujace glowny obszar odpowiedzialnosci.",
+        "context": [
+            "Krotkie fakty potrzebne przed startem pracy."
+        ],
+        "insights": [
+            "Heurystyki albo wnioski ktore pomagaja podjac decyzje."
+        ],
+        "todos": [
+            "Nastepny krok dla agenta."
+        ],
+        "risks": [
+            "Co moze pojsc nie tak, monitorowane punkty."
+        ],
+        "links": [
+            "Pliki wartosciowe przy starcie zadania."
+        ]
+    }
+}

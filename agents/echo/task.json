@@ -1,131 +1,34 @@
 {
     "agent": "Echo",
-    "current_tasks": [
-        {
-            "task_id": "ECHO-20251022-004",
-            "parent_task_id": "ORIN-20251022-004",
-            "title": "Research energii i warunkow paczkowania",
-            "status": "pending",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
-            "notes": "Spisac mozliwe heurystyki zuzycia energii oraz limity tempa paczkowania, wskazac referencje do gier/organizmow."
-        },
-        {
-            "task_id": "ECHO-20251022-005",
-            "parent_task_id": "ORIN-20251022-005",
-            "title": "Research UX gestow edycji",
-            "status": "pending",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
-            "notes": "Zebrac dobre praktyki dla drag/reshape komorek, rekomendowac feedback dotykowy i ograniczenia by zachowac organiczny charakter."
-        },
-        {
-            "task_id": "ECHO-20251022-006",
-            "parent_task_id": "ORIN-20251022-006",
-            "title": "Analiza szablonow i trwalosci",
-            "status": "pending",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
-            "notes": "Porownac storage (Room, Proto DataStore) dla zapisu form, wskazac wymagania dot. migracji i nazw uzytkownika."
-        },
-        {
-            "task_id": "ECHO-20251022-007",
-            "parent_task_id": "ORIN-20251022-007",
-            "title": "Analiza ciaglosci zycia",
-            "status": "pending",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
-            "notes": "Zidentyfikowac wymagania platformowe dla serwisu w tle, ograniczenia baterii i polityki Android 14 (foreground service)."
-        }
-    ],
-    "completed_tasks": [
-        {
-            "task_id": "ECHO-20251022-003",
-            "parent_task_id": "ORIN-20251022-003",
-            "title": "Analiza trybu obserwacji",
-            "status": "done",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-23",
-            "notes": "Analiza observation mode (docs/cos/observation-mode-analysis.md); wnioski przekazane do ADR i implementacji."
-        },
-        {
-            "task_id": "ECHO-20251022-002",
-            "parent_task_id": "ORIN-20251022-002",
-            "title": "Research trybu nakladki Android",
-            "status": "done",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
-            "notes": "Wyniki w docs/cos/floating-overlay-research.md (uprawnienia, gesty, testy)."
-        },
-        {
-            "task_id": "ECHO-20251022-001",
-            "parent_task_id": "ORIN-20251022-001",
-            "title": "Analiza cyklu zycia Cosia (czas, animacje)",
-            "status": "done",
-            "assigned_at": "2025-10-22",
-            "last_update": "2025-10-22",
-            "notes": "Analiza dostarczona w docs/cos/lifecycle-analysis.md; zawiera model stanu, rekomendacje Compose i referencje do dokumentacji Android."
-        },
-        {
-            "task_id": "ECHO-20251021-001",
-            "parent_task_id": "ORIN-20251021-001",
-            "title": "Analiza narzedzi do budowy APK",
-            "status": "done",
-            "assigned_at": "2025-10-21",
-            "last_update": "2025-10-21",
-            "notes": "Raport przekazany Orinowi."
-        },
-        {
-            "task_id": "ECHO-20251021-002",
-            "parent_task_id": "ORIN-20251021-005",
-            "title": "Zdiagnozowac rozjazd status board vs log Scribe",
-            "status": "done",
-            "assigned_at": "2025-10-21",
-            "last_update": "2025-10-21",
-            "notes": "Root cause: brak checklisty zamkniecia (task.json -> log.md -> status.md). Rekomendacja: checklist zamykajaca plus kontrola Orina."
-        },
-        {
-            "task_id": "ECHO-20251021-003",
-            "parent_task_id": "ORIN-20251021-006",
-            "title": "Ocenic wymagania do testow APK na emulatorze",
-            "status": "done",
-            "assigned_at": "2025-10-21",
-            "last_update": "2025-10-21",
-            "notes": "Repo zbudowane, apk-debug gotowe; emulator Pixel_5 dostepny, wymagany start `emulator.exe -avd Pixel_5`, brak aktywnego urzadzenia przed uruchomieniem."
-        },
-        {
-            "task_id": "ECHO-20251021-004",
-            "parent_task_id": "ORIN-20251021-008",
-            "title": "Research best practices Android (architektura, standardy kodu)",
-            "status": "done",
-            "assigned_at": "2025-10-21",
-            "last_update": "2025-10-21",
-            "notes": "Podsumowanie w docs/android-guidelines/research.md (architektura, DI, testy, tooling)."
-        },
-        {
-            "task_id": "ECHO-20251021-005",
-            "parent_task_id": "ORIN-20251021-009",
-            "title": "Research UX/UI best practices",
-            "status": "done",
-            "assigned_at": "2025-10-21",
-            "last_update": "2025-10-21",
-            "notes": "docs/ux-guidelines/research.md streszcza Material Design, accessibility, motion, narzedzia."
-        }
-    ],
+    "current_tasks": [],
+    "completed_tasks": [],
     "_template": {
-        "task_id": "ECHO-YYYYMMDD-XXX",
-        "parent_task_id": "ORIN-YYYYMMDD-XXX",
-        "title": "",
-        "status": "pending|in_progress|done",
-        "assigned_at": "YYYY-MM-DD",
-        "last_update": "YYYY-MM-DD",
-        "notes": "",
-        "cooldown_checklist": {
-            "status_updated_to_done": false,
-            "moved_to_completed_tasks": false,
-            "log_entry_added": false,
-            "orin_notified": false,
-            "memory_updated": false
-        }
+        "current_tasks": [
+            {
+                "task_id": "ECHO-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Opis analizy",
+                "status": "pending",
+                "assigned_at": "YYYY-MM-DD",
+                "last_update": "YYYY-MM-DD",
+                "notes": "Co nalezy zbadac",
+                "deliverables": [
+                    "Lista ryzyk",
+                    "Rekomendacje"
+                ]
+            }
+        ],
+        "completed_tasks": [
+            {
+                "task_id": "ECHO-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Opis analizy",
+                "status": "done",
+                "completed_at": "YYYY-MM-DD",
+                "key_findings": [
+                    "Najwazniejsze wnioski"
+                ]
+            }
+        ]
     }
 }

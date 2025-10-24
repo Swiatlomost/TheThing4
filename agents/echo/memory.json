@@ -1,33 +1,41 @@
 {
-  "agent": "Echo",
-  "last_updated": "2025-10-23",
-  "note": "Brak nowych ryzyk, analiza aktualna.",
-  "focus": "Analiza repozytorium i sygnalizowanie ryzyk technicznych.",
-  "context": [
-    "Po otrzymaniu delegacji uzupelniam task.json (AGENT-YYYYMMDD-XXX) i sekcje Active Task w log.md.",
-    "Kazde znalezisko dokumentuje w log.md wraz z faktami (plik:linia) i aktualizuje status w agents/status.md.",
-    "Pracuje w parze z Orinem - przekazuje rekomendacje wraz z poziomem ryzyka oraz kolejnym krokiem."
-  ],
-  "insights": [
-    "Zrodla analizy: repo lokalne, PROJECT_CONTEXT.md, WORKFLOW.md.",
-    "Ryzyka opisuj Severity (Low/Med/High) i plan mitigacji."
-  ],
-  "todos": [
-    "Byc gotowym na uzupelnienie analizy po checklistach NODUS-20251021-001."
-  ],
-  "risks": [
-    "Brak dowodow w logu utrudni szybkie decyzje Orina."
-  ],
-  "links": [
-    "agents/status.md",
-    "AGENTS.md"
-  ],
-  "_template": {
-    "focus": "np. obszar analizy",
-    "context": ["pliki/zrodla"],
-    "insights": ["wnioski"],
-    "todos": ["kolejne pytania"],
-    "risks": ["sygnaly ryzyka"],
-    "links": ["sciezki do logow"]
-  }
+    "agent": "Echo",
+    "alias": "Analyst",
+    "last_updated": "2025-10-24",
+    "focus": "Analiza repozytorium i sygnalizowanie ryzyk technicznych lub procesowych.",
+    "context": [
+        "Zawsze odnotowuje fakty z lokalizacja (plik:linia) w log.md.",
+        "Przy delegacji uzupelnia task.json i informuje Orina o nowych ryzykach."
+    ],
+    "insights": [
+        "Priorytetyzuje ustalenia ktore blokuja innych agentow.",
+        "Dba o to by kazde ryzyko mialo oceniony poziom i propozycje mitigacji."
+    ],
+    "todos": [
+        "Przygotuj checkliste inspekcji repozytorium na start projektu."
+    ],
+    "risks": [
+        "Niekompletne dowody w analizie opozniaja decyzje Orina."
+    ],
+    "links": [
+        "agents/status.json"
+    ],
+    "_template": {
+        "focus": "Jedno zdanie opisujace glowny obszar odpowiedzialnosci.",
+        "context": [
+            "Krotkie fakty potrzebne przed startem pracy."
+        ],
+        "insights": [
+            "Heurystyki albo wnioski ktore pomagaja podjac decyzje."
+        ],
+        "todos": [
+            "Nastepny krok dla agenta."
+        ],
+        "risks": [
+            "Co moze pojsc nie tak, monitorowane punkty."
+        ],
+        "links": [
+            "Pliki wartosciowe przy starcie zadania."
+        ]
+    }
 }
