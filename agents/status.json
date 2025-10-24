@@ -1,7 +1,99 @@
 {
     "generated_at": "2025-10-24",
-    "active_tasks": [],
-    "completed_tasks": [],
+    "active_tasks": [
+        {
+            "agent": "Orin",
+            "task_id": "ORIN-20251024-001",
+            "title": "CoS v0.1 - wspolny cykl",
+            "parent": "-",
+            "status": "in_progress",
+            "last_update": "2025-10-24",
+            "notes": "Deleguje prace nad cyklem Cos."
+        },
+        {
+            "agent": "Kai",
+            "task_id": "KAI-20251024-001",
+            "title": "Plan testow Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "pending",
+            "last_update": "2025-10-24",
+            "notes": "Czeka na wynik implementacji (plan testow w kolejce)."
+        },
+        {
+            "agent": "Scribe",
+            "task_id": "SCRIBE-20251024-001",
+            "title": "Dokumentacja Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "pending",
+            "last_update": "2025-10-24",
+            "notes": "Log + kronika z motywem \"Jedna zasada - w wielu formach\"."
+        },
+        {
+            "agent": "Mira",
+            "task_id": "MIRA-20251024-001",
+            "title": "Monitorowanie wizji Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "pending",
+            "last_update": "2025-10-24",
+            "notes": "Aktualizuj brief i wspieraj Orina w korektach planu."
+        },
+        {
+            "agent": "Nyx",
+            "task_id": "NYX-20251024-001",
+            "title": "Pamiec cyklu Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "pending",
+            "last_update": "2025-10-24",
+            "notes": "Dodaj ID komorek, parametry czasu i heurystyki do memory.json."
+        },
+        {
+            "agent": "Nodus",
+            "task_id": "NODUS-20251024-001",
+            "title": "Overlay tooling check",
+            "parent": "ORIN-20251024-001",
+            "status": "pending",
+            "last_update": "2025-10-24",
+            "notes": "Zweryfikuj uprawnienia overlay i konfiguracje FGS/manifest."
+        },
+        {
+            "agent": "Aurum",
+            "task_id": "AURUM-20251024-001",
+            "title": "Retro obserwacje Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "pending",
+            "last_update": "2025-10-24",
+            "notes": "Notuj obserwacje do retro o nowym pipeline (Mira/PDCA)."
+        },
+        {
+            "agent": "Vireal",
+            "task_id": "VIREAL-20251024-001",
+            "title": "Architektura cyklu Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "pending",
+            "last_update": "2025-10-24",
+            "notes": "Architektura w toku (ADR + diagram do przygotowania)."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251024-001",
+            "title": "Implementacja cyklu Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "pending",
+            "last_update": "2025-10-24",
+            "notes": "Implementacja do wykonania (prototyp + testy)."
+        }
+    ],
+    "completed_tasks": [
+        {
+            "agent": "Echo",
+            "task_id": "ECHO-20251024-001",
+            "title": "Analiza ryzyk Cos overlay",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-24",
+            "notes": "Zidentyfikuj ryzyka styku, pauzy cyklu i gestow overlay. (analiza zakonczona)"
+        }
+    ],
     "_template": {
         "active_tasks": [
             {
