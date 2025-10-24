@@ -7,11 +7,5 @@
 | date | topic | outcome | next |
 |------|-------|---------|------|
 
-## PDCA Snapshot
-- **Plan**:
-- **Do**:
-- **Check**:
-- **Act**:
-
 ## Archive
 - move closed notes here for future reference

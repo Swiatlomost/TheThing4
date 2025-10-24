@@ -1,7 +1,22 @@
 {
     "agent": "Echo",
     "current_tasks": [],
-    "completed_tasks": [],
+    "completed_tasks": [
+        {
+            "task_id": "ECHO-20251024-001",
+            "parent_task_id": "ORIN-20251024-001",
+            "title": "Analiza ryzyk Cos overlay",
+            "status": "done",
+            "assigned_at": "2025-10-24",
+            "last_update": "2025-10-24",
+            "notes": "Zidentyfikuj ryzyka styku, pauzy cyklu i gestow overlay. (lista ryzyk + mitigacje dostarczona)",
+            "deliverables": [
+                "Lista ryzyk",
+                "Propozycje mitigacji"
+            ],
+            "completed_at": "2025-10-24"
+        }
+    ],
     "_template": {
         "current_tasks": [
             {

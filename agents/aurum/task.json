@@ -1,6 +1,20 @@
 {
     "agent": "Aurum",
-    "current_tasks": [],
+    "current_tasks": [
+        {
+            "task_id": "AURUM-20251024-001",
+            "parent_task_id": "ORIN-20251024-001",
+            "title": "Retro obserwacje Cos v0.1",
+            "status": "pending",
+            "assigned_at": "2025-10-24",
+            "last_update": "2025-10-24",
+            "notes": "Notuj obserwacje do retro o nowym pipeline (Mira/PDCA).",
+            "deliverables": [
+                "Notatki do retro",
+                "Lista usprawnien"
+            ]
+        }
+    ],
     "completed_tasks": [],
     "_template": {
         "current_tasks": [
