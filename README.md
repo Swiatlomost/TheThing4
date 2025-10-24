@@ -22,6 +22,10 @@ This branch contains only the multi-agent workflow, templates, and automation us
 - `docs/templates/chronicle-entry.md` - framework for Scribe's narrative chapters.
 - `docs/templates/pdca-template.md` - karta planowania PDCA dla kazdego zadania.
 - `docs/templates/storywright-brief.md` - szablon rozmowy 4MAT i briefu przygotowywanego przez Mire.
+- `docs/reference/architecture-android.md` - architektura, DI, testowanie.
+- `docs/reference/ux-guidelines.md` - design system i accessibility.
+- `docs/reference/floating-overlay.md` - decyzje i gesty dla trybu overlay.
+- `docs/reference/tooling-setup.md` - instalacja Android CLI i Gradle.
 - `agents/` - per-agent workspaces with fresh templates.
 - `scripts/` - automation to keep the system in sync.
 - `sessions/` - create one file per Orin task using the provided template.

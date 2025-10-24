@@ -20,6 +20,7 @@ Maintain a live context in VS Code so GPT-5 understands the collaboration framew
 ## Collaboration Tips
 - Confirm the current task ID before modifying files.
 - Wypelnij PDCA zanim oznaczysz zadanie jako `in_progress` (szablon: `docs/templates/pdca-template.md`).
+- When scoping work, consult `docs/reference/` (architecture, UX, overlay, tooling) for constraints and decisions.
 - When uncertain, propose options plus risks instead of pausing work.
 - Use the templates in `docs/templates/` for structured outputs.
 - Close every message with `Next step:` so Orin can plan the flow.
