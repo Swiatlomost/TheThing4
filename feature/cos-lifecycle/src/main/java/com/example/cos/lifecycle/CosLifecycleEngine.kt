@@ -1,136 +1,216 @@
-package com.example.cos.lifecycle
+﻿package com.example.cos.lifecycle
 
+import android.util.Log
 import androidx.compose.ui.geometry.Offset
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.max
-import kotlin.math.sin
 
-sealed class CellStage(val progress: Float) {
-    class Seed(progress: Float) : CellStage(progress)
-    class Bud(progress: Float) : CellStage(progress)
-    object Mature : CellStage(1f)
+sealed class CellStage(val label: String) {
+    object Seed : CellStage("Seed")
+    object Bud : CellStage("Bud")
+    object Mature : CellStage("Mature")
+    object Spawned : CellStage("Spawned")
 }
 
 data class CellSnapshot(
     val id: String,
     val stage: CellStage,
-    val elapsedMillis: Long,
-    val center: Offset,
+    val center: Offset = Offset.Zero,
     val parentId: String? = null
 )
 
-data class CosLifecycleState(val cells: List<CellSnapshot>)
+data class CosLifecycleState(
+    val cells: List<CellSnapshot>,
+    val cellRadius: Float
+)
+
+enum class LifecycleStageCommand {
+    SEED,
+    BUD,
+    MATURE
+}
+
+sealed interface LifecycleAction {
+    object Reset : LifecycleAction
+    data class SetStage(val stage: LifecycleStageCommand) : LifecycleAction
+    object CreateChild : LifecycleAction
+}
 
 interface CosLifecycleEngine {
     val state: StateFlow<CosLifecycleState>
-    fun pause()
-    fun resume()
+    fun apply(action: LifecycleAction)
 }
 
+private data class HexCoord(val q: Int, val r: Int)
+
 @Singleton
-class DefaultCosLifecycleEngine @Inject constructor(
-    private val timeProvider: TimeProvider
-) : CosLifecycleEngine {
+class DefaultCosLifecycleEngine @Inject constructor() : CosLifecycleEngine {
 
-    private val scope = CoroutineScope(Dispatchers.Default)
     private val _state = MutableStateFlow(initialState())
-    override val state: StateFlow<CosLifecycleState> = _state
+    override val state: StateFlow<CosLifecycleState> = _state.asStateFlow()
 
-    private var tickJob: Job? = null
-
-    init { resume() }
-
-    override fun pause() {
-        tickJob?.cancel()
-        tickJob = null
-    }
-
-    override fun resume() {
-        if (tickJob?.isActive == true) return
-        tickJob = scope.launch {
-            while (true) {
-                delay(timeProvider.tickMillis())
-                _state.value = advanceState(_state.value)
+    override fun apply(action: LifecycleAction) {
+        _state.update { current ->
+            when (action) {
+                LifecycleAction.Reset -> initialState()
+                is LifecycleAction.SetStage -> setStage(current, action.stage)
+                LifecycleAction.CreateChild -> createChild(current)
             }
         }
     }
 
-    private fun initialState(): CosLifecycleState = CosLifecycleState(
-        cells = listOf(
+    private fun setStage(
+        state: CosLifecycleState,
+        stage: LifecycleStageCommand
+    ): CosLifecycleState {
+        val cells = state.cells
+        if (cells.isEmpty()) return state
+
+        val lastIndex = cells.lastIndex
+        val lastCell = cells[lastIndex]
+        val updatedCell = when (stage) {
+            LifecycleStageCommand.SEED -> return initialState()
+            LifecycleStageCommand.BUD -> {
+                if (lastCell.stage != CellStage.Seed) return state
+                lastCell.copy(stage = CellStage.Bud)
+            }
+            LifecycleStageCommand.MATURE -> {
+                if (lastCell.stage != CellStage.Bud) return state
+                lastCell.copy(stage = CellStage.Mature)
+            }
+        }
+
+        val updated = cells.toMutableList().apply { this[lastIndex] = updatedCell }
+        log("SetStage() -> ")
+        return layoutState(updated)
+    }
+
+    private fun createChild(state: CosLifecycleState): CosLifecycleState {
+        val cells = state.cells
+        if (cells.isEmpty()) return state
+
+        val parentIndex = cells.lastIndex
+        val parent = cells[parentIndex]
+        if (parent.stage != CellStage.Mature) {
+            log("CreateChild ignored (parent stage=)")
+            return state
+        }
+
+        val newParent = parent.copy(stage = CellStage.Spawned)
+        val child = CellSnapshot(
+            id = UUID.randomUUID().toString(),
+            stage = CellStage.Seed,
+            parentId = parent.id
+        )
+
+        val updated = cells.toMutableList().apply {
+            this[parentIndex] = newParent
+            add(child)
+        }
+        log("CreateChild parent= child=")
+        return layoutState(updated)
+    }
+
+    private fun initialState(): CosLifecycleState = layoutState(
+        listOf(
             CellSnapshot(
                 id = ROOT_CELL_ID,
-                stage = CellStage.Seed(progress = 0f),
-                elapsedMillis = 0L,
-                center = Offset.Zero,
+                stage = CellStage.Seed,
                 parentId = null
             )
         )
     )
 
-    private fun advanceState(state: CosLifecycleState): CosLifecycleState {
-        val evolved = state.cells.map { cell ->
-            val nextElapsed = cell.elapsedMillis + TICK_MS
-            val nextStage = when (cell.stage) {
-                is CellStage.Seed -> {
-                    val progress = (nextElapsed / SEED_DURATION).coerceIn(0f, 1f)
-                    if (progress >= 1f) CellStage.Bud(0f) else CellStage.Seed(progress)
-                }
-                is CellStage.Bud -> {
-                    val progress = ((nextElapsed - SEED_DURATION) / BUD_DURATION).coerceIn(0f, 1f)
-                    if (progress >= 1f) CellStage.Mature else CellStage.Bud(progress)
-                }
-                CellStage.Mature -> CellStage.Mature
-            }
-            cell.copy(stage = nextStage, elapsedMillis = nextElapsed)
-        }.toMutableList()
+    private fun layoutState(cells: List<CellSnapshot>): CosLifecycleState {
+        val count = cells.size
+        if (count == 0) return CosLifecycleState(emptyList(), 0f)
+        val (radius, centers) = packCircles(count, ORGANISM_RADIUS_UNITS)
+        val arranged = cells.mapIndexed { index, cell ->
+            val center = centers.getOrNull(index) ?: Offset.Zero
+            cell.copy(center = center)
+        }
+        return CosLifecycleState(
+            cells = arranged,
+            cellRadius = radius
+        )
+    }
 
-        val matureCells = evolved.filter { it.stage is CellStage.Mature }
-        if (matureCells.size < MAX_CELLS && matureCells.isNotEmpty()) {
-            val parent = matureCells.first()
-            val hasChild = evolved.any { it.parentId == parent.id }
-            if (!hasChild) {
-                val existingChildren = state.cells.count { it.parentId == parent.id }
-                val direction = CONTACT_DIRECTIONS[existingChildren % CONTACT_DIRECTIONS.size]
-                val newCenter = Offset(
-                    parent.center.x + direction.x * CELL_OFFSET,
-                    parent.center.y + direction.y * CELL_OFFSET
-                )
-                evolved.add(
-                    CellSnapshot(
-                        id = UUID.randomUUID().toString(),
-                        stage = CellStage.Seed(0f),
-                        elapsedMillis = 0L,
-                        center = newCenter,
-                        parentId = parent.id
-                    )
-                )
+    private fun packCircles(count: Int, outerRadius: Float): Pair<Float, List<Offset>> {
+        require(count >= 0)
+        if (count == 0) return 0f to emptyList()
+
+        var ring = 0
+        while (1 + 3 * ring * (ring + 1) < count) {
+            ring++
+        }
+
+        val radius = outerRadius / (2 * ring + 1)
+        if (count == 1) return radius to listOf(Offset.Zero)
+
+        val centers = ArrayList<Offset>(count)
+        centers += Offset.Zero
+
+        var remaining = count - 1
+        var currentRing = 1
+        while (remaining > 0) {
+            val ringCenters = generateRing(currentRing, radius)
+            val take = minOf(remaining, ringCenters.size)
+            for (index in 0 until take) {
+                centers += ringCenters[index]
+            }
+            remaining -= take
+            currentRing++
+        }
+
+        return radius to centers
+    }
+
+    private fun generateRing(ringIndex: Int, radius: Float): List<Offset> {
+        if (ringIndex <= 0) return listOf(Offset.Zero)
+
+        val axialPoints = ArrayList<HexCoord>(ringIndex * 6)
+        var q = ringIndex
+        var r = 0
+        for (direction in HEX_DIRECTIONS) {
+            repeat(ringIndex) {
+                axialPoints += HexCoord(q, r)
+                q += direction.q
+                r += direction.r
             }
         }
-        return CosLifecycleState(evolved)
+
+        return axialPoints.map { coord ->
+            val x = (2f * radius * coord.q) + (radius * coord.r)
+            val y = SQRT_THREE * radius * coord.r
+            Offset(x, y)
+        }
+    }
+
+    private fun log(message: String) {
+        try {
+            Log.i(TAG, message)
+        } catch (_: RuntimeException) {
+            // ignore during local tests
+        }
     }
 
     companion object {
+        private val HEX_DIRECTIONS = arrayOf(
+            HexCoord(-1, 1),
+            HexCoord(-1, 0),
+            HexCoord(0, -1),
+            HexCoord(1, -1),
+            HexCoord(1, 0),
+            HexCoord(0, 1)
+        )
+        private const val SQRT_THREE = 1.7320508f
         private const val ROOT_CELL_ID = "root"
-        private const val TICK_MS = 1_000L
-        private const val SEED_DURATION = 10_000f
-        private const val BUD_DURATION = 10_000f
-        private const val CELL_OFFSET = 2f
-        private const val MAX_CELLS = 8
-
-        private val CONTACT_DIRECTIONS = List(8) { index ->
-            val angle = (index / 8f) * 2f * PI.toFloat()
-            Offset(cos(angle), sin(angle))
-        }
+        private const val ORGANISM_RADIUS_UNITS = 4f
+        private const val TAG = "CosLifecycleEngine"
     }
 }

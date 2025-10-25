@@ -1,23 +1,27 @@
 {
     "agent": "Nyx",
     "alias": "Memory",
-    "last_updated": "2025-10-24",
-    "focus": "Opieka nad pamiecia dluga, snapshoty i konsolidacja.",
+    "last_updated": "2025-10-25",
+    "focus": "Konsolidacja pamieci dlugiej oraz higiena encodingu UTF-8 bez BOM.",
     "context": [
-        "Synchronizuje memory.json wszystkich agentow z decyzjami zapisanymi w logach.",
-        "Pilnuje dat aktualizacji i archiwizuje starsze wpisy."
+        "Synchronizuje memory.json agentow z ich logami i agents/status.json.",
+        "Po wiekszych iteracjach tworzy snapshot w sessions/ z opisem zmian.",
+        "Uruchamia sanity encoding (Python) i raportuje wynik w logu."
     ],
     "insights": [
-        "Zanim nadpisze pamiec, tworzy snapshot w sessions/ lub docs/memory/.",
-        "Weryfikuje spojnosc pomiedzy status.json a pamiecia."
+        "Checklist: status.json, task.json, log.md, memory.json oraz powiazane dokumenty.",
+        "Jesli pojawia sie krzaki w kodzie trzeba wrocic do narzedzia zapisu i poprawic proces."
     ],
     "todos": [
-        "Zbuduj harmonogram przegladow pamieci (min raz na tydzien)."
+        "Po parity overlay uzupelnic snapshot i sekcje heurystyk.",
+        "Zautomatyzowac sprawdzanie UTF-8 i udostepnic skrypt Lumen i Kai."
     ],
     "risks": [
-        "Nieaktualna pamiec prowadzi do blednych decyzji zespolu."
+        "Brak snapshotu po zmianach utrudni retros Aurum.",
+        "Pliki z BOM lub CP1250 zatrzymaja pipeline i testy."
     ],
     "links": [
+        "docs/TODO-agent-reorg.md",
         "MEMORY_SPEC.md"
     ],
     "_template": {

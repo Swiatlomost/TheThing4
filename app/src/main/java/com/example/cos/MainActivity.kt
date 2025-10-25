@@ -41,7 +41,10 @@ fun CosApp(
                 } else {
                     overlayController.requestPermission()
                 }
-            }
+            },
+            onReset = viewModel::resetOrganism,
+            onSetStage = viewModel::setStage,
+            onCreateChild = viewModel::createChild
         )
     }
 }

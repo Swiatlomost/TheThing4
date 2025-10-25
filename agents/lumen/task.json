@@ -18,6 +18,35 @@
                 "Prototyp Compose + test jednostkowy"
             ],
             "completed_at": "2025-10-24"
+        },
+        {
+            "task_id": "LUMEN-20251025-001",
+            "parent_task_id": "ORIN-20251024-001",
+            "title": "Manualny cykl - core implementation",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "completed_at": "2025-10-25",
+            "notes": "Silnik i UI dostosowane do globalnych akcji; ./gradlew test PASS.",
+            "deliverables": [
+                "feature/cos-lifecycle (engine, screen, viewmodel)",
+                "app/MainActivity (callbacki)",
+                "Testy jednostkowe manualnego cyklu"
+            ]
+        },
+        {
+            "task_id": "LUMEN-20251025-002",
+            "parent_task_id": "ORIN-20251024-001",
+            "title": "Overlay parity manualnego cyklu",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "completed_at": "2025-10-25",
+            "notes": "Lifecycle + saved state owner w overlay, ./gradlew connectedDebugAndroidTest + logcat sanity PASS.",
+            "deliverables": [
+                "feature/cos-overlay/LifecycleOverlayService",
+                "Manual sanity Pixel_5"
+            ]
         }
     ],
     "_template": {

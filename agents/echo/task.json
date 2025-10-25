@@ -1,6 +1,20 @@
 {
     "agent": "Echo",
-    "current_tasks": [],
+    "current_tasks": [
+        {
+            "task_id": "ECHO-20251025-001",
+            "parent_task_id": "ORIN-20251024-001",
+            "title": "Discovery manualnego cyklu Cos",
+            "status": "in_progress",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "notes": "Zbieram wymagania manualnego cyklu, kataloguje ryzyka overlay i adb, formuje pytania dla Vireal.",
+            "deliverables": [
+                "Discovery brief z wymaganiami i ryzykami",
+                "Lista pytan follow-up dla Vireal i Orina"
+            ]
+        }
+    ],
     "completed_tasks": [
         {
             "task_id": "ECHO-20251024-001",
@@ -9,9 +23,9 @@
             "status": "done",
             "assigned_at": "2025-10-24",
             "last_update": "2025-10-24",
-            "notes": "Zidentyfikuj ryzyka styku, pauzy cyklu i gestow overlay. (lista ryzyk + mitigacje dostarczona)",
+            "notes": "Zidentyfikowalam ryzyka styku, pauzy cyklu i gestow overlay, przygotowalam mitigacje.",
             "deliverables": [
-                "Lista ryzyk",
+                "Lista ryzyk overlay",
                 "Propozycje mitigacji"
             ],
             "completed_at": "2025-10-24"

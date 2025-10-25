@@ -1,65 +1,75 @@
 {
     "agent": "Orin",
-    "current_tasks": [
+    "current_tasks": [],
+    "backlog": [],
+    "completed_tasks": [
         {
             "task_id": "ORIN-20251024-001",
-            "title": "CoS v0.1 - wspolny cykl",
-            "status": "pending",
+            "title": "CoS v0.1 - manualny cykl i overlay parity",
+            "status": "done",
             "opened_at": "2025-10-24",
-            "last_update": "2025-10-24",
-            "why": "Zapewnic identyczne zachowanie organizmu Cos w aplikacji i overlayu.",
-            "next": "Delegowac prace i monitorowac checkpointy.",
+            "closed_at": "2025-10-25",
+            "why": "Zapewnic spojny przebieg manualnego cyklu oraz parity overlay.",
+            "outcome": "Discovery -> guard rails -> core -> overlay -> testy -> retro zamkniete; rekomendacje Aurum przekazane.",
             "linked_agent_tasks": [
                 {
                     "agent": "Echo",
-                    "task_id": "ECHO-20251024-001",
-                    "status": "done"
+                    "task_id": "ECHO-20251025-001",
+                    "status": "in_progress"
                 },
                 {
                     "agent": "Vireal",
-                    "task_id": "VIREAL-20251024-001",
+                    "task_id": "VIREAL-20251025-001",
                     "status": "done"
                 },
                 {
                     "agent": "Lumen",
-                    "task_id": "LUMEN-20251024-001",
+                    "task_id": "LUMEN-20251025-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Lumen",
+                    "task_id": "LUMEN-20251025-002",
                     "status": "done"
                 },
                 {
                     "agent": "Kai",
-                    "task_id": "KAI-20251024-001",
+                    "task_id": "KAI-20251025-001",
                     "status": "done"
                 },
                 {
-                    "agent": "Scribe",
-                    "task_id": "SCRIBE-20251024-001",
-                    "status": "pending"
-                },
-                {
-                    "agent": "Mira",
-                    "task_id": "MIRA-20251024-001",
-                    "status": "pending"
-                },
-                {
-                    "agent": "Nyx",
-                    "task_id": "NYX-20251024-001",
-                    "status": "pending"
+                    "agent": "Kai",
+                    "task_id": "KAI-20251025-002",
+                    "status": "done"
                 },
                 {
                     "agent": "Nodus",
-                    "task_id": "NODUS-20251024-001",
-                    "status": "pending"
+                    "task_id": "NODUS-20251025-001",
+                    "status": "done"
+                },
+                {
+                    "agent": "Nyx",
+                    "task_id": "NYX-20251025-001",
+                    "status": "in_progress"
+                },
+                {
+                    "agent": "Scribe",
+                    "task_id": "SCRIBE-20251025-001",
+                    "status": "in_progress"
+                },
+                {
+                    "agent": "Storywright",
+                    "task_id": "MIRA-20251025-001",
+                    "status": "in_progress"
                 },
                 {
                     "agent": "Aurum",
-                    "task_id": "AURUM-20251024-001",
-                    "status": "pending"
+                    "task_id": "AURUM-20251025-001",
+                    "status": "in_progress"
                 }
             ]
         }
     ],
-    "backlog": [],
-    "completed_tasks": [],
     "_template": {
         "current_tasks": [
             {

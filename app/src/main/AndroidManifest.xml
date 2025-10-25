@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:name=".CosApplication"
@@ -10,11 +10,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service
-            android:name="com.example.cos.overlay.LifecycleOverlayService"
-            android:exported="false"
-            android:permission="android.permission.SYSTEM_ALERT_WINDOW"/>
+        <receiver
+            android:name=".LifecycleStageReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.cos.action.SET_STAGE" />
+                <action android:name="com.example.cos.action.SEED" />
+                <action android:name="com.example.cos.action.NARODZINY" />
+                <action android:name="com.example.cos.action.DOJRZEWANIE" />
+                <action android:name="com.example.cos.action.NOWA_KOMORKA" />
+            </intent-filter>
+        </receiver>
     </application>
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
 </manifest>

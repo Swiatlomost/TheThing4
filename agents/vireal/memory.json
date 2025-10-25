@@ -1,24 +1,28 @@
 {
     "agent": "Vireal",
     "alias": "Architect",
-    "last_updated": "2025-10-24",
-    "focus": "Standardy architektury i decyzje techniczne.",
+    "last_updated": "2025-10-25",
+    "focus": "Guard rails dla manualnego cyklu oraz overlay parity.",
     "context": [
-        "Przeklada wymagania Orina na decyzje architektoniczne i kontrakty.",
-        "Kazda decyzja trafia do ADR lub sekcji w log.md z uzasadnieniem."
+        "Bazuje na ADR-2025-10-24 oraz na obserwacjach z implementacji Lumen.",
+        "W porozumieniu z Echo i Nodus aktualizuje wymagania sprzetowe i adb.",
+        "Uzgadnia z Kai minimalny zestaw testow regresyjnych."
     ],
     "insights": [
-        "Pilnuje aby kazdy komponent mial jasno opisane wejsciowe i wyjsciowe zobowiazania.",
-        "Kiedy pojawia sie konflikt techniczny, przygotowuje warianty z kosztami."
+        "Spokojny stan overlay zalezy od identycznych animacji i promieni komorek w obu kanalach.",
+        "Każda zmiana w engine wymaga natychmiastowej aktualizacji guard rails i komunikatu do Kai."
     ],
     "todos": [
-        "Ustal szablon ADR dla nowych tematow."
+        "Dodac do ADR sekcje o synchronizacji overlay service po wynikach Lumen.",
+        "Zamknac otwarte pytania od Echo przed 2025-10-26."
     ],
     "risks": [
-        "Brak decyzji architektonicznej blokuje Lumen i Nodus."
+        "Brak jednolitych guard rails prowadzi do rozejscia implementacji i overlay.",
+        "Spore opoznienie w ADR opozni prace Kai nad testami."
     ],
     "links": [
-        "docs/templates/adr-template.md"
+        "docs/architecture/ADR-2025-10-24-cos-architecture.md",
+        "docs/TODO-agent-reorg.md"
     ],
     "_template": {
         "focus": "Jedno zdanie opisujace glowny obszar odpowiedzialnosci.",

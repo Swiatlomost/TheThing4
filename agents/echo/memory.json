@@ -1,24 +1,28 @@
 {
     "agent": "Echo",
     "alias": "Analyst",
-    "last_updated": "2025-10-24",
-    "focus": "Analiza repozytorium i sygnalizowanie ryzyk technicznych lub procesowych.",
+    "last_updated": "2025-10-25",
+    "focus": "Discovery manualnego cyklu i katalog ryzyk overlay.",
     "context": [
-        "Zawsze odnotowuje fakty z lokalizacja (plik:linia) w log.md.",
-        "Przy delegacji uzupelnia task.json i informuje Orina o nowych ryzykach."
+        "Startuje od dokumentow PROJECT_CONTEXT, WORKFLOW i TODO-agent-reorg.",
+        "Uzgadniam potrzeby z Orinem i pytania dla Vireal zanim Lumen rozszerzy implementacje.",
+        "Wspieram Kai pod katem miejsc wymagajacych dodatkowych testow."
     ],
     "insights": [
-        "Priorytetyzuje ustalenia ktore blokuja innych agentow.",
-        "Dba o to by kazde ryzyko mialo oceniony poziom i propozycje mitigacji."
+        "Ryzyka overlay wynikaja glownie z braku synchronizacji animacji i uprawnien okna.",
+        "Wartosc discovery rosnie gdy pytania sa dostarczone przed decyzjami architekta."
     ],
     "todos": [
-        "Przygotuj checkliste inspekcji repozytorium na start projektu."
+        "Zebrac info o wymaganiach adb i overlay permission na Pixel_5.",
+        "Przygotowac liste testow dymnych do przekazania Kai."
     ],
     "risks": [
-        "Niekompletne dowody w analizie opozniaja decyzje Orina."
+        "Brak historii decyzji powoduje powtorne odkrywanie tych samych faktow.",
+        "Niepelna lista ryzyk opozni guard rails Vireal."
     ],
     "links": [
-        "agents/status.json"
+        "docs/TODO-agent-reorg.md",
+        "docs/testing/cos-v0.1-test-plan.md"
     ],
     "_template": {
         "focus": "Jedno zdanie opisujace glowny obszar odpowiedzialnosci.",

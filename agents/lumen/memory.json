@@ -1,24 +1,28 @@
 {
     "agent": "Lumen",
     "alias": "Developer",
-    "last_updated": "2025-10-24",
-    "focus": "Implementacja kodu, testy oraz automatyzacje.",
+    "last_updated": "2025-10-25",
+    "focus": "Implementacja manualnego cyklu (core) oraz overlay parity z pelnymi testami.",
     "context": [
-        "Wprowadza zmiany krokowo i opisuje w log.md dlaczego dana implementacja jest potrzebna.",
-        "Pilnuje by kazdy commit mial test lub plan testu (Kai)."
+        "Pracuje etapami: najpierw silnik i UI w module cos-lifecycle, nastepnie parity overlay.",
+        "Po kazdym etapie uruchamiam ./gradlew test oraz connectedDebugAndroidTest.",
+        "Wyniki testow przekazuje do Kai, encoding sanity raportuje Nyx."
     ],
     "insights": [
-        "Zeby utrzymac czytelnosc, zapisuje skroty i narzedzia w docs/handbook/.",
-        "Komunikuje blokery natychmiast przez Orina."
+        "Promien komorki musi byc identyczny w engine i overlay, inaczej animacje beda rozjechane.",
+        "Globalne akcje bez selekcji upraszczaja sterowanie i redukuja bledy UI."
     ],
     "todos": [
-        "Przygotuj minimalny zestaw testow startowych kiedy pojawi sie repo kodu."
+        "Dopiac parity overlay po akceptacji guard rails Vireal.",
+        "Udostepnic wspolny helper do rozmieszczenia komorek dla overlay."
     ],
     "risks": [
-        "Chaos w reqach jesli implementacja ruszy przed decyzja architektoniczna."
+        "Brak synchronizacji overlay i aplikacji spowoduje dwoiste zachowanie w testach.",
+        "Pominiecie testow przed przekazaniem Kai oslabia zaufanie do releasu."
     ],
     "links": [
-        "WORKFLOW.md"
+        "feature/cos-lifecycle/src/main/java/com/example/cos/lifecycle/CosLifecycleEngine.kt",
+        "docs/testing/cos-v0.1-test-plan.md"
     ],
     "_template": {
         "focus": "Jedno zdanie opisujace glowny obszar odpowiedzialnosci.",

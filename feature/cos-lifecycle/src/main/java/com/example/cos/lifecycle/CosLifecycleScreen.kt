@@ -1,15 +1,20 @@
 package com.example.cos.lifecycle
 
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -18,24 +23,70 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
-import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.sqrt
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun CosLifecycleScreen(
     state: CosLifecycleState,
     onToggleOverlay: () -> Unit,
+    onReset: () -> Unit,
+    onSetStage: (LifecycleStageCommand) -> Unit,
+    onCreateChild: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    CosLifecycleCanvas(
-        state = state,
-        modifier = modifier
-            .fillMaxSize()
-            .pointerInput(onToggleOverlay) {
-                detectTapGestures(onDoubleTap = { onToggleOverlay() })
+    val lastStage = state.cells.lastOrNull()?.stage
+    val canNarodziny = lastStage is CellStage.Seed
+    val canDojrzewanie = lastStage is CellStage.Bud
+    val canSpawn = lastStage is CellStage.Mature
+
+    Column(modifier = modifier.fillMaxSize()) {
+        Box(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
+                .pointerInput(onToggleOverlay) {
+                    detectTapGestures(onDoubleTap = { onToggleOverlay() })
+                }
+        ) {
+            CosLifecycleCanvas(
+                state = state,
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+        FlowRow(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Button(onClick = onReset) {
+                Text(text = "Reset")
             }
-    )
+            Button(
+                onClick = { onSetStage(LifecycleStageCommand.BUD) },
+                enabled = canNarodziny
+            ) {
+                Text(text = "Narodziny")
+            }
+            Button(
+                onClick = { onSetStage(LifecycleStageCommand.MATURE) },
+                enabled = canDojrzewanie
+            ) {
+                Text(text = "Dojrzewanie")
+            }
+            Button(
+                onClick = onCreateChild,
+                enabled = canSpawn
+            ) {
+                Text(text = "Nowa komórka")
+            }
+        }
+    }
 }
 
 @Composable
@@ -43,188 +94,115 @@ fun CosLifecycleCanvas(
     state: CosLifecycleState,
     modifier: Modifier = Modifier
 ) {
-    val infiniteTransition = rememberInfiniteTransition(label = "cosPulse")
-    val pulseScale by infiniteTransition.animateFloat(
-        initialValue = 0.94f,
-        targetValue = 1.04f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 2400, easing = FastOutSlowInEasing),
-            repeatMode = RepeatMode.Reverse
-        ),
-        label = "pulseScale"
-    )
-
+    val baseRadiusUnits = state.cellRadius.takeIf { it > 0f }
+        ?: computeBaseRadiusUnits(state.cells.size.coerceAtLeast(1))
     val primaryColor = MaterialTheme.colorScheme.primary
+    val accentColor = MaterialTheme.colorScheme.onSurface
+    val animatedCells = state.cells.map { cell ->
+        val stageValue by animateFloatAsState(
+            targetValue = when (cell.stage) {
+                CellStage.Seed -> 0f
+                CellStage.Bud -> 1f
+                CellStage.Mature -> 2f
+                CellStage.Spawned -> 3f
+            },
+            animationSpec = tween(durationMillis = 400),
+            label = "stage-${cell.id}"
+        )
+        AnimatedCell(
+            snapshot = cell,
+            stageValue = stageValue
+        )
+    }
 
     Canvas(modifier = modifier) {
-        drawCells(
-            cells = state.cells,
-            pulseScale = pulseScale,
-            primaryColor = primaryColor
+        drawOrganism(
+            cells = animatedCells,
+            baseRadiusUnits = baseRadiusUnits,
+            containerRadiusUnits = ORGANISM_RADIUS_UNITS,
+            primaryColor = primaryColor,
+            accentColor = accentColor
         )
     }
 }
 
-private fun DrawScope.drawCells(
-    cells: List<CellSnapshot>,
-    pulseScale: Float,
-    primaryColor: Color
+private fun DrawScope.drawOrganism(
+    cells: List<AnimatedCell>,
+    baseRadiusUnits: Float,
+    containerRadiusUnits: Float,
+    primaryColor: Color,
+    accentColor: Color
 ) {
     if (cells.isEmpty()) return
 
-    val paddingUnits = 1.25f
-    val minX = cells.minOf { it.center.x } - (MATURITY_RADIUS_UNITS + paddingUnits)
-    val maxX = cells.maxOf { it.center.x } + (MATURITY_RADIUS_UNITS + paddingUnits)
-    val minY = cells.minOf { it.center.y } - (MATURITY_RADIUS_UNITS + paddingUnits)
-    val maxY = cells.maxOf { it.center.y } + (MATURITY_RADIUS_UNITS + paddingUnits)
+    val scale = (min(size.width, size.height) / 2f) / containerRadiusUnits
+    val origin = Offset(size.width / 2f, size.height / 2f)
 
-    val unitWidth = max(maxX - minX, MIN_BOUND_UNITS)
-    val unitHeight = max(maxY - minY, MIN_BOUND_UNITS)
+    cells.forEach { animated ->
+        val centerPx = origin + animated.snapshot.center * scale
+        val outerRadiusUnits = baseRadiusUnits * outerRadiusMultiplier(animated.stageValue)
+        val fillRadiusUnits = baseRadiusUnits * fillRadiusMultiplier(animated.stageValue)
+        val outlineAlpha = outlineAlpha(animated.stageValue)
+        val fillAlpha = fillAlpha(animated.stageValue)
 
-    val scale = min(size.width / unitWidth, size.height / unitHeight)
-    val offsetX = (size.width - unitWidth * scale) / 2f
-    val offsetY = (size.height - unitHeight * scale) / 2f
+        val outerRadiusPx = outerRadiusUnits * scale
+        val fillRadiusPx = fillRadiusUnits * scale
 
-    val renderedCells = cells.map { cell ->
-        val stage = cell.stage
-        val stageProgress = when (stage) {
-            is CellStage.Seed -> stage.progress.coerceIn(0f, 1f)
-            is CellStage.Bud -> stage.progress.coerceIn(0f, 1f)
-            CellStage.Mature -> 1f
-        }
-        val pulse = if (stage is CellStage.Seed) 1f else pulseScale
-        val baseCenter = Offset(
-            x = offsetX + (cell.center.x - minX) * scale,
-            y = offsetY + (cell.center.y - minY) * scale
-        )
-        val outerRadiusPx = when (stage) {
-            is CellStage.Seed -> seedRadiusPx(scale, stageProgress)
-            is CellStage.Bud -> matureRadiusPx(scale, pulse)
-            CellStage.Mature -> matureRadiusPx(scale, pulse)
-        }
-        val contactRadiusPx = when (stage) {
-            is CellStage.Seed -> outerRadiusPx
-            is CellStage.Bud -> matureRadiusPx(scale, pulse = 1f)
-            CellStage.Mature -> matureRadiusPx(scale, pulse = 1f)
-        }
-        RenderedCell(
-            cell = cell,
-            stage = stage,
-            stageProgress = stageProgress,
-            center = baseCenter,
-            outerRadiusPx = outerRadiusPx,
-            contactRadiusPx = contactRadiusPx
-        )
-    }
-
-    val renderedById = renderedCells.associateBy { it.cell.id }
-    val adjustedCells = renderedCells.map { renderedCell ->
-        if (renderedCell.stage is CellStage.Seed && renderedCell.cell.parentId != null) {
-            val parent = renderedById[renderedCell.cell.parentId]
-            if (parent != null) {
-                val direction = renderedCell.center - parent.center
-                val distance = direction.getDistance()
-                val desiredDistance = parent.contactRadiusPx + renderedCell.contactRadiusPx
-                if (distance > desiredDistance + CONTACT_EPSILON_PX && distance > 0f) {
-                    val shift = distance - desiredDistance
-                    val normalized = direction / distance
-                    val adjustedCenter = renderedCell.center - normalized * shift
-                    renderedCell.copy(center = adjustedCenter)
-                } else if (distance + CONTACT_EPSILON_PX < desiredDistance && distance > 0f) {
-                    val shortfall = desiredDistance - distance
-                    val normalized = direction / distance
-                    val adjustedCenter = renderedCell.center + normalized * shortfall
-                    renderedCell.copy(center = adjustedCenter)
-                } else {
-                    renderedCell
-                }
-            } else {
-                renderedCell
-            }
-        } else {
-            renderedCell
-        }
-    }
-
-    adjustedCells.forEach { renderedCell ->
-        drawCell(
-            renderedCell = renderedCell,
-            primaryColor = primaryColor,
-            scale = scale
-        )
-    }
-}
-
-private fun DrawScope.drawCell(
-    renderedCell: RenderedCell,
-    primaryColor: Color,
-    scale: Float
-) {
-    val stage = renderedCell.stage
-    val center = renderedCell.center
-    val stageProgress = renderedCell.stageProgress
-    when (stage) {
-        is CellStage.Seed -> {
-            drawCircle(
-                color = primaryColor,
-                radius = renderedCell.outerRadiusPx,
-                center = center
-            )
-        }
-        is CellStage.Bud -> {
-            val outlineRadius = renderedCell.outerRadiusPx
-            val strokeWidth = scale * 0.18f
-            val fillRadius = lerp(
-                start = outlineRadius * 0.25f,
-                stop = outlineRadius * 0.95f,
-                fraction = stageProgress
-            )
-            val fillAlpha = lerp(0.18f, 0.85f, stageProgress)
-
+        if (fillRadiusPx > 0f) {
             drawCircle(
                 color = primaryColor.copy(alpha = fillAlpha),
-                radius = fillRadius,
-                center = center
-            )
-            drawCircle(
-                color = primaryColor.copy(alpha = 0.65f),
-                radius = outlineRadius,
-                center = center,
-                style = Stroke(width = strokeWidth)
+                radius = fillRadiusPx,
+                center = centerPx
             )
         }
-        CellStage.Mature -> {
+
+        val outlineWidth = (baseRadiusUnits * 0.2f) * scale
+        if (outlineAlpha > 0f && outerRadiusPx > 0f) {
             drawCircle(
-                color = primaryColor,
-                radius = renderedCell.outerRadiusPx,
-                center = center
+                color = accentColor.copy(alpha = outlineAlpha),
+                radius = outerRadiusPx,
+                center = centerPx,
+                style = Stroke(width = outlineWidth)
             )
         }
     }
 }
 
-private fun seedRadiusPx(scale: Float, stageProgress: Float): Float {
-    val clamped = stageProgress.coerceIn(0f, 1f)
-    val matureRadius = matureRadiusPx(scale, pulse = 1f)
-    return lerp(
-        start = matureRadius * 0.18f,
-        stop = matureRadius * 0.45f,
-        fraction = clamped
-    )
+private fun computeBaseRadiusUnits(count: Int): Float {
+    val c = count.coerceAtLeast(1)
+    val shrink = sqrt((c - 1).coerceAtLeast(0).toFloat())
+    return ORGANISM_RADIUS_UNITS / (1f + shrink)
 }
 
-private fun matureRadiusPx(scale: Float, pulse: Float): Float =
-    scale * MATURITY_RADIUS_UNITS * pulse
+private fun outerRadiusMultiplier(stageValue: Float): Float = when {
+    stageValue <= 1f -> lerp(0.45f, 0.75f, stageValue.coerceIn(0f, 1f))
+    stageValue <= 2f -> lerp(0.75f, 1f, (stageValue - 1f).coerceIn(0f, 1f))
+    else -> 1f
+}
 
-private data class RenderedCell(
-    val cell: CellSnapshot,
-    val stage: CellStage,
-    val stageProgress: Float,
-    val center: Offset,
-    val outerRadiusPx: Float,
-    val contactRadiusPx: Float
+private fun fillRadiusMultiplier(stageValue: Float): Float = when {
+    stageValue <= 0f -> 0.3f
+    stageValue <= 1f -> lerp(0.3f, 0.6f, stageValue.coerceIn(0f, 1f))
+    stageValue <= 2f -> lerp(0.6f, 1f, (stageValue - 1f).coerceIn(0f, 1f))
+    else -> 0.85f
+}
+
+private fun fillAlpha(stageValue: Float): Float = when {
+    stageValue <= 1f -> 1f
+    stageValue <= 2f -> lerp(0.85f, 1f, (stageValue - 1f).coerceIn(0f, 1f))
+    else -> 0.6f
+}
+
+private fun outlineAlpha(stageValue: Float): Float = when {
+    stageValue <= 0f -> 0f
+    stageValue <= 1f -> lerp(0.6f, 0.85f, stageValue.coerceIn(0f, 1f))
+    stageValue <= 2f -> lerp(0.85f, 0.45f, (stageValue - 1f).coerceIn(0f, 1f))
+    else -> 0.3f
+}
+
+private data class AnimatedCell(
+    val snapshot: CellSnapshot,
+    val stageValue: Float
 )
 
-private const val MATURITY_RADIUS_UNITS = 1f
-private const val MIN_BOUND_UNITS = 4f
-private const val CONTACT_EPSILON_PX = 0.5f
+private const val ORGANISM_RADIUS_UNITS = 4f

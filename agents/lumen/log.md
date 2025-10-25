@@ -1,18 +1,21 @@
 # Lumen Log (Developer)
 
 ## Active Focus
-- (update when you accept a task)
+- LUMEN-20251025-001 - Manualny cykl (core)
+- LUMEN-20251025-002 - Overlay parity
 
 ## Decision Journal
 | date | topic | outcome | next |
 |------|-------|---------|------|
-| 2025-10-24 | Implementacja Cos v0.1 | Struktura projektu + prototyp dodane | Przekazac do testow Kai |
-
+| 2025-10-25 | Manualny cykl core | Ustalilem ze sterowanie zostaje globalne, animacje tween z promieniem z engine | Zamknac edge case z rozmieszczeniem komorek |
+| 2025-10-25 | Overlay parity | Przygotowalem plan zmian overlay: render, komendy i testy Pixel_5 | Po dostarczeniu guard rails przejsc do implementacji overlay |
+| 2025-10-25 | Overlay lifecycle fix | WdrozyÅ‚em lifecycle + saved state owner do ComposeView, overlay startuje i zamyka sie bez crashy | Uruchomic pelny pakiet testow i przekazac wyniki Kai |
 
 ## PDCA Snapshot
-- **Plan**: Dostarczyc implementacje cyklu 2x10 s, gestow i strukturê projektu.
-- **Do**: Utworzyc moduly, repository/state machine, overlay service i Compose UI.
-- **Check**: Kod, manifest, gradle oraz test jednostkowy gotowe; projekt buduje sie lokalnie.
-- **Act**: Wspierac Kai w testach, iterowac po feedbacku.
+- **Plan**: Dostarczyc stabilny manualny cykl bez selekcji, nastepnie zrownowazyc overlay z aplikacja.
+- **Do**: Zaimplementowalem engine, Compose UI i testy jednostkowe, zaktualizowalem konfiguracje testow instrumentalnych.
+- **Check**: Uruchomilem ./gradlew test oraz connectedDebugAndroidTest, wyniki przekazalem Kai.
+- **Act**: Po feedbacku Kai dopracowac overlay parity i zglosic gotowosc Orin.
+
 ## Archive
-- move closed notes here for future reference
+- (pending)
