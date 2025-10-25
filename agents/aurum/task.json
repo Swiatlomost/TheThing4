@@ -1,21 +1,23 @@
 {
     "agent": "Aurum",
-    "current_tasks": [
+    "current_tasks": [],
+    "completed_tasks": [
         {
-            "task_id": "AURUM-20251024-001",
+            "task_id": "AURUM-20251025-001",
             "parent_task_id": "ORIN-20251024-001",
             "title": "Retro obserwacje Cos v0.1",
-            "status": "pending",
-            "assigned_at": "2025-10-24",
-            "last_update": "2025-10-24",
-            "notes": "Notuj obserwacje do retro o nowym pipeline (Mira/PDCA).",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "completed_at": "2025-10-25",
+            "notes": "Raport retro dostarczony Orinowi; rekomendacje dla WORKFLOW/ADR zapisane.",
             "deliverables": [
                 "Notatki do retro",
-                "Lista usprawnien"
+                "Lista usprawnien",
+                "Rekomendacje dla WORKFLOW/ADR"
             ]
         }
     ],
-    "completed_tasks": [],
     "_template": {
         "current_tasks": [
             {

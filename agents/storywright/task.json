@@ -2,13 +2,13 @@
     "agent": "Mira",
     "current_tasks": [
         {
-            "task_id": "MIRA-20251024-001",
+            "task_id": "MIRA-20251025-001",
             "parent_task_id": "ORIN-20251024-001",
             "title": "Monitorowanie wizji Cos v0.1",
-            "status": "pending",
-            "assigned_at": "2025-10-24",
-            "last_update": "2025-10-24",
-            "notes": "Po sesji monitoruj zmiany wizji i aktualizuj brief JSON.",
+            "status": "in_progress",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "notes": "Zbieram narracje manualnego cyklu i overlay, odswiezam brief oraz liste pytan.",
             "deliverables": [
                 "Zaktualizowany brief (jesli potrzeba)",
                 "Feedback dla Orina"
@@ -25,12 +25,12 @@
                 "status": "pending",
                 "assigned_at": "YYYY-MM-DD",
                 "last_update": "YYYY-MM-DD",
-                "notes": "Streszcz rozmow\u00c4\u2122, przygotuj sekcje do pliku sesji i zapisz brief w JSON.",
+                "notes": "Streszcz rozmowe, przygotuj sekcje do pliku sesji i zapisz brief w JSON.",
                 "deliverables": [
                     "Conversation log (opcjonalnie)",
                     "Session brief dla Orina",
                     "Lista pytan/ryzyk",
-                    "Draft pliku w sessions/ wraz z PDCA agent\u0102\u0142w"
+                    "Draft pliku w sessions/ wraz z PDCA agentow"
                 ]
             }
         ],

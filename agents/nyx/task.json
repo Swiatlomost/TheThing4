@@ -2,13 +2,13 @@
     "agent": "Nyx",
     "current_tasks": [
         {
-            "task_id": "NYX-20251024-001",
+            "task_id": "NYX-20251025-001",
             "parent_task_id": "ORIN-20251024-001",
-            "title": "Pamiec cyklu Cos v0.1",
-            "status": "pending",
-            "assigned_at": "2025-10-24",
-            "last_update": "2025-10-24",
-            "notes": "Zaktualizuj memory.json i wykonaj snapshot po testach Kai.",
+            "title": "Pamiec manualnego cyklu",
+            "status": "in_progress",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "notes": "Aktualizuje memory manualnego cyklu i overlay oraz raportuje sanity UTF-8.",
             "deliverables": [
                 "Zaktualizowany memory.json",
                 "Snapshot"

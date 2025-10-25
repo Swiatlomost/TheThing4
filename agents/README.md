@@ -1,4 +1,4 @@
-﻿# Agents Directory
+# Agents Directory
 
 Each agent keeps three core files:
 - `task.json` - active and completed work, mirroring `agents/status.json`.
@@ -8,9 +8,9 @@ Each agent keeps three core files:
 Optional artefacts (such as Scribe's `chronicle.md`) live alongside these files.
 
 ## Workflow
-1. Orin registers new work in `agents/orin/task.json` and `agents/status.json`.
-2. Linked agents copy the task entry into their `task.json` and start logging.
-2a. Przed oznaczeniem zadania jako `in_progress` wypelnij PDCA w `log.md` (szablon: `docs/templates/pdca-template.md`).
-3. When done, move entries to `completed_tasks`, run the cooldown checklist, and ask Nyx to update memories if context changed.
+1. Orin rejestruje nowe zadanie w `agents/orin/task.json` oraz `agents/status.json`.
+2. Powiazani agenci kopiują wpis do swojego `task.json` i rozpoczynają logowanie.
+3. Przed ustawieniem statusu `in_progress` wypelnij PDCA w `log.md` (szablon: `docs/templates/pdca-template.md`).
+4. Po zakonczeniu przenies wpisy do `completed_tasks`, wykonaj cooldown checklist i poproś Nyx o aktualizacje pamieci gdy kontekst sie zmienil.
 
-Follow the conflict resolution steps defined in `AGENTS.md` whenever roles disagree.
+Stosuj procedury rozwiazywania konfliktow z `AGENTS.md` gdy role maja rozbiezne oczekiwania.

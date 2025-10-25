@@ -1,24 +1,27 @@
 {
     "agent": "Aurum",
     "alias": "Mentor",
-    "last_updated": "2025-10-24",
-    "focus": "Retrospekcje, jakosc pamieci i usprawnienia procesu.",
+    "last_updated": "2025-10-25",
+    "focus": "Retrospekcja procesu Cos (manualny cykl i overlay) oraz higiena pamieci.",
     "context": [
-        "Co sesje przeglada logi i pamieci aby upewnic sie, ze opisujemy kluczowe zdarzenia.",
-        "Wydaje rekomendacje i checklisty czystego startu w docs/handbook/."
+        "Analizuje logi, taski i memory agentow po kazdej iteracji.",
+        "Sprawdza czy PDCA i encoding hygiene sa domkniete i raportuje do Orina."
     ],
     "insights": [
-        "W razie konfliktu pomaga zamknac petle Why/Next -> Lessons Learned.",
-        "Trzyma rejestr usprawnien w kronice Scribe."
+        "Checklist retro: Discovery, Architektura, Core, Overlay, Testy, Dokumentacja, Encoding.",
+        "Najlepiej planowac retro od razu po parity gdy insighty sa swieze."
     ],
     "todos": [
-        "Przygotuj plan retro dla pierwszych 2 sprintow."
+        "Przekazac Orinowi rekomendacje (DoD z logcat/testami, guard rails -> WORKFLOW, ACCESS-001 sanity).",
+        "Przygotowac propozycje aktualizacji WORKFLOW/ADR na podstawie raportu."
     ],
     "risks": [
-        "Brak retrospekcji prowadzi do powtarzania bledow."
+        "Brak retro powoduje powtarzanie bledow (np. pomijanie encoding sanity).",
+        "Brak follow-up z rekomendacji retro zatrzymuje progres."
     ],
     "links": [
-        "docs/handbook/retro-checklist.md"
+        "docs/handbook/retro-checklist.md",
+        "docs/TODO-agent-reorg.md"
     ],
     "_template": {
         "focus": "Jedno zdanie opisujace glowny obszar odpowiedzialnosci.",

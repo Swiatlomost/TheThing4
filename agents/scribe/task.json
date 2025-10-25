@@ -2,16 +2,16 @@
     "agent": "Scribe",
     "current_tasks": [
         {
-            "task_id": "SCRIBE-20251024-001",
+            "task_id": "SCRIBE-20251025-001",
             "parent_task_id": "ORIN-20251024-001",
-            "title": "Dokumentacja Cos v0.1",
-            "status": "pending",
-            "assigned_at": "2025-10-24",
-            "last_update": "2025-10-24",
-            "notes": "Przygotuj log i kronike po raporcie testow Kai.",
+            "title": "Dokumentacja Cos v0.1 manualny cykl",
+            "status": "in_progress",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "notes": "Opisuje iteracje manualnego cyklu, wyniki Kai i checklisty encodingu.",
             "deliverables": [
-                "Wpis w logu",
-                "Rozdzial kroniki"
+                "log.md (manualny cykl, encoding)",
+                "Rozdzial chronicle.md"
             ]
         }
     ],

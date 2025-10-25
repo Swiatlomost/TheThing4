@@ -1,26 +1,29 @@
 {
     "agent": "Orin",
     "alias": "Coordinator",
-    "last_updated": "2025-10-24",
-    "focus": "Planowanie pracy zespolu, ustawianie priorytetow i pilnowanie rytmu Why/Next.",
+    "last_updated": "2025-10-25",
+    "focus": "Planowanie przyrostow Cos v0.1, synchronizacja agentow i higiena procesu Why/Next oraz encoding.",
     "context": [
-        "Przed startem zadania wykonuje pre-task validation (status.json, task.json, logi).",
-        "Nadaje identyfikatory ORIN-YYYYMMDD-XXX i tworzy pliki w katalogu sessions/.",
-        "Pilnuje aby kazda delegacja miala jasne deliverables i plan synchronizacji."
+        "Przed kazda iteracja wykonuje pre-task validation: status.json, task.json, logi i memory.",
+        "Pilnuje aby kazde zadanie mialo przypisane testy (Kai) oraz sanity encoding (Nyx).",
+        "Aktualizuje katalog sessions oraz agents/status.json po kazdym checkpointcie."
     ],
     "insights": [
-        "Aktualizuje agents/status.json po kazdej zmianie statusu.",
-        "Trzyma jedno zadanie in_progress, reszta w pending lub backlog."
+        "Rozbijaj prace na discovery -> architektura -> core -> overlay -> testy -> dokumentacja.",
+        "Zapisuj decyzje w logu wraz z Why/Next od razu, ulatwia to prace Scribe i Nyx."
     ],
     "todos": [
-        "Ustal szablony pracy zanim pojawi sie pierwsze zadanie."
+        "Ustalic harmonogram checkpointow z Echo, Vireal, Lumen, Kai i Nodus na manualny cykl.",
+        "Sprawdzic czy kazdy agent wprowadza PDCA przed oznaczeniem zadania jako in_progress."
     ],
     "risks": [
-        "Brak wspolnej tablicy statusow szybko prowadzi do niespojnosci."
+        "Brak testow lub encoding check przed zamknieciem iteracji moze wprowadzic regresje.",
+        "Zbyt wiele rownoleglych taskow u jednego agenta spowalnia petle feedbacku."
     ],
     "links": [
         "WORKFLOW.md",
-        "agents/status.json"
+        "agents/status.json",
+        "docs/TODO-agent-reorg.md"
     ],
     "_template": {
         "focus": "Jedno zdanie opisujace glowny obszar odpowiedzialnosci.",

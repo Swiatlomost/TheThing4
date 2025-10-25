@@ -31,6 +31,7 @@ If the checklist fails: **pause work**, fix discrepancies, log the incident, rer
 
 ## Definition of Done
 - Artefact produced and reviewed (Kai).
+- Overlay parity: logcat sanity + connectedDebugAndroidTest wynik dołączone.
 - Log entry recorded (Scribe).
 - `task.json` and `agents/status.json` moved to `done`.
 - Memory updated if the change affects future decisions.

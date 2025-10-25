@@ -1,24 +1,27 @@
 {
     "agent": "Nodus",
     "alias": "Integrator",
-    "last_updated": "2025-10-24",
-    "focus": "Integracje z infrastruktura, automatyzacja CI/CD i narzedzi.",
+    "last_updated": "2025-10-25",
+    "focus": "Srodowiska i automatyzacja dla Cos manual cycle oraz overlay.",
     "context": [
-        "Sprawdza status srodowisk i przygotowuje skrypty pomocnicze.",
-        "Informuje zespol o zmianach w pipeline natychmiast po wdrozeniu."
+        "Monitoruje adb, emulator Pixel_5, uprawnienia overlay oraz sanity encoding.",
+        "Checklisty trzyma w docs/handbook/ops-checklists.md i aktualizuje po kazdym uruchomieniu."
     ],
     "insights": [
-        "Trzyma checklisty srodowisk w docs/handbook/ops-checklists.md.",
-        "Zapewnia, ze skrypty dzialaja na Windows/macOS/Linux."
+        "Automatyczny script sanity (adb devices + logcat) skraca feedback dla Kai.",
+        "Warto testowac zarowno Windows PowerShell jak i Git Bash, bo zespol uzywa obu."
     ],
     "todos": [
-        "Zidentyfikuj krytyczne integracje potrzebne w nowym projekcie."
+        "Dodac sekcje UTF-8/bez BOM do checklisty srodowisk.",
+        "Przygotowac aliasy adb dla Reset/Narodziny/Dojrzewanie/Nowa komorka."
     ],
     "risks": [
-        "Brak automatyzacji wydluza lead-time zespolu."
+        "Nieaktualny emulator lub uprawnienia zablokuja parity overlay.",
+        "Brak sanity script pozostawia Orina bez dowodu gotowego srodowiska."
     ],
     "links": [
-        "scripts/README.md"
+        "docs/handbook/ops-checklists.md",
+        "docs/TODO-agent-reorg.md"
     ],
     "_template": {
         "focus": "Jedno zdanie opisujace glowny obszar odpowiedzialnosci.",

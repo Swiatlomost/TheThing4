@@ -45,6 +45,8 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-runtime-android:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.8.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
@@ -52,4 +54,10 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.51")
 
     testImplementation("junit:junit:4.13.2")
+
+    androidTestImplementation("androidx.test:core:1.6.1")
+    androidTestImplementation("androidx.test:core-ktx:1.6.1")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.test:runner:1.6.0")
+    androidTestImplementation("androidx.test:rules:1.6.0")
 }
