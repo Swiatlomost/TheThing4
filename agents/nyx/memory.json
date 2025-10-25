@@ -13,8 +13,8 @@
         "Jesli pojawia sie krzaki w kodzie trzeba wrocic do narzedzia zapisu i poprawic proces."
     ],
     "todos": [
-        "Po parity overlay uzupelnic snapshot i sekcje heurystyk.",
-        "Zautomatyzowac sprawdzanie UTF-8 i udostepnic skrypt Lumen i Kai."
+        "Zautomatyzowac sprawdzanie UTF-8 i udostepnic skrypt Lumen i Kai.",
+        "Przygotowac template snapshotu pod kolejny brief (po nowym celu)."
     ],
     "risks": [
         "Brak snapshotu po zmianach utrudni retros Aurum.",

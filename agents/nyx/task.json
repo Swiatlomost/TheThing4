@@ -1,21 +1,22 @@
 {
     "agent": "Nyx",
-    "current_tasks": [
+    "current_tasks": [],
+    "completed_tasks": [
         {
             "task_id": "NYX-20251025-001",
             "parent_task_id": "ORIN-20251024-001",
             "title": "Pamiec manualnego cyklu",
-            "status": "in_progress",
+            "status": "done",
             "assigned_at": "2025-10-25",
             "last_update": "2025-10-25",
-            "notes": "Aktualizuje memory manualnego cyklu i overlay oraz raportuje sanity UTF-8.",
+            "completed_at": "2025-10-25",
+            "notes": "Memory.json uaktualnione, sanity UTF-8 potwierdzone, snapshot parity zapisany.",
             "deliverables": [
                 "Zaktualizowany memory.json",
                 "Snapshot"
             ]
         }
     ],
-    "completed_tasks": [],
     "_template": {
         "current_tasks": [
             {

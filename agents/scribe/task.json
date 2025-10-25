@@ -1,21 +1,22 @@
 {
     "agent": "Scribe",
-    "current_tasks": [
+    "current_tasks": [],
+    "completed_tasks": [
         {
             "task_id": "SCRIBE-20251025-001",
             "parent_task_id": "ORIN-20251024-001",
             "title": "Dokumentacja Cos v0.1 manualny cykl",
-            "status": "in_progress",
+            "status": "done",
             "assigned_at": "2025-10-25",
             "last_update": "2025-10-25",
-            "notes": "Opisuje iteracje manualnego cyklu, wyniki Kai i checklisty encodingu.",
+            "completed_at": "2025-10-25",
+            "notes": "Log i kronika uzupełnione o parity overlay, dokumentacja zamknięta.",
             "deliverables": [
                 "log.md (manualny cykl, encoding)",
                 "Rozdzial chronicle.md"
             ]
         }
     ],
-    "completed_tasks": [],
     "_template": {
         "current_tasks": [
             {
