@@ -3,13 +3,19 @@ package com.example.cos
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.Crossfade
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.cos.designsystem.theme.CosTheme
 import com.example.cos.lifecycle.CosLifecycleScreen
 import com.example.cos.lifecycle.CosLifecycleViewModel
+import com.example.cos.morphogenesis.MorphogenesisScreen
+import com.example.cos.morphogenesis.MorphogenesisViewModel
 import com.example.cos.overlay.OverlayController
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -32,19 +38,40 @@ fun CosApp(
     viewModel: CosLifecycleViewModel = hiltViewModel()
 ) {
     val lifecycleState by viewModel.state.collectAsState()
+    var destination by rememberSaveable { mutableStateOf(AppDestination.Lifecycle) }
     CosTheme {
-        CosLifecycleScreen(
-            state = lifecycleState,
-            onToggleOverlay = {
-                if (overlayController.hasPermission()) {
-                    overlayController.startOverlayService()
-                } else {
-                    overlayController.requestPermission()
+        Crossfade(targetState = destination, label = "cos-destination") { current: AppDestination ->
+            when (current) {
+                AppDestination.Lifecycle -> {
+                    CosLifecycleScreen(
+                        state = lifecycleState,
+                        onToggleOverlay = {
+                            if (overlayController.hasPermission()) {
+                                overlayController.startOverlayService()
+                            } else {
+                                overlayController.requestPermission()
+                            }
+                        },
+                        onReset = viewModel::resetOrganism,
+                        onSetStage = viewModel::setStage,
+                        onCreateChild = viewModel::createChild,
+                        onOpenMorphogenesis = { destination = AppDestination.Morphogenesis }
+                    )
                 }
-            },
-            onReset = viewModel::resetOrganism,
-            onSetStage = viewModel::setStage,
-            onCreateChild = viewModel::createChild
-        )
+                AppDestination.Morphogenesis -> {
+                    val morphoViewModel: MorphogenesisViewModel = hiltViewModel()
+                    val morphoState by morphoViewModel.state.collectAsState()
+                    MorphogenesisScreen(
+                        state = morphoState,
+                        onBack = { destination = AppDestination.Lifecycle }
+                    )
+                }
+            }
+        }
     }
+}
+
+private enum class AppDestination {
+    Lifecycle,
+    Morphogenesis
 }

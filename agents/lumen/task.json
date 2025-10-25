@@ -1,7 +1,50 @@
 {
     "agent": "Lumen",
-    "current_tasks": [],
+    "current_tasks": [
+        {
+            "task_id": "LUMEN-20251025-004",
+            "parent_task_id": "ORIN-20251025-002",
+            "title": "Menu poziomu i zasobow komorek",
+            "status": "pending",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "notes": "Renderuje gorne menu wyswietlajace level Cosia i licznik dostepnych komorek zgodnie z rekomendacjami UX (licznik, sygnaly ostrzegawcze).",
+            "deliverables": [
+                "UI komponent gornego menu (level, licznik komorek)",
+                "Integracja ze stanem ViewModelu"
+            ]
+        },
+        {
+            "task_id": "LUMEN-20251025-005",
+            "parent_task_id": "ORIN-20251025-002",
+            "title": "Edytor komorek i zapisy form",
+            "status": "pending",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "notes": "Implementuje manipulacje komorkami (dodawanie, usuwanie, pozycja, suwak rozmiaru), zapis wielu form oraz aktywacje w zgodzie z guard rails (kolizje, strefa ostrzegawcza, feedback).",
+            "deliverables": [
+                "Interakcje dodawania/pozycjonowania komorek",
+                "Suwak rozmiaru pojedynczej komorki",
+                "Persistencja form i API aktywacji"
+            ]
+        }
+    ],
     "completed_tasks": [
+        {
+            "task_id": "LUMEN-20251025-003",
+            "parent_task_id": "ORIN-20251025-002",
+            "title": "UI wejscia do Morfogenezy",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "completed_at": "2025-10-25",
+            "notes": "Pasek statusu (Lv / Cells / Active form) + dropdown zapisanych form; `./gradlew test` i `./gradlew connectedDebugAndroidTest` (Pixel_5) PASS.",
+            "deliverables": [
+                "Aktualizacja nawigacji (przycisk Morfogeneza + powrot)",
+                "Pasek statusu + dropdown form na ekranie Morfogenezy",
+                "Raport testow (`./gradlew test`, `./gradlew connectedDebugAndroidTest`)"
+            ]
+        },
         {
             "task_id": "LUMEN-20251024-001",
             "parent_task_id": "ORIN-20251024-001",

@@ -20,7 +20,7 @@ Maintain a live context in VS Code so GPT-5 understands the collaboration framew
 ## Collaboration Tips
 - [SESSION::CONTINUE] - sprawdz postep agentow i wznow sesje (asystent raportuje stan, Orin potwierdza "kontynuuj" lub "zatwierdzam").
 - Confirm the current task ID before modifying files.
-- Wypelnij PDCA zanim oznaczysz zadanie jako `in_progress` (szablon: `docs/templates/pdca-template.md`).
+- Wypelnij PDCA zanim oznaczysz zadanie jako `in_progress`, korzystajac z `docs/templates/pdca-template.md` i linkuj notatke w `log.md` (PDCA Anchor opisany w `docs/reference/session-timeline.md`).
 - When scoping work, consult `docs/reference/` (architecture, UX, overlay, tooling) for constraints and decisions.
 - When uncertain, propose options plus risks instead of pausing work.
 - Use the templates in `docs/templates/` for structured outputs.
@@ -30,4 +30,5 @@ Maintain a live context in VS Code so GPT-5 understands the collaboration framew
 ## Memory Hygiene
 - Nyx ensures `memory.json` entries reflect the latest process decisions.
 - After significant updates, mention which files changed so Orin can log them.
+- Gdy tylko potwierdzasz, ze wiedza pozostaje aktualna, dopisz pole `last_reviewed` z data i identyfikatorem sesji zamiast sztucznie edytowac tresc.
 - Use `scripts/validate-agent-sync.py` to detect stale metadata.

@@ -61,9 +61,9 @@
 ## Shared Rules
 1. Keep `task.json` aligned with `agents/status.json`.
 2. Log start/stop events and key facts in `log.md`.
-3. Touch `memory.json` every day (update content or confirm freshness).
+3. Po każdej istotnej decyzji lub zakończonej sesji zaktualizuj `memory.json`; jeśli zmian brak, dodaj stempel `last_reviewed` z identyfikatorem sesji i datą.
 4. Scribe records work items longer than 30 minutes in a `[TASK::LOG]` entry.
-5. Przed rozpoczeciem zadania przygotuj krotka karte PDCA i dodaj ja do `log.md` (sekcja PDCA Snapshot).
+5. Przed rozpoczeciem zadania przygotuj krotka karte PDCA z szablonu `docs/templates/pdca-template.md` i podlinkuj ja w `log.md` (patrz `docs/reference/session-timeline.md`).
 
 ## Conflict Resolution
 1. **Direct**: raise `[CONFLICT]` to Orin with problem statement and proposals (response within 15 minutes).

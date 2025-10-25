@@ -12,13 +12,14 @@
 7. Scribe records facts and narrative.
 8. Nyx updates memories and snapshots.
 
-Before switching any task to `in_progress`, the owning agent fills a PDCA card (`docs/templates/pdca-template.md`) and records it in `log.md`.
+Before switching any task to `in_progress`, the owning agent fills a PDCA card using the template in `docs/templates/pdca-template.md` and links that entry inside their `log.md` (see PDCA Anchor in `docs/reference/session-timeline.md`).
 
 ## Pre-task Validation Checklist
+- Dostępne jako zadanie VS Code `Validate Pre-Session Checklist` (uruchamia `python scripts/validate-agent-sync.py`).
 - [ ] `agents/status.json` matches every `task.json`.
 - [ ] No `done` items left inside `active_tasks`.
 - [ ] Latest logs present for each agent (within 24h).
-- [ ] Memories have `last_updated` within 24h or confirmation note.
+- [ ] Memories mają `last_updated` (zmiana) lub `last_reviewed` (potwierdzenie) młodsze niż 3 dni.
 - [ ] Automation scripts run without error.
 
 If the checklist fails: **pause work**, fix discrepancies, log the incident, rerun validation.
@@ -31,7 +32,7 @@ If the checklist fails: **pause work**, fix discrepancies, log the incident, rer
 
 ## Definition of Done
 - Artefact produced and reviewed (Kai).
-- Overlay parity: logcat sanity + connectedDebugAndroidTest wynik dołączone.
+- Dodatkowe wymagania produktowe (np. overlay, CLI) sa w `docs/reference/` i stosuje sie je tylko dla zwiazanych zadan.
 - Log entry recorded (Scribe).
 - `task.json` and `agents/status.json` moved to `done`.
 - Memory updated if the change affects future decisions.

@@ -90,7 +90,7 @@ Ludzcy kontrybutorzy mogą pisać commit wiadomości z tagiem `[USER]`, np.:
 ```
 
 Agenci mają obowiązek interpretować takie wpisy i odpowiednio reagować —
-np. aktualizować dokumentację lub notatki o zmianach.
+np. aktualizować dokumentację lub notatki o zmianach. Orin natychmiast odnotowuje wpływ w `agents/status.json`, a Echo przygotowuje krótkie podsumowanie ryzyk lub pytań dla właściwego agenta zanim praca ruszy dalej.
 
 ---
 

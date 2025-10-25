@@ -11,6 +11,7 @@ from typing import Dict, Optional
 AGENTS = ["orin", "echo", "vireal", "lumen", "kai", "scribe", "nyx", "nodus", "aurum", "storywright"]
 REQUIRED_FILES = ["task.json", "log.md", "memory.json"]
 DATE_FMT = "%Y-%m-%d"
+MAX_MEMORY_AGE_DAYS = 3
 
 
 def find_project_root() -> Path:
@@ -165,17 +166,35 @@ def check_logs_and_memories() -> bool:
             ok = False
             continue
         last_updated = mem.get("last_updated")
-        if not last_updated:
-            print(f"[WARN] {agent}: memory.json missing last_updated")
+        last_reviewed = mem.get("last_reviewed")
+
+        def parse_memory_date(raw: Optional[str]) -> Optional[datetime.date]:
+            if not raw:
+                return None
+            token = raw.strip().split()[0]
+            try:
+                return datetime.strptime(token, DATE_FMT).date()
+            except ValueError:
+                return None
+
+        updated_dt = parse_memory_date(last_updated)
+        reviewed_dt = parse_memory_date(last_reviewed)
+
+        reference_dt = max((dt for dt in [updated_dt, reviewed_dt] if dt), default=None)
+        if reference_dt is None:
+            print(f"[WARN] {agent}: memory.json missing usable last_updated/last_reviewed stamp")
             ok = False
-            continue
-        try:
-            dt = datetime.strptime(last_updated, DATE_FMT).date()
-            if (TODAY - dt).days > 1:
-                print(f"[WARN] {agent}: memory last updated on {last_updated}")
+        else:
+            age = (TODAY - reference_dt).days
+            if age > MAX_MEMORY_AGE_DAYS:
+                stamp = last_reviewed or last_updated
+                print(f"[WARN] {agent}: memory last confirmed {stamp} ({age} days ago)")
                 ok = False
-        except ValueError:
-            print(f"[ERR] {agent}: invalid date format in memory.json ({last_updated})")
+        if last_reviewed and reviewed_dt is None:
+            print(f"[ERR] {agent}: last_reviewed has invalid format ({last_reviewed})")
+            ok = False
+        if last_updated and updated_dt is None:
+            print(f"[ERR] {agent}: last_updated has invalid format ({last_updated})")
             ok = False
     if ok:
         print("[OK] Logs and memories look fresh enough.")

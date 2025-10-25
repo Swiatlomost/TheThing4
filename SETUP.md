@@ -16,23 +16,5 @@ Przykladowy `/.vscode/tasks.json`:
 }
 ```
 
-## Przygotowanie srodowiska build APK
-1. **Commandline Tools & SDK**
-   - Pobierz pakiet Android Commandline Tools i ustaw `ANDROID_SDK_ROOT`.
-   - Dodaj `platform-tools` do PATH.
-   - Uruchom:
-     ```
-     sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
-     sdkmanager --licenses
-     ```
-2. **JDK / Gradle**
-   - Zainstaluj JDK 17 i ustaw `JAVA_HOME`.
-   - Upewnij sie, ze repo zawiera Gradle Wrapper (`gradlew`, `gradlew.bat`, `gradle/wrapper/*`).
-3. **Build testowy**
-   ```
-   ./gradlew assembleDebug
-   ```
-   - Wynik APK: `app/build/outputs/apk/debug/app-debug.apk`.
-4. **Opcjonalne kroki**
-   - Cache `~/.gradle` i katalogu SDK (szczegolnie w CI).
-   - W CI (np. GitHub Actions) uzyj `actions/setup-java@v3` (JDK 17) oraz instalacji CLI przez `sdkmanager`.
+## Przygotowanie srodowiska
+Instrukcje produktowe (Android CLI, Gradle, overlay) znajdziesz w `docs/reference/tooling-setup.md`. Repozytorium bazowe skupia sie na procesie wspolpracy, dlatego konfiguracje platformowe traktujemy jako rozszerzenia dostepne na zadanie.

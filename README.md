@@ -18,6 +18,7 @@ This branch contains only the multi-agent workflow, templates, and automation us
 - `WORKFLOW.md` - session ritual, cooldown procedure, communication rules.
 - `AI_GUIDE.md` - how to work with ChatGPT inside VS Code.
 - `MEMORY_SPEC.md` - standards for log/task/memory files.
+- `docs/reference/session-timeline.md` - single overview of phases, owners, and artefacts for a session.
 - `docs/` - handbooks and templates for recurring rituals.
 - `docs/templates/chronicle-entry.md` - framework for Scribe's narrative chapters.
 - `docs/templates/pdca-template.md` - karta planowania PDCA dla kazdego zadania.
@@ -31,8 +32,8 @@ This branch contains only the multi-agent workflow, templates, and automation us
 - `sessions/` - create one file per Orin task using the provided template.
 
 ## How To Use It
-- Run `python scripts/validate-agent-sync.py` before starting new work.
-- Start from a short PDCA using `docs/templates/pdca-template.md` before flipping any task to `in_progress`.
+- Run `python scripts/validate-agent-sync.py` (VS Code task: `Validate Pre-Session Checklist`) before starting new work.
+- Start from a short PDCA using `docs/templates/pdca-template.md` (link it inside your `log.md`) before flipping any task to `in_progress`.
 - Start a new topic by talking to `[AGENT::MIRA]`, who will prepare a brief for Orin.
 - Keep `log.md` entries short (date, observation, decision, next step).
 - Update `task.json` and `agents/status.json` together to avoid drift.

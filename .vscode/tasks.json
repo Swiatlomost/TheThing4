@@ -15,6 +15,15 @@
       "label": "Promote First Orin Task",
       "type": "shell",
       "command": "pwsh scripts/session_start_hook.ps1"
+    },
+    {
+      "label": "Validate Pre-Session Checklist",
+      "type": "shell",
+      "command": "python scripts/validate-agent-sync.py",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
     }
   ]
 }
