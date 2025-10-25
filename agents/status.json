@@ -11,24 +11,6 @@
             "notes": "Mapuje wymagania UI i overlay, przygotowuje liste ryzyk i pytania do Vireal."
         },
         {
-            "agent": "Nyx",
-            "task_id": "NYX-20251025-001",
-            "title": "Aktualizacja memory manualnego cyklu",
-            "parent": "ORIN-20251024-001",
-            "status": "in_progress",
-            "last_update": "2025-10-25",
-            "notes": "Uaktualnia heurystyki, komendy adb i pilnuje utrzymania UTF-8."
-        },
-        {
-            "agent": "Scribe",
-            "task_id": "SCRIBE-20251025-001",
-            "title": "Dokumentacja Cos v0.1 manualny cykl",
-            "parent": "ORIN-20251024-001",
-            "status": "in_progress",
-            "last_update": "2025-10-25",
-            "notes": "Prowadzi log i chronicle z iteracji manualnego cyklu."
-        },
-        {
             "agent": "Mira",
             "task_id": "MIRA-20251025-001",
             "title": "Brief manualnego cyklu",
@@ -147,6 +129,24 @@
             "status": "done",
             "last_update": "2025-10-25",
             "notes": "Raport retro dostarczony Orinowi; rekomendacje przekazane."
+        },
+        {
+            "agent": "Nyx",
+            "task_id": "NYX-20251025-001",
+            "title": "Aktualizacja memory manualnego cyklu",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Snapshot parity zamkniety, sanity UTF-8 odnotowane."
+        },
+        {
+            "agent": "Scribe",
+            "task_id": "SCRIBE-20251025-001",
+            "title": "Dokumentacja Cos v0.1 manualny cykl",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Kronika i log zaktualizowane o parity overlay."
         }
     ],
     "_template": {

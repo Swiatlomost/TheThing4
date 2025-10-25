@@ -12,8 +12,6 @@ Use this page as the human-readable mirror of agents/status.json.
 | Task ID | Agent | Title | Last Update | Notes |
 |---------|-------|-------|-------------|-------|
 | ECHO-20251025-001 | Echo | Discovery manualnego cyklu | 2025-10-25 | Wymagania + ryzyka dla parity |
-| NYX-20251025-001 | Nyx | Aktualizacja memory manualnego cyklu | 2025-10-25 | Snapshot + sanity UTF-8 |
-| SCRIBE-20251025-001 | Scribe | Dokumentacja Cos v0.1 manualny cykl | 2025-10-25 | Log + kronika po reorganizacji |
 | MIRA-20251025-001 | Mira | Brief manualnego cyklu | 2025-10-25 | Utrzymuje 4MAT i pytania |
 
 ## Completed Tasks
@@ -27,3 +25,5 @@ Use this page as the human-readable mirror of agents/status.json.
 | NODUS-20251025-001 | Nodus | Overlay tooling check | 2025-10-25 | adb sanity logcat |
 | ORIN-20251024-001 | Orin | CoS v0.1 - manualny cykl i overlay | 2025-10-25 | agents/orin/log.md:9 |
 | AURUM-20251025-001 | Aurum | Retro pipeline Cos | 2025-10-25 | agents/aurum/log.md:7 |
+| NYX-20251025-001 | Nyx | Aktualizacja memory manualnego cyklu | 2025-10-25 | agents/nyx/log.md:11 |
+| SCRIBE-20251025-001 | Scribe | Dokumentacja Cos v0.1 manualny cykl | 2025-10-25 | agents/scribe/log.md:8 |
