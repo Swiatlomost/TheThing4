@@ -36,6 +36,7 @@ fun CosLifecycleScreen(
     onReset: () -> Unit,
     onSetStage: (LifecycleStageCommand) -> Unit,
     onCreateChild: () -> Unit,
+    onOpenMorphogenesis: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val lastStage = state.cells.lastOrNull()?.stage
@@ -66,6 +67,9 @@ fun CosLifecycleScreen(
         ) {
             Button(onClick = onReset) {
                 Text(text = "Reset")
+            }
+            Button(onClick = onOpenMorphogenesis) {
+                Text(text = "Morfogeneza")
             }
             Button(
                 onClick = { onSetStage(LifecycleStageCommand.BUD) },

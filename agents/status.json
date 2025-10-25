@@ -2,26 +2,70 @@
     "generated_at": "2025-10-25",
     "active_tasks": [
         {
-            "agent": "Echo",
-            "task_id": "ECHO-20251025-001",
-            "title": "Discovery manualnego cyklu",
-            "parent": "ORIN-20251024-001",
+            "agent": "Orin",
+            "task_id": "ORIN-20251025-002",
+            "title": "Morfogeneza v0.1 - orkiestracja sesji",
+            "parent": "-",
             "status": "in_progress",
             "last_update": "2025-10-25",
-            "notes": "Mapuje wymagania UI i overlay, przygotowuje liste ryzyk i pytania do Vireal."
+            "notes": "Koordynuje discovery i plan wdrozenia Morfogenezy; monitoruje postep agentow."
         },
         {
-            "agent": "Mira",
-            "task_id": "MIRA-20251025-001",
-            "title": "Brief manualnego cyklu",
-            "parent": "ORIN-20251024-001",
+            "agent": "Echo",
+            "task_id": "ECHO-20251025-002",
+            "title": "Research kreatora Morfogenezy",
+            "parent": "ORIN-20251025-002",
             "status": "in_progress",
             "last_update": "2025-10-25",
-            "notes": "Utrzymuje brief wizji i pytania kontrolne do wlasciciela."
+            "notes": "Zebrane referencje + guard rails (docs/ux/morphogeneza-ux-research.md); czeka na feedback Orina/Lumena."
         },
-        
+        {
+            "agent": "Storywright",
+            "task_id": "MIRA-20251025-001",
+            "title": "Brief Morfogenezy Cos",
+            "parent": "ORIN-20251025-002",
+            "status": "in_progress",
+            "last_update": "2025-10-25",
+            "notes": "Utrzymuje brief wizji i pytania kontrolne do wlasciciela, skupione na Morfogenezie."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251025-004",
+            "title": "Menu poziomu i zasobow komorek",
+            "parent": "ORIN-20251025-002",
+            "status": "pending",
+            "last_update": "2025-10-25",
+            "notes": "Renderuje gorne menu z levelem Cosia i licznikiem komorek zgodnie z rekomendacjami UX."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251025-005",
+            "title": "Edytor komorek i zapisy form",
+            "parent": "ORIN-20251025-002",
+            "status": "pending",
+            "last_update": "2025-10-25",
+            "notes": "Implementuje manipulacje komorkami, suwak rozmiaru, zapis form oraz aktywacje w zgodzie z guard rails."
+        },
+        {
+            "agent": "Kai",
+            "task_id": "KAI-20251025-003",
+            "title": "Plan testow Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "pending",
+            "last_update": "2025-10-25",
+            "notes": "Przygotuje scenariusze limitow komorek, braku nakladania i szybkiego przelaczania form."
+        }
     ],
     "completed_tasks": [
+        {
+            "agent": "Nodus",
+            "task_id": "NODUS-20251025-002",
+            "title": "Event overlay forma_aktywna",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Kanal SharedFlow + fallback broadcast (formId, cellsHash, timestamp); checklisty adb/logcat w przygotowaniu."
+        },
         {
             "agent": "Echo",
             "task_id": "ECHO-20251024-001",
@@ -30,6 +74,24 @@
             "status": "done",
             "last_update": "2025-10-24",
             "notes": "Zidentyfikowal ryzyka styku, pauzy cyklu i gestow overlay. Analiza zakonczona."
+        },
+        {
+            "agent": "Echo",
+            "task_id": "ECHO-20251025-001",
+            "title": "Discovery manualnego cyklu",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Pakiet wymagan manualnego cyklu, lista ryzyk overlay i pytania follow-up przekazane Orinowi/Vireal."
+        },
+        {
+            "agent": "Vireal",
+            "task_id": "VIREAL-20251025-002",
+            "title": "ADR formy Cosia",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "ADR-2025-10-25 przyjety (guard rails, platno heks, kanal SharedFlow + broadcast)."
         },
         {
             "agent": "Vireal",
@@ -42,39 +104,21 @@
         },
         {
             "agent": "Lumen",
+            "task_id": "LUMEN-20251025-003",
+            "title": "UI wejscia do Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Pasek statusu (Lv / Cells / Active form) + dropdown form; testy `./gradlew test` i `./gradlew connectedDebugAndroidTest` (Pixel_5) PASS."
+        },
+        {
+            "agent": "Lumen",
             "task_id": "LUMEN-20251024-001",
             "title": "Implementacja cyklu Cos v0.1",
             "parent": "ORIN-20251024-001",
             "status": "done",
             "last_update": "2025-10-24",
             "notes": "Implementacja bazowa Cos v0.1 oraz struktura modulow dostarczone."
-        },
-        {
-            "agent": "Kai",
-            "task_id": "KAI-20251024-001",
-            "title": "Plan testow Cos v0.1",
-            "parent": "ORIN-20251024-001",
-            "status": "done",
-            "last_update": "2025-10-24",
-            "notes": "Plan testow Cos v0.1 oraz raport wynikow dostarczony."
-        },
-        {
-            "agent": "Vireal",
-            "task_id": "VIREAL-20251025-001",
-            "title": "Guard rails manualnego cyklu",
-            "parent": "ORIN-20251024-001",
-            "status": "done",
-            "last_update": "2025-10-25",
-            "notes": "Guard rails uzupełnione po weryfikacji overlay."
-        },
-        {
-            "agent": "Nodus",
-            "task_id": "NODUS-20251025-001",
-            "title": "Overlay tooling check",
-            "parent": "ORIN-20251024-001",
-            "status": "done",
-            "last_update": "2025-10-25",
-            "notes": "Sanity overlay zaliczone: adb, Pixel_5, overlay permission."
         },
         {
             "agent": "Lumen",
@@ -93,6 +137,15 @@
             "status": "done",
             "last_update": "2025-10-25",
             "notes": "Lifecycle/saved state fix + logcat sanity; parity overlay gotowe."
+        },
+        {
+            "agent": "Kai",
+            "task_id": "KAI-20251024-001",
+            "title": "Plan testow Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-24",
+            "notes": "Plan testow Cos v0.1 oraz raport wynikow dostarczony."
         },
         {
             "agent": "Kai",

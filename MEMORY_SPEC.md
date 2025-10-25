@@ -17,6 +17,7 @@ Every agent keeps three mandatory files inside `agents/<name>/`:
   "agent": "Echo",
   "alias": "Analyst",
   "last_updated": "YYYY-MM-DD",
+   "last_reviewed": "YYYY-MM-DD (SESSION-ID)",
   "focus": "Obszar odpowiedzialnosci",
   "context": ["Najwazniejsze fakty do startu pracy"],
   "insights": ["Heurystyki pomagajace podejmowac decyzje"],
@@ -29,10 +30,10 @@ Every agent keeps three mandatory files inside `agents/<name>/`:
 
 ## Hygiene
 - Keep entries short; prefer bullet points to paragraphs.
-- Update `last_updated` whenever content changes or you confirm it stays valid.
+- Aktualizuj `last_updated` po zmianach treści. Gdy tylko potwierdzasz aktualność bez zmian, dopisz `last_reviewed` (data + identyfikator sesji, np. `2025-01-18 ORIN-20250118-001`).
 - Nyx coordinates snapshots before milestones and after major incidents.
 - When workflow standards evolve, sync log entries, task files, and `agents/status.json` in the same session.
-- Przed oznaczeniem zadania jako `in_progress` wypelnij PDCA w `log.md` (szablon: `docs/templates/pdca-template.md`).
+- Przed oznaczeniem zadania jako `in_progress` wypelnij PDCA w `log.md`, korzystajac z `docs/templates/pdca-template.md` (szczegoly: `docs/reference/session-timeline.md`).
 
 ## Sample Log Snippet (Scribe)
 ```
