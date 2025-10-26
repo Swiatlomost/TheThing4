@@ -22,7 +22,8 @@ data class MorphogenesisFormSummary(
     val id: String,
     val name: String,
     val cellsCount: Int,
-    val status: FormStatus
+    val status: FormStatus,
+    val isBase: Boolean = false
 ) {
     val infoLine: String
         get() = when (status) {
@@ -46,6 +47,8 @@ enum class AlertSeverity {
 
 @Immutable
 data class MorphogenesisEditorState(
+    val formId: String? = null,
+    val formName: String = "",
     val cells: List<EditorCellState> = emptyList(),
     val selectedCellId: String? = null,
     val radiusSliderValue: Float = 0f,

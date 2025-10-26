@@ -21,6 +21,7 @@ data class CellSnapshot(
     val id: String,
     val stage: CellStage,
     val center: Offset = Offset.Zero,
+    val radius: Float = 0f,
     val parentId: String? = null
 )
 
@@ -132,7 +133,7 @@ class DefaultCosLifecycleEngine @Inject constructor() : CosLifecycleEngine {
         val (radius, centers) = packCircles(count, ORGANISM_RADIUS_UNITS)
         val arranged = cells.mapIndexed { index, cell ->
             val center = centers.getOrNull(index) ?: Offset.Zero
-            cell.copy(center = center)
+            cell.copy(center = center, radius = radius)
         }
         return CosLifecycleState(
             cells = arranged,

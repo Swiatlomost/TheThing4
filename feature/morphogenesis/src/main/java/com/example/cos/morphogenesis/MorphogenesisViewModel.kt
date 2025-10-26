@@ -7,6 +7,10 @@ import com.example.cos.lifecycle.CellStage
 import com.example.cos.lifecycle.CellSnapshot
 import com.example.cos.lifecycle.CosLifecycleEngine
 import com.example.cos.lifecycle.CosLifecycleState
+import com.example.cos.lifecycle.morpho.ActiveMorphoCell
+import com.example.cos.lifecycle.morpho.ActiveMorphoForm
+import com.example.cos.lifecycle.morpho.ActiveMorphoForm.Companion.BASE_FORM_ID
+import com.example.cos.lifecycle.morpho.MorphoFormChannel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -24,7 +28,8 @@ import javax.inject.Inject
 class MorphogenesisViewModel @Inject constructor(
     private val engine: CosLifecycleEngine,
     private val formRepository: MorphoFormRepository,
-    private val eventDispatcher: MorphoEventDispatcher
+    private val eventDispatcher: MorphoEventDispatcher,
+    private val morphoFormChannel: MorphoFormChannel
 ) : ViewModel() {
 
     private val editorDraft = MutableStateFlow(createInitialDraft(engine.state.value))
@@ -39,13 +44,17 @@ class MorphogenesisViewModel @Inject constructor(
             mapToUiState(lifecycleState, readyDraft, forms)
         }.stateIn(
             scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(STATE_STOP_TIMEOUT),
+            started = SharingStarted.Eagerly,
             initialValue = mapToUiState(
                 engine.state.value,
                 editorDraft.value,
                 formRepository.savedForms.value
             )
         )
+
+    init {
+        emitBaseForm(engine.state.value)
+    }
 
     fun addCell() {
         mutateDraft { draft, lifecycleState ->
@@ -72,6 +81,16 @@ class MorphogenesisViewModel @Inject constructor(
                 hasDirtyChanges = true
             )
         }
+    }
+
+    fun selectForm(formId: String) {
+        val lifecycleState = engine.state.value
+        if (formId == BASE_FORM_ID) {
+            editorDraft.value = createInitialDraft(lifecycleState)
+            return
+        }
+        val form = formRepository.savedForms.value.firstOrNull { it.id == formId } ?: return
+        editorDraft.value = createDraftFromForm(form, lifecycleState)
     }
 
     fun selectCell(cellId: String) {
@@ -151,16 +170,32 @@ class MorphogenesisViewModel @Inject constructor(
         if (!validation.isValid || draft.cells.isEmpty()) {
             return
         }
+        if (draft.formId == null && !draft.hasDirtyChanges) {
+            emitBaseForm(lifecycleState)
+            return
+        }
+        val timestamp = System.currentTimeMillis()
+        val existingForms = formRepository.savedForms.value
+        val preparedDraft = draft.prepareForPersistence(existingForms, timestamp)
+        editorDraft.value = preparedDraft
         viewModelScope.launch {
-            val persisted = persistDraft(draft, lifecycleState, activate = false)
-            editorDraft.update { current ->
-                val ensured = current.ensureInitialized(lifecycleState)
-                ensured.copy(
-                    formId = persisted.id,
-                    formName = persisted.name,
-                    formCreatedAtMillis = persisted.createdAtMillis,
-                    hasDirtyChanges = false
-                )
+            val persisted = persistDraft(
+                draft = preparedDraft,
+                lifecycleState = lifecycleState,
+                activate = false,
+                timestamp = timestamp,
+                existingForms = existingForms
+            )
+            if (
+                persisted.name != preparedDraft.formName ||
+                persisted.createdAtMillis != preparedDraft.formCreatedAtMillis
+            ) {
+                editorDraft.update { current ->
+                    current.copy(
+                        formName = persisted.name,
+                        formCreatedAtMillis = persisted.createdAtMillis
+                    )
+                }
             }
         }
     }
@@ -172,17 +207,39 @@ class MorphogenesisViewModel @Inject constructor(
         if (!validation.isValid || draft.cells.isEmpty()) {
             return
         }
+        if (draft.formId == null && !draft.hasDirtyChanges) {
+            emitBaseForm(lifecycleState)
+            return
+        }
+        val timestamp = System.currentTimeMillis()
+        val existingForms = formRepository.savedForms.value
+        val preparedDraft = draft.prepareForPersistence(existingForms, timestamp)
+        editorDraft.value = preparedDraft
         viewModelScope.launch {
-            val persisted = persistDraft(draft, lifecycleState, activate = true)
-            eventDispatcher.emitActivation(persisted.id, draft.cells)
-            editorDraft.update { current ->
-                val ensured = current.ensureInitialized(lifecycleState)
-                ensured.copy(
-                    formId = persisted.id,
-                    formName = persisted.name,
-                    formCreatedAtMillis = persisted.createdAtMillis,
-                    hasDirtyChanges = false
-                )
+            val persisted = persistDraft(
+                draft = preparedDraft,
+                lifecycleState = lifecycleState,
+                activate = true,
+                timestamp = timestamp,
+                existingForms = existingForms
+            )
+            eventDispatcher.emitActivation(persisted.id, preparedDraft.cells)
+            emitActiveForm(
+                formId = persisted.id,
+                formName = persisted.name,
+                lifecycleState = lifecycleState,
+                cells = preparedDraft.cells
+            )
+            if (
+                persisted.name != preparedDraft.formName ||
+                persisted.createdAtMillis != preparedDraft.formCreatedAtMillis
+            ) {
+                editorDraft.update { current ->
+                    current.copy(
+                        formName = persisted.name,
+                        formCreatedAtMillis = persisted.createdAtMillis
+                    )
+                }
             }
         }
     }
@@ -197,21 +254,36 @@ class MorphogenesisViewModel @Inject constructor(
         }
     }
 
+    private fun EditorDraft.prepareForPersistence(
+        existingForms: List<MorphoForm>,
+        timestamp: Long
+    ): EditorDraft {
+        val nextFormId = formId ?: "FORM-$timestamp"
+        val nextFormName = formName.ifBlank { defaultFormName(existingForms) }
+        val nextCreatedAt = formCreatedAtMillis ?: timestamp
+        return copy(
+            formId = nextFormId,
+            formName = nextFormName,
+            formCreatedAtMillis = nextCreatedAt,
+            hasDirtyChanges = false
+        )
+    }
+
     private suspend fun persistDraft(
         draft: EditorDraft,
         lifecycleState: CosLifecycleState,
-        activate: Boolean
+        activate: Boolean,
+        timestamp: Long,
+        existingForms: List<MorphoForm>
     ): MorphoForm {
-        val now = System.currentTimeMillis()
-        val forms = formRepository.savedForms.value
-        val formId = draft.formId ?: "FORM-$now"
-        val formName = draft.formName.ifBlank { defaultFormName(forms) }
-        val createdAt = draft.formCreatedAtMillis ?: now
+        val formId = draft.formId ?: "FORM-$timestamp"
+        val formName = draft.formName.ifBlank { defaultFormName(existingForms) }
+        val createdAt = draft.formCreatedAtMillis ?: timestamp
         val persisted = MorphoForm(
             id = formId,
             name = formName,
             createdAtMillis = createdAt,
-            updatedAtMillis = now,
+            updatedAtMillis = timestamp,
             cells = draft.cells.map { it.toMorphoCell() },
             metadata = mapOf(
                 "level_tag" to levelTagFor(draft.cells.size),
@@ -243,7 +315,8 @@ class MorphogenesisViewModel @Inject constructor(
             id = BASE_FORM_ID,
             name = "Forma 0 (baza)",
             cellsCount = lifecycleState.cells.size,
-            status = FormStatus.Active
+            status = FormStatus.Active,
+            isBase = true
         )
         val savedSummaries = forms.map { form ->
             MorphogenesisFormSummary(
@@ -294,10 +367,20 @@ class MorphogenesisViewModel @Inject constructor(
         val maxRadius = lifecycleState.cellRadius * 1.5f
         val validation = validateDraft(draft, lifecycleState)
         val boundaryRadius = computeBoundaryLimit(draft, lifecycleState)
+        val selectedCellRadius = draft.selectedCellId?.let { id ->
+            draft.cells.firstOrNull { it.id == id }?.radius
+        }
+        val sliderValue = if (draft.radiusSliderValue == 0f) {
+            selectedCellRadius ?: lifecycleState.cellRadius
+        } else {
+            draft.radiusSliderValue
+        }
         return MorphogenesisEditorState(
+            formId = draft.formId,
+            formName = draft.formName,
             cells = draft.cells,
             selectedCellId = draft.selectedCellId,
-            radiusSliderValue = if (draft.radiusSliderValue == 0f) lifecycleState.cellRadius else draft.radiusSliderValue,
+            radiusSliderValue = sliderValue,
             radiusSliderRange = minRadius..maxRadius,
             boundaryRadius = boundaryRadius,
             canAddCell = available > 0 && draft.cells.size < totalCells,
@@ -353,26 +436,100 @@ class MorphogenesisViewModel @Inject constructor(
         val minRadius = max(MIN_RADIUS_FLOOR, state.cellRadius * 0.5f)
         val maxRadius = state.cellRadius * 1.5f
         val cells = state.maturedCells().mapIndexed { index, snapshot ->
+            val snapshotRadius = snapshot.radius.takeIf { it > 0f } ?: state.cellRadius
             EditorCellState(
                 id = snapshot.id,
                 center = snapshot.center,
-                radius = state.cellRadius,
+                radius = snapshotRadius,
                 stageLabel = snapshot.stage.label,
                 isSelected = index == 0
             )
         }
         val selectedId = cells.firstOrNull()?.id
+        val initialRadius = cells.firstOrNull()?.radius ?: state.cellRadius
         return EditorDraft(
             formId = null,
             formName = "",
             formCreatedAtMillis = null,
             cells = cells,
             selectedCellId = selectedId,
-            radiusSliderValue = state.cellRadius,
+            radiusSliderValue = initialRadius,
             radiusSliderRange = minRadius..maxRadius,
             hasDirtyChanges = false,
             initialized = true
         )
+    }
+
+    private fun createDraftFromForm(
+        form: MorphoForm,
+        lifecycleState: CosLifecycleState
+    ): EditorDraft {
+        val minRadius = max(MIN_RADIUS_FLOOR, lifecycleState.cellRadius * 0.5f)
+        val maxRadius = lifecycleState.cellRadius * 1.5f
+        val cells = form.cells.mapIndexed { index, cell ->
+            EditorCellState(
+                id = cell.id,
+                center = cell.center,
+                radius = cell.radius,
+                stageLabel = cell.traits["stage"]
+                    ?: lifecycleState.cells.firstOrNull { it.id == cell.id }?.stage?.label
+                    ?: CellStage.Mature.label,
+                isSelected = index == 0
+            )
+        }
+        val selectedId = cells.firstOrNull()?.id
+        val radiusValue = cells.firstOrNull()?.radius ?: lifecycleState.cellRadius
+        return EditorDraft(
+            formId = form.id,
+            formName = form.name,
+            formCreatedAtMillis = form.createdAtMillis,
+            cells = cells,
+            selectedCellId = selectedId,
+            radiusSliderValue = radiusValue,
+            radiusSliderRange = minRadius..maxRadius,
+            hasDirtyChanges = false,
+            initialized = true
+        )
+    }
+
+    private fun emitActiveForm(
+        formId: String,
+        formName: String,
+        lifecycleState: CosLifecycleState,
+        cells: List<EditorCellState>
+    ) {
+        val activeForm = ActiveMorphoForm(
+            formId = formId,
+            formName = formName,
+            cellRadius = lifecycleState.cellRadius,
+            cells = cells.map { cell ->
+                ActiveMorphoCell(
+                    id = cell.id,
+                    center = cell.center,
+                    radius = cell.radius,
+                    stageLabel = cell.stageLabel
+                )
+            }
+        )
+        morphoFormChannel.tryEmit(activeForm)
+    }
+
+    private fun emitBaseForm(state: CosLifecycleState) {
+        val baseForm = ActiveMorphoForm(
+            formId = BASE_FORM_ID,
+            formName = "Forma 0",
+            cellRadius = state.cellRadius,
+            cells = state.maturedCells().map { snapshot ->
+                val snapshotRadius = snapshot.radius.takeIf { it > 0f } ?: state.cellRadius
+                ActiveMorphoCell(
+                    id = snapshot.id,
+                    center = snapshot.center,
+                    radius = snapshotRadius,
+                    stageLabel = snapshot.stage.label
+                )
+            }
+        )
+        morphoFormChannel.tryEmit(baseForm)
     }
 
     private fun computeBoundaryLimit(
@@ -481,12 +638,11 @@ class MorphogenesisViewModel @Inject constructor(
     private operator fun Offset.minus(other: Offset): Offset = Offset(x - other.x, y - other.y)
 
     companion object {
-        private const val BASE_FORM_ID = "FORM-0"
         private const val LOW_CAPACITY_THRESHOLD = 0.1f
         private const val BOUNDARY_MARGIN = 1.05f
         private const val MIN_CLAMP_FRACTION = 0.25f
         private const val MIN_RADIUS_FLOOR = 0.1f
-        private const val STATE_STOP_TIMEOUT = 5_000L
     }
 }
+
 

@@ -1,6 +1,8 @@
 package com.example.cos.morphogenesis
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -17,6 +19,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -41,7 +44,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.input.pointer.consumeAllChanges
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
@@ -52,7 +54,9 @@ import androidx.compose.ui.unit.dp
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
+import androidx.compose.ui.graphics.Color
 import com.example.cos.morphogenesis.AlertSeverity
+import com.example.cos.lifecycle.morpho.ActiveMorphoForm
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -66,6 +70,7 @@ fun MorphogenesisScreen(
     onRadiusChange: (Float) -> Unit = {},
     onSaveDraft: () -> Unit = {},
     onActivate: () -> Unit = {},
+    onSelectForm: (String) -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -90,7 +95,7 @@ fun MorphogenesisScreen(
             contentPadding = PaddingValues(bottom = 32.dp)
         ) {
             item {
-                HeaderStatusBar(state = state)
+                HeaderStatusBar(state = state, onSelectForm = onSelectForm)
             }
             item {
                 MorphogenesisEditor(
@@ -111,8 +116,18 @@ fun MorphogenesisScreen(
                         style = MaterialTheme.typography.titleMedium
                     )
                 }
+                val currentFormId = state.editor.formId ?: ActiveMorphoForm.BASE_FORM_ID
                 items(state.forms) { form ->
-                    FormRowCard(summary = form)
+                    val selected = if (form.isBase) {
+                        currentFormId == ActiveMorphoForm.BASE_FORM_ID
+                    } else {
+                        form.id == state.editor.formId
+                    }
+                    FormRowCard(
+                        summary = form,
+                        selected = selected,
+                        onSelect = { onSelectForm(form.id) }
+                    )
                 }
             }
             item {
@@ -123,11 +138,15 @@ fun MorphogenesisScreen(
 }
 
 @Composable
-private fun HeaderStatusBar(state: MorphogenesisUiState) {
+private fun HeaderStatusBar(
+    state: MorphogenesisUiState,
+    onSelectForm: (String) -> Unit
+) {
     var expanded by remember { mutableStateOf(false) }
     val activeFormName = state.activeFormName
         ?: state.forms.firstOrNull { it.status == FormStatus.Active }?.name
         ?: "Brak aktywnej formy"
+    val currentFormId = state.editor.formId ?: ActiveMorphoForm.BASE_FORM_ID
 
     Surface(
         modifier = Modifier.fillMaxWidth(),
@@ -196,6 +215,11 @@ private fun HeaderStatusBar(state: MorphogenesisUiState) {
                     )
                 } else {
                     state.forms.forEach { form ->
+                        val isCurrent = if (form.isBase) {
+                            currentFormId == ActiveMorphoForm.BASE_FORM_ID
+                        } else {
+                            currentFormId == form.id
+                        }
                         DropdownMenuItem(
                             text = {
                                 Column {
@@ -203,11 +227,18 @@ private fun HeaderStatusBar(state: MorphogenesisUiState) {
                                     Text(
                                         text = "Komorki: ${form.cellsCount} - ${form.infoLine}",
                                         style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.outline
+                                        color = if (isCurrent) {
+                                            MaterialTheme.colorScheme.primary
+                                        } else {
+                                            MaterialTheme.colorScheme.outline
+                                        }
                                     )
                                 }
                             },
-                            onClick = { expanded = false }
+                            onClick = {
+                                expanded = false
+                                onSelectForm(form.id)
+                            }
                         )
                     }
                 }
@@ -417,7 +448,7 @@ private fun MorphogenesisEditorCanvas(
                     val cellId = activeCellId
                     val currentLayout = activeLayout
                     if (cellId != null && currentLayout != null && currentLayout.scale > 0f) {
-                        change.consumeAllChanges()
+                        change.consume()
                         val pointerDomain = currentLayout.positionToDomain(change.position)
                         val newCenter = pointerDomain - pointerOffset
                         onMoveCell(cellId, newCenter)
@@ -578,9 +609,28 @@ private fun PlaceholderCard(message: String) {
 }
 
 @Composable
-private fun FormRowCard(summary: MorphogenesisFormSummary) {
+private fun FormRowCard(
+    summary: MorphogenesisFormSummary,
+    selected: Boolean,
+    onSelect: () -> Unit
+) {
+    val borderColor = if (selected) MaterialTheme.colorScheme.primary else Color.Transparent
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onSelect)
+            .border(
+                width = if (selected) 1.dp else 0.dp,
+                color = borderColor,
+                shape = MaterialTheme.shapes.medium
+            ),
+        colors = if (selected) {
+            CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer
+            )
+        } else {
+            CardDefaults.cardColors()
+        }
     ) {
         Column(
             modifier = Modifier.padding(16.dp),

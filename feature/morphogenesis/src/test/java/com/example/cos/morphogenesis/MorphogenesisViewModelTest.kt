@@ -3,10 +3,13 @@ package com.example.cos.morphogenesis
 import com.example.cos.lifecycle.DefaultCosLifecycleEngine
 import com.example.cos.lifecycle.LifecycleAction
 import com.example.cos.lifecycle.LifecycleStageCommand
-import com.example.cos.morphogenesis.EditorCellState
+import com.example.cos.lifecycle.morpho.ActiveMorphoForm
+import com.example.cos.lifecycle.morpho.MorphoFormChannel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestDispatcher
 import kotlinx.coroutines.test.TestScope
@@ -30,6 +33,7 @@ class MorphogenesisViewModelTest {
     private lateinit var engine: DefaultCosLifecycleEngine
     private lateinit var formRepository: InMemoryMorphoFormRepository
     private lateinit var eventRecorder: RecordingMorphoEventDispatcher
+    private lateinit var morphoFormChannel: FakeMorphoFormChannel
     private lateinit var viewModel: MorphogenesisViewModel
 
     @Before
@@ -38,7 +42,8 @@ class MorphogenesisViewModelTest {
         engine = DefaultCosLifecycleEngine()
         formRepository = InMemoryMorphoFormRepository()
         eventRecorder = RecordingMorphoEventDispatcher()
-        viewModel = MorphogenesisViewModel(engine, formRepository, eventRecorder)
+        morphoFormChannel = FakeMorphoFormChannel()
+        viewModel = MorphogenesisViewModel(engine, formRepository, eventRecorder, morphoFormChannel)
     }
 
     @After
@@ -48,20 +53,24 @@ class MorphogenesisViewModelTest {
 
     @Test
     fun initialStateExposesGuardRailDefaults() = runTest {
-        val state = viewModel.state.first()
+        val state = viewModel.state.value
 
         assertTrue(state.totalCells >= state.availableCells)
         assertEquals("FORM-0", state.activeFormId)
         assertEquals("Forma 0", state.activeFormName)
         assertTrue(state.forms.isNotEmpty())
-        val active = state.forms.first { it.id == state.activeFormId }
-        assertEquals(FormStatus.Active, active.status)
+        val base = state.forms.first { it.isBase }
+        assertEquals(FormStatus.Active, base.status)
         assertNull(state.cellsAlert)
         assertTrue(state.editor.cells.isEmpty())
+        assertNull(state.editor.formId)
+        assertEquals("", state.editor.formName)
         assertFalse(state.editor.canAddCell)
         assertFalse(state.editor.hasDirtyChanges)
         assertFalse(state.editor.canSaveDraft)
         assertFalse(state.editor.canActivate)
+        assertNotNull(morphoFormChannel.lastEmission)
+        assertEquals(ActiveMorphoForm.BASE_FORM_ID, morphoFormChannel.lastEmission?.formId)
     }
 
     @Test
@@ -80,10 +89,11 @@ class MorphogenesisViewModelTest {
         assertEquals(1, forms.size)
         val saved = forms.first()
         assertTrue(saved.cells.isNotEmpty())
-        val editorState = viewModel.state.first().editor
+        val editorState = viewModel.state.value.editor
         assertFalse(editorState.canAddCell)
         assertFalse(editorState.hasDirtyChanges)
         assertFalse(editorState.canSaveDraft)
+        assertEquals(saved.id, editorState.formId)
     }
 
     @Test
@@ -98,6 +108,50 @@ class MorphogenesisViewModelTest {
         assertTrue(forms.first().isActive)
         assertTrue(eventRecorder.emitted)
         assertEquals(forms.first().id, eventRecorder.lastFormId)
+        assertEquals(forms.first().id, morphoFormChannel.lastEmission?.formId)
+    }
+
+    @Test
+    fun selectSavedFormLoadsDraft() = runTest {
+        prepareMatureCell()
+        viewModel.addCell()
+        viewModel.saveDraft()
+        advanceUntilIdle()
+
+        val saved = formRepository.savedForms.value.first()
+        viewModel.selectForm(saved.id)
+        advanceUntilIdle()
+
+        val editor = viewModel.state.value.editor
+        assertEquals(saved.id, editor.formId)
+        assertFalse(editor.hasDirtyChanges)
+        assertTrue(editor.cells.isNotEmpty())
+    }
+
+    @Test
+    fun selectBaseFormResetsDraft() = runTest {
+        prepareMatureCell()
+        viewModel.addCell()
+        viewModel.saveDraft()
+        advanceUntilIdle()
+
+        viewModel.selectForm(ActiveMorphoForm.BASE_FORM_ID)
+        advanceUntilIdle()
+
+        val editor = viewModel.state.value.editor
+        assertNull(editor.formId)
+        assertFalse(editor.hasDirtyChanges)
+    }
+
+    @Test
+    fun activateBaseFormEmitsBase() = runTest {
+        prepareMatureCell()
+        viewModel.selectForm(ActiveMorphoForm.BASE_FORM_ID)
+        val before = morphoFormChannel.emissions.size
+        viewModel.activateDraft()
+        advanceUntilIdle()
+        assertTrue(morphoFormChannel.emissions.size >= before)
+        assertEquals(ActiveMorphoForm.BASE_FORM_ID, morphoFormChannel.lastEmission?.formId)
     }
 
     @Test
@@ -109,7 +163,7 @@ class MorphogenesisViewModelTest {
         viewModel.removeSelectedCell()
         advanceUntilIdle()
 
-        val editorState = viewModel.state.first().editor
+        val editorState = viewModel.state.value.editor
         assertNull(editorState.selectedCellId)
         assertTrue(editorState.cells.isEmpty())
     }
@@ -131,5 +185,31 @@ class MorphogenesisViewModelTest {
             lastFormId = formId
         }
     }
+
+    private class FakeMorphoFormChannel : MorphoFormChannel {
+        private val _updates = MutableSharedFlow<ActiveMorphoForm>(replay = 1)
+        private val recorded = mutableListOf<ActiveMorphoForm>()
+
+        override val updates: SharedFlow<ActiveMorphoForm> = _updates.asSharedFlow()
+
+        val lastEmission: ActiveMorphoForm? get() = recorded.lastOrNull()
+        val emissions: List<ActiveMorphoForm> get() = recorded
+
+        override suspend fun emit(form: ActiveMorphoForm) {
+            recorded += form
+            _updates.emit(form)
+        }
+
+        override fun tryEmit(form: ActiveMorphoForm): Boolean {
+            val accepted = _updates.tryEmit(form)
+            if (accepted) {
+                recorded += form
+            }
+            return accepted
+        }
+    }
 }
+
+
+
 

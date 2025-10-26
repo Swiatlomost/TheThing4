@@ -71,3 +71,4 @@ class MorphogenesisScreenTest {
         composeRule.onNodeWithText("Kolizja testowa").assertExists()
     }
 }
+

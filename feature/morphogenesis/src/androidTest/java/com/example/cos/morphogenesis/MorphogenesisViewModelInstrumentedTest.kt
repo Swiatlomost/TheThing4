@@ -6,6 +6,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.cos.lifecycle.DefaultCosLifecycleEngine
 import com.example.cos.lifecycle.LifecycleAction
 import com.example.cos.lifecycle.LifecycleStageCommand
+import com.example.cos.lifecycle.morpho.SharedMorphoFormChannel
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,7 +20,8 @@ class MorphogenesisViewModelInstrumentedTest {
         val engine = DefaultCosLifecycleEngine()
         val repository = InMemoryMorphoFormRepository()
         val dispatcher = AndroidMorphoEventDispatcher(context)
-        val viewModel = MorphogenesisViewModel(engine, repository, dispatcher)
+        val channel = SharedMorphoFormChannel()
+        val viewModel = MorphogenesisViewModel(engine, repository, dispatcher, channel)
 
         engine.apply(LifecycleAction.SetStage(LifecycleStageCommand.BUD))
         engine.apply(LifecycleAction.SetStage(LifecycleStageCommand.MATURE))
@@ -27,3 +29,5 @@ class MorphogenesisViewModelInstrumentedTest {
         viewModel.activateDraft()
     }
 }
+
+

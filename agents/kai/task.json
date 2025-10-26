@@ -1,22 +1,6 @@
 {
     "agent": "Kai",
-    "current_tasks": [
-        {
-            "task_id": "KAI-20251025-003",
-            "parent_task_id": "ORIN-20251025-002",
-            "title": "Plan testow Morfogenezy",
-            "status": "in_progress",
-            "assigned_at": "2025-10-25",
-            "last_update": "2025-10-26",
-            "notes": "Plan testow etapu 006 (limity, kolizje, event forma_aktywna); scenariusze undo/redo/autosort zapisane jako backlog. Sanity 2025-10-26 PASS (logcat/dumpsys bez regresji). PDCA: notes/pdca/KAI-20251025-003.md",
-            "deliverables": [
-                "Sekcja Morfogenezy w docs/testing/",
-                "Lista przypadkow testowych (manual + automaty) dla etapu 006",
-                "Notatki backlogowe dla undo/redo/autosortu",
-                "Raport sanity 2025-10-26 (logcat/dumpsys)"
-            ]
-        }
-    ],
+    "current_tasks": [],
     "completed_tasks": [
         {
             "task_id": "KAI-20251024-001",
@@ -58,6 +42,21 @@
             "deliverables": [
                 "Raport overlay",
                 "Lista ewentualnych defektow"
+            ]
+        },
+        {
+            "task_id": "KAI-20251025-003",
+            "parent_task_id": "ORIN-20251025-002",
+            "title": "Plan testow Morfogenezy",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-26",
+            "completed_at": "2025-10-26",
+            "notes": "Plan testow etapu 006 domkniety: lista scenariuszy (zapis/wbor/aktywacja, forma 0), checklisty logcat/dumpsys oraz backlog undo/redo/autosort oznaczony.",
+            "deliverables": [
+                "docs/testing/morphogeneza-test-plan.md (sekcja 006)",
+                "docs/testing/morphogeneza-event-checklist.md (sanity SharedFlow)",
+                "Raport sanity 2025-10-26"
             ]
         }
     ],
