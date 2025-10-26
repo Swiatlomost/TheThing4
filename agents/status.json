@@ -1,53 +1,61 @@
 {
     "generated_at": "2025-10-26",
-    "active_tasks": [
+    "active_tasks": [],
+    "completed_tasks": [
         {
             "agent": "Orin",
             "task_id": "ORIN-20251025-002",
             "title": "Morfogeneza v0.1 - orkiestracja sesji",
             "parent": "-",
-            "status": "in_progress",
-            "last_update": "2025-10-25",
-            "notes": "Koordynuje discovery i plan wdrozenia Morfogenezy; monitoruje postep agentow."
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Przyrost 006 zamkniety; dokumentacja, testy i statusy agentow zsynchronizowane, undo/redo przeniesione do backlogu."
         },
         {
             "agent": "Echo",
             "task_id": "ECHO-20251025-002",
             "title": "Research kreatora Morfogenezy",
             "parent": "ORIN-20251025-002",
-            "status": "in_progress",
+            "status": "done",
             "last_update": "2025-10-26",
-            "notes": "Zebrane referencje + guard rails (docs/ux/morphogeneza-ux-research.md); undo/redo i autosort oznaczone jako backlog, monitoruje sygnaly produktu."
-        },
-        {
-            "agent": "Storywright",
-            "task_id": "MIRA-20251025-001",
-            "title": "Brief Morfogenezy Cos",
-            "parent": "ORIN-20251025-002",
-            "status": "in_progress",
-            "last_update": "2025-10-25",
-            "notes": "Utrzymuje brief wizji i pytania kontrolne do wlasciciela, skupione na Morfogenezie. PDCA: notes/pdca/MIRA-20251025-001.md"
+            "notes": "Guard rails i referencje UX dla etapu 006 potwierdzone; ADR/brief zaktualizowane, historia/autosort oznaczone jako backlog."
         },
         {
             "agent": "Kai",
             "task_id": "KAI-20251025-003",
             "title": "Plan testow Morfogenezy",
             "parent": "ORIN-20251025-002",
-            "status": "in_progress",
+            "status": "done",
             "last_update": "2025-10-26",
-            "notes": "Plan testow etapu 006 (limity, kolizje, event forma_aktywna); scenariusze undo/redo/autosort zapisane jako backlog. PDCA: notes/pdca/KAI-20251025-003.md"
+            "notes": "Plan testow 006 wraz z checklistami SharedFlow/logcat zamkniety; backlog undo/redo przygotowany."
+        },
+        {
+            "agent": "Storywright",
+            "task_id": "MIRA-20251025-001",
+            "title": "Brief Morfogenezy Cos",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Brief 4MAT zaktualizowany o finalny zakres i backlog historii; przekazany Orinowi."
         },
         {
             "agent": "Nodus",
             "task_id": "NODUS-20251026-004",
             "title": "Sanity kanalu forma_aktywna po undo/redo",
             "parent": "ORIN-20251025-002",
-            "status": "pending",
+            "status": "done",
             "last_update": "2025-10-26",
-            "notes": "Checklisty adb/logcat aktualne dla etapu 006; scenariusze undo/redo czekaja na wznowienie zadania. PDCA: notes/pdca/NODUS-20251026-004.md"
+            "notes": "Checklisty adb/logcat dla etapu 006 utrzymane; zadanie undo/redo odlozone do backlogu."
         },
-    ],
-    "completed_tasks": [
+        {
+            "agent": "Scribe",
+            "task_id": "SCRIBE-20251026-002",
+            "title": "Kronika Morfogenezy 006",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Log i kronika zaktualizowane o SharedFlow/promienie/testy Kai; PDCA odnotowane."
+        },
         {
             "agent": "Lumen",
             "task_id": "LUMEN-20251025-005",
@@ -65,42 +73,6 @@
             "status": "done",
             "last_update": "2025-10-26",
             "notes": "Canvas tap/drag ze wspolnym layoutem, clamp do okregu i uproszczony UI plotna. `./gradlew test` + `./gradlew connectedDebugAndroidTest` po kazdym etapie PASS."
-        },
-        {
-            "agent": "Nodus",
-            "task_id": "NODUS-20251026-004",
-            "title": "Sanity kanalu forma_aktywna po undo/redo",
-            "parent": "ORIN-20251025-002",
-            "status": "pending",
-            "last_update": "2025-10-26",
-            "notes": "Checklisty adb/logcat aktualne dla etapu 006; scenariusze undo/redo czekaja na wznowienie zadania. PDCA: notes/pdca/NODUS-20251026-004.md"
-        },
-        {
-            "agent": "Nodus",
-            "task_id": "NODUS-20251026-004",
-            "title": "Sanity kanalu forma_aktywna po undo/redo",
-            "parent": "ORIN-20251025-002",
-            "status": "pending",
-            "last_update": "2025-10-26",
-            "notes": "Checklisty adb/logcat aktualne dla etapu 006; scenariusze undo/redo czekaja na wznowienie zadania. PDCA: notes/pdca/NODUS-20251026-004.md"
-        },
-        {
-            "agent": "Echo",
-            "task_id": "ECHO-20251025-002",
-            "title": "Research kreatora Morfogenezy",
-            "parent": "ORIN-20251025-002",
-            "status": "in_progress",
-            "last_update": "2025-10-26",
-            "notes": "Zebrane referencje + guard rails (docs/ux/morphogeneza-ux-research.md); undo/redo i autosort oznaczone jako backlog, monitoruje sygnaly produktu."
-        },
-        {
-            "agent": "Echo",
-            "task_id": "ECHO-20251025-002",
-            "title": "Research kreatora Morfogenezy",
-            "parent": "ORIN-20251025-002",
-            "status": "in_progress",
-            "last_update": "2025-10-26",
-            "notes": "Zebrane referencje + guard rails (docs/ux/morphogeneza-ux-research.md); undo/redo i autosort oznaczone jako backlog, monitoruje sygnaly produktu."
         },
         {
             "agent": "Vireal",

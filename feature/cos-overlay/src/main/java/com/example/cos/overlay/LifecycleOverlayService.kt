@@ -19,9 +19,9 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.consumeAllChanges
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import androidx.core.app.NotificationCompat
@@ -38,8 +38,13 @@ import androidx.lifecycle.viewmodel.R as LifecycleViewModelR
 import androidx.savedstate.R as SavedStateR
 import com.example.cos.designsystem.theme.CosTheme
 import com.example.cos.lifecycle.CosLifecycleCanvas
+import com.example.cos.lifecycle.CellSnapshot
+import com.example.cos.lifecycle.CellStage
 import com.example.cos.lifecycle.CosLifecycleEngine
 import com.example.cos.lifecycle.CosLifecycleState
+import com.example.cos.lifecycle.morpho.ActiveMorphoForm
+import com.example.cos.lifecycle.morpho.MorphoFormChannel
+
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 
@@ -55,6 +60,10 @@ class LifecycleOverlayService : android.app.Service() {
 
     private val engine: CosLifecycleEngine by lazy {
         EntryPointAccessors.fromApplication(applicationContext, OverlayEntryPoint::class.java).engine()
+    }
+
+    private val morphoFormChannel: MorphoFormChannel by lazy {
+        EntryPointAccessors.fromApplication(applicationContext, OverlayEntryPoint::class.java).morphoFormChannel()
     }
 
     override fun onCreate() {
@@ -108,9 +117,18 @@ class LifecycleOverlayService : android.app.Service() {
                 }
                 setContent {
                     val lifecycleState by engine.state.collectAsState()
+                    val activeForm by morphoFormChannel.updates.collectAsState(initial = null)
+                    val renderState = remember(lifecycleState, activeForm) {
+                        val form = activeForm
+                        if (form == null || form.isBaseForm) {
+                            lifecycleState
+                        } else {
+                            form.toLifecycleState(lifecycleState)
+                        }
+                    }
                     CosTheme {
                         OverlayContent(
-                            state = lifecycleState,
+                            state = renderState,
                             onDrag = { dx, dy -> updatePosition(dx, dy) },
                             onDismiss = { launchApp(); stopSelf() }
                         )
@@ -150,7 +168,7 @@ class LifecycleOverlayService : android.app.Service() {
                 .size(160.dp)
                 .pointerInput(Unit) {
                     detectDragGestures { change, dragAmount ->
-                        change.consumeAllChanges()
+                        change.consume()
                         onDrag(dragAmount.x, dragAmount.y)
                     }
                 }
@@ -257,3 +275,30 @@ private class OverlayViewModelStoreOwner : ViewModelStoreOwner {
         get() = store
     fun clear() = store.clear()
 }
+
+
+private fun ActiveMorphoForm.toLifecycleState(fallback: CosLifecycleState): CosLifecycleState {
+    if (cells.isEmpty()) return fallback
+    val snapshots = cells.map { cell ->
+        CellSnapshot(
+            id = cell.id,
+            stage = cell.stageLabel.toCellStage(),
+            center = cell.center,
+            radius = if (cell.radius > 0f) cell.radius else fallback.cellRadius
+        )
+    }
+    val radius = if (cellRadius > 0f) cellRadius else fallback.cellRadius
+    return CosLifecycleState(
+        cells = snapshots,
+        cellRadius = radius
+    )
+}
+
+private fun String.toCellStage(): CellStage = when (this) {
+    CellStage.Seed.label -> CellStage.Seed
+    CellStage.Bud.label -> CellStage.Bud
+    CellStage.Mature.label -> CellStage.Mature
+    CellStage.Spawned.label -> CellStage.Spawned
+    else -> CellStage.Mature
+}
+

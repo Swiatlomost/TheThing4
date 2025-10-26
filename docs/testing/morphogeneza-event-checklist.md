@@ -44,6 +44,13 @@ Szybko potwierdzic, ze po aktywacji formy Morfogenezy system emituje zdarzenie f
   `I/MorfoEvent: forma_aktywna formId=FORM-1761479486922 cellsHash=d9a7477e timestamp=1761479486924`.
 - `adb shell dumpsys activity broadcasts --history` nie wykazal trwajacych broadcastow (zdarzenie dostarczone natychmiast).
 
+## Aktywacja nowej formy (SharedFlow + overlay)
+- [ ] Po zapisaniu formy wybierz ją z listy i wciśnij przycisk **Aktywuj**.
+- [ ] `adb logcat -d -s MorfoEvent:*` zawiera wpis z nowym `formId` oraz `cellsHash`.
+- [ ] `adb shell dumpsys activity broadcasts --history` pokazuje ostatni broadcast `com.example.cos.FORMA_AKTYWNA` z nowym `formId`.
+- [ ] Overlay Cos odświeża layout do aktywnej formy (manualna obserwacja lub zrzut ekranu).
+- [ ] Po powrocie do formy 0 kanał SharedFlow i overlay powinny prezentować bazowy układ (brak dodatkowych wpisów w logcat).
+
 ## Undo/redo (backlog)
 - [ ] Po wznowieniu prac nad undo/redo dodac kroki: aktywacja formy, cofniecie zmian (undo) i ponowne aktywacje; powtorzyc logcat/dumpsys.
 - [ ] Zweryfikowac, czy `MorfoEvent` nie emituje duplikatow przy cofnieciu/przywroceniu oraz czy broadcast nie gromadzi starych payloadow.

@@ -18,18 +18,18 @@
 - **Do**:
   - Echo utrzymuje notatki UX (`docs/ux/morphogeneza-ux-research.md`) i sygnalizuje ryzyka.
   - Vireal prowadzi ADR-2025-10-25 (status Accepted) oraz guard rails architektoniczne.
-  - Lumen zrealizowal 003-006; zadanie LUMEN-20251026-007 (undo/redo + autosort) pozostaje w backlogu.
-  - Nodus przygotowal event `forma_aktywna`; rozszerzenia checklisty o undo/redo czekaja na wznowienie tematu.
-  - Kai utrzymuje plan testow (`docs/testing/morphogeneza-test-plan.md`) dla etapu 006; scenariusze historii/autosortu oznaczone jako przyszle.
+  - Lumen dostarczyl pelna obsluge zapisanych form (wybor, zapis, aktywacja) wraz z testami UI/ViewModelu; undo/redo pozostaje w backlogu.
+  - Nodus wdrozyl kanał SharedFlow (`MorphoFormChannel`) oraz integracje overlay; checklisty ADB/logcat rozszerzone o aktywacje form.
+  - Kai rozbudowal plan testow o scenariusz zapis -> wybor -> aktywacja i potwierdzil sanity (logcat/dumpsys); historia/autosort pozostaje jako backlog.
 - **Check**: Po kazdym etapie Lumen uruchamia `./gradlew test` + `./gradlew connectedDebugAndroidTest`. Kai pokrywa guard rails i sanity overlay, Nodus raportuje logcat/dumpsys. Orin monitoruje status board.
-- **Act**: Zebrac feedback z etapu 006 i okreslic warunki wznowienia undo/redo/autosortu, wpisujac je do backlogu wraz z presety/podgladem roznic. Nyx uwzglednia zmiany w pamieci.
+- **Act**: Monitorowac stabilnosc etapu 006 (Lumen/Kai), utrzymywac dokumentacje SharedFlow/overlay (Nodus), backlog undo/redo/autosort trzymac do kolejnych decyzji. Nyx uwzglednia zmiany w pamieci.
 
 ## Recommendations for Orin
-1. `[ECHO]` Utrzymac guard rails jako referencje dla etapu 006 i oznaczyc undo/redo/autosort jako backlog.
+1. `[ECHO]` Aktualizowac guard rails/ADR o przeplyw wyboru oraz utrzymac backlog undo/redo/autosort.
 2. `[LUMEN]` Monitorowac stabilnosc canvasu 006 i raportowac ewentualne regresje.
-3. `[NODUS]` Zachowac checklisty eventu w stanie bazowym; zanotowac, ze scenariusze undo/redo czekaja na wznowienie.
-4. `[KAI]` Zostawic scenariusze undo/redo/autosort w planie testow jako przyszle; potwierdzic, ze sanity 006 jest aktualne.
-5. `[SCRIBE]` Uaktualnic brief/kronike o decyzji zatrzymania undo/redo i warunki wznowienia.
+3. `[NODUS]` Przygotowac automatyzacje logcat/dumpsys (CI) i monitorowac SharedFlow w overlay.
+4. `[KAI]` Kontynuowac sanity zapis->wybor->aktywacja (logcat + SharedFlow) i raportowac wyniki.
+5. `[SCRIBE]` Zaktualizowac brief/kronike o integracje SharedFlow i obsluge zapisanych form.
 
 ## Key Files
 - `docs/architecture/ADR-2025-10-25-morfogeneza.md`

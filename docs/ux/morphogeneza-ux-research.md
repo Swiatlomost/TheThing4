@@ -27,6 +27,8 @@
 6. **Feedback aktywacji:** toast + log overlay „Forma X aktywowana”; podswietlenie aktywnej formy na liscie.  
 7. **Bezpieczenstwo danych:** repozytorium utrzymuje flagi dirty; po powrocie proponuj przywrocenie szkicu.  
 8. **Autosort i cofanie:** autosort pokazuje propozycje przesuniecia (podglad + komunikat) i dopiero po potwierdzeniu przenosi komorki na wolne heksy; przycisk undo natychmiast cofa wynik autosortu i innych operacji (dodanie, przesuniecie, zmiana promienia, usuniecie).
+9. **Zapisane formy:** wybor formy w dropdownie/listach natychmiast laduje ja do edytora (bez aktywacji) i zaznacza biezacy szkic; aktywacja wysyla forme do overlay (SharedFlow + broadcast).
+10. **Forma bazowa:** ekran cyklu Cos zawsze odzwierciedla forme 0; aktywacja zapisanych form zmienia jedynie overlay.
 
 > Uwaga: elementy historii/autosortu pozostaja w backlogu do czasu ponownej decyzji produktowej.
 

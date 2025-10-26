@@ -1,21 +1,6 @@
 {
     "agent": "Echo",
-    "current_tasks": [
-        {
-            "task_id": "ECHO-20251025-002",
-            "parent_task_id": "ORIN-20251025-002",
-            "title": "Research kreatora Morfogenezy",
-            "status": "in_progress",
-            "assigned_at": "2025-10-25",
-            "last_update": "2025-10-26",
-            "notes": "Analiza referencji UX (creature editor), guard rails dla manipulacji komorkami; elementy undo/redo i autosortu oznaczone jako backlog do kolejnych iteracji. Notatka: docs/ux/morphogeneza-ux-research.md.",
-            "deliverables": [
-                "Zestaw referencji UX/produktowych",
-                "Lista guard rails dla Morfogenezy (status etapu 006 + backlog undo/redo/autosort)",
-                "Pytania i rekomendacje dla Vireal i Lumen"
-            ]
-        }
-    ],
+    "current_tasks": [],
     "completed_tasks": [
         {
             "task_id": "ECHO-20251025-001",
@@ -44,6 +29,21 @@
                 "Propozycje mitigacji"
             ],
             "completed_at": "2025-10-24"
+        },
+        {
+            "task_id": "ECHO-20251025-002",
+            "parent_task_id": "ORIN-20251025-002",
+            "title": "Research kreatora Morfogenezy",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-26",
+            "notes": "Guard rails i referencje UX dla etapu 006 zebrane; ADR i brief zsynchronizowane, undo/redo/autosort oznaczone jako backlog.",
+            "deliverables": [
+                "docs/ux/morphogeneza-ux-research.md (aktualny stan bazowy)",
+                "Rekomendacje wpisane do ADR-2025-10-25-morfogeneza.md",
+                "Uwagi przekazane Orinowi i Lumenowi"
+            ],
+            "completed_at": "2025-10-26"
         }
     ],
     "_template": {

@@ -1,7 +1,7 @@
 # Kai Log (Evaluator)
 
 ## Active Focus
-- KAI-20251025-003 - Plan testow Morfogenezy
+- (czekam na nowe zakresy testowe)
 
 ## Decision Journal
 | date | topic | outcome | next |
@@ -17,13 +17,14 @@
 | 2025-10-26 | Undo/redo scope sync | Po planie Orina dopisuje scenariusze historii operacji i autosortu; aktualizacja `docs/testing/morphogeneza-test-plan.md` w toku | Przygotowac testy regresji undo/redo oraz sanity clamp |
 | 2025-10-26 | Backlog alignment | Oznaczylam scenariusze undo/redo/autosort jako backlog w planie testow; etapy 003-006 pozostaja aktualne | Monitorowac sanity 006 i reagowac na nowe wymagania |
 | 2025-10-26 | Sanity 006 rerun | ./gradlew test + connectedDebugAndroidTest PASS; logcat/dumpsys bez regresji | Utrzymac monitoring sanity 006 i raportowac Orinowi |
+| 2025-10-26 | Morfogeneza 006 closure | Potwierdzilam, ze plan testow oraz checklisty odzwierciedlaja finalny zakres (SharedFlow + forma 0); przekazalam raport Orinowi | Zadanie zamkniete, gotowa na nowe scenariusze |
 
 ## PDCA Snapshot
 - **PDCA**: notes/pdca/KAI-20251025-003.md
 - **Plan**: Utrzymac pokrycie testami dla etapu 006 (limity, kolizje, event forma_aktywna), a scenariusze undo/redo/autosort prowadzic jako backlog.
 - **Do**: Uaktualnilam plan testow i checklisty, oznaczajac historie/autosort jako przyszle notatki; sanity 006 potwierdzone testami lokalnymi.
 - **Check**: Logcat 2025-10-26 pozostaje aktualny; brak dodatkowych wymagan do czasu wznowienia historii.
-- **Act**: Czekam na decyzje Orina o wznowieniu undo/redo; gotowa dopisac testy gdy pojawi sie nowy zakres.
+- **Act**: Zadanie zamkniete; pozostaje w gotowosci na wznowienie historii/autosortu.
 
 ## Archive
 - (pending)

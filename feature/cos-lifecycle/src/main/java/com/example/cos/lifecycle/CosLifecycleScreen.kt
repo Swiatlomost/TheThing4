@@ -144,8 +144,9 @@ private fun DrawScope.drawOrganism(
 
     cells.forEach { animated ->
         val centerPx = origin + animated.snapshot.center * scale
-        val outerRadiusUnits = baseRadiusUnits * outerRadiusMultiplier(animated.stageValue)
-        val fillRadiusUnits = baseRadiusUnits * fillRadiusMultiplier(animated.stageValue)
+        val cellRadiusUnits = animated.snapshot.radius.takeIf { it > 0f } ?: baseRadiusUnits
+        val outerRadiusUnits = cellRadiusUnits * outerRadiusMultiplier(animated.stageValue)
+        val fillRadiusUnits = cellRadiusUnits * fillRadiusMultiplier(animated.stageValue)
         val outlineAlpha = outlineAlpha(animated.stageValue)
         val fillAlpha = fillAlpha(animated.stageValue)
 
@@ -160,7 +161,7 @@ private fun DrawScope.drawOrganism(
             )
         }
 
-        val outlineWidth = (baseRadiusUnits * 0.2f) * scale
+        val outlineWidth = (cellRadiusUnits * 0.2f) * scale
         if (outlineAlpha > 0f && outerRadiusPx > 0f) {
             drawCircle(
                 color = accentColor.copy(alpha = outlineAlpha),
