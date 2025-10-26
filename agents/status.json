@@ -42,9 +42,9 @@
             "task_id": "LUMEN-20251026-007",
             "title": "Undo/Redo i autosort Morfogenezy",
             "parent": "ORIN-20251025-002",
-            "status": "in_progress",
+            "status": "pending",
             "last_update": "2025-10-26",
-            "notes": "Historia operacji (undo/redo) i heurystyka autosort kolizji. PDCA: notes/pdca/LUMEN-20251026-007.md"
+            "notes": "Prace wstrzymane – utrzymujemy stan etapu 006. Wznowiæ po decyzji Orina."
         },
         {
             "agent": "Nodus",
@@ -263,6 +263,8 @@
         ]
     }
 }
+
+
 
 
 

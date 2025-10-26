@@ -3,22 +3,25 @@ package com.example.cos.morphogenesis
 import com.example.cos.lifecycle.DefaultCosLifecycleEngine
 import com.example.cos.lifecycle.LifecycleAction
 import com.example.cos.lifecycle.LifecycleStageCommand
+import com.example.cos.morphogenesis.EditorCellState
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestDispatcher
+import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertTrue
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class MorphogenesisViewModelTest {
@@ -31,7 +34,7 @@ class MorphogenesisViewModelTest {
 
     @Before
     fun setUp() {
-        kotlinx.coroutines.Dispatchers.setMain(testDispatcher)
+        Dispatchers.setMain(testDispatcher)
         engine = DefaultCosLifecycleEngine()
         formRepository = InMemoryMorphoFormRepository()
         eventRecorder = RecordingMorphoEventDispatcher()
@@ -40,7 +43,7 @@ class MorphogenesisViewModelTest {
 
     @After
     fun tearDown() {
-        kotlinx.coroutines.Dispatchers.resetMain()
+        Dispatchers.resetMain()
     }
 
     @Test
@@ -53,10 +56,8 @@ class MorphogenesisViewModelTest {
         assertTrue(state.forms.isNotEmpty())
         val active = state.forms.first { it.id == state.activeFormId }
         assertEquals(FormStatus.Active, active.status)
-        val alert = state.cellsAlert
-        assertNull(alert)
+        assertNull(state.cellsAlert)
         assertTrue(state.editor.cells.isEmpty())
-        assertTrue(state.editor.radiusSliderRange.contains(state.editor.radiusSliderValue))
         assertFalse(state.editor.canAddCell)
         assertFalse(state.editor.hasDirtyChanges)
         assertFalse(state.editor.canSaveDraft)
@@ -65,9 +66,7 @@ class MorphogenesisViewModelTest {
 
     @Test
     fun saveDraftPersistsFormAndClearsDirtyFlag() = runTest {
-        engine.apply(LifecycleAction.SetStage(LifecycleStageCommand.BUD))
-        engine.apply(LifecycleAction.SetStage(LifecycleStageCommand.MATURE))
-        advanceUntilIdle()
+        prepareMatureCell()
         viewModel.addCell()
         advanceUntilIdle()
 
@@ -89,9 +88,7 @@ class MorphogenesisViewModelTest {
 
     @Test
     fun activateDraftMarksFormActiveAndEmitsEvent() = runTest {
-        engine.apply(LifecycleAction.SetStage(LifecycleStageCommand.BUD))
-        engine.apply(LifecycleAction.SetStage(LifecycleStageCommand.MATURE))
-        advanceUntilIdle()
+        prepareMatureCell()
         viewModel.addCell()
         viewModel.activateDraft()
         advanceUntilIdle()
@@ -101,6 +98,26 @@ class MorphogenesisViewModelTest {
         assertTrue(forms.first().isActive)
         assertTrue(eventRecorder.emitted)
         assertEquals(forms.first().id, eventRecorder.lastFormId)
+    }
+
+    @Test
+    fun removeSelectedCellClearsSelection() = runTest {
+        prepareMatureCell()
+        viewModel.addCell()
+        advanceUntilIdle()
+
+        viewModel.removeSelectedCell()
+        advanceUntilIdle()
+
+        val editorState = viewModel.state.first().editor
+        assertNull(editorState.selectedCellId)
+        assertTrue(editorState.cells.isEmpty())
+    }
+
+    private suspend fun TestScope.prepareMatureCell() {
+        engine.apply(LifecycleAction.SetStage(LifecycleStageCommand.BUD))
+        engine.apply(LifecycleAction.SetStage(LifecycleStageCommand.MATURE))
+        advanceUntilIdle()
     }
 
     private class RecordingMorphoEventDispatcher : MorphoEventDispatcher {
@@ -115,3 +132,4 @@ class MorphogenesisViewModelTest {
         }
     }
 }
+

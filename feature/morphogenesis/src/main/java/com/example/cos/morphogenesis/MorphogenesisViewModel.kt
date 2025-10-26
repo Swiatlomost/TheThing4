@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.util.ArrayDeque
 import kotlin.math.ceil
 import kotlin.math.max
 import kotlin.math.min
@@ -29,11 +28,6 @@ class MorphogenesisViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val editorDraft = MutableStateFlow(createInitialDraft(engine.state.value))
-    private val history = EditorHistory(HISTORY_CAPACITY)
-
-    init {
-        history.clear()
-    }
 
     val state: StateFlow<MorphogenesisUiState> =
         combine(
@@ -75,14 +69,13 @@ class MorphogenesisViewModel @Inject constructor(
                 cells = newCells,
                 selectedCellId = candidate.id,
                 radiusSliderValue = radius,
-                hasDirtyChanges = true,
-                statusMessage = null
+                hasDirtyChanges = true
             )
         }
     }
 
     fun selectCell(cellId: String) {
-        mutateDraft(recordHistory = false) { draft, _ ->
+        mutateDraft { draft, _ ->
             if (draft.cells.none { it.id == cellId }) return@mutateDraft draft
             val updatedCells = draft.cells.map { cell ->
                 cell.copy(isSelected = cell.id == cellId)
@@ -92,8 +85,7 @@ class MorphogenesisViewModel @Inject constructor(
             draft.copy(
                 cells = updatedCells,
                 selectedCellId = cellId,
-                radiusSliderValue = selectedRadius,
-                statusMessage = null
+                radiusSliderValue = selectedRadius
             )
         }
     }
@@ -111,8 +103,7 @@ class MorphogenesisViewModel @Inject constructor(
                 radiusSliderValue = newSelectedId?.let { id ->
                     filtered.firstOrNull { it.id == id }?.radius ?: lifecycleState.cellRadius
                 } ?: lifecycleState.cellRadius,
-                hasDirtyChanges = true,
-                statusMessage = null
+                hasDirtyChanges = true
             )
         }
     }
@@ -131,8 +122,7 @@ class MorphogenesisViewModel @Inject constructor(
                 cells = updatedCells,
                 selectedCellId = cellId,
                 radiusSliderValue = updatedCells[index].radius,
-                hasDirtyChanges = true,
-                statusMessage = null
+                hasDirtyChanges = true
             )
         }
     }
@@ -141,8 +131,7 @@ class MorphogenesisViewModel @Inject constructor(
         mutateDraft { draft, _ ->
             val clampedValue = value.coerceIn(draft.radiusSliderRange)
             val selected = draft.selectedCellId ?: return@mutateDraft draft.copy(
-                radiusSliderValue = clampedValue,
-                statusMessage = null
+                radiusSliderValue = clampedValue
             )
             val updatedCells = draft.cells.map { cell ->
                 if (cell.id == selected) cell.copy(radius = clampedValue) else cell
@@ -150,8 +139,7 @@ class MorphogenesisViewModel @Inject constructor(
             draft.copy(
                 cells = updatedCells,
                 radiusSliderValue = clampedValue,
-                hasDirtyChanges = true,
-                statusMessage = null
+                hasDirtyChanges = true
             )
         }
     }
@@ -171,8 +159,7 @@ class MorphogenesisViewModel @Inject constructor(
                     formId = persisted.id,
                     formName = persisted.name,
                     formCreatedAtMillis = persisted.createdAtMillis,
-                    hasDirtyChanges = false,
-                    statusMessage = "Szkic zapisany"
+                    hasDirtyChanges = false
                 )
             }
         }
@@ -194,59 +181,19 @@ class MorphogenesisViewModel @Inject constructor(
                     formId = persisted.id,
                     formName = persisted.name,
                     formCreatedAtMillis = persisted.createdAtMillis,
-                    hasDirtyChanges = false,
-                    statusMessage = "Forma aktywowana"
+                    hasDirtyChanges = false
                 )
             }
         }
     }
 
-    fun undo() {
-        val lifecycleState = engine.state.value
-        val current = editorDraft.value.ensureInitialized(lifecycleState)
-        val previous = history.undo(current.deepCopy()) ?: return
-        editorDraft.value = previous.copy(statusMessage = "Cofnieto zmiany", initialized = true)
-    }
-
-    fun redo() {
-        val lifecycleState = engine.state.value
-        val current = editorDraft.value.ensureInitialized(lifecycleState)
-        val next = history.redo(current.deepCopy()) ?: return
-        editorDraft.value = next.copy(statusMessage = "Przywrocono zmiany", initialized = true)
-    }
-
-    fun autosort() {
-        mutateDraft { draft, lifecycleState ->
-            if (draft.cells.size <= 1) return@mutateDraft draft.copy(statusMessage = "Brak kolizji do uporzadkowania")
-            val layout = generateAutosortLayout(draft.cells.size, lifecycleState.cellRadius)
-            val updatedCells = draft.cells
-                .sortedBy { it.id }
-                .mapIndexed { index, cell ->
-                    cell.copy(center = layout.getOrElse(index) { cell.center })
-                }
-            draft.copy(
-                cells = updatedCells.mapIndexed { index, cell ->
-                    val source = draft.cells.firstOrNull { it.id == cell.id }
-                    cell.copy(isSelected = source?.isSelected == true)
-                },
-                hasDirtyChanges = true,
-                statusMessage = "Autosort zastosowany"
-            )
-        }
-    }
-
     private fun mutateDraft(
-        recordHistory: Boolean = true,
         mutator: (EditorDraft, CosLifecycleState) -> EditorDraft
     ) {
         val lifecycleState = engine.state.value
         editorDraft.update { current ->
             val ready = current.ensureInitialized(lifecycleState)
-            val mutated = mutator(ready.deepCopy(), lifecycleState)
-            if (recordHistory && mutated != ready) {
-                history.push(ready.deepCopy())
-            }
-            mutated
+            mutator(ready.deepCopy(), lifecycleState)
         }
     }
 
@@ -277,7 +224,6 @@ class MorphogenesisViewModel @Inject constructor(
         if (activate) {
             formRepository.markActive(formId)
         }
-        history.clear()
         return persisted
     }
 
@@ -317,7 +263,7 @@ class MorphogenesisViewModel @Inject constructor(
             addAll(savedSummaries)
         }
         val notes = if (savedSummaries.isNotEmpty()) {
-            "Zapisanych form: ${savedSummaries.size}. Cofnij/Przywroc aby eksplorowac zmiany, autosort porzadkuje kolizje."
+            "Zapisanych form: ${savedSummaries.size}. Wybierz, aby aktywować lub kontynuować edycję szkicu."
         } else {
             "Zasoby organizmu: $totalCells dojrzalych komorek. Nastepny pierscien pomiesci do $nextCapacity."
         }
@@ -358,10 +304,7 @@ class MorphogenesisViewModel @Inject constructor(
             canSaveDraft = draft.cells.isNotEmpty() && draft.hasDirtyChanges && validation.isValid,
             canActivate = draft.cells.isNotEmpty() && validation.isValid,
             hasDirtyChanges = draft.hasDirtyChanges,
-            canUndo = history.canUndo(),
-            canRedo = history.canRedo(),
-            validationMessage = validation.message,
-            infoMessage = draft.statusMessage
+            validationMessage = validation.message
         )
     }
 
@@ -403,9 +346,7 @@ class MorphogenesisViewModel @Inject constructor(
         lifecycleState: CosLifecycleState
     ): EditorDraft {
         if (initialized) return this
-        val initial = createInitialDraft(lifecycleState)
-        history.clear()
-        return initial
+        return createInitialDraft(lifecycleState)
     }
 
     private fun createInitialDraft(state: CosLifecycleState): EditorDraft {
@@ -430,7 +371,6 @@ class MorphogenesisViewModel @Inject constructor(
             radiusSliderValue = state.cellRadius,
             radiusSliderRange = minRadius..maxRadius,
             hasDirtyChanges = false,
-            statusMessage = null,
             initialized = true
         )
     }
@@ -457,44 +397,6 @@ class MorphogenesisViewModel @Inject constructor(
         }
         val scale = maxDistance / distance
         return Offset(position.x * scale, position.y * scale)
-    }
-
-    private fun generateAutosortLayout(cellCount: Int, baseRadius: Float): List<Offset> {
-        if (cellCount <= 0) return emptyList()
-        val result = ArrayList<Offset>(cellCount)
-        result += Offset.Zero
-        if (cellCount == 1) return result
-        var remaining = cellCount - 1
-        var ring = 1
-        while (remaining > 0) {
-            val ringPositions = createRingPositions(ring, baseRadius)
-            val take = min(remaining, ringPositions.size)
-            for (i in 0 until take) {
-                result += ringPositions[i]
-            }
-            remaining -= take
-            ring++
-        }
-        return result
-    }
-
-    private fun createRingPositions(ringIndex: Int, radius: Float): List<Offset> {
-        if (ringIndex <= 0) return listOf(Offset.Zero)
-        val coords = ArrayList<HexCoord>(ringIndex * 6)
-        var q = ringIndex
-        var r = 0
-        for (direction in HEX_DIRECTIONS) {
-            repeat(ringIndex) {
-                coords += HexCoord(q, r)
-                q += direction.q
-                r += direction.r
-            }
-        }
-        return coords.map { coord ->
-            val x = (2f * radius * coord.q) + (radius * coord.r)
-            val y = SQRT_THREE * radius * coord.r
-            Offset(x, y)
-        }
     }
 
     private fun buildCellsAlert(available: Int, capacity: Int): CellsAlert? {
@@ -526,6 +428,20 @@ class MorphogenesisViewModel @Inject constructor(
         return "Forma $nextIndex"
     }
 
+    private fun determineRing(count: Int): Int {
+        if (count <= 1) return 0
+        var ring = 0
+        while (capacityForRing(ring) < count) {
+            ring++
+        }
+        return ring
+    }
+
+    private fun capacityForRing(ring: Int): Int {
+        if (ring <= 0) return 1
+        return 1 + 3 * ring * (ring + 1)
+    }
+
     private fun levelTagFor(cellCount: Int): String = "Lv.${determineRing(cellCount) + 1}"
 
     private data class EditorDraft(
@@ -537,7 +453,6 @@ class MorphogenesisViewModel @Inject constructor(
         val radiusSliderValue: Float,
         val radiusSliderRange: ClosedFloatingPointRange<Float>,
         val hasDirtyChanges: Boolean,
-        val statusMessage: String?,
         val initialized: Boolean
     )
 
@@ -549,44 +464,6 @@ class MorphogenesisViewModel @Inject constructor(
             val Valid = DraftValidation(isValid = true, message = null)
         }
     }
-
-    private data class HexCoord(val q: Int, val r: Int)
-
-    private class EditorHistory(private val capacity: Int) {
-        private val undoStack = ArrayDeque<EditorDraft>()
-        private val redoStack = ArrayDeque<EditorDraft>()
-
-        fun push(state: EditorDraft) {
-            if (undoStack.size == capacity) {
-                undoStack.removeFirst()
-            }
-            undoStack.addLast(state)
-            redoStack.clear()
-        }
-
-        fun undo(current: EditorDraft): EditorDraft? {
-            val previous = undoStack.removeLastOrNull() ?: return null
-            redoStack.addLast(current)
-            return previous
-        }
-
-        fun redo(current: EditorDraft): EditorDraft? {
-            val next = redoStack.removeLastOrNull() ?: return null
-            undoStack.addLast(current)
-            return next
-        }
-
-        fun canUndo(): Boolean = undoStack.isNotEmpty()
-        fun canRedo(): Boolean = redoStack.isNotEmpty()
-
-        fun clear() {
-            undoStack.clear()
-            redoStack.clear()
-        }
-    }
-
-    private fun ArrayDeque<EditorDraft>.removeLastOrNull(): EditorDraft? =
-        if (isEmpty()) null else removeLast()
 
     private fun EditorDraft.deepCopy(): EditorDraft = copy(
         cells = cells.map { it.copy() }
@@ -610,16 +487,6 @@ class MorphogenesisViewModel @Inject constructor(
         private const val MIN_CLAMP_FRACTION = 0.25f
         private const val MIN_RADIUS_FLOOR = 0.1f
         private const val STATE_STOP_TIMEOUT = 5_000L
-        private const val HISTORY_CAPACITY = 10
-        private val HEX_DIRECTIONS = arrayOf(
-            HexCoord(-1, 1),
-            HexCoord(-1, 0),
-            HexCoord(0, -1),
-            HexCoord(1, -1),
-            HexCoord(1, 0),
-            HexCoord(0, 1)
-        )
-        private const val SQRT_THREE = 1.7320508f
     }
 }
 
