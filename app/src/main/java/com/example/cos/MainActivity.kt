@@ -63,7 +63,14 @@ fun CosApp(
                     val morphoState by morphoViewModel.state.collectAsState()
                     MorphogenesisScreen(
                         state = morphoState,
-                        onBack = { destination = AppDestination.Lifecycle }
+                        onBack = { destination = AppDestination.Lifecycle },
+                        onAddCell = morphoViewModel::addCell,
+                        onSelectCell = morphoViewModel::selectCell,
+                        onMoveCell = morphoViewModel::moveCell,
+                        onRemoveSelectedCell = morphoViewModel::removeSelectedCell,
+                        onRadiusChange = morphoViewModel::updateSelectedRadius,
+                        onSaveDraft = morphoViewModel::saveDraft,
+                        onActivate = morphoViewModel::activateDraft
                     )
                 }
             }

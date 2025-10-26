@@ -1,7 +1,37 @@
 {
     "agent": "Nodus",
-    "current_tasks": [],
+    "current_tasks": [
+        {
+            "task_id": "NODUS-20251026-004",
+            "parent_task_id": "ORIN-20251025-002",
+            "title": "Sanity forma_aktywna po undo/redo",
+            "status": "in_progress",
+            "assigned_at": "2025-10-26",
+            "last_update": "2025-10-26",
+            "notes": "Sprawdzic checklisty adb/logcat po wprowadzeniu historii edytora; PDCA: notes/pdca/NODUS-20251026-004.md",
+            "deliverables": [
+                "Zaktualizowana checklista adb/logcat z przypadkami undo/redo",
+                "Raport sanity Pixel_5 (logcat + dumpsys)",
+                "Sugestie automatyzacji dla CI"
+            ]
+        }
+    ],
     "completed_tasks": [
+        {
+            "task_id": "NODUS-20251025-003",
+            "parent_task_id": "ORIN-20251025-002",
+            "title": "Checklisty eventu forma_aktywna",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-26",
+            "completed_at": "2025-10-26",
+            "notes": "Checklisty ADB/logcat uaktualnione; `adb logcat -d -s MorfoEvent:*` (2025-10-26) potwierdzil forma_aktywna, fallback broadcast dostarczony natychmiast. Dokumentacja zaktualizowana w docs/testing/morphogeneza-event-checklist.md.",
+            "deliverables": [
+                "Checklist ADB/logcat (docs/testing/morphogeneza-event-checklist.md)",
+                "Instrukcja sanity dla Lumena i Kai",
+                "Raport logcat z Pixel_5 (Connected tests + manual sanity)"
+            ]
+        },
         {
             "task_id": "NODUS-20251025-002",
             "parent_task_id": "ORIN-20251025-002",
@@ -64,3 +94,4 @@
         ]
     }
 }
+

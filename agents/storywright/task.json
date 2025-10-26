@@ -7,8 +7,8 @@
             "title": "Brief Morfogenezy Cos",
             "status": "in_progress",
             "assigned_at": "2025-10-25",
-            "last_update": "2025-10-25",
-            "notes": "Zbieram narracje Morfogenezy (nowe okno, formy, limity komorek), aktualizuje brief 4MAT i pytania kontrolne.",
+            "last_update": "2025-10-26",
+            "notes": "Zbieram narracje Morfogenezy (nowe okno, formy, limity komorek, undo/redo, autosort), aktualizuje brief 4MAT i pytania kontrolne. PDCA: notes/pdca/MIRA-20251025-001.md",
             "deliverables": [
                 "Zaktualizowany brief (jesli potrzeba)",
                 "Feedback dla Orina"

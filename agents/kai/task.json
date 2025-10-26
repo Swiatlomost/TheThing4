@@ -5,10 +5,10 @@
             "task_id": "KAI-20251025-003",
             "parent_task_id": "ORIN-20251025-002",
             "title": "Plan testow Morfogenezy",
-            "status": "pending",
+            "status": "in_progress",
             "assigned_at": "2025-10-25",
-            "last_update": "2025-10-25",
-            "notes": "Opracuje scenariusze testowe dla limitow komorek, braku nakladania, aktywacji i powrotu do formy 0.",
+            "last_update": "2025-10-26",
+            "notes": "Opracuje scenariusze testowe dla limitow komorek, undo/redo, autosortu, aktywacji i powrotu do formy 0. PDCA: notes/pdca/KAI-20251025-003.md; Compose test: feature/morphogenesis/src/androidTest/java/com/example/cos/morphogenesis/MorphogenesisScreenTest.kt",
             "deliverables": [
                 "Sekcja Morfogenezy w docs/testing/",
                 "Lista przypadkow testowych (manual + automaty)",
@@ -95,3 +95,4 @@
         ]
     }
 }
+

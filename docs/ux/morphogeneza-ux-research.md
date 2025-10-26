@@ -2,59 +2,59 @@
 
 **Autor:** Echo (Analyst)  
 **Data:** 2025-10-25  
-**Powiązane zadania:** `ECHO-20251025-002`, `ORIN-20251025-002`
+**Powiazane zadania:** `ECHO-20251025-002`, `ORIN-20251025-002`
 
-## 1. Referencje Edytorów „Creature/Morph”
+## 1. Referencje edytorow creature/morph
 
 | Produkt | Co inspiruje | Guard rails / Wnioski |
 |---------|--------------|------------------------|
-| **Spore Creature Creator** (Maxis, 2008) | Modularne dodawanie elementów na siatce brył, natychmiastowy podgląd animacji | Limit resource points przy każdej części; zielone/pomarańczowe highlighty pokazujące poprawne/niepoprawne umieszczenie; slider grubości kończyn z automatycznym balansowaniem sylwetki |
-| **The Sims 4 – Create A Sim** (EA, 2014) | Bezsiatkowe „pull & push” na ciele z kontekstowymi hotspotami | Blokada przeciągnięć powyżej zakresu (sprężynujące odbicie); tooltipy opisujące wpływ na animację; szybkie resetowanie segmentu do presetów |
-| **No Man’s Sky – Void Egg/Living Ship Growth** (Hello Games, 2020) | Sekwencyjne etapy rozwoju organizmu z wymogiem zasobów | Każda mutacja wymaga konkretnego surowca i wyświetla ostrzeżenie, jeśli brak zasobów; postęp pokazuje mapę docelowych form, by gracz wiedział dokąd zmierza |
-| **Morphii** (iOS/Android creativity app, 2021) | Edycja twarzy poprzez suwaki i gesty pinch/expand | Czytelne suwaki z etykietami granic (min/max), blokada nakładania poprzez natychmiastowe odsnappowanie elementu i czerwony outline |
-| **Makers Empire 3D** (Edukacyjny edytor 3D) | Uczy dzieci zasad przestrzeni – łączy siatkę z wolnym rysowaniem | Tryb siatki heksagonalnej pozwala łatwo liczyć jednostki; automatyczne „snap to grid” redukuje błędy i ułatwia walidację kolizji |
+| **Spore Creature Creator** (Maxis, 2008) | Modularne dodawanie elementow na siatce bryl, natychmiastowy podglad animacji | Limit resource points na element; zielone/pomaranczowe highlighty wskazuja poprawne/niepoprawne umieszczenie; slider grubosci konczyn z automatycznym balansowaniem sylwetki |
+| **The Sims 4 – Create A Sim** (EA, 2014) | Gesty pull & push na ciele z kontekstowymi hotspotami | Blokada przeciagniecia poza zakres (sprzezynujace odbicie); tooltipy opisujace wplyw na animacje; szybki reset segmentu do presetow |
+| **No Man's Sky – Living Ship** (Hello Games, 2020) | Sekwencyjne etapy rozwoju organizmu z wymogiem zasobow | Kazda mutacja wymaga konkretnego surowca i wyswietla ostrzezenie przy brakach; mapa docelowych form pokazuje kierunek |
+| **Morphii** (iOS/Android, 2021) | Edycja twarzy poprzez suwaki i gesty pinch/expand | Czytelne suwaki z etykietami granic min/max; blokada nakladania przez natychmiastowe odsunięcie elementu i czerwony outline |
+| **Makers Empire 3D** (aplikacja edukacyjna) | Laczy siatke heksagonalna z wolnym rysowaniem | Snap-to-grid redukuje bledy i ulatwia walidacje kolizji |
 
-## 2. Guard Rails dla Morfogenezy Cosia
+## 2. Guard rails dla Morfogenezy Cosia
 
-1. **Limity zasobów:** licznik dostępnych komórek maleje natychmiast po dodaniu elementu; pozwól na „rezerwację” komórki dopiero po zatwierdzeniu (undo nie oddaje zasobu).  
-2. **Nakładanie komórek:**  
-   - W tle utrzymuj mapę kolizji (prostokąty lub heksy).  
-   - Przy naruszeniu: czerwony outline komórek + baner „Komórki nachodzą – przesuń lub zmniejsz”.  
-   - Opcja „autosort” rozsuwa komórki do najbliższej wolnej pozycji.  
-3. **Granice organizmu:** wizualizuj obrys (outline) oraz strefę ostrzegawczą 5% wewnątrz. Suwak promienia blokuje wartości wykraczające poza obrys (sprężynujące odbicie).  
-4. **Kontrola rozmiaru:** slider z zakresem zależnym od levelu Cosia (`minRadius(level)`, `maxRadius(level)`); wyświetlaj liczby i procent zajmowanej powierzchni.  
-5. **Historia form:** zachowuj ostatnie 5 operacji (undo/redo) i dawaj możliwość zapisania formy jako szkicu bez aktywacji.  
-6. **Feedback aktywacji:** przy zapisie/aktywacji wysyłaj toast + log overlay „Forma X aktywowana” oraz podświetl kod kolorystyczny w panelu zapisanych form.  
-7. **Bezpieczeństwo danych:** w repozytorium trzymaj „dirty flag” – jeśli aplikacja zostanie zamknięta przed zapisem, przy ponownym wejściu pokaż modal z pytaniem „Odzyskać szkic?”.  
+1. **Limity zasobow:** licznik dostepnych komorek maleje natychmiast po dodaniu elementu; undo nie oddaje zasobu (trzeba usunac komorke świadomie).
+2. **Nakladanie komorek:**  
+   - W tle utrzymujemy mape kolizji (heksy).  
+   - Przy naruszeniu: czerwony outline + baner „Komorki nachodza – przesuń lub zmniejsz”.  
+   - Opcja „autosort” przenosi kolidujace komorki na najblizsze wolne pozycje.  
+3. **Granice organizmu:** outline oraz strefa ostrzegawcza 5%; slider promienia blokuje wartosci poza obrysem (sprzezynujace odbicie).  
+4. **Kontrola rozmiaru:** slider zalezy od levelu Cosia (`minRadius(level)`, `maxRadius(level)`); UI pokazuje procent zajetej powierzchni.  
+5. **Historia form:** przechowuj co najmniej 5 operacji (undo/redo) i pozwol zapisac szkic bez aktywacji.  
+6. **Feedback aktywacji:** toast + log overlay „Forma X aktywowana”; podswietlenie aktywnej formy na liscie.  
+7. **Bezpieczenstwo danych:** repozytorium utrzymuje flagi dirty; po powrocie proponuj przywrocenie szkicu.  
+8. **Autosort i cofanie:** autosort pokazuje propozycje przesuniecia (podglad + komunikat) i dopiero po potwierdzeniu przenosi komorki na wolne heksy; przycisk undo natychmiast cofa wynik autosortu i innych operacji (dodanie, przesuniecie, zmiana promienia, usuniecie).
 
-## 3. Pytania Follow-up
+## 3. Pytania follow-up
 
 ### Do Vireala
-1. Jakie płótno preferujemy: siatka heksagonalna (łatwiejsza walidacja) czy wolna przestrzeń z „snap-to-guide”?  
-2. Czy `MorphoCell` powinien przechowywać orientację/rotację, jeśli w przyszłości pojawią się komórki kierunkowe?  
-3. Czy integracja z overlay powinna odbywać się przez odrębny kanał (AIDL) czy wystarczy współdzielona baza (DataStore) i event LiveData?
+1. Czy potrzebujemy dodatkowej informacji o orientacji/rotacji w modelu `MorphoCell` na przyszle presetowe formy?  
+2. Czy autosort powinien byc udokumentowany w ADR jako domyslna heurystyka, czy jako opcja?  
+3. Czy overlay wymaga dodatkowych meta-danych przy historii (np. id operacji)?
 
 ### Do Lumena
-1. Czy ekran Morfogenezy wykorzysta istniejący Compose canvas, czy potrzebujemy dedykowanej sceny (np. `AndroidView` z rysowaniem custom)?  
-2. Jakie komponenty UI planujemy dla suwaków? (Material Slider vs. custom radial dial).  
-3. Czy w panelu zapisanych form wyświetlamy miniatury? Jeśli tak, jakie koszty renderowania możemy zaakceptować?
+1. Czy kontrolki undo/redo beda w naglowku czy przy panelu edytora?  
+2. Jak prezentujemy podglad autosortu (ghost position, highlight)?  
+3. Czy utrzymujemy limit historii (np. 10 krokow) i jak sygnalizujemy jego przekroczenie?
 
 ### Do Orina (koordynacja)
-1. Jakie priorytety w przyrostach – wejście + menu vs. edytor vs. zapis?  
-2. Czy forma aktywna wymaga blokady innych operacji do czasu synchronizacji overlay (np. loading spinner)?  
+1. Jak priorytetyzujemy undo/redo vs. kolejne funkcje (np. presety form)?  
+2. Czy autosort powinien wymagac potwierdzenia przed zapisem/aktywacja?
 
-## 4. Rekomendacje dla Orina i Lumen
+## 4. Rekomendacje dla Orina i Lumena
 
-- **Etap 1 (UI scaffold):** nowy przycisk Morfogeneza → okno z obrysem + menu (level, komórki). Dodać strefę ostrzegawczą w outline.  
-- **Etap 2 (Manipulacja komórek):** implementacja dodawania/usuwania oraz walidacja kolizji z natychmiastowym feedbackiem.  
-- **Etap 3 (Zapis i aktywacja):** panel form (forma 0 + szkice), toast aktywacji, event `ActivateMorphoForm`.  
-- **UX notatka:** w panelu form trzymaj 1 slot „Szkic w toku” i dopiero po aktywacji przenoś do listy.  
-- **Testy użytkowe:** po wdrożeniu Etapu 2 przewidzieć min. 3 sesje feedbacku (QA + właściciel wizji) z checklistą guard rails.
+- **Etap 1 (UI scaffold):** przycisk Morfogeneza otwierajacy obrys + menu (level, licznik komorek) z ostrzezeniem 5%.  
+- **Etap 2 (Manipulacja):** dodawanie/usuwanie, walidacja kolizji i natychmiastowy feedback.  
+- **Etap 3 (Zapis/aktywacja):** panel form (forma 0 + szkice), toast aktywacji, event `ActivateMorphoForm`.  
+- **Etap 4 (Historia i autosort):** kontrolki cofania/przywracania, widoczny stan historii, autosort z podgladem i potwierdzeniem.  
+- **Testy uzytkowe:** po etapie 4 zaplanowac min. trzy sesje feedbacku (QA + wlasciciel wizji) korzystajac z checklisty guard rails.
 
-## 5. Następne Kroki
+## 5. Nastepne kroki
 
-- [ ] Echo → potwierdzić z Virealem wybór płótna i uzupełnić ADR (sekcja Open Questions).  
-- [ ] Echo → przekazać Lumenowi powyższą notatkę (komunikat `@Lumen`).  
-- [ ] Lumen/Nodus → uzupełnić plan implementacji/testów (taski `LUMEN-20251025-003/004/005`, `NODUS-20251025-002`).  
-- [ ] Kai → dodać scenariusze guard rails do planu testów Morfogenezy (`KAI-20251025-003`).  
-- [ ] Storywright → po decyzjach płótna zaktualizować brief w `sessions/ORIN-20251025-002-...`.
+- [ ] Echo — zaktualizowac ADR-2025-10-25 (sekcja guard rails) o undo/redo i autosort, przekazac aktualizacje Lumenowi i Kai.  
+- [ ] Lumen/Nodus — zsynchronizowac implementacje undo/redo i sanity checklisty po autosorcie (`LUMEN-20251026-007`, `NODUS-20251026-004`).  
+- [ ] Kai — dodac scenariusze undo/redo/autosort do `docs/testing/morphogeneza-test-plan.md`.  
+- [ ] Storywright — odnotowac w briefie nowy zakres guard rails oraz pytania o poziom automatyzacji autosortu.  
