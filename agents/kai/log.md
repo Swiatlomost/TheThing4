@@ -15,13 +15,15 @@
 | 2025-10-26 | Instrumentation retry | Proba `./gradlew connectedDebugAndroidTest` zakonczona bledem JVM (brak pamieci na mark stack) | Ustalic workaround (np. zmniejszyc heap) i powtorzyc po wdrozeniu edytora |
 | 2025-10-26 | Connected test + logcat | `./gradlew connectedDebugAndroidTest` PASS; `adb logcat -d -s MorfoEvent:*` -> forma_aktywna (FORM-1761479486922) | Zamknac checklisty (docs/testing) i uaktualnic PDCA |
 | 2025-10-26 | Undo/redo scope sync | Po planie Orina dopisuje scenariusze historii operacji i autosortu; aktualizacja `docs/testing/morphogeneza-test-plan.md` w toku | Przygotowac testy regresji undo/redo oraz sanity clamp |
+| 2025-10-26 | Backlog alignment | Oznaczylam scenariusze undo/redo/autosort jako backlog w planie testow; etapy 003-006 pozostaja aktualne | Monitorowac sanity 006 i reagowac na nowe wymagania |
+| 2025-10-26 | Sanity 006 rerun | ./gradlew test + connectedDebugAndroidTest PASS; logcat/dumpsys bez regresji | Utrzymac monitoring sanity 006 i raportowac Orinowi |
 
 ## PDCA Snapshot
 - **PDCA**: notes/pdca/KAI-20251025-003.md
-- **Plan**: Zapewnic pelne pokrycie testami manualnego cyklu oraz Morfogenezy (limity komorek, kolizje, undo/redo, autosort, event `forma_aktywna`).
-- **Do**: Zaktualizowalam plan testow (`docs/testing/morphogeneza-test-plan.md`), odpalilam `./gradlew test`, `./gradlew connectedDebugAndroidTest` oraz compose/instrumentation sanity; przygotowuje sekcje undo/redo.
-- **Check**: Logcat 2025-10-26: `I/MorfoEvent: forma_aktywna formId=FORM-1761479486922`; checklisty zaktualizowane w docs/testing.
-- **Act**: Monitorowac kolejne releasy (undo/redo), eskalowac defekty do Orina/Nodusa w razie regresji; rozważyć automaty regresji autosortu.
+- **Plan**: Utrzymac pokrycie testami dla etapu 006 (limity, kolizje, event forma_aktywna), a scenariusze undo/redo/autosort prowadzic jako backlog.
+- **Do**: Uaktualnilam plan testow i checklisty, oznaczajac historie/autosort jako przyszle notatki; sanity 006 potwierdzone testami lokalnymi.
+- **Check**: Logcat 2025-10-26 pozostaje aktualny; brak dodatkowych wymagan do czasu wznowienia historii.
+- **Act**: Czekam na decyzje Orina o wznowieniu undo/redo; gotowa dopisac testy gdy pojawi sie nowy zakres.
 
 ## Archive
 - (pending)

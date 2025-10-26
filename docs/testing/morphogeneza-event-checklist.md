@@ -44,6 +44,6 @@ Szybko potwierdzic, ze po aktywacji formy Morfogenezy system emituje zdarzenie f
   `I/MorfoEvent: forma_aktywna formId=FORM-1761479486922 cellsHash=d9a7477e timestamp=1761479486924`.
 - `adb shell dumpsys activity broadcasts --history` nie wykazal trwajacych broadcastow (zdarzenie dostarczone natychmiast).
 
-## Undo/redo (plan)
-- [ ] Po wdrozeniu LUMEN-20251026-007 dodac kroki: aktywacja formy, cofniecie zmian (undo) i ponowne aktywacje; powtorzyc logcat/dumpsys.
+## Undo/redo (backlog)
+- [ ] Po wznowieniu prac nad undo/redo dodac kroki: aktywacja formy, cofniecie zmian (undo) i ponowne aktywacje; powtorzyc logcat/dumpsys.
 - [ ] Zweryfikowac, czy `MorfoEvent` nie emituje duplikatow przy cofnieciu/przywroceniu oraz czy broadcast nie gromadzi starych payloadow.

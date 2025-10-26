@@ -16,8 +16,8 @@
             "title": "Research kreatora Morfogenezy",
             "parent": "ORIN-20251025-002",
             "status": "in_progress",
-            "last_update": "2025-10-25",
-            "notes": "Zebrane referencje + guard rails (docs/ux/morphogeneza-ux-research.md); rozszerza guard rails o undo/redo i autosort zgodnie z planem Orina."
+            "last_update": "2025-10-26",
+            "notes": "Zebrane referencje + guard rails (docs/ux/morphogeneza-ux-research.md); undo/redo i autosort oznaczone jako backlog, monitoruje sygnaly produktu."
         },
         {
             "agent": "Storywright",
@@ -34,26 +34,17 @@
             "title": "Plan testow Morfogenezy",
             "parent": "ORIN-20251025-002",
             "status": "in_progress",
-            "last_update": "2025-10-25",
-            "notes": "Przygotuje scenariusze limitow komorek, undo/redo oraz autosortu. PDCA: notes/pdca/KAI-20251025-003.md; docs/testing/morphogeneza-test-plan.md"
-        },
-        {
-            "agent": "Lumen",
-            "task_id": "LUMEN-20251026-007",
-            "title": "Undo/Redo i autosort Morfogenezy",
-            "parent": "ORIN-20251025-002",
-            "status": "pending",
             "last_update": "2025-10-26",
-            "notes": "Prace wstrzymane – utrzymujemy stan etapu 006. Wznowiæ po decyzji Orina."
+            "notes": "Plan testow etapu 006 (limity, kolizje, event forma_aktywna); scenariusze undo/redo/autosort zapisane jako backlog. PDCA: notes/pdca/KAI-20251025-003.md"
         },
         {
             "agent": "Nodus",
             "task_id": "NODUS-20251026-004",
             "title": "Sanity kanalu forma_aktywna po undo/redo",
             "parent": "ORIN-20251025-002",
-            "status": "in_progress",
+            "status": "pending",
             "last_update": "2025-10-26",
-            "notes": "Weryfikuje checklisty adb/logcat po wprowadzeniu historii edytora; PDCA: notes/pdca/NODUS-20251026-004.md"
+            "notes": "Checklisty adb/logcat aktualne dla etapu 006; scenariusze undo/redo czekaja na wznowienie zadania. PDCA: notes/pdca/NODUS-20251026-004.md"
         },
     ],
     "completed_tasks": [
@@ -77,39 +68,39 @@
         },
         {
             "agent": "Nodus",
-            "task_id": "NODUS-20251025-003",
-            "title": "Checklisty eventu forma_aktywna",
+            "task_id": "NODUS-20251026-004",
+            "title": "Sanity kanalu forma_aktywna po undo/redo",
             "parent": "ORIN-20251025-002",
-            "status": "done",
+            "status": "pending",
             "last_update": "2025-10-26",
-            "notes": "Checklisty ADB/logcat zaktualizowane; log `MorfoEvent` zÅ‚apany 2025-10-26, fallback broadcast dostarczony natychmiast."
+            "notes": "Checklisty adb/logcat aktualne dla etapu 006; scenariusze undo/redo czekaja na wznowienie zadania. PDCA: notes/pdca/NODUS-20251026-004.md"
         },
         {
             "agent": "Nodus",
-            "task_id": "NODUS-20251025-002",
-            "title": "Event overlay forma_aktywna",
+            "task_id": "NODUS-20251026-004",
+            "title": "Sanity kanalu forma_aktywna po undo/redo",
             "parent": "ORIN-20251025-002",
-            "status": "done",
-            "last_update": "2025-10-25",
-            "notes": "Kanal SharedFlow + fallback broadcast (formId, cellsHash, timestamp); checklisty adb/logcat w przygotowaniu."
+            "status": "pending",
+            "last_update": "2025-10-26",
+            "notes": "Checklisty adb/logcat aktualne dla etapu 006; scenariusze undo/redo czekaja na wznowienie zadania. PDCA: notes/pdca/NODUS-20251026-004.md"
         },
         {
             "agent": "Echo",
-            "task_id": "ECHO-20251024-001",
-            "title": "Analiza ryzyk Cos overlay",
-            "parent": "ORIN-20251024-001",
-            "status": "done",
-            "last_update": "2025-10-24",
-            "notes": "Zidentyfikowal ryzyka styku, pauzy cyklu i gestow overlay. Analiza zakonczona."
+            "task_id": "ECHO-20251025-002",
+            "title": "Research kreatora Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "in_progress",
+            "last_update": "2025-10-26",
+            "notes": "Zebrane referencje + guard rails (docs/ux/morphogeneza-ux-research.md); undo/redo i autosort oznaczone jako backlog, monitoruje sygnaly produktu."
         },
         {
             "agent": "Echo",
-            "task_id": "ECHO-20251025-001",
-            "title": "Discovery manualnego cyklu",
-            "parent": "ORIN-20251024-001",
-            "status": "done",
-            "last_update": "2025-10-25",
-            "notes": "Pakiet wymagan manualnego cyklu, lista ryzyk overlay i pytania follow-up przekazane Orinowi/Vireal."
+            "task_id": "ECHO-20251025-002",
+            "title": "Research kreatora Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "in_progress",
+            "last_update": "2025-10-26",
+            "notes": "Zebrane referencje + guard rails (docs/ux/morphogeneza-ux-research.md); undo/redo i autosort oznaczone jako backlog, monitoruje sygnaly produktu."
         },
         {
             "agent": "Vireal",
@@ -176,30 +167,30 @@
         },
         {
             "agent": "Kai",
-            "task_id": "KAI-20251024-001",
-            "title": "Plan testow Cos v0.1",
-            "parent": "ORIN-20251024-001",
-            "status": "done",
-            "last_update": "2025-10-24",
-            "notes": "Plan testow Cos v0.1 oraz raport wynikow dostarczony."
+            "task_id": "KAI-20251025-003",
+            "title": "Plan testow Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "in_progress",
+            "last_update": "2025-10-26",
+            "notes": "Plan testow etapu 006 (limity, kolizje, event forma_aktywna); scenariusze undo/redo/autosort zapisane jako backlog. PDCA: notes/pdca/KAI-20251025-003.md"
         },
         {
             "agent": "Kai",
-            "task_id": "KAI-20251025-001",
-            "title": "Testy manualnego cyklu",
-            "parent": "ORIN-20251024-001",
-            "status": "done",
-            "last_update": "2025-10-25",
-            "notes": "Manualne sekwencje i ./gradlew test potwierdzone."
+            "task_id": "KAI-20251025-003",
+            "title": "Plan testow Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "in_progress",
+            "last_update": "2025-10-26",
+            "notes": "Plan testow etapu 006 (limity, kolizje, event forma_aktywna); scenariusze undo/redo/autosort zapisane jako backlog. PDCA: notes/pdca/KAI-20251025-003.md"
         },
         {
             "agent": "Kai",
-            "task_id": "KAI-20251025-002",
-            "title": "Testy overlay Cos v0.1",
-            "parent": "ORIN-20251024-001",
-            "status": "done",
-            "last_update": "2025-10-25",
-            "notes": "./gradlew connectedDebugAndroidTest + logcat overlay PASS."
+            "task_id": "KAI-20251025-003",
+            "title": "Plan testow Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "in_progress",
+            "last_update": "2025-10-26",
+            "notes": "Plan testow etapu 006 (limity, kolizje, event forma_aktywna); scenariusze undo/redo/autosort zapisane jako backlog. PDCA: notes/pdca/KAI-20251025-003.md"
         },
         {
             "agent": "Orin",
@@ -263,6 +254,12 @@
         ]
     }
 }
+
+
+
+
+
+
 
 
 

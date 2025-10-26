@@ -65,7 +65,7 @@ Accepted — 2025-10-25
 
 ## Implementation Notes
 
-- [ ] Echo/Lumen: zaktualizowac sekcje undo/redo i autosort po wdrozeniu LUMEN-20251026-007.
+- [ ] Echo/Lumen: odnotowac w dokumentacji, ze undo/redo i autosort sa w backlogu; przygotowac aktualizacje po wznowieniu prac.
 - Pliki: `core/morpho/` (model + repozytorium), `feature/morphogenesis/` (UI + ViewModel).
 - Wzorce DI: Hilt moduł udostępniający `MorphoFormRepository` oraz `MorphoEditorInteractor`.
 - Testy: jednostkowe (walidacja kolizji, limity), integracyjne (aktywny layout->overlay).

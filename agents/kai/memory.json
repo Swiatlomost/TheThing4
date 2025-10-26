@@ -1,12 +1,13 @@
 {
     "agent": "Kai",
     "alias": "Evaluator",
-    "last_updated": "2025-10-25",
-    "focus": "Kontrola jakosci manualnego cyklu i overlay parity.",
+    "last_updated": "2025-10-26",
+    "focus": "Kontrola jakosci manualnego cyklu, overlay oraz sanity Morfogenezy etapu 006.",
     "context": [
         "Po kazdej dostawie uruchamiam ./gradlew test oraz feature:cos-overlay:connectedDebugAndroidTest.",
         "Dokumentuje kroki manualne na Pixel_5 wraz ze statusem PASS/FAIL.",
-        "Raportuje Orinowi natychmiast gdy pojawi sie regresja lub problem z encodingiem logow."
+        "Raportuje Orinowi natychmiast gdy pojawi sie regresja lub problem z encodingiem logow.",
+        "Scenariusze undo/redo/autosort trzymam jako backlog w docs/testing/morphogeneza-test-plan.md."
     ],
     "insights": [
         "Manualny cykl wymaga sekwencji Reset -> Narodziny -> Dojrzewanie -> Nowa komorka, oba kanaly musza byc zsynchronizowane.",

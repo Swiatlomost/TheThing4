@@ -32,7 +32,7 @@
 ## Manualne sanity
 - Uzyj `docs/testing/morphogeneza-event-checklist.md` (ADB + logcat).
 - Dodatkowo: manualny test slidera rozmiaru, undo/redo (co najmniej 5 kroków historii) oraz autosortu.
-- 2025-10-26: `adb logcat -d -s MorfoEvent:*` -> `I/MorfoEvent: forma_aktywna formId=FORM-1761479486922...` (Connected tests + checklist PASS).
+- 2025-10-26: `adb logcat -d -s MorfoEvent:*` -> `I/MorfoEvent: forma_aktywna formId=FORM-1761479486922...` (Connected tests + checklist PASS; rerun potwierdzil brak dodatkowych wpisow).
 
 ## Rejestr defektow
 - Zglaszaj w `agents/kai/log.md` z prefiksem `DEFECT:` oraz odniesieniem do commitow.

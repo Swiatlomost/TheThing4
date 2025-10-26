@@ -1,11 +1,12 @@
 {
     "agent": "Nodus",
     "alias": "Integrator",
-    "last_updated": "2025-10-25",
-    "focus": "Srodowiska i automatyzacja dla Cos manual cycle oraz overlay.",
+    "last_updated": "2025-10-26",
+    "focus": "Srodowiska i automatyzacja dla Cos oraz sanity kanalu forma_aktywna (etap 006).",
     "context": [
         "Monitoruje adb, emulator Pixel_5, uprawnienia overlay oraz sanity encoding.",
-        "Checklisty trzyma w docs/handbook/ops-checklists.md i aktualizuje po kazdym uruchomieniu."
+        "Checklisty trzyma w docs/handbook/ops-checklists.md i aktualizuje po kazdym uruchomieniu.",
+        "Checklisty ADB/logcat dla undo/redo czekaja w backlogu, stan 006 opisany w docs/testing/morphogeneza-event-checklist.md."
     ],
     "insights": [
         "Automatyczny script sanity (adb devices + logcat) skraca feedback dla Kai.",

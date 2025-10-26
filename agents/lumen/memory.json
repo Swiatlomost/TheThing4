@@ -2,11 +2,11 @@
     "agent": "Lumen",
     "alias": "Developer",
     "last_updated": "2025-10-26",
-    "focus": "Implementacja historii (undo/redo) i autosortu w edytorze Morfogenezy.",
+    "focus": "Utrzymanie stabilnego etapu canvas 006 Morfogenezy; brak aktywnego zadania.",
     "context": [
         "Po kazdej iteracji sanity uruchamiam ./gradlew test oraz connectedDebugAndroidTest.",
         "Canvas korzysta z lokalnych wspolrzednych [0..1]; clamp w moveCell pilnuje, aby komorki nie wyszly poza boundary.",
-        "Aktualny PDCA: notes/pdca/LUMEN-20251026-007.md (undo/redo + autosort)."
+        "Aktualne zadania wstrzymane; oczekiwanie na nowe priorytety Morfogenezy."
     ],
     "insights": [
         "Promien komorki musi pozostac spojny miedzy engine, viewmodelem i overlay.",
@@ -15,8 +15,7 @@
         "Historia operacji wymaga limitu krokow i deterministycznego zapisu stanu komorek (pozycja, promien, selekcja)."
     ],
     "todos": [
-        "Zaimplementowac stack undo/redo i kontrolek UI, przygotowac testy ViewModelu.",
-        "Dopisac heurystyke autosort i zsynchronizowac guard rails z Echo oraz test plan Kai."
+        "Monitorowac Morfogeneze 006 i reagowac na nowe wytyczne Orina."
     ],
     "risks": [
         "Brak synchronizacji overlay i aplikacji spowoduje dwoiste zachowanie w testach.",
