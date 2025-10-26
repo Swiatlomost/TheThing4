@@ -1,20 +1,22 @@
 {
     "agent": "Lumen",
     "alias": "Developer",
-    "last_updated": "2025-10-25",
-    "focus": "Implementacja manualnego cyklu (core) oraz overlay parity z pelnymi testami.",
+    "last_updated": "2025-10-26",
+    "focus": "Implementacja historii (undo/redo) i autosortu w edytorze Morfogenezy.",
     "context": [
-        "Pracuje etapami: najpierw silnik i UI w module cos-lifecycle, nastepnie parity overlay.",
-        "Po kazdym etapie uruchamiam ./gradlew test oraz connectedDebugAndroidTest.",
-        "Wyniki testow przekazuje do Kai, encoding sanity raportuje Nyx."
+        "Po kazdej iteracji sanity uruchamiam ./gradlew test oraz connectedDebugAndroidTest.",
+        "Canvas korzysta z lokalnych wspolrzednych [0..1]; clamp w moveCell pilnuje, aby komorki nie wyszly poza boundary.",
+        "Aktualny PDCA: notes/pdca/LUMEN-20251026-007.md (undo/redo + autosort)."
     ],
     "insights": [
-        "Promien komorki musi byc identyczny w engine i overlay, inaczej animacje beda rozjechane.",
-        "Globalne akcje bez selekcji upraszczaja sterowanie i redukuja bledy UI."
+        "Promien komorki musi pozostac spojny miedzy engine, viewmodelem i overlay.",
+        "Gest tap/drag korzysta z odczytu layoutu w momencie gestu, co minimalizuje dryf kursora; clamp wykonywany w ViewModelu pozwala utrzymac wtorne zrodla prawdy.",
+        "Canvas powinien skalowac sie wedlug stalego boundary (nie wedlug aktualnej pozycji komorek), inaczej uzytkownik widzi \"kurczenie\" sie organizmu.",
+        "Historia operacji wymaga limitu krokow i deterministycznego zapisu stanu komorek (pozycja, promien, selekcja)."
     ],
     "todos": [
-        "Dopiac parity overlay po akceptacji guard rails Vireal.",
-        "Udostepnic wspolny helper do rozmieszczenia komorek dla overlay."
+        "Zaimplementowac stack undo/redo i kontrolek UI, przygotowac testy ViewModelu.",
+        "Dopisac heurystyke autosort i zsynchronizowac guard rails z Echo oraz test plan Kai."
     ],
     "risks": [
         "Brak synchronizacji overlay i aplikacji spowoduje dwoiste zachowanie w testach.",

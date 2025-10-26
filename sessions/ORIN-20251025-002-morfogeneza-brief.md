@@ -1,39 +1,43 @@
-# ORIN-20251025-002 — Brief Morfogenezy
+# ORIN-20251025-002 - Brief Morfogenezy
 
 ## 4MAT Discovery
-- **WHY**: Morfogeneza daje użytkownikowi pełną sprawczość nad kształtem Cosia, co wzmacnia narrację rozwoju organizmu i nadaje znaczenie zgromadzonym komórkom.
-- **WHAT**: Nowe okno dostępne z przycisku „Morfogeneza”. W centrum obrys organizmu, w górnym menu poziom Cosia (równy poziomowi okręgu najnowszego Cosia) oraz licznik dostępnych komórek. Użytkownik układa od 1 do posiadanej liczby komórek, każdą skalując suwakiem; komórki nie mogą się nakładać. Dowolna liczba zapisanych form, z formą 0 jako stanem obecnym.
-- **HOW**: Tryb edycji pozwala dodawać/usuwać komórki, manipulować rozmiarem i pozycją, zapisywać szkice i aktywować wybraną formę. Aktywacja natychmiast synchronizuje wizualizację w aplikacji i overlay. Panel zapisanych form zawsze prezentuje formę 0 oraz kolejne wersje.
-- **WHAT IF**: Otwarte kwestie to m.in. typ siatki/płótna do precyzyjnego pozycjonowania, sposób podglądu różnic między formami, reguły co do kolizji z organami wewnętrznymi oraz kontrakt API dla overlay.
+- **WHY**: Morfogeneza daje graczowi sprawczosc nad ksztaltem Cosia, wzmacnia doswiadczenie rozwoju organizmu i nadaje wartosc zebranym komorkom.
+- **WHAT**: Dedykowane okno (przycisk "Morfogeneza" z cyklu Cos) z obrysem organizmu, paskiem statusu (level, komorki, aktywna forma) oraz lista zapisanych form. Uzytkownik tworzy formy w granicach dostepnych komorek, bez nakladania i z kontrola rozmiaru.
+- **HOW**: Edytor pozwala dodawac/usuwac komorki, skalowac je suwakiem, zapisywac szkice i aktywowac wybrana forme. Aktywacja emituje zdarzenie `forma_aktywna` (SharedFlow + broadcast) i natychmiast odswieza overlay.
+- **WHAT IF**: Kolejne iteracje obejma walidacje kolizji organow wewnetrznych, wizualny podglad roznic form oraz biblioteki presetow.
 
 ## Conversation Highlights
-- „Chcemy pełnej kreatywności, ale każdą komórką trzeba móc sterować w skali i położeniu.”
-- „Formą 0 zostaje to, co widzimy dziś. Nowe formy mają natychmiast wpływać na overlay.”
-- Decyzje: limit wykorzystania komórek = stan magazynu; brak dodatkowych kosztów ani cooldownów; przycisk Morfogenezy obok obecnych elementów UI.
-- Do decyzji Orina: model fizycznego płótna (siatka? wolna przestrzeń?), szczegóły integracji z overlay oraz priorytety wdrożenia (UX vs. core logika).
+- Hexagonalna siatka z micro-offsetem (snap-to-hex) zostala zatwierdzona przez Orina; wpisana w ADR-2025-10-25.
+- Limit komorek = liczba zasobow z CosLifecycleEngine; alert przy 10% pozostalych zasobow wdrozony w etapie 004.
+- Event `forma_aktywna` gotowy (Nodus) i udokumentowany w checkliscie ADB (`docs/testing/morphogeneza-event-checklist.md`).
+- UX guard rails Echo: brak nakladania, feedback kolorystyczny, historia form (undo/redo, szkic w toku), autosort z potwierdzeniem.
+- Priorytety przyrostow: 003 (status + dropdown) -> 004 (menu poziomu, alerty) -> 005 (edytor komorek, zapisy form) -> 006 (canvas UX, clamp) -> 007 (undo/redo + autosort) -> kolejne (presety, podglad roznic).
 
 ## Draft Plan (PDCA Seeds)
-- **Plan**: Dostarczyć interaktywny moduł Morfogenezy z zapisem, aktywacją i synchro overlay.
-- **Do**: 
-  - Echo zbiera referencje systemów „creature editor”.
-  - Vireal przygotowuje ADR danych formy (lista komórek, rozmiary, pozycje, metadane).
-  - Lumen prototypuje UI edytora + backend zarządzania formami.
-  - Nodus planuje komunikat aktywacji dla overlay.
-- **Check**: Kai przygotowuje scenariusze testów (limit komórek, overlap guard, szybka zmiana form). Orin zatwierdza, że aktywacja odświeża oba kanały.
-- **Act**: Po walidacji zbieramy feedback użytkownika, wyniki trafiają do backlogu rozszerzeń (np. presetowe formy, współdzielone biblioteki).
+- **Plan**: Dostarczyc Morfogeneze w przyrostach UI + backend form, z integracja overlay i testami Kai (003-007).
+- **Do**:
+  - Echo utrzymuje notatki UX (`docs/ux/morphogeneza-ux-research.md`) i sygnalizuje ryzyka.
+  - Vireal prowadzi ADR-2025-10-25 (status Accepted) oraz guard rails architektoniczne.
+  - Lumen zrealizowal 003-006; rozpoczyna LUMEN-20251026-007 (undo/redo + autosort).
+  - Nodus przygotowal event `forma_aktywna`; aktualnie rozszerza checkliste o przypadki undo/redo.
+  - Kai rozbudowuje plan testow (`docs/testing/morphogeneza-test-plan.md`) o scenariusze historii i autosortu.
+- **Check**: Po kazdym etapie Lumen uruchamia `./gradlew test` + `./gradlew connectedDebugAndroidTest`. Kai pokrywa guard rails i sanity overlay, Nodus raportuje logcat/dumpsys. Orin monitoruje status board.
+- **Act**: Po walidacji zebrac feedback produktowy (np. poziom automatyzacji autosortu), wpisac do backlogu kolejne funkcje (presety, podglad roznic). Nyx uwzglednia zmiany w pamieci.
 
 ## Recommendations for Orin
-- Zadania do rozpisania:
-  1. `[ECHO]` Research morfogenezy i kreatorów form — przykłady UX / guard rails.
-  2. `[VIREAL]` ADR: Model danych formy Cosia + API aktywacji.
-  3. `[LUMEN]` Prototyp UI nowego okna (edytor komórek, zapis/aktywacja, slider rozmiaru).
-  4. `[NODUS]` Event synchro overlay («forma_aktywna»).
-  5. `[KAI]` Plan testów E2E (limity komórek, brak nakładania, szybkie przełączanie).
-- Ryzyka / zależności:
-  - Brak ustalonej siatki może utrudnić precyzję i walidację (potrzebna decyzja).
-  - Overlay wymaga jasnego kontraktu aktualizacji, inaczej powstanie lag w wizualizacji.
-  - Skala komórek musi uwzględniać kolizje wewnątrz organizmu (potrzebne zasady).
-- Pliki startowe:
-  - `docs/reference/session-timeline.md` (fazy sesji).
-  - `docs/templates/storywright-brief.md` (dla kolejnych iteracji).
-  - Istniejące ADR: `docs/architecture/ADR-2025-10-24-cos-architecture.md` jako kontekst.
+1. `[ECHO]` Zaktualizowac guard rails o undo/redo i autosort (notatka UX + ADR), przekazac rekomendacje Lumenowi i Kai.
+2. `[LUMEN]` Realizowac LUMEN-20251026-007 (historia operacji + autosort) wraz z testami.
+3. `[NODUS]` Rozszerzyc checklisty adb/logcat o przypadki undo/redo i potwierdzic brak regresji kanalu.
+4. `[KAI]` Dodac scenariusze undo/redo/autosort do planu testow i wskazac wymagane automaty.
+5. `[SCRIBE]` Zaktualizowac brief po wdrozeniu historii oraz odnotowac pytania produktowe dotyczace poziomu automatyzacji.
+
+## Key Files
+- `docs/architecture/ADR-2025-10-25-morfogeneza.md`
+- `docs/ux/morphogeneza-ux-research.md`
+- `feature/morphogenesis/src/...` (UI, ViewModel, testy)
+- `docs/testing/morphogeneza-event-checklist.md`
+- `docs/testing/morphogeneza-test-plan.md`*** End Patch
+
+
+
+

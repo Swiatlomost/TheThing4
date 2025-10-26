@@ -7,11 +7,11 @@
             "title": "Research kreatora Morfogenezy",
             "status": "in_progress",
             "assigned_at": "2025-10-25",
-            "last_update": "2025-10-25",
-            "notes": "Analiza referencji UX (creature editor), guard rails dla manipulacji komorkami, lista pytan do Vireal/Lumen. Notatka: docs/ux/morphogeneza-ux-research.md.",
+            "last_update": "2025-10-26",
+            "notes": "Analiza referencji UX (creature editor), guard rails dla manipulacji komorkami; rozszerzenie o undo/redo i autosort. Notatka: docs/ux/morphogeneza-ux-research.md.",
             "deliverables": [
                 "Zestaw referencji UX/produktowych",
-                "Lista guard rails dla Morfogenezy",
+                "Lista guard rails dla Morfogenezy (w tym undo/redo, autosort)",
                 "Pytania i rekomendacje dla Vireal i Lumen"
             ]
         }

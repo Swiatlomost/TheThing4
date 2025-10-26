@@ -1,5 +1,5 @@
 {
-    "generated_at": "2025-10-25",
+    "generated_at": "2025-10-26",
     "active_tasks": [
         {
             "agent": "Orin",
@@ -17,7 +17,7 @@
             "parent": "ORIN-20251025-002",
             "status": "in_progress",
             "last_update": "2025-10-25",
-            "notes": "Zebrane referencje + guard rails (docs/ux/morphogeneza-ux-research.md); czeka na feedback Orina/Lumena."
+            "notes": "Zebrane referencje + guard rails (docs/ux/morphogeneza-ux-research.md); rozszerza guard rails o undo/redo i autosort zgodnie z planem Orina."
         },
         {
             "agent": "Storywright",
@@ -26,37 +26,64 @@
             "parent": "ORIN-20251025-002",
             "status": "in_progress",
             "last_update": "2025-10-25",
-            "notes": "Utrzymuje brief wizji i pytania kontrolne do wlasciciela, skupione na Morfogenezie."
-        },
-        {
-            "agent": "Lumen",
-            "task_id": "LUMEN-20251025-004",
-            "title": "Menu poziomu i zasobow komorek",
-            "parent": "ORIN-20251025-002",
-            "status": "pending",
-            "last_update": "2025-10-25",
-            "notes": "Renderuje gorne menu z levelem Cosia i licznikiem komorek zgodnie z rekomendacjami UX."
-        },
-        {
-            "agent": "Lumen",
-            "task_id": "LUMEN-20251025-005",
-            "title": "Edytor komorek i zapisy form",
-            "parent": "ORIN-20251025-002",
-            "status": "pending",
-            "last_update": "2025-10-25",
-            "notes": "Implementuje manipulacje komorkami, suwak rozmiaru, zapis form oraz aktywacje w zgodzie z guard rails."
+            "notes": "Utrzymuje brief wizji i pytania kontrolne do wlasciciela, skupione na Morfogenezie. PDCA: notes/pdca/MIRA-20251025-001.md"
         },
         {
             "agent": "Kai",
             "task_id": "KAI-20251025-003",
             "title": "Plan testow Morfogenezy",
             "parent": "ORIN-20251025-002",
-            "status": "pending",
+            "status": "in_progress",
             "last_update": "2025-10-25",
-            "notes": "Przygotuje scenariusze limitow komorek, braku nakladania i szybkiego przelaczania form."
-        }
+            "notes": "Przygotuje scenariusze limitow komorek, undo/redo oraz autosortu. PDCA: notes/pdca/KAI-20251025-003.md; docs/testing/morphogeneza-test-plan.md"
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251026-007",
+            "title": "Undo/Redo i autosort Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "in_progress",
+            "last_update": "2025-10-26",
+            "notes": "Historia operacji (undo/redo) i heurystyka autosort kolizji. PDCA: notes/pdca/LUMEN-20251026-007.md"
+        },
+        {
+            "agent": "Nodus",
+            "task_id": "NODUS-20251026-004",
+            "title": "Sanity kanalu forma_aktywna po undo/redo",
+            "parent": "ORIN-20251025-002",
+            "status": "in_progress",
+            "last_update": "2025-10-26",
+            "notes": "Weryfikuje checklisty adb/logcat po wprowadzeniu historii edytora; PDCA: notes/pdca/NODUS-20251026-004.md"
+        },
     ],
     "completed_tasks": [
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251025-005",
+            "title": "Edytor komorek i zapisy form",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Repo form, walidacje kolizji, UI edytora oraz log MorfoEvent potwierdzony (`./gradlew test`, `connectedDebugAndroidTest`, `adb logcat`)."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251026-006",
+            "title": "Canvas UX Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Canvas tap/drag ze wspolnym layoutem, clamp do okregu i uproszczony UI plotna. `./gradlew test` + `./gradlew connectedDebugAndroidTest` po kazdym etapie PASS."
+        },
+        {
+            "agent": "Nodus",
+            "task_id": "NODUS-20251025-003",
+            "title": "Checklisty eventu forma_aktywna",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Checklisty ADB/logcat zaktualizowane; log `MorfoEvent` złapany 2025-10-26, fallback broadcast dostarczony natychmiast."
+        },
         {
             "agent": "Nodus",
             "task_id": "NODUS-20251025-002",
@@ -119,6 +146,15 @@
             "status": "done",
             "last_update": "2025-10-24",
             "notes": "Implementacja bazowa Cos v0.1 oraz struktura modulow dostarczone."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251025-004",
+            "title": "Menu poziomu i zasobow komorek",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Alerty licznika komorek, zaktualizowany pasek statusu; testy `./gradlew test` oraz `./gradlew connectedDebugAndroidTest` (Pixel_5) PASS."
         },
         {
             "agent": "Lumen",
@@ -227,3 +263,6 @@
         ]
     }
 }
+
+
+

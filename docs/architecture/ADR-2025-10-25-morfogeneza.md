@@ -45,6 +45,7 @@ Accepted — 2025-10-25
 5. **Historia form:** lokalne undo/redo (min. 5 kroków) + możliwość zapisu szkicu (forma nieaktywna).
 6. **Feedback aktywacji:** toast w aplikacji, log overlay „Forma X aktywowana” oraz podświetlenie aktywnej formy na liście.
 7. **Bezpieczeństwo danych:** flagujemy szkic jako „dirty”; przy powrocie proponujemy odzyskanie niedokończonej formy.
+8. **Autosort i cofanie:** autosort proponuje przesuniecie komorek (podglad + komunikat) i po potwierdzeniu przenosi je na najblizsze wolne heksy; undo natychmiast przywraca poprzedni stan.
 
 ## Consequences
 - Model współdzielony przez aplikację i overlay upraszcza synchronizację oraz testy automatyczne.
@@ -63,6 +64,8 @@ Accepted — 2025-10-25
 - [x] Nodus: wybierz kanał przesyłu aktywnej formy (SharedFlow + fallback Broadcast) i zintegruj z eventem.
 
 ## Implementation Notes
+
+- [ ] Echo/Lumen: zaktualizowac sekcje undo/redo i autosort po wdrozeniu LUMEN-20251026-007.
 - Pliki: `core/morpho/` (model + repozytorium), `feature/morphogenesis/` (UI + ViewModel).
 - Wzorce DI: Hilt moduł udostępniający `MorphoFormRepository` oraz `MorphoEditorInteractor`.
 - Testy: jednostkowe (walidacja kolizji, limity), integracyjne (aktywny layout->overlay).
