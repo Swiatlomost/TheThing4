@@ -55,10 +55,7 @@ data class MorphogenesisEditorState(
     val canSaveDraft: Boolean = false,
     val canActivate: Boolean = false,
     val hasDirtyChanges: Boolean = false,
-    val canUndo: Boolean = false,
-    val canRedo: Boolean = false,
-    val validationMessage: String? = null,
-    val infoMessage: String? = null
+    val validationMessage: String? = null
 )
 
 @Immutable

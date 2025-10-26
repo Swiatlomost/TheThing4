@@ -2,7 +2,6 @@ package com.example.cos.morphogenesis
 
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import org.junit.Rule
@@ -64,7 +63,7 @@ class MorphogenesisScreenTest {
         }
 
         composeRule.onNodeWithText(alertMessage).assertExists()
-        composeRule.onNodeWithText("Komorki: 2/19").assertExists()
+        composeRule.onNodeWithText("Komorki 2/19").assertExists()
         composeRule.onNodeWithText("Lv. 2").assertExists()
         composeRule.onNodeWithText("Edytor komorek").assertExists()
         composeRule.onNodeWithText("Zapisz szkic").assertExists()
