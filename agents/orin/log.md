@@ -17,20 +17,20 @@
 | 2025-10-25 | Morfogeneza ADR accepted | Guard rails, plotno i event spiete; status ADR-2025-10-25 ustawiony na Accepted | Monitorowac implementacje Lumen 003-005 i przygotowanie testow Kai |
 | 2025-10-25 | Morfogeneza testy 003 | Lumen przyslal wyniki `./gradlew test` + `./gradlew connectedDebugAndroidTest` (Pixel_5) - PASS | Oznaczyc LUMEN-20251025-003 jako done i przejsc do etapu 004 |
 | 2025-10-26 | Review briefu | Storywright przekazal zaktualizowany brief sesji; prosba o potwierdzenie | Przeczytac sessions/ORIN-20251025-002-morfogeneza-brief.md i odpowiedziec Storywright/Echo |
-| 2025-10-26 | Session continue 007 | Po sygnale `[SESSION::CONTINUE]` zaktualizowalem plan: LUMEN-20251026-007 (undo/redo, autosort), Echo/Kai/Nodus rozszerzaja guard rails/testy/checklisty, Mira odswieza brief | Monitorowac realizacje nowych zadan i odnotowac postepy w status.json |
+| 2025-10-26 | Scope adjustment | Po ocenie priorytetow zatrzymalismy prace nad undo/redo (LUMEN-20251026-007) i pozostajemy przy stabilnym etapie 006 | Przekazac agentom decyzje i uporzadkowac dokumentacje/briefy |
 
 ## PDCA Snapshot
-- **Plan**: Dowiezc Morfogeneze iteracyjnie (UI 003-007, overlay event, testy Kai) w oparciu o zaakceptowany ADR.
-- **Do**: Zatwierdzilem plotno, guard rails i kanal; zsynchronizowalem status board oraz zadania agentow; odebralem raporty z etapu 006 i uruchomilem plan 007.
-- **Check**: Monitoruje postep Lumen 007, aktualizacje Echo/Kai/Nodus oraz sanity overlay; upewniam sie, ze status.json/task.json sa zgodne.
-- **Act**: Eskalowac blokery w <30 min; po dostawie historii/autosortu i testach zamknac ORIN-20251025-002.
+- **Plan**: Utrzymac Morfogeneze na etapie 006 (canvas UX) i guard rails jako stan bazowy projektu.
+- **Do**: Zakonczylem przyrosty 003-006, potwierdzilem sanity testow i usunalem zadanie LUMEN-20251026-007 z planow; synchronizuje sie z Echo/Kai/Nodusem.
+- **Check**: Monitoruje, czy dokumentacja i statusy odzwierciedlaja brak undo/redo oraz aktualne sanity clampu.
+- **Act**: Zebrac nowe wymagania produktowe przed ponownym otwarciem prac nad historia/autosortem.
 
 ## TODO
 - [x] Potwierdzic, ze ORIN-20251025-002 zawiera linki do zadan agentow w task.json/status.json
 - [x] Odpowiedziec Virealowi w sprawie wyboru plotna/siatki (na bazie notatki Echo)
 - [x] Przejrzec wyniki researchu Echo (guard rails UX) i zatwierdzic/zglosic uwagi
 - [x] Zatwierdzic ADR-2025-10-25-morfogeneza po zebraniu feedbacku
-- [ ] Monitorowac wdrozenie LUMEN-20251026-007 oraz sanity undo/redo (Kai/Nodus)
+- [x] Posprzatac statusy i briefy po usunieciu LUMEN-20251026-007
 
 ## Archive
 - (pending)

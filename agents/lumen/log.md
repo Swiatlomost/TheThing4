@@ -1,7 +1,7 @@
 # Lumen Log (Developer)
 
 ## Active Focus
-- Morfogeneza undo/redo + autosort (LUMEN-20251026-007)
+- Brak aktywnego zadania (LUMEN-20251026-007 usuniete)
 
 ## Decision Journal
 | date | topic | outcome | next |
@@ -11,7 +11,7 @@
 | 2025-10-26 | Canvas UX 006 - clamp | Wprowadzilem clamp `moveCell`, pokazalem okrag bezpieczenstwa na canvasie; testy PASS | Posprzatac UI (usunac liste tekstowa) i podtrzymac selekcje na plotnie |
 | 2025-10-26 | Canvas UX 006 - UI tidy | Usunalem liste tekstowa, dodalem status zaznaczenia i hint gestow; testy PASS | Zamknac PDCA, zaktualizowac statusy oraz przekazac wynik Orinowi/Kai |
 | 2025-10-26 | Canvas UX 006 - clamp tuning | Poluzowalem ograniczenia ruchu (limit zalezy od najwiekszej komorki), ustabilizowalem skale plotna i utrzymalem stan gestu (`rememberUpdatedState`); `./gradlew test` + `./gradlew connectedDebugAndroidTest` PASS | Zbierz sygnaly od uzytkownikow i rozpisz undo/redo na kolejny etap |
-| 2025-10-26 | Undo/Redo 007 kickoff | Utworzylem PDCA `notes/pdca/LUMEN-20251026-007.md`, przyjalem zakres Orina (undo/redo + autosort) | Zdefiniowac warstwe historii i kontrolki cofania, przygotowac testy |
+| 2025-10-26 | Undo/Redo 007 kickoff | Utworzylem PDCA `notes/pdca/LUMEN-20251026-007.md`, przyjalem zakres Orina (undo/redo + autosort) (zadanie przeniesione do backlogu) | Czekac na ponowny priorytet zanim wrocimy do historii/autosortu |
 | 2025-10-25 | Manualny cykl core | Ustalilem, ze sterowanie pozostaje globalne, animacje tween korzystaja z promienia z silnika | Zamknac edge case z rozmieszczeniem komorek |
 | 2025-10-25 | Overlay parity | Przygotowalem plan zmian overlay: render, komendy i testy Pixel_5 | Po dostarczeniu guard rails przejsc do implementacji overlay |
 | 2025-10-25 | Overlay lifecycle fix | Wdrozylem lifecycle + saved state owner w ComposeView; overlay startuje i zamyka sie bez crashy | Uruchomic pelny pakiet testow i przekazac wyniki Kai |
@@ -29,11 +29,11 @@
 | 2025-10-26 | Testy Morfogeneza 005 | `./gradlew test` + `./gradlew connectedDebugAndroidTest` + checklisty - PASS | Przekazac wynik Orinowi i przygotowac zamkniecie zadania |
 
 ## PDCA Snapshot
-- **PDCA**: notes/pdca/LUMEN-20251026-007.md
-- **Plan**: Dostarczyc undo/redo oraz wstepny autosort kolizji w edytorze Morfogenezy.
-- **Do**: W trakcie — kolejny krok to implementacja struktury historii w ViewModelu i kontrolek UI.
-- **Check**: Zaplanowane testy jednostkowe (undo/redo, autosort) oraz instrumentacja Compose; sanity `./gradlew test` po kazdym etapie.
-- **Act**: Po wdrozeniu ocenimy agresywnosc autosortu; w razie potrzeby przeniesiemy go do trybu sugestii i uaktualnimy guard rails Echo.
+- **PDCA**: brak aktywnego PDCA (LUMEN-20251026-007 usuniete).
+- **Plan**: Utrzymywac stan etapu 006 do czasu nowego priorytetu Orina.
+- **Do**: Biezacy kod pozostaje w wersji canvas 006; brak otwartych prac.
+- **Check**: Ostatnie sanity `./gradlew test` + `./gradlew connectedDebugAndroidTest` (etap 006) pozostaja aktualne.
+- **Act**: Czekamy na nowe wytyczne przed wznowieniem Morfogenezy.
 
 ## Archive
 - (pending)

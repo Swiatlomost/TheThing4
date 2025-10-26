@@ -8,11 +8,12 @@
             "status": "in_progress",
             "assigned_at": "2025-10-25",
             "last_update": "2025-10-26",
-            "notes": "Opracuje scenariusze testowe dla limitow komorek, undo/redo, autosortu, aktywacji i powrotu do formy 0. PDCA: notes/pdca/KAI-20251025-003.md; Compose test: feature/morphogenesis/src/androidTest/java/com/example/cos/morphogenesis/MorphogenesisScreenTest.kt",
+            "notes": "Plan testow etapu 006 (limity, kolizje, event forma_aktywna); scenariusze undo/redo/autosort zapisane jako backlog. Sanity 2025-10-26 PASS (logcat/dumpsys bez regresji). PDCA: notes/pdca/KAI-20251025-003.md",
             "deliverables": [
                 "Sekcja Morfogenezy w docs/testing/",
-                "Lista przypadkow testowych (manual + automaty)",
-                "Rekomendacje narzedzi do weryfikacji overlay"
+                "Lista przypadkow testowych (manual + automaty) dla etapu 006",
+                "Notatki backlogowe dla undo/redo/autosortu",
+                "Raport sanity 2025-10-26 (logcat/dumpsys)"
             ]
         }
     ],
@@ -95,4 +96,3 @@
         ]
     }
 }
-

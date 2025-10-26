@@ -28,6 +28,8 @@
 7. **Bezpieczenstwo danych:** repozytorium utrzymuje flagi dirty; po powrocie proponuj przywrocenie szkicu.  
 8. **Autosort i cofanie:** autosort pokazuje propozycje przesuniecia (podglad + komunikat) i dopiero po potwierdzeniu przenosi komorki na wolne heksy; przycisk undo natychmiast cofa wynik autosortu i innych operacji (dodanie, przesuniecie, zmiana promienia, usuniecie).
 
+> Uwaga: elementy historii/autosortu pozostaja w backlogu do czasu ponownej decyzji produktowej.
+
 ## 3. Pytania follow-up
 
 ### Do Vireala
@@ -49,12 +51,12 @@
 - **Etap 1 (UI scaffold):** przycisk Morfogeneza otwierajacy obrys + menu (level, licznik komorek) z ostrzezeniem 5%.  
 - **Etap 2 (Manipulacja):** dodawanie/usuwanie, walidacja kolizji i natychmiastowy feedback.  
 - **Etap 3 (Zapis/aktywacja):** panel form (forma 0 + szkice), toast aktywacji, event `ActivateMorphoForm`.  
-- **Etap 4 (Historia i autosort):** kontrolki cofania/przywracania, widoczny stan historii, autosort z podgladem i potwierdzeniem.  
+- **Etap 4 (Historia i autosort - backlog):** kontrolki cofania/przywracania, widoczny stan historii, autosort z podgladem i potwierdzeniem (do wznowienia po decyzji).  
 - **Testy uzytkowe:** po etapie 4 zaplanowac min. trzy sesje feedbacku (QA + wlasciciel wizji) korzystajac z checklisty guard rails.
 
 ## 5. Nastepne kroki
 
-- [ ] Echo — zaktualizowac ADR-2025-10-25 (sekcja guard rails) o undo/redo i autosort, przekazac aktualizacje Lumenowi i Kai.  
-- [ ] Lumen/Nodus — zsynchronizowac implementacje undo/redo i sanity checklisty po autosorcie (`LUMEN-20251026-007`, `NODUS-20251026-004`).  
-- [ ] Kai — dodac scenariusze undo/redo/autosort do `docs/testing/morphogeneza-test-plan.md`.  
-- [ ] Storywright — odnotowac w briefie nowy zakres guard rails oraz pytania o poziom automatyzacji autosortu.  
+- [ ] Echo - odnotowac w ADR-2025-10-25, ze undo/redo/autosort sa w backlogu; przygotowac szkic aktualizacji na przyszle wznowienie.  
+- [ ] Lumen/Nodus - utrzymac dokumentacje sanity w stanie etapu 006; checklisty undo/redo (`NODUS-20251026-004`) oznaczyc jako oczekujace na wznowienie.  
+- [ ] Kai - pozostawic scenariusze undo/redo/autosort jako przyszle notatki w `docs/testing/morphogeneza-test-plan.md`.  
+- [ ] Storywright - podkreslic w briefie, ze undo/redo/autosort sa w backlogu i zebrac pytania produktowe na przyszlosc.  

@@ -16,12 +16,13 @@
 | 2025-10-25 | Morfogeneza ADR sync | Guard rails przeniesione do ADR-2025-10-25 wraz z referencja do notatki UX | Wspierac Lumen/Kai podczas wdrazania testow guard rails
 | 2025-10-26 | Brief review request | Otrzymalam ping od Storywright z odswiezonego briefu sessions/ORIN-20251025-002-morfogeneza-brief.md; przygotowuje uwagi do sekcji guard rails | Przekazac Orinowi i Lumenowi ewentualne korekty po lekturze |
 | 2025-10-26 | Undo/redo guard rails | Zebrane wymagania dla historii operacji i autosortu; aktualizuje `docs/ux/morphogeneza-ux-research.md` oraz rekomendacje do ADR | Przekazac Lumenowi i Kai nowa sekcje, zsynchronizowac status z Orinem |
+| 2025-10-26 | Backlog update | Odnotowalam przesuniecie undo/redo i autosortu do backlogu; zlinkowalam zmiany w briefie i notatkach UX | Monitorowac sygnaly produktowe dla kolejnych iteracji |
 
 ## PDCA Snapshot
-- **Plan**: Zebrac wymagania manualnego cyklu oraz UX guard rails dla Morfogenezy zanim Lumen wejdzie w implementacje; rozszerzyc je o undo/redo i autosort.
-- **Do**: Przejrzalam dokumentacje, zapisalam zadania w status.json, rozpoczelam research referencji kreatorow; przygotowuje dodatki o historii operacji.
-- **Check**: Konsultuje wyniki z Orinem oraz porownuje z guard rails od Vireal, uzgadniam zakres z Lumenem i Kai.
-- **Act**: Aktualizowac brief i flagowac ryzyka w status board gdy pojawia sie nowe informacje (manual + Morfogeneza); po publikacji undo/redo przygotowac follow-up do ADR.
+- **Plan**: Utrzymac guard rails dla etapu 006, a elementy undo/redo/autosortu trzymac jako backlog do kolejnych decyzji produktu.
+- **Do**: Zaktualizowalam notatki UX, ADR i brief Morfogenezy, oznaczajac historie/autosort jako zadania przyszle.
+- **Check**: Pilnuje, aby statusy agentow i dokumentacja byly spojne z obecnym zakresem 006.
+- **Act**: Czekam na nowe wytyczne od Orina/Vireala; przy pierwszym sygnale przygotuje rekomendacje do wznowienia historii.
 
 ## TODO
 - [x] ZebraA 3-5 referencji edytorAlw azcreature/morphat (UX, guard rails)
