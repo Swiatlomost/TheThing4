@@ -1,4 +1,4 @@
-package com.example.cos.lifecycle
+﻿package com.example.cos.lifecycle
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -20,11 +20,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.ClipOp
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.util.lerp
+import com.example.cos.designsystem.components.NeonButton
+import com.example.cos.designsystem.tokens.LocalUiTokens
 import kotlin.math.min
 import kotlin.math.sqrt
 
@@ -37,6 +47,7 @@ fun CosLifecycleScreen(
     onSetStage: (LifecycleStageCommand) -> Unit,
     onCreateChild: () -> Unit,
     onOpenMorphogenesis: () -> Unit,
+    onOpenSkinDemo: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val lastStage = state.cells.lastOrNull()?.stage
@@ -65,12 +76,9 @@ fun CosLifecycleScreen(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            Button(onClick = onReset) {
-                Text(text = "Reset")
-            }
-            Button(onClick = onOpenMorphogenesis) {
-                Text(text = "Morfogeneza")
-            }
+            NeonButton(text = "Reset", onClick = onReset)
+            NeonButton(text = "Morfogeneza", onClick = onOpenMorphogenesis)
+            NeonButton(text = "Skin", onClick = onOpenSkinDemo)
             Button(
                 onClick = { onSetStage(LifecycleStageCommand.BUD) },
                 enabled = canNarodziny
@@ -87,7 +95,7 @@ fun CosLifecycleScreen(
                 onClick = onCreateChild,
                 enabled = canSpawn
             ) {
-                Text(text = "Nowa komórka")
+                Text(text = "Nowa komĂłrka")
             }
         }
     }
@@ -98,10 +106,23 @@ fun CosLifecycleCanvas(
     state: CosLifecycleState,
     modifier: Modifier = Modifier
 ) {
+    val tokens = LocalUiTokens.current
+    val density = LocalDensity.current
+    // TEMP hard-coded neon parameters (locked for SKIN calibration)
+    val ringDpConst = 5.1f
+    val haloWidthMultConst = 11.3f
+    val haloAlpha = 0.40f
+    val blurDpConst = 46f
+    val ringCrispMult = 0.6f // thinner bright outer ring
+    val ringCoreMult = 0.4f // white core slimmer than crisp ring
+
+    val ringStrokePx = with(density) { ringDpConst.dp.toPx() }
+    val haloWidthPx = ringStrokePx * haloWidthMultConst
+    val blurPx = with(density) { blurDpConst.dp.toPx() }
     val baseRadiusUnits = state.cellRadius.takeIf { it > 0f }
         ?: computeBaseRadiusUnits(state.cells.size.coerceAtLeast(1))
     val primaryColor = MaterialTheme.colorScheme.primary
-    val accentColor = MaterialTheme.colorScheme.onSurface
+    val accentColor = MaterialTheme.colorScheme.primary
     val animatedCells = state.cells.map { cell ->
         val stageValue by animateFloatAsState(
             targetValue = when (cell.stage) {
@@ -125,7 +146,11 @@ fun CosLifecycleCanvas(
             baseRadiusUnits = baseRadiusUnits,
             containerRadiusUnits = ORGANISM_RADIUS_UNITS,
             primaryColor = primaryColor,
-            accentColor = accentColor
+            accentColor = accentColor,
+            ringStrokePx = ringStrokePx,
+            haloWidthPx = haloWidthPx,
+            haloAlpha = haloAlpha,
+            blurPx = blurPx
         )
     }
 }
@@ -135,19 +160,34 @@ private fun DrawScope.drawOrganism(
     baseRadiusUnits: Float,
     containerRadiusUnits: Float,
     primaryColor: Color,
-    accentColor: Color
+    accentColor: Color,
+    ringStrokePx: Float,
+    haloWidthPx: Float,
+    haloAlpha: Float,
+    blurPx: Float
 ) {
     if (cells.isEmpty()) return
 
     val scale = (min(size.width, size.height) / 2f) / containerRadiusUnits
     val origin = Offset(size.width / 2f, size.height / 2f)
 
-    cells.forEach { animated ->
+    // Circular mask to keep halo inside organism boundary (avoids square window glow)
+    val containerRadiusPx = containerRadiusUnits * scale
+    val maskRect = Rect(
+        offset = Offset(origin.x - containerRadiusPx, origin.y - containerRadiusPx),
+        size = androidx.compose.ui.geometry.Size(containerRadiusPx * 2f, containerRadiusPx * 2f)
+    )
+    val maskPath = Path().apply { addOval(maskRect) }
+
+    clipPath(maskPath, clipOp = ClipOp.Intersect) {
+        cells.forEach { animated ->
         val centerPx = origin + animated.snapshot.center * scale
         val cellRadiusUnits = animated.snapshot.radius.takeIf { it > 0f } ?: baseRadiusUnits
         val outerRadiusUnits = cellRadiusUnits * outerRadiusMultiplier(animated.stageValue)
         val fillRadiusUnits = cellRadiusUnits * fillRadiusMultiplier(animated.stageValue)
-        val outlineAlpha = outlineAlpha(animated.stageValue)
+        var outlineAlpha = outlineAlpha(animated.stageValue)
+        // Keep neon visible even after new births; do not fade below floor
+        outlineAlpha = outlineAlpha.coerceAtLeast(0.5f)
         val fillAlpha = fillAlpha(animated.stageValue)
 
         val outerRadiusPx = outerRadiusUnits * scale
@@ -161,14 +201,28 @@ private fun DrawScope.drawOrganism(
             )
         }
 
-        val outlineWidth = (cellRadiusUnits * 0.2f) * scale
         if (outlineAlpha > 0f && outerRadiusPx > 0f) {
-            drawCircle(
-                color = accentColor.copy(alpha = outlineAlpha),
-                radius = outerRadiusPx,
-                center = centerPx,
-                style = Stroke(width = outlineWidth)
-            )
+            drawIntoCanvas { canvas ->
+                val p = androidx.compose.ui.graphics.Paint()
+                val fp = p.asFrameworkPaint()
+                fp.isAntiAlias = true
+                fp.style = android.graphics.Paint.Style.STROKE
+                // Blurred halo
+                fp.color = accentColor.copy(alpha = outlineAlpha * haloAlpha).toArgb()
+                fp.strokeWidth = haloWidthPx
+                fp.maskFilter = android.graphics.BlurMaskFilter(blurPx, android.graphics.BlurMaskFilter.Blur.NORMAL)
+                canvas.drawCircle(centerPx, outerRadiusPx, p)
+            // White core ring to simulate bloom (thinner)
+            fp.maskFilter = null
+            fp.color = Color.White.copy(alpha = outlineAlpha * 0.55f).toArgb()
+            fp.strokeWidth = ringStrokePx * 0.4f
+            canvas.drawCircle(centerPx, outerRadiusPx, p)
+            // Accent crisp ring
+            fp.color = accentColor.copy(alpha = outlineAlpha.coerceAtMost(0.95f)).toArgb()
+            fp.strokeWidth = ringStrokePx * 0.6f
+            canvas.drawCircle(centerPx, outerRadiusPx, p)
+        }
+        }
         }
     }
 }
@@ -211,3 +265,4 @@ private data class AnimatedCell(
 )
 
 private const val ORGANISM_RADIUS_UNITS = 4f
+
