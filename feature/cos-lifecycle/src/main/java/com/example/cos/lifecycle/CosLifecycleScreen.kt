@@ -191,14 +191,14 @@ private fun DrawScope.drawOrganism(
                 val th = 0.8f
                 if (s < th) {
                     val t = (s / th).coerceIn(0f, 1f)
-                    val outer = cellRadiusUnits * lerp(0.55f, 0.75f, t)
-                    val fillR = cellRadiusUnits * lerp(0.15f, 0.65f, t)
-                    Seg(outer, fillR, lerp(0.4f, 0.7f, t), 1f)
+                    // Birth: ring-only (no fill). Grow ring from small to target.
+                    val outer = cellRadiusUnits * lerp(0.10f, 1f, t)
+                    Seg(outer, 0f, lerp(0.55f, 0.85f, t), 0f)
                 } else {
                     val t = ((s - th) / (1f - th)).coerceIn(0f, 1f)
                     val outer = cellRadiusUnits * lerp(0.75f, 1f, t)
-                    val fillR = cellRadiusUnits * lerp(0.65f, 0.75f, t) // lekko pod ring
-                    Seg(outer, fillR, lerp(0.7f, 0.85f, t), lerp(1f, 0.85f, t))
+                    // Keep no fill at end of Birth; ring finalizes
+                    Seg(outer, 0f, lerp(0.75f, 0.9f, t), 0f)
                 }
             } else {
                 val outer = cellRadiusUnits * outerRadiusMultiplier(animated.stageValue)
@@ -265,13 +265,13 @@ private fun fillRadiusMultiplier(stageValue: Float): Float = when {
     stageValue <= 0f -> 0.3f
     stageValue <= 1f -> lerp(0.3f, 0.6f, stageValue.coerceIn(0f, 1f))
     stageValue <= 2f -> lerp(0.6f, 1f, (stageValue - 1f).coerceIn(0f, 1f))
-    else -> 0.85f
+    else -> 1f
 }
 
 private fun fillAlpha(stageValue: Float): Float = when {
     stageValue <= 1f -> 1f
     stageValue <= 2f -> lerp(0.85f, 1f, (stageValue - 1f).coerceIn(0f, 1f))
-    else -> 0.6f
+    else -> 1f
 }
 
 private fun outlineAlpha(stageValue: Float): Float = when {
