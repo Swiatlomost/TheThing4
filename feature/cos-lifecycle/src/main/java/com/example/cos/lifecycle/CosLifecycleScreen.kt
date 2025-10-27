@@ -108,17 +108,18 @@ fun CosLifecycleCanvas(
 ) {
     val tokens = LocalUiTokens.current
     val density = LocalDensity.current
-    // TEMP hard-coded neon parameters (locked for SKIN calibration)
-    val ringDpConst = 5.1f
-    val haloWidthMultConst = 11.3f
-    val haloAlpha = 0.40f
-    val blurDpConst = 46f
-    val ringCrispMult = 0.6f // thinner bright outer ring
-    val ringCoreMult = 0.4f // white core slimmer than crisp ring
+    // Neon parameters sourced from tokens (fallbacks preserve calibrated look)
+    val ringStrokeDp = tokens.cell.ringStrokeDp.toFloat()
+    val haloWidthMult = (tokens.glow.haloWidthMult ?: 11.3).toFloat()
+    val haloAlpha = (tokens.glow.haloAlpha ?: 0.40).toFloat()
+    val blurDp = tokens.glow.blurDp.toFloat()
 
-    val ringStrokePx = with(density) { ringDpConst.dp.toPx() }
-    val haloWidthPx = ringStrokePx * haloWidthMultConst
-    val blurPx = with(density) { blurDpConst.dp.toPx() }
+    val ringCrispMult = 0.6f // accent crisp ring width multiplier
+    val ringCoreMult = 0.4f  // white core ring width multiplier
+
+    val ringStrokePx = with(density) { ringStrokeDp.dp.toPx() }
+    val haloWidthPx = ringStrokePx * haloWidthMult
+    val blurPx = with(density) { blurDp.dp.toPx() }
     val baseRadiusUnits = state.cellRadius.takeIf { it > 0f }
         ?: computeBaseRadiusUnits(state.cells.size.coerceAtLeast(1))
     val primaryColor = MaterialTheme.colorScheme.primary
@@ -150,7 +151,9 @@ fun CosLifecycleCanvas(
             ringStrokePx = ringStrokePx,
             haloWidthPx = haloWidthPx,
             haloAlpha = haloAlpha,
-            blurPx = blurPx
+            blurPx = blurPx,
+            ringCoreMult = ringCoreMult,
+            ringCrispMult = ringCrispMult
         )
     }
 }
@@ -164,7 +167,9 @@ private fun DrawScope.drawOrganism(
     ringStrokePx: Float,
     haloWidthPx: Float,
     haloAlpha: Float,
-    blurPx: Float
+    blurPx: Float,
+    ringCoreMult: Float,
+    ringCrispMult: Float
 ) {
     if (cells.isEmpty()) return
 
@@ -239,11 +244,11 @@ private fun DrawScope.drawOrganism(
             // White core ring to simulate bloom (thinner)
             fp.maskFilter = null
             fp.color = Color.White.copy(alpha = outlineAlpha * 0.55f).toArgb()
-            fp.strokeWidth = ringStrokePx * 0.4f
+            fp.strokeWidth = ringStrokePx * ringCoreMult
             canvas.drawCircle(centerPx, outerRadiusPx, p)
             // Accent crisp ring
             fp.color = accentColor.copy(alpha = outlineAlpha.coerceAtMost(0.95f)).toArgb()
-            fp.strokeWidth = ringStrokePx * 0.6f
+            fp.strokeWidth = ringStrokePx * ringCrispMult
             canvas.drawCircle(centerPx, outerRadiusPx, p)
         }
         }

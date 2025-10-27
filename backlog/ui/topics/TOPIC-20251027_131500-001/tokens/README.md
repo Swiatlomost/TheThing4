@@ -17,13 +17,13 @@ Akceptacja Kai\n- anim-params: birth-threshold, ring-width-dp, halo-exponent, bg
 - 60 fps na Pixel 5 (lub uzasadnione noty), kontrast tekstu min. WCAG-AA.
 
 
-Final (v0.3b) — Accepted Neon Defaults
-- Produkcyjne (hard-coded) miejsce:
-  - feature/cos-lifecycle/src/main/java/com/example/cos/lifecycle/CosLifecycleScreen.kt:101
-- Wartości (app/overlay):
-  - ringDp = 5.1
-  - haloWidthMult = 11.3
-  - haloAlpha = 0.40
-  - blurDp = 46
-- Maska: halo klipowane do koła organizmu (brak kwadratu okna overlay).
-- Następny krok: migracja do tokens.json i przełączenie Canvas na odczyt z tokenów.
+Final (v0.3c) - Accepted Neon Source
+- Produkcyjny odczyt: wartości z `core/designsystem/src/main/res/raw/ui_tokens.json` (LocalUiTokens).
+- Parametry (app/overlay):
+  - `cell.ring-stroke-dp`
+  - `glow.halo-width-mult` (opcjonalne, fallback 11.3)
+  - `glow.halo-alpha` (opcjonalne, fallback 0.40)
+  - `glow.blur-dp`
+- Render:
+  - Maska: halo klipowane do koła organizmu (brak kwadratu okna overlay).
+  - Obwód: biały rdzeń + akcent (współczynniki w kodzie: core=0.4, crisp=0.6).
