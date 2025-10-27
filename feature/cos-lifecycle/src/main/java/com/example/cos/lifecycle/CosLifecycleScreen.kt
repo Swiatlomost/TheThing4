@@ -39,6 +39,9 @@ import com.example.cos.designsystem.components.NeonButton
 import com.example.cos.designsystem.tokens.LocalUiTokens
 import kotlin.math.min
 import kotlin.math.sqrt
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.PI
 import android.graphics.Bitmap
 import android.graphics.BitmapShader
 import android.graphics.ComposeShader
@@ -169,7 +172,11 @@ fun CosLifecycleCanvas(
             energyGlowAlpha = energy.glowAlpha.toFloat(),
             energyCoreStop = energy.coreStop.toFloat(),
             energyGlowStop = energy.glowStop.toFloat(),
-            energyRimAlpha = energy.rimAlpha.toFloat()
+            energyRimAlpha = energy.rimAlpha.toFloat(),
+            specularEnabled = (energy.specular?.enabled ?: false),
+            specularAngleDeg = (energy.specular?.angleDeg ?: 45.0).toFloat(),
+            specularBandAlpha = (energy.specular?.bandAlpha ?: 0.22).toFloat(),
+            specularBandWidth = (energy.specular?.bandWidth ?: 0.10).toFloat()
         )
     }
 }
@@ -191,7 +198,11 @@ private fun DrawScope.drawOrganism(
     energyGlowAlpha: Float,
     energyCoreStop: Float,
     energyGlowStop: Float,
-    energyRimAlpha: Float
+    energyRimAlpha: Float,
+    specularEnabled: Boolean,
+    specularAngleDeg: Float,
+    specularBandAlpha: Float,
+    specularBandWidth: Float
 ) {
     if (cells.isEmpty()) return
 
@@ -255,7 +266,11 @@ private fun DrawScope.drawOrganism(
                 glowAlpha = energyGlowAlpha,
                 coreStop = energyCoreStop,
                 glowStop = energyGlowStop,
-                rimAlpha = energyRimAlpha
+                rimAlpha = energyRimAlpha,
+                specularEnabled = specularEnabled,
+                specularAngleDeg = specularAngleDeg,
+                specularBandWidth = specularBandWidth,
+                specularBandAlpha = specularBandAlpha
             )
         }
 
@@ -470,6 +485,10 @@ private fun DrawScope.drawGaussianEnergyFill(
     coreStop: Float,
     glowStop: Float,
     rimAlpha: Float,
+    specularEnabled: Boolean,
+    specularAngleDeg: Float,
+    specularBandWidth: Float,
+    specularBandAlpha: Float,
 ) {
     val rect = Rect(
         offset = Offset(center.x - radius, center.y - radius),
@@ -513,6 +532,13 @@ private fun DrawScope.drawGaussianEnergyFill(
     )
     drawPath(path = path, brush = glowBrush)
 
+    // Specular bands (optional) — two perpendicular streaks
+    if (specularEnabled && specularBandAlpha > 0f && specularBandWidth > 0f) {
+        val highlightColor = mixToWhite(accent, 1f).copy(alpha = (alpha * specularBandAlpha).coerceIn(0f, 1f))
+        drawSpecularBand(path, center, radius, specularAngleDeg, highlightColor, specularBandWidth)
+        drawSpecularBand(path, center, radius, (specularAngleDeg + 90f) % 360f, highlightColor.copy(alpha = highlightColor.alpha * 0.85f), specularBandWidth)
+    }
+
     // Optional subtle rim light near the boundary
     if (rimAlpha > 0f) {
         drawIntoCanvas { canvas ->
@@ -526,5 +552,35 @@ private fun DrawScope.drawGaussianEnergyFill(
             canvas.drawCircle(center, radius, p)
         }
     }
+}
+
+private fun DrawScope.drawSpecularBand(
+    clipPath: Path,
+    center: Offset,
+    radius: Float,
+    angleDeg: Float,
+    color: Color,
+    width: Float,
+) {
+    // Compute gradient line along angle across circle
+    val a = angleDeg / 180f * PI.toFloat()
+    val dir = Offset(cos(a), sin(a))
+    val ext = radius * 1.6f
+    val start = center - dir * ext
+    val end = center + dir * ext
+    val w = width.coerceIn(0.02f, 0.5f)
+    val mid = 0.5f
+    val half = (w * 0.5f).coerceIn(0.01f, 0.4f)
+
+    val brush = Brush.linearGradient(
+        0f to color.copy(alpha = 0f),
+        (mid - half) to color.copy(alpha = 0f),
+        mid to color,
+        (mid + half) to color.copy(alpha = 0f),
+        1f to color.copy(alpha = 0f),
+        start = start,
+        end = end
+    )
+    drawPath(path = clipPath, brush = brush)
 }
 

@@ -49,6 +49,12 @@
     "glow-alpha": 0.65,
     "core-stop": 0.60,
     "glow-stop": 0.72,
-    "rim-alpha": 0.18
+    "rim-alpha": 0.18,
+    "specular": {
+      "enabled": false,
+      "angle-deg": 45.0,
+      "band-alpha": 0.22,
+      "band-width": 0.10
+    }
   }
 }
