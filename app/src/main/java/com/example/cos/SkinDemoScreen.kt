@@ -90,6 +90,7 @@ fun SkinDemoScreen(onBack: () -> Unit) {
             var specAngle by remember { mutableStateOf(((e.specular?.angleDeg) ?: 45.0).toFloat()) }
             var specWidth by remember { mutableStateOf(((e.specular?.bandWidth) ?: 0.10).toFloat()) }
             var specAlpha by remember { mutableStateOf(((e.specular?.bandAlpha) ?: 0.22).toFloat()) }
+            var specJitter by remember { mutableStateOf(((e.specular?.jitterDeg) ?: 0.0).toFloat()) }
 
             EnergyFillPreview(
                 modifier = Modifier.fillMaxWidth().height(240.dp),
@@ -119,6 +120,7 @@ fun SkinDemoScreen(onBack: () -> Unit) {
                 LabeledSlider("spec-angle", specAngle, 0f..180f) { specAngle = it }
                 LabeledSlider("spec-width", specWidth, 0.02f..0.3f) { specWidth = it }
                 LabeledSlider("spec-alpha", specAlpha, 0f..1f) { specAlpha = it }
+                LabeledSlider("spec-jitter-deg", specJitter, 0f..60f) { specJitter = it }
             }
 
             val ctx = LocalContext.current
@@ -138,6 +140,7 @@ fun SkinDemoScreen(onBack: () -> Unit) {
                                 .put("angle-deg", specAngle.toDouble())
                                 .put("band-alpha", specAlpha.toDouble())
                                 .put("band-width", specWidth.toDouble())
+                                .put("jitter-deg", specJitter.toDouble())
                             put("specular", spec)
                         }
                     root.put("energy", energy)

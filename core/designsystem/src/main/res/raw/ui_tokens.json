@@ -54,7 +54,8 @@
       "enabled": true,
       "angle-deg": 45.0,
       "band-alpha": 0.22,
-      "band-width": 0.10
+      "band-width": 0.10,
+      "jitter-deg": 25.0
     }
   }
 }
