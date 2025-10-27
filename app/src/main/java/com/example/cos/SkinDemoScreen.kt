@@ -77,12 +77,13 @@ fun SkinDemoScreen(onBack: () -> Unit) {
 
             // --- Energy Fill Demo ---
             Text("Energy fill (Gaussian)", style = MaterialTheme.typography.titleMedium)
-            var whiten by remember { mutableStateOf(0.9f) }
-            var coreAlpha by remember { mutableStateOf(0.95f) }
-            var glowAlpha by remember { mutableStateOf(0.65f) }
-            var coreStop by remember { mutableStateOf(0.60f) }
-            var glowStop by remember { mutableStateOf(0.72f) }
-            var rimAlpha by remember { mutableStateOf(0.22f) }
+            val e = LocalUiTokens.current.energy
+            var whiten by remember { mutableStateOf(e.whiten.toFloat()) }
+            var coreAlpha by remember { mutableStateOf(e.coreAlpha.toFloat()) }
+            var glowAlpha by remember { mutableStateOf(e.glowAlpha.toFloat()) }
+            var coreStop by remember { mutableStateOf(e.coreStop.toFloat()) }
+            var glowStop by remember { mutableStateOf(e.glowStop.toFloat()) }
+            var rimAlpha by remember { mutableStateOf(e.rimAlpha.toFloat()) }
 
             EnergyFillPreview(
                 modifier = Modifier.fillMaxWidth().height(240.dp),

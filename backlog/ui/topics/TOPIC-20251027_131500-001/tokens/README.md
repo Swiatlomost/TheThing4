@@ -27,3 +27,15 @@ Final (v0.3c) - Accepted Neon Source
 - Render:
   - Maska: halo klipowane do koła organizmu (brak kwadratu okna overlay).
   - Obwód: biały rdzeń + akcent (współczynniki w kodzie: core=0.4, crisp=0.6).
+
+Energy Fill (Gaussian) – parametry
+- `energy.whiten` [0..1] – domieszka do bieli rdzenia (szklistość).
+- `energy.core-alpha` [0..1] – siła rdzenia w centrum.
+- `energy.glow-alpha` [0..1] – siła poświaty turkusowej.
+- `energy.core-stop` [0..1] – pozycja zaniku rdzenia (szybszy spadek).
+- `energy.glow-stop` [0..1] – pozycja zaniku poświaty (wolniejszy spadek).
+- `energy.rim-alpha` [0..1] – subtelny rim‑light przy granicy wypełnienia.
+
+Implementacja:
+- Canvas czyta parametry z tokenów i rysuje dwa radialne gradienty (SRC_OVER),
+  opcjonalnie dodając rim‑light. Patrz: `feature/cos-lifecycle/.../CosLifecycleScreen.kt:342`.

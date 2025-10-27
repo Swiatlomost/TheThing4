@@ -20,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -27,6 +28,7 @@ import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.ClipOp
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
@@ -149,6 +151,7 @@ fun CosLifecycleCanvas(
     }
 
     Canvas(modifier = modifier) {
+        val energy = tokens.energy
         drawOrganism(
             cells = animatedCells,
             baseRadiusUnits = baseRadiusUnits,
@@ -160,7 +163,13 @@ fun CosLifecycleCanvas(
             haloAlpha = haloAlpha,
             blurPx = blurPx,
             ringCoreMult = ringCoreMult,
-            ringCrispMult = ringCrispMult
+            ringCrispMult = ringCrispMult,
+            energyWhiten = energy.whiten.toFloat(),
+            energyCoreAlpha = energy.coreAlpha.toFloat(),
+            energyGlowAlpha = energy.glowAlpha.toFloat(),
+            energyCoreStop = energy.coreStop.toFloat(),
+            energyGlowStop = energy.glowStop.toFloat(),
+            energyRimAlpha = energy.rimAlpha.toFloat()
         )
     }
 }
@@ -176,7 +185,13 @@ private fun DrawScope.drawOrganism(
     haloAlpha: Float,
     blurPx: Float,
     ringCoreMult: Float,
-    ringCrispMult: Float
+    ringCrispMult: Float,
+    energyWhiten: Float,
+    energyCoreAlpha: Float,
+    energyGlowAlpha: Float,
+    energyCoreStop: Float,
+    energyGlowStop: Float,
+    energyRimAlpha: Float
 ) {
     if (cells.isEmpty()) return
 
@@ -230,24 +245,18 @@ private fun DrawScope.drawOrganism(
         val fillRadiusPx = fillRadiusUnitsRaw * scale
 
         if (fillRadiusPx > 0f) {
-            // Energy-like textured fill (bitmap noise × radial gradient) using SCREEN blend
-            drawIntoCanvas { canvas ->
-                val p = androidx.compose.ui.graphics.Paint()
-                val fp = p.asFrameworkPaint()
-                fp.isAntiAlias = true
-                fp.style = android.graphics.Paint.Style.FILL
-
-                val energyShader = EnergyShaders.composeGaussianEnergyShader(
-                    cx = centerPx.x,
-                    cy = centerPx.y,
-                    radius = fillRadiusPx,
-                    accent = primaryColor,
-                    alpha = fillAlpha
-                )
-                fp.shader = energyShader
-                canvas.drawCircle(centerPx, fillRadiusPx, p)
-                fp.shader = null
-            }
+            drawGaussianEnergyFill(
+                center = centerPx,
+                radius = fillRadiusPx,
+                accent = primaryColor,
+                alpha = fillAlpha,
+                whiten = energyWhiten,
+                coreAlpha = energyCoreAlpha,
+                glowAlpha = energyGlowAlpha,
+                coreStop = energyCoreStop,
+                glowStop = energyGlowStop,
+                rimAlpha = energyRimAlpha
+            )
         }
 
         if (outlineAlpha > 0f && outerRadiusPx > 0f) {
@@ -447,6 +456,75 @@ private object EnergyShaders {
         }
         bmp.setPixels(pixels, 0, w, 0, 0, w, h)
         return bmp
+    }
+}
+
+private fun DrawScope.drawGaussianEnergyFill(
+    center: Offset,
+    radius: Float,
+    accent: Color,
+    alpha: Float,
+    whiten: Float,
+    coreAlpha: Float,
+    glowAlpha: Float,
+    coreStop: Float,
+    glowStop: Float,
+    rimAlpha: Float,
+) {
+    val rect = Rect(
+        offset = Offset(center.x - radius, center.y - radius),
+        size = Size(radius * 2f, radius * 2f)
+    )
+    val path = Path().apply { addOval(rect) }
+
+    fun mixToWhite(c: Color, t: Float): Color {
+        val clamped = t.coerceIn(0f, 1f)
+        return Color(
+            red = lerp(c.red, 1f, clamped),
+            green = lerp(c.green, 1f, clamped),
+            blue = lerp(c.blue, 1f, clamped),
+            alpha = c.alpha
+        )
+    }
+
+    // Core (whitened accent) — emulate faster Gaussian falloff via stops
+    val coreColor = mixToWhite(accent, whiten)
+    val coreBrush = Brush.radialGradient(
+        colors = listOf(
+            coreColor.copy(alpha = (alpha * coreAlpha)),
+            coreColor.copy(alpha = (alpha * coreAlpha * 0.58f)),
+            coreColor.copy(alpha = (alpha * coreAlpha * 0.14f)),
+            coreColor.copy(alpha = 0f)
+        ),
+        center = center,
+        radius = radius
+    )
+    drawPath(path = path, brush = coreBrush)
+
+    // Glow (accent) — slower falloff
+    val glowBrush = Brush.radialGradient(
+        colors = listOf(
+            accent.copy(alpha = (alpha * glowAlpha)),
+            accent.copy(alpha = (alpha * glowAlpha * 0.54f)),
+            accent.copy(alpha = 0f)
+        ),
+        center = center,
+        radius = radius
+    )
+    drawPath(path = path, brush = glowBrush)
+
+    // Optional subtle rim light near the boundary
+    if (rimAlpha > 0f) {
+        drawIntoCanvas { canvas ->
+            val p = androidx.compose.ui.graphics.Paint()
+            val fp = p.asFrameworkPaint()
+            fp.isAntiAlias = true
+            fp.style = android.graphics.Paint.Style.STROKE
+            fp.color = accent.copy(alpha = rimAlpha.coerceIn(0f, 1f)).toArgb()
+            fp.strokeWidth = (radius * 0.06f).coerceAtLeast(1f)
+            fp.maskFilter = null
+            canvas.drawCircle(center, radius, p)
+        }
     }
 }
 

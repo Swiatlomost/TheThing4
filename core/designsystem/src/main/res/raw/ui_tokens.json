@@ -42,5 +42,13 @@
   "progress": {
     "height-dp": 6,
     "glow-intensity": 0.8
+  },
+  "energy": {
+    "whiten": 0.90,
+    "core-alpha": 0.95,
+    "glow-alpha": 0.65,
+    "core-stop": 0.60,
+    "glow-stop": 0.72,
+    "rim-alpha": 0.18
   }
 }
