@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-27T17:21:11",
+  "generated_at": "2025-10-27T17:58:46",
   "areas": [
     {
       "area": "okno-glowne",
@@ -123,7 +123,7 @@
         {
           "id": "TOPIC-20251025_120000-001",
           "title": "Morfogeneza",
-          "status": "ready",
+          "status": "active",
           "brief": "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\BRIEF-20251025_120000-001.json",
           "pdca": "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\PDCA-20251027_120000-001.md",
           "tasks": [
@@ -260,7 +260,7 @@
             {
               "id": "MORPHO-011-anim-birth",
               "title": "Animacja narodzin: kropka→obwód (promień)",
-              "status": "pending",
+              "status": "in_progress",
               "owner": "Lumen",
               "deferred": false,
               "tags": [

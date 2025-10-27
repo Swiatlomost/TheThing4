@@ -1,0 +1,26 @@
+{
+  "topic": "TOPIC-20251027_131500-001",
+  "title": "UI Skin — bioluminescencyjny motyw",
+  "plan": [
+    "SKIN-001: tokens (kolory/glow/typo)",
+    "SKIN-002: Compose Theme + komponenty",
+    "SKIN-003: Parity overlay (mask/halo)"
+  ],
+  "do": [
+    "Zaimplementowano LocalUiTokens i loader JSON",
+    "Theme mapuje palette→ColorScheme, typo→Typography",
+    "NeonButton/NeonProgress, Skin Demo (slidery)",
+    "CosLifecycleCanvas: clipPath kołowy, glow",
+    "Migracja neon params → tokens (halo/blur/stroke)"
+  ],
+  "check": [
+    "App/overlay parity na Pixel 5",
+    "Glow widoczny, brak kwadratowej krawędzi",
+    "Animacje Birth: ring-only; Mature: fill monotonic"
+  ],
+  "act": [
+    "Kalibracja tokenów wg feedbacku (kolor/siła halo)",
+    "Dalsze testy percepcyjne i FPS"
+  ]
+}
+
