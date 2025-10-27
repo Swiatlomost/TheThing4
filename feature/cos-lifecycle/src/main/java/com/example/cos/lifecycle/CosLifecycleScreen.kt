@@ -183,15 +183,37 @@ private fun DrawScope.drawOrganism(
         cells.forEach { animated ->
         val centerPx = origin + animated.snapshot.center * scale
         val cellRadiusUnits = animated.snapshot.radius.takeIf { it > 0f } ?: baseRadiusUnits
-        val outerRadiusUnits = cellRadiusUnits * outerRadiusMultiplier(animated.stageValue)
-        val fillRadiusUnits = cellRadiusUnits * fillRadiusMultiplier(animated.stageValue)
-        var outlineAlpha = outlineAlpha(animated.stageValue)
+        // Birth segment [0..1]: kropka -> pierścień z progiem
+        data class Seg(val outerR: Float, val fillR: Float, val outA: Float, val fillA: Float)
+        val seg: Seg =
+            if (animated.stageValue <= 1f) {
+                val s = animated.stageValue.coerceIn(0f, 1f)
+                val th = 0.8f
+                if (s < th) {
+                    val t = (s / th).coerceIn(0f, 1f)
+                    val outer = cellRadiusUnits * lerp(0.55f, 0.75f, t)
+                    val fillR = cellRadiusUnits * lerp(0.15f, 0.65f, t)
+                    Seg(outer, fillR, lerp(0.4f, 0.7f, t), 1f)
+                } else {
+                    val t = ((s - th) / (1f - th)).coerceIn(0f, 1f)
+                    val outer = cellRadiusUnits * lerp(0.75f, 1f, t)
+                    val fillR = cellRadiusUnits * lerp(0.65f, 0.75f, t) // lekko pod ring
+                    Seg(outer, fillR, lerp(0.7f, 0.85f, t), lerp(1f, 0.85f, t))
+                }
+            } else {
+                val outer = cellRadiusUnits * outerRadiusMultiplier(animated.stageValue)
+                val fillR = cellRadiusUnits * fillRadiusMultiplier(animated.stageValue)
+                Seg(outer, fillR, outlineAlpha(animated.stageValue), fillAlpha(animated.stageValue))
+            }
+        val outerRadiusUnits = seg.outerR
+        val fillRadiusUnitsRaw = seg.fillR
+        var outlineAlpha = seg.outA
         // Keep neon visible even after new births; do not fade below floor
         outlineAlpha = outlineAlpha.coerceAtLeast(0.5f)
-        val fillAlpha = fillAlpha(animated.stageValue)
+        val fillAlpha = seg.fillA
 
         val outerRadiusPx = outerRadiusUnits * scale
-        val fillRadiusPx = fillRadiusUnits * scale
+        val fillRadiusPx = fillRadiusUnitsRaw * scale
 
         if (fillRadiusPx > 0f) {
             drawCircle(
