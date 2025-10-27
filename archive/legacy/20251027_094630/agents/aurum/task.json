@@ -1,0 +1,55 @@
+{
+    "agent": "Aurum",
+    "current_tasks": [],
+    "completed_tasks": [
+        {
+            "task_id": "AURUM-20251025-001",
+            "parent_task_id": "ORIN-20251024-001",
+            "title": "Retro obserwacje Cos v0.1",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "completed_at": "2025-10-25",
+            "notes": "Raport retro dostarczony Orinowi; rekomendacje dla WORKFLOW/ADR zapisane.",
+            "deliverables": [
+                "Notatki do retro",
+                "Lista usprawnien",
+                "Rekomendacje dla WORKFLOW/ADR"
+            ]
+        }
+    ],
+    "_template": {
+        "current_tasks": [
+            {
+                "task_id": "AURUM-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Retrospekcja",
+                "status": "pending",
+                "assigned_at": "YYYY-MM-DD",
+                "last_update": "YYYY-MM-DD",
+                "scope": [
+                    "Jakie obszary oceniasz"
+                ],
+                "deliverables": [
+                    "Raport retro",
+                    "Lista usprawnien"
+                ]
+            }
+        ],
+        "completed_tasks": [
+            {
+                "task_id": "AURUM-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Retrospekcja",
+                "status": "done",
+                "completed_at": "YYYY-MM-DD",
+                "lessons": [
+                    "Najwazniejsze wnioski"
+                ],
+                "follow_up": [
+                    "Kto ma zrobic nastepne kroki"
+                ]
+            }
+        ]
+    }
+}

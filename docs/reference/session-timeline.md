@@ -1,24 +1,24 @@
-# Session Timeline Quick Reference (v1.0)
+# Session Timeline Quick Reference (Lean v3)
 
-> One glance guide for planning and running a collaboration session. Each phase links the ritual, responsible agents, and required artefacts.
+> One glance guide for planning and running a collaboration session with the lean structure.
 
 | Phase | Trigger | Primary owner(s) | Core actions | Artefacts & checkpoints |
 |-------|---------|------------------|--------------|-------------------------|
-| Prepare | `[SESSION::START]` requested or new topic emerges | Orin, echoing brief from Mira | Run pre-task validation, read latest memories, confirm scope | `scripts/validate-agent-sync.py`, PDCA snapshot drafted in `log.md`, session notes folder ready |
-| Frame Vision | `[AGENT::MIRA] [TASK::ANALYZE]` (if vision update needed) | Mira, Orin | Conduct 4MAT conversation, summarise intent, capture open questions | `agents/storywright/briefs/SESSION-ID.md`, updated Orin task skeleton |
-| Plan | Immediately after brief confirmed | Orin with Echo & Vireal support | Draft session plan, map tasks to agents, record Why/Next for each decision | `sessions/SESSION-ID.md`, `agents/status.json`, linked `task.json` entries |
-| Build | Tasks marked `in_progress` | Lumen, Nodus, contributing agents | Execute implementation or research steps defined in PDCA | Working branches, code or doc edits, checkpoints logged in `log.md` |
-| Review | Work ready for verification | Kai (quality), Echo/Vireal (scope), Orin (business) | Validate acceptance criteria, raise risks, capture decisions | Review notes in relevant `log.md`, comment threads, update PDCA “Check” outcomes |
-| Log & Memory | After review decision | Scribe, Nyx, owning agents | Chronicle facts, sync task boards, update memories if work changes future decisions | `agents/scribe/log.md`, `agents/status.json`, affected `memory.json` entries with `last_updated` or `last_reviewed` |
-| Cooldown | Session wraps or major deliverable shipped | Orin, Kai, Nyx, Scribe | Run cooldown checklist, archive results, plan follow-ups | `sessions/SESSION-ID.md` finalised, Kai test report attached, Nyx snapshot noted |
+| Prepare | `[SESSION::START]` or new topic | Orin, brief from Mira | `python scripts/validate.py`, read latest memories, confirm scope | `board.json`, PDCA snapshot in task `pdca.md` |
+| Frame Vision | `[AGENT::MIRA] [TASK::ANALYZE]` | Mira, Orin | 4MAT conversation, capture open questions | `backlog/<obszar>/topics/<TOPIC>/BRIEF-*.json` |
+| Plan | After brief confirmed | Orin with Echo & Vireal | Map tasks to agents in `board.json`, record Why/Next in task logs | `board.json`, `backlog/<obszar>/topics/<TOPIC>/tasks/...` |
+| Build | Tasks `in_progress` | Lumen, Nodus, others | Execute steps defined in PDCA | Code/docs, checkpoints in task `log.md` |
+| Review | Ready for verification | Kai (quality), Echo/Vireal (scope) | Validate acceptance, raise risks, capture decisions | Notes in task `log.md`, update PDCA Check |
+| Log & Memory | After review | Scribe, Nyx, owners | Chronicle facts, update memories if future-impact | `reports/chronicle.md`, `agents/<name>/memory.json` |
+| Cooldown | Wrap | Orin, Kai, Nyx, Scribe | Archive results, plan follow-ups | `board.json` set to `done`, snapshot noted |
 
 ## PDCA Anchor
 
-Every agent entering `in_progress` status starts from `docs/templates/pdca-template.md`. Link the PDCA note directly in your `log.md` entry so Orin and Kai can trace intent → action → outcome. References elsewhere in the repository now point back to this template to keep guidance single-sourced.
+Every task entering `in_progress` starts from `backlog/<obszar>/topics/<TOPIC>/tasks/<TASK-ID>/pdca.md`. Reference it from the task `log.md` so Orin and Kai can trace intent → action → outcome.
 
 ## Quick Reminders
 
 - Keep `[AGENT::NAME]` tagging consistent in messages and artefacts so the coordinator can trace owners quickly.
 - If humans push commits with `[USER]`, Echo and Orin acknowledge the change, update plan impacts, and loop in the relevant agent for follow-up.
-- After each task or session wrap, the owning agent updates `last_updated` when content changed or adds a `last_reviewed` stamp (np. `2025-01-18 ORIN-20250118-001`).
+- After each task or wrap, the owner updates `last_updated` when content changed or adds a `last_reviewed` stamp.
 - Escalations use `[CONFLICT]`: state problem, options, preferred resolution; expect Orin response within 15 minutes.

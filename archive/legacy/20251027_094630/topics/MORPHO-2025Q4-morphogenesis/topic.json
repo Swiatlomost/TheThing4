@@ -1,0 +1,24 @@
+{
+  "id": "MORPHO-2025Q4",
+  "title": "Morfogeneza (Q4 2025)",
+  "why": "Zwiekszyc sprawczosc uzytkownika przez edytor form i natychmiastowa aktywacje (SharedFlow + overlay).",
+  "what": "Etapy 003-006: status+dropdown, menu poziomu, edytor komorek+zapisy form, canvas UX; sanity SharedFlow/logcat/dumpsys.",
+  "how": "Wspolny kanal MorphoFormChannel (SharedFlow + fallback broadcast), hex-canvas z micro-offsetem, guard rails ADR.",
+  "backlog": [
+    "MORPHO-007-undo-redo",
+    "MORPHO-008-autosort",
+    "MORPHO-009-presety"
+  ],
+  "links": {
+    "brief": "topics/MORPHO-2025Q4-morphogenesis/brief.json",
+    "adr": [
+      "docs/architecture/ADR-2025-10-25-morfogeneza.md"
+    ],
+    "tests": [
+      "docs/testing/morphogeneza-test-plan.md",
+      "docs/testing/morphogeneza-event-checklist.md"
+    ],
+    "roi": "docs/ai-first-development-roi-20251026.md"
+  }
+}
+

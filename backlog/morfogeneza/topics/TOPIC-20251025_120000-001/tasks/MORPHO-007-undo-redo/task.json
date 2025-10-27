@@ -1,0 +1,17 @@
+{
+  "id": "MORPHO-007-undo-redo",
+  "status": "pending",
+  "owner": "Lumen",
+  "title": "Undo/Redo w edytorze form",
+  "deliverables": [
+    "Implementacja historii operacji (undo/redo)",
+    "Testy Kai (Compose + sanity logcat/dumpsys)",
+    "Aktualizacje ADR jesli zmienia sie model"
+  ],
+  "links": {
+    "brief": "../../BRIEF-20251025_120000-001.json",
+    "adr": "../../ADR-20251025_120000-001.md",
+    "test_plan": "../../TEST-PLAN-20251026_120000-001.md"
+  }
+}
+

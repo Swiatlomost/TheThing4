@@ -1,0 +1,32 @@
+﻿{
+  "task": {
+    "id": "MORPHO-008-autosort",
+    "title": "Autosort form",
+    "topic": "TOPIC-20251025_120000-001",
+    "status": "pending",
+    "owner": "Lumen",
+    "contributors": [
+      "Echo",
+      "Kai"
+    ],
+    "tags": [
+      "backlog"
+    ],
+    "deferred": true,
+    "links": {
+      "pdca": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-008-autosort/pdca.md",
+      "log": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-008-autosort/log.md"
+    }
+  },
+  "files": [
+    "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\BRIEF-20251025_120000-001.json",
+    "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\topic.json",
+    "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\tasks\\MORPHO-008-autosort\\pdca.md",
+    "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\tasks\\MORPHO-008-autosort\\log.md",
+    "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\tasks\\MORPHO-008-autosort\\pdca.md",
+    "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\tasks\\MORPHO-008-autosort\\log.md"
+  ],
+  "agent_memories": [
+    "agents\\memory.json"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+    "agent": "Echo",
+    "current_tasks": [],
+    "completed_tasks": [
+        {
+            "task_id": "ECHO-20251025-001",
+            "parent_task_id": "ORIN-20251024-001",
+            "title": "Discovery manualnego cyklu Cos",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "notes": "Zbieram wymagania manualnego cyklu, kataloguje ryzyka overlay i adb, formuje pytania dla Vireal.",
+            "deliverables": [
+                "Discovery brief z wymaganiami i ryzykami",
+                "Lista pytan follow-up dla Vireal i Orina"
+            ],
+            "completed_at": "2025-10-25"
+        },
+        {
+            "task_id": "ECHO-20251024-001",
+            "parent_task_id": "ORIN-20251024-001",
+            "title": "Analiza ryzyk Cos overlay",
+            "status": "done",
+            "assigned_at": "2025-10-24",
+            "last_update": "2025-10-24",
+            "notes": "Zidentyfikowalam ryzyka styku, pauzy cyklu i gestow overlay, przygotowalam mitigacje.",
+            "deliverables": [
+                "Lista ryzyk overlay",
+                "Propozycje mitigacji"
+            ],
+            "completed_at": "2025-10-24"
+        },
+        {
+            "task_id": "ECHO-20251025-002",
+            "parent_task_id": "ORIN-20251025-002",
+            "title": "Research kreatora Morfogenezy",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-26",
+            "notes": "Guard rails i referencje UX dla etapu 006 zebrane; ADR i brief zsynchronizowane, undo/redo/autosort oznaczone jako backlog.",
+            "deliverables": [
+                "docs/ux/morphogeneza-ux-research.md (aktualny stan bazowy)",
+                "Rekomendacje wpisane do ADR-2025-10-25-morfogeneza.md",
+                "Uwagi przekazane Orinowi i Lumenowi"
+            ],
+            "completed_at": "2025-10-26"
+        }
+    ],
+    "_template": {
+        "current_tasks": [
+            {
+                "task_id": "ECHO-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Opis analizy",
+                "status": "pending",
+                "assigned_at": "YYYY-MM-DD",
+                "last_update": "YYYY-MM-DD",
+                "notes": "Co nalezy zbadac",
+                "deliverables": [
+                    "Lista ryzyk",
+                    "Rekomendacje"
+                ]
+            }
+        ],
+        "completed_tasks": [
+            {
+                "task_id": "ECHO-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Opis analizy",
+                "status": "done",
+                "completed_at": "YYYY-MM-DD",
+                "key_findings": [
+                    "Najwazniejsze wnioski"
+                ]
+            }
+        ]
+    }
+}

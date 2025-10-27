@@ -1,15 +1,22 @@
-# MEMORY_SPEC.md - Memory & Journals (v2.0)
+# MEMORY_SPEC.md - Memory & Journals (Lean v3)
 
-## Files per Agent
-Every agent keeps three mandatory files inside `agents/<name>/`:
+## Memory Store
+Prefer a single shared file `agents/memory.json` with per‑agent entries under `agents` map. Example:
 
-| File | Purpose |
-|------|---------|
-| `log.md` | Running notes (timestamped facts, decisions, next steps).
-| `task.json` | Tasks owned by the agent with status `pending / in_progress / done` and parent Orin task.
-| `memory.json` | Semi-stable heuristics, agreements, risks, and helpful links.
+```
+{
+  "version": "1.0",
+  "last_updated": "YYYY-MM-DD",
+  "agents": {
+    "Orin": { ... },
+    "Echo": { ... }
+  }
+}
+```
 
-`agents/status.json` + `agents/status.md` provide the shared board for Orin.
+Legacy per‑agent files `agents/<name>/memory.json` są akceptowane (odczyt wsteczny) i będą wygaszane.
+
+Global task status is maintained in `backlog/board.json`. Per‑task logs and PDCA live under `backlog/<obszar>/topics/<TOPIC>/tasks/<TASK-ID>/`.
 
 ## Memory JSON Skeleton
 ```
@@ -17,7 +24,7 @@ Every agent keeps three mandatory files inside `agents/<name>/`:
   "agent": "Echo",
   "alias": "Analyst",
   "last_updated": "YYYY-MM-DD",
-   "last_reviewed": "YYYY-MM-DD (SESSION-ID)",
+  "last_reviewed": "YYYY-MM-DD",
   "focus": "Obszar odpowiedzialnosci",
   "context": ["Najwazniejsze fakty do startu pracy"],
   "insights": ["Heurystyki pomagajace podejmowac decyzje"],
@@ -30,15 +37,12 @@ Every agent keeps three mandatory files inside `agents/<name>/`:
 
 ## Hygiene
 - Keep entries short; prefer bullet points to paragraphs.
-- Aktualizuj `last_updated` po zmianach treści. Gdy tylko potwierdzasz aktualność bez zmian, dopisz `last_reviewed` (data + identyfikator sesji, np. `2025-01-18 ORIN-20250118-001`).
+- Aktualizuj `last_updated` po zmianach tresci. Gdy tylko potwierdzasz aktualnosc bez zmian, dopisz `last_reviewed` (data).
 - Nyx coordinates snapshots before milestones and after major incidents.
-- When workflow standards evolve, sync log entries, task files, and `agents/status.json` in the same session.
-- Przed oznaczeniem zadania jako `in_progress` wypelnij PDCA w `log.md`, korzystajac z `docs/templates/pdca-template.md` (szczegoly: `docs/reference/session-timeline.md`).
+- When workflow standards evolve, sync per-task logs/PDCA with `board.json` in the same session.
+- Przed oznaczeniem zadania jako `in_progress` wypelnij PDCA w `topics/<...>/tasks/<TASK-ID>/pdca.md` (szczegoly: `docs/reference/session-timeline.md`).
 
-## Sample Log Snippet (Scribe)
+## Sample Task Log Snippet
 ```
-## 2025-10-24 - Fresh Start
-Decyzje: Repo wyczyszczone z kodu aplikacji; utrzymano tylko proces agentowy.
-TODO: [ ] ORIN-XXXX - przygotowac plan pierwszego zadania.
-Next: Orin wyznacza cel i tworzy plik sessions/.
+2025-10-26 Why: Potwierdzenie sanity SharedFlow po aktywacji formy. Next: Dodac Compose test i checkliste Kai.
 ```

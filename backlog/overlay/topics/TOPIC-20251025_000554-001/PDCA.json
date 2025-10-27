@@ -1,0 +1,25 @@
+{
+  "plan": [
+    "Dostarczyc tryb overlay z parytetem stanu, gestow i renderingu",
+    "Utrwalic sanity (logcat + instrumentation) i uprawnienia"
+  ],
+  "do": [
+    "Serwis foreground + ComposeView w oknie systemowym",
+    "Integracja z CosLifecycleEngine i SharedFlow kanalu Morpho",
+    "Testy instrumentalne i checklisty ADB"
+  ],
+  "check": [
+    "connectedDebugAndroidTest PASS; brak crashy przy double tap",
+    "MorfoEvent widoczny w logcat"
+  ],
+  "act": [
+    "Dodac sanity do pipeline CI (matrix urzadzen)",
+    "Przygotowac A11y follow-up"
+  ],
+  "links": {
+    "adr": ["docs/reference/floating-overlay.md"],
+    "tests": ["docs/testing/cos-v0.1-test-plan.md"]
+  },
+  "meta": {"updated_at": "2025-10-27"}
+}
+

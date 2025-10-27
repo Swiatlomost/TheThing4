@@ -1,0 +1,14 @@
+{
+  "id": "TOPIC-20251025_000554-001",
+  "area": "overlay",
+  "title": "Overlay",
+  "summary": "Tryb floating z parytetem zachowania względem aplikacji, sanity logcat/instrumentation.",
+  "brief": "backlog/overlay/topics/TOPIC-20251025_000554-001/BRIEF-20251025_000554-001.json",
+  "pdca": "backlog/overlay/topics/TOPIC-20251025_000554-001/PDCA-20251025_001000-001.md",
+  "owners": ["Lumen", "Kai", "Nodus", "Vireal", "Scribe"],
+  "links": {
+    "adr": ["docs/reference/floating-overlay.md"],
+    "tests": ["docs/testing/cos-v0.1-test-plan.md"]
+  }
+}
+

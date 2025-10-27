@@ -1,0 +1,30 @@
+{
+  "date": "2025-10-25_000554",
+  "id": "BRIEF-20251025_000554-001",
+  "title": "Overlay — parity z aplikacją",
+  "why": [
+    "Tryb floating zwiększa dostępność interakcji i spójność doświadczenia.",
+    "Parytet zachowania jest kluczowy dla wiarygodności gry."
+  ],
+  "what": [
+    "Serwis overlay (foreground), render canvas, gesty drag/double tap.",
+    "Parytet z ekranem głównym (ten sam engine, promienie, stany)."
+  ],
+  "how": [
+    "LifecycleOverlayService z integracją lifecycle/saved state.",
+    "Kanał zdarzeń (SharedFlow + broadcast) i sanity logcat/instrumentation."
+  ],
+  "what_if": [
+    "Matrix urządzeń i uprawnień w CI.",
+    "Usprawnienia dostępności (A11y) i sterowania."
+  ],
+  "links": {
+    "ADR": [
+      "docs/reference/floating-overlay.md"
+    ],
+    "TESTS": [
+      "docs/testing/cos-v0.1-test-plan.md"
+    ]
+  }
+}
+

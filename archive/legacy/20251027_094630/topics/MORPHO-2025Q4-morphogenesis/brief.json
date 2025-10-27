@@ -1,0 +1,41 @@
+{
+  "date": "2025-10-25",
+  "title": "Brief Morfogenezy (4MAT)",
+  "why": [
+    "Morfogeneza daje sprawczosc nad ksztaltem Cosia i synchronizuje doswiadczenie app/overlay.",
+    "Wartosc: aktywacja form wplywa na rozgrywke i wykorzystanie zasobow komorek."
+  ],
+  "what": [
+    "Okno Morfogenezy z obrysem organizmu, statusem (level, komorki, aktywna forma) i lista zapisanych form.",
+    "Edytor pozwala tworzyc/edytywac formy w granicach zasobow i bez nakladania."
+  ],
+  "how": [
+    "Hex siatka z micro-offsetem (snap-to-hex).",
+    "Event forma_aktywna: SharedFlow + fallback broadcast; overlay subskrybuje kanał.",
+    "Limit komorek = zasoby z CosLifecycleEngine; alert przy 10% zasobow."
+  ],
+  "what_if": [
+    "Walidacja kolizji organow wewnetrznych.",
+    "Podglad roznic form i presety.",
+    "Undo/redo i autosort (backlog)."
+  ],
+  "conversation_highlights": [
+    "Hex siatka i micro-offset zatwierdzone przez Orina (ADR-2025-10-25).",
+    "Event forma_aktywna udokumentowany w checkliscie Kai (logcat/dumpsys).",
+    "Priorytety: 003-006 jako stan bazowy; 007 (undo/redo) i autosort przeniesione do backlogu."
+  ],
+  "pdca_seed": {
+    "plan": "Utrzymac etap 006 jako stabilna baze i przygotowac notatki pod przyszle iteracje.",
+    "do": "Echo: UX notes; Vireal: ADR; Lumen: edytor i canvas; Nodus: kanal i overlay; Kai: sanity/testy.",
+    "check": "Po kazdym etapie: ./gradlew test + connectedDebugAndroidTest; logcat/dumpsys sanity.",
+    "act": "Po walidacji przeniesc historie/autosort do realizacji wedlug decyzji Orina."
+  ],
+  "links": {
+    "adr": "docs/architecture/ADR-2025-10-25-morfogeneza.md",
+    "tests": [
+      "docs/testing/morphogeneza-test-plan.md",
+      "docs/testing/morphogeneza-event-checklist.md"
+    ]
+  }
+}
+

@@ -1,0 +1,53 @@
+{
+    "agent": "Mira",
+    "current_tasks": [],
+    "completed_tasks": [
+        {
+            "task_id": "MIRA-20251025-001",
+            "parent_task_id": "ORIN-20251025-002",
+            "title": "Brief Morfogenezy Cos",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-26",
+            "completed_at": "2025-10-26",
+            "notes": "Brief ORIN-20251025-002 odswiezony o decyzje etapu 006 i backlog 007; pytania kontrolne przekazane Orinowi.",
+            "deliverables": [
+                "sessions/ORIN-20251025-002-morfogeneza-brief.md (wersja finalna)",
+                "Lista pytan follow-up dla kolejnych iteracji"
+            ]
+        }
+    ],
+    "_template": {
+        "current_tasks": [
+            {
+                "task_id": "MIRA-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Brief dla sesji",
+                "status": "pending",
+                "assigned_at": "YYYY-MM-DD",
+                "last_update": "YYYY-MM-DD",
+                "notes": "Streszcz rozmowe, przygotuj sekcje do pliku sesji i zapisz brief w JSON.",
+                "deliverables": [
+                    "Conversation log (opcjonalnie)",
+                    "Session brief dla Orina",
+                    "Lista pytan/ryzyk",
+                    "Draft pliku w sessions/ wraz z PDCA agentow"
+                ]
+            }
+        ],
+        "completed_tasks": [
+            {
+                "task_id": "MIRA-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Brief dla sesji",
+                "status": "done",
+                "completed_at": "YYYY-MM-DD",
+                "summary": "Co przekazano Orinowi",
+                "references": [
+                    "sessions/ORIN-YYYYMMDD-XXX-*.md",
+                    "agents/status.json"
+                ]
+            }
+        ]
+    }
+}

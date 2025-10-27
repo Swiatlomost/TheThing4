@@ -1,0 +1,13 @@
+{
+  "plan": ["Automatyczne sortowanie zapisanych form wg heurystyk"],
+  "do": [
+    "Uzgodnic heurystyki z Echo i Vireal",
+    "Zaimplementowac sortowanie po stronie repozytorium form",
+    "Dodac testy i sanity w UI"
+  ],
+  "check": ["Testy jednostkowe i UI PASS; brak regresji"],
+  "act": ["Pamietanie preferencji sortowania"],
+  "links": {"brief": "../../BRIEF-20251025_120000-001.json"},
+  "meta": {"updated_at": "2025-10-27"}
+}
+

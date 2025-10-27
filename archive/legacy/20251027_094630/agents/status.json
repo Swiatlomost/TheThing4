@@ -1,0 +1,239 @@
+{
+    "generated_at": "2025-10-26",
+    "active_tasks": [],
+    "completed_tasks": [
+        {
+            "agent": "Orin",
+            "task_id": "ORIN-20251025-002",
+            "title": "Morfogeneza v0.1 - orkiestracja sesji",
+            "parent": "-",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Przyrost 006 zamkniety; dokumentacja, testy i statusy agentow zsynchronizowane, undo/redo przeniesione do backlogu."
+        },
+        {
+            "agent": "Echo",
+            "task_id": "ECHO-20251025-002",
+            "title": "Research kreatora Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Guard rails i referencje UX dla etapu 006 potwierdzone; ADR/brief zaktualizowane, historia/autosort oznaczone jako backlog."
+        },
+        {
+            "agent": "Kai",
+            "task_id": "KAI-20251025-003",
+            "title": "Plan testow Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Plan testow 006 wraz z checklistami SharedFlow/logcat zamkniety; backlog undo/redo przygotowany."
+        },
+        {
+            "agent": "Storywright",
+            "task_id": "MIRA-20251025-001",
+            "title": "Brief Morfogenezy Cos",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Brief 4MAT zaktualizowany o finalny zakres i backlog historii; przekazany Orinowi."
+        },
+        {
+            "agent": "Nodus",
+            "task_id": "NODUS-20251026-004",
+            "title": "Sanity kanalu forma_aktywna po undo/redo",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Checklisty adb/logcat dla etapu 006 utrzymane; zadanie undo/redo odlozone do backlogu."
+        },
+        {
+            "agent": "Scribe",
+            "task_id": "SCRIBE-20251026-002",
+            "title": "Kronika Morfogenezy 006",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Log i kronika zaktualizowane o SharedFlow/promienie/testy Kai; PDCA odnotowane."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251025-005",
+            "title": "Edytor komorek i zapisy form",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Repo form, walidacje kolizji, UI edytora oraz log MorfoEvent potwierdzony (`./gradlew test`, `connectedDebugAndroidTest`, `adb logcat`)."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251026-006",
+            "title": "Canvas UX Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-26",
+            "notes": "Canvas tap/drag ze wspolnym layoutem, clamp do okregu i uproszczony UI plotna. `./gradlew test` + `./gradlew connectedDebugAndroidTest` po kazdym etapie PASS."
+        },
+        {
+            "agent": "Vireal",
+            "task_id": "VIREAL-20251025-002",
+            "title": "ADR formy Cosia",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "ADR-2025-10-25 przyjety (guard rails, platno heks, kanal SharedFlow + broadcast)."
+        },
+        {
+            "agent": "Vireal",
+            "task_id": "VIREAL-20251024-001",
+            "title": "Architektura cyklu Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-24",
+            "notes": "ADR i diagram architektury przygotowane."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251025-003",
+            "title": "UI wejscia do Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Pasek statusu (Lv / Cells / Active form) + dropdown form; testy `./gradlew test` i `./gradlew connectedDebugAndroidTest` (Pixel_5) PASS."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251024-001",
+            "title": "Implementacja cyklu Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-24",
+            "notes": "Implementacja bazowa Cos v0.1 oraz struktura modulow dostarczone."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251025-004",
+            "title": "Menu poziomu i zasobow komorek",
+            "parent": "ORIN-20251025-002",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Alerty licznika komorek, zaktualizowany pasek statusu; testy `./gradlew test` oraz `./gradlew connectedDebugAndroidTest` (Pixel_5) PASS."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251025-001",
+            "title": "Implementacja manualnego cyklu (core)",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "./gradlew test PASS, manualny cykl zsynchronizowany."
+        },
+        {
+            "agent": "Lumen",
+            "task_id": "LUMEN-20251025-002",
+            "title": "Parity overlay Cos v0.1",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Lifecycle/saved state fix + logcat sanity; parity overlay gotowe."
+        },
+        {
+            "agent": "Kai",
+            "task_id": "KAI-20251025-003",
+            "title": "Plan testow Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "in_progress",
+            "last_update": "2025-10-26",
+            "notes": "Plan testow etapu 006 (limity, kolizje, event forma_aktywna); scenariusze undo/redo/autosort zapisane jako backlog. PDCA: notes/pdca/KAI-20251025-003.md"
+        },
+        {
+            "agent": "Kai",
+            "task_id": "KAI-20251025-003",
+            "title": "Plan testow Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "in_progress",
+            "last_update": "2025-10-26",
+            "notes": "Plan testow etapu 006 (limity, kolizje, event forma_aktywna); scenariusze undo/redo/autosort zapisane jako backlog. PDCA: notes/pdca/KAI-20251025-003.md"
+        },
+        {
+            "agent": "Kai",
+            "task_id": "KAI-20251025-003",
+            "title": "Plan testow Morfogenezy",
+            "parent": "ORIN-20251025-002",
+            "status": "in_progress",
+            "last_update": "2025-10-26",
+            "notes": "Plan testow etapu 006 (limity, kolizje, event forma_aktywna); scenariusze undo/redo/autosort zapisane jako backlog. PDCA: notes/pdca/KAI-20251025-003.md"
+        },
+        {
+            "agent": "Orin",
+            "task_id": "ORIN-20251024-001",
+            "title": "CoS v0.1 - manualny cykl i overlay",
+            "parent": "-",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Iteracja zamknieta po raporcie retro Aurum."
+        },
+        {
+            "agent": "Aurum",
+            "task_id": "AURUM-20251025-001",
+            "title": "Retro pipeline Cos",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Raport retro dostarczony Orinowi; rekomendacje przekazane."
+        },
+        {
+            "agent": "Nyx",
+            "task_id": "NYX-20251025-001",
+            "title": "Aktualizacja memory manualnego cyklu",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Snapshot parity zamkniety, sanity UTF-8 odnotowane."
+        },
+        {
+            "agent": "Scribe",
+            "task_id": "SCRIBE-20251025-001",
+            "title": "Dokumentacja Cos v0.1 manualny cykl",
+            "parent": "ORIN-20251024-001",
+            "status": "done",
+            "last_update": "2025-10-25",
+            "notes": "Kronika i log zaktualizowane o parity overlay."
+        }
+    ],
+    "_template": {
+        "active_tasks": [
+            {
+                "agent": "Orin",
+                "task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Short title",
+                "parent": "-",
+                "status": "in_progress",
+                "last_update": "YYYY-MM-DD",
+                "notes": "Optional status note"
+            }
+        ],
+        "completed_tasks": [
+            {
+                "agent": "Echo",
+                "task_id": "ECHO-YYYYMMDD-XXX",
+                "title": "Task summary",
+                "parent": "ORIN-YYYYMMDD-XXX",
+                "status": "done",
+                "last_update": "YYYY-MM-DD",
+                "notes": "Outcome or references"
+            }
+        ]
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

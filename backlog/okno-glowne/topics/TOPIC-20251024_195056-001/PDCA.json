@@ -1,0 +1,24 @@
+{
+  "plan": [
+    "Dostarczyc manualny cykl Cos v0.1 (Seed→Bud→Mature→Spawned) z regula styku",
+    "Zbudowac ADR i plan testow Kai"
+  ],
+  "do": [
+    "Implementacja CosLifecycleEngine (pakowanie w heks-pierscieniach, promienie)",
+    "Canvas Compose + sanity logow",
+    "Testy jednostkowe i plan Kai (timing, spawn potomka, parytet z overlay)"
+  ],
+  "check": [
+    "./gradlew test PASS; manual sanity petli",
+    "Plan testow Kai opublikowany"
+  ],
+  "act": [
+    "Wdrozenie overlay parity i testow instrumentalnych (kolejny topic)"
+  ],
+  "links": {
+    "adr": ["docs/architecture/COS-v0.1-architecture.md"],
+    "tests": ["docs/testing/cos-v0.1-test-plan.md"]
+  },
+  "meta": {"updated_at": "2025-10-27"}
+}
+

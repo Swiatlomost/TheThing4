@@ -1,0 +1,16 @@
+{
+  "owners": ["Kai"],
+  "scenarios": [
+    {
+      "id": "MORPHO-TP-006-01",
+      "title": "Zapis→Wybor→Aktywacja formy",
+      "steps": ["Utworz szkic", "Zapisz jako forma", "Wybierz z listy", "Aktywuj"],
+      "expected": "Logcat MorfoEvent + overlay odswieza forme"
+    }
+  ],
+  "links": {
+    "canonical": "docs/testing/morphogeneza-test-plan.md"
+  },
+  "meta": {"updated_at": "2025-10-27"}
+}
+

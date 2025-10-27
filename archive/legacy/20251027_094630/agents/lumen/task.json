@@ -1,0 +1,143 @@
+{
+    "agent":  "Lumen",
+    "current_tasks":  [],
+    "completed_tasks":  [
+                            {
+                                "task_id":  "LUMEN-20251026-006",
+                                "parent_task_id":  "ORIN-20251025-002",
+                                "title":  "Canvas UX Morfogenezy",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-26",
+                                "last_update":  "2025-10-26",
+                                "completed_at":  "2025-10-26",
+                                "notes":  "Gesty tap/drag korzystaja ze wspolnego layoutu, moveCell clampuje centrum do okregu, canvas pokazuje obrys i status selekcji. `./gradlew test` oraz `./gradlew connectedDebugAndroidTest` po kazdym etapie PASS.",
+                                "deliverables":  [
+                                                     "Aktualizacja MorphogenesisScreen.kt (gesty, okrag, status zaznaczenia)",
+                                                     "Clamp w MorphogenesisViewModel.moveCell i boundaryRadius w stanie",
+                                                     "Pakiet testow ./gradlew test + ./gradlew connectedDebugAndroidTest (3 cykle)"
+                                                 ]
+                            },
+                            {
+                                "task_id":  "LUMEN-20251025-005",
+                                "parent_task_id":  "ORIN-20251025-002",
+                                "title":  "Edytor komorek i zapisy form",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-25",
+                                "last_update":  "2025-10-26",
+                                "completed_at":  "2025-10-26",
+                                "notes":  "Repozytorium form (persistencja + aktywacja), walidacja kolizji, slider promienia, emisja `MorfoEvent` (logcat + broadcast). `./gradlew test`, `./gradlew connectedDebugAndroidTest` oraz checklista ADB PASS.",
+                                "deliverables":  [
+                                                     "Logika ViewModelu (add/select/remove, walidacja, zapis/aktywacja)",
+                                                     "UI edytora z komunikatami walidacji i listą form",
+                                                     "Testy jednostkowe/Compose/instrumentacja + log MorfoEvent"
+                                                 ]
+                            },
+                            {
+                                "task_id":  "LUMEN-20251025-004",
+                                "parent_task_id":  "ORIN-20251025-002",
+                                "title":  "Menu poziomu i zasobow komorek",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-25",
+                                "last_update":  "2025-10-25",
+                                "completed_at":  "2025-10-25",
+                                "notes":  "Alerty licznika komorek, zaktualizowany pasek statusu; testy `./gradlew test` oraz `./gradlew connectedDebugAndroidTest` (Pixel_5) PASS.",
+                                "deliverables":  [
+                                                     "UI komponent gornego menu (level, licznik komorek)",
+                                                     "Integracja ze stanem ViewModelu",
+                                                     "Raport testow (unit + connected)"
+                                                 ]
+                            },
+                            {
+                                "task_id":  "LUMEN-20251025-003",
+                                "parent_task_id":  "ORIN-20251025-002",
+                                "title":  "UI wejscia do Morfogenezy",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-25",
+                                "last_update":  "2025-10-25",
+                                "completed_at":  "2025-10-25",
+                                "notes":  "Pasek statusu (Lv / Cells / Active form) + dropdown zapisanych form; `./gradlew test` i `./gradlew connectedDebugAndroidTest` (Pixel_5) PASS.",
+                                "deliverables":  [
+                                                     "Aktualizacja nawigacji (przycisk Morfogeneza + powrot)",
+                                                     "Pasek statusu + dropdown form na ekranie Morfogenezy",
+                                                     "Raport testow (`./gradlew test`, `./gradlew connectedDebugAndroidTest`)"
+                                                 ]
+                            },
+                            {
+                                "task_id":  "LUMEN-20251024-001",
+                                "parent_task_id":  "ORIN-20251024-001",
+                                "title":  "Implementacja cyklu Cos v0.1",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-24",
+                                "last_update":  "2025-10-24",
+                                "completed_at":  "2025-10-24",
+                                "notes":  "Struktura projektu i podstawowa implementacja Cos v0.1 dodane.",
+                                "deliverables":  [
+                                                     "app/",
+                                                     "feature/cos-lifecycle/",
+                                                     "feature/cos-overlay/",
+                                                     "core/designsystem/",
+                                                     "Prototyp Compose + test jednostkowy"
+                                                 ]
+                            },
+                            {
+                                "task_id":  "LUMEN-20251025-001",
+                                "parent_task_id":  "ORIN-20251024-001",
+                                "title":  "Manualny cykl - core implementation",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-25",
+                                "last_update":  "2025-10-25",
+                                "completed_at":  "2025-10-25",
+                                "notes":  "Silnik i UI dostosowane do globalnych akcji; ./gradlew test PASS.",
+                                "deliverables":  [
+                                                     "feature/cos-lifecycle (engine, screen, viewmodel)",
+                                                     "app/MainActivity (callbacki)",
+                                                     "Testy jednostkowe manualnego cyklu"
+                                                 ]
+                            },
+                            {
+                                "task_id":  "LUMEN-20251025-002",
+                                "parent_task_id":  "ORIN-20251024-001",
+                                "title":  "Overlay parity manualnego cyklu",
+                                "status":  "done",
+                                "assigned_at":  "2025-10-25",
+                                "last_update":  "2025-10-25",
+                                "completed_at":  "2025-10-25",
+                                "notes":  "Lifecycle + saved state owner w overlay, ./gradlew connectedDebugAndroidTest + logcat sanity PASS.",
+                                "deliverables":  [
+                                                     "feature/cos-overlay/LifecycleOverlayService",
+                                                     "Manual sanity Pixel_5"
+                                                 ]
+                            }
+                        ],
+    "_template":  {
+                      "current_tasks":  [
+                                            {
+                                                "task_id":  "LUMEN-YYYYMMDD-XXX",
+                                                "parent_task_id":  "ORIN-YYYYMMDD-XXX",
+                                                "title":  "Implementacja",
+                                                "status":  "pending",
+                                                "assigned_at":  "YYYY-MM-DD",
+                                                "last_update":  "YYYY-MM-DD",
+                                                "notes":  "Zakres prac",
+                                                "deliverables":  [
+                                                                     "Kod",
+                                                                     "Testy",
+                                                                     "Dokumentacja"
+                                                                 ]
+                                            }
+                                        ],
+                      "completed_tasks":  [
+                                              {
+                                                  "task_id":  "LUMEN-YYYYMMDD-XXX",
+                                                  "parent_task_id":  "ORIN-YYYYMMDD-XXX",
+                                                  "title":  "Implementacja",
+                                                  "status":  "done",
+                                                  "completed_at":  "YYYY-MM-DD",
+                                                  "summary":  "Co zostalo wdrozone",
+                                                  "tests":  [
+                                                                "Jakie testy zostaly uruchomione"
+                                                            ]
+                                              }
+                                          ]
+                  }
+}

@@ -1,4 +1,4 @@
-# Collaboration Starter Kit
+# Collaboration Starter Kit (Lean v3)
 
 This branch contains only the multi-agent workflow, templates, and automation used by the team. Application code and historical project data were removed to give us a clean foundation.
 
@@ -6,37 +6,35 @@ This branch contains only the multi-agent workflow, templates, and automation us
 1. Open the repository in VS Code.
 2. In ChatGPT for VS Code run:
    ```
-   Prosze przeczytac PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md.
+   Prosze przeczytac README.md, PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md.
    Ustaw ten zestaw jako staly kontekst sesji.
    ```
-3. Trigger the task `Start Session` from `.vscode/tasks.json` or manually send `[SESSION::START]`.
-4. Orin registers the first `ORIN-YYYYMMDD-XXX` entry and creates a session file from `docs/templates/session-template.md`.
+3. Wywolaj `[SESSION::START]` — skrypt `scripts/session_start_hook.ps1` promuje pierwsze `pending` z `board.json` do `in_progress`.
+4. Zbuduj kontekst LLM dla wybranego zadania:
+   ```
+   python scripts/context.py task MORPHO-007-undo-redo
+   ```
 
-## Repository Map
-- `PROJECT_CONTEXT.md` - manifesto and priorities.
-- `AGENTS.md` - role definitions, conflict resolution.
-- `WORKFLOW.md` - session ritual, cooldown procedure, communication rules.
-- `AI_GUIDE.md` - how to work with ChatGPT inside VS Code.
-- `MEMORY_SPEC.md` - standards for log/task/memory files.
-- `docs/reference/session-timeline.md` - single overview of phases, owners, and artefacts for a session.
-- `docs/` - handbooks and templates for recurring rituals.
-- `docs/templates/chronicle-entry.md` - framework for Scribe's narrative chapters.
-- `docs/templates/pdca-template.md` - karta planowania PDCA dla kazdego zadania.
-- `docs/templates/storywright-brief.md` - szablon rozmowy 4MAT i briefu przygotowywanego przez Mire.
-- `docs/reference/architecture-android.md` - architektura, DI, testowanie.
-- `docs/reference/ux-guidelines.md` - design system i accessibility.
-- `docs/reference/floating-overlay.md` - decyzje i gesty dla trybu overlay.
-- `docs/reference/tooling-setup.md` - instalacja Android CLI i Gradle.
-- `agents/` - per-agent workspaces with fresh templates.
-- `scripts/` - automation to keep the system in sync.
-- `sessions/` - create one file per Orin task using the provided template.
+## Repository Map (Lean)
+- `backlog/board.json` - jedyne źródło prawdy o zadaniach (status, owner, topic, linki).
+- `backlog/` - obszary funkcjonalne aplikacji, każdy z własnymi topicami i przewodnikami:
+  - `backlog/okno-glowne/` — `LINKS.json`, `ARCHITECTURE.md`, `topics/`
+  - `backlog/overlay/` — `LINKS.json`, `ARCHITECTURE.md`, `topics/`
+  - `backlog/morfogeneza/` — `LINKS.json`, `ARCHITECTURE.md`, `topics/TOPIC-YYYYMMDD_HHMMSS-n/BRIEF-*.json`, `PDCA-*.md`, `tasks/`
+- `backlog/backlog.json` — indeks obszarów i topiców (status + lista zadań). Aktualizacja: `python scripts/update_backlog_index.py`.
+- `agents/<name>/memory.json` - długoterminowa pamięć agenta (bez task.json i logów).
+- `reports/chronicle.md` - wspólna kronika Scribe.
+- `docs/` - przewodniki i szablony (bez zmian w treści merytorycznej).
+- `scripts/` - narzędzia (`board.py`, `context.py`, `validate.py`, `set_in_progress_board.py`).
+- Git hooks: `.githooks/pre-commit` (uruchamia validate + update backlog); konfiguracja: `pwsh scripts/setup_hooks.ps1`
 
 ## How To Use It
-- Run `python scripts/validate-agent-sync.py` (VS Code task: `Validate Pre-Session Checklist`) before starting new work.
-- Start from a short PDCA using `docs/templates/pdca-template.md` (link it inside your `log.md`) before flipping any task to `in_progress`.
-- Start a new topic by talking to `[AGENT::MIRA]`, who will prepare a brief for Orin.
-- Keep `log.md` entries short (date, observation, decision, next step).
-- Update `task.json` and `agents/status.json` together to avoid drift.
-- Ask Scribe and Nyx to document major changes at the end of each day.
+- Przed startem: `python scripts/validate.py` (walidacja board + topics).
+- PDCA: dla każdego zadania użyj `topics/<...>/tasks/<TASK-ID>/pdca.md` (link w `board.json` dodaje się automatycznie podczas pracy).
+- Rozmowy o wizji: `[AGENT::MIRA]` aktualizuje `brief.json` w danym `topic/`.
+- Logi: zapisuj krótkie wpisy per zadanie w `tasks/<TASK-ID>/log.md` (Why → Next).
+- Status: zmieniaj przez `python scripts/board.py move <TASK-ID> in_progress|done`.
+- Kronika: Scribe dopisuje do `reports/chronicle.md` po ważnych checkpointach.
+- VS Code: Tasks dostępne pod nazwami „Validate Lean Structure”, „Update Backlog Index”, „Context: Build for Task”, „Board: Move -> in_progress/done”.
 
-Contributions should focus on better procedures, tooling, or documentation that help the agents collaborate.
+Contributions should focus on better procedures, tooling, or documentation that help the agents collaborate. Legacy files (`agents/status.json`, `agents/*/task.json`, `sessions/*`) pozostają do podglądu; nowy przepływ używa `board.json` i `topics/`.

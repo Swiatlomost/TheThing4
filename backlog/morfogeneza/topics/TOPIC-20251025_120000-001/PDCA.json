@@ -1,0 +1,29 @@
+{
+  "plan": [
+    "Utrzymac stabilny stan 003–006 (SharedFlow, promienie, canvas)",
+    "Przygotowac grunt pod 007+ (undo/redo, autosort, presety)"
+  ],
+  "do": [
+    "Przeniesc artefakty do struktury TOPIC-YYYYMMDD_HHMMSS",
+    "Zmapowac backlog na minimalne przyrosty (osobne tasks)",
+    "Zintegrowac sanity logcat/dumpsys w CI (Nodus + Kai)"
+  ],
+  "check": [
+    "python scripts/validate.py PASS",
+    "board.json zgodny z folderem topic i taskami",
+    "test plan i checklisty aktualne"
+  ],
+  "act": [
+    "Po zatwierdzeniu uruchomic kolejne tasks z backlogu"
+  ],
+  "links": {
+    "adr": ["docs/architecture/ADR-2025-10-25-morfogeneza.md"],
+    "tests": [
+      "docs/testing/morphogeneza-test-plan.md",
+      "docs/testing/morphogeneza-event-checklist.md"
+    ],
+    "ux": ["docs/ux/morphogeneza-ux-research.md"]
+  },
+  "meta": {"updated_at": "2025-10-27"}
+}
+
