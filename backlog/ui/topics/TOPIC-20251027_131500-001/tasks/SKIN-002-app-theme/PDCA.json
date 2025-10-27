@@ -1,0 +1,13 @@
+﻿{
+  "plan": [
+    "OdwzorowaÄ‡ tokeny na Compose Theme",
+    "DostarczyÄ‡ 3 komponenty neon",
+    "ZastosowaÄ‡ na 3 ekranach"
+  ],
+  "do": ["CosTheme mapuje tokens -> darkColorScheme","NeonButton/NeonProgress w core:designsystem","Zastosowano NeonButton w Lifecycle i Morfogenezie","Zbudowano :app:assembleDebug (PASS)"],
+  "check": ["ZgodnoĹ›Ä‡ z briefem, 60 fps, dostÄ™pnoĹ›Ä‡"],
+  "act": [],
+  "links": {"brief": "../../BRIEF-20251027_131500-UI-skin.json"},
+  "meta": {"updated_at": "2025-10-27"}
+}
+

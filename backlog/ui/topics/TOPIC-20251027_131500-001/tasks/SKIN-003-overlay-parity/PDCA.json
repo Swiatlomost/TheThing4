@@ -1,0 +1,13 @@
+﻿{
+  "plan": [
+    "ZastosowaÄ‡ tokeny w overlay",
+    "ZweryfikowaÄ‡ parzystoĹ›Ä‡ z aplikacjÄ…",
+    "ZmierzyÄ‡ wpĹ‚yw glow/blur na fps"
+  ],
+  "do": ["Hard-code glow params in app/overlay (ringDp=5.1, haloMult=11.3, haloAlpha=0.40, blurDp=46)", "Overlay uses CosLifecycleCanvas for parity"],
+  "check": ["ParzystoĹ›Ä‡ wizualna, 60 fps lub noty Nodus"],
+  "act": [],
+  "links": {"brief": "../../BRIEF-20251027_131500-UI-skin.json"},
+  "meta": {"updated_at": "2025-10-27"}
+}
+

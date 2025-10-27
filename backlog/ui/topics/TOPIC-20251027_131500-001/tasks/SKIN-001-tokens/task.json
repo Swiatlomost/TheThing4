@@ -1,0 +1,15 @@
+{
+  "id": "SKIN-001-tokens",
+  "status": "pending",
+  "owner": "Lumen",
+  "title": "Globalne tokeny UI (kolory, glow, typografia)",
+  "deliverables": [
+    "Paleta kolorów (dark + neon akcent)",
+    "Parametry glow (promień, intensywność, blur)",
+    "Typografia i spacing",
+    "Wspólne źródło tokenów dla app i overlay"
+  ],
+  "links": {
+    "brief": "../../BRIEF-20251027_131500-UI-skin.json"
+  }
+}

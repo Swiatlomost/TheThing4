@@ -1,0 +1,4 @@
+{ "ts": "2025-10-27T13:15:00", "who": "Mira", "why": "Globalne tokeny UI", "what": "Utworzono task i PDCA", "next": "Orin: priorytety; Lumen: propozycja palety", "tags": ["checkpoint", "ui"] }
+{ "ts": "2025-10-27T13:20:00", "who": "Orin", "why": "[SESSION::START] SKIN-001", "what": "Przeniesiono na in_progress; zlecono szkic tokens.json", "next": "Mira/Lumen: wypeÅ‚niÄ‡ tokeny i README", "tags": ["board", "start"] }
+{ "ts": "2025-10-27T12:46:26", "who": "Lumen", "why": "Integracja tokens", "what": "Dodano loader + zasób ui_tokens.json, test instrumentacyjny", "next": "Uruchomiæ connectedDebugAndroidTest na Pixel", "tags": ["impl", "test"] }
+{ "ts": "2025-10-27T12:48:04", "who": "Kai", "why": "Akceptacja SKIN-001", "what": "connectedDebugAndroidTest PASS (Pixel_5 AVD); tokens.json valid", "next": "SKIN-002: Compose Theme mapping", "tags": ["accept", "test-pass"] }

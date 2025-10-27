@@ -1,0 +1,12 @@
+{
+  "id": "SKIN-003-overlay-parity",
+  "status": "pending",
+  "owner": "Lumen",
+  "title": "Parity overlay: motyw i akcent glow",
+  "deliverables": [
+    "Mapowanie tokenów na overlay (kolory, glow)",
+    "Spójność przycisków/akcentów z app",
+    "Notatki wydajności (Nodus) i testy percepcyjne (Kai)"
+  ],
+  "links": {"brief": "../../BRIEF-20251027_131500-UI-skin.json"}
+}
