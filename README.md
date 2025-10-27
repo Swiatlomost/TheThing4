@@ -1,5 +1,7 @@
 # Collaboration Starter Kit (Lean v3)
 
+Start here: open `start.md` for a ready-to-use prompt and workflow cheat‑sheet for LLM sessions.
+
 This branch contains only the multi-agent workflow, templates, and automation used by the team. Application code and historical project data were removed to give us a clean foundation.
 
 ## Quick Start (VS Code + ChatGPT)
@@ -9,7 +11,7 @@ This branch contains only the multi-agent workflow, templates, and automation us
    Prosze przeczytac README.md, PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md.
    Ustaw ten zestaw jako staly kontekst sesji.
    ```
-3. Wywolaj `[SESSION::START]` — skrypt `scripts/session_start_hook.ps1` promuje pierwsze `pending` z `board.json` do `in_progress`.
+3. Wywolaj `[SESSION::START]` — skrypt `scripts/session_start_hook.ps1` promuje pierwsze `pending` z `backlog/board.json` do `in_progress`.
 4. Zbuduj kontekst LLM dla wybranego zadania:
    ```
    python scripts/context.py task MORPHO-007-undo-redo
