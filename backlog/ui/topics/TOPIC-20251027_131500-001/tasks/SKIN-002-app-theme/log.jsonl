@@ -1,3 +1,4 @@
 { "ts": "2025-10-27T13:15:30", "who": "Mira", "why": "Compose Theme + komponenty", "what": "Scaffold zadania i PDCA", "next": "Lumen: draft Theme; Kai: checklist fps/kontrast", "tags": ["checkpoint", "ui"] }
 { "ts": "2025-10-27T13:08:26", "who": "Lumen", "why": "SKIN-002 implementacja", "what": "CosTheme + NeonButton/Progress; zmiany w Lifecycle/Morphogenesis; assembleDebug PASS", "next": "Smoke na Pixel 5 AVD i realnym", "tags": ["impl", "build-pass"] }
 { "ts": "2025-10-27T14:08:26", "who": "Mira", "why": "Doprecyzowanie palety v0.3", "what": "Zaktualizowano tokens (cyan-noir), dodano anim-params pod MORPH 011/012", "next": "SKIN-003: overlay parity", "tags": ["tuning", "palette"] }
+{ "ts": "2025-10-27T14:05:00", "who": "Lumen", "why": "Preview narzêdzia", "what": "Skin Demo: dodano sekcjê Energy fill (Gaussian) z suwakami.", "next": "Kalibracja wartoœci i eksport do tokens" }
