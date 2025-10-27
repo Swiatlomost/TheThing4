@@ -1,0 +1,17 @@
+{
+  "plan": [
+    "Zdefiniuj paletę i tokeny (kolory, promień poświaty, stroke, gradienty)",
+    "Udostępnij wspólne źródło tokenów app/overlay",
+    "Zastosuj skin na 3 ekranach (w tym ekran pytania)"
+  ],
+  "do": [],
+  "check": [
+    "Wizualna zgodność z briefem (glow, kontrast, czytelność)",
+    "60 fps na urządzeniu docelowym"
+  ],
+  "act": [],
+  "links": {
+    "brief": "../../BRIEF-20251027_130000-UI-glow.json"
+  },
+  "meta": { "updated_at": "2025-10-27" }
+}

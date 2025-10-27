@@ -1,0 +1,42 @@
+{
+  "date": "2025-10-27_130000",
+  "id": "BRIEF-20251027_130000-UI-glow",
+  "title": "Morfogeneza UI Glow (4MAT)",
+  "why": [
+    "Jednolita skóra bioluminescencyjna wzmacnia identyfikację i czytelność stanów.",
+    "Animacje cyklu (narodziny→dojrzewanie) budują zrozumiały język procesu."
+  ],
+  "what": [
+    "Paleta i tokeny glow (kolor, obwód, poświata, gradienty).",
+    "Etapy komórki: 1 kropka, 2 obwód, 3 animacja kropka→obwód, 4 obwód narodzonej, 5 dojrzewanie przez wypełnienie gradientem.",
+    "Organizm wielokomórkowy: układ kół w dużym okręgu z poświatą."
+  ],
+  "how": [
+    "Tokeny i zmienne: spójne źródło prawdy dla Compose i overlay.",
+    "Animacje: easeOutCubic dla wzrostu promienia (300–500 ms), easeInOutSine dla wypełnienia (400–800 ms).",
+    "Wydajność: cel 60 fps; fallback low-energy redukuje intensywność glow."
+  ],
+  "what_if": [
+    "Tryb oszczędny ogranicza blur/poświatę.",
+    "Przyszłe presety barwne."
+  ],
+  "acceptance": [
+    "Nowa paleta/tokeny i 3 skórkowane ekrany (w tym ekran pytania).",
+    "Animacja 3→4 z płynnym wzrostem promienia; animacja dojrzewania jako gradient fill.",
+    "Render organizmu wielokomórkowego zgodnie z rys. 2.",
+    "Brak rozjazdu app/overlay i 60 fps na urządzeniu docelowym."
+  ],
+  "conversation_highlights": [
+    "Rys. 1: ekran z neonowym akcentem i przyciskiem glow.",
+    "Rys. 2: organizm wielokomórkowy (matryca kół w okręgu).",
+    "Rys. 3–5: kropka → obwód → dojrzewanie (wypełnienie)."
+  ],
+  "links": {
+    "UI": [
+      "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/UI-20251026_120000-001.md"
+    ],
+    "ADR": [
+      "docs/architecture/ADR-2025-10-25-morfogeneza.md"
+    ]
+  }
+}

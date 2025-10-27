@@ -1,0 +1,16 @@
+{
+  "id": "MORPHO-011-anim-birth",
+  "status": "pending",
+  "owner": "Lumen",
+  "title": "Animacja narodzin: kropka→obwód (promień)",
+  "deliverables": [
+    "Animacja wzrostu promienia (kropka→obwód) z easingiem i czasem (300–500 ms)",
+    "Parametry w tokenach wspólnych (app/overlay)",
+    "Demo na canvasie komórki"
+  ],
+  "links": {
+    "brief": "../../BRIEF-20251027_130000-UI-glow.json",
+    "adr": "../../ADR-20251025_120000-001.md",
+    "test_plan": "../../TEST-PLAN-20251026_120000-001.md"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "plan": [
+    "Wybrać algorytm układu (hex/pack) i promień",
+    "Narysować kontener (duży okrąg) + komórki z poświatą",
+    "Parametry i temat w tokenach"
+  ],
+  "do": [],
+  "check": [
+    "Spójny glow, brak nałożenia kół, wydajność OK"
+  ],
+  "act": [],
+  "links": {"brief": "../../BRIEF-20251027_130000-UI-glow.json"},
+  "meta": { "updated_at": "2025-10-27" }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "MORPHO-010-ui-glow",
+  "status": "pending",
+  "owner": "Lumen",
+  "title": "UI: bioluminescencyjny skin (kolorystyka i glow)",
+  "deliverables": [
+    "Design tokens (kolory, promień poświaty, grubość obwodu, gradienty)",
+    "Skórkowanie min. 3 ekranów (w tym ekran pytania)",
+    "Wspólne źródło tokenów dla app i overlay"
+  ],
+  "links": {
+    "brief": "../../BRIEF-20251027_130000-UI-glow.json",
+    "adr": "../../ADR-20251025_120000-001.md",
+    "test_plan": "../../TEST-PLAN-20251026_120000-001.md"
+  }
+}
