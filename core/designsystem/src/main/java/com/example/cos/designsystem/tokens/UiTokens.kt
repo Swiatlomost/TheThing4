@@ -64,6 +64,7 @@ data class Specular(
     val angleDeg: Double,
     val bandAlpha: Double,
     val bandWidth: Double,
+    val jitterDeg: Double? = null,
 )
 
 data class UiTokens(
@@ -162,6 +163,7 @@ object UiTokenProvider {
                     angleDeg = s.optDouble("angle-deg", 45.0),
                     bandAlpha = s.optDouble("band-alpha", 0.22),
                     bandWidth = s.optDouble("band-width", 0.10),
+                    jitterDeg = s.optDouble("jitter-deg", Double.NaN).let { if (it.isNaN()) null else it },
                 )
             }
             return EnergyFill(

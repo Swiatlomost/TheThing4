@@ -176,7 +176,8 @@ fun CosLifecycleCanvas(
             specularEnabled = (energy.specular?.enabled ?: false),
             specularAngleDeg = (energy.specular?.angleDeg ?: 45.0).toFloat(),
             specularBandAlpha = (energy.specular?.bandAlpha ?: 0.22).toFloat(),
-            specularBandWidth = (energy.specular?.bandWidth ?: 0.10).toFloat()
+            specularBandWidth = (energy.specular?.bandWidth ?: 0.10).toFloat(),
+            specularJitterDeg = (energy.specular?.jitterDeg ?: 0.0).toFloat()
         )
     }
 }
@@ -202,7 +203,8 @@ private fun DrawScope.drawOrganism(
     specularEnabled: Boolean,
     specularAngleDeg: Float,
     specularBandAlpha: Float,
-    specularBandWidth: Float
+    specularBandWidth: Float,
+    specularJitterDeg: Float
 ) {
     if (cells.isEmpty()) return
 
@@ -256,6 +258,10 @@ private fun DrawScope.drawOrganism(
         val fillRadiusPx = fillRadiusUnitsRaw * scale
 
         if (fillRadiusPx > 0f) {
+            val jitter = if (specularEnabled && specularJitterDeg != 0f) {
+                stableAngleJitter(animated.snapshot.id, specularJitterDeg)
+            } else 0f
+            val specAngleForCell = (specularAngleDeg + jitter)
             drawGaussianEnergyFill(
                 center = centerPx,
                 radius = fillRadiusPx,
@@ -268,7 +274,7 @@ private fun DrawScope.drawOrganism(
                 glowStop = energyGlowStop,
                 rimAlpha = energyRimAlpha,
                 specularEnabled = specularEnabled,
-                specularAngleDeg = specularAngleDeg,
+                specularAngleDeg = specAngleForCell,
                 specularBandWidth = specularBandWidth,
                 specularBandAlpha = specularBandAlpha
             )
@@ -338,6 +344,15 @@ private data class AnimatedCell(
 )
 
 private const val ORGANISM_RADIUS_UNITS = 4f
+
+private fun stableAngleJitter(id: String, jitterAmplitudeDeg: Float): Float {
+    if (jitterAmplitudeDeg == 0f) return 0f
+    val h = id.hashCode()
+    val mix = ((h ushr 16) xor (h and 0xFFFF)).toFloat()
+    val unit = (mix % 65535f) / 65535f // [0,1)
+    val signed = (unit * 2f) - 1f // [-1,1)
+    return signed * jitterAmplitudeDeg
+}
 
 // Simple cached noise + radial blend to simulate energetic fill
 private object EnergyShaders {
