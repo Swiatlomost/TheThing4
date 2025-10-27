@@ -75,8 +75,15 @@ val LocalUiTokens = staticCompositionLocalOf<UiTokens> {
 
 object UiTokenProvider {
     fun load(context: Context, @RawRes resId: Int = R.raw.ui_tokens): UiTokens {
-        val json = context.resources.openRawResource(resId).bufferedReader().use { it.readText() }
-        val root = JSONObject(json)
+        val base = context.resources.openRawResource(resId).bufferedReader().use { it.readText() }
+        val root = JSONObject(base)
+
+        // Optional override file in app storage: filesDir/ui_tokens_override.json
+        val override = tryLoadOverride(context)
+        if (override != null) {
+            val patch = JSONObject(override)
+            deepMergeInto(root, patch)
+        }
 
         fun palette(): Palette {
             val o = root.getJSONObject("palette")
@@ -161,5 +168,26 @@ object UiTokenProvider {
             progress = progress(),
             energy = energy(),
         )
+    }
+
+    private fun tryLoadOverride(context: Context): String? = try {
+        val f = context.getFileStreamPath("ui_tokens_override.json")
+        if (f != null && f.exists()) f.readText() else null
+    } catch (_: Throwable) { null }
+
+    // Merge patch into base: objects are merged recursively; other values overwrite
+    private fun deepMergeInto(base: JSONObject, patch: JSONObject) {
+        val it = patch.keys()
+        while (it.hasNext()) {
+            val key = it.next()
+            val pv = patch.get(key)
+            if (pv is JSONObject) {
+                val bv = if (base.has(key) && base.get(key) is JSONObject) base.getJSONObject(key) else JSONObject()
+                deepMergeInto(bv, pv)
+                base.put(key, bv)
+            } else {
+                base.put(key, pv)
+            }
+        }
     }
 }

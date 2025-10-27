@@ -25,11 +25,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
 import android.graphics.ComposeShader
 import android.graphics.PorterDuff
 import android.graphics.RadialGradient
 import android.graphics.Shader
 import android.graphics.LinearGradient
+import org.json.JSONObject
 import androidx.compose.ui.unit.dp
 import com.example.cos.designsystem.components.NeonButton
 import com.example.cos.designsystem.tokens.LocalUiTokens
@@ -101,6 +103,39 @@ fun SkinDemoScreen(onBack: () -> Unit) {
             LabeledSlider("core-stop", coreStop, 0.3f..0.9f) { coreStop = it }
             LabeledSlider("glow-stop", glowStop, 0.5f..0.95f) { glowStop = it }
             LabeledSlider("rim-alpha", rimAlpha, 0f..1f) { rimAlpha = it }
+
+            val ctx = LocalContext.current
+            var status by remember { mutableStateOf("") }
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                NeonButton(text = "Zapisz do tokenów", onClick = {
+                    val root = JSONObject()
+                    val energy = JSONObject()
+                        .put("whiten", whiten.toDouble())
+                        .put("core-alpha", coreAlpha.toDouble())
+                        .put("glow-alpha", glowAlpha.toDouble())
+                        .put("core-stop", coreStop.toDouble())
+                        .put("glow-stop", glowStop.toDouble())
+                        .put("rim-alpha", rimAlpha.toDouble())
+                    root.put("energy", energy)
+                    try {
+                        ctx.openFileOutput("ui_tokens_override.json", android.content.Context.MODE_PRIVATE).use { it.write(root.toString(2).toByteArray()) }
+                        status = "Zapisano override. Uruchom ponownie aplikację, aby zastosować globalnie."
+                    } catch (t: Throwable) {
+                        status = "Błąd zapisu: ${t.message}"
+                    }
+                })
+                NeonButton(text = "Usuń override", onClick = {
+                    try {
+                        val ok = ctx.deleteFile("ui_tokens_override.json")
+                        status = if (ok) "Usunięto override (restart aby wrócić do domyślnych)." else "Brak pliku override."
+                    } catch (t: Throwable) {
+                        status = "Błąd usuwania: ${t.message}"
+                    }
+                })
+            }
+            if (status.isNotEmpty()) {
+                Text(status, style = MaterialTheme.typography.bodySmall)
+            }
         }
     }
 }
