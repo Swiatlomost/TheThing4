@@ -11,6 +11,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.material3.Surface
+import androidx.compose.material3.MaterialTheme
 import com.example.cos.designsystem.theme.CosTheme
 import com.example.cos.lifecycle.CosLifecycleScreen
 import com.example.cos.lifecycle.CosLifecycleViewModel
@@ -40,46 +42,49 @@ fun CosApp(
     val lifecycleState by viewModel.state.collectAsState()
     var destination by rememberSaveable { mutableStateOf(AppDestination.Lifecycle) }
     CosTheme {
-        Crossfade(targetState = destination, label = "cos-destination") { current: AppDestination ->
-            when (current) {
-                AppDestination.Lifecycle -> {
-                    CosLifecycleScreen(
-                        state = lifecycleState,
-                        onToggleOverlay = {
-                            if (overlayController.hasPermission()) {
-                                overlayController.startOverlayService()
-                            } else {
-                                overlayController.requestPermission()
-                            }
-                        },
-                        onReset = viewModel::resetOrganism,
-                        onSetStage = viewModel::setStage,
-                        onCreateChild = viewModel::createChild,
-                        onOpenMorphogenesis = { destination = AppDestination.Morphogenesis }
-                    )
-                }
-                AppDestination.Morphogenesis -> {
-                    val morphoViewModel: MorphogenesisViewModel = hiltViewModel()
-                    val morphoState by morphoViewModel.state.collectAsState()
-                        MorphogenesisScreen(
-                            state = morphoState,
-                            onBack = { destination = AppDestination.Lifecycle },
-                            onAddCell = morphoViewModel::addCell,
-                            onSelectCell = morphoViewModel::selectCell,
-                            onMoveCell = morphoViewModel::moveCell,
-                            onRemoveSelectedCell = morphoViewModel::removeSelectedCell,
-                            onRadiusChange = morphoViewModel::updateSelectedRadius,
-                            onSaveDraft = morphoViewModel::saveDraft,
-                            onActivate = morphoViewModel::activateDraft,
+        Surface(color = MaterialTheme.colorScheme.background) {
+            Crossfade(targetState = destination, label = "cos-destination") { current: AppDestination ->
+                when (current) {
+                    AppDestination.Lifecycle -> {
+                        CosLifecycleScreen(
+                            state = lifecycleState,
+                            onToggleOverlay = {
+                                if (overlayController.hasPermission()) {
+                                    overlayController.startOverlayService()
+                                } else {
+                                    overlayController.requestPermission()
+                                }
+                            },
+                            onReset = viewModel::resetOrganism,
+                            onSetStage = viewModel::setStage,
+                            onCreateChild = viewModel::createChild,
+                            onOpenMorphogenesis = { destination = AppDestination.Morphogenesis },
+                            onOpenSkinDemo = { destination = AppDestination.SkinDemo }
+                        )
+                    }
+                    AppDestination.Morphogenesis -> {
+                        val morphoViewModel: MorphogenesisViewModel = hiltViewModel()
+                        val morphoState by morphoViewModel.state.collectAsState()
+                            MorphogenesisScreen(
+                                state = morphoState,
+                                onBack = { destination = AppDestination.Lifecycle },
+                                onAddCell = morphoViewModel::addCell,
+                                onSelectCell = morphoViewModel::selectCell,
+                                onMoveCell = morphoViewModel::moveCell,
+                                onRemoveSelectedCell = morphoViewModel::removeSelectedCell,
+                                onRadiusChange = morphoViewModel::updateSelectedRadius,
+                                onSaveDraft = morphoViewModel::saveDraft,
+                                onActivate = morphoViewModel::activateDraft,
                             onSelectForm = morphoViewModel::selectForm
                         )
+                    }
+                    AppDestination.SkinDemo -> {
+                        SkinDemoScreen(onBack = { destination = AppDestination.Lifecycle })
+                    }
                 }
             }
         }
     }
 }
 
-private enum class AppDestination {
-    Lifecycle,
-    Morphogenesis
-}
+private enum class AppDestination { Lifecycle, Morphogenesis, SkinDemo }

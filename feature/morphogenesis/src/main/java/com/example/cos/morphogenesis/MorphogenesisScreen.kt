@@ -57,6 +57,7 @@ import kotlin.math.sqrt
 import androidx.compose.ui.graphics.Color
 import com.example.cos.morphogenesis.AlertSeverity
 import com.example.cos.lifecycle.morpho.ActiveMorphoForm
+import com.example.cos.designsystem.components.NeonButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -317,18 +318,8 @@ private fun MorphogenesisEditor(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                OutlinedButton(
-                    onClick = onAddCell,
-                    enabled = editorState.canAddCell
-                ) {
-                    Text(text = "Dodaj")
-                }
-                OutlinedButton(
-                    onClick = onRemoveSelectedCell,
-                    enabled = editorState.selectedCellId != null
-                ) {
-                    Text(text = "Usun")
-                }
+                NeonButton(text = "Dodaj", onClick = onAddCell, enabled = editorState.canAddCell)
+                NeonButton(text = "Usuń", onClick = onRemoveSelectedCell, enabled = editorState.selectedCellId != null)
             }
             Column(
                 verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -357,18 +348,8 @@ private fun MorphogenesisEditor(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    OutlinedButton(
-                        onClick = onSaveDraft,
-                        enabled = editorState.canSaveDraft
-                    ) {
-                        Text(text = "Zapisz szkic")
-                    }
-                    Button(
-                        onClick = onActivate,
-                        enabled = editorState.canActivate
-                    ) {
-                        Text(text = "Aktywuj")
-                    }
+                    NeonButton(text = "Zapisz szkic", onClick = onSaveDraft, enabled = editorState.canSaveDraft)
+                    NeonButton(text = "Aktywuj", onClick = onActivate, enabled = editorState.canActivate)
                 }
                 val statusText: String
                 val statusColor = if (!editorState.hasDirtyChanges) {
