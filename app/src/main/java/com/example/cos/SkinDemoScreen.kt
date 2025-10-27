@@ -26,11 +26,8 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
-import android.graphics.ComposeShader
-import android.graphics.PorterDuff
-import android.graphics.RadialGradient
-import android.graphics.Shader
-import android.graphics.LinearGradient
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Path
 import org.json.JSONObject
 import androidx.compose.ui.unit.dp
 import com.example.cos.designsystem.components.NeonButton
@@ -244,11 +241,12 @@ private fun EnergyFillPreview(
         val c = center
         val r = size.minDimension * 0.3f
 
-        drawIntoCanvas { canvas ->
-            val p = androidx.compose.ui.graphics.Paint()
-            val fp = p.asFrameworkPaint()
-            fp.isAntiAlias = true
-            fp.style = android.graphics.Paint.Style.FILL
+        // Circle path for clipping gradients
+        val path = Path().apply {
+            addOval(androidx.compose.ui.geometry.Rect(
+                c.x - r, c.y - r, c.x + r, c.y + r
+            ))
+        }
 
             fun mixToWhite(t: Float): androidx.compose.ui.graphics.Color {
                 val cl = t.coerceIn(0f, 1f)
@@ -261,46 +259,47 @@ private fun EnergyFillPreview(
             }
 
             val coreColor = mixToWhite(whiten)
-            val core = RadialGradient(
-                c.x, c.y, r,
-                intArrayOf(
-                    coreColor.copy(alpha = coreAlpha).toArgb(),
-                    coreColor.copy(alpha = coreAlpha * 0.55f).toArgb(),
-                    coreColor.copy(alpha = coreAlpha * 0.12f).toArgb(),
-                    android.graphics.Color.TRANSPARENT
-                ),
-                floatArrayOf(0f, coreStop * 0.6f, coreStop, 1f),
-                Shader.TileMode.CLAMP
-            )
 
-            val glow = RadialGradient(
-                c.x, c.y, r,
-                intArrayOf(
-                    accent.copy(alpha = glowAlpha).toArgb(),
-                    accent.copy(alpha = glowAlpha * 0.5f).toArgb(),
-                    android.graphics.Color.TRANSPARENT
+            // Layered radial gradients (GPU-friendly)
+            val coreBrush = Brush.radialGradient(
+                colors = listOf(
+                    coreColor.copy(alpha = coreAlpha),
+                    coreColor.copy(alpha = coreAlpha * 0.55f),
+                    coreColor.copy(alpha = coreAlpha * 0.12f),
+                    coreColor.copy(alpha = 0f)
                 ),
-                floatArrayOf(0f, glowStop, 1f),
-                Shader.TileMode.CLAMP
+                center = c,
+                radius = r
             )
+            drawPath(path = path, brush = coreBrush)
 
-            val shader = ComposeShader(glow, core, PorterDuff.Mode.SCREEN)
-            fp.shader = shader
-            canvas.drawCircle(c, r, p)
-            fp.shader = null
+            val glowBrush = Brush.radialGradient(
+                colors = listOf(
+                    accent.copy(alpha = glowAlpha),
+                    accent.copy(alpha = glowAlpha * 0.5f),
+                    accent.copy(alpha = 0f)
+                ),
+                center = c,
+                radius = r
+            )
+            drawPath(path = path, brush = glowBrush)
 
             // Rim light (preview only)
             if (rimAlpha > 0f) {
-                fp.style = android.graphics.Paint.Style.STROKE
-                fp.color = accent.copy(alpha = rimAlpha).toArgb()
-                fp.strokeWidth = r * 0.08f
-                fp.maskFilter = null
-                canvas.drawCircle(c, r, p)
+                drawIntoCanvas { canvas ->
+                    val p = androidx.compose.ui.graphics.Paint()
+                    val fp = p.asFrameworkPaint()
+                    fp.isAntiAlias = true
+                    fp.style = android.graphics.Paint.Style.STROKE
+                    fp.color = accent.copy(alpha = rimAlpha).toArgb()
+                    fp.strokeWidth = r * 0.08f
+                    fp.maskFilter = null
+                    canvas.drawCircle(c, r, p)
+                }
             }
 
             // Specular bands preview (optional)
             if (specEnabled && specAlpha > 0f && specWidth > 0f) {
-                fp.style = android.graphics.Paint.Style.FILL
                 fun drawBand(angle: Float, alphaMul: Float) {
                     val a = angle / 180f * Math.PI.toFloat()
                     val dir = androidx.compose.ui.geometry.Offset(kotlin.math.cos(a), kotlin.math.sin(a))
@@ -309,20 +308,20 @@ private fun EnergyFillPreview(
                     val end = androidx.compose.ui.geometry.Offset(c.x + dir.x * ext, c.y + dir.y * ext)
                     val mid = 0.5f
                     val half = (specWidth * 0.5f).coerceIn(0.01f, 0.4f)
-                    val col = accent.copy(alpha = specAlpha * alphaMul).toArgb()
-                    val lg = LinearGradient(
-                        start.x, start.y, end.x, end.y,
-                        intArrayOf(0x00FFFFFF, 0x00FFFFFF, col, 0x00FFFFFF, 0x00FFFFFF),
-                        floatArrayOf(0f, mid - half, mid, mid + half, 1f),
-                        Shader.TileMode.CLAMP
+                    val col = accent.copy(alpha = specAlpha * alphaMul)
+                    val brush = Brush.linearGradient(
+                        0f to col.copy(alpha = 0f),
+                        (mid - half) to col.copy(alpha = 0f),
+                        mid to col,
+                        (mid + half) to col.copy(alpha = 0f),
+                        1f to col.copy(alpha = 0f),
+                        start = start,
+                        end = end
                     )
-                    fp.shader = lg
-                    canvas.drawCircle(c, r, p)
-                    fp.shader = null
+                    drawPath(path = path, brush = brush)
                 }
                 drawBand(specAngle, 1f)
                 drawBand((specAngle + 90f) % 360f, 0.85f)
             }
-        }
     }
 }
