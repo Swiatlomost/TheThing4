@@ -1,0 +1,27 @@
+{
+  "plan": [
+    "Historia operacji (undo/redo) bez regresji overlay",
+    "Akcje: dodaj/usun/skaluj, limit glebokosci historii"
+  ],
+  "do": [
+    "Zaprojektuj bufor historii (kompaktowanie)",
+    "Zaimplementuj komendy undo/redo i integracje z UI",
+    "Zsynchronizuj eventy (SharedFlow + fallback broadcast)"
+  ],
+  "check": [
+    "Compose testy operacji na kanwie (Kai)",
+    "Sanity logcat/dumpsys dla forma_aktywna po undo/redo",
+    "Brak dryfu promieni"
+  ],
+  "act": [
+    "Korekty wydajnosci i UX (limit historii)",
+    "Aktualizacja ADR jesli model sie zmieni"
+  ],
+  "links": {
+    "brief": "../../BRIEF-20251025_120000-001.json",
+    "adr": "../../ADR.json",
+    "test_plan": "../../test-plan.json"
+  },
+  "meta": {"updated_at": "2025-10-27"}
+}
+

@@ -1,0 +1,79 @@
+{
+    "agent": "Vireal",
+    "current_tasks": [],
+    "completed_tasks": [
+        {
+            "task_id": "VIREAL-20251025-002",
+            "parent_task_id": "ORIN-20251025-002",
+            "title": "ADR formy Cosia",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "completed_at": "2025-10-25",
+            "notes": "Zaakceptowany ADR-2025-10-25 (guard rails Echo, platno heks, kanal SharedFlow + broadcast).",
+            "deliverables": [
+                "docs/architecture/ADR-2025-10-25-morfogeneza.md",
+                "Diagram przeplywu aktywacji formy"
+            ]
+        },
+        {
+            "task_id": "VIREAL-20251024-001",
+            "parent_task_id": "ORIN-20251024-001",
+            "title": "Architektura cyklu Cos v0.1",
+            "status": "done",
+            "assigned_at": "2025-10-24",
+            "last_update": "2025-10-24",
+            "notes": "Przygotowalem ADR i diagram architektoniczny bazowej wersji.",
+            "deliverables": [
+                "docs/architecture/ADR-2025-10-24-cos-architecture.md",
+                "Diagram integracji overlay/app"
+            ],
+            "completed_at": "2025-10-24"
+        },
+        {
+            "task_id": "VIREAL-20251025-001",
+            "parent_task_id": "ORIN-20251024-001",
+            "title": "Guard rails manualnego cyklu",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "completed_at": "2025-10-25",
+            "notes": "Guard rails zaktualizowane po weryfikacji overlay; ADR uzupełniony o lifecycle/saved state.",
+            "deliverables": [
+                "Zaktualizowany ADR 2025-10-24",
+                "Schemat rozmieszczenia komorek i kanaly adb"
+            ]
+        }
+    ],
+    "_template": {
+        "current_tasks": [
+            {
+                "task_id": "VIREAL-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Decyzja architektoniczna",
+                "status": "pending",
+                "assigned_at": "YYYY-MM-DD",
+                "last_update": "YYYY-MM-DD",
+                "notes": "Jakie aspekty rozstrzygnac",
+                "deliverables": [
+                    "ADR",
+                    "Schemat przeplywu"
+                ]
+            }
+        ],
+        "completed_tasks": [
+            {
+                "task_id": "VIREAL-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Decyzja architektoniczna",
+                "status": "done",
+                "completed_at": "YYYY-MM-DD",
+                "decision": "Jakie rozwiazanie wybrano",
+                "tradeoffs": [
+                    "Plusy",
+                    "Minusy"
+                ]
+            }
+        ]
+    }
+}

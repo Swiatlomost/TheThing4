@@ -1,0 +1,278 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-10-27",
+  "agents": {
+    "Aurum": {
+      "agent": "Aurum",
+      "alias": "Mentor",
+      "last_updated": "2025-10-25",
+      "focus": "Retrospekcja procesu Cos (manualny cykl i overlay) oraz higiena pamieci.",
+      "context": [
+        "Analizuje logi, taski i memory agentow po kazdej iteracji.",
+        "Sprawdza czy PDCA i encoding hygiene sa domkniete i raportuje do Orina."
+      ],
+      "insights": [
+        "Checklist retro: Discovery, Architektura, Core, Overlay, Testy, Dokumentacja, Encoding.",
+        "Najlepiej planowac retro od razu po parity gdy insighty sa swieze."
+      ],
+      "todos": [
+        "Przekazac Orinowi rekomendacje (DoD z logcat/testami, guard rails -> WORKFLOW, ACCESS-001 sanity).",
+        "Przygotowac propozycje aktualizacji WORKFLOW/ADR na podstawie raportu."
+      ],
+      "risks": [
+        "Brak retro powoduje powtarzanie bledow (np. pomijanie encoding sanity).",
+        "Brak follow-up z rekomendacji retro zatrzymuje progres."
+      ],
+      "links": [
+        "docs/handbook/retro-checklist.md",
+        "docs/TODO-agent-reorg.md"
+      ]
+    },
+    "Echo": {
+      "agent": "Echo",
+      "alias": "Analyst",
+      "last_updated": "2025-10-26",
+      "focus": "Discovery manualnego cyklu, guard rails Morfogenezy (etap 006) i katalog ryzyk overlay.",
+      "context": [
+        "Startuje od dokumentow PROJECT_CONTEXT, WORKFLOW i TODO-agent-reorg.",
+        "Uzgadniam potrzeby z Orinem i pytania dla Vireal zanim Lumen rozszerzy implementacje.",
+        "Wspieram Kai pod katem miejsc wymagajacych dodatkowych testow.",
+        "Notatki Morfogenezy 006 i backlog undo/redo/autosort trzymam w docs/ux/morphogeneza-ux-research.md."
+      ],
+      "insights": [
+        "Ryzyka overlay wynikaja glownie z braku synchronizacji animacji i uprawnien okna.",
+        "Wartosc discovery rosnie gdy pytania sa dostarczone przed decyzjami architekta."
+      ],
+      "todos": [
+        "Zebrac info o wymaganiach adb i overlay permission na Pixel_5.",
+        "Przygotowac liste testow dymnych do przekazania Kai."
+      ],
+      "risks": [
+        "Brak historii decyzji powoduje powtorne odkrywanie tych samych faktow.",
+        "Niepelna lista ryzyk opozni guard rails Vireal."
+      ],
+      "links": [
+        "docs/TODO-agent-reorg.md",
+        "docs/testing/cos-v0.1-test-plan.md"
+      ]
+    },
+    "Kai": {
+      "agent": "Kai",
+      "alias": "Evaluator",
+      "last_updated": "2025-10-26",
+      "focus": "Kontrola jakosci manualnego cyklu, overlay oraz sanity Morfogenezy etapu 006.",
+      "context": [
+        "Po kazdej dostawie uruchamiam ./gradlew test oraz feature:cos-overlay:connectedDebugAndroidTest.",
+        "Dokumentuje kroki manualne na Pixel_5 wraz ze statusem PASS/FAIL.",
+        "Raportuje Orinowi natychmiast gdy pojawi sie regresja lub problem z encodingiem logow.",
+        "Scenariusze undo/redo/autosort trzymam jako backlog w docs/testing/morphogeneza-test-plan.md."
+      ],
+      "insights": [
+        "Manualny cykl wymaga sekwencji Reset -> Narodziny -> Dojrzewanie -> Nowa komorka, oba kanaly musza byc zsynchronizowane.",
+        "Nagrania wideo pomagaja, gdy overlay reaguje inaczej niz aplikacja."
+      ],
+      "todos": [
+        "Przygotowac checklisty regresji overlay po parity.",
+        "Dodac skrypt shell/PowerShell uruchamiajacy oba zestawy testow i zapisujacy wynik.",
+        "Zaktualizowac test plan o wyniki UI-OVERLAY-003 i spisac dowody (logcat + connectedDebugAndroidTest)."
+      ],
+      "risks": [
+        "Brak testow overlay zablokuje release parity.",
+        "Niejednoznaczne wyniki testow opoznia decyzje Orina."
+      ],
+      "links": [
+        "docs/testing/cos-v0.1-test-plan.md",
+        "docs/TODO-agent-reorg.md"
+      ]
+    },
+    "Lumen": {
+      "agent": "Lumen",
+      "alias": "Developer",
+      "last_updated": "2025-10-26",
+      "focus": "Utrzymanie stabilnego etapu canvas 006 Morfogenezy; brak aktywnego zadania.",
+      "context": [
+        "Po kazdej iteracji sanity uruchamiam ./gradlew test oraz connectedDebugAndroidTest.",
+        "Canvas korzysta z lokalnych wspolrzednych [0..1]; clamp w moveCell pilnuje, aby komorki nie wyszly poza boundary.",
+        "Aktualne zadania wstrzymane; oczekiwanie na nowe priorytety Morfogenezy."
+      ],
+      "insights": [
+        "Promien komorki musi pozostac spojny miedzy engine, viewmodelem i overlay.",
+        "Gest tap/drag korzysta z odczytu layoutu w momencie gestu, co minimalizuje dryf kursora; clamp wykonywany w ViewModelu pozwala utrzymac wtorne zrodla prawdy.",
+        "Canvas powinien skalowac sie wedlug stalego boundary (nie wedlug aktualnej pozycji komorek), inaczej uzytkownik widzi \"kurczenie\" sie organizmu.",
+        "Historia operacji wymaga limitu krokow i deterministycznego zapisu stanu komorek (pozycja, promien, selekcja)."
+      ],
+      "todos": [
+        "Monitorowac Morfogeneze 006 i reagowac na nowe wytyczne Orina."
+      ],
+      "risks": [
+        "Brak synchronizacji overlay i aplikacji spowoduje dwoiste zachowanie w testach.",
+        "Pominiecie testow przed przekazaniem Kai oslabia zaufanie do releasu."
+      ],
+      "links": [
+        "feature/cos-lifecycle/src/main/java/com/example/cos/lifecycle/CosLifecycleEngine.kt",
+        "docs/testing/cos-v0.1-test-plan.md"
+      ]
+    },
+    "Nodus": {
+      "agent": "Nodus",
+      "alias": "Integrator",
+      "last_updated": "2025-10-26",
+      "focus": "Srodowiska i automatyzacja dla Cos oraz sanity kanalu forma_aktywna (etap 006).",
+      "context": [
+        "Monitoruje adb, emulator Pixel_5, uprawnienia overlay oraz sanity encoding.",
+        "Checklisty trzyma w docs/handbook/ops-checklists.md i aktualizuje po kazdym uruchomieniu.",
+        "Checklisty ADB/logcat dla undo/redo czekaja w backlogu, stan 006 opisany w docs/testing/morphogeneza-event-checklist.md."
+      ],
+      "insights": [
+        "Automatyczny script sanity (adb devices + logcat) skraca feedback dla Kai.",
+        "Warto testowac zarowno Windows PowerShell jak i Git Bash, bo zespol uzywa obu."
+      ],
+      "todos": [
+        "Dodac sekcje UTF-8/bez BOM do checklisty srodowisk.",
+        "Przygotowac aliasy adb dla Reset/Narodziny/Dojrzewanie/Nowa komorka."
+      ],
+      "risks": [
+        "Nieaktualny emulator lub uprawnienia zablokuja parity overlay.",
+        "Brak sanity script pozostawia Orina bez dowodu gotowego srodowiska."
+      ],
+      "links": [
+        "docs/handbook/ops-checklists.md",
+        "docs/TODO-agent-reorg.md"
+      ]
+    },
+    "Nyx": {
+      "agent": "Nyx",
+      "alias": "Memory",
+      "last_updated": "2025-10-25",
+      "focus": "Konsolidacja pamieci dlugiej oraz higiena encodingu UTF-8 bez BOM.",
+      "context": [
+        "Synchronizuje memory.json agentow z ich logami i agents/status.json.",
+        "Po wiekszych iteracjach tworzy snapshot w sessions/ z opisem zmian.",
+        "Uruchamia sanity encoding (Python) i raportuje wynik w logu."
+      ],
+      "insights": [
+        "Checklist: status.json, task.json, log.md, memory.json oraz powiazane dokumenty.",
+        "Jesli pojawia sie krzaki w kodzie trzeba wrocic do narzedzia zapisu i poprawic proces."
+      ],
+      "todos": [
+        "Zautomatyzowac sprawdzanie UTF-8 i udostepnic skrypt Lumen i Kai.",
+        "Przygotowac template snapshotu pod kolejny brief (po nowym celu)."
+      ],
+      "risks": [
+        "Brak snapshotu po zmianach utrudni retros Aurum.",
+        "Pliki z BOM lub CP1250 zatrzymaja pipeline i testy."
+      ],
+      "links": [
+        "docs/TODO-agent-reorg.md",
+        "MEMORY_SPEC.md"
+      ]
+    },
+    "Orin": {
+      "agent": "Orin",
+      "alias": "Coordinator",
+      "last_updated": "2025-10-25",
+      "focus": "Planowanie przyrostow Cos v0.1, synchronizacja agentow i higiena procesu Why/Next oraz encoding.",
+      "context": [
+        "Przed kazda iteracja wykonuje pre-task validation: status.json, task.json, logi i memory.",
+        "Pilnuje aby kazde zadanie mialo przypisane testy (Kai) oraz sanity encoding (Nyx).",
+        "Aktualizuje katalog sessions oraz agents/status.json po kazdym checkpointcie."
+      ],
+      "insights": [
+        "Rozbijaj prace na discovery -> architektura -> core -> overlay -> testy -> dokumentacja.",
+        "Zapisuj decyzje w logu wraz z Why/Next od razu, ulatwia to prace Scribe i Nyx."
+      ],
+      "todos": [
+        "Ustalic harmonogram checkpointow z Echo, Vireal, Lumen, Kai i Nodus na manualny cykl.",
+        "Sprawdzic czy kazdy agent wprowadza PDCA przed oznaczeniem zadania jako in_progress."
+      ],
+      "risks": [
+        "Brak testow lub encoding check przed zamknieciem iteracji moze wprowadzic regresje.",
+        "Zbyt wiele rownoleglych taskow u jednego agenta spowalnia petle feedbacku."
+      ],
+      "links": [
+        "WORKFLOW.md",
+        "agents/status.json",
+        "docs/TODO-agent-reorg.md"
+      ]
+    },
+    "Scribe": {
+      "agent": "Scribe",
+      "alias": "Journal",
+      "last_updated": "2025-10-25",
+      "focus": "Dokumentowanie historii Cos v0.1, manualnego cyklu i overlay parity.",
+      "context": [
+        "Log.md zawiera fakty i decyzje, chronicle.md skupia sie na narracji.",
+        "Wspolpracuje z Orin (Why/Next), Nyx (encoding) i Kai (wyniki testow)."
+      ],
+      "insights": [
+        "Dobre cytaty pochodza z logow z Why/Next, zapisuj je na biezaco.",
+        "Kronika powinna konczyc sie wskazaniem nastepnego checkpointu Orina."
+      ],
+      "todos": [
+        "Dodac rozdzial o reorganizacji agentow po parity overlay.",
+        "Przygotowac streszczenie testow Kai w sekcji timeline."] ,
+      "risks": [
+        "Brak aktualnej kroniki utrudnia Aurum przygotowanie retro.",
+        "Pominiecie informacji o encodingu wprowadzi luki w pamieci zespolu."
+      ],
+      "links": [
+        "docs/TODO-agent-reorg.md",
+        "sessions/"
+      ]
+    },
+    "Mira": {
+      "agent": "Mira",
+      "alias": "Storywright",
+      "last_updated": "2025-10-25",
+      "focus": "Tlumaczenie wizji wlasciciela na briefy dla Orina i zespolu.",
+      "context": [
+        "Brief 4MAT trzymany w agents/storywright/briefs/ z aktualizacjami po rozmowach.",
+        "Wspolpracuje z Echo (ryzyka) i Orin (priorytety) aby zachowac spojnosc narracji."
+      ],
+      "insights": [
+        "Najpierw ustal dlaczego zmiana jest potrzebna, potem co i jak, na koncu co dalej.",
+        "Krotka lista pytan kontrolnych pozwala Orinowi szybciej podjac decyzje."
+      ],
+      "todos": [
+        "Po parity overlay zaktualizowac brief o nowe obserwacje.",
+        "Przygotowac pytania follow-up dla wlasciciela wizji dotyczace overlay."
+      ],
+      "risks": [
+        "Brak aktualnego briefu spowolni decyzje Orina.",
+        "Niespojna narracja utrudni Scribe i Nyx dokumentowanie zmian."
+      ],
+      "links": [
+        "agents/storywright/briefs/",
+        "docs/TODO-agent-reorg.md"
+      ]
+    },
+    "Vireal": {
+      "agent": "Vireal",
+      "alias": "Architect",
+      "last_updated": "2025-10-25",
+      "focus": "Guard rails dla manualnego cyklu oraz overlay parity.",
+      "context": [
+        "Bazuje na ADR-2025-10-24 oraz na obserwacjach z implementacji Lumen.",
+        "W porozumieniu z Echo i Nodus aktualizuje wymagania sprzetowe i adb.",
+        "Uzgadnia z Kai minimalny zestaw testow regresyjnych."
+      ],
+      "insights": [
+        "Spokojny stan overlay zalezy od identycznych animacji i promieni komorek w obu kanalach.",
+        "Kazda zmiana w engine wymaga natychmiastowej aktualizacji guard rails i komunikatu do Kai."
+      ],
+      "todos": [
+        "Dodac do ADR sekcje o synchronizacji overlay service po wynikach Lumen.",
+        "Zamknac otwarte pytania od Echo przed 2025-10-26."
+      ],
+      "risks": [
+        "Brak jednolitych guard rails prowadzi do rozejscia implementacji i overlay.",
+        "Spore opoznienie w ADR opozni prace Kai nad testami."
+      ],
+      "links": [
+        "docs/architecture/ADR-2025-10-24-cos-architecture.md",
+        "docs/TODO-agent-reorg.md"
+      ]
+    }
+  }
+}
+

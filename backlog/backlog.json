@@ -1,0 +1,254 @@
+{
+  "generated_at": "2025-10-27T10:14:19",
+  "areas": [
+    {
+      "area": "okno-glowne",
+      "topics": [
+        {
+          "id": "TOPIC-20251024_195056-001",
+          "title": "Okno Glowne",
+          "status": "backlog",
+          "brief": "backlog\\okno-glowne\\topics\\TOPIC-20251024_195056-001\\BRIEF-20251024_195056-001.json",
+          "pdca": "backlog\\okno-glowne\\topics\\TOPIC-20251024_195056-001\\PDCA-20251024_200000-001.md",
+          "tasks": [
+            {
+              "id": "ORIN-20251024-001",
+              "title": "CoS v0.1 - manualny cykl i overlay parity",
+              "status": "done",
+              "owner": "Orin",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "VIREAL-20251024-001",
+              "title": "Architektura cyklu Cos v0.1",
+              "status": "done",
+              "owner": "Vireal",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "LUMEN-20251024-001",
+              "title": "Implementacja cyklu Cos v0.1",
+              "status": "done",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "KAI-20251024-001",
+              "title": "Plan testow Cos v0.1",
+              "status": "done",
+              "owner": "Kai",
+              "deferred": null,
+              "tags": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "area": "overlay",
+      "topics": [
+        {
+          "id": "TOPIC-20251025_000554-001",
+          "title": "Overlay",
+          "status": "backlog",
+          "brief": "backlog\\overlay\\topics\\TOPIC-20251025_000554-001\\BRIEF-20251025_000554-001.json",
+          "pdca": "backlog\\overlay\\topics\\TOPIC-20251025_000554-001\\PDCA-20251025_001000-001.md",
+          "tasks": [
+            {
+              "id": "LUMEN-20251025-002",
+              "title": "Parity overlay Cos v0.1",
+              "status": "done",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "KAI-20251025-002",
+              "title": "Testy overlay parity",
+              "status": "done",
+              "owner": "Kai",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "ECHO-20251025-001",
+              "title": "Repo audit overlay (instrumentation gaps)",
+              "status": "done",
+              "owner": "Echo",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "NODUS-20251025-001",
+              "title": "Overlay permissions + ADB checklist",
+              "status": "done",
+              "owner": "Nodus",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "NODUS-20251025-002",
+              "title": "Overlay sanity rerun (double tap, instrumentation)",
+              "status": "done",
+              "owner": "Nodus",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "VIREAL-20251025-003",
+              "title": "Overlay guard rails (doc)",
+              "status": "done",
+              "owner": "Vireal",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "SCRIBE-20251025-001",
+              "title": "Overlay parity chronicle",
+              "status": "done",
+              "owner": "Scribe",
+              "deferred": null,
+              "tags": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "area": "morfogeneza",
+      "topics": [
+        {
+          "id": "TOPIC-20251025_120000-001",
+          "title": "Morfogeneza",
+          "status": "backlog",
+          "brief": "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\BRIEF-20251025_120000-001.json",
+          "pdca": "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\PDCA-20251027_120000-001.md",
+          "tasks": [
+            {
+              "id": "ORIN-20251025-002",
+              "title": "Morfogeneza v0.1 - orkiestracja sesji",
+              "status": "done",
+              "owner": "Orin",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "ECHO-20251025-002",
+              "title": "Research kreatora Morfogenezy",
+              "status": "done",
+              "owner": "Echo",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "VIREAL-20251025-002",
+              "title": "ADR formy Cosia",
+              "status": "done",
+              "owner": "Vireal",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "LUMEN-20251025-003",
+              "title": "UI wejscia do Morfogenezy",
+              "status": "done",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "LUMEN-20251025-004",
+              "title": "Menu poziomu i zasobow komorek",
+              "status": "done",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "LUMEN-20251025-005",
+              "title": "Edytor komorek i zapisy form",
+              "status": "done",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "LUMEN-20251026-006",
+              "title": "Canvas UX Morfogenezy",
+              "status": "done",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "KAI-20251025-003",
+              "title": "Plan testow Morfogenezy",
+              "status": "done",
+              "owner": "Kai",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "NODUS-20251026-004",
+              "title": "Sanity kanalu forma_aktywna po undo/redo",
+              "status": "done",
+              "owner": "Nodus",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "MIRA-20251025-001",
+              "title": "Brief Morfogenezy Cos",
+              "status": "done",
+              "owner": "Storywright",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "SCRIBE-20251026-002",
+              "title": "Kronika Morfogenezy 006",
+              "status": "done",
+              "owner": "Scribe",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "MORPHO-007-undo-redo",
+              "title": "Undo/Redo w edytorze form",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": true,
+              "tags": [
+                "backlog",
+                "someday"
+              ]
+            },
+            {
+              "id": "MORPHO-008-autosort",
+              "title": "Autosort form",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": true,
+              "tags": [
+                "backlog"
+              ]
+            },
+            {
+              "id": "MORPHO-009-presety",
+              "title": "Presety form",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": true,
+              "tags": [
+                "backlog"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

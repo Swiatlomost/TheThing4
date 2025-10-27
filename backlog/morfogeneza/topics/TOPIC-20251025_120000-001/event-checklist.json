@@ -1,0 +1,15 @@
+{
+  "owners": ["Nodus", "Kai"],
+  "checks": [
+    {
+      "id": "EV-006-ADB-01",
+      "adb": "adb logcat -d -s MorfoEvent:*",
+      "expect": "forma_aktywna (FORM-*)"
+    }
+  ],
+  "links": {
+    "canonical": "docs/testing/morphogeneza-event-checklist.md"
+  },
+  "meta": {"updated_at": "2025-10-27"}
+}
+

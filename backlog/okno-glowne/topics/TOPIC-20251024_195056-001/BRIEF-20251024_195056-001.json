@@ -1,0 +1,31 @@
+{
+  "date": "2025-10-24_195056",
+  "id": "BRIEF-20251024_195056-001",
+  "title": "Cos v0.1 — manualny cykl",
+  "why": [
+    "Zapewnienie zrozumiałej pętli życia organizmu (Seed→Bud→Mature→Spawned) jako fundamentu gry i telemetrii.",
+    "Spójność zachowania między aplikacją i overlay (parytet)."
+  ],
+  "what": [
+    "Cykl 2×10 s z regułą styku: każda nowa komórka ma fizyczny kontakt z rodzicem.",
+    "Sterowanie dotykiem, identyfikatory komórek, bez historii ruchów w MVP."
+  ],
+  "how": [
+    "CosLifecycleEngine: stan, paczkowanie komórek w heks pierścieniach, promienie.",
+    "Compose canvas: rysowanie stanu; minimalna animacja; logowanie sanity.",
+    "Kai: plan testów Cos v0.1."
+  ],
+  "what_if": [
+    "Parametryzacja czasu i pędu w przyszłości.",
+    "Historia ruchów po stabilizacji MVP."
+  ],
+  "links": {
+    "ADR": [
+      "docs/architecture/COS-v0.1-architecture.md"
+    ],
+    "TESTS": [
+      "docs/testing/cos-v0.1-test-plan.md"
+    ]
+  }
+}
+

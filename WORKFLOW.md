@@ -1,28 +1,26 @@
-﻿# WORKFLOW.md - Process (v2.0)
+# WORKFLOW.md - Process (Lean v3)
 
 ## Session Ritual
-1. `[SESSION::START]` - run pre-task validation (status, logs, memories).
-2. Mira (Storywright) destyluje rozmowe z wlascicielem wizji i przygotowuje brief dla Orina.
-   - Storywright zapisuje brief w `agents/storywright/briefs/`; Orin siega po niego przy planowaniu.
-3. Orin loads memories, drafts the session file, and assigns agent tasks.
-   - Po aktywacji sesji mechanizm koordynacji (asystent) wysyla zlecenia `[AGENT::...]` wedlug planu; Orin interweniuje tylko przy decyzjach lub eskalacjach.
-4. Echo & Vireal analyse and propose options.
-5. Lumen & Nodus implement and integrate.
-6. Kai reviews quality gates.
-7. Scribe records facts and narrative.
-8. Nyx updates memories and snapshots.
+1. `[SESSION::START]` — uruchom `python scripts/validate.py`; następnie `pwsh scripts/session_start_hook.ps1` promuje pierwsze `pending` w `backlog/board.json` do `in_progress`.
+2. Mira (Storywright) destyluje rozmowę i aktualizuje `topics/<TOPIC>/brief.json`.
+3. Orin zarządza planem w `board.json` (dodaje zadania, ustawia statusy), linkuje PDCA per zadanie w `topics/<TOPIC>/tasks/<TASK-ID>/`.
+4. Echo & Vireal analizują i proponują opcje (zapisy w PDCA/logu zadania).
+5. Lumen & Nodus implementują i integrują (log per zadanie).
+6. Kai weryfikuje jakość i testy (test-plan w katalogu zadania lub `topics/<TOPIC>/tests/`).
+7. Scribe dopisuje rozdziały do `reports/chronicle.md` (fakty z logów zadań).
+8. Nyx aktualizuje `agents/<name>/memory.json` po istotnych zmianach.
 
-Before switching any task to `in_progress`, the owning agent fills a PDCA card using the template in `docs/templates/pdca-template.md` and links that entry inside their `log.md` (see PDCA Anchor in `docs/reference/session-timeline.md`).
+Before switching a task to `in_progress`, the owner fills PDCA in `topics/<...>/tasks/<TASK-ID>/pdca.md` and notes the intent in `log.md` (see PDCA Anchor in `docs/reference/session-timeline.md`).
 
 ## Pre-task Validation Checklist
-- Dostępne jako zadanie VS Code `Validate Pre-Session Checklist` (uruchamia `python scripts/validate-agent-sync.py`).
-- [ ] `agents/status.json` matches every `task.json`.
-- [ ] No `done` items left inside `active_tasks`.
-- [ ] Latest logs present for each agent (within 24h).
-- [ ] Memories mają `last_updated` (zmiana) lub `last_reviewed` (potwierdzenie) młodsze niż 3 dni.
-- [ ] Automation scripts run without error.
+- VS Code task: `Validate Lean Structure` (uruchamia `python scripts/validate.py`).
+- [ ] `board.json` parsuje się poprawnie i nie ma duplikatów ID.
+- [ ] Każde zadanie ma właściciela i status.
+- [ ] Linki zadań wskazują na istniejące pliki (PDCA/log/brief/test-plan — gdzie dotyczy).
+- [ ] Pamięci agentów mają świeży `last_updated` lub `last_reviewed` (<= 3 dni).
+- [ ] Skrypty działają bez błędów.
 
-If the checklist fails: **pause work**, fix discrepancies, log the incident, rerun validation.
+If the checklist fails: pause work, fix discrepancies, log the incident (in the relevant task `log.md`), rerun validation.
 
 ## Communication Rules
 - Finish replies with a **Next step** line.
@@ -31,22 +29,15 @@ If the checklist fails: **pause work**, fix discrepancies, log the incident, rer
 - Keep prompts short using tags `[TASK::...]`, `[AGENT::...]`, `[MODE::...]` when possible.
 
 ## Definition of Done
-- Artefact produced and reviewed (Kai).
-- Dodatkowe wymagania produktowe (np. overlay, CLI) sa w `docs/reference/` i stosuje sie je tylko dla zwiazanych zadan.
-- Log entry recorded (Scribe).
-- `task.json` and `agents/status.json` moved to `done`.
-- Memory updated if the change affects future decisions.
-
-## Cooldown Checklist
-1. Delivery agent marks task `done` in `task.json` with summary.
-2. Orin moves completed items in `agents/status.json` and archives in the session file.
-3. Scribe writes cooldown note in log + chronicle.
-4. Kai attaches final test results.
-5. Nyx snapshots memory changes if any.
+- Artefakt dostarczony i zreviewowany (Kai) — link w `board.json`.
+- Dodatkowe wymagania produktowe (`docs/reference/`) stosowane tylko dla powiązanych zadań.
+- Log per zadanie uzupełniony (Why → Next), kronika zaktualizowana.
+- Status w `board.json` ustawiony na `done`.
+- Pamięć zaktualizowana jeśli wpływa na przyszłe decyzje.
 
 ## Symptoms of Drift
-- `agents/status.json` shows tasks missing from agent files.
-- Logs lack timestamps around major changes.
-- Memories reference outdated workflows.
+- Brak spójności między `board.json` a folderami `topics/`.
+- Logi per zadanie nie zawierają decyzji przy dużych zmianach.
+- Pamięci agentów referują przestarzałe reguły.
 
-When drift occurs, Orin leads a correction pass and documents the fix in `agents/orin/log.md`.
+When drift occurs, Orin leads a correction pass and documents the fix in the relevant task `log.md` and updates `board.json`.

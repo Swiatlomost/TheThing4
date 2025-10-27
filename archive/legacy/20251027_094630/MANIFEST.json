@@ -1,0 +1,222 @@
+{
+  "generated_at": "2025-10-27T09:46:30",
+  "root": "D:\\TheThing4\\TheThing4",
+  "items": [
+    {
+      "path": "agents\\status.json",
+      "size": 9390,
+      "mtime": 1761511279,
+      "sha256": "c8f9dac073c48aa755a2739623b55a56b7d4b43e3e8955ae2bc63fc548cf5caa"
+    },
+    {
+      "path": "agents\\status.md",
+      "size": 3476,
+      "mtime": 1761492592,
+      "sha256": "d22c1eba82768c7ee8f9113ae1bdd97ec1771aac12f159d5c6cfedbab29639d4"
+    },
+    {
+      "path": "agents\\dashboard.md",
+      "size": 800,
+      "mtime": 1761424514,
+      "sha256": "bafbfdf41b4824e85d2d89fb7770bd43a6a82ca1d6a20fcac6b41cf2b65b231f"
+    },
+    {
+      "path": "agents\\aurum\\task.json",
+      "size": 1785,
+      "mtime": 1761424514,
+      "sha256": "3f91e1c91dfc3ba446de25be326735e9664bec41b89db02f4200c81a8e8c4834"
+    },
+    {
+      "path": "agents\\echo\\task.json",
+      "size": 2931,
+      "mtime": 1761510552,
+      "sha256": "55d750ccc948768eb2f98ae48de7bad2489228de266b36d9979cebafc3426230"
+    },
+    {
+      "path": "agents\\kai\\task.json",
+      "size": 3585,
+      "mtime": 1761510631,
+      "sha256": "e92366e5be517569f3ded0cac4ccc37d7e67bcd9efc1a6e2304dbb2ca9caf04c"
+    },
+    {
+      "path": "agents\\lumen\\task.json",
+      "size": 9997,
+      "mtime": 1761499579,
+      "sha256": "4cb2e270b9a46b4ff9b2dbe8a141051bc6b3ae2e325cd60b7b4025853b764a07"
+    },
+    {
+      "path": "agents\\nodus\\task.json",
+      "size": 3924,
+      "mtime": 1761501359,
+      "sha256": "cefa26bb255bc0ea4bf42687bc5c7dd2974dda16bed96ed61d23ee9413e23cc9"
+    },
+    {
+      "path": "agents\\nyx\\task.json",
+      "size": 1641,
+      "mtime": 1761424514,
+      "sha256": "6a556c45ab976b6726916daeec99b409c14a4aa91fdb0cece300ed5eb83b1931"
+    },
+    {
+      "path": "agents\\orin\\task.json",
+      "size": 11322,
+      "mtime": 1761511324,
+      "sha256": "fd87f3d02acddce8d5ff1ec10138fb0a527007c97d1c5a8bf2c85a80fe03a0a4"
+    },
+    {
+      "path": "agents\\scribe\\task.json",
+      "size": 4050,
+      "mtime": 1761511020,
+      "sha256": "b919775523af175f4213339394783f3ccb894ba79fd600bd70a23cb3ee55575b"
+    },
+    {
+      "path": "agents\\storywright\\task.json",
+      "size": 1974,
+      "mtime": 1761510671,
+      "sha256": "a61617ad9d011c1a3211bdac5460f761a84322ab5d5179428c862a772875c196"
+    },
+    {
+      "path": "agents\\vireal\\task.json",
+      "size": 2943,
+      "mtime": 1761424514,
+      "sha256": "c8de940f831f8c5fd83cccd63dd9efaa53af5371f037014299ae84cc8485fd8d"
+    },
+    {
+      "path": "agents\\aurum\\log.md",
+      "size": 1063,
+      "mtime": 1761424514,
+      "sha256": "f4feb3a465644563be406d2de2b53a034275b4e181f38dde98baa3764b1c9d5e"
+    },
+    {
+      "path": "agents\\echo\\log.md",
+      "size": 3126,
+      "mtime": 1761510533,
+      "sha256": "bd61f9311fb9dd1303f12ae76cf55bcb7637c444f7c5dba85697cd7dc4212c98"
+    },
+    {
+      "path": "agents\\kai\\log.md",
+      "size": 3157,
+      "mtime": 1761510573,
+      "sha256": "3e7fc111fd997dcce382a01dcde4b6ddd41a98537b97381f1688a6cbbb739e07"
+    },
+    {
+      "path": "agents\\lumen\\log.md",
+      "size": 4858,
+      "mtime": 1761500668,
+      "sha256": "b7d55ebd5f6726a3e5c9d8923b1d1de5c306c6c26b60dfa632bde264e0baf1c3"
+    },
+    {
+      "path": "agents\\nodus\\log.md",
+      "size": 2587,
+      "mtime": 1761501588,
+      "sha256": "1c957242792b3c6ff034ff8ee834ae036c97d42a5ab4b2ca36373e6e8bdb6709"
+    },
+    {
+      "path": "agents\\nyx\\log.md",
+      "size": 1248,
+      "mtime": 1761424514,
+      "sha256": "7346ae8014075726843daeb0fc64ffb6984486b046d4a599b38a237ffda0378e"
+    },
+    {
+      "path": "agents\\orin\\log.md",
+      "size": 3641,
+      "mtime": 1761511364,
+      "sha256": "7f1cbd7f2317c3c001524afaa750c2c7dcd8c04fd899e77923ee63ce55df0064"
+    },
+    {
+      "path": "agents\\scribe\\log.md",
+      "size": 1321,
+      "mtime": 1761510945,
+      "sha256": "e6c84120f9c6d1d3a355ae2f49e03a1629ceb5b93b5ac9e94be8e5a13e6b1025"
+    },
+    {
+      "path": "agents\\storywright\\log.md",
+      "size": 2068,
+      "mtime": 1761510649,
+      "sha256": "f7c05a9b9ad0c145fa39f6ad7e3fb6acbd968ea52b3af060e29731d219056168"
+    },
+    {
+      "path": "agents\\vireal\\log.md",
+      "size": 1879,
+      "mtime": 1761424514,
+      "sha256": "71decdee71e6bcde3c3d2f63a8b8cd8a28e863c969a085411f9e779da7000b18"
+    },
+    {
+      "path": "agents\\storywright\\briefs\\2025-10-24-cos-v0-1.json",
+      "size": 2875,
+      "mtime": 1761424514,
+      "sha256": "4a48208c3b0ab008e0e92ddfda4e5bba4931a93d196b42c42f39de5f308ac8eb"
+    },
+    {
+      "path": "agents\\storywright\\briefs\\README.md",
+      "size": 277,
+      "mtime": 1761424514,
+      "sha256": "b5c58d8c335ed38e9ba04802fa54edda1abe70a98450b1ff1a6fdc8727f90fbb"
+    },
+    {
+      "path": "sessions\\ORIN-20251024-001-cos-v0-1.md",
+      "size": 2895,
+      "mtime": 1761424515,
+      "sha256": "a4fbfa4f15799d2fe105f4bee241c508c54e7757ee962b3dea485660ed3da8d2"
+    },
+    {
+      "path": "sessions\\ORIN-20251025-002-morfogeneza-brief.md",
+      "size": 3601,
+      "mtime": 1761505730,
+      "sha256": "a1a778bef6386466e8fd66caafee2419f30fe0d5b0bf931b69a99a0585968a21"
+    },
+    {
+      "path": "sessions\\README.md",
+      "size": 232,
+      "mtime": 1761424515,
+      "sha256": "3793433b8ea6e2f9fd287719e29cdcbc718b307c3898d15d66555624ff7182f7"
+    },
+    {
+      "path": "topics\\MORPHO-2025Q4-morphogenesis\\brief.json",
+      "size": 1755,
+      "mtime": 1761548679,
+      "sha256": "081ff1e3dabf064cd107e7f64b0cdc50b885eb5eee82f7ec31130ce56181cb3e"
+    },
+    {
+      "path": "topics\\MORPHO-2025Q4-morphogenesis\\topic.json",
+      "size": 870,
+      "mtime": 1761548663,
+      "sha256": "e2d8f380e873100fb22bfe013c936645b3250cef52258c8ef55637e8314bd890"
+    },
+    {
+      "path": "topics\\MORPHO-2025Q4-morphogenesis\\tasks\\MORPHO-007-undo-redo\\log.md",
+      "size": 186,
+      "mtime": 1761548708,
+      "sha256": "5af4316cf9dc8bad7b50d9727bbd725f688e67638318c2a5f844a7d3c5b7c991"
+    },
+    {
+      "path": "topics\\MORPHO-2025Q4-morphogenesis\\tasks\\MORPHO-007-undo-redo\\pdca.md",
+      "size": 801,
+      "mtime": 1761548700,
+      "sha256": "c9a15dce72844bf9b6a72f5b58534ca4d3e96894895e33ff2a8665651853456f"
+    },
+    {
+      "path": "topics\\MORPHO-2025Q4-morphogenesis\\tasks\\MORPHO-007-undo-redo\\task.json",
+      "size": 449,
+      "mtime": 1761548688,
+      "sha256": "86c8ca0c051a109920b2b7ed902bc0bfded587dbaa94dac496a6a5bed2be75aa"
+    },
+    {
+      "path": "scripts\\validate-agent-sync.py",
+      "size": 8888,
+      "mtime": 1761424515,
+      "sha256": "4f931df11007adcbaa8017f5a1d25866d601cddedb921e6845f3da79ce985d8b"
+    },
+    {
+      "path": "scripts\\validate-agent-sync.ps1",
+      "size": 1299,
+      "mtime": 1761424515,
+      "sha256": "e66bd1cf9a7981a654512127c61aae991badddaa71047e6b73a40c4ede0926a6"
+    },
+    {
+      "path": "scripts\\set_in_progress.py",
+      "size": 1412,
+      "mtime": 1761424515,
+      "sha256": "224d6d6aa4df52558e60b4a5b0df0d24fb4f0a45e87bf1c99b8621dcab1eaa30"
+    }
+  ]
+}

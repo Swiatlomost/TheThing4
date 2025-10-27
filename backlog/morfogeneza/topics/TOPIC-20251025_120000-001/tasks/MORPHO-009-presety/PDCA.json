@@ -1,0 +1,13 @@
+{
+  "plan": ["Dodac presety form do szybkiego wyboru w edytorze"],
+  "do": [
+    "Zdefiniowac minimalny format presetu i zrodlo",
+    "Integracja z repo/kanałem (aktywacja presetow)",
+    "UI: lista presetow i podglad"
+  ],
+  "check": ["Testy UI: wybor presetow i aktywacja formy"],
+  "act": ["Rozszerzenia presetow (grupy, filtrowanie)"] ,
+  "links": {"brief": "../../BRIEF-20251025_120000-001.json"},
+  "meta": {"updated_at": "2025-10-27"}
+}
+

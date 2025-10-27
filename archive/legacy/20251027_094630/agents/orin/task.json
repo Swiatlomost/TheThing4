@@ -1,0 +1,162 @@
+﻿{
+    "agent":  "Orin",
+    "current_tasks":  [
+
+                      ],
+    "backlog":  [
+
+                ],
+    "completed_tasks":  [
+                            {
+                                "task_id":  "ORIN-20251025-002",
+                                "title":  "Morfogeneza v0.1 - przyrostowe wdrozenie",
+                                "status":  "done",
+                                "opened_at":  "2025-10-25",
+                                "closed_at":  "2025-10-26",
+                                "why":  "Nowy modul Morfogenezy ma rozszerzyc sprawczosc uzytkownika i zsynchronizowac formy Cosia z overlay.",
+                                "outcome":  "Przyrost 003-006 dowieziony: SharedFlow, promienie komorek, sanity logcat/dumpsys; undo/redo przesuniete do backlogu.",
+                                "linked_agent_tasks":  [
+                                                           {
+                                                               "agent":  "Echo",
+                                                               "task_id":  "ECHO-20251025-002",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Vireal",
+                                                               "task_id":  "VIREAL-20251025-002",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Lumen",
+                                                               "task_id":  "LUMEN-20251026-006",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Nodus",
+                                                               "task_id":  "NODUS-20251026-004",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Kai",
+                                                               "task_id":  "KAI-20251025-003",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Storywright",
+                                                               "task_id":  "MIRA-20251025-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Scribe",
+                                                               "task_id":  "SCRIBE-20251026-002",
+                                                               "status":  "done"
+                                                           }
+                                                       ]
+                            },
+                            {
+                                "task_id":  "ORIN-20251024-001",
+                                "title":  "CoS v0.1 - manualny cykl i overlay parity",
+                                "status":  "done",
+                                "opened_at":  "2025-10-24",
+                                "closed_at":  "2025-10-25",
+                                "why":  "Zapewnic spojny przebieg manualnego cyklu oraz parity overlay.",
+                                "outcome":  "Discovery -\u003e guard rails -\u003e core -\u003e overlay -\u003e testy -\u003e retro zamkniete; rekomendacje Aurum przekazane.",
+                                "linked_agent_tasks":  [
+                                                           {
+                                                               "agent":  "Echo",
+                                                               "task_id":  "ECHO-20251025-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Vireal",
+                                                               "task_id":  "VIREAL-20251025-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Lumen",
+                                                               "task_id":  "LUMEN-20251025-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Lumen",
+                                                               "task_id":  "LUMEN-20251025-002",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Kai",
+                                                               "task_id":  "KAI-20251025-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Kai",
+                                                               "task_id":  "KAI-20251025-002",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Nodus",
+                                                               "task_id":  "NODUS-20251025-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Nyx",
+                                                               "task_id":  "NYX-20251025-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Scribe",
+                                                               "task_id":  "SCRIBE-20251025-001",
+                                                               "status":  "done"
+                                                           },
+                                                           {
+                                                               "agent":  "Storywright",
+                                                               "task_id":  "MIRA-20251025-001",
+                                                               "status":  "in_progress"
+                                                           },
+                                                           {
+                                                               "agent":  "Aurum",
+                                                               "task_id":  "AURUM-20251025-001",
+                                                               "status":  "done"
+                                                           }
+                                                       ]
+                            }
+                        ],
+    "_template":  {
+                      "current_tasks":  [
+                                            {
+                                                "task_id":  "ORIN-YYYYMMDD-XXX",
+                                                "title":  "Cel nadrzedny",
+                                                "status":  "in_progress",
+                                                "opened_at":  "YYYY-MM-DD",
+                                                "last_update":  "YYYY-MM-DD",
+                                                "why":  "Dlaczego zadanie jest wazne",
+                                                "next":  "Najblizszy krok Orina",
+                                                "linked_agent_tasks":  [
+                                                                           {
+                                                                               "agent":  "Echo",
+                                                                               "task_id":  "ECHO-YYYYMMDD-XXX",
+                                                                               "status":  "pending"
+                                                                           }
+                                                                       ]
+                                            }
+                                        ],
+                      "backlog":  [
+                                      {
+                                          "task_id":  "ORIN-BACKLOG-001",
+                                          "title":  "Pomysl do rozpoznania",
+                                          "notes":  "Wypisz co trzeba przygotowac przed aktywacja."
+                                      }
+                                  ],
+                      "completed_tasks":  [
+                                              {
+                                                  "task_id":  "ORIN-YYYYMMDD-XXX",
+                                                  "title":  "Nazwa zadania",
+                                                  "status":  "done",
+                                                  "closed_at":  "YYYY-MM-DD",
+                                                  "outcome":  "Co dowiozl zespol",
+                                                  "linked_agent_tasks":  [
+
+                                                                         ]
+                                              }
+                                          ]
+                  }
+}

@@ -1,16 +1,20 @@
-# Agents Directory
+# Agents Directory (Lean)
 
-Each agent keeps three core files:
-- `task.json` - active and completed work, mirroring `agents/status.json`.
-- `log.md` - running journal with decisions and timestamps.
-- `memory.json` - evergreen heuristics updated at least once per day.
+- Pamięć zespołu jest utrzymywana centralnie w `agents/memory.json` (mapa `agents.{Name}` z treściami pamięci każdego agenta).
+- Statusy i praca operacyjna są w `backlog/board.json` oraz `backlog/<obszar>/topics/...` (PDCA/log per zadanie).
+- Kronika projektu: `reports/chronicle.md`.
 
-Optional artefacts (such as Scribe's `chronicle.md`) live alongside these files.
+## Memory
+- Edytuj wpisy bezpośrednio w `agents/memory.json` (pole `last_updated` lub `last_reviewed`).
+- Dla kompatybilności możesz wyeksportować/importować per‑agent pliki:
+  - Export: `python scripts/memory_sync.py export`
+  - Import: `python scripts/memory_sync.py import`
+  - Status: `python scripts/memory_sync.py status`
 
-## Workflow
-1. Orin rejestruje nowe zadanie w `agents/orin/task.json` oraz `agents/status.json`.
-2. Powiazani agenci kopiują wpis do swojego `task.json` i rozpoczynają logowanie.
-3. Przed ustawieniem statusu `in_progress` wypelnij PDCA w `log.md` (szablon: `docs/templates/pdca-template.md`).
-4. Po zakonczeniu przenies wpisy do `completed_tasks`, wykonaj cooldown checklist i poproś Nyx o aktualizacje pamieci gdy kontekst sie zmienil.
+## Start pracy
+- Walidacja: `python scripts/validate.py`
+- Indeks backlogu: `python scripts/update_backlog_index.py`
+- Start sesji: `[SESSION::START]` (promocja z `backlog/board.json`)
 
-Stosuj procedury rozwiazywania konfliktow z `AGENTS.md` gdy role maja rozbiezne oczekiwania.
+Więcej zasad: `AGENTS.md`, `AI_GUIDE.md`, `WORKFLOW.md`.
+

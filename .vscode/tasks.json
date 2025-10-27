@@ -4,12 +4,12 @@
     {
       "label": "Init Collaboration Context",
       "type": "shell",
-      "command": "echo 'Read PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md to warm up the model.'"
+      "command": "echo 'Read README.md, PROJECT_CONTEXT.md, AGENTS.md, WORKFLOW.md, MEMORY_SPEC.md, AI_GUIDE.md to warm up the model.'"
     },
     {
       "label": "Start Session",
       "type": "shell",
-      "command": "echo '[SESSION::START] Prosze zainicjowac dziennik i potwierdzic cel sesji.'"
+      "command": "pwsh scripts/session_start_hook.ps1"
     },
     {
       "label": "Promote First Orin Task",
@@ -17,13 +17,56 @@
       "command": "pwsh scripts/session_start_hook.ps1"
     },
     {
-      "label": "Validate Pre-Session Checklist",
+      "label": "Validate Lean Structure",
       "type": "shell",
-      "command": "python scripts/validate-agent-sync.py",
+      "command": "python scripts/validate.py",
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "Update Backlog Index",
+      "type": "shell",
+      "command": "python scripts/update_backlog_index.py",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Context: Build for Task",
+      "type": "shell",
+      "command": "python scripts/context.py task ${input:taskId}",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Board: Move -> in_progress",
+      "type": "shell",
+      "command": "python scripts/board.py move ${input:taskId} in_progress",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Board: Move -> done",
+      "type": "shell",
+      "command": "python scripts/board.py move ${input:taskId} done",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Memory: Status",
+      "type": "shell",
+      "command": "python scripts/memory_sync.py status",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "taskId",
+      "type": "promptString",
+      "description": "Enter TASK-ID (e.g., MORPHO-008-autosort)",
+      "default": "MORPHO-008-autosort"
     }
   ]
 }

@@ -1,0 +1,50 @@
+{
+    "agent": "Nyx",
+    "current_tasks": [],
+    "completed_tasks": [
+        {
+            "task_id": "NYX-20251025-001",
+            "parent_task_id": "ORIN-20251024-001",
+            "title": "Pamiec manualnego cyklu",
+            "status": "done",
+            "assigned_at": "2025-10-25",
+            "last_update": "2025-10-25",
+            "completed_at": "2025-10-25",
+            "notes": "Memory.json uaktualnione, sanity UTF-8 potwierdzone, snapshot parity zapisany.",
+            "deliverables": [
+                "Zaktualizowany memory.json",
+                "Snapshot"
+            ]
+        }
+    ],
+    "_template": {
+        "current_tasks": [
+            {
+                "task_id": "NYX-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Aktualizacja pamieci",
+                "status": "pending",
+                "assigned_at": "YYYY-MM-DD",
+                "last_update": "YYYY-MM-DD",
+                "notes": "Co nalezy zsyntezowac",
+                "deliverables": [
+                    "memory.json",
+                    "snapshot"
+                ]
+            }
+        ],
+        "completed_tasks": [
+            {
+                "task_id": "NYX-YYYYMMDD-XXX",
+                "parent_task_id": "ORIN-YYYYMMDD-XXX",
+                "title": "Aktualizacja pamieci",
+                "status": "done",
+                "completed_at": "YYYY-MM-DD",
+                "summary": "Co zostalo zachowane",
+                "references": [
+                    "Pliki powiazane"
+                ]
+            }
+        ]
+    }
+}
