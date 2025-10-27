@@ -25,6 +25,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.toArgb
+import android.graphics.ComposeShader
+import android.graphics.PorterDuff
+import android.graphics.RadialGradient
+import android.graphics.Shader
+import android.graphics.LinearGradient
 import androidx.compose.ui.unit.dp
 import com.example.cos.designsystem.components.NeonButton
 import com.example.cos.designsystem.tokens.LocalUiTokens
@@ -69,6 +74,32 @@ fun SkinDemoScreen(onBack: () -> Unit) {
                 NeonButton(text = "Neon A", onClick = {})
                 NeonButton(text = "Neon B", onClick = {})
             }
+
+            // --- Energy Fill Demo ---
+            Text("Energy fill (Gaussian)", style = MaterialTheme.typography.titleMedium)
+            var whiten by remember { mutableStateOf(0.9f) }
+            var coreAlpha by remember { mutableStateOf(0.95f) }
+            var glowAlpha by remember { mutableStateOf(0.65f) }
+            var coreStop by remember { mutableStateOf(0.60f) }
+            var glowStop by remember { mutableStateOf(0.72f) }
+            var rimAlpha by remember { mutableStateOf(0.22f) }
+
+            EnergyFillPreview(
+                modifier = Modifier.fillMaxWidth().height(240.dp),
+                whiten = whiten,
+                coreAlpha = coreAlpha,
+                glowAlpha = glowAlpha,
+                coreStop = coreStop,
+                glowStop = glowStop,
+                rimAlpha = rimAlpha
+            )
+
+            LabeledSlider("whiten", whiten, 0f..1f) { whiten = it }
+            LabeledSlider("core-alpha", coreAlpha, 0f..1f) { coreAlpha = it }
+            LabeledSlider("glow-alpha", glowAlpha, 0f..1f) { glowAlpha = it }
+            LabeledSlider("core-stop", coreStop, 0.3f..0.9f) { coreStop = it }
+            LabeledSlider("glow-stop", glowStop, 0.5f..0.95f) { glowStop = it }
+            LabeledSlider("rim-alpha", rimAlpha, 0f..1f) { rimAlpha = it }
         }
     }
 }
@@ -119,5 +150,77 @@ private fun LabeledSlider(label: String, value: Float, range: ClosedFloatingPoin
             Text(String.format("%.2f", value), style = MaterialTheme.typography.bodySmall)
         }
         Slider(value = value, onValueChange = onChange, valueRange = range)
+    }
+}
+
+@Composable
+private fun EnergyFillPreview(
+    modifier: Modifier = Modifier,
+    whiten: Float,
+    coreAlpha: Float,
+    glowAlpha: Float,
+    coreStop: Float,
+    glowStop: Float,
+    rimAlpha: Float,
+) {
+    val accent = MaterialTheme.colorScheme.primary
+    Canvas(modifier = modifier.padding(8.dp)) {
+        val c = center
+        val r = size.minDimension * 0.3f
+
+        drawIntoCanvas { canvas ->
+            val p = androidx.compose.ui.graphics.Paint()
+            val fp = p.asFrameworkPaint()
+            fp.isAntiAlias = true
+            fp.style = android.graphics.Paint.Style.FILL
+
+            fun mixToWhite(t: Float): androidx.compose.ui.graphics.Color {
+                val cl = t.coerceIn(0f, 1f)
+                return androidx.compose.ui.graphics.Color(
+                    red = androidx.compose.ui.util.lerp(accent.red, 1f, cl),
+                    green = androidx.compose.ui.util.lerp(accent.green, 1f, cl),
+                    blue = androidx.compose.ui.util.lerp(accent.blue, 1f, cl),
+                    alpha = accent.alpha
+                )
+            }
+
+            val coreColor = mixToWhite(whiten)
+            val core = RadialGradient(
+                c.x, c.y, r,
+                intArrayOf(
+                    coreColor.copy(alpha = coreAlpha).toArgb(),
+                    coreColor.copy(alpha = coreAlpha * 0.55f).toArgb(),
+                    coreColor.copy(alpha = coreAlpha * 0.12f).toArgb(),
+                    android.graphics.Color.TRANSPARENT
+                ),
+                floatArrayOf(0f, coreStop * 0.6f, coreStop, 1f),
+                Shader.TileMode.CLAMP
+            )
+
+            val glow = RadialGradient(
+                c.x, c.y, r,
+                intArrayOf(
+                    accent.copy(alpha = glowAlpha).toArgb(),
+                    accent.copy(alpha = glowAlpha * 0.5f).toArgb(),
+                    android.graphics.Color.TRANSPARENT
+                ),
+                floatArrayOf(0f, glowStop, 1f),
+                Shader.TileMode.CLAMP
+            )
+
+            val shader = ComposeShader(glow, core, PorterDuff.Mode.SCREEN)
+            fp.shader = shader
+            canvas.drawCircle(c, r, p)
+            fp.shader = null
+
+            // Rim light (preview only)
+            if (rimAlpha > 0f) {
+                fp.style = android.graphics.Paint.Style.STROKE
+                fp.color = accent.copy(alpha = rimAlpha).toArgb()
+                fp.strokeWidth = r * 0.08f
+                fp.maskFilter = null
+                canvas.drawCircle(c, r, p)
+            }
+        }
     }
 }
