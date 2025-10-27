@@ -59,6 +59,13 @@
       "command": "python scripts/memory_sync.py status",
       "options": { "cwd": "${workspaceFolder}" },
       "problemMatcher": []
+    },
+    {
+      "label": "Open Start Prompt",
+      "type": "shell",
+      "command": "code ${workspaceFolder}/start.md",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
     }
   ],
   "inputs": [
