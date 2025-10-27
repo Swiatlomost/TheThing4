@@ -1,0 +1,14 @@
+{
+  "plan": [
+    "Animacja kropka→pierścień wg ANIM-GUIDE (threshold, ring-width)",
+    "Parametry z tokenów: animation.birth-ms, anim-params.birth-threshold, anim-params.ring-width-dp, glow.*",
+    "Zsynchronizować z overlay (SharedFlow) i używać tych samych tokenów"
+  ],
+  "do": [],
+  "check": [
+    "60 fps; brak aliasingu; parzystość overlay; płynne przejście w progu"
+  ],
+  "act": [],
+  "links": {"brief": "../../BRIEF-20251027_130000-UI-glow.json", "guide": "../../ANIM-GUIDE-20251027-birth-mature.md"},
+  "meta": { "updated_at": "2025-10-27" }
+}

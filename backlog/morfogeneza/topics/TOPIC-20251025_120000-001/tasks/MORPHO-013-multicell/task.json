@@ -1,0 +1,16 @@
+{
+  "id": "MORPHO-013-multicell",
+  "status": "pending",
+  "owner": "Lumen",
+  "title": "Organizm wielokomórkowy: układ i render z glow",
+  "deliverables": [
+    "Układ kół w dużym okręgu (siatka/pack) z równym promieniem",
+    "Poświata wokół każdej komórki i obwodu kontenera",
+    "Render demo + parametry w tokenach"
+  ],
+  "links": {
+    "brief": "../../BRIEF-20251027_130000-UI-glow.json",
+    "adr": "../../ADR-20251025_120000-001.md",
+    "test_plan": "../../TEST-PLAN-20251026_120000-001.md"
+  }
+}

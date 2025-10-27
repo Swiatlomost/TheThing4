@@ -1,0 +1,16 @@
+{
+  "id": "MORPHO-012-anim-mature",
+  "status": "pending",
+  "owner": "Lumen",
+  "title": "Animacja dojrzewania: wypełnienie gradientem",
+  "deliverables": [
+    "Gradientowe wypełnienie komórki w czasie (400–800 ms, easeInOutSine)",
+    "Parametry w tokenach wspólnych (app/overlay)",
+    "Demo + hook pod testy percepcyjne"
+  ],
+  "links": {
+    "brief": "../../BRIEF-20251027_130000-UI-glow.json",
+    "adr": "../../ADR-20251025_120000-001.md",
+    "test_plan": "../../TEST-PLAN-20251026_120000-001.md"
+  }
+}

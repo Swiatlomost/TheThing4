@@ -1,0 +1,15 @@
+{
+  "plan": [
+    "Gradient fill wg ANIM-GUIDE (rFill→R - ring-width)",
+    "Parametry z tokenów: animation.mature-ms, anim-params.ring-width-dp, glow.*, palette.*",
+    "Integracja z sekwencją dojrzewania"
+  ],
+  "do": [],
+  "check": [
+    "Brak przecieków poza pierścień, spójność z Birth",
+    "60 fps i parzystość overlay/app"
+  ],
+  "act": [],
+  "links": {"brief": "../../BRIEF-20251027_130000-UI-glow.json", "guide": "../../ANIM-GUIDE-20251027-birth-mature.md"},
+  "meta": { "updated_at": "2025-10-27" }
+}
