@@ -1,0 +1,9 @@
+{
+  "id": "UI-SKIN-v0.3-events",
+  "checks": [
+    "App launch → Skin Demo opens",
+    "Lifecycle screen renders neon ring + halo",
+    "Overlay starts (permission handled) and matches app",
+    "Glow clipped to circular boundary in overlay"
+  ]
+}

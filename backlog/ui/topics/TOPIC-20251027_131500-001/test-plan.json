@@ -1,0 +1,27 @@
+{
+  "id": "UI-SKIN-v0.3-test-plan",
+  "scenarios": [
+    {
+      "id": "SKIN-DEMO-NEON",
+      "steps": [
+        "Uruchom app, wejdź w Skin Demo",
+        "Zmień ring/halo/blur suwakami i obserwuj podgląd",
+        "Oczekuj: płynny glow, brak aliasingu"
+      ]
+    },
+    {
+      "id": "APP-LIFECYCLE-GLOW",
+      "steps": [
+        "Ekran główny: sprawdź 2 komórki",
+        "Oczekuj: neon ring + halo zgodnie z parametrami (5.1/11.3/0.40/46)"
+      ]
+    },
+    {
+      "id": "OVERLAY-PARITY",
+      "steps": [
+        "Włącz overlay, porównaj z app",
+        "Oczekuj: parzystość glow; halo nie wychodzi poza koło (maskowanie)"
+      ]
+    }
+  ]
+}

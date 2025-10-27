@@ -1,0 +1,12 @@
+{
+  "id": "SKIN-002-app-theme",
+  "status": "pending",
+  "owner": "Lumen",
+  "title": "Compose Theme + komponenty neon (3 ekrany)",
+  "deliverables": [
+    "Material/Compose Theme bazujący na tokenach",
+    "Komponenty: przycisk glow, pasek progresu, nagłówek",
+    "Skórkowane: ekran pytania, okno główne, menu"
+  ],
+  "links": {"brief": "../../BRIEF-20251027_131500-UI-skin.json"}
+}

@@ -1,0 +1,46 @@
+{
+  "version": "0.3-cyan-noir",
+  "palette": {
+    "bg-primary": "#FF050A0E",
+    "bg-elevated": "#FF0D141A",
+    "text-high": "#FFDFF6FF",
+    "text-medium": "#FF8AD3FF",
+    "accent-cyan": "#FF18D6FF",
+    "accent-cyan-weak": "#8018D6FF"
+  },
+  "glow": {
+    "radius-dp": 16,
+    "intensity": 0.95,
+    "blur-dp": 36,
+    "stroke-dp": 2,
+    "halo-width-mult": 8.0,
+    "halo-alpha": 0.35
+  },
+  "cell": {
+    "ring-stroke-dp": 3,
+    "ring-shadow-blur-dp": 16,
+    "ring-shadow-intensity": 0.9
+  },
+  "typography": {
+    "display-sp": 28,
+    "title-sp": 20,
+    "body-sp": 16,
+    "button-sp": 16
+  },
+  "animation": {
+    "birth-ms": 400,
+    "birth-ease": "easeOutCubic",
+    "mature-ms": 600,
+    "mature-ease": "easeInOutSine"
+  },
+  "anim-params": {
+    "birth-threshold": 0.8,
+    "ring-width-dp": 3,
+    "halo-exponent": 2.2,
+    "bg-radial-strength": 1.2
+  },
+  "progress": {
+    "height-dp": 6,
+    "glow-intensity": 0.8
+  }
+}
