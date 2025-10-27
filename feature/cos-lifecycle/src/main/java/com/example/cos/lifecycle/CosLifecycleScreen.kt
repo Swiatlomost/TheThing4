@@ -43,6 +43,7 @@ import android.graphics.ComposeShader
 import android.graphics.PorterDuff
 import android.graphics.RadialGradient
 import android.graphics.Shader
+import android.graphics.LinearGradient
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -236,7 +237,7 @@ private fun DrawScope.drawOrganism(
                 fp.isAntiAlias = true
                 fp.style = android.graphics.Paint.Style.FILL
 
-                val energyShader = EnergyShaders.composeEnergyShader(
+                val energyShader = EnergyShaders.composeGaussianEnergyShader(
                     cx = centerPx.x,
                     cy = centerPx.y,
                     radius = fillRadiusPx,
@@ -320,6 +321,92 @@ private object EnergyShaders {
     private val noiseBitmap: Bitmap by lazy { generatePlasma(NOISE_SIZE, NOISE_SIZE) }
     private val noiseShader: BitmapShader by lazy {
         BitmapShader(noiseBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT)
+    }
+
+    fun composeSpecularShader(
+        cx: Float,
+        cy: Float,
+        radius: Float,
+        accent: Color,
+        alpha: Float
+    ): Shader {
+        // Base spherical glow
+        val baseInner = accent.copy(alpha = (alpha * 0.85f).coerceIn(0f, 1f)).toArgb()
+        val baseMid = accent.copy(alpha = (alpha * 0.35f).coerceIn(0f, 1f)).toArgb()
+        val baseRadial = RadialGradient(
+            cx, cy, radius,
+            intArrayOf(baseInner, baseMid, android.graphics.Color.TRANSPARENT),
+            floatArrayOf(0f, 0.75f, 1f),
+            Shader.TileMode.CLAMP
+        )
+
+        // Diagonal specular streaks (\ and /)
+        val s = radius * 1.6f // extend beyond circle for smooth falloff
+        val hl = mixToWhite(accent, 0.65f).copy(alpha = (alpha * 0.9f).coerceIn(0f, 1f)).toArgb()
+        val tr = android.graphics.Color.TRANSPARENT
+        // Narrow band around center
+        val band = floatArrayOf(0f, 0.45f, 0.5f, 0.55f, 1f)
+        val col = intArrayOf(tr, tr, hl, tr, tr)
+
+        val diag1 = LinearGradient(
+            cx - s, cy - s, cx + s, cy + s,
+            col, band, Shader.TileMode.CLAMP
+        )
+        val diag2 = LinearGradient(
+            cx - s, cy + s, cx + s, cy - s,
+            col, band, Shader.TileMode.CLAMP
+        )
+
+        // Compose: base -> diag1 -> diag2 using SCREEN
+        val basePlus1 = ComposeShader(baseRadial, diag1, PorterDuff.Mode.SCREEN)
+        return ComposeShader(basePlus1, diag2, PorterDuff.Mode.SCREEN)
+    }
+
+    fun composeGaussianEnergyShader(
+        cx: Float,
+        cy: Float,
+        radius: Float,
+        accent: Color,
+        alpha: Float
+    ): Shader {
+        // Core (szybki spadek ~exp(-r^2*4)) — aproksymacja przez gęste stopnie
+        val coreCol = mixToWhite(accent, 0.9f)
+        val core = RadialGradient(
+            cx, cy, radius,
+            intArrayOf(
+                coreCol.copy(alpha = (alpha * 0.95f)).toArgb(),
+                coreCol.copy(alpha = (alpha * 0.55f)).toArgb(),
+                coreCol.copy(alpha = (alpha * 0.12f)).toArgb(),
+                android.graphics.Color.TRANSPARENT
+            ),
+            floatArrayOf(0f, 0.35f, 0.6f, 1f),
+            Shader.TileMode.CLAMP
+        )
+
+        // Glow (wolniejszy spadek ~exp(-r^2*1.5))
+        val glow = RadialGradient(
+            cx, cy, radius,
+            intArrayOf(
+                accent.copy(alpha = (alpha * 0.65f)).toArgb(),
+                accent.copy(alpha = (alpha * 0.35f)).toArgb(),
+                android.graphics.Color.TRANSPARENT
+            ),
+            floatArrayOf(0f, 0.72f, 1f),
+            Shader.TileMode.CLAMP
+        )
+
+        // Mieszamy SCREEN jak w referencji (sumaryczna „energia”) bez szumu
+        return ComposeShader(glow, core, PorterDuff.Mode.SCREEN)
+    }
+
+    private fun mixToWhite(c: Color, t: Float): Color {
+        val clamped = t.coerceIn(0f, 1f)
+        return Color(
+            red = lerp(c.red, 1f, clamped),
+            green = lerp(c.green, 1f, clamped),
+            blue = lerp(c.blue, 1f, clamped),
+            alpha = c.alpha
+        )
     }
 
     fun composeEnergyShader(cx: Float, cy: Float, radius: Float, accent: Color, alpha: Float): Shader {

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-27T18:06:30",
+  "generated_at": "2025-10-27T18:23:40",
   "areas": [
     {
       "area": "okno-glowne",
@@ -218,7 +218,7 @@
             {
               "id": "MORPHO-007-undo-redo",
               "title": "Undo/Redo w edytorze form",
-              "status": "pending",
+              "status": "in_progress",
               "owner": "Lumen",
               "deferred": true,
               "tags": [
