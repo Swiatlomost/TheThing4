@@ -37,6 +37,12 @@ import com.example.cos.designsystem.components.NeonButton
 import com.example.cos.designsystem.tokens.LocalUiTokens
 import kotlin.math.min
 import kotlin.math.sqrt
+import android.graphics.Bitmap
+import android.graphics.BitmapShader
+import android.graphics.ComposeShader
+import android.graphics.PorterDuff
+import android.graphics.RadialGradient
+import android.graphics.Shader
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -223,11 +229,24 @@ private fun DrawScope.drawOrganism(
         val fillRadiusPx = fillRadiusUnitsRaw * scale
 
         if (fillRadiusPx > 0f) {
-            drawCircle(
-                color = primaryColor.copy(alpha = fillAlpha),
-                radius = fillRadiusPx,
-                center = centerPx
-            )
+            // Energy-like textured fill (bitmap noise × radial gradient) using SCREEN blend
+            drawIntoCanvas { canvas ->
+                val p = androidx.compose.ui.graphics.Paint()
+                val fp = p.asFrameworkPaint()
+                fp.isAntiAlias = true
+                fp.style = android.graphics.Paint.Style.FILL
+
+                val energyShader = EnergyShaders.composeEnergyShader(
+                    cx = centerPx.x,
+                    cy = centerPx.y,
+                    radius = fillRadiusPx,
+                    accent = primaryColor,
+                    alpha = fillAlpha
+                )
+                fp.shader = energyShader
+                canvas.drawCircle(centerPx, fillRadiusPx, p)
+                fp.shader = null
+            }
         }
 
         if (outlineAlpha > 0f && outerRadiusPx > 0f) {
@@ -294,4 +313,53 @@ private data class AnimatedCell(
 )
 
 private const val ORGANISM_RADIUS_UNITS = 4f
+
+// Simple cached noise + radial blend to simulate energetic fill
+private object EnergyShaders {
+    private const val NOISE_SIZE = 256
+    private val noiseBitmap: Bitmap by lazy { generatePlasma(NOISE_SIZE, NOISE_SIZE) }
+    private val noiseShader: BitmapShader by lazy {
+        BitmapShader(noiseBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT)
+    }
+
+    fun composeEnergyShader(cx: Float, cy: Float, radius: Float, accent: Color, alpha: Float): Shader {
+        val inner = accent.copy(alpha = (alpha * 0.9f).coerceIn(0f, 1f)).toArgb()
+        val mid = accent.copy(alpha = (alpha * 0.35f).coerceIn(0f, 1f)).toArgb()
+        val outer = android.graphics.Color.TRANSPARENT
+        val radial = RadialGradient(
+            cx, cy, radius,
+            intArrayOf(inner, mid, outer),
+            floatArrayOf(0f, 0.8f, 1f),
+            Shader.TileMode.CLAMP
+        )
+        // Compose bitmap noise with radial gradient using SCREEN to boost luminous regions
+        return ComposeShader(noiseShader, radial, PorterDuff.Mode.SCREEN)
+    }
+
+    private fun generatePlasma(w: Int, h: Int): Bitmap {
+        val bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+        val pixels = IntArray(w * h)
+        var idx = 0
+        for (y in 0 until h) {
+            val vy = y.toFloat() / h
+            for (x in 0 until w) {
+                val vx = x.toFloat() / w
+                // Multi-sine plasma (cheap, tile-friendly)
+                val v = (
+                    kotlin.math.sin(10f * vx) +
+                    kotlin.math.sin(10f * vy) +
+                    kotlin.math.sin(14f * (vx + vy))
+                ) / 3f
+                val n = ((v * 0.5f + 0.5f).coerceIn(0f, 1f))
+                // Gamma for contrast
+                val g = n * n
+                val c = (g * 255f).toInt().coerceIn(0, 255)
+                val argb = (0xFF shl 24) or (c shl 16) or (c shl 8) or c
+                pixels[idx++] = argb
+            }
+        }
+        bmp.setPixels(pixels, 0, w, 0, 0, w, h)
+        return bmp
+    }
+}
 
