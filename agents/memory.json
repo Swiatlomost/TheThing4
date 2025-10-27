@@ -223,8 +223,8 @@
     "Mira": {
       "agent": "Mira",
       "alias": "Storywright",
-      "last_updated": "2025-10-25",
-      "focus": "Tlumaczenie wizji wlasciciela na briefy dla Orina i zespolu.",
+      "last_updated": "2025-10-27",
+      "focus": "Brief UI Glow dla Morfogenezy; przekształcanie wizji w zadania (MORPHO-010..013).",
       "context": [
         "Brief 4MAT trzymany w agents/storywright/briefs/ z aktualizacjami po rozmowach.",
         "Wspolpracuje z Echo (ryzyka) i Orin (priorytety) aby zachowac spojnosc narracji."
@@ -234,8 +234,8 @@
         "Krotka lista pytan kontrolnych pozwala Orinowi szybciej podjac decyzje."
       ],
       "todos": [
-        "Po parity overlay zaktualizowac brief o nowe obserwacje.",
-        "Przygotowac pytania follow-up dla wlasciciela wizji dotyczace overlay."
+        "Utrzymac brief UI Glow (sessions/MIRA-20251027-001-...) zgodny z decyzjami.",
+        "Wsparcie Orina przy priorytetyzacji MORPHO-010..013 i synchronizacji z Kai/Vireal."
       ],
       "risks": [
         "Brak aktualnego briefu spowolni decyzje Orina.",
@@ -275,4 +275,3 @@
     }
   }
 }
-

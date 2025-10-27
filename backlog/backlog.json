@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-27T10:34:21",
+  "generated_at": "2025-10-27T17:20:28",
   "areas": [
     {
       "area": "okno-glowne",
@@ -123,7 +123,7 @@
         {
           "id": "TOPIC-20251025_120000-001",
           "title": "Morfogeneza",
-          "status": "backlog",
+          "status": "ready",
           "brief": "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\BRIEF-20251025_120000-001.json",
           "pdca": "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\PDCA-20251027_120000-001.md",
           "tasks": [
@@ -244,6 +244,97 @@
               "deferred": true,
               "tags": [
                 "backlog"
+              ]
+            },
+            {
+              "id": "MORPHO-010-ui-glow",
+              "title": "UI: bioluminescencyjny skin (kolorystyka i glow)",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": false,
+              "tags": [
+                "ui",
+                "glow"
+              ]
+            },
+            {
+              "id": "MORPHO-011-anim-birth",
+              "title": "Animacja narodzin: kropka→obwód (promień)",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": false,
+              "tags": [
+                "anim",
+                "narodziny"
+              ]
+            },
+            {
+              "id": "MORPHO-012-anim-mature",
+              "title": "Animacja dojrzewania: wypełnienie gradientem",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": false,
+              "tags": [
+                "anim",
+                "dojrzewanie"
+              ]
+            },
+            {
+              "id": "MORPHO-013-multicell",
+              "title": "Organizm wielokomórkowy: układ i render z glow",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": false,
+              "tags": [
+                "renderer",
+                "organism"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "area": "ui",
+      "topics": [
+        {
+          "id": "TOPIC-20251027_131500-001",
+          "title": "UI Skin",
+          "status": "backlog",
+          "brief": "backlog\\ui\\topics\\TOPIC-20251027_131500-001\\BRIEF-20251027_131500-UI-skin.json",
+          "pdca": "backlog\\ui\\topics\\TOPIC-20251027_131500-001\\PDCA-20251027_131500-001.md",
+          "tasks": [
+            {
+              "id": "SKIN-001-tokens",
+              "title": "Globalne tokeny UI (kolory, glow, typografia)",
+              "status": "done",
+              "owner": "Lumen",
+              "deferred": false,
+              "tags": [
+                "ui",
+                "skin"
+              ]
+            },
+            {
+              "id": "SKIN-002-app-theme",
+              "title": "Compose Theme + komponenty neon (3 ekrany)",
+              "status": "done",
+              "owner": "Lumen",
+              "deferred": false,
+              "tags": [
+                "ui",
+                "theme"
+              ]
+            },
+            {
+              "id": "SKIN-003-overlay-parity",
+              "title": "Parity overlay: motyw i akcent glow",
+              "status": "done",
+              "owner": "Lumen",
+              "deferred": false,
+              "tags": [
+                "overlay",
+                "theme"
               ]
             }
           ]
