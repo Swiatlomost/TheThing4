@@ -39,3 +39,9 @@ Energy Fill (Gaussian) – parametry
 Implementacja:
 - Canvas czyta parametry z tokenów i rysuje dwa radialne gradienty (SRC_OVER),
   opcjonalnie dodając rim‑light. Patrz: `feature/cos-lifecycle/.../CosLifecycleScreen.kt:342`.
+
+Override w trybie deweloperskim
+- Plik `files/ui_tokens_override.json` (wewnętrzny katalog aplikacji) może zawierać pełne drzewo lub częściowy fragment, np. tylko `{"energy":{...}}`.
+- `UiTokenProvider` scala override z bazowym JSON (deep-merge). 
+- Zapisywanie/Usuwanie: z ekranu Skin Demo przyciskami „Zapisz do tokenów” i „Usuń override”.
+- Aby zastosować globalnie (w całej aplikacji), uruchom ponownie aplikację.
