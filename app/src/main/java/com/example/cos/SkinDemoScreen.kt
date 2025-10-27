@@ -14,10 +14,13 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Slider
+import androidx.compose.material3.TabRow
+import androidx.compose.material3.Tab
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,34 +51,47 @@ fun SkinDemoScreen(onBack: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Neon ring (algorytm)", style = MaterialTheme.typography.titleMedium)
-            // Defaults from tokens
-            val t = LocalUiTokens.current
-            var ringDp by remember { mutableStateOf(t.cell.ringStrokeDp.toFloat()) }
-            var haloMult by remember { mutableStateOf(((t.glow.haloWidthMult ?: 8.0).toFloat())) }
-            var haloAlpha by remember { mutableStateOf(((t.glow.haloAlpha ?: 0.35).toFloat())) }
-            var blurDp by remember { mutableStateOf(t.glow.blurDp.toFloat()) }
-
-            NeonRingPreview(
-                modifier = Modifier.fillMaxWidth().height(240.dp),
-                ringStrokeDp = ringDp,
-                haloWidthMult = haloMult,
-                haloAlpha = haloAlpha,
-                blurDp = blurDp
-            )
-
-            // Controls
-            LabeledSlider("ring-stroke-dp", ringDp, 1f..8f) { ringDp = it }
-            LabeledSlider("halo-width-mult", haloMult, 2f..20f) { haloMult = it }
-            LabeledSlider("halo-alpha", haloAlpha, 0f..1f) { haloAlpha = it }
-            LabeledSlider("blur-dp", blurDp, 0f..96f) { blurDp = it }
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                NeonButton(text = "Neon A", onClick = {})
-                NeonButton(text = "Neon B", onClick = {})
+            var selectedTab by rememberSaveable { mutableStateOf(0) }
+            val tabs = listOf("Neon", "Energy")
+            TabRow(selectedTabIndex = selectedTab) {
+                tabs.forEachIndexed { index, title ->
+                    Tab(
+                        selected = selectedTab == index,
+                        onClick = { selectedTab = index },
+                        text = { Text(title) }
+                    )
+                }
             }
 
-            // --- Energy Fill Demo ---
-            Text("Energy fill (Gaussian)", style = MaterialTheme.typography.titleMedium)
+            // Defaults from tokens
+            val t = LocalUiTokens.current
+            if (selectedTab == 0) {
+                Text("Neon ring (algorytm)", style = MaterialTheme.typography.titleMedium)
+                var ringDp by remember { mutableStateOf(t.cell.ringStrokeDp.toFloat()) }
+                var haloMult by remember { mutableStateOf(((t.glow.haloWidthMult ?: 8.0).toFloat())) }
+                var haloAlpha by remember { mutableStateOf(((t.glow.haloAlpha ?: 0.35).toFloat())) }
+                var blurDp by remember { mutableStateOf(t.glow.blurDp.toFloat()) }
+
+                NeonRingPreview(
+                    modifier = Modifier.fillMaxWidth().height(240.dp),
+                    ringStrokeDp = ringDp,
+                    haloWidthMult = haloMult,
+                    haloAlpha = haloAlpha,
+                    blurDp = blurDp
+                )
+
+                // Controls
+                LabeledSlider("ring-stroke-dp", ringDp, 1f..8f) { ringDp = it }
+                LabeledSlider("halo-width-mult", haloMult, 2f..20f) { haloMult = it }
+                LabeledSlider("halo-alpha", haloAlpha, 0f..1f) { haloAlpha = it }
+                LabeledSlider("blur-dp", blurDp, 0f..96f) { blurDp = it }
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    NeonButton(text = "Neon A", onClick = {})
+                    NeonButton(text = "Neon B", onClick = {})
+                }
+            } else {
+                // --- Energy Fill Demo ---
+                Text("Energy fill (Gaussian)", style = MaterialTheme.typography.titleMedium)
             val e = LocalUiTokens.current.energy
             var whiten by remember { mutableStateOf(e.whiten.toFloat()) }
             var coreAlpha by remember { mutableStateOf(e.coreAlpha.toFloat()) }
@@ -168,6 +184,7 @@ fun SkinDemoScreen(onBack: () -> Unit) {
             }
             if (status.isNotEmpty()) {
                 Text(status, style = MaterialTheme.typography.bodySmall)
+            }
             }
         }
     }
