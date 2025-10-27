@@ -201,7 +201,9 @@ private fun DrawScope.drawOrganism(
                     Seg(outer, 0f, lerp(0.75f, 0.9f, t), 0f)
                 }
             } else {
-                val outer = cellRadiusUnits * outerRadiusMultiplier(animated.stageValue)
+                // Dojrzewanie i dalej: ring pozostaje nieruchomy (outer = 1R),
+                // nasyca się jedynie środek (fill rośnie).
+                val outer = cellRadiusUnits * 1f
                 val fillR = cellRadiusUnits * fillRadiusMultiplier(animated.stageValue)
                 Seg(outer, fillR, outlineAlpha(animated.stageValue), fillAlpha(animated.stageValue))
             }
