@@ -49,6 +49,15 @@ data class ProgressBar(
     val glowIntensity: Double,
 )
 
+data class EnergyFill(
+    val whiten: Double,
+    val coreAlpha: Double,
+    val glowAlpha: Double,
+    val coreStop: Double,
+    val glowStop: Double,
+    val rimAlpha: Double,
+)
+
 data class UiTokens(
     val version: String,
     val palette: Palette,
@@ -57,6 +66,7 @@ data class UiTokens(
     val typography: Typography,
     val animation: Anim,
     val progress: ProgressBar,
+    val energy: EnergyFill,
 )
 
 val LocalUiTokens = staticCompositionLocalOf<UiTokens> {
@@ -129,6 +139,18 @@ object UiTokenProvider {
             )
         }
 
+        fun energy(): EnergyFill {
+            val o = root.getJSONObject("energy")
+            return EnergyFill(
+                whiten = o.getDouble("whiten"),
+                coreAlpha = o.getDouble("core-alpha"),
+                glowAlpha = o.getDouble("glow-alpha"),
+                coreStop = o.getDouble("core-stop"),
+                glowStop = o.getDouble("glow-stop"),
+                rimAlpha = o.getDouble("rim-alpha"),
+            )
+        }
+
         return UiTokens(
             version = root.getString("version"),
             palette = palette(),
@@ -137,6 +159,7 @@ object UiTokenProvider {
             typography = typo(),
             animation = anim(),
             progress = progress(),
+            energy = energy(),
         )
     }
 }
