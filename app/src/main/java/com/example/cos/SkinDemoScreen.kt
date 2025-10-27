@@ -86,6 +86,10 @@ fun SkinDemoScreen(onBack: () -> Unit) {
             var coreStop by remember { mutableStateOf(e.coreStop.toFloat()) }
             var glowStop by remember { mutableStateOf(e.glowStop.toFloat()) }
             var rimAlpha by remember { mutableStateOf(e.rimAlpha.toFloat()) }
+            var specEnabled by remember { mutableStateOf(e.specular?.enabled ?: false) }
+            var specAngle by remember { mutableStateOf(((e.specular?.angleDeg) ?: 45.0).toFloat()) }
+            var specWidth by remember { mutableStateOf(((e.specular?.bandWidth) ?: 0.10).toFloat()) }
+            var specAlpha by remember { mutableStateOf(((e.specular?.bandAlpha) ?: 0.22).toFloat()) }
 
             EnergyFillPreview(
                 modifier = Modifier.fillMaxWidth().height(240.dp),
@@ -94,7 +98,11 @@ fun SkinDemoScreen(onBack: () -> Unit) {
                 glowAlpha = glowAlpha,
                 coreStop = coreStop,
                 glowStop = glowStop,
-                rimAlpha = rimAlpha
+                rimAlpha = rimAlpha,
+                specEnabled = specEnabled,
+                specAngle = specAngle,
+                specWidth = specWidth,
+                specAlpha = specAlpha
             )
 
             LabeledSlider("whiten", whiten, 0f..1f) { whiten = it }
@@ -103,6 +111,15 @@ fun SkinDemoScreen(onBack: () -> Unit) {
             LabeledSlider("core-stop", coreStop, 0.3f..0.9f) { coreStop = it }
             LabeledSlider("glow-stop", glowStop, 0.5f..0.95f) { glowStop = it }
             LabeledSlider("rim-alpha", rimAlpha, 0f..1f) { rimAlpha = it }
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
+                Text("specular", style = MaterialTheme.typography.bodySmall)
+                TextButton(onClick = { specEnabled = !specEnabled }) { Text(if (specEnabled) "ON" else "OFF") }
+            }
+            if (specEnabled) {
+                LabeledSlider("spec-angle", specAngle, 0f..180f) { specAngle = it }
+                LabeledSlider("spec-width", specWidth, 0.02f..0.3f) { specWidth = it }
+                LabeledSlider("spec-alpha", specAlpha, 0f..1f) { specAlpha = it }
+            }
 
             val ctx = LocalContext.current
             var status by remember { mutableStateOf("") }
@@ -115,13 +132,29 @@ fun SkinDemoScreen(onBack: () -> Unit) {
                         .put("glow-alpha", glowAlpha.toDouble())
                         .put("core-stop", coreStop.toDouble())
                         .put("glow-stop", glowStop.toDouble())
-                        .put("rim-alpha", rimAlpha.toDouble())
+                        .put("rim-alpha", rimAlpha.toDouble()).apply {
+                            val spec = JSONObject()
+                                .put("enabled", specEnabled)
+                                .put("angle-deg", specAngle.toDouble())
+                                .put("band-alpha", specAlpha.toDouble())
+                                .put("band-width", specWidth.toDouble())
+                            put("specular", spec)
+                        }
                     root.put("energy", energy)
                     try {
                         ctx.openFileOutput("ui_tokens_override.json", android.content.Context.MODE_PRIVATE).use { it.write(root.toString(2).toByteArray()) }
                         status = "Zapisano override. Uruchom ponownie aplikację, aby zastosować globalnie."
                     } catch (t: Throwable) {
                         status = "Błąd zapisu: ${t.message}"
+                    }
+                })
+                NeonButton(text = "Restart activity", onClick = {
+                    val act = (ctx as? android.app.Activity)
+                    if (act != null) {
+                        act.recreate()
+                        status = "Restartuję aktywność..."
+                    } else {
+                        status = "Brak Activity do restartu"
                     }
                 })
                 NeonButton(text = "Usuń override", onClick = {
@@ -198,6 +231,10 @@ private fun EnergyFillPreview(
     coreStop: Float,
     glowStop: Float,
     rimAlpha: Float,
+    specEnabled: Boolean,
+    specAngle: Float,
+    specWidth: Float,
+    specAlpha: Float,
 ) {
     val accent = MaterialTheme.colorScheme.primary
     Canvas(modifier = modifier.padding(8.dp)) {
@@ -256,6 +293,32 @@ private fun EnergyFillPreview(
                 fp.strokeWidth = r * 0.08f
                 fp.maskFilter = null
                 canvas.drawCircle(c, r, p)
+            }
+
+            // Specular bands preview (optional)
+            if (specEnabled && specAlpha > 0f && specWidth > 0f) {
+                fp.style = android.graphics.Paint.Style.FILL
+                fun drawBand(angle: Float, alphaMul: Float) {
+                    val a = angle / 180f * Math.PI.toFloat()
+                    val dir = androidx.compose.ui.geometry.Offset(kotlin.math.cos(a), kotlin.math.sin(a))
+                    val ext = r * 1.6f
+                    val start = androidx.compose.ui.geometry.Offset(c.x - dir.x * ext, c.y - dir.y * ext)
+                    val end = androidx.compose.ui.geometry.Offset(c.x + dir.x * ext, c.y + dir.y * ext)
+                    val mid = 0.5f
+                    val half = (specWidth * 0.5f).coerceIn(0.01f, 0.4f)
+                    val col = accent.copy(alpha = specAlpha * alphaMul).toArgb()
+                    val lg = LinearGradient(
+                        start.x, start.y, end.x, end.y,
+                        intArrayOf(0x00FFFFFF, 0x00FFFFFF, col, 0x00FFFFFF, 0x00FFFFFF),
+                        floatArrayOf(0f, mid - half, mid, mid + half, 1f),
+                        Shader.TileMode.CLAMP
+                    )
+                    fp.shader = lg
+                    canvas.drawCircle(c, r, p)
+                    fp.shader = null
+                }
+                drawBand(specAngle, 1f)
+                drawBand((specAngle + 90f) % 360f, 0.85f)
             }
         }
     }

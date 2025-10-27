@@ -56,6 +56,14 @@ data class EnergyFill(
     val coreStop: Double,
     val glowStop: Double,
     val rimAlpha: Double,
+    val specular: Specular? = null,
+)
+
+data class Specular(
+    val enabled: Boolean,
+    val angleDeg: Double,
+    val bandAlpha: Double,
+    val bandWidth: Double,
 )
 
 data class UiTokens(
@@ -148,6 +156,14 @@ object UiTokenProvider {
 
         fun energy(): EnergyFill {
             val o = root.getJSONObject("energy")
+            val spec: Specular? = o.optJSONObject("specular")?.let { s ->
+                Specular(
+                    enabled = s.optBoolean("enabled", false),
+                    angleDeg = s.optDouble("angle-deg", 45.0),
+                    bandAlpha = s.optDouble("band-alpha", 0.22),
+                    bandWidth = s.optDouble("band-width", 0.10),
+                )
+            }
             return EnergyFill(
                 whiten = o.getDouble("whiten"),
                 coreAlpha = o.getDouble("core-alpha"),
@@ -155,6 +171,7 @@ object UiTokenProvider {
                 coreStop = o.getDouble("core-stop"),
                 glowStop = o.getDouble("glow-stop"),
                 rimAlpha = o.getDouble("rim-alpha"),
+                specular = spec,
             )
         }
 
