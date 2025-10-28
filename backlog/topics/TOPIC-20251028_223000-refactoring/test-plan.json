@@ -1,0 +1,28 @@
+{
+  "owners": ["Kai"],
+  "summary": "Zweryfikuj regresje po refaktoryzacji: testy jednostkowe/instrumentacyjne oraz sanity manualne na Pixel 5.",
+  "scenarios": [
+    {
+      "id": "REFAC-TP-001",
+      "title": "Regression suite po refaktorze",
+      "steps": [
+        "Uruchom ./gradlew testDebugUnitTest",
+        "Uruchom ./gradlew connectedPixel5DebugAndroidTest",
+        "Potwierdz brak ostrzezen lint/ktlint (CI lokalne)"
+      ],
+      "expected": "Wszystkie testy przechodza, brak regresji w logach."
+    },
+    {
+      "id": "REFAC-TP-002",
+      "title": "Sanity overlay i Skin Demo",
+      "steps": [
+        "Na Pixel 5 uruchom appke, wlacz overlay podwojnym tapnieciem",
+        "Zweryfikuj brak ANR i poprawne stage transitions",
+        "W Skin Demo zmien parametry, nadpisz tokeny, odswiez aplikacje"
+      ],
+      "expected": "Overlay reaguje plynnie, Skin Demo zapisuje/odtwarza tokeny bez bledow."
+    }
+  ],
+  "links": {},
+  "meta": {"updated_at": "2025-10-28"}
+}

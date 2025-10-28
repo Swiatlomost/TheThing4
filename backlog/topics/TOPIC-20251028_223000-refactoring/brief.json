@@ -1,0 +1,9 @@
+{
+  "topic": "TOPIC-20251028_223000-refactoring",
+  "title": "Refactoring Guardrails",
+  "why": "Audit wykryl otwarte punkty wejscia, prace blokujace glowny watek oraz bledy lokalizacyjne. Musimy utrzymac kod zgodny z aktualnymi standardami bezpieczenstwa i wydajnosci.",
+  "what": "Zamkniecie intentow lifecycle, przeniesienie zapisu tokenow poza UI thread, naprawa kopi UI i asynchroniczne repozytorium morfogenezy.",
+  "how": "Refaktorujemy komponenty aplikacji i modulow feature tak, aby stosowaly podpisane uprawnienia, kolejki IO/Default oraz zasoby stringow, a nastepnie uruchamiamy pełny pakiet testow.",
+  "what_if": "Bez poprawek overlay moze byc przejety przez inne aplikacje, UI bedzie gubic klatki, a buildy nie przejda przegladu jakosci.",
+  "updated_at": "2025-10-28"
+}

@@ -23,7 +23,7 @@
 2. Service attaches Compose view to WindowManager with layout params WRAP_CONTENT + flags FLAG_NOT_FOCUSABLE | FLAG_LAYOUT_NO_LIMITS.
 3. When app is opened (double tap), overlay hides or service stops to avoid duplication.
 4. Drag updates persist to DataStore so overlay reappears in last position.
-5. QA/dev moga wysylac komendy: db shell am broadcast -a com.example.cos.action.SEED (reset), ...NARODZINY, ...DOJRZEWANIE, ...NOWA_KOMORKA, albo db shell am broadcast -a com.example.cos.action.SET_STAGE --es com.example.cos.extra.STAGE <BUD|MATURE>.
+5. QA/dev mogą sterować etapami tylko z komponentów podpisanych tym samym kluczem (permission `com.example.cos.permission.CONTROL_LIFECYCLE`). W praktyce używamy UI w aplikacji lub dedykowanych skryptów/instrumentacji; czyste polecenia `adb shell am broadcast …` nie są już honorowane.
 
 ## Testing guidance
 - Unit tests: OverlayControllerTest verifying lifecycle + DataStore persistence.

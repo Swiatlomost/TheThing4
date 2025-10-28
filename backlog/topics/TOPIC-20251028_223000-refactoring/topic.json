@@ -1,0 +1,17 @@
+{
+  "id": "TOPIC-20251028_223000-refactoring",
+  "area": "core-app",
+  "title": "Refactoring Guardrails",
+  "summary": "Harden entry points and refactor hotspots so the app follows current security, performance, and UX standards.",
+  "owners": [
+    "Orin",
+    "Lumen"
+  ],
+  "links": {
+    "adr": [],
+    "tests": [],
+    "ux": []
+  },
+  "brief": "backlog/topics/TOPIC-20251028_223000-refactoring/brief.json",
+  "pdca": "backlog/topics/TOPIC-20251028_223000-refactoring/PDCA.json"
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-28T22:01:36",
+  "generated_at": "2025-10-28T22:22:41",
   "areas": [
     {
       "area": "okno-glowne",
@@ -304,6 +304,64 @@
               "tags": [
                 "overlay",
                 "theme"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "area": "core-app",
+      "topics": [
+        {
+          "id": "TOPIC-20251028_223000-refactoring",
+          "title": "Refactoring Guardrails",
+          "status": "ready",
+          "brief": null,
+          "pdca": null,
+          "tasks": [
+            {
+              "id": "REFAC-001-secure-entrypoints",
+              "title": "Secure lifecycle entry points",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": [
+                "security",
+                "refactor"
+              ]
+            },
+            {
+              "id": "REFAC-002-skin-io",
+              "title": "Move skin editor IO off main",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": [
+                "performance",
+                "refactor"
+              ]
+            },
+            {
+              "id": "REFAC-003-strings",
+              "title": "Localize and fix UI copy",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": [
+                "ux",
+                "localization"
+              ]
+            },
+            {
+              "id": "REFAC-004-morpho-async",
+              "title": "Async morphogenesis persistence",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": [
+                "performance",
+                "async"
               ]
             }
           ]

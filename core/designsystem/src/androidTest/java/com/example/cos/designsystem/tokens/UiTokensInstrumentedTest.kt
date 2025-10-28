@@ -16,11 +16,11 @@ class UiTokensInstrumentedTest {
         val tokens = UiTokenProvider.load(context)
 
         // Basic sanity
-        assertTrue(tokens.version.startsWith("0.1"))
+        assertEquals("0.3-cyan-noir", tokens.version)
 
         // Palette values
-        assertEquals("#FF31C7F7", tokens.palette.accentCyan)
-        assertEquals(12, tokens.glow.radiusDp)
+        assertEquals("#FF18D6FF", tokens.palette.accentCyan)
+        assertEquals(16, tokens.glow.radiusDp)
         assertEquals(400, tokens.animation.birthMs)
         assertEquals(600, tokens.animation.matureMs)
 
@@ -29,4 +29,3 @@ class UiTokensInstrumentedTest {
         assertTrue(tokens.progress.glowIntensity in 0.0..1.0)
     }
 }
-

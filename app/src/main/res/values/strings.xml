@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_control_lifecycle_label">Control lifecycle commands</string>
+    <string name="permission_control_lifecycle_description">Allows sending lifecycle stage commands to the Cos app.</string>
+</resources>

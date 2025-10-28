@@ -1,0 +1,22 @@
+{
+  "plan": [
+    "Przejrzec manifesty i kod, aby zidentyfikowac wszystkie publiczne entry pointy (LifecycleStageReceiver, MorphoEventDispatcher).",
+    "Wprowadzic podpisane permission oraz ograniczyc export receivers/service do zaufanych zrodel.",
+    "Zaktualizowac testy/instrumentacje, aby uwzglednialy nowe wymagania permission.",
+    "Uruchomic ./gradlew testDebugUnitTest oraz sanity overlay (emulator/Pixel 5) dla regresji."
+  ],
+  "do": [
+    "2025-10-28 Lumen: Manifest definiuje com.example.cos.permission.CONTROL_LIFECYCLE, receiver wymaga uprawnienia, a MorphoEventDispatcher wymusza permission i scope do paczki.",
+    "2025-10-28 Lumen: ./gradlew testDebugUnitTest PASS; connectedDebugAndroidTest FAIL (UiTokensInstrumentedTest oczekuje starych wartosci tokenow).",
+    "2025-10-28 Lumen: Zaktualizowalem UiTokensInstrumentedTest do wersji 0.3-cyan-noir; connectedDebugAndroidTest PASS."
+  ],
+  "check": [
+    "2025-10-28 Kai/Lumen: ./gradlew testDebugUnitTest PASS; connectedDebugAndroidTest PASS (Pixel_5 AVD).",
+    "2025-10-28 Lumen: Sanity manual Pixel 5 – overlay sterowanie dziala, Skin Demo override zapis/odczyt bez bledow."
+  ],
+  "act": [],
+  "links": {},
+  "meta": {
+    "updated_at": "2025-10-28"
+  }
+}

@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <permission
+        android:name="com.example.cos.permission.CONTROL_LIFECYCLE"
+        android:protectionLevel="signature"
+        android:label="@string/permission_control_lifecycle_label"
+        android:description="@string/permission_control_lifecycle_description" />
     <application
         android:name=".CosApplication"
         android:allowBackup="false"
@@ -13,7 +19,8 @@
         <receiver
             android:name=".LifecycleStageReceiver"
             android:enabled="true"
-            android:exported="true">
+            android:exported="true"
+            android:permission="com.example.cos.permission.CONTROL_LIFECYCLE">
             <intent-filter>
                 <action android:name="com.example.cos.action.SET_STAGE" />
                 <action android:name="com.example.cos.action.SEED" />

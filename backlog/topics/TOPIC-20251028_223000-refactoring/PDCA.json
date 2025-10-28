@@ -1,0 +1,19 @@
+{
+  "plan": [
+    "Zabezpieczyc broadcast receiver i intent flow przed aplikacjami trzecimi.",
+    "Wydzielic ciezkie operacje IO oraz sortowania na wlasne wątki.",
+    "Naprawic zasoby UI, aby przejsc testy lokalizacyjne i manualne."
+  ],
+  "do": [
+    "2025-10-28 Orin: start tematu; priorytet REFAC-001-secure-entrypoints, Lumen wypelnia PDCA zadania przed przejsciem na in_progress."
+  ],
+  "check": [
+    "Unit + instrumented tests przechodza lokalnie oraz na Pixel 5.",
+    "Manualna sonda overlay + edytor skory bez klatkowania."
+  ],
+  "act": [],
+  "links": {},
+  "meta": {
+    "updated_at": "2025-10-28"
+  }
+}

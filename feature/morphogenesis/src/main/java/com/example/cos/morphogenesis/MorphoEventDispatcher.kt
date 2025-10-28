@@ -25,15 +25,17 @@ class AndroidMorphoEventDispatcher @Inject constructor(
             "forma_aktywna formId=$formId cellsHash=$cellsHash timestamp=$timestamp"
         )
         val intent = Intent(ACTION_FORMA_AKTYWNA).apply {
+            setPackage(context.packageName)
             putExtra(EXTRA_FORM_ID, formId)
             putExtra(EXTRA_CELLS_HASH, cellsHash)
             putExtra(EXTRA_TIMESTAMP, timestamp)
         }
-        context.sendBroadcast(intent)
+        context.sendBroadcast(intent, CONTROL_PERMISSION)
     }
 
     companion object {
         private const val TAG = "MorfoEvent"
+        private const val CONTROL_PERMISSION = "com.example.cos.permission.CONTROL_LIFECYCLE"
         const val ACTION_FORMA_AKTYWNA = "com.example.cos.FORMA_AKTYWNA"
         const val EXTRA_FORM_ID = "form_id"
         const val EXTRA_CELLS_HASH = "cells_hash"
