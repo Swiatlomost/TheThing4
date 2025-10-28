@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -31,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import org.json.JSONObject
@@ -158,9 +160,13 @@ private fun VerticalSlider(label: String, value: Float, range: ClosedFloatingPoi
             onValueChange = onChange,
             valueRange = range,
             modifier = Modifier
-                .height(160.dp)
-                .rotate(-90f)
-                .fillMaxWidth(fraction = 0.0f)
+                .height(320.dp)    // więcej przestrzeni na ruch
+                .width(64.dp)      // większy uchwyt po obróceniu
+                .graphicsLayer(
+                    rotationZ = -90f,
+                    scaleX = 1.15f,
+                    scaleY = 1.15f
+                )
         )
         Text(label, style = MaterialTheme.typography.bodySmall)
     }
@@ -258,4 +264,3 @@ private fun CombinedCellPreview(
         }
     }
 }
-
