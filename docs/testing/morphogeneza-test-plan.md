@@ -21,9 +21,9 @@
 | MORPH-004 | Aktywacja formy | Zapisz nowa forme i aktywuj ja | Toast + log `MorfoEvent` + overlay aktualizuje forme | Checklista ADB |
 | MORPH-005 | Fallback broadcast | Symuluj brak SharedFlow i aktywuj forme | Broadcast `com.example.cos.FORMA_AKTYWNA` widoczny w `dumpsys` | Checklista ADB |
 | MORPH-006 | Regresja UI | `./gradlew connectedDebugAndroidTest` na Pixel_5 | Wszystkie testy przechodza | Instrumentacja |
-| MORPH-007 | Wybór zapisanej formy | Zapisz nową formę, wybierz ją z dropdownu/listy zapisów | Podgląd edytora ładuje wybraną formę, editor.formId/ormName odzwierciedlają wybór | Unit + Compose test |
-| MORPH-008 | Aktywacja formy (overlay) | Zapisz i aktywuj nową formę | SharedFlow MorphoFormChannel emituje formę, overlay aktualizuje layout, logcat/dumpsys zawiera nowe orma_aktywna | Instrumentacja + Checklista ADB |
-| MORPH-009 | Forma bazowa w ekranie cyklu | Po aktywacji zapisanej formy przejdź do ekranu cyklu Cos | Widok cyklu Cos nadal pokazuje bazową formę 0 (stan silnika), brak efektu ubocznego | Manual |
+| MORPH-007 | Wybor zapisanej formy | Zapisz nowa forme, wybierz ja z dropdownu/listy zapisow | Podglad edytora laduje wybrana forme, editor.formId/ormName odzwierciedlaja wybor | Unit + Compose test |
+| MORPH-008 | Aktywacja formy (overlay) | Zapisz i aktywuj nowa forme | SharedFlow MorphoFormChannel emituje forme, overlay aktualizuje layout, logcat/dumpsys zawiera nowe orma_aktywna | Instrumentacja + Checklista ADB |
+| MORPH-009 | Forma bazowa w ekranie cyklu | Po aktywacji zapisanej formy przejdz do ekranu cyklu Cos | Widok cyklu Cos nadal pokazuje bazowa forme 0 (stan silnika), brak efektu ubocznego | Manual |
 
 ## Automaty
 - `feature/morphogenesis/src/test/.../MorphogenesisViewModelTest.kt` - stan domyslny, zapis szkicu i aktywacja formy.
@@ -32,12 +32,12 @@
 
 ## Manualne sanity
 - Uzyj `docs/testing/morphogeneza-event-checklist.md` (ADB + logcat).
-- Dodatkowo: manualny scenariusz zapis -> wybór -> aktywacja (sprawdzenie podglądu i overlay), weryfikacja że ekran cyklu nadal pokazuje formę 0.
-- 2025-10-26: `adb logcat -d -s MorfoEvent:*` -> `I/MorfoEvent: forma_aktywna formId=FORM-1761479486922...` (Connected tests + checklist PASS; rerun potwierdził brak dodatkowych wpisów (SharedFlow + logcat).).
+- Dodatkowo: manualny scenariusz zapis -> wybor -> aktywacja (sprawdzenie podgladu i overlay), weryfikacja ze ekran cyklu nadal pokazuje forme 0.
+- 2025-10-26: `adb logcat -d -s MorfoEvent:*` -> `I/MorfoEvent: forma_aktywna formId=FORM-1761479486922...` (Connected tests + checklist PASS; rerun potwierdzil brak dodatkowych wpisow (SharedFlow + logcat).).
 
 ## Rejestr defektow
 - Zglaszaj w `agents/kai/log.md` z prefiksem `DEFECT:` oraz odniesieniem do commitow.
 
 ## Raportowanie
 - Po iteracji dolacz podsumowanie (PASS/FAIL + defekty) do `agents/kai/log.md`.
-- Aktualizuj `agents/status.json` przy gotowych scenariuszach lub blokadach.
+- Aktualizuj `backlog/board.json` (status zadan) przy gotowych scenariuszach lub blokadach.

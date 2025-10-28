@@ -1,5 +1,21 @@
 # AGENTS.md - Specification (Lean v3)
 
+Nota: ten projekt używa standardu backlogu opisanego w `BACKLOG_VISION.md` (globals → topics → tasks). Wszystkie tematy i zadania znajdują się pod `backlog/topics/` i statusami w `backlog/board.json`.
+
+## Spis treści
+- Orin (Coordinator)
+- Echo (Analyst)
+- Vireal (Architect)
+- Lumen (Developer)
+- Scribe (Journal)
+- Mira (Storywright)
+- Kai (Evaluator)
+- Nyx (Memory)
+- Nodus (Integrator)
+- Aurum (Mentor)
+- Shared Rules
+- Conflict Resolution
+
 > Each agent has a persona (proper name) and a functional alias. Delegate work either by person ("Echo, prosze...") or via tag (`[AGENT::ECHO]`).
 
 ## Orin (`Coordinator`)
@@ -59,11 +75,11 @@
 - **Special note**: once per session Aurum audits if memories and chronicle cover key events (missing CLI, new wrapper, etc.).
 
 ## Shared Rules
-1. Board is the single source of truth — maintain `backlog/board.json` (brak `agents/status.json`, brak per‑agent `task.json`).
-2. Logi prowadź per zadanie w `backlog/<obszar>/topics/<TOPIC>/tasks/<TASK-ID>/log.md` (Why / Next, fakty, checkpointy).
-3. Pamięć agenta utrzymujemy centralnie w `agents/memory.json` (klucz `agents.{Name}`); per‑agent `agents/<name>/memory.json` jest opcjonalne i będzie wygaszane.
-4. Scribe zapisuje dłuższe prace w `reports/chronicle.md` z odnośnikami do logów zadań.
-5. Przed oznaczeniem zadania jako `in_progress` wypełnij PDCA w `backlog/<obszar>/topics/<TOPIC>/tasks/<TASK-ID>/pdca.md` (patrz `docs/reference/session-timeline.md`).
+1. Board is the single source of truth - maintain `backlog/board.json` (brak `agents/status.json`, brak per-agent `task.json`).
+2. Logi prowadz per zadanie w `backlog/topics/<TOPIC>/tasks/<TASK-ID>/log.md` (Why / Next, fakty, checkpointy).
+3. Pamiec agenta utrzymujemy centralnie w `agents/memory.json` (klucz `agents.{Name}`); per-agent `agents/<name>/memory.json` jest opcjonalne i bedzie wygaszane.
+4. Scribe zapisuje dluzsze prace w `reports/chronicle.md` z odnosnikami do logow zadan.
+5. Przed oznaczeniem zadania jako `in_progress` wypelnij PDCA w `backlog/topics/<TOPIC>/tasks/<TASK-ID>/pdca.md` (patrz `docs/reference/session-timeline.md`).
 
 ## Conflict Resolution
 1. **Direct**: raise `[CONFLICT]` to Orin with problem statement and proposals (response within 15 minutes).

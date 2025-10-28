@@ -1,6 +1,6 @@
 """Generate backlog/backlog.json from board.json and filesystem.
 
-Groups topics by functional area (backlog/<area>/topics/<TOPIC-ID>) and lists tasks.
+Groups topics by functional area using `backlog/topics/<TOPIC-ID>/topic.json` and lists tasks.
 """
 
 import json
@@ -21,23 +21,28 @@ def load_board() -> Dict[str, Any]:
 
 def discover_topics() -> Dict[str, Dict[str, Any]]:
     topics: Dict[str, Dict[str, Any]] = {}
-    for area_dir in BACKLOG.iterdir():
-        if not area_dir.is_dir():
+    topics_dir = BACKLOG / "topics"
+    if not topics_dir.exists():
+        return topics
+    for tdir in topics_dir.iterdir():
+        if not tdir.is_dir():
             continue
-        topics_dir = area_dir / "topics"
-        if not topics_dir.exists():
-            continue
-        for tdir in topics_dir.iterdir():
-            if not tdir.is_dir():
-                continue
-            tid = tdir.name
-            brief = next(tdir.glob("BRIEF-*.json"), None)
-            pdca = next(tdir.glob("PDCA-*.md"), None)
-            topics[tid] = {
-                "area": area_dir.name,
-                "brief": str(brief.relative_to(ROOT)) if brief else None,
-                "pdca": str(pdca.relative_to(ROOT)) if pdca else None,
-            }
+        tid = tdir.name
+        tjson = tdir / "topic.json"
+        area = "unknown"
+        try:
+            if tjson.exists():
+                meta = json.loads(tjson.read_text(encoding="utf-8"))
+                area = meta.get("area") or area
+        except Exception:
+            pass
+        brief = next(tdir.glob("BRIEF-*.json"), None)
+        pdca = next(tdir.glob("PDCA-*.md"), None)
+        topics[tid] = {
+            "area": area,
+            "brief": str(brief.relative_to(ROOT)) if brief else None,
+            "pdca": str(pdca.relative_to(ROOT)) if pdca else None,
+        }
     return topics
 
 
@@ -67,8 +72,15 @@ def main() -> None:
     for topic in board.get("topics", []):
         tid = topic.get("id")
         title = topic.get("title")
-        meta = topics_meta.get(tid, {})
-        area = meta.get("area", "unknown")
+        # Always read area from topic.json to avoid discovery mismatches
+        area = "unknown"
+        tjson = BACKLOG / "topics" / tid / "topic.json"
+        try:
+            if tjson.exists():
+                raw = json.loads(tjson.read_text(encoding="utf-8"))
+                area = raw.get("area") or area
+        except Exception:
+            pass
         areas.setdefault(area, {"area": area, "topics": []})
         ttasks = tasks_by_topic.get(tid, [])
         # If no tasks in board for this topic, attempt to infer from git history (best effort)
@@ -141,12 +153,13 @@ def main() -> None:
             # keep a few top inferred entries
             ttasks = inferred[:8]
         status = compute_topic_status(ttasks)
+        meta_info = topics_meta.get(tid, {})
         areas[area]["topics"].append({
             "id": tid,
             "title": title,
             "status": status,
-            "brief": meta.get("brief"),
-            "pdca": meta.get("pdca"),
+            "brief": meta_info.get("brief"),
+            "pdca": meta_info.get("pdca"),
             "tasks": [
                 {
                     "id": x.get("id"),

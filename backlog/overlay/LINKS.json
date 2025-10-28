@@ -1,9 +1,0 @@
-{
-  "area": "overlay",
-  "summary": "Tryb floating z parytetem zachowania względem aplikacji",
-  "canonical": {
-    "adr": ["docs/reference/floating-overlay.md"],
-    "tests": ["docs/testing/cos-v0.1-test-plan.md"]
-  }
-}
-

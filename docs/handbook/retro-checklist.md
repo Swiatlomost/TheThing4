@@ -4,7 +4,7 @@
 
 ## Preparation
 - Gather latest `log.md` entries for every agent.
-- Review `agents/status.json` to identify stuck items.
+- Review `backlog/board.json` to identify stuck items.
 - Collect metrics from automation scripts.
 
 ## Agenda

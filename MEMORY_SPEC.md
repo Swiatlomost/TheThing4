@@ -1,7 +1,13 @@
 # MEMORY_SPEC.md - Memory & Journals (Lean v3)
 
+## Spis treści
+- Memory Store
+- Memory JSON Skeleton
+- Hygiene
+- Sample Task Log Snippet
+
 ## Memory Store
-Prefer a single shared file `agents/memory.json` with per‑agent entries under `agents` map. Example:
+Prefer a single shared file `agents/memory.json` with per-agent entries under `agents` map. Example:
 
 ```
 {
@@ -14,9 +20,9 @@ Prefer a single shared file `agents/memory.json` with per‑agent entries under 
 }
 ```
 
-Legacy per‑agent files `agents/<name>/memory.json` są akceptowane (odczyt wsteczny) i będą wygaszane.
+Legacy per-agent files `agents/<name>/memory.json` sa akceptowane (odczyt wsteczny) i beda wygaszane.
 
-Global task status is maintained in `backlog/board.json`. Per‑task logs and PDCA live under `backlog/<obszar>/topics/<TOPIC>/tasks/<TASK-ID>/`.
+Global task status is maintained in `backlog/board.json`. Per-task logs and PDCA live under `backlog/topics/<TOPIC>/tasks/<TASK-ID>/`.
 
 ## Memory JSON Skeleton
 ```
@@ -40,7 +46,7 @@ Global task status is maintained in `backlog/board.json`. Per‑task logs and PD
 - Aktualizuj `last_updated` po zmianach tresci. Gdy tylko potwierdzasz aktualnosc bez zmian, dopisz `last_reviewed` (data).
 - Nyx coordinates snapshots before milestones and after major incidents.
 - When workflow standards evolve, sync per-task logs/PDCA with `board.json` in the same session.
-- Przed oznaczeniem zadania jako `in_progress` wypelnij PDCA w `topics/<...>/tasks/<TASK-ID>/pdca.md` (szczegoly: `docs/reference/session-timeline.md`).
+- Przed oznaczeniem zadania jako `in_progress` wypelnij PDCA w `backlog/topics/<TOPIC>/tasks/<TASK-ID>/pdca.md` (szczegoly: `docs/reference/session-timeline.md`).
 
 ## Sample Task Log Snippet
 ```

@@ -3,6 +3,64 @@
 This is the consolidated narrative journal maintained by Scribe. Previous per-agent chronicle is retained in `agents/scribe/chronicle.md` for history; new entries should be added here.
 
 ---
+## Porządki w backlogu — autosort i presety usunięte
+- "Niech lista zadań mówi tylko o tym, co robimy teraz."
+
+## Scene
+- Po akceptacji głównych elementów Morfogenezy (glow, dojrzewanie, multicell) domknęliśmy porządki w backlogu, usuwając odłożone pozycje.
+
+## Plot Beats
+1. MORPHO-008-autosort — usunięty z tablicy (deferred, brak aktywnego planu).
+2. MORPHO-009-presety — usunięty z tablicy (deferred, brak aktywnego planu).
+
+## Artefacts & Facts
+- backlog/board.json
+- backlog/backlog.json
+
+## Next
+- Backlog na zielono; kolejne priorytety dodamy po nowym briefie MIRA lub decyzji Orina.
+
+---
+
+## Narodziny zaakceptowane, historia uproszczona
+- "Jesli narodziny sa plynne, niech swieca bez zwloki."
+
+## Scene
+- Test na urzadzeniu Pixel 5 potwierdzil akceptowalna animacje narodzin. Jednoczesnie porzadkujemy backlog: historia (undo/redo) zostaje wycieta z biezej puli.
+
+## Plot Beats
+1. MORPHO-011-anim-birth oznaczone jako done po testach w terenie (Pixel 5).
+2. MORPHO-007-undo-redo usuniete z tablicy backlogu (zachowana historia plikow w tasks/ jako kontekst).
+
+## Artefacts & Facts
+- backlog/board.json
+- backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-011-anim-birth/log.jsonl
+
+## Next
+- Skupienie na kolejnych etapach Morfogenezy: glow (UI), animacja dojrzewania, render wielokomorkowy.
+
+---
+## Glow i dojrzewanie domknięte
+- "Gdy skóra świeci jak trzeba, dojrzewanie przychodzi naturalnie, a stado znajduje układ."
+
+## Scene
+- Po przeglądzie kodu i sanity testach ręcznych uznajemy trzy elementy Morfogenezy za zakończone: glow UI, animację dojrzewania i render organizmu wielokomórkowego.
+
+## Plot Beats
+1. MORPHO-010-ui-glow — domknięty: bioluminescencyjny skin, spójność z tokenami i overlay.
+2. MORPHO-012-anim-mature — domknięty: wypełnienie gradientowe dojrzewania zgodnie z założeniami.
+3. MORPHO-013-multicell — domknięty: układ i render organizmu wielokomórkowego z glow.
+
+## Artefacts & Facts
+- backlog/board.json
+- backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-010-ui-glow/log.jsonl
+- backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-012-anim-mature/log.jsonl
+- backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-013-multicell/log.jsonl
+
+## Next
+- Morfogeneza: ewentualne szlify UX oraz dalsze decyzje produktowe; skupienie przesuwa się na kolejne obszary backlogu.
+
+---
 
 ## Promienne Zgody Hexu
 - "Jesli promien ma serce, niech bije w overlay i na ekranie glownym jednoczesnie."
@@ -40,7 +98,7 @@ This is the consolidated narrative journal maintained by Scribe. Previous per-ag
 ## Plot Beats
 1. Lumen wtacza w overlay ten sam silnik i promien, dorzucajac lifecycle oraz saved state, by widma Compose przestaly krzyczec (`feature/cos-overlay/src/main/java/com/example/cos/overlay/LifecycleOverlayService.kt:92`).
 2. Kai zerka w test plan i dopisuje nowy rytual UI-OVERLAY-003, bo bez logcatowego swiadectwa nikt nie uwierzy w spokojne duchy (`docs/testing/cos-v0.1-test-plan.md:17`).
-3. Kai i Nodus melduja PASS, a status board mruga na zielono - parity overlay oficjalnie wchodzi do kanonu (`agents/kai/log.md:12`, `agents/status.json:23`).
+3. Kai i Nodus melduja PASS, a status board mruga na zielono - parity overlay oficjalnie wchodzi do kanonu (`agents/kai/log.md:12`, `backlog/board.json`).
 
 ## Dialogue Snippet
 - "Podwojny tap i koniec z krzykami," mruknal Lumen, na co Kai odparla: "Zapisane. Teraz zadnych duchow bez przepustki."
@@ -49,7 +107,7 @@ This is the consolidated narrative journal maintained by Scribe. Previous per-ag
 - feature/cos-overlay/src/main/java/com/example/cos/overlay/LifecycleOverlayService.kt:92
 - docs/testing/cos-v0.1-test-plan.md:17
 - agents/kai/log.md:12
-- agents/status.json:23
+- backlog/board.json
 
 ## Cliffhanger / Next Chapter Hook
 - Czy overlay wytrzyma publiczna probe ACCESS-001, czy tez kolejny test odsloni nowe duchy?
@@ -57,4 +115,3 @@ This is the consolidated narrative journal maintained by Scribe. Previous per-ag
 ---
 
 _Archive past stories below this line (newest on top)._
-

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-28T18:10:05",
+  "generated_at": "2025-10-28T22:01:36",
   "areas": [
     {
       "area": "okno-glowne",
@@ -8,8 +8,8 @@
           "id": "TOPIC-20251024_195056-001",
           "title": "Okno Glowne",
           "status": "backlog",
-          "brief": "backlog\\okno-glowne\\topics\\TOPIC-20251024_195056-001\\BRIEF-20251024_195056-001.json",
-          "pdca": "backlog\\okno-glowne\\topics\\TOPIC-20251024_195056-001\\PDCA-20251024_200000-001.md",
+          "brief": "backlog\\topics\\TOPIC-20251024_195056-001\\BRIEF-20251024_195056-001.json",
+          "pdca": "backlog\\topics\\TOPIC-20251024_195056-001\\PDCA-20251024_200000-001.md",
           "tasks": [
             {
               "id": "ORIN-20251024-001",
@@ -54,8 +54,8 @@
           "id": "TOPIC-20251025_000554-001",
           "title": "Overlay",
           "status": "backlog",
-          "brief": "backlog\\overlay\\topics\\TOPIC-20251025_000554-001\\BRIEF-20251025_000554-001.json",
-          "pdca": "backlog\\overlay\\topics\\TOPIC-20251025_000554-001\\PDCA-20251025_001000-001.md",
+          "brief": "backlog\\topics\\TOPIC-20251025_000554-001\\BRIEF-20251025_000554-001.json",
+          "pdca": "backlog\\topics\\TOPIC-20251025_000554-001\\PDCA-20251025_001000-001.md",
           "tasks": [
             {
               "id": "LUMEN-20251025-002",
@@ -123,9 +123,9 @@
         {
           "id": "TOPIC-20251025_120000-001",
           "title": "Morfogeneza",
-          "status": "active",
-          "brief": "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\BRIEF-20251025_120000-001.json",
-          "pdca": "backlog\\morfogeneza\\topics\\TOPIC-20251025_120000-001\\PDCA-20251027_120000-001.md",
+          "status": "backlog",
+          "brief": "backlog\\topics\\TOPIC-20251025_120000-001\\BRIEF-20251025_120000-001.json",
+          "pdca": "backlog\\topics\\TOPIC-20251025_120000-001\\PDCA-20251027_120000-001.md",
           "tasks": [
             {
               "id": "ORIN-20251025-002",
@@ -216,40 +216,9 @@
               "tags": null
             },
             {
-              "id": "MORPHO-007-undo-redo",
-              "title": "Undo/Redo w edytorze form",
-              "status": "in_progress",
-              "owner": "Lumen",
-              "deferred": true,
-              "tags": [
-                "backlog",
-                "someday"
-              ]
-            },
-            {
-              "id": "MORPHO-008-autosort",
-              "title": "Autosort form",
-              "status": "pending",
-              "owner": "Lumen",
-              "deferred": true,
-              "tags": [
-                "backlog"
-              ]
-            },
-            {
-              "id": "MORPHO-009-presety",
-              "title": "Presety form",
-              "status": "pending",
-              "owner": "Lumen",
-              "deferred": true,
-              "tags": [
-                "backlog"
-              ]
-            },
-            {
               "id": "MORPHO-010-ui-glow",
               "title": "UI: bioluminescencyjny skin (kolorystyka i glow)",
-              "status": "pending",
+              "status": "done",
               "owner": "Lumen",
               "deferred": false,
               "tags": [
@@ -259,8 +228,8 @@
             },
             {
               "id": "MORPHO-011-anim-birth",
-              "title": "Animacja narodzin: kropka→obwód (promień)",
-              "status": "in_progress",
+              "title": "Animacja narodzin: kropkaĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬Ă‚Â Ä‚ËĂ˘â€šÂ¬Ă˘â€žËobwÄ‚â€žĂ˘â‚¬ĹˇĂ„Ä…Ă˘â‚¬Ĺˇd (promieÄ‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąÄľ)",
+              "status": "done",
               "owner": "Lumen",
               "deferred": false,
               "tags": [
@@ -270,8 +239,8 @@
             },
             {
               "id": "MORPHO-012-anim-mature",
-              "title": "Animacja dojrzewania: wypełnienie gradientem",
-              "status": "pending",
+              "title": "Animacja dojrzewania: wypeÄ‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡nienie gradientem",
+              "status": "done",
               "owner": "Lumen",
               "deferred": false,
               "tags": [
@@ -281,8 +250,8 @@
             },
             {
               "id": "MORPHO-013-multicell",
-              "title": "Organizm wielokomórkowy: układ i render z glow",
-              "status": "pending",
+              "title": "Organizm wielokomÄ‚â€žĂ˘â‚¬ĹˇĂ„Ä…Ă˘â‚¬Ĺˇrkowy: ukÄ‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡ad i render z glow",
+              "status": "done",
               "owner": "Lumen",
               "deferred": false,
               "tags": [
@@ -301,8 +270,8 @@
           "id": "TOPIC-20251027_131500-001",
           "title": "UI Skin",
           "status": "backlog",
-          "brief": "backlog\\ui\\topics\\TOPIC-20251027_131500-001\\BRIEF-20251027_131500-UI-skin.json",
-          "pdca": "backlog\\ui\\topics\\TOPIC-20251027_131500-001\\PDCA-20251027_131500-001.md",
+          "brief": "backlog\\topics\\TOPIC-20251027_131500-001\\BRIEF-20251027_131500-UI-skin.json",
+          "pdca": "backlog\\topics\\TOPIC-20251027_131500-001\\PDCA-20251027_131500-001.md",
           "tasks": [
             {
               "id": "SKIN-001-tokens",

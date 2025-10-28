@@ -19,7 +19,7 @@
   - Echo utrzymuje notatki UX (`docs/ux/morphogeneza-ux-research.md`) i sygnalizuje ryzyka.
   - Vireal prowadzi ADR-2025-10-25 (status Accepted) oraz guard rails architektoniczne.
   - Lumen dostarczyl pelna obsluge zapisanych form (wybor, zapis, aktywacja) wraz z testami UI/ViewModelu; undo/redo pozostaje w backlogu.
-  - Nodus wdrozyl kanał SharedFlow (`MorphoFormChannel`) oraz integracje overlay; checklisty ADB/logcat rozszerzone o aktywacje form.
+  - Nodus wdrozyl kanal SharedFlow (`MorphoFormChannel`) oraz integracje overlay; checklisty ADB/logcat rozszerzone o aktywacje form.
   - Kai rozbudowal plan testow o scenariusz zapis -> wybor -> aktywacja i potwierdzil sanity (logcat/dumpsys); historia/autosort pozostaje jako backlog.
 - **Check**: Po kazdym etapie Lumen uruchamia `./gradlew test` + `./gradlew connectedDebugAndroidTest`. Kai pokrywa guard rails i sanity overlay, Nodus raportuje logcat/dumpsys. Orin monitoruje status board.
 - **Act**: Monitorowac stabilnosc etapu 006 (Lumen/Kai), utrzymywac dokumentacje SharedFlow/overlay (Nodus), backlog undo/redo/autosort trzymac do kolejnych decyzji. Nyx uwzglednia zmiany w pamieci.

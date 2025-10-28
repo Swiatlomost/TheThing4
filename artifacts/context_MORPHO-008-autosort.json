@@ -14,8 +14,8 @@
     ],
     "deferred": true,
     "links": {
-      "pdca": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-008-autosort/pdca.md",
-      "log": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-008-autosort/log.md"
+      "pdca": "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-008-autosort/pdca.md",
+      "log": "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-008-autosort/log.md"
     }
   },
   "files": [

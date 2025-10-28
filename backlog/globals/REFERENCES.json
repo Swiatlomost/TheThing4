@@ -1,0 +1,18 @@
+﻿{
+  "adr": [
+    "docs/architecture/ADR-2025-10-24-cos-architecture.md",
+    "docs/architecture/ADR-2025-10-25-morfogeneza.md"
+  ],
+  "reference_docs": [
+    "docs/reference/floating-overlay.md",
+    "docs/reference/architecture-android.md"
+  ],
+  "ux": [
+    "docs/ux/morphogeneza-ux-research.md"
+  ],
+  "testing": [
+    "docs/testing/cos-v0.1-test-plan.md",
+    "docs/testing/morphogeneza-test-plan.md",
+    "docs/testing/morphogeneza-event-checklist.md"
+  ]
+}

@@ -30,7 +30,7 @@ Szybko potwierdzic, ze po aktywacji formy Morfogenezy system emituje zdarzenie f
 
 ## Roznice srodowiskowe
 - Na fizycznym urzadzeniu upewnij sie, ze overlay ma przyznane uprawnienia `SYSTEM_ALERT_WINDOW` (komenda `adb shell appops get com.example.cos SYSTEM_ALERT_WINDOW`).
-- W srodowisku CI ustaw `ANDROID_SERIAL` na identyfikator emulatora.
+- W środowisku CI ustaw `ANDROID_SERIAL` na identyfikator emulatora.
 
 ## Rezultaty do logow
 - Lumen: w `agents/lumen/log.md` zanotuj date sanity oraz commit/branch.
@@ -45,11 +45,11 @@ Szybko potwierdzic, ze po aktywacji formy Morfogenezy system emituje zdarzenie f
 - `adb shell dumpsys activity broadcasts --history` nie wykazal trwajacych broadcastow (zdarzenie dostarczone natychmiast).
 
 ## Aktywacja nowej formy (SharedFlow + overlay)
-- [ ] Po zapisaniu formy wybierz ją z listy i wciśnij przycisk **Aktywuj**.
+- [ ] Po zapisaniu formy wybierz ja z listy i wcisnij przycisk **Aktywuj**.
 - [ ] `adb logcat -d -s MorfoEvent:*` zawiera wpis z nowym `formId` oraz `cellsHash`.
 - [ ] `adb shell dumpsys activity broadcasts --history` pokazuje ostatni broadcast `com.example.cos.FORMA_AKTYWNA` z nowym `formId`.
-- [ ] Overlay Cos odświeża layout do aktywnej formy (manualna obserwacja lub zrzut ekranu).
-- [ ] Po powrocie do formy 0 kanał SharedFlow i overlay powinny prezentować bazowy układ (brak dodatkowych wpisów w logcat).
+- [ ] Overlay Cos odswieza layout do aktywnej formy (manualna obserwacja lub zrzut ekranu).
+- [ ] Po powrocie do formy 0 kanal SharedFlow i overlay powinny prezentowac bazowy uklad (brak dodatkowych wpisow w logcat).
 
 ## Undo/redo (backlog)
 - [ ] Po wznowieniu prac nad undo/redo dodac kroki: aktywacja formy, cofniecie zmian (undo) i ponowne aktywacje; powtorzyc logcat/dumpsys.

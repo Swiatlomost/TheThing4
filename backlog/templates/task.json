@@ -1,0 +1,14 @@
+{
+  "id": "TASK-ID",
+  "title": "Task title",
+  "description": "Short what/why",
+  "acceptance": [
+    "Criterion 1",
+    "Criterion 2"
+  ],
+  "links": {
+    "pdca": "backlog/topics/<TOPIC>/tasks/TASK-ID/PDCA.json",
+    "log": "backlog/topics/<TOPIC>/tasks/TASK-ID/log.jsonl"
+  }
+}
+

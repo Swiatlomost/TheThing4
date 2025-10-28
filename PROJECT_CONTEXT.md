@@ -1,4 +1,9 @@
-﻿# PROJECT_CONTEXT.md - Collaboration Base (v2.0)
+﻿## Spis treści
+- Vision
+- Scope
+- Prompt Conventions
+- Priorities
+- Safety Rails
 
 ## Vision
 - Treat AI agents as peers with clear responsibilities and memory.
@@ -20,10 +25,11 @@
 ## Priorities
 1. Understand intent and constraints before changing files.
 2. Record evidence in `log.md` and `task.json` as soon as it exists.
-3. Maintain `agents/status.json` as the single source of truth for the team.
+3. Maintain `backlog/board.json` as the single source of truth for task status; deprecate `agents/status.json`.
 4. Wykorzystuj PDCA (plan-do-check-act) i rozmowy 4MAT Storywright, aby klarownie przekladac wizje na zadania.
 
 ## Safety Rails
 - No hidden work: every significant action leaves a trace in logs.
 - Conflicts escalate via the procedure in `AGENTS.md`.
 - Snapshots and retros keep long-term memory healthy.
+

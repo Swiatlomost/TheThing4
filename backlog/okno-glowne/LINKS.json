@@ -1,9 +1,0 @@
-{
-  "area": "okno-glowne",
-  "summary": "Ekran główny cyklu Cos (silnik, promienie, interakcje)",
-  "canonical": {
-    "adr": ["docs/architecture/COS-v0.1-architecture.md"],
-    "tests": ["docs/testing/cos-v0.1-test-plan.md"]
-  }
-}
-

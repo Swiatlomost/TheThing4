@@ -1,0 +1,46 @@
+﻿{
+  "date": "2025-10-25_120000",
+  "id": "BRIEF-20251025_120000-001",
+  "title": "Morfogeneza (4MAT)",
+  "why": [
+    "Morfogeneza daje sprawczosc nad ksztaltem Cosia i synchronizuje doswiadczenie app/overlay.",
+    "Wartosc: aktywacja form wplywa na rozgrywke i wykorzystanie zasobow komorek."
+  ],
+  "what": [
+    "Okno Morfogenezy z obrysem organizmu, statusem (level, komorki, aktywna forma) i lista zapisanych form.",
+    "Edytor pozwala tworzyc/edytywac formy w granicach zasobow i bez nakladania."
+  ],
+  "how": [
+    "Hex siatka z micro-offsetem (snap-to-hex).",
+    "Event forma_aktywna: SharedFlow + fallback broadcast; overlay subskrybuje kanal.",
+    "Limit komorek = zasoby z CosLifecycleEngine; alert przy 10% zasobow."
+  ],
+  "what_if": [
+    "Walidacja kolizji organow wewnetrznych.",
+    "Podglad roznic form i presety.",
+    "Undo/redo i autosort (backlog)."
+  ],
+  "conversation_highlights": [
+    "Hex siatka i micro-offset zatwierdzone przez Orina (ADR-2025-10-25).",
+    "Event forma_aktywna udokumentowany w checkliscie Kai (logcat/dumpsys).",
+    "Priorytety: 003-006 jako stan bazowy; 007 (undo/redo) i autosort przeniesione do backlogu."
+  ],
+  "links": {
+    "ADR": [
+      "backlog/topics/TOPIC-20251025_120000-001/ADR-20251025_120000-001.md"
+    ],
+    "UI": [
+      "backlog/topics/TOPIC-20251025_120000-001/UI-20251026_120000-001.md"
+    ],
+    "UX": [
+      "backlog/topics/TOPIC-20251025_120000-001/UX-20251025_120000-001.md"
+    ],
+    "TESTS": [
+      "backlog/topics/TOPIC-20251025_120000-001/TEST-PLAN-20251026_120000-001.md"
+    ],
+    "CHECKLIST": [
+      "backlog/topics/TOPIC-20251025_120000-001/EVENT-CHECKLIST-20251026_120000-001.md"
+    ]
+  }
+}
+

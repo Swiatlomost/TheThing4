@@ -1,455 +1,399 @@
 {
-  "version": "3.0",
-  "updated_at": "2025-10-27",
-  "topics": [
-    {
-      "id": "TOPIC-20251024_195056-001",
-      "title": "Okno Glowne"
-    },
-    {
-      "id": "TOPIC-20251025_000554-001",
-      "title": "Overlay"
-    },
-    {
-      "id": "TOPIC-20251025_120000-001",
-      "title": "Morfogeneza"
-    },
-    {
-      "id": "TOPIC-20251027_131500-001",
-      "title": "UI Skin"
-    }
-  ],
-  "tasks": [
-    {
-      "id": "ORIN-20251024-001",
-      "title": "CoS v0.1 - manualny cykl i overlay parity",
-      "topic": "TOPIC-20251024_195056-001",
-      "status": "done",
-      "owner": "Orin",
-      "opened_at": "2025-10-24",
-      "closed_at": "2025-10-25",
-      "links": {
-        "brief": "backlog/okno-glowne/topics/TOPIC-20251024_195056-001/BRIEF-20251024_195056-001.json"
-      }
-    },
-    {
-      "id": "VIREAL-20251024-001",
-      "title": "Architektura cyklu Cos v0.1",
-      "topic": "TOPIC-20251024_195056-001",
-      "status": "done",
-      "owner": "Vireal"
-    },
-    {
-      "id": "LUMEN-20251024-001",
-      "title": "Implementacja cyklu Cos v0.1",
-      "topic": "TOPIC-20251024_195056-001",
-      "status": "done",
-      "owner": "Lumen"
-    },
-    {
-      "id": "KAI-20251024-001",
-      "title": "Plan testow Cos v0.1",
-      "topic": "TOPIC-20251024_195056-001",
-      "status": "done",
-      "owner": "Kai",
-      "links": {
-        "test_plan": "docs/testing/cos-v0.1-test-plan.md"
-      }
-    },
-    {
-      "id": "LUMEN-20251025-002",
-      "title": "Parity overlay Cos v0.1",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Lumen",
-      "links": {
-        "adr": "docs/reference/floating-overlay.md"
-      }
-    },
-    {
-      "id": "KAI-20251025-002",
-      "title": "Testy overlay parity",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Kai",
-      "links": {
-        "tests": "docs/testing/cos-v0.1-test-plan.md"
-      }
-    },
-    {
-      "id": "ECHO-20251025-001",
-      "title": "Repo audit overlay (instrumentation gaps)",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Echo",
-      "links": {
-        "notes": "backlog/overlay/ARCHITECTURE.md"
-      }
-    },
-    {
-      "id": "NODUS-20251025-001",
-      "title": "Overlay permissions + ADB checklist",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Nodus",
-      "links": {
-        "checklist": "docs/reference/floating-overlay.md"
-      }
-    },
-    {
-      "id": "NODUS-20251025-002",
-      "title": "Overlay sanity rerun (double tap, instrumentation)",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Nodus",
-      "links": {
-        "checklist": "docs/testing/cos-v0.1-test-plan.md"
-      }
-    },
-    {
-      "id": "VIREAL-20251025-003",
-      "title": "Overlay guard rails (doc)",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Vireal",
-      "links": {
-        "adr": "docs/reference/floating-overlay.md"
-      }
-    },
-    {
-      "id": "SCRIBE-20251025-001",
-      "title": "Overlay parity chronicle",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Scribe",
-      "links": {
-        "chronicle": "reports/chronicle.md"
-      }
-    },
-    {
-      "id": "ORIN-20251025-002",
-      "title": "Morfogeneza v0.1 - orkiestracja sesji",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Orin",
-      "opened_at": "2025-10-25",
-      "closed_at": "2025-10-26",
-      "links": {
-        "brief": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/BRIEF-20251025_120000-001.json",
-        "roi": "docs/ai-first-development-roi-20251026.md"
-      }
-    },
-    {
-      "id": "ECHO-20251025-002",
-      "title": "Research kreatora Morfogenezy",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Echo",
-      "closed_at": "2025-10-26",
-      "links": {
-        "ux_notes": "docs/ux/morphogeneza-ux-research.md",
-        "brief": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/BRIEF-20251025_120000-001.json"
-      }
-    },
-    {
-      "id": "VIREAL-20251025-002",
-      "title": "ADR formy Cosia",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Vireal",
-      "closed_at": "2025-10-25",
-      "links": {
-        "adr": "docs/architecture/ADR-2025-10-25-morfogeneza.md"
-      }
-    },
-    {
-      "id": "LUMEN-20251025-003",
-      "title": "UI wejscia do Morfogenezy",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Lumen",
-      "closed_at": "2025-10-25"
-    },
-    {
-      "id": "LUMEN-20251025-004",
-      "title": "Menu poziomu i zasobow komorek",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Lumen",
-      "closed_at": "2025-10-25"
-    },
-    {
-      "id": "LUMEN-20251025-005",
-      "title": "Edytor komorek i zapisy form",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Lumen",
-      "closed_at": "2025-10-26",
-      "links": {
-        "test_plan": "docs/testing/morphogeneza-test-plan.md"
-      }
-    },
-    {
-      "id": "LUMEN-20251026-006",
-      "title": "Canvas UX Morfogenezy",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Lumen",
-      "closed_at": "2025-10-26"
-    },
-    {
-      "id": "KAI-20251025-003",
-      "title": "Plan testow Morfogenezy",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Kai",
-      "closed_at": "2025-10-26",
-      "links": {
-        "test_plan": "docs/testing/morphogeneza-test-plan.md",
-        "checklist": "docs/testing/morphogeneza-event-checklist.md"
-      }
-    },
-    {
-      "id": "NODUS-20251026-004",
-      "title": "Sanity kanalu forma_aktywna po undo/redo",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Nodus",
-      "closed_at": "2025-10-26",
-      "links": {
-        "checklist": "docs/testing/morphogeneza-event-checklist.md"
-      }
-    },
-    {
-      "id": "MIRA-20251025-001",
-      "title": "Brief Morfogenezy Cos",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Storywright",
-      "closed_at": "2025-10-26",
-      "links": {
-        "brief": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/BRIEF-20251025_120000-001.json"
-      }
-    },
-    {
-      "id": "SCRIBE-20251026-002",
-      "title": "Kronika Morfogenezy 006",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Scribe",
-      "closed_at": "2025-10-26",
-      "links": {
-        "chronicle": "reports/chronicle.md"
-      }
-    },
-    {
-      "id": "MORPHO-007-undo-redo",
-      "title": "Undo/Redo w edytorze form",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "in_progress",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai",
-        "Nodus",
-        "Echo",
-        "Scribe"
-      ],
-      "tags": [
-        "backlog",
-        "someday"
-      ],
-      "deferred": true,
-      "links": {
-        "pdca": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-007-undo-redo/pdca.md",
-        "log": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-007-undo-redo/log.md"
-      }
-    },
-    {
-      "id": "MORPHO-008-autosort",
-      "title": "Autosort form",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "pending",
-      "owner": "Lumen",
-      "contributors": [
-        "Echo",
-        "Kai"
-      ],
-      "tags": [
-        "backlog"
-      ],
-      "deferred": true,
-      "links": {
-        "pdca": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-008-autosort/pdca.md",
-        "log": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-008-autosort/log.md"
-      }
-    },
-    {
-      "id": "MORPHO-009-presety",
-      "title": "Presety form",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "pending",
-      "owner": "Lumen",
-      "contributors": [
-        "Echo"
-      ],
-      "tags": [
-        "backlog"
-      ],
-      "deferred": true,
-      "links": {
-        "pdca": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-009-presety/pdca.md",
-        "log": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-009-presety/log.md"
-      }
-    },
-    {
-      "id": "MORPHO-010-ui-glow",
-      "title": "UI: bioluminescencyjny skin (kolorystyka i glow)",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "pending",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai"
-      ],
-      "tags": [
-        "ui",
-        "glow"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
-        "pdca": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-010-ui-glow/pdca.md",
-        "log": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-010-ui-glow/log.md"
-      }
-    },
-    {
-      "id": "MORPHO-011-anim-birth",
-      "title": "Animacja narodzin: kropka→obwód (promień)",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "in_progress",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai"
-      ],
-      "tags": [
-        "anim",
-        "narodziny"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
-        "pdca": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-011-anim-birth/pdca.md",
-        "log": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-011-anim-birth/log.md"
-      }
-    },
-    {
-      "id": "MORPHO-012-anim-mature",
-      "title": "Animacja dojrzewania: wypełnienie gradientem",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "pending",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai"
-      ],
-      "tags": [
-        "anim",
-        "dojrzewanie"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
-        "pdca": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-012-anim-mature/pdca.md",
-        "log": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-012-anim-mature/log.md"
-      }
-    },
-    {
-      "id": "MORPHO-013-multicell",
-      "title": "Organizm wielokomórkowy: układ i render z glow",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "pending",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai"
-      ],
-      "tags": [
-        "renderer",
-        "organism"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
-        "pdca": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-013-multicell/pdca.md",
-        "log": "backlog/morfogeneza/topics/TOPIC-20251025_120000-001/tasks/MORPHO-013-multicell/log.md"
-      }
-    },
-    {
-      "id": "SKIN-001-tokens",
-      "title": "Globalne tokeny UI (kolory, glow, typografia)",
-      "topic": "TOPIC-20251027_131500-001",
-      "status": "done",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai"
-      ],
-      "tags": [
-        "ui",
-        "skin"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/ui/topics/TOPIC-20251027_131500-001/BRIEF-20251027_131500-UI-skin.json",
-        "pdca": "backlog/ui/topics/TOPIC-20251027_131500-001/tasks/SKIN-001-tokens/pdca.md",
-        "log": "backlog/ui/topics/TOPIC-20251027_131500-001/tasks/SKIN-001-tokens/log.md"
-      }
-    },
-    {
-      "id": "SKIN-002-app-theme",
-      "title": "Compose Theme + komponenty neon (3 ekrany)",
-      "topic": "TOPIC-20251027_131500-001",
-      "status": "done",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai"
-      ],
-      "tags": [
-        "ui",
-        "theme"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/ui/topics/TOPIC-20251027_131500-001/BRIEF-20251027_131500-UI-skin.json",
-        "pdca": "backlog/ui/topics/TOPIC-20251027_131500-001/tasks/SKIN-002-app-theme/pdca.md",
-        "log": "backlog/ui/topics/TOPIC-20251027_131500-001/tasks/SKIN-002-app-theme/log.md"
-      }
-    },
-    {
-      "id": "SKIN-003-overlay-parity",
-      "title": "Parity overlay: motyw i akcent glow",
-      "topic": "TOPIC-20251027_131500-001",
-      "status": "done",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai",
-        "Nodus"
-      ],
-      "tags": [
-        "overlay",
-        "theme"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/ui/topics/TOPIC-20251027_131500-001/BRIEF-20251027_131500-UI-skin.json",
-        "pdca": "backlog/ui/topics/TOPIC-20251027_131500-001/tasks/SKIN-003-overlay-parity/pdca.md",
-        "log": "backlog/ui/topics/TOPIC-20251027_131500-001/tasks/SKIN-003-overlay-parity/log.md"
-      }
-    }
-  ],
-  "_docs": "Board (under backlog/) is the single source of truth for task status."
+    "version":  "3.0",
+    "updated_at":  "2025-10-27",
+    "topics":  [
+                   {
+                       "id":  "TOPIC-20251024_195056-001",
+                       "title":  "Okno Glowne"
+                   },
+                   {
+                       "id":  "TOPIC-20251025_000554-001",
+                       "title":  "Overlay"
+                   },
+                   {
+                       "id":  "TOPIC-20251025_120000-001",
+                       "title":  "Morfogeneza"
+                   },
+                   {
+                       "id":  "TOPIC-20251027_131500-001",
+                       "title":  "UI Skin"
+                   }
+               ],
+    "tasks":  [
+                  {
+                      "id":  "ORIN-20251024-001",
+                      "title":  "CoS v0.1 - manualny cykl i overlay parity",
+                      "topic":  "TOPIC-20251024_195056-001",
+                      "status":  "done",
+                      "owner":  "Orin",
+                      "opened_at":  "2025-10-24",
+                      "closed_at":  "2025-10-25",
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251024_195056-001/BRIEF-20251024_195056-001.json"
+                                }
+                  },
+                  {
+                      "id":  "VIREAL-20251024-001",
+                      "title":  "Architektura cyklu Cos v0.1",
+                      "topic":  "TOPIC-20251024_195056-001",
+                      "status":  "done",
+                      "owner":  "Vireal"
+                  },
+                  {
+                      "id":  "LUMEN-20251024-001",
+                      "title":  "Implementacja cyklu Cos v0.1",
+                      "topic":  "TOPIC-20251024_195056-001",
+                      "status":  "done",
+                      "owner":  "Lumen"
+                  },
+                  {
+                      "id":  "KAI-20251024-001",
+                      "title":  "Plan testow Cos v0.1",
+                      "topic":  "TOPIC-20251024_195056-001",
+                      "status":  "done",
+                      "owner":  "Kai",
+                      "links":  {
+                                    "test_plan":  "docs/testing/cos-v0.1-test-plan.md"
+                                }
+                  },
+                  {
+                      "id":  "LUMEN-20251025-002",
+                      "title":  "Parity overlay Cos v0.1",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "links":  {
+                                    "adr":  "docs/reference/floating-overlay.md"
+                                }
+                  },
+                  {
+                      "id":  "KAI-20251025-002",
+                      "title":  "Testy overlay parity",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Kai",
+                      "links":  {
+                                    "tests":  "docs/testing/cos-v0.1-test-plan.md"
+                                }
+                  },
+                  {
+                      "id":  "ECHO-20251025-001",
+                      "title":  "Repo audit overlay (instrumentation gaps)",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Echo",
+                      "links":  {
+                                    "notes":  "backlog/globals/ARCHITECTURE.md"
+                                }
+                  },
+                  {
+                      "id":  "NODUS-20251025-001",
+                      "title":  "Overlay permissions + ADB checklist",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Nodus",
+                      "links":  {
+                                    "checklist":  "docs/reference/floating-overlay.md"
+                                }
+                  },
+                  {
+                      "id":  "NODUS-20251025-002",
+                      "title":  "Overlay sanity rerun (double tap, instrumentation)",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Nodus",
+                      "links":  {
+                                    "checklist":  "docs/testing/cos-v0.1-test-plan.md"
+                                }
+                  },
+                  {
+                      "id":  "VIREAL-20251025-003",
+                      "title":  "Overlay guard rails (doc)",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Vireal",
+                      "links":  {
+                                    "adr":  "docs/reference/floating-overlay.md"
+                                }
+                  },
+                  {
+                      "id":  "SCRIBE-20251025-001",
+                      "title":  "Overlay parity chronicle",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Scribe",
+                      "links":  {
+                                    "chronicle":  "reports/chronicle.md"
+                                }
+                  },
+                  {
+                      "id":  "ORIN-20251025-002",
+                      "title":  "Morfogeneza v0.1 - orkiestracja sesji",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Orin",
+                      "opened_at":  "2025-10-25",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251025_120000-001.json",
+                                    "roi":  "docs/ai-first-development-roi-20251026.md"
+                                }
+                  },
+                  {
+                      "id":  "ECHO-20251025-002",
+                      "title":  "Research kreatora Morfogenezy",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Echo",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "ux_notes":  "docs/ux/morphogeneza-ux-research.md",
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251025_120000-001.json"
+                                }
+                  },
+                  {
+                      "id":  "VIREAL-20251025-002",
+                      "title":  "ADR formy Cosia",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Vireal",
+                      "closed_at":  "2025-10-25",
+                      "links":  {
+                                    "adr":  "docs/architecture/ADR-2025-10-25-morfogeneza.md"
+                                }
+                  },
+                  {
+                      "id":  "LUMEN-20251025-003",
+                      "title":  "UI wejscia do Morfogenezy",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "closed_at":  "2025-10-25"
+                  },
+                  {
+                      "id":  "LUMEN-20251025-004",
+                      "title":  "Menu poziomu i zasobow komorek",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "closed_at":  "2025-10-25"
+                  },
+                  {
+                      "id":  "LUMEN-20251025-005",
+                      "title":  "Edytor komorek i zapisy form",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "test_plan":  "docs/testing/morphogeneza-test-plan.md"
+                                }
+                  },
+                  {
+                      "id":  "LUMEN-20251026-006",
+                      "title":  "Canvas UX Morfogenezy",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "closed_at":  "2025-10-26"
+                  },
+                  {
+                      "id":  "KAI-20251025-003",
+                      "title":  "Plan testow Morfogenezy",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Kai",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "test_plan":  "docs/testing/morphogeneza-test-plan.md",
+                                    "checklist":  "docs/testing/morphogeneza-event-checklist.md"
+                                }
+                  },
+                  {
+                      "id":  "NODUS-20251026-004",
+                      "title":  "Sanity kanalu forma_aktywna po undo/redo",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Nodus",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "checklist":  "docs/testing/morphogeneza-event-checklist.md"
+                                }
+                  },
+                  {
+                      "id":  "MIRA-20251025-001",
+                      "title":  "Brief Morfogenezy Cos",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Storywright",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251025_120000-001.json"
+                                }
+                  },
+                  {
+                      "id":  "SCRIBE-20251026-002",
+                      "title":  "Kronika Morfogenezy 006",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Scribe",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "chronicle":  "reports/chronicle.md"
+                                }
+                  },
+                  {
+                      "id":  "MORPHO-010-ui-glow",
+                      "title":  "UI: bioluminescencyjny skin (kolorystyka i glow)",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "ui",
+                                   "glow"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-010-ui-glow/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-010-ui-glow/log.md"
+                                },
+                      "closed_at":  "2025-10-28"
+                  },
+                  {
+                      "id":  "MORPHO-011-anim-birth",
+                      "title":  "Animacja narodzin: kropkaĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬Ă‚Â Ä‚ËĂ˘â€šÂ¬Ă˘â€žËobwÄ‚â€žĂ˘â‚¬ĹˇĂ„Ä…Ă˘â‚¬Ĺˇd (promieÄ‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąÄľ)",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "anim",
+                                   "narodziny"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-011-anim-birth/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-011-anim-birth/log.md"
+                                },
+                      "closed_at":  "2025-10-28"
+                  },
+                  {
+                      "id":  "MORPHO-012-anim-mature",
+                      "title":  "Animacja dojrzewania: wypeÄ‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡nienie gradientem",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "anim",
+                                   "dojrzewanie"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-012-anim-mature/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-012-anim-mature/log.md"
+                                },
+                      "closed_at":  "2025-10-28"
+                  },
+                  {
+                      "id":  "MORPHO-013-multicell",
+                      "title":  "Organizm wielokomÄ‚â€žĂ˘â‚¬ĹˇĂ„Ä…Ă˘â‚¬Ĺˇrkowy: ukÄ‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡ad i render z glow",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "renderer",
+                                   "organism"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-013-multicell/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-013-multicell/log.md"
+                                },
+                      "closed_at":  "2025-10-28"
+                  },
+                  {
+                      "id":  "SKIN-001-tokens",
+                      "title":  "Globalne tokeny UI (kolory, glow, typografia)",
+                      "topic":  "TOPIC-20251027_131500-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "ui",
+                                   "skin"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251027_131500-001/BRIEF-20251027_131500-UI-skin.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-001-tokens/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-001-tokens/log.md"
+                                }
+                  },
+                  {
+                      "id":  "SKIN-002-app-theme",
+                      "title":  "Compose Theme + komponenty neon (3 ekrany)",
+                      "topic":  "TOPIC-20251027_131500-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "ui",
+                                   "theme"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251027_131500-001/BRIEF-20251027_131500-UI-skin.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-002-app-theme/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-002-app-theme/log.md"
+                                }
+                  },
+                  {
+                      "id":  "SKIN-003-overlay-parity",
+                      "title":  "Parity overlay: motyw i akcent glow",
+                      "topic":  "TOPIC-20251027_131500-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai",
+                                           "Nodus"
+                                       ],
+                      "tags":  [
+                                   "overlay",
+                                   "theme"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251027_131500-001/BRIEF-20251027_131500-UI-skin.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-003-overlay-parity/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-003-overlay-parity/log.md"
+                                }
+                  }
+              ],
+    "_docs":  "Board (under backlog/) is the single source of truth for task status."
 }

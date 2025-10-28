@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Sync UI skin tokens from backlog to runtime resource.
 
 Default source:
-  backlog/ui/topics/TOPIC-20251027_131500-001/tokens/tokens.json
+  backlog/topics/TOPIC-20251027_131500-001/tokens/tokens.json
 
 Destination:
   core/designsystem/src/main/res/raw/ui_tokens.json
@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_SRC = ROOT / "backlog/ui/topics/TOPIC-20251027_131500-001/tokens/tokens.json"
+DEFAULT_SRC = ROOT / "backlog/topics/TOPIC-20251027_131500-001/tokens/tokens.json"
 DEFAULT_DST = ROOT / "core/designsystem/src/main/res/raw/ui_tokens.json"
 
 def main():
@@ -35,7 +35,7 @@ def main():
     dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(src, dst)
     print(f"[OK] Synced tokens: {src} -> {dst}")
-    print(f"[INFO] version={data.get('version')} palette.keys={list(data.get('palette', {}).keys())[:3]}…")
+    print(f"[INFO] version={data.get('version')} palette.keys={list(data.get('palette', {}).keys())[:3]}â€¦")
 
 if __name__ == "__main__":
     main()

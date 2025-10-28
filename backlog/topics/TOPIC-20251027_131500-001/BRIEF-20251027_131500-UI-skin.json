@@ -1,0 +1,28 @@
+﻿{
+  "date": "2025-10-27_131500",
+  "id": "BRIEF-20251027_131500-UI-skin",
+  "title": "Global UI Skin (4MAT)",
+  "why": [
+    "Ujednolicenie wyglÄ…du caĹ‚ej aplikacji (dark + neon glow).",
+    "Lepsza czytelnoĹ›Ä‡ stanĂłw i spĂłjnoĹ›Ä‡ z MorfogenezÄ…."
+  ],
+  "what": [
+    "Paleta i tokeny (kolory, typografia, promieĹ„ poĹ›wiaty, gradienty).",
+    "Compose Theme + neon komponenty (przycisk, pasek postÄ™pu, nagĹ‚Ăłwki).",
+    "ParzystoĹ›Ä‡ overlay: te same akcenty i intensywnoĹ›Ä‡ glow."
+  ],
+  "how": [
+    "Jedno ĹşrĂłdĹ‚o tokenĂłw dla app/overlay.",
+    "Easing/czasy zgodne z BRIEF Morfogenezy UI Glow.",
+    "Cel 60 fps; tryb oszczÄ™dny redukuje blur/poĹ›wiatÄ™."
+  ],
+  "acceptance": [
+    "Tokeny wdroĹĽone i uĹĽyte w 3 ekranach (np. ekran pytania, okno gĹ‚Ăłwne, menu).",
+    "Przycisk neon + pasek progresu w stylu glow.",
+    "Overlay odzwierciedla tÄ™ samÄ… paletÄ™ i akcenty."
+  ],
+  "links": {
+    "morpho_ui": ["backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json"],
+    "tests": ["docs/testing/morphogeneza-test-plan.md"]
+  }
+}

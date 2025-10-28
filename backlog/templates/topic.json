@@ -1,0 +1,15 @@
+{
+  "id": "TOPIC-YYYYMMDD_HHMMSS-XXX",
+  "area": "area-slug",
+  "title": "Topic Title",
+  "summary": "One-liner why/what",
+  "owners": ["Orin"],
+  "links": {
+    "adr": [],
+    "tests": [],
+    "ux": []
+  },
+  "brief": "backlog/topics/TOPIC-YYYYMMDD_HHMMSS-XXX/brief.json",
+  "pdca": "backlog/topics/TOPIC-YYYYMMDD_HHMMSS-XXX/PDCA.json"
+}
+

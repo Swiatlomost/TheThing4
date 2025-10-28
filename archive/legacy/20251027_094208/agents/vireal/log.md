@@ -9,8 +9,8 @@
 | 2025-10-25 | Guard rail scope | Okreslilem ze parity wymaga wspolnych animacji, promieni i kolejnosci zdarzen | Zweryfikowac z Lumen i Kai ustawienia animacji i testow |
 | 2025-10-25 | ADR update | Zebrane notatki z implementacji trafily do ADR-2025-10-24 jako wersja 1.1 | Dodac sekcje o overlay service po otrzymaniu wynikow od Nodus |
 | 2025-10-25 | Overlay parity sanity | Potwierdzilem, ze overlay dziala po poprawce lifecycle/saved state; guard rails spelnione | Przekazac Kai wymagania testowe i uaktualnic ADR |
-| 2025-10-25 | Morfogeneza ADR | Sporządzony ADR-2025-10-25-morfogeneza (model danych, walidacja, integracje) | Uzyskac decyzje Orina dot. platna oraz guard rails UX od Echo |
-| 2025-10-25 | Morfogeneza platno | Orin zatwierdzil siatke heksagonalna + micro offset (snap-to-hex ±5%) | Zaktualizowac ADR status i zsynchronizowac guard rails z Lumenem |
+| 2025-10-25 | Morfogeneza ADR | Sporzadzony ADR-2025-10-25-morfogeneza (model danych, walidacja, integracje) | Uzyskac decyzje Orina dot. platna oraz guard rails UX od Echo |
+| 2025-10-25 | Morfogeneza platno | Orin zatwierdzil siatke heksagonalna + micro offset (snap-to-hex 5%) | Zaktualizowac ADR status i zsynchronizowac guard rails z Lumenem |
 | 2025-10-25 | Morfogeneza guard rails | Guard rails Echo scalone w ADR-2025-10-25 (sekcja UX Guard Rails) | Czekam na kanal eventu od Nodus i finalny review Orina |
 
 ## PDCA Snapshot
@@ -20,9 +20,9 @@
 - **Act**: Po otrzymaniu decyzji Nodus/Orin zaktualizowac status ADR na Accepted.
 
 ## TODO
-- [x] Sporządzic ADR-2025-10-25-morfogeneza (draft)
+- [x] Sporzadzic ADR-2025-10-25-morfogeneza (draft)
 - [x] Uzgodnic rodzaj platna/siatki z Orinem
-- [x] Scalić wytyczne UX od Echo do sekcji guard rails
+- [x] Scalic wytyczne UX od Echo do sekcji guard rails
 - [ ] Potwierdzic kanal eventu z Nodusem i zaktualizowac ADR
 
 ## Archive

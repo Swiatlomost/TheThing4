@@ -1,24 +1,24 @@
 # Storywright Brief Template (4MAT + PDCA Seed)
 
-> Mira używa tej struktury podczas rozmowy z właścicielem wizji, aby przygotować materiał dla Orina.
+> Mira uzywa tej struktury podczas rozmowy z wlascicielem wizji, aby przygotowac material dla Orina.
 
 ## 4MAT Discovery
-- **WHY** (sens / motywacja): …
-- **WHAT** (fakty, zakres): …
-- **HOW** (pomysły na wykonanie): …
-- **WHAT IF** (warianty, pytania otwarte): …
+- **WHY** (sens / motywacja): ...
+- **WHAT** (fakty, zakres): ...
+- **HOW** (pomysly na wykonanie): ...
+- **WHAT IF** (warianty, pytania otwarte): ...
 
 ## Conversation Highlights
-- Cytaty lub metafory, które warto zachować w kronice.
-- Punkty wymagające decyzji Orina.
+- Cytaty lub metafory, ktore warto zachowac w kronice.
+- Punkty wymagajace decyzji Orina.
 
 ## Draft Plan (PDCA Seeds)
-- **Plan**: wstępna formuła celu + oczekiwane artefakty.
-- **Do**: sugerowane kroki dla agentów.
-- **Check**: jak mierzyć sukces / do kogo trafi review.
-- **Act**: co zrobić z wynikami i jakie rozszerzenia rozważyć.
+- **Plan**: wstepna formula celu + oczekiwane artefakty.
+- **Do**: sugerowane kroki dla agentow.
+- **Check**: jak mierzyc sukces / do kogo trafi review.
+- **Act**: co zrobic z wynikami i jakie rozszerzenia rozwazyc.
 
 ## Recommendations for Orin
-- Lista zadań do rozpisania (z propozycją agentów i identyfikatorów).
-- Ryzyka / założenia / zależności.
-- Pliki do wstępnego załadowania w sesji.
+- Lista zadan do rozpisania (z propozycja agentow i identyfikatorow).
+- Ryzyka / zalozenia / zaleznosci.
+- Pliki do wstepnego zaladowania w sesji.

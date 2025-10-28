@@ -1,4 +1,4 @@
-﻿# Floating Overlay Solution Reference
+# Floating Overlay Solution Reference
 
 ## Platform requirements
 - Overlay uses SYSTEM_ALERT_WINDOW permission with TYPE_APPLICATION_OVERLAY windows.
@@ -15,7 +15,7 @@
 - Compose overlay screen with:
   - pointerInput { detectDragGestures { ... } } to update WindowManager.LayoutParams.x/y within screen bounds.
   - detectTapGestures(onDoubleTap = { launch main activity }) to hop back into the app.
-- Visual design: semi-transparent bud phases, mature/spawned komórki skalują się względem kontenera.
+- Visual design: semi-transparent bud phases, mature/spawned komorki skaluja sie wzgledem kontenera.
 - Accessibility: meaningful contentDescription, TalkBack announcement for double tap action.
 
 ## Lifecycle flow
@@ -23,7 +23,7 @@
 2. Service attaches Compose view to WindowManager with layout params WRAP_CONTENT + flags FLAG_NOT_FOCUSABLE | FLAG_LAYOUT_NO_LIMITS.
 3. When app is opened (double tap), overlay hides or service stops to avoid duplication.
 4. Drag updates persist to DataStore so overlay reappears in last position.
-5. QA/dev mogą wysyłać komendy: db shell am broadcast -a com.example.cos.action.SEED (reset), ...NARODZINY, ...DOJRZEWANIE, ...NOWA_KOMORKA, albo db shell am broadcast -a com.example.cos.action.SET_STAGE --es com.example.cos.extra.STAGE <BUD|MATURE>.
+5. QA/dev moga wysylac komendy: db shell am broadcast -a com.example.cos.action.SEED (reset), ...NARODZINY, ...DOJRZEWANIE, ...NOWA_KOMORKA, albo db shell am broadcast -a com.example.cos.action.SET_STAGE --es com.example.cos.extra.STAGE <BUD|MATURE>.
 
 ## Testing guidance
 - Unit tests: OverlayControllerTest verifying lifecycle + DataStore persistence.

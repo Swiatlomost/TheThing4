@@ -1,13 +1,13 @@
-# Session Quick Brief – Morfogeneza (2025-10-26)
+# Session Quick Brief - Morfogeneza (2025-10-26)
 
 ## Jak szybko wejsc w kontekst
 1. **Przeczytaj** zaktualizowane pliki:
-   - `notes/restart-brief.md` – stan ogolny projektu.
-   - `sessions/ORIN-20251025-002-morfogeneza-brief.md` – wizja i priorytety Morfogenezy (etap 006 jako stan bazowy, undo/redo w backlogu).
-   - `docs/architecture/ADR-2025-10-25-morfogeneza.md` – decyzje architektoniczne (siatka hex, kanal `forma_aktywna`, planowane undo/redo (backlog)).
-   - `docs/testing/morphogeneza-event-checklist.md` i `docs/testing/morphogeneza-test-plan.md` – checklisty Kai/Nodusa dla sanity etapu 006 (scenariusze undo/redo oznaczone jako przyszle).
+   - `notes/restart-brief.md` - stan ogolny projektu.
+   - `sessions/ORIN-20251025-002-morfogeneza-brief.md` - wizja i priorytety Morfogenezy (etap 006 jako stan bazowy, undo/redo w backlogu).
+   - `docs/architecture/ADR-2025-10-25-morfogeneza.md` - decyzje architektoniczne (siatka hex, kanal `forma_aktywna`, planowane undo/redo (backlog)).
+   - `docs/testing/morphogeneza-event-checklist.md` i `docs/testing/morphogeneza-test-plan.md` - checklisty Kai/Nodusa dla sanity etapu 006 (scenariusze undo/redo oznaczone jako przyszle).
 2. **Sprawdz agentow**:
-   - `agents/status.json` oraz `agents/*/task.json`/`log.md` – aktywny status: `NODUS-20251026-004`, `KAI-20251025-003`, research Echo i brief Storywrighta (Lumen bez aktywnego zadania).
+   - `backlog/board.json` oraz `agents/*/task.json`/`log.md` - aktywny status: `NODUS-20251026-004`, `KAI-20251025-003`, research Echo i brief Storywrighta (Lumen bez aktywnego zadania).
 3. **Stan kodu**:
    - Najnowsze zmiany w `feature/morphogenesis/` (ViewModel, Screen, UI state) zamykaja etap 006 (stabilny canvas, clamp). Etap 007 (undo/redo, autosort) pozostaje w backlogu.
 

@@ -32,16 +32,12 @@ def collect_task_context(task_id: str) -> Dict[str, Any]:
         raise SystemExit(f"Task not found: {task_id}")
 
     topic = next((x for x in data.get("topics", []) if x.get("id") == task.get("topic")), None)
-    # Resolve topic base folder: prefer backlog/*/topics/<ID>, then topics/<ID>, then legacy with slug
+    # Resolve topic base folder: prefer backlog/topics/<ID>, then legacy fallbacks
     topic_id = task.get('topic')
     base = None
-    for p in ROOT.glob(f"backlog/*/topics/{topic_id}"):
-        base = p
-        break
-    if base is None:
-        cand = ROOT / f"topics/{topic_id}"
-        if cand.exists():
-            base = cand
+    cand = ROOT / f"backlog/topics/{topic_id}"
+    if cand.exists():
+        base = cand
     if base is None and topic is not None:
         topic_slug = topic.get("slug")
         if topic_slug:
@@ -114,15 +110,11 @@ def collect_topic_context(topic_id: str) -> Dict[str, Any]:
     topic = next((x for x in data.get("topics", []) if x.get("id") == topic_id), None)
     if not topic:
         raise SystemExit(f"Topic not found: {topic_id}")
-    # Resolve topic base folder: prefer backlog/*/topics/<ID>, then topics/<ID>, then legacy with slug
+    # Resolve topic base folder: prefer backlog/topics/<ID>, then legacy fallbacks
     base = None
-    for p in ROOT.glob(f"backlog/*/topics/{topic_id}"):
-        base = p
-        break
-    if base is None:
-        cand = ROOT / f"topics/{topic_id}"
-        if cand.exists():
-            base = cand
+    cand = ROOT / f"backlog/topics/{topic_id}"
+    if cand.exists():
+        base = cand
     if base is None:
         legacy = ROOT / f"topics/{topic_id}-{topic.get('slug')}"
         if legacy.exists():

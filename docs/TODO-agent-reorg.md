@@ -1,6 +1,6 @@
 # TODO: Agent Reorganisation (Cos v0.1 manual cycle)
 
-1. Update agents/status.json to reflect new task breakdown:
+1. Update backlog/board.json to reflect new task breakdown:
    - ORIN-20251024-001 stays in progress.
    - Add active tasks for Echo, Vireal, Lumen (core + overlay), Kai (core + overlay), Nodus, Nyx, Scribe, Mira, Aurum.
    - Mark completed tasks if obsolete entries remain.

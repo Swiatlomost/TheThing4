@@ -1,0 +1,14 @@
+{
+  "id": "TOPIC-20251024_195056-001",
+  "area": "okno-glowne",
+  "title": "Okno Glowne",
+  "summary": "Manualny cykl Cos v0.1 (Seedâ†’Budâ†’Matureâ†’Spawned) z reguĹ‚Ä… styku i wspĂłlnym promieniem.",
+  "brief": "backlog/topics/TOPIC-20251024_195056-001/BRIEF-20251024_195056-001.json",
+  "pdca": "backlog/topics/TOPIC-20251024_195056-001/PDCA-20251024_200000-001.md",
+  "owners": ["Orin", "Lumen", "Vireal", "Kai"],
+  "links": {
+    "adr": ["docs/architecture/COS-v0.1-architecture.md"],
+    "tests": ["docs/testing/cos-v0.1-test-plan.md"]
+  }
+}
+

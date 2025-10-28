@@ -1,7 +1,15 @@
-"""Validate new lean structure: board.json, topics, task folders, references."""
+"""Validate new lean structure: board.json, topics, task folders, references.
+
+Usage:
+  python scripts/validate.py [--scaffold]
+
+With --scaffold, missing PDCA/log files for tasks and missing topic
+test stubs (test-plan.json, event-checklist.json) are created.
+"""
 
 import json
 from pathlib import Path
+import argparse
 from typing import Any, Dict, List
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -41,15 +49,11 @@ def validate_topics(data: Dict[str, Any]) -> bool:
             err(f"Duplicate topic id: {tid}")
             ok_count = False
         topic_ids.add(tid)
-        # resolve topic folder (backlog/*/topics/<id> preferred, then topics/<id>, then legacy with slug)
+        # resolve topic folder (backlog/topics/<id> preferred, then legacy with slug)
         base = None
-        for p in ROOT.glob(f"backlog/*/topics/{tid}"):
-            base = p
-            break
-        if base is None:
-            cand = ROOT / f"topics/{tid}"
-            if cand.exists():
-                base = cand
+        cand = ROOT / f"backlog/topics/{tid}"
+        if cand.exists():
+            base = cand
         if base is None:
             slug = t.get("slug")
             if slug:
@@ -106,13 +110,9 @@ def validate_tasks(data: Dict[str, Any]) -> bool:
         if topic_id:
             # find base as in topics
             base = None
-            for p in ROOT.glob(f"backlog/*/topics/{topic_id}"):
-                base = p
-                break
-            if base is None:
-                cand = ROOT / f"topics/{topic_id}"
-                if cand.exists():
-                    base = cand
+            cand = ROOT / f"backlog/topics/{topic_id}"
+            if cand.exists():
+                base = cand
             if base:
                 if not (base / f"tasks/{tid}/PDCA.json").exists():
                     warn(f"Task {tid}: PDCA.json missing (md fallback allowed)")
@@ -123,9 +123,76 @@ def validate_tasks(data: Dict[str, Any]) -> bool:
     return ok_count
 
 
+def scaffold_missing(data: Dict[str, Any]) -> None:
+    # Topics: ensure test-plan.json and event-checklist.json exist
+    for t in data.get("topics", []):
+        tid = t.get("id")
+        if not tid:
+            continue
+        base = ROOT / f"backlog/topics/{tid}"
+        if not base.exists():
+            continue
+        for fname in ("test-plan.json", "event-checklist.json"):
+            f = base / fname
+            if not f.exists():
+                if fname == "test-plan.json":
+                    payload = {
+                        "topic": tid,
+                        "owner": "Kai",
+                        "summary": "Scaffolded by validate --scaffold.",
+                        "scenarios": [],
+                    }
+                else:
+                    payload = {"topic": tid, "checks": []}
+                f.write_text(__import__("json").dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+                ok(f"Scaffolded {f}")
+
+    # Tasks: ensure PDCA.json and log.jsonl exist
+    for task in data.get("tasks", []):
+        tid = task.get("id")
+        topic = task.get("topic")
+        if not tid or not topic:
+            continue
+        base = ROOT / f"backlog/topics/{topic}/tasks/{tid}"
+        try:
+            base.mkdir(parents=True, exist_ok=True)
+        except Exception:
+            continue
+        pdca = base / "PDCA.json"
+        if not pdca.exists():
+            payload = {
+                "plan": [],
+                "do": [],
+                "check": [],
+                "act": [],
+                "links": {},
+                "meta": {"updated_at": __import__("datetime").date.today().isoformat()},
+            }
+            pdca.write_text(__import__("json").dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            ok(f"Scaffolded {pdca}")
+        log = base / "log.jsonl"
+        if not log.exists():
+            entry = {
+                "ts": __import__("datetime").datetime.now().isoformat(timespec="seconds"),
+                "who": "Orin",
+                "why": "Scaffolded by validate --scaffold",
+                "what": "Create PDCA and log.jsonl",
+                "next": "Fill PDCA before in_progress",
+                "tags": ["migration", "pdca"],
+            }
+            log.write_text(__import__("json").dumps(entry, ensure_ascii=False) + "\n", encoding="utf-8")
+            ok(f"Scaffolded {log}")
+
+
 def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--scaffold", action="store_true", help="Create missing PDCA/log and topic test stubs")
+    args = ap.parse_args()
+
     print("# Lean Structure Validation\n")
     data = load_board()
+    if args.scaffold:
+        scaffold_missing(data)
     ok_topics = validate_topics(data)
     ok_tasks = validate_tasks(data)
     print("\n=== SUMMARY ===")

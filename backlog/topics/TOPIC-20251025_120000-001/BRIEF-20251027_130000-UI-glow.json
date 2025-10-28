@@ -1,0 +1,42 @@
+﻿{
+  "date": "2025-10-27_130000",
+  "id": "BRIEF-20251027_130000-UI-glow",
+  "title": "Morfogeneza UI Glow (4MAT)",
+  "why": [
+    "Jednolita skĂłra bioluminescencyjna wzmacnia identyfikacjÄ™ i czytelnoĹ›Ä‡ stanĂłw.",
+    "Animacje cyklu (narodzinyâ†’dojrzewanie) budujÄ… zrozumiaĹ‚y jÄ™zyk procesu."
+  ],
+  "what": [
+    "Paleta i tokeny glow (kolor, obwĂłd, poĹ›wiata, gradienty).",
+    "Etapy komĂłrki: 1 kropka, 2 obwĂłd, 3 animacja kropkaâ†’obwĂłd, 4 obwĂłd narodzonej, 5 dojrzewanie przez wypeĹ‚nienie gradientem.",
+    "Organizm wielokomĂłrkowy: ukĹ‚ad kĂłĹ‚ w duĹĽym okrÄ™gu z poĹ›wiatÄ…."
+  ],
+  "how": [
+    "Tokeny i zmienne: spĂłjne ĹşrĂłdĹ‚o prawdy dla Compose i overlay.",
+    "Animacje: easeOutCubic dla wzrostu promienia (300â€“500 ms), easeInOutSine dla wypeĹ‚nienia (400â€“800 ms).",
+    "WydajnoĹ›Ä‡: cel 60 fps; fallback low-energy redukuje intensywnoĹ›Ä‡ glow."
+  ],
+  "what_if": [
+    "Tryb oszczÄ™dny ogranicza blur/poĹ›wiatÄ™.",
+    "PrzyszĹ‚e presety barwne."
+  ],
+  "acceptance": [
+    "Nowa paleta/tokeny i 3 skĂłrkowane ekrany (w tym ekran pytania).",
+    "Animacja 3â†’4 z pĹ‚ynnym wzrostem promienia; animacja dojrzewania jako gradient fill.",
+    "Render organizmu wielokomĂłrkowego zgodnie z rys. 2.",
+    "Brak rozjazdu app/overlay i 60 fps na urzÄ…dzeniu docelowym."
+  ],
+  "conversation_highlights": [
+    "Rys. 1: ekran z neonowym akcentem i przyciskiem glow.",
+    "Rys. 2: organizm wielokomĂłrkowy (matryca kĂłĹ‚ w okrÄ™gu).",
+    "Rys. 3â€“5: kropka â†’ obwĂłd â†’ dojrzewanie (wypeĹ‚nienie)."
+  ],
+  "links": {
+    "UI": [
+      "backlog/topics/TOPIC-20251025_120000-001/UI-20251026_120000-001.md"
+    ],
+    "ADR": [
+      "docs/architecture/ADR-2025-10-25-morfogeneza.md"
+    ]
+  }
+}
