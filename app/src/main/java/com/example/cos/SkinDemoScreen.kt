@@ -8,6 +8,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -47,7 +51,9 @@ fun SkinDemoScreen(onBack: () -> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState())
+                .navigationBarsPadding(),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -99,11 +105,6 @@ fun SkinDemoScreen(onBack: () -> Unit) {
             var coreStop by remember { mutableStateOf(e.coreStop.toFloat()) }
             var glowStop by remember { mutableStateOf(e.glowStop.toFloat()) }
             var rimAlpha by remember { mutableStateOf(e.rimAlpha.toFloat()) }
-            var specEnabled by remember { mutableStateOf(e.specular?.enabled ?: false) }
-            var specAngle by remember { mutableStateOf(((e.specular?.angleDeg) ?: 45.0).toFloat()) }
-            var specWidth by remember { mutableStateOf(((e.specular?.bandWidth) ?: 0.10).toFloat()) }
-            var specAlpha by remember { mutableStateOf(((e.specular?.bandAlpha) ?: 0.22).toFloat()) }
-            var specJitter by remember { mutableStateOf(((e.specular?.jitterDeg) ?: 0.0).toFloat()) }
 
             EnergyFillPreview(
                 modifier = Modifier.fillMaxWidth().height(240.dp),
@@ -112,11 +113,7 @@ fun SkinDemoScreen(onBack: () -> Unit) {
                 glowAlpha = glowAlpha,
                 coreStop = coreStop,
                 glowStop = glowStop,
-                rimAlpha = rimAlpha,
-                specEnabled = specEnabled,
-                specAngle = specAngle,
-                specWidth = specWidth,
-                specAlpha = specAlpha
+                rimAlpha = rimAlpha
             )
 
             LabeledSlider("whiten", whiten, 0f..1f) { whiten = it }
@@ -125,16 +122,7 @@ fun SkinDemoScreen(onBack: () -> Unit) {
             LabeledSlider("core-stop", coreStop, 0.3f..0.9f) { coreStop = it }
             LabeledSlider("glow-stop", glowStop, 0.5f..0.95f) { glowStop = it }
             LabeledSlider("rim-alpha", rimAlpha, 0f..1f) { rimAlpha = it }
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
-                Text("specular", style = MaterialTheme.typography.bodySmall)
-                TextButton(onClick = { specEnabled = !specEnabled }) { Text(if (specEnabled) "ON" else "OFF") }
-            }
-            if (specEnabled) {
-                LabeledSlider("spec-angle", specAngle, 0f..180f) { specAngle = it }
-                LabeledSlider("spec-width", specWidth, 0.02f..0.3f) { specWidth = it }
-                LabeledSlider("spec-alpha", specAlpha, 0f..1f) { specAlpha = it }
-                LabeledSlider("spec-jitter-deg", specJitter, 0f..60f) { specJitter = it }
-            }
+            // Specular wyłączony — efekt usunięty z podglądu i zapisu
 
             val ctx = LocalContext.current
             var status by remember { mutableStateOf("") }
@@ -147,15 +135,7 @@ fun SkinDemoScreen(onBack: () -> Unit) {
                         .put("glow-alpha", glowAlpha.toDouble())
                         .put("core-stop", coreStop.toDouble())
                         .put("glow-stop", glowStop.toDouble())
-                        .put("rim-alpha", rimAlpha.toDouble()).apply {
-                            val spec = JSONObject()
-                                .put("enabled", specEnabled)
-                                .put("angle-deg", specAngle.toDouble())
-                                .put("band-alpha", specAlpha.toDouble())
-                                .put("band-width", specWidth.toDouble())
-                                .put("jitter-deg", specJitter.toDouble())
-                            put("specular", spec)
-                        }
+                        .put("rim-alpha", rimAlpha.toDouble())
                     root.put("energy", energy)
                     try {
                         ctx.openFileOutput("ui_tokens_override.json", android.content.Context.MODE_PRIVATE).use { it.write(root.toString(2).toByteArray()) }
@@ -186,6 +166,7 @@ fun SkinDemoScreen(onBack: () -> Unit) {
                 Text(status, style = MaterialTheme.typography.bodySmall)
             }
             }
+            Spacer(Modifier.height(12.dp))
         }
     }
 }
@@ -248,12 +229,9 @@ private fun EnergyFillPreview(
     coreStop: Float,
     glowStop: Float,
     rimAlpha: Float,
-    specEnabled: Boolean,
-    specAngle: Float,
-    specWidth: Float,
-    specAlpha: Float,
 ) {
     val accent = MaterialTheme.colorScheme.primary
+    val t = LocalUiTokens.current
     Canvas(modifier = modifier.padding(8.dp)) {
         val c = center
         val r = size.minDimension * 0.3f
@@ -301,44 +279,31 @@ private fun EnergyFillPreview(
             )
             drawPath(path = path, brush = glowBrush)
 
-            // Rim light (preview only)
-            if (rimAlpha > 0f) {
-                drawIntoCanvas { canvas ->
-                    val p = androidx.compose.ui.graphics.Paint()
-                    val fp = p.asFrameworkPaint()
-                    fp.isAntiAlias = true
-                    fp.style = android.graphics.Paint.Style.STROKE
-                    fp.color = accent.copy(alpha = rimAlpha).toArgb()
-                    fp.strokeWidth = r * 0.08f
-                    fp.maskFilter = null
-                    canvas.drawCircle(c, r, p)
-                }
-            }
+            // Neon ring + halo (jak w Neon)
+            drawIntoCanvas { canvas ->
+                val ringDp = t.cell.ringStrokeDp.toFloat()
+                val haloMult = ((t.glow.haloWidthMult ?: 8.0).toFloat())
+                val haloAlphaT = ((t.glow.haloAlpha ?: 0.35).toFloat())
+                val blurDp = t.glow.blurDp.toFloat()
 
-            // Specular bands preview (optional)
-            if (specEnabled && specAlpha > 0f && specWidth > 0f) {
-                fun drawBand(angle: Float, alphaMul: Float) {
-                    val a = angle / 180f * Math.PI.toFloat()
-                    val dir = androidx.compose.ui.geometry.Offset(kotlin.math.cos(a), kotlin.math.sin(a))
-                    val ext = r * 1.6f
-                    val start = androidx.compose.ui.geometry.Offset(c.x - dir.x * ext, c.y - dir.y * ext)
-                    val end = androidx.compose.ui.geometry.Offset(c.x + dir.x * ext, c.y + dir.y * ext)
-                    val mid = 0.5f
-                    val half = (specWidth * 0.5f).coerceIn(0.01f, 0.4f)
-                    val col = accent.copy(alpha = specAlpha * alphaMul)
-                    val brush = Brush.linearGradient(
-                        0f to col.copy(alpha = 0f),
-                        (mid - half) to col.copy(alpha = 0f),
-                        mid to col,
-                        (mid + half) to col.copy(alpha = 0f),
-                        1f to col.copy(alpha = 0f),
-                        start = start,
-                        end = end
-                    )
-                    drawPath(path = path, brush = brush)
-                }
-                drawBand(specAngle, 1f)
-                drawBand((specAngle + 90f) % 360f, 0.85f)
+                val p = androidx.compose.ui.graphics.Paint()
+                val fp = p.asFrameworkPaint()
+                fp.isAntiAlias = true
+                fp.style = android.graphics.Paint.Style.STROKE
+                // Halo (rozmyte)
+                fp.color = accent.copy(alpha = haloAlphaT).toArgb()
+                fp.strokeWidth = ringDp * haloMult
+                fp.maskFilter = android.graphics.BlurMaskFilter(blurDp, android.graphics.BlurMaskFilter.Blur.NORMAL)
+                canvas.drawCircle(c, r, p)
+                // Biały rdzeń
+                fp.maskFilter = null
+                fp.color = Color.White.copy(alpha = 0.55f).toArgb()
+                fp.strokeWidth = ringDp * 0.6f
+                canvas.drawCircle(c, r, p)
+                // Akcent (crispy)
+                fp.color = accent.copy(alpha = 0.95f).toArgb()
+                fp.strokeWidth = ringDp
+                canvas.drawCircle(c, r, p)
             }
     }
 }

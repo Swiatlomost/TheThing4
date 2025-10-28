@@ -51,7 +51,7 @@
     "glow-stop": 0.72,
     "rim-alpha": 0.18,
     "specular": {
-      "enabled": true,
+      "enabled": false,
       "angle-deg": 45.0,
       "band-alpha": 0.22,
       "band-width": 0.10,
