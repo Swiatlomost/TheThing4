@@ -1,0 +1,9 @@
+{
+  "topic": "TOPIC-20251029_120000-i18n",
+  "title": "Internationalization baseline",
+  "why": "UI label refactors ujawnily brak stabilnego wsparcia dla różnych alfabetow; chcemy uniknąć mojibake przy kolejnych językach.",
+  "what": "Zaplanujemy strategię fontów, pipeline tłumaczeń i checklistę QA dla lokalizacji.",
+  "how": "Definiujemy wymagania, wybieramy narzędzia (string resources, font fallback), przygotowujemy instrukcje dla zespołu i testy.",
+  "what_if": "Bez tego każda nowa lokalizacja będzie łatać problemy ad hoc, co grozi regresjami i złym UX.",
+  "updated_at": "2025-10-29"
+}

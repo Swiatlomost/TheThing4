@@ -1,0 +1,17 @@
+{
+  "id": "TOPIC-20251029_120000-i18n",
+  "area": "core-app",
+  "title": "Internationalization baseline",
+  "summary": "One-liner why/what",
+  "owners": [
+    "Orin",
+    "Lumen"
+  ],
+  "links": {
+    "adr": [],
+    "tests": [],
+    "ux": []
+  },
+  "brief": "backlog/topics/TOPIC-20251029_120000-i18n/brief.json",
+  "pdca": "backlog/topics/TOPIC-20251029_120000-i18n/PDCA.json"
+}

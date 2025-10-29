@@ -11,7 +11,9 @@
     "2025-10-29 Lumen: ./gradlew testDebugUnitTest PASS po refaktoryzacji copy.",
     "2025-10-29 Lumen: ./gradlew connectedDebugAndroidTest PASS (Pixel_5 AVD)."
   ],
-  "act": [],
+  "act": [
+    "2025-10-29: Pełne wsparcie lokalizacji przesunięte do TOPIC-20251029_120000-i18n."
+  ],
   "links": {},
   "meta": {
     "updated_at": "2025-10-28"

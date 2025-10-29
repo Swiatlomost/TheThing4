@@ -1,0 +1,14 @@
+{
+  "plan": [
+    "Zebrać wymagania wizualne i techniczne dla lokalizacji (fonty, fallback, encoding).",
+    "Ustalić proces tłumaczeń (narzędzia, formaty, QA) dla wielu języków.",
+    "Przygotować checklistę QA i plan testów na różne locale."
+  ],
+  "do": [],
+  "check": [],
+  "act": [],
+  "links": {},
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

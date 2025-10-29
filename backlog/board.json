@@ -457,6 +457,20 @@
         "pdca": "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-004-morpho-async/PDCA.json",
         "log": "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-004-morpho-async/log.jsonl"
       }
+    },
+    {
+      "id": "I18N-001-font-stack",
+      "title": "Define typography & font strategy for multi-language",
+      "topic": "TOPIC-20251029_120000-i18n",
+      "status": "pending",
+      "owner": "Lumen"
+    },
+    {
+      "id": "I18N-002-localization-pipeline",
+      "title": "Set up localization pipeline",
+      "topic": "TOPIC-20251029_120000-i18n",
+      "status": "pending",
+      "owner": "Orin"
     }
   ],
   "_docs": "Board (under backlog/) is the single source of truth for task status."
