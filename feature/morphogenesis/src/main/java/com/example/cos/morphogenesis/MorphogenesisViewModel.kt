@@ -19,6 +19,9 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.CoroutineDispatcher
+import com.example.cos.morphogenesis.di.MorphogenesisIoDispatcher
+import kotlinx.coroutines.withContext
 import kotlin.math.ceil
 import kotlin.math.max
 import kotlin.math.min
@@ -29,7 +32,8 @@ class MorphogenesisViewModel @Inject constructor(
     private val engine: CosLifecycleEngine,
     private val formRepository: MorphoFormRepository,
     private val eventDispatcher: MorphoEventDispatcher,
-    private val morphoFormChannel: MorphoFormChannel
+    private val morphoFormChannel: MorphoFormChannel,
+    @MorphogenesisIoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val editorDraft = MutableStateFlow(createInitialDraft(engine.state.value))
@@ -179,13 +183,15 @@ class MorphogenesisViewModel @Inject constructor(
         val preparedDraft = draft.prepareForPersistence(existingForms, timestamp)
         editorDraft.value = preparedDraft
         viewModelScope.launch {
-            val persisted = persistDraft(
-                draft = preparedDraft,
-                lifecycleState = lifecycleState,
-                activate = false,
-                timestamp = timestamp,
-                existingForms = existingForms
-            )
+            val persisted = withContext(ioDispatcher) {
+                persistDraft(
+                    draft = preparedDraft,
+                    lifecycleState = lifecycleState,
+                    activate = false,
+                    timestamp = timestamp,
+                    existingForms = existingForms
+                )
+            }
             if (
                 persisted.name != preparedDraft.formName ||
                 persisted.createdAtMillis != preparedDraft.formCreatedAtMillis
@@ -216,13 +222,15 @@ class MorphogenesisViewModel @Inject constructor(
         val preparedDraft = draft.prepareForPersistence(existingForms, timestamp)
         editorDraft.value = preparedDraft
         viewModelScope.launch {
-            val persisted = persistDraft(
-                draft = preparedDraft,
-                lifecycleState = lifecycleState,
-                activate = true,
-                timestamp = timestamp,
-                existingForms = existingForms
-            )
+            val persisted = withContext(ioDispatcher) {
+                persistDraft(
+                    draft = preparedDraft,
+                    lifecycleState = lifecycleState,
+                    activate = true,
+                    timestamp = timestamp,
+                    existingForms = existingForms
+                )
+            }
             eventDispatcher.emitActivation(persisted.id, preparedDraft.cells)
             emitActiveForm(
                 formId = persisted.id,

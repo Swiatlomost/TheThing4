@@ -1,7 +1,18 @@
 {
-  "plan": [],
-  "do": [],
-  "check": [],
+  "plan": [
+    "Zmapować synchroniczne operacje w MorphogenesisViewModel/MorphoFormRepository (zapisy, aktywacje, logcat).",
+    "Wydzielić IO do repozytorium z korutynami (Dispatchers.IO) i dostosować ViewModel (viewModelScope launch).",
+    "Dodać obsługę statusów/błędów, zapewnić kompatybilność z MorphoFormChannel.",
+    "Uruchomić testy jednostkowe/instrumentacyjne + sanity w Skin/Morphogenesis, by potwierdzić brak blokad UI."
+  ],
+  "do": [
+    "2025-10-29 Lumen: persistDraft/activateDraft wykonują IO przez withContext(Dispatchers.IO)."
+  ],
+  "check": [
+    "2025-10-29 Lumen: ./gradlew testDebugUnitTest PASS po przeniesieniu IO.",
+    "2025-10-29 Lumen: ./gradlew connectedDebugAndroidTest PASS (Pixel_5 AVD).",
+    "2025-10-29 Lumen: Sanity Morphogenesis (Pixel 5) potwierdzona – zapis/aktywacja bez lagów."
+  ],
   "act": [],
   "links": {},
   "meta": {

@@ -447,7 +447,7 @@
       "id": "REFAC-004-morpho-async",
       "title": "Async morphogenesis persistence",
       "topic": "TOPIC-20251028_223000-refactoring",
-      "status": "pending",
+      "status": "done",
       "owner": "Lumen",
       "tags": [
         "performance",

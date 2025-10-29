@@ -43,7 +43,7 @@ class MorphogenesisViewModelTest {
         formRepository = InMemoryMorphoFormRepository()
         eventRecorder = RecordingMorphoEventDispatcher()
         morphoFormChannel = FakeMorphoFormChannel()
-        viewModel = MorphogenesisViewModel(engine, formRepository, eventRecorder, morphoFormChannel)
+        viewModel = MorphogenesisViewModel(engine, formRepository, eventRecorder, morphoFormChannel, testDispatcher)
     }
 
     @After

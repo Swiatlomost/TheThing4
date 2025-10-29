@@ -21,7 +21,7 @@ class MorphogenesisViewModelInstrumentedTest {
         val repository = InMemoryMorphoFormRepository()
         val dispatcher = AndroidMorphoEventDispatcher(context)
         val channel = SharedMorphoFormChannel()
-        val viewModel = MorphogenesisViewModel(engine, repository, dispatcher, channel)
+        val viewModel = MorphogenesisViewModel(engine, repository, dispatcher, channel, kotlinx.coroutines.Dispatchers.IO)
 
         engine.apply(LifecycleAction.SetStage(LifecycleStageCommand.BUD))
         engine.apply(LifecycleAction.SetStage(LifecycleStageCommand.MATURE))
