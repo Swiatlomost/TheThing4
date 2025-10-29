@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lifecycle_action_reset">Reset</string>
+    <string name="lifecycle_action_morphogenesis">Morfogeneza</string>
+    <string name="lifecycle_action_skin_demo">Skin</string>
+    <string name="lifecycle_action_birth">Narodziny</string>
+    <string name="lifecycle_action_mature">Dojrzewanie</string>
+    <string name="lifecycle_action_new_cell">Nowa komórka</string>
+</resources>

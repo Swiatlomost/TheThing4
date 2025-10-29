@@ -48,6 +48,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
@@ -58,6 +59,7 @@ import androidx.compose.ui.graphics.Color
 import com.example.cos.morphogenesis.AlertSeverity
 import com.example.cos.lifecycle.morpho.ActiveMorphoForm
 import com.example.cos.designsystem.components.NeonButton
+import com.example.cos.morphogenesis.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -78,10 +80,10 @@ fun MorphogenesisScreen(
         modifier = modifier,
         topBar = {
             TopAppBar(
-                title = { Text(text = "Morfogeneza") },
+                title = { Text(text = stringResource(R.string.morphogenesis_title)) },
                 navigationIcon = {
                     TextButton(onClick = onBack) {
-                        Text(text = "Wroc")
+                        Text(text = stringResource(R.string.morphogenesis_back))
                     }
                 }
             )

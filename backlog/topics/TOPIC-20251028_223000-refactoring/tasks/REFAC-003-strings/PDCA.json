@@ -1,7 +1,16 @@
 {
-  "plan": [],
-  "do": [],
-  "check": [],
+  "plan": [
+    "Zidentyfikowac twardo zakodowane stringi w UI (SkinDemoScreen, CosLifecycleScreen, itp.) prowadzace do mojibake.",
+    "Przeniesc copy do zasobow string.xml z wersjami polskimi/UTF-8 i zapewnic poprawne kodowanie plikow.",
+    "Zweryfikowac UI po zmianach (emulator/Pixel 5) oraz update testow, ktore oczekuja konkretnych tekstow."
+  ],
+  "do": [
+    "2025-10-29 Lumen: SkinDemoScreen i CosLifecycleScreen przeniesione na stringResource + nowe entries w strings.xml (app oraz feature modules)."
+  ],
+  "check": [
+    "2025-10-29 Lumen: ./gradlew testDebugUnitTest PASS po refaktoryzacji copy.",
+    "2025-10-29 Lumen: ./gradlew connectedDebugAndroidTest PASS (Pixel_5 AVD)."
+  ],
   "act": [],
   "links": {},
   "meta": {

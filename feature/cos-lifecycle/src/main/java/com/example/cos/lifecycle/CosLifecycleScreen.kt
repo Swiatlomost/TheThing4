@@ -35,8 +35,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.util.lerp
+import androidx.compose.ui.res.stringResource
 import com.example.cos.designsystem.components.NeonButton
 import com.example.cos.designsystem.tokens.LocalUiTokens
+import com.example.cos.lifecycle.R
 import kotlin.math.min
 import kotlin.math.sqrt
 import kotlin.math.cos
@@ -88,20 +90,20 @@ fun CosLifecycleScreen(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            NeonButton(text = "Reset", onClick = onReset)
-            NeonButton(text = "Morfogeneza", onClick = onOpenMorphogenesis)
-            NeonButton(text = "Skin", onClick = onOpenSkinDemo)
+            NeonButton(text = stringResource(R.string.lifecycle_action_reset), onClick = onReset)
+            NeonButton(text = stringResource(R.string.lifecycle_action_morphogenesis), onClick = onOpenMorphogenesis)
+            NeonButton(text = stringResource(R.string.lifecycle_action_skin_demo), onClick = onOpenSkinDemo)
             Button(
                 onClick = { onSetStage(LifecycleStageCommand.BUD) },
                 enabled = canNarodziny
             ) {
-                Text(text = "Narodziny")
+                Text(text = stringResource(R.string.lifecycle_action_birth))
             }
             Button(
                 onClick = { onSetStage(LifecycleStageCommand.MATURE) },
                 enabled = canDojrzewanie
             ) {
-                Text(text = "Dojrzewanie")
+                Text(text = stringResource(R.string.lifecycle_action_mature))
             }
             Button(
                 onClick = onCreateChild,

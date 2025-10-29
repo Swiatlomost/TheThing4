@@ -2,4 +2,30 @@
 <resources>
     <string name="permission_control_lifecycle_label">Control lifecycle commands</string>
     <string name="permission_control_lifecycle_description">Allows sending lifecycle stage commands to the Cos app.</string>
+
+    <string name="common_back">Wróć</string>
+
+    <!-- Skin demo -->
+    <string name="skin_demo_title">Skin Demo</string>
+    <string name="skin_demo_cell_preview">Podgląd komórki</string>
+    <string name="skin_demo_slider_ring">ring</string>
+    <string name="skin_demo_slider_halo_multiplier">halo-m</string>
+    <string name="skin_demo_slider_halo_alpha">halo-a</string>
+    <string name="skin_demo_slider_blur">blur</string>
+    <string name="skin_demo_slider_whiten">white</string>
+    <string name="skin_demo_slider_core">c-α</string>
+    <string name="skin_demo_slider_glow">g-α</string>
+    <string name="skin_demo_slider_core_stop">c-stop</string>
+    <string name="skin_demo_slider_glow_stop">g-stop</string>
+    <string name="skin_demo_slider_rim">rim</string>
+    <string name="skin_demo_save">Zapisz (globalnie)</string>
+    <string name="skin_demo_save_success">Zapisano i odświeżono motyw.</string>
+    <string name="skin_demo_remove">Usuń override</string>
+    <string name="skin_demo_remove_success">Przywrócono domyślne (odświeżone).</string>
+    <string name="skin_demo_remove_missing">Brak pliku override.</string>
+    <string name="skin_demo_status_label">%1$.2f</string>
+    <string name="skin_demo_error_unknown">nieznany błąd</string>
+    <string name="skin_demo_save_error">Błąd zapisu: %1$s</string>
+    <string name="skin_demo_remove_error">Błąd usuwania: %1$s</string>
+
 </resources>

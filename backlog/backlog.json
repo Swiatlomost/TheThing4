@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-29T11:12:23",
+  "generated_at": "2025-10-29T11:47:41",
   "areas": [
     {
       "area": "okno-glowne",
@@ -345,7 +345,7 @@
             {
               "id": "REFAC-003-strings",
               "title": "Localize and fix UI copy",
-              "status": "pending",
+              "status": "done",
               "owner": "Lumen",
               "deferred": null,
               "tags": [

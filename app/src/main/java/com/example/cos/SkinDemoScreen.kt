@@ -37,9 +37,11 @@ import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.cos.designsystem.components.NeonButton
 import com.example.cos.designsystem.tokens.LocalUiTokens
+import com.example.cos.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -50,8 +52,8 @@ import org.json.JSONObject
 fun SkinDemoScreen(onBack: () -> Unit) {
     Column(modifier = Modifier.fillMaxSize()) {
         TopAppBar(
-            title = { Text("Skin Demo") },
-            navigationIcon = { TextButton(onClick = onBack) { Text("Wroc") } }
+            title = { Text(stringResource(R.string.skin_demo_title)) },
+            navigationIcon = { TextButton(onClick = onBack) { Text(stringResource(R.string.common_back)) } }
         )
 
         val tokens = LocalUiTokens.current
@@ -77,7 +79,7 @@ fun SkinDemoScreen(onBack: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Cell preview", style = MaterialTheme.typography.titleMedium)
+            Text(stringResource(R.string.skin_demo_cell_preview), style = MaterialTheme.typography.titleMedium)
             CombinedCellPreview(
                 modifier = Modifier.fillMaxWidth().height(260.dp),
                 ringStrokeDp = ringDp,
@@ -98,16 +100,16 @@ fun SkinDemoScreen(onBack: () -> Unit) {
                     .horizontalScroll(rememberScrollState()),
                 horizontalArrangement = Arrangement.spacedBy(14.dp)
             ) {
-                VerticalSlider("ring", ringDp, 1f..8f) { ringDp = it }
-                VerticalSlider("halo-m", haloMult, 2f..20f) { haloMult = it }
-                VerticalSlider("halo-a", haloAlpha, 0f..1f) { haloAlpha = it }
-                VerticalSlider("blur", blurDp, 0f..96f) { blurDp = it }
-                VerticalSlider("white", whiten, 0f..1f) { whiten = it }
-                VerticalSlider("core", coreAlpha, 0f..1f) { coreAlpha = it }
-                VerticalSlider("glow", glowAlpha, 0f..1f) { glowAlpha = it }
-                VerticalSlider("c-stop", coreStop, 0.3f..0.9f) { coreStop = it }
-                VerticalSlider("g-stop", glowStop, 0.5f..0.95f) { glowStop = it }
-                VerticalSlider("rim", rimAlpha, 0f..1f) { rimAlpha = it }
+                VerticalSlider(stringResource(R.string.skin_demo_slider_ring), ringDp, 1f..8f) { ringDp = it }
+                VerticalSlider(stringResource(R.string.skin_demo_slider_halo_multiplier), haloMult, 2f..20f) { haloMult = it }
+                VerticalSlider(stringResource(R.string.skin_demo_slider_halo_alpha), haloAlpha, 0f..1f) { haloAlpha = it }
+                VerticalSlider(stringResource(R.string.skin_demo_slider_blur), blurDp, 0f..96f) { blurDp = it }
+                VerticalSlider(stringResource(R.string.skin_demo_slider_whiten), whiten, 0f..1f) { whiten = it }
+                VerticalSlider(stringResource(R.string.skin_demo_slider_core), coreAlpha, 0f..1f) { coreAlpha = it }
+                VerticalSlider(stringResource(R.string.skin_demo_slider_glow), glowAlpha, 0f..1f) { glowAlpha = it }
+                VerticalSlider(stringResource(R.string.skin_demo_slider_core_stop), coreStop, 0.3f..0.9f) { coreStop = it }
+                VerticalSlider(stringResource(R.string.skin_demo_slider_glow_stop), glowStop, 0.5f..0.95f) { glowStop = it }
+                VerticalSlider(stringResource(R.string.skin_demo_slider_rim), rimAlpha, 0f..1f) { rimAlpha = it }
             }
 
             val context = LocalContext.current
@@ -117,7 +119,7 @@ fun SkinDemoScreen(onBack: () -> Unit) {
 
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 NeonButton(
-                    text = "Zapisz (globalnie)",
+                    text = stringResource(R.string.skin_demo_save),
                     enabled = !busy,
                     onClick = {
                         if (busy) return@NeonButton
@@ -141,16 +143,19 @@ fun SkinDemoScreen(onBack: () -> Unit) {
                             status = result.fold(
                                 onSuccess = {
                                     (context as? Activity)?.recreate()
-                                    "Zapisano i odswiezono motyw."
+                                    context.getString(R.string.skin_demo_save_success)
                                 },
-                                onFailure = { error -> "Blad zapisu: ${error.message}" }
+                                onFailure = { error ->
+                                    val message = error.message ?: context.getString(R.string.skin_demo_error_unknown)
+                                    context.getString(R.string.skin_demo_save_error, message)
+                                }
                             )
                             busy = false
                         }
                     }
                 )
                 NeonButton(
-                    text = "Usun override",
+                    text = stringResource(R.string.skin_demo_remove),
                     enabled = !busy,
                     onClick = {
                         if (busy) return@NeonButton
@@ -161,12 +166,15 @@ fun SkinDemoScreen(onBack: () -> Unit) {
                                 onSuccess = { removed ->
                                     (context as? Activity)?.recreate()
                                     if (removed) {
-                                        "Przywrocono domyslne (odswiezone)."
+                                        context.getString(R.string.skin_demo_remove_success)
                                     } else {
-                                        "Brak pliku override."
+                                        context.getString(R.string.skin_demo_remove_missing)
                                     }
                                 },
-                                onFailure = { error -> "Blad usuwania: ${error.message}" }
+                                onFailure = { error ->
+                                    val message = error.message ?: context.getString(R.string.skin_demo_error_unknown)
+                                    context.getString(R.string.skin_demo_remove_error, message)
+                                }
                             )
                             busy = false
                         }
@@ -189,7 +197,10 @@ private fun VerticalSlider(
     onChange: (Float) -> Unit
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(String.format("%.2f", value), style = MaterialTheme.typography.bodySmall)
+        Text(
+            text = stringResource(R.string.skin_demo_status_label, value),
+            style = MaterialTheme.typography.bodySmall
+        )
         Slider(
             value = value,
             onValueChange = onChange,

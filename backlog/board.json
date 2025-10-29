@@ -432,7 +432,7 @@
       "id": "REFAC-003-strings",
       "title": "Localize and fix UI copy",
       "topic": "TOPIC-20251028_223000-refactoring",
-      "status": "pending",
+      "status": "done",
       "owner": "Lumen",
       "tags": [
         "ux",
