@@ -417,7 +417,7 @@
       "id": "REFAC-002-skin-io",
       "title": "Move skin editor IO off main",
       "topic": "TOPIC-20251028_223000-refactoring",
-      "status": "pending",
+      "status": "done",
       "owner": "Lumen",
       "tags": [
         "performance",

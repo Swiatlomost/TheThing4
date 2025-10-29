@@ -1,7 +1,17 @@
 {
-  "plan": [],
-  "do": [],
-  "check": [],
+  "plan": [
+    "Zidentyfikowac operacje IO w SkinDemoScreen (generowanie JSON, zapis/odczyt pliku override) blokujace glowny watek.",
+    "Wyciagnac logike IO na Dispatchers.IO korzystajac z coroutine scope Compose i pomocniczych funkcji.",
+    "Zabezpieczyc bledy (try/catch) i surface status do UI przy minimalnym blokowaniu.",
+    "Pokryc zmiany testem jednostkowym/instrumentacyjnym lub sanity manualnym potwierdzajacym brak ANR."
+  ],
+  "do": [
+    "2025-10-28 Lumen: SkinDemoScreen zapis/usuwanie override przeniesione do coroutine scope i helperow z withContext(Dispatchers.IO)."
+  ],
+  "check": [
+    "2025-10-28 Lumen: ./gradlew testDebugUnitTest PASS po refaktorze IO.",
+    "2025-10-28 Lumen: Sanity manual Pixel 5 potwierdza brak ANR i poprawne statusy w Skin Demo."
+  ],
   "act": [],
   "links": {},
   "meta": {
