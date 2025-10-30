@@ -1,0 +1,19 @@
+{
+  "plan": [
+    "Implement Solana Anchor program storing PoI batch data (root, trust_avg, entropy_avg, validator_sig).",
+    "Create CI pipeline to build/test/deploy to Devnet.",
+    "Document monitoring and redeploy procedure."
+  ],
+  "do": [],
+  "check": [],
+  "act": [],
+  "links": {
+    "reference": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/validator-plan.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/validator.proto"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

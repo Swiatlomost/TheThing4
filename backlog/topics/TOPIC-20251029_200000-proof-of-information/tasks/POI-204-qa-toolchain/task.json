@@ -1,0 +1,16 @@
+{
+  "id": "POI-204-qa-toolchain",
+  "status": "pending",
+  "owner": "Kai",
+  "title": "Bootstrap PoI QA tooling & telemetry stack",
+  "description": "Zbudować środowisko QA: bazę telemetry (Timescale), integrację gRPC streamu, narzędzia do zbierania evidence i generator danych.",
+  "acceptance": [
+    "Uruchomiona baza (TimescaleDB lub równoważna) z schematem telemetry.",
+    "Serwis ingestujący gRPC stream (mock) zapisuje dane i udostępnia dashboard (Grafana).",
+    "Szkielet generatora danych syntetycznych gotowy do dalszej kalibracji."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-204-qa-toolchain/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-204-qa-toolchain/log.jsonl"
+  }
+}

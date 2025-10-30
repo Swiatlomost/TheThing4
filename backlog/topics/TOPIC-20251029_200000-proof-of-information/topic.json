@@ -1,0 +1,31 @@
+{
+  "id": "TOPIC-20251029_200000-proof-of-information",
+  "area": "trust-core",
+  "title": "Proof of Information",
+  "summary": "Kick off Proof of Information trust layer: research foundations and prepare staged implementation.",
+  "owners": [
+    "Orin",
+    "Echo",
+    "Vireal",
+    "Lumen",
+    "Kai",
+    "Nodus"
+  ],
+  "links": {
+    "adr": [
+      "backlog/idea/TheThing_Proof_of_Information.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/architecture-guardrails.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/sol-vs-sui.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/sui-spike-plan.md"
+    ],
+    "tests": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/research-notes.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/test-plan.json"
+    ],
+    "ux": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/light-ledger-design.md"
+    ]
+  },
+  "brief": "backlog/topics/TOPIC-20251029_200000-proof-of-information/brief.json",
+  "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/PDCA.json"
+}

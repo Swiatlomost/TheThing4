@@ -1,0 +1,19 @@
+{
+  "plan": [
+    "Zintegrować Play Integrity/SafetyNet w Light Ledger (token + nonce).",
+    "Podpiąć secure aggregation klient (Bonawitz) z dropout tolerance.",
+    "Przygotować testy integracyjne i dokumentację przekazywania dowodów."
+  ],
+  "do": [],
+  "check": [],
+  "act": [],
+  "links": {
+    "reference": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/validator-plan.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/jni-bridge-plan.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

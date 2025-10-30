@@ -1,0 +1,24 @@
+{
+  "plan": [
+    "Stworzyć aplikację demo zbierającą dane sensorów (motion/touch).",
+    "Zapewnić anonimizację + eksport fingerprintów JSON.",
+    "Przygotować instrukcję i zgodę użytkownika."
+  ],
+  "do": [
+    "Utworzono moduł feature:sensor-harness z Hilt, ekranem Compose, kontrolerem SensorManager i integracją Light Ledger."
+  ],
+  "check": [
+    "Uruchomiono ./gradlew :feature:sensor-harness:test (sukces, cargo-ndk opcjonalny).",
+    "APK zainstalowany na emulatorze: ./gradlew installDebug (PoI harness widoczny)."
+  ],
+  "act": [],
+  "links": {
+    "reference": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/light-ledger-design.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/qa-generator-plan.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

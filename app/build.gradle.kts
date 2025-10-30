@@ -56,6 +56,8 @@ dependencies {
     implementation(project(":feature:cos-overlay"))
     implementation(project(":feature:morphogenesis"))
     implementation(project(":core:designsystem"))
+    implementation(project(":feature:sensor-harness"))
+    implementation(project(":core:lightledger"))
 
     implementation(platform("androidx.compose:compose-bom:2024.06.00"))
     implementation("androidx.compose.animation:animation")

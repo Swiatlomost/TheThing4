@@ -1,0 +1,16 @@
+{
+  "id": "POI-201-android-scaffold",
+  "status": "pending",
+  "owner": "Lumen",
+  "title": "Set up PoI Android prototype & Rust bridge",
+  "description": "Stworzyć moduł Android z integracją Rust NDK dla Light Ledger, konfiguracją JNI oraz pipeline'em testowym.",
+  "acceptance": [
+    "Repo/android module zawiera podstawową aplikację + moduł library dla Light Ledger.",
+    "Skonfigurowany build cargo-ndk z generacją .so i skeletonem JNI (bez pełnej logiki).",
+    "Dokumentacja uruchomienia (README) + script do lokalnego build/test."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-201-android-scaffold/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-201-android-scaffold/log.jsonl"
+  }
+}

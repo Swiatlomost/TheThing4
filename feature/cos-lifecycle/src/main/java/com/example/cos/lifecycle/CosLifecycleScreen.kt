@@ -1,4 +1,4 @@
-ï»¿package com.example.cos.lifecycle
+package com.example.cos.lifecycle
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -62,6 +62,7 @@ fun CosLifecycleScreen(
     onCreateChild: () -> Unit,
     onOpenMorphogenesis: () -> Unit,
     onOpenSkinDemo: () -> Unit,
+    onOpenSensorHarness: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val lastStage = state.cells.lastOrNull()?.stage
@@ -93,6 +94,7 @@ fun CosLifecycleScreen(
             NeonButton(text = stringResource(R.string.lifecycle_action_reset), onClick = onReset)
             NeonButton(text = stringResource(R.string.lifecycle_action_morphogenesis), onClick = onOpenMorphogenesis)
             NeonButton(text = stringResource(R.string.lifecycle_action_skin_demo), onClick = onOpenSkinDemo)
+            NeonButton(text = stringResource(R.string.lifecycle_action_sensor_harness), onClick = onOpenSensorHarness)
             Button(
                 onClick = { onSetStage(LifecycleStageCommand.BUD) },
                 enabled = canNarodziny
@@ -109,7 +111,7 @@ fun CosLifecycleScreen(
                 onClick = onCreateChild,
                 enabled = canSpawn
             ) {
-                Text(text = "Nowa komÄ‚Å‚rka")
+                Text(text = "Nowa komÃ³rka")
             }
         }
     }
@@ -225,7 +227,7 @@ private fun DrawScope.drawOrganism(
         cells.forEach { animated ->
         val centerPx = origin + animated.snapshot.center * scale
         val cellRadiusUnits = animated.snapshot.radius.takeIf { it > 0f } ?: baseRadiusUnits
-        // Birth segment [0..1]: kropka -> pierÅ›cieÅ„ z progiem
+        // Birth segment [0..1]: kropka -> pierœcieñ z progiem
         data class Seg(val outerR: Float, val fillR: Float, val outA: Float, val fillA: Float)
         val seg: Seg =
             if (animated.stageValue <= 1f) {
@@ -244,7 +246,7 @@ private fun DrawScope.drawOrganism(
                 }
             } else {
                 // Dojrzewanie i dalej: ring pozostaje nieruchomy (outer = 1R),
-                // nasyca siÄ™ jedynie Å›rodek (fill roÅ›nie).
+                // nasyca siê jedynie œrodek (fill roœnie).
                 val outer = cellRadiusUnits * 1f
                 val fillR = cellRadiusUnits * fillRadiusMultiplier(animated.stageValue)
                 Seg(outer, fillR, outlineAlpha(animated.stageValue), fillAlpha(animated.stageValue))
@@ -410,7 +412,7 @@ private object EnergyShaders {
         accent: Color,
         alpha: Float
     ): Shader {
-        // Core (szybki spadek ~exp(-r^2*4)) â€” aproksymacja przez gÄ™ste stopnie
+        // Core (szybki spadek ~exp(-r^2*4)) — aproksymacja przez gêste stopnie
         val coreCol = mixToWhite(accent, 0.9f)
         val core = RadialGradient(
             cx, cy, radius,
@@ -436,7 +438,7 @@ private object EnergyShaders {
             Shader.TileMode.CLAMP
         )
 
-        // Mieszamy SCREEN jak w referencji (sumaryczna â€ženergiaâ€) bez szumu
+        // Mieszamy SCREEN jak w referencji (sumaryczna „energia”) bez szumu
         return ComposeShader(glow, core, PorterDuff.Mode.SCREEN)
     }
 
@@ -523,7 +525,7 @@ private fun DrawScope.drawGaussianEnergyFill(
         )
     }
 
-    // Core (whitened accent) â€” emulate faster Gaussian falloff via stops
+    // Core (whitened accent) — emulate faster Gaussian falloff via stops
     val coreColor = mixToWhite(accent, whiten)
     val coreBrush = Brush.radialGradient(
         colors = listOf(
@@ -537,7 +539,7 @@ private fun DrawScope.drawGaussianEnergyFill(
     )
     drawPath(path = path, brush = coreBrush)
 
-    // Glow (accent) â€” slower falloff
+    // Glow (accent) — slower falloff
     val glowBrush = Brush.radialGradient(
         colors = listOf(
             accent.copy(alpha = (alpha * glowAlpha)),
@@ -549,7 +551,7 @@ private fun DrawScope.drawGaussianEnergyFill(
     )
     drawPath(path = path, brush = glowBrush)
 
-    // Specular bands (optional) â€” two perpendicular streaks
+    // Specular bands (optional) — two perpendicular streaks
     if (specularEnabled && specularBandAlpha > 0f && specularBandWidth > 0f) {
         val highlightColor = mixToWhite(accent, 1f).copy(alpha = (alpha * specularBandAlpha).coerceIn(0f, 1f))
         drawSpecularBand(path, center, radius, specularAngleDeg, highlightColor, specularBandWidth)

@@ -1,0 +1,19 @@
+{
+  "plan": [
+    "Opracować moduł Terraform dla CloudHSM (staging + prod).",
+    "Skonfigurować pipeline plan/apply z manualną aprobatą.",
+    "Przygotować dokumentację klienta walidatora."
+  ],
+  "do": [],
+  "check": [],
+  "act": [],
+  "links": {
+    "reference": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/hsm-options.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/cloudhsm-terraform-plan.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

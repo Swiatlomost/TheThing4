@@ -1,0 +1,35 @@
+{
+  "plan": [
+    "Produce test plan covering FAR ≤5%, FRR ≤10%, entropy >0.75 with DP budgets ε≤2.",
+    "Define validator scenarios: attestation failure, secure aggregation dropout, Solana outage fallback.",
+    "Prepare monitoring and alert tooling for entropy, DP budgets, batch latency."
+  ],
+  "do": [
+    "Pulled metrics from research-notes; populated test-plan.json with scenarios and thresholds.",
+    "Authored qa-tooling-notes.md for telemetry capture and Play Integrity mocks.",
+    "Created qa-generator-plan.md scheduling synthetic data generator work.",
+    "Added telemetry-proto-plan.md describing BatchTelemetry message and baseline capture."
+  ],
+  "check": [
+    "Pending prototype data to calibrate thresholds; test-plan requires review with Orin/Lumen.",
+    "Telemetry stream needs alignment with Nodus' gRPC implementation."
+  ],
+  "act": [
+    "Collaborate with Lumen/Nodus once prototypes available to automate evidence collection.",
+    "Kick off synthetic data capture once Light Ledger exports initial batches."
+  ],
+  "links": {
+    "reference": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/research-notes.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/architecture-guardrails.md"
+    ],
+    "notes": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/qa-tooling-notes.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/qa-generator-plan.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/telemetry-proto-plan.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

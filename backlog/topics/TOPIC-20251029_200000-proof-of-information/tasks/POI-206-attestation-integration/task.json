@@ -1,0 +1,19 @@
+{
+  "id": "POI-206-attestation-integration",
+  "status": "pending",
+  "owner": "Lumen",
+  "contributors": [
+    "Nodus"
+  ],
+  "title": "Integrate attestation & secure aggregation",
+  "description": "Połączyć Light Ledger z Play Integrity/SafetyNet oraz secure aggregation pipeline przed wysyłką batchy.",
+  "acceptance": [
+    "Light Ledger dodaje attestation token do batch payload; fallback scenariusze opisane.",
+    "Secure aggregation klient zintegrowany z gRPC walidatora i obsługuje dropout.",
+    "Dokumentacja walidacji (manualmente + testy) oraz logi w QA planie."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-206-attestation-integration/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-206-attestation-integration/log.jsonl"
+  }
+}

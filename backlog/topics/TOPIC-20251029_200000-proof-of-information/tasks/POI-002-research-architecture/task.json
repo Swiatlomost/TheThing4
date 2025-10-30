@@ -1,0 +1,16 @@
+{
+  "id": "POI-002-research-architecture",
+  "status": "pending",
+  "owner": "Vireal",
+  "title": "Research PoI architecture & technology stack",
+  "description": "Porównać warianty technologiczne (TEE, FL, blockchain, walidatory) i zaproponować docelowe guardraile architektury PoI.",
+  "acceptance": [
+    "Macierz technologii z kryteriami: wydajność, bezpieczeństwo, prywatność, koszty.",
+    "Rekomendacja docelowej architektury (warstwa urządzenie -> walidator -> blockchain) + decyzje ADR.",
+    "Lista zależności i wymogów dla zadań implementacyjnych (POI-101/102/103)."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/log.jsonl"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "plan": [
+    "Zdefiniować pytania badawcze: behawioralne biometrie, sensory entropy, federated trust, kryptografia PoI.",
+    "Zebrać i zrecenzować min. 5 publikacji/standardów, tworząc tabelę wniosków i ograniczeń.",
+    "Zmapować ryzyka naukowe (spoofing, prywatność, fałszywe alarmy) i pytania do Vireal/Lumen."
+  ],
+  "do": [
+    "Echo: rozpoczęła kwerendę literatury (IEEE/ACM) + tworzy tabelę porównawczą wyników.",
+    "Podsumowano 3 kluczowe publikacje (Touchalytics, ZEBRA, PerCom 2020) z metrykami autentyczności i budżetami prywatności.",
+    "Uzupełniono notatkę research-notes.md o secure aggregation (Bonawitz, Ramaswamy) i blockchain attestation (Zhang 2021)."
+  ],
+  "check": [
+    "Wstępna mapa ryzyk: spoofing sensorów, koszty DP, fałszywe alarmy przekazane do konsultacji z Vireal.",
+    "Spełniono kryteria zadania: min. 5 źródeł opisanych, ryzyka zmapowane, notatka podlinkowana w briefie."
+  ],
+  "act": [
+    "Przekazać Kai parametry FAR/FRR i budżety ε do test-plan (POI-103).",
+    "Monitorować nowe publikacje 2025Q4 nt. zk-proofs dla IoT (follow-up)."
+  ],
+  "links": {
+    "reference": [
+      "backlog/idea/TheThing_Proof_of_Information.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/brief.json"
+    ],
+    "notes": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/research-notes.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

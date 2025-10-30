@@ -1,0 +1,33 @@
+{
+  "plan": [
+    "Design Light Ledger with hardware-backed signatures (StrongBox/TitanM) and attestation fallback.",
+    "Implement Merkle root generator with ≤15 min batching and validator upload.",
+    "Calibrate authenticity thresholds: FAR ≤5%, FRR ≤10%, entropy >0.75 per research notes."
+  ],
+  "do": [
+    "Integrated research insights into implementation plan.",
+    "Authored light-ledger-design.md covering storage, pipeline, metrics, retention, cell lifecycle thresholds.",
+    "Documented light-ledger-architecture.md with Kotlin↔Rust interfaces and data flow.",
+    "Prepared jni-bridge-plan.md detailing native signatures, build setup, performance benchmarks."
+  ],
+  "check": [
+    "Design reviewed with Vireal/Kai; telemetry and retention requirements confirmed.",
+    "JNI bridge plan accepted; cargo-ndk and Gradle integration steps noted."
+  ],
+  "act": [
+    "Implement JNI bridge and repository layer; execute performance benchmarks on Pixel 5/7.",
+    "Record benchmark results and telemetry outputs in log for Kai."
+  ],
+  "links": {
+    "reference": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/research-notes.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/architecture-guardrails.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/light-ledger-design.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/light-ledger-architecture.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/jni-bridge-plan.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

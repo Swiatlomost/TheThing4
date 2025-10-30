@@ -1,0 +1,16 @@
+{
+  "id": "POI-001-research-science",
+  "status": "pending",
+  "owner": "Echo",
+  "title": "Research PoI scientific foundations",
+  "description": "Zebrać literaturę i dowody naukowe (behawioralne biometrie, sensory entropy, federated trust, kryptograficzne protokoły), aby uzasadnić Proof of Information jako warstwę zaufania.",
+  "acceptance": [
+    "Przegląd min. 5 recenzowanych publikacji lub standardów z podsumowaniem wniosków.",
+    "Mapa ryzyk i otwartych pytań do decyzji architektonicznych (link w PDCA).",
+    "Link do syntetycznej notatki / referencji w briefie tematu."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/log.jsonl"
+  }
+}

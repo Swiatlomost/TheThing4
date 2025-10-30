@@ -1,0 +1,19 @@
+{
+  "plan": [
+    "Week 1: skonfigurować środowisko Sui devnet i Move module skeleton.",
+    "Week 2: napisać klienta Rust + benchmark throughput/finality.",
+    "Week 3: przygotować raport porównawczy i decyzję dla Orina."
+  ],
+  "do": [],
+  "check": [],
+  "act": [],
+  "links": {
+    "reference": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/sui-spike-plan.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/sol-vs-sui.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

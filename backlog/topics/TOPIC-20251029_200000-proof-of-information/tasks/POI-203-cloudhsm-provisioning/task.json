@@ -1,0 +1,16 @@
+{
+  "id": "POI-203-cloudhsm-provisioning",
+  "status": "pending",
+  "owner": "Nodus",
+  "title": "Provision CloudHSM + Terraform pipeline",
+  "description": "Przygotować moduł Terraform i proces CI/CD do tworzenia klastra CloudHSM (staging + prod) oraz dokumentację klienta.",
+  "acceptance": [
+    "Moduł Terraform (repo infra) tworzy klaster CloudHSM + security groups.",
+    "Pipeline plan/apply z ręczną aprobatą gotowe (GH Actions / inny).",
+    "Dokumentacja instalacji klienta i kroki podłączenia validatora."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-203-cloudhsm-provisioning/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-203-cloudhsm-provisioning/log.jsonl"
+  }
+}

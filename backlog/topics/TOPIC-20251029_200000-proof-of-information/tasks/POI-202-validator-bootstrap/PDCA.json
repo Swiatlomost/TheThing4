@@ -1,0 +1,27 @@
+{
+  "plan": [
+    "Skonfigurować repo Rust z crate `poi-validator` i strukturą tonic.",
+    "Wygenerować stubs gRPC z validator.proto (tonic-build + buf).",
+    "Dodać test handshake + CI workflow."
+  ],
+  "do": [
+    "Przygotowano bootstrap-notes.md ze strukturą repo, krokami tonic/buf i CI workflow.",
+    "Scaffoldowano repo validator/: Cargo crate, build.rs, service skeleton oraz proto/validator.proto.",
+    "Dodano walidację batchy (registry in-memory, odrzucanie brakujących metryk/attestation) oraz test tokio."
+  ],
+  "check": [
+    "cargo check nie wykonany – narzędzie cargo nie dostępne w środowisku.",
+    "Skonfigurowano PROTOC (D:/protoc-33.0-win64) i wykonano cargo check z sukcesem."
+  ],
+  "act": [],
+  "links": {
+    "reference": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/validator.proto",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/grpc-stub-plan.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-202-validator-bootstrap/bootstrap-notes.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

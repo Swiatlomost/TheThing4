@@ -1,0 +1,16 @@
+{
+  "id": "POI-209-deployment-coordination",
+  "status": "pending",
+  "owner": "Orin",
+  "title": "Coordinate PoI rollout",
+  "description": "Koordynować wdrożenie PoI: harmonogram, komunikacja, zależności między zespołami.",
+  "acceptance": [
+    "Plan rollout (milestones, zależności) udostępniony wszystkim właścicielom PoI tasków.",
+    "Regularny rytm synców (status log) ustawiony i udokumentowany.",
+    "Checklista gotowości (Android, validator, QA, blockchain) oznaczona przed deploy."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-209-deployment-coordination/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-209-deployment-coordination/log.jsonl"
+  }
+}

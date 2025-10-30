@@ -1,0 +1,34 @@
+{
+  "plan": [
+    "POI-001 + POI-002: finalize research foundations and architecture guardrails.",
+    "POI-101: design and implement Light Ledger prototype on device.",
+    "POI-102: build validator + aggregation pipeline and blockchain commit.",
+    "POI-103: define quality/test framework and monitoring."
+  ],
+  "do": [
+    "Research delivered: research-notes.md, architecture-guardrails.md, sol-vs-sui.md (Echo/Vireal).",
+    "Implementation prep: Light Ledger design + architecture docs (Lumen).",
+    "Validator prep: validator-plan.md, validator.proto, HSM options, terraform plan (Nodus).",
+    "QA prep: test-plan.json, qa-tooling-notes.md, qa-generator-plan.md (Kai)."
+  ],
+  "check": [
+    "Inputs for implementation confirmed: FAR/FRR metrics, DP budgets, guardrails, telemetry requirements.",
+    "Secondary path defined: sui-spike-plan.md ready post-Solana launch."
+  ],
+  "act": [
+    "Transition POI-101/102/103 into implementation phase (JNI bridge, CloudHSM provisioning, QA tooling).",
+    "Schedule Sui spike after Solana PoI v1 deployment and prepare decision memo for Orin."
+  ],
+  "links": {
+    "idea": [
+      "backlog/idea/TheThing_Proof_of_Information.md"
+    ],
+    "notes": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/sui-spike-plan.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/execution-sequence.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

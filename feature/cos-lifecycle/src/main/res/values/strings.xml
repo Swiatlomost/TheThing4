@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="lifecycle_action_reset">Reset</string>
     <string name="lifecycle_action_morphogenesis">Morphogenesis</string>
@@ -6,4 +6,5 @@
     <string name="lifecycle_action_birth">Birth</string>
     <string name="lifecycle_action_mature">Mature</string>
     <string name="lifecycle_action_new_cell">New cell</string>
+    <string name="lifecycle_action_sensor_harness">Sensor harness</string>
 </resources>

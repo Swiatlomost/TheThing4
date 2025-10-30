@@ -1,0 +1,16 @@
+{
+  "id": "POI-205-solana-program",
+  "status": "pending",
+  "owner": "Nodus",
+  "title": "Implement PoI Solana program & CI",
+  "description": "Zaimplementować smart kontrakt PoI na Solanie (Anchor), pipeline deploy-devnet + monitoring.",
+  "acceptance": [
+    "Repo zawiera program Anchor zapisujący {root, trust, entropy, validator_sig}.",
+    "CI buduje, testuje i deployuje na Devnet z logiem transakcji.",
+    "Dokumentacja zawiera instrukcję redeploy i monitoring (latency/fees)."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-205-solana-program/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-205-solana-program/log.jsonl"
+  }
+}

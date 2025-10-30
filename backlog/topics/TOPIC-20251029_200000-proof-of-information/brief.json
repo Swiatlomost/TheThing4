@@ -1,0 +1,9 @@
+{
+  "topic": "TOPIC-20251029_200000-proof-of-information",
+  "title": "Proof of Information",
+  "why": "PoI to fundament zaufania dla TheThing: musimy potwierdzać, że dane sensoryczne i behawioralne pochodzą od autentycznych urządzeń i ludzi, aby dalsze moduły mogły działać na wiarygodnej bazie.",
+  "what": "Budujemy warstwę zaufania: Light Ledger na urządzeniu, federacyjny walidator z zabezpieczeniami, zapis do blockchainu oraz ramę jakości (metryki, test-plan, monitoring).",
+  "how": "Faza 1 (zakończona): research-notes.md, architecture-guardrails.md i sol-vs-sui.md ustaliły fundamenty. Faza 2 (trwa): Lumen ma light-ledger-design/architecture, Nodus validator-plan + hsm-options + terraform plan + validator.proto, Kai test-plan + QA tooling/generator. Po wdrożeniu Solany uruchomimy spike z sui-spike-plan.md, aby ocenić alternatywny łańcuch.",
+  "what_if": "Bez PoI nie mamy sposobu na nagradzanie wiarygodnych urządzeń ani ochronę przed emulowanymi danymi: tokenomia i modele federacyjne rozsypią się na starcie.",
+  "updated_at": "2025-10-29"
+}

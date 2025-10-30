@@ -1,0 +1,19 @@
+{
+  "id": "POI-207-sensor-capture",
+  "status": "pending",
+  "owner": "Lumen",
+  "contributors": [
+    "Kai"
+  ],
+  "title": "Build PoI sensor capture harness",
+  "description": "Zbudować aplikację/demo do zbierania i anonimizacji danych sensorów dla baseline i QA.",
+  "acceptance": [
+    "Aplikacja rejestruje accelerometer/gyro/touch + zapisuje fingerprint JSON zgodny z Light Ledger.",
+    "Opcja anonimizacji/eksportu danych (bez audio) gotowa.",
+    "Instrukcja dla QA jak uzyskać sample + zgoda użytkownika."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-207-sensor-capture/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-207-sensor-capture/log.jsonl"
+  }
+}

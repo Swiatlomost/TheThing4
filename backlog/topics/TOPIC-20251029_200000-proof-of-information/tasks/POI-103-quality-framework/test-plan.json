@@ -1,0 +1,62 @@
+{
+  "topic": "TOPIC-20251029_200000-proof-of-information",
+  "task": "POI-103-quality-framework",
+  "owner": "Kai",
+  "summary": "Acceptance and monitoring plan for Proof of Information pipeline (device ledger, validator, blockchain).",
+  "scenarios": [
+    {
+      "id": "POI-QA-001",
+      "title": "Device FAR/FRR calibration",
+      "metrics": {
+        "FAR_max": 0.05,
+        "FRR_max": 0.10,
+        "entropy_min": 0.75
+      },
+      "procedure": [
+        "Replay captured sensor sessions with ground-truth labels.",
+        "Verify Light Ledger rejects low-entropy samples (<0.75).",
+        "Validate FAR/FRR thresholds on aggregated batches."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "POI-QA-002",
+      "title": "Attestation & secure aggregation path",
+      "metrics": {
+        "attestation_success_rate": 0.99,
+        "dropout_tolerance": 0.2
+      },
+      "procedure": [
+        "Simulate devices with/without StrongBox, ensure Play Integrity verdict required.",
+        "Trigger secure aggregation dropout by removing 10-20% clients and ensure batch still accepted."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "POI-QA-003",
+      "title": "Validator to Solana devnet pipeline",
+      "metrics": {
+        "batch_interval_minutes": 15,
+        "confirmation_time_seconds": 30
+      },
+      "procedure": [
+        "Send signed batch to validator, capture gRPC response.",
+        "Verify Solana transaction contains expected root and signature.",
+        "Measure confirmation latency and log any retries/outages."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "POI-QA-004",
+      "title": "Resilience scenarios",
+      "metrics": {
+        "outage_queue_retention_minutes": 60
+      },
+      "procedure": [
+        "Simulate Solana outage; ensure validator queues batches and replays once available.",
+        "Force DP budget exceedance and validate alert emission."
+      ],
+      "evidence": []
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "plan": [
+    "Stworzyć harmonogram rollout z zależnościami (Android, validator, QA, Solana).",
+    "Ustawić rytm synców statusowych + logowanie w board/logu.",
+    "Przygotować checkliste gotowości i plan komunikacji."
+  ],
+  "do": [],
+  "check": [],
+  "act": [],
+  "links": {},
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

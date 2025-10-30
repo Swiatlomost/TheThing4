@@ -1,0 +1,36 @@
+{
+  "plan": [
+    "Design validator service in Rust with hardware-backed signing keys (CloudHSM/CloudKMS) rotated ≤30 days.",
+    "Implement attestation verification (Play Integrity/SafetyNet) before accepting Merkle roots and stats.",
+    "Deploy Solana devnet program for PoI batches with monitoring and fallback queue."
+  ],
+  "do": [
+    "Aligned requirements with architecture-guardrails; captured validator-plan.md overview.",
+    "Added validator.proto defining SubmitBatch/QueryStatus contracts with telemetry fields.",
+    "Documented hsm-options.md and cloudhsm-terraform-plan.md for provisioning strategy.",
+    "Prepared grpc-stub-plan.md for tonic/buf generation and pkcs11-poc-notes.md for benchmarking."
+  ],
+  "check": [
+    "Pending confirmation: CloudHSM capacity vs CloudKMS fallback costs (AWS ticket opened 2025-10-29).",
+    "Ensure gRPC stubs integrate with Lumen/Kai telemetry expectations before coding."
+  ],
+  "act": [
+    "Agree payload schema with Lumen and schedule secure aggregation integration tests.",
+    "Implement Terraform module and CI pipeline for CloudHSM provisioning.",
+    "Run PKCS#11 vs CloudKMS PoC and append results to validator-plan.md/log."
+  ],
+  "links": {
+    "reference": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/architecture-guardrails.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/research-notes.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/validator-plan.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/hsm-options.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/cloudhsm-terraform-plan.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/grpc-stub-plan.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/pkcs11-poc-notes.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

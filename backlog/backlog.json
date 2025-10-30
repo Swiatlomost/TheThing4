@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-29T11:49:17",
+  "generated_at": "2025-10-29T21:45:51",
   "areas": [
     {
       "area": "okno-glowne",
@@ -316,7 +316,7 @@
         {
           "id": "TOPIC-20251028_223000-refactoring",
           "title": "Refactoring Guardrails",
-          "status": "ready",
+          "status": "backlog",
           "brief": null,
           "pdca": null,
           "tasks": [
@@ -356,12 +356,204 @@
             {
               "id": "REFAC-004-morpho-async",
               "title": "Async morphogenesis persistence",
-              "status": "pending",
+              "status": "done",
               "owner": "Lumen",
               "deferred": null,
               "tags": [
                 "performance",
                 "async"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "TOPIC-20251029_120000-i18n",
+          "title": "Internationalization",
+          "status": "ready",
+          "brief": null,
+          "pdca": null,
+          "tasks": [
+            {
+              "id": "I18N-001-font-stack",
+              "title": "Define typography & font strategy for multi-language",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "I18N-002-localization-pipeline",
+              "title": "Set up localization pipeline",
+              "status": "pending",
+              "owner": "Orin",
+              "deferred": null,
+              "tags": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "area": "trust-core",
+      "topics": [
+        {
+          "id": "TOPIC-20251029_200000-proof-of-information",
+          "title": "Proof of Information",
+          "status": "active",
+          "brief": null,
+          "pdca": null,
+          "tasks": [
+            {
+              "id": "POI-001-research-science",
+              "title": "Research PoI scientific foundations",
+              "status": "done",
+              "owner": "Echo",
+              "deferred": null,
+              "tags": [
+                "research",
+                "science"
+              ]
+            },
+            {
+              "id": "POI-002-research-architecture",
+              "title": "Research PoI architecture & technology stack",
+              "status": "done",
+              "owner": "Vireal",
+              "deferred": null,
+              "tags": [
+                "research",
+                "architecture"
+              ]
+            },
+            {
+              "id": "POI-101-light-ledger-prototype",
+              "title": "Prototype PoI Light Ledger on device",
+              "status": "in_progress",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": [
+                "implementation",
+                "ledger"
+              ]
+            },
+            {
+              "id": "POI-102-validator-pipeline",
+              "title": "Build PoI validator & aggregation pipeline",
+              "status": "in_progress",
+              "owner": "Nodus",
+              "deferred": null,
+              "tags": [
+                "implementation",
+                "backend"
+              ]
+            },
+            {
+              "id": "POI-103-quality-framework",
+              "title": "Define PoI quality & test framework",
+              "status": "in_progress",
+              "owner": "Kai",
+              "deferred": null,
+              "tags": [
+                "implementation",
+                "quality"
+              ]
+            },
+            {
+              "id": "POI-201-android-scaffold",
+              "title": "Set up PoI Android prototype & Rust bridge",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": [
+                "implementation",
+                "setup"
+              ]
+            },
+            {
+              "id": "POI-202-validator-bootstrap",
+              "title": "Bootstrap PoI validator service",
+              "status": "pending",
+              "owner": "Nodus",
+              "deferred": null,
+              "tags": [
+                "implementation",
+                "setup"
+              ]
+            },
+            {
+              "id": "POI-203-cloudhsm-provisioning",
+              "title": "Provision CloudHSM + Terraform pipeline",
+              "status": "pending",
+              "owner": "Nodus",
+              "deferred": null,
+              "tags": [
+                "infrastructure",
+                "terraform"
+              ]
+            },
+            {
+              "id": "POI-204-qa-toolchain",
+              "title": "Bootstrap PoI QA tooling & telemetry stack",
+              "status": "pending",
+              "owner": "Kai",
+              "deferred": null,
+              "tags": [
+                "qa",
+                "tooling"
+              ]
+            },
+            {
+              "id": "POI-205-solana-program",
+              "title": "Implement PoI Solana program & CI",
+              "status": "pending",
+              "owner": "Nodus",
+              "deferred": null,
+              "tags": [
+                "implementation",
+                "blockchain"
+              ]
+            },
+            {
+              "id": "POI-206-attestation-integration",
+              "title": "Integrate attestation & secure aggregation",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": [
+                "integration",
+                "security"
+              ]
+            },
+            {
+              "id": "POI-207-sensor-capture",
+              "title": "Build PoI sensor capture harness",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": [
+                "implementation",
+                "sensors"
+              ]
+            },
+            {
+              "id": "POI-208-sui-spike",
+              "title": "Run PoI Sui spike",
+              "status": "pending",
+              "owner": "Vireal",
+              "deferred": null,
+              "tags": [
+                "research",
+                "blockchain"
+              ]
+            },
+            {
+              "id": "POI-209-deployment-coordination",
+              "title": "Coordinate PoI rollout",
+              "status": "pending",
+              "owner": "Orin",
+              "deferred": null,
+              "tags": [
+                "coordination"
               ]
             }
           ]

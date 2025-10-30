@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package poi.validator;
+
+option java_multiple_files = true;
+option java_package = "io.thething.poi.validator";
+
+message BatchEntryMetrics {
+  uint64 ledger_index = 1;
+  double entropy = 2;
+  double trust_score = 3;
+  double far = 4;
+  double frr = 5;
+}
+
+message AttestationPayload {
+  string provider = 1;
+  bytes token = 2;
+  string nonce = 3;
+}
+
+message BatchProofRequest {
+  string device_id = 1;
+  uint64 batch_start = 2;
+  uint64 batch_end = 3;
+  bytes merkle_root = 4;
+  repeated BatchEntryMetrics metrics = 5;
+  bytes signature = 6;
+  AttestationPayload attestation = 7;
+}
+
+message BatchProofResponse {
+  string batch_id = 1;
+  enum Status {
+    STATUS_ACCEPTED = 0;
+    STATUS_REJECTED = 1;
+    STATUS_QUEUED = 2;
+  }
+  Status status = 2;
+  string reason = 3;
+  uint64 expected_slot = 4;
+}
+
+message BatchStatusRequest {
+  string batch_id = 1;
+}
+
+message BatchStatusResponse {
+  string batch_id = 1;
+  BatchProofResponse.Status status = 2;
+  string reason = 3;
+  string solana_tx = 4;
+}
+
+service PoIValidator {
+  rpc SubmitBatch (BatchProofRequest) returns (BatchProofResponse);
+  rpc QueryStatus (BatchStatusRequest) returns (BatchStatusResponse);
+}

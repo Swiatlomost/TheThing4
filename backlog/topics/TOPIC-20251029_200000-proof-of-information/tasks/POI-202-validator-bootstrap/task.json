@@ -1,0 +1,16 @@
+{
+  "id": "POI-202-validator-bootstrap",
+  "status": "pending",
+  "owner": "Nodus",
+  "title": "Bootstrap PoI validator service",
+  "description": "Utworzyć repozytorium Rust dla walidatora, dodać skeleton gRPC (tonic) oraz podstawowe testy integracyjne.",
+  "acceptance": [
+    "Repo zawiera crate z serwerem tonic + wygenerowane stubs z validator.proto.",
+    "Pipeline CI buduje i uruchamia test handshake.",
+    "README opisuje lokalne uruchomienie + zależności (HSM placeholder)."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-202-validator-bootstrap/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-202-validator-bootstrap/log.jsonl"
+  }
+}

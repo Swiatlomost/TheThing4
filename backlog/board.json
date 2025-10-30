@@ -21,6 +21,14 @@
     {
       "id": "TOPIC-20251028_223000-refactoring",
       "title": "Refactoring Guardrails"
+    },
+    {
+      "id": "TOPIC-20251029_120000-i18n",
+      "title": "Internationalization"
+    },
+    {
+      "id": "TOPIC-20251029_200000-proof-of-information",
+      "title": "Proof of Information"
     }
   ],
   "tasks": [
@@ -471,6 +479,194 @@
       "topic": "TOPIC-20251029_120000-i18n",
       "status": "pending",
       "owner": "Orin"
+    },
+    {
+      "id": "POI-001-research-science",
+      "title": "Research PoI scientific foundations",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "done",
+      "owner": "Echo",
+      "tags": [
+        "research",
+        "science"
+      ],
+      "links": {
+        "task": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/task.json",
+        "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/PDCA.json",
+        "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/log.jsonl"
+      }
+    },
+    {
+      "id": "POI-002-research-architecture",
+      "title": "Research PoI architecture & technology stack",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "done",
+      "owner": "Vireal",
+      "tags": [
+        "research",
+        "architecture"
+      ],
+      "links": {
+        "task": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/task.json",
+        "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/PDCA.json",
+        "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/log.jsonl"
+      }
+    },
+    {
+      "id": "POI-101-light-ledger-prototype",
+      "title": "Prototype PoI Light Ledger on device",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "in_progress",
+      "owner": "Lumen",
+      "tags": [
+        "implementation",
+        "ledger"
+      ],
+      "links": {
+        "task": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/task.json",
+        "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/PDCA.json",
+        "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/log.jsonl"
+      }
+    },
+    {
+      "id": "POI-102-validator-pipeline",
+      "title": "Build PoI validator & aggregation pipeline",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "in_progress",
+      "owner": "Nodus",
+      "tags": [
+        "implementation",
+        "backend"
+      ],
+      "links": {
+        "task": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/task.json",
+        "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/PDCA.json",
+        "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/log.jsonl"
+      }
+    },
+    {
+      "id": "POI-103-quality-framework",
+      "title": "Define PoI quality & test framework",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "in_progress",
+      "owner": "Kai",
+      "tags": [
+        "implementation",
+        "quality"
+      ],
+      "links": {
+        "task": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/task.json",
+        "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/PDCA.json",
+        "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/log.jsonl"
+      }
+    },
+    {
+      "id": "POI-201-android-scaffold",
+      "title": "Set up PoI Android prototype & Rust bridge",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "pending",
+      "owner": "Lumen",
+      "tags": [
+        "implementation",
+        "setup"
+      ]
+    },
+    {
+      "id": "POI-202-validator-bootstrap",
+      "title": "Bootstrap PoI validator service",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "pending",
+      "owner": "Nodus",
+      "tags": [
+        "implementation",
+        "setup"
+      ]
+    },
+    {
+      "id": "POI-203-cloudhsm-provisioning",
+      "title": "Provision CloudHSM + Terraform pipeline",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "pending",
+      "owner": "Nodus",
+      "tags": [
+        "infrastructure",
+        "terraform"
+      ]
+    },
+    {
+      "id": "POI-204-qa-toolchain",
+      "title": "Bootstrap PoI QA tooling & telemetry stack",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "pending",
+      "owner": "Kai",
+      "tags": [
+        "qa",
+        "tooling"
+      ]
+    },
+    {
+      "id": "POI-205-solana-program",
+      "title": "Implement PoI Solana program & CI",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "pending",
+      "owner": "Nodus",
+      "tags": [
+        "implementation",
+        "blockchain"
+      ]
+    },
+    {
+      "id": "POI-206-attestation-integration",
+      "title": "Integrate attestation & secure aggregation",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "pending",
+      "owner": "Lumen",
+      "contributors": [
+        "Nodus"
+      ],
+      "tags": [
+        "integration",
+        "security"
+      ]
+    },
+    {
+      "id": "POI-207-sensor-capture",
+      "title": "Build PoI sensor capture harness",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "pending",
+      "owner": "Lumen",
+      "contributors": [
+        "Kai"
+      ],
+      "tags": [
+        "implementation",
+        "sensors"
+      ]
+    },
+    {
+      "id": "POI-208-sui-spike",
+      "title": "Run PoI Sui spike",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "pending",
+      "owner": "Vireal",
+      "contributors": [
+        "Nodus",
+        "Kai"
+      ],
+      "tags": [
+        "research",
+        "blockchain"
+      ]
+    },
+    {
+      "id": "POI-209-deployment-coordination",
+      "title": "Coordinate PoI rollout",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "pending",
+      "owner": "Orin",
+      "tags": [
+        "coordination"
+      ]
     }
   ],
   "_docs": "Board (under backlog/) is the single source of truth for task status."

@@ -1,0 +1,36 @@
+{
+  "plan": [
+    "Collect PoI architecture variants (TEE, federated orchestration, validator, blockchain) together with requirements.",
+    "Score technologies against security, privacy, performance, and operational cost criteria.",
+    "Deliver guardrails draft for device -> validator -> blockchain layers."
+  ],
+  "do": [
+    "Compiled shortlist of technologies (TEE, FL orchestration, validator stacks, blockchain) with scoring criteria.",
+    "Compared TrustZone vs SGX and TFF vs OpenFL from deployment and security perspective.",
+    "Produced architecture-guardrails.md capturing decisions for device/federated/validator/blockchain layers.",
+    "Documented Solana vs Sui trade-offs (sol-vs-sui.md) confirming Solana primary choice and Sui spike."
+  ],
+  "check": [
+    "Captured dependencies: attestation API requirement, validator cluster with HSM, blockchain batch-proof support for Nodus/Lumen follow-up.",
+    "Task acceptance satisfied: technology matrix, guardrail recommendations, dependency list for POI-101/102/103.",
+    "Solana vs Sui analysis reviewed with Orin/Nodus to validate blockchain selection."
+  ],
+  "act": [
+    "Hand off guardrails to Vireal for ADR draft and to Nodus/Lumen for implementation alignment.",
+    "Monitor Solana vs Polygon fee profile and keep Substrate fallback notes ready.",
+    "Schedule Sui spike (Move PoI module + zkLogin experiment) after PoI v1 stabilises on Solana."
+  ],
+  "links": {
+    "reference": [
+      "backlog/idea/TheThing_Proof_of_Information.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/brief.json"
+    ],
+    "notes": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/architecture-guardrails.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/sol-vs-sui.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

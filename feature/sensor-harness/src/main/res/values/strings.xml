@@ -1,0 +1,12 @@
+<resources>
+    <string name="sensor_harness_title">PoI Sensor Harness</string>
+    <string name="sensor_harness_start">Start capture</string>
+    <string name="sensor_harness_stop">Stop capture</string>
+    <string name="sensor_harness_samples">Samples: %1$d</string>
+    <string name="sensor_harness_entropy">Entropy est.: %1$.2f</string>
+    <string name="sensor_harness_trust">Trust score est.: %1$.1f</string>
+    <string name="sensor_harness_last_motion">Motion magnitude: %1$.2f</string>
+    <string name="sensor_harness_last_gyro">Gyro magnitude: %1$.2f</string>
+    <string name="sensor_harness_fingerprint">Generate fingerprint</string>
+    <string name="sensor_harness_copy">Fingerprint copied</string>
+</resources>

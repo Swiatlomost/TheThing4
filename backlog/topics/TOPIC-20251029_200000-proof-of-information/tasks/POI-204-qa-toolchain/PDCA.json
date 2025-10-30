@@ -1,0 +1,20 @@
+{
+  "plan": [
+    "Skonfigurować bazę telemetry (TimescaleDB) i schemat BatchTelemetry.",
+    "Zbudować usługę ingest gRPC (mock) + dashboard Grafana.",
+    "Przygotować skeleton generatora danych (zgodnie z qa-generator-plan)."
+  ],
+  "do": [],
+  "check": [],
+  "act": [],
+  "links": {
+    "reference": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/test-plan.json",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/telemetry-proto-plan.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/qa-generator-plan.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}

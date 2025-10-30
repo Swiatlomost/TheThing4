@@ -1,0 +1,16 @@
+{
+  "id": "POI-103-quality-framework",
+  "status": "pending",
+  "owner": "Kai",
+  "title": "Define PoI quality & test framework",
+  "description": "Na bazie wynikow researchu opracowac plan testow, metryki entropii i akceptacji dla Proof of Information.",
+  "acceptance": [
+    "Dokument test-plan z kryteriami dla urzadzen, walidatora i kontraktu (metryki: entropia, falszywe alarmy, SLA).",
+    "Lista automatyzacji lub narzedzi do implementacji (powiazana z POI-101 i POI-102).",
+    "Rekomendacje monitoringu i alertow jakosciowych dla produkcji."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/log.jsonl"
+  }
+}

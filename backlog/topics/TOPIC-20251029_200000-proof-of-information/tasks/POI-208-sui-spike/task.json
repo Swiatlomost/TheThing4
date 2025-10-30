@@ -1,0 +1,20 @@
+{
+  "id": "POI-208-sui-spike",
+  "status": "pending",
+  "owner": "Vireal",
+  "contributors": [
+    "Nodus",
+    "Kai"
+  ],
+  "title": "Run PoI Sui spike",
+  "description": "Zbadać wdrożenie PoI na Sui: Move module, klient i benchmarki finalności w porównaniu z Solaną.",
+  "acceptance": [
+    "Move module `sui-poi.move` + skrypty deploy/teardown.",
+    "Raport benchmarków (throughput, finality, koszty) vs Solana.",
+    "Memo decyzji dla Orina: rekomendacja co do Sui jako ścieżki B."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-208-sui-spike/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-208-sui-spike/log.jsonl"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "POI-101-light-ledger-prototype",
+  "status": "pending",
+  "owner": "Lumen",
+  "title": "Prototype PoI Light Ledger on device",
+  "description": "Na podstawie wniosków z researchu zbudować prototyp Light Ledger: łańcuch hashy sesji, generator Merkle oraz klucze urządzenia.",
+  "acceptance": [
+    "Moduł urządzenia zapisuje hash-chain w lokalnej bazie + generuje Merkle root (minimalny kod + README).",
+    "Klucze i podpisy korzystają z Keystore / Secure Enclave (laboratoryjny setup).",
+    "Dowód integracji: log testowy lub skrypt pokazujący generację i weryfikację Merkle root."
+  ],
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/log.jsonl"
+  }
+}

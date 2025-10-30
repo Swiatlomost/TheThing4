@@ -1,0 +1,27 @@
+{
+  "plan": [
+    "Zainicjować repo/projekt Android (app + library) z konfiguracją Gradle.",
+    "Skonfigurować Rust NDK (cargo-ndk) i szkielet JNI bridge.",
+    "Dodać pipeline build/test (Gradle + cargo) i README."
+  ],
+  "do": [
+    "Wygenerowano moduł core:lightledger + rust/native/light_ledger jako szkic JNI.",
+    "Rozszerzono LightLedgerHasher o payload + fallback, dodano JNI funkcje oraz integrację cargo-ndk tasków."
+  ],
+  "check": [
+    "Gradle build :app:assembleDebug wykonany z powodzeniem po ustawieniu JAVA_HOME.",
+    "Uruchomiono ./gradlew :core:lightledger:test (bez enableCargoNdk) – sukces.",
+    "Przebudowano ./gradlew :app:assembleDebug (bez cargo-ndk) – sukces."
+  ],
+  "act": [],
+  "links": {
+    "reference": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/jni-bridge-plan.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/light-ledger-architecture.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-201-android-scaffold/implementation-notes.md"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-10-29"
+  }
+}
