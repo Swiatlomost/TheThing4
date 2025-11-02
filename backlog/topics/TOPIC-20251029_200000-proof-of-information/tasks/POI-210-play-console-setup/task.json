@@ -1,0 +1,12 @@
+﻿{
+  "id": "POI-210-play-console-setup",
+  "status": "pending",
+  "owner": "Nodus",
+  "title": "Configure Play Console (Play App Signing)",
+  "description": "Włączyć Play App Signing, zaimportować klucz przez PEPK, ustawić upload key i kanał testowy.",
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-210-play-console-setup/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-210-play-console-setup/log.jsonl",
+    "instructions": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-210-play-console-setup/instructions.md"
+  }
+}

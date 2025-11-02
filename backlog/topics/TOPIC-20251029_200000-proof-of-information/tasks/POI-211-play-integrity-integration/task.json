@@ -1,0 +1,12 @@
+﻿{
+  "id": "POI-211-play-integrity-integration",
+  "status": "pending",
+  "owner": "Lumen",
+  "title": "Integrate Play Integrity (client + validator)",
+  "description": "Android klient: nonce + request token; walidator: weryfikacja JWT (JWK cache)",
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-211-play-integrity-integration/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-211-play-integrity-integration/log.jsonl",
+    "instructions": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-211-play-integrity-integration/instructions.md"
+  }
+}

@@ -1,673 +1,723 @@
 {
-  "version": "3.0",
-  "updated_at": "2025-10-28",
-  "topics": [
-    {
-      "id": "TOPIC-20251024_195056-001",
-      "title": "Okno Glowne"
-    },
-    {
-      "id": "TOPIC-20251025_000554-001",
-      "title": "Overlay"
-    },
-    {
-      "id": "TOPIC-20251025_120000-001",
-      "title": "Morfogeneza"
-    },
-    {
-      "id": "TOPIC-20251027_131500-001",
-      "title": "UI Skin"
-    },
-    {
-      "id": "TOPIC-20251028_223000-refactoring",
-      "title": "Refactoring Guardrails"
-    },
-    {
-      "id": "TOPIC-20251029_120000-i18n",
-      "title": "Internationalization"
-    },
-    {
-      "id": "TOPIC-20251029_200000-proof-of-information",
-      "title": "Proof of Information"
-    }
-  ],
-  "tasks": [
-    {
-      "id": "ORIN-20251024-001",
-      "title": "CoS v0.1 - manualny cykl i overlay parity",
-      "topic": "TOPIC-20251024_195056-001",
-      "status": "done",
-      "owner": "Orin",
-      "opened_at": "2025-10-24",
-      "closed_at": "2025-10-25",
-      "links": {
-        "brief": "backlog/topics/TOPIC-20251024_195056-001/BRIEF-20251024_195056-001.json"
-      }
-    },
-    {
-      "id": "VIREAL-20251024-001",
-      "title": "Architektura cyklu Cos v0.1",
-      "topic": "TOPIC-20251024_195056-001",
-      "status": "done",
-      "owner": "Vireal"
-    },
-    {
-      "id": "LUMEN-20251024-001",
-      "title": "Implementacja cyklu Cos v0.1",
-      "topic": "TOPIC-20251024_195056-001",
-      "status": "done",
-      "owner": "Lumen"
-    },
-    {
-      "id": "KAI-20251024-001",
-      "title": "Plan testow Cos v0.1",
-      "topic": "TOPIC-20251024_195056-001",
-      "status": "done",
-      "owner": "Kai",
-      "links": {
-        "test_plan": "docs/testing/cos-v0.1-test-plan.md"
-      }
-    },
-    {
-      "id": "LUMEN-20251025-002",
-      "title": "Parity overlay Cos v0.1",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Lumen",
-      "links": {
-        "adr": "docs/reference/floating-overlay.md"
-      }
-    },
-    {
-      "id": "KAI-20251025-002",
-      "title": "Testy overlay parity",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Kai",
-      "links": {
-        "tests": "docs/testing/cos-v0.1-test-plan.md"
-      }
-    },
-    {
-      "id": "ECHO-20251025-001",
-      "title": "Repo audit overlay (instrumentation gaps)",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Echo",
-      "links": {
-        "notes": "backlog/globals/ARCHITECTURE.md"
-      }
-    },
-    {
-      "id": "NODUS-20251025-001",
-      "title": "Overlay permissions + ADB checklist",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Nodus",
-      "links": {
-        "checklist": "docs/reference/floating-overlay.md"
-      }
-    },
-    {
-      "id": "NODUS-20251025-002",
-      "title": "Overlay sanity rerun (double tap, instrumentation)",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Nodus",
-      "links": {
-        "checklist": "docs/testing/cos-v0.1-test-plan.md"
-      }
-    },
-    {
-      "id": "VIREAL-20251025-003",
-      "title": "Overlay guard rails (doc)",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Vireal",
-      "links": {
-        "adr": "docs/reference/floating-overlay.md"
-      }
-    },
-    {
-      "id": "SCRIBE-20251025-001",
-      "title": "Overlay parity chronicle",
-      "topic": "TOPIC-20251025_000554-001",
-      "status": "done",
-      "owner": "Scribe",
-      "links": {
-        "chronicle": "reports/chronicle.md"
-      }
-    },
-    {
-      "id": "ORIN-20251025-002",
-      "title": "Morfogeneza v0.1 - orkiestracja sesji",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Orin",
-      "opened_at": "2025-10-25",
-      "closed_at": "2025-10-26",
-      "links": {
-        "brief": "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251025_120000-001.json",
-        "roi": "docs/ai-first-development-roi-20251026.md"
-      }
-    },
-    {
-      "id": "ECHO-20251025-002",
-      "title": "Research kreatora Morfogenezy",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Echo",
-      "closed_at": "2025-10-26",
-      "links": {
-        "ux_notes": "docs/ux/morphogeneza-ux-research.md",
-        "brief": "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251025_120000-001.json"
-      }
-    },
-    {
-      "id": "VIREAL-20251025-002",
-      "title": "ADR formy Cosia",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Vireal",
-      "closed_at": "2025-10-25",
-      "links": {
-        "adr": "docs/architecture/ADR-2025-10-25-morfogeneza.md"
-      }
-    },
-    {
-      "id": "LUMEN-20251025-003",
-      "title": "UI wejscia do Morfogenezy",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Lumen",
-      "closed_at": "2025-10-25"
-    },
-    {
-      "id": "LUMEN-20251025-004",
-      "title": "Menu poziomu i zasobow komorek",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Lumen",
-      "closed_at": "2025-10-25"
-    },
-    {
-      "id": "LUMEN-20251025-005",
-      "title": "Edytor komorek i zapisy form",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Lumen",
-      "closed_at": "2025-10-26",
-      "links": {
-        "test_plan": "docs/testing/morphogeneza-test-plan.md"
-      }
-    },
-    {
-      "id": "LUMEN-20251026-006",
-      "title": "Canvas UX Morfogenezy",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Lumen",
-      "closed_at": "2025-10-26"
-    },
-    {
-      "id": "KAI-20251025-003",
-      "title": "Plan testow Morfogenezy",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Kai",
-      "closed_at": "2025-10-26",
-      "links": {
-        "test_plan": "docs/testing/morphogeneza-test-plan.md",
-        "checklist": "docs/testing/morphogeneza-event-checklist.md"
-      }
-    },
-    {
-      "id": "NODUS-20251026-004",
-      "title": "Sanity kanalu forma_aktywna po undo/redo",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Nodus",
-      "closed_at": "2025-10-26",
-      "links": {
-        "checklist": "docs/testing/morphogeneza-event-checklist.md"
-      }
-    },
-    {
-      "id": "MIRA-20251025-001",
-      "title": "Brief Morfogenezy Cos",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Storywright",
-      "closed_at": "2025-10-26",
-      "links": {
-        "brief": "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251025_120000-001.json"
-      }
-    },
-    {
-      "id": "SCRIBE-20251026-002",
-      "title": "Kronika Morfogenezy 006",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Scribe",
-      "closed_at": "2025-10-26",
-      "links": {
-        "chronicle": "reports/chronicle.md"
-      }
-    },
-    {
-      "id": "MORPHO-010-ui-glow",
-      "title": "UI: bioluminescencyjny skin (kolorystyka i glow)",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai"
-      ],
-      "tags": [
-        "ui",
-        "glow"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
-        "pdca": "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-010-ui-glow/pdca.md",
-        "log": "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-010-ui-glow/log.md"
-      },
-      "closed_at": "2025-10-28"
-    },
-    {
-      "id": "MORPHO-011-anim-birth",
-      "title": "Animacja narodzin: kropkaĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬Ă‚Â Ä‚ËĂ˘â€šÂ¬Ă˘â€žËobwÄ‚â€žĂ˘â‚¬ĹˇĂ„Ä…Ă˘â‚¬Ĺˇd (promieÄ‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąÄľ)",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai"
-      ],
-      "tags": [
-        "anim",
-        "narodziny"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
-        "pdca": "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-011-anim-birth/pdca.md",
-        "log": "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-011-anim-birth/log.md"
-      },
-      "closed_at": "2025-10-28"
-    },
-    {
-      "id": "MORPHO-012-anim-mature",
-      "title": "Animacja dojrzewania: wypeÄ‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡nienie gradientem",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai"
-      ],
-      "tags": [
-        "anim",
-        "dojrzewanie"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
-        "pdca": "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-012-anim-mature/pdca.md",
-        "log": "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-012-anim-mature/log.md"
-      },
-      "closed_at": "2025-10-28"
-    },
-    {
-      "id": "MORPHO-013-multicell",
-      "title": "Organizm wielokomÄ‚â€žĂ˘â‚¬ĹˇĂ„Ä…Ă˘â‚¬Ĺˇrkowy: ukÄ‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡ad i render z glow",
-      "topic": "TOPIC-20251025_120000-001",
-      "status": "done",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai"
-      ],
-      "tags": [
-        "renderer",
-        "organism"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
-        "pdca": "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-013-multicell/pdca.md",
-        "log": "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-013-multicell/log.md"
-      },
-      "closed_at": "2025-10-28"
-    },
-    {
-      "id": "SKIN-001-tokens",
-      "title": "Globalne tokeny UI (kolory, glow, typografia)",
-      "topic": "TOPIC-20251027_131500-001",
-      "status": "done",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai"
-      ],
-      "tags": [
-        "ui",
-        "skin"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/topics/TOPIC-20251027_131500-001/BRIEF-20251027_131500-UI-skin.json",
-        "pdca": "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-001-tokens/pdca.md",
-        "log": "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-001-tokens/log.md"
-      }
-    },
-    {
-      "id": "SKIN-002-app-theme",
-      "title": "Compose Theme + komponenty neon (3 ekrany)",
-      "topic": "TOPIC-20251027_131500-001",
-      "status": "done",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai"
-      ],
-      "tags": [
-        "ui",
-        "theme"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/topics/TOPIC-20251027_131500-001/BRIEF-20251027_131500-UI-skin.json",
-        "pdca": "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-002-app-theme/pdca.md",
-        "log": "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-002-app-theme/log.md"
-      }
-    },
-    {
-      "id": "SKIN-003-overlay-parity",
-      "title": "Parity overlay: motyw i akcent glow",
-      "topic": "TOPIC-20251027_131500-001",
-      "status": "done",
-      "owner": "Lumen",
-      "contributors": [
-        "Vireal",
-        "Kai",
-        "Nodus"
-      ],
-      "tags": [
-        "overlay",
-        "theme"
-      ],
-      "deferred": false,
-      "links": {
-        "brief": "backlog/topics/TOPIC-20251027_131500-001/BRIEF-20251027_131500-UI-skin.json",
-        "pdca": "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-003-overlay-parity/pdca.md",
-        "log": "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-003-overlay-parity/log.md"
-      }
-    },
-    {
-      "id": "REFAC-001-secure-entrypoints",
-      "title": "Secure lifecycle entry points",
-      "topic": "TOPIC-20251028_223000-refactoring",
-      "status": "done",
-      "owner": "Lumen",
-      "tags": [
-        "security",
-        "refactor"
-      ],
-      "links": {
-        "pdca": "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-001-secure-entrypoints/PDCA.json",
-        "log": "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-001-secure-entrypoints/log.jsonl"
-      }
-    },
-    {
-      "id": "REFAC-002-skin-io",
-      "title": "Move skin editor IO off main",
-      "topic": "TOPIC-20251028_223000-refactoring",
-      "status": "done",
-      "owner": "Lumen",
-      "tags": [
-        "performance",
-        "refactor"
-      ],
-      "links": {
-        "pdca": "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-002-skin-io/PDCA.json",
-        "log": "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-002-skin-io/log.jsonl"
-      }
-    },
-    {
-      "id": "REFAC-003-strings",
-      "title": "Localize and fix UI copy",
-      "topic": "TOPIC-20251028_223000-refactoring",
-      "status": "done",
-      "owner": "Lumen",
-      "tags": [
-        "ux",
-        "localization"
-      ],
-      "links": {
-        "pdca": "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-003-strings/PDCA.json",
-        "log": "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-003-strings/log.jsonl"
-      }
-    },
-    {
-      "id": "REFAC-004-morpho-async",
-      "title": "Async morphogenesis persistence",
-      "topic": "TOPIC-20251028_223000-refactoring",
-      "status": "done",
-      "owner": "Lumen",
-      "tags": [
-        "performance",
-        "async"
-      ],
-      "links": {
-        "pdca": "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-004-morpho-async/PDCA.json",
-        "log": "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-004-morpho-async/log.jsonl"
-      }
-    },
-    {
-      "id": "I18N-001-font-stack",
-      "title": "Define typography & font strategy for multi-language",
-      "topic": "TOPIC-20251029_120000-i18n",
-      "status": "pending",
-      "owner": "Lumen"
-    },
-    {
-      "id": "I18N-002-localization-pipeline",
-      "title": "Set up localization pipeline",
-      "topic": "TOPIC-20251029_120000-i18n",
-      "status": "pending",
-      "owner": "Orin"
-    },
-    {
-      "id": "POI-001-research-science",
-      "title": "Research PoI scientific foundations",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "done",
-      "owner": "Echo",
-      "tags": [
-        "research",
-        "science"
-      ],
-      "links": {
-        "task": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/task.json",
-        "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/PDCA.json",
-        "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/log.jsonl"
-      }
-    },
-    {
-      "id": "POI-002-research-architecture",
-      "title": "Research PoI architecture & technology stack",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "done",
-      "owner": "Vireal",
-      "tags": [
-        "research",
-        "architecture"
-      ],
-      "links": {
-        "task": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/task.json",
-        "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/PDCA.json",
-        "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/log.jsonl"
-      }
-    },
-    {
-      "id": "POI-101-light-ledger-prototype",
-      "title": "Prototype PoI Light Ledger on device",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "in_progress",
-      "owner": "Lumen",
-      "tags": [
-        "implementation",
-        "ledger"
-      ],
-      "links": {
-        "task": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/task.json",
-        "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/PDCA.json",
-        "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/log.jsonl"
-      }
-    },
-    {
-      "id": "POI-102-validator-pipeline",
-      "title": "Build PoI validator & aggregation pipeline",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "in_progress",
-      "owner": "Nodus",
-      "tags": [
-        "implementation",
-        "backend"
-      ],
-      "links": {
-        "task": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/task.json",
-        "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/PDCA.json",
-        "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/log.jsonl"
-      }
-    },
-    {
-      "id": "POI-103-quality-framework",
-      "title": "Define PoI quality & test framework",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "in_progress",
-      "owner": "Kai",
-      "tags": [
-        "implementation",
-        "quality"
-      ],
-      "links": {
-        "task": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/task.json",
-        "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/PDCA.json",
-        "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/log.jsonl"
-      }
-    },
-    {
-      "id": "POI-201-android-scaffold",
-      "title": "Set up PoI Android prototype & Rust bridge",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "pending",
-      "owner": "Lumen",
-      "tags": [
-        "implementation",
-        "setup"
-      ]
-    },
-    {
-      "id": "POI-202-validator-bootstrap",
-      "title": "Bootstrap PoI validator service",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "pending",
-      "owner": "Nodus",
-      "tags": [
-        "implementation",
-        "setup"
-      ]
-    },
-    {
-      "id": "POI-203-cloudhsm-provisioning",
-      "title": "Provision CloudHSM + Terraform pipeline",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "pending",
-      "owner": "Nodus",
-      "tags": [
-        "infrastructure",
-        "terraform"
-      ]
-    },
-    {
-      "id": "POI-204-qa-toolchain",
-      "title": "Bootstrap PoI QA tooling & telemetry stack",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "pending",
-      "owner": "Kai",
-      "tags": [
-        "qa",
-        "tooling"
-      ]
-    },
-    {
-      "id": "POI-205-solana-program",
-      "title": "Implement PoI Solana program & CI",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "pending",
-      "owner": "Nodus",
-      "tags": [
-        "implementation",
-        "blockchain"
-      ]
-    },
-    {
-      "id": "POI-206-attestation-integration",
-      "title": "Integrate attestation & secure aggregation",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "pending",
-      "owner": "Lumen",
-      "contributors": [
-        "Nodus"
-      ],
-      "tags": [
-        "integration",
-        "security"
-      ]
-    },
-    {
-      "id": "POI-207-sensor-capture",
-      "title": "Build PoI sensor capture harness",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "pending",
-      "owner": "Lumen",
-      "contributors": [
-        "Kai"
-      ],
-      "tags": [
-        "implementation",
-        "sensors"
-      ]
-    },
-    {
-      "id": "POI-208-sui-spike",
-      "title": "Run PoI Sui spike",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "pending",
-      "owner": "Vireal",
-      "contributors": [
-        "Nodus",
-        "Kai"
-      ],
-      "tags": [
-        "research",
-        "blockchain"
-      ]
-    },
-    {
-      "id": "POI-209-deployment-coordination",
-      "title": "Coordinate PoI rollout",
-      "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "pending",
-      "owner": "Orin",
-      "tags": [
-        "coordination"
-      ]
-    }
-  ],
-  "_docs": "Board (under backlog/) is the single source of truth for task status."
+    "version":  "3.0",
+    "updated_at":  "2025-11-02",
+    "topics":  [
+                   {
+                       "id":  "TOPIC-20251024_195056-001",
+                       "title":  "Okno Glowne"
+                   },
+                   {
+                       "id":  "TOPIC-20251025_000554-001",
+                       "title":  "Overlay"
+                   },
+                   {
+                       "id":  "TOPIC-20251025_120000-001",
+                       "title":  "Morfogeneza"
+                   },
+                   {
+                       "id":  "TOPIC-20251027_131500-001",
+                       "title":  "UI Skin"
+                   },
+                   {
+                       "id":  "TOPIC-20251028_223000-refactoring",
+                       "title":  "Refactoring Guardrails"
+                   },
+                   {
+                       "id":  "TOPIC-20251029_120000-i18n",
+                       "title":  "Internationalization"
+                   },
+                   {
+                       "id":  "TOPIC-20251029_200000-proof-of-information",
+                       "title":  "Proof of Information"
+                   }
+               ],
+    "tasks":  [
+                  {
+                      "id":  "ORIN-20251024-001",
+                      "title":  "CoS v0.1 - manualny cykl i overlay parity",
+                      "topic":  "TOPIC-20251024_195056-001",
+                      "status":  "done",
+                      "owner":  "Orin",
+                      "opened_at":  "2025-10-24",
+                      "closed_at":  "2025-10-25",
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251024_195056-001/BRIEF-20251024_195056-001.json"
+                                }
+                  },
+                  {
+                      "id":  "VIREAL-20251024-001",
+                      "title":  "Architektura cyklu Cos v0.1",
+                      "topic":  "TOPIC-20251024_195056-001",
+                      "status":  "done",
+                      "owner":  "Vireal"
+                  },
+                  {
+                      "id":  "LUMEN-20251024-001",
+                      "title":  "Implementacja cyklu Cos v0.1",
+                      "topic":  "TOPIC-20251024_195056-001",
+                      "status":  "done",
+                      "owner":  "Lumen"
+                  },
+                  {
+                      "id":  "KAI-20251024-001",
+                      "title":  "Plan testow Cos v0.1",
+                      "topic":  "TOPIC-20251024_195056-001",
+                      "status":  "done",
+                      "owner":  "Kai",
+                      "links":  {
+                                    "test_plan":  "docs/testing/cos-v0.1-test-plan.md"
+                                }
+                  },
+                  {
+                      "id":  "LUMEN-20251025-002",
+                      "title":  "Parity overlay Cos v0.1",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "links":  {
+                                    "adr":  "docs/reference/floating-overlay.md"
+                                }
+                  },
+                  {
+                      "id":  "KAI-20251025-002",
+                      "title":  "Testy overlay parity",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Kai",
+                      "links":  {
+                                    "tests":  "docs/testing/cos-v0.1-test-plan.md"
+                                }
+                  },
+                  {
+                      "id":  "ECHO-20251025-001",
+                      "title":  "Repo audit overlay (instrumentation gaps)",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Echo",
+                      "links":  {
+                                    "notes":  "backlog/globals/ARCHITECTURE.md"
+                                }
+                  },
+                  {
+                      "id":  "NODUS-20251025-001",
+                      "title":  "Overlay permissions + ADB checklist",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Nodus",
+                      "links":  {
+                                    "checklist":  "docs/reference/floating-overlay.md"
+                                }
+                  },
+                  {
+                      "id":  "NODUS-20251025-002",
+                      "title":  "Overlay sanity rerun (double tap, instrumentation)",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Nodus",
+                      "links":  {
+                                    "checklist":  "docs/testing/cos-v0.1-test-plan.md"
+                                }
+                  },
+                  {
+                      "id":  "VIREAL-20251025-003",
+                      "title":  "Overlay guard rails (doc)",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Vireal",
+                      "links":  {
+                                    "adr":  "docs/reference/floating-overlay.md"
+                                }
+                  },
+                  {
+                      "id":  "SCRIBE-20251025-001",
+                      "title":  "Overlay parity chronicle",
+                      "topic":  "TOPIC-20251025_000554-001",
+                      "status":  "done",
+                      "owner":  "Scribe",
+                      "links":  {
+                                    "chronicle":  "reports/chronicle.md"
+                                }
+                  },
+                  {
+                      "id":  "ORIN-20251025-002",
+                      "title":  "Morfogeneza v0.1 - orkiestracja sesji",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Orin",
+                      "opened_at":  "2025-10-25",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251025_120000-001.json",
+                                    "roi":  "docs/ai-first-development-roi-20251026.md"
+                                }
+                  },
+                  {
+                      "id":  "ECHO-20251025-002",
+                      "title":  "Research kreatora Morfogenezy",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Echo",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "ux_notes":  "docs/ux/morphogeneza-ux-research.md",
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251025_120000-001.json"
+                                }
+                  },
+                  {
+                      "id":  "VIREAL-20251025-002",
+                      "title":  "ADR formy Cosia",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Vireal",
+                      "closed_at":  "2025-10-25",
+                      "links":  {
+                                    "adr":  "docs/architecture/ADR-2025-10-25-morfogeneza.md"
+                                }
+                  },
+                  {
+                      "id":  "LUMEN-20251025-003",
+                      "title":  "UI wejscia do Morfogenezy",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "closed_at":  "2025-10-25"
+                  },
+                  {
+                      "id":  "LUMEN-20251025-004",
+                      "title":  "Menu poziomu i zasobow komorek",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "closed_at":  "2025-10-25"
+                  },
+                  {
+                      "id":  "LUMEN-20251025-005",
+                      "title":  "Edytor komorek i zapisy form",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "test_plan":  "docs/testing/morphogeneza-test-plan.md"
+                                }
+                  },
+                  {
+                      "id":  "LUMEN-20251026-006",
+                      "title":  "Canvas UX Morfogenezy",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "closed_at":  "2025-10-26"
+                  },
+                  {
+                      "id":  "KAI-20251025-003",
+                      "title":  "Plan testow Morfogenezy",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Kai",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "test_plan":  "docs/testing/morphogeneza-test-plan.md",
+                                    "checklist":  "docs/testing/morphogeneza-event-checklist.md"
+                                }
+                  },
+                  {
+                      "id":  "NODUS-20251026-004",
+                      "title":  "Sanity kanalu forma_aktywna po undo/redo",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Nodus",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "checklist":  "docs/testing/morphogeneza-event-checklist.md"
+                                }
+                  },
+                  {
+                      "id":  "MIRA-20251025-001",
+                      "title":  "Brief Morfogenezy Cos",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Storywright",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251025_120000-001.json"
+                                }
+                  },
+                  {
+                      "id":  "SCRIBE-20251026-002",
+                      "title":  "Kronika Morfogenezy 006",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Scribe",
+                      "closed_at":  "2025-10-26",
+                      "links":  {
+                                    "chronicle":  "reports/chronicle.md"
+                                }
+                  },
+                  {
+                      "id":  "MORPHO-010-ui-glow",
+                      "title":  "UI: bioluminescencyjny skin (kolorystyka i glow)",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "ui",
+                                   "glow"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-010-ui-glow/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-010-ui-glow/log.md"
+                                },
+                      "closed_at":  "2025-10-28"
+                  },
+                  {
+                      "id":  "MORPHO-011-anim-birth",
+                      "title":  "Animacja narodzin: kropkaÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€šĂ‚Â Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚ËĂ˘â‚¬ĹľĂ‹ÂobwĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡d (promieĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„Äľ)",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "anim",
+                                   "narodziny"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-011-anim-birth/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-011-anim-birth/log.md"
+                                },
+                      "closed_at":  "2025-10-28"
+                  },
+                  {
+                      "id":  "MORPHO-012-anim-mature",
+                      "title":  "Animacja dojrzewania: wypeĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇnienie gradientem",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "anim",
+                                   "dojrzewanie"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-012-anim-mature/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-012-anim-mature/log.md"
+                                },
+                      "closed_at":  "2025-10-28"
+                  },
+                  {
+                      "id":  "MORPHO-013-multicell",
+                      "title":  "Organizm wielokomĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡rkowy: ukĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇad i render z glow",
+                      "topic":  "TOPIC-20251025_120000-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "renderer",
+                                   "organism"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251025_120000-001/BRIEF-20251027_130000-UI-glow.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-013-multicell/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-013-multicell/log.md"
+                                },
+                      "closed_at":  "2025-10-28"
+                  },
+                  {
+                      "id":  "SKIN-001-tokens",
+                      "title":  "Globalne tokeny UI (kolory, glow, typografia)",
+                      "topic":  "TOPIC-20251027_131500-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "ui",
+                                   "skin"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251027_131500-001/BRIEF-20251027_131500-UI-skin.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-001-tokens/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-001-tokens/log.md"
+                                }
+                  },
+                  {
+                      "id":  "SKIN-002-app-theme",
+                      "title":  "Compose Theme + komponenty neon (3 ekrany)",
+                      "topic":  "TOPIC-20251027_131500-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "ui",
+                                   "theme"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251027_131500-001/BRIEF-20251027_131500-UI-skin.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-002-app-theme/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-002-app-theme/log.md"
+                                }
+                  },
+                  {
+                      "id":  "SKIN-003-overlay-parity",
+                      "title":  "Parity overlay: motyw i akcent glow",
+                      "topic":  "TOPIC-20251027_131500-001",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Vireal",
+                                           "Kai",
+                                           "Nodus"
+                                       ],
+                      "tags":  [
+                                   "overlay",
+                                   "theme"
+                               ],
+                      "deferred":  false,
+                      "links":  {
+                                    "brief":  "backlog/topics/TOPIC-20251027_131500-001/BRIEF-20251027_131500-UI-skin.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-003-overlay-parity/pdca.md",
+                                    "log":  "backlog/topics/TOPIC-20251027_131500-001/tasks/SKIN-003-overlay-parity/log.md"
+                                }
+                  },
+                  {
+                      "id":  "REFAC-001-secure-entrypoints",
+                      "title":  "Secure lifecycle entry points",
+                      "topic":  "TOPIC-20251028_223000-refactoring",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "tags":  [
+                                   "security",
+                                   "refactor"
+                               ],
+                      "links":  {
+                                    "pdca":  "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-001-secure-entrypoints/PDCA.json",
+                                    "log":  "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-001-secure-entrypoints/log.jsonl"
+                                }
+                  },
+                  {
+                      "id":  "REFAC-002-skin-io",
+                      "title":  "Move skin editor IO off main",
+                      "topic":  "TOPIC-20251028_223000-refactoring",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "tags":  [
+                                   "performance",
+                                   "refactor"
+                               ],
+                      "links":  {
+                                    "pdca":  "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-002-skin-io/PDCA.json",
+                                    "log":  "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-002-skin-io/log.jsonl"
+                                }
+                  },
+                  {
+                      "id":  "REFAC-003-strings",
+                      "title":  "Localize and fix UI copy",
+                      "topic":  "TOPIC-20251028_223000-refactoring",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "tags":  [
+                                   "ux",
+                                   "localization"
+                               ],
+                      "links":  {
+                                    "pdca":  "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-003-strings/PDCA.json",
+                                    "log":  "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-003-strings/log.jsonl"
+                                }
+                  },
+                  {
+                      "id":  "REFAC-004-morpho-async",
+                      "title":  "Async morphogenesis persistence",
+                      "topic":  "TOPIC-20251028_223000-refactoring",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "tags":  [
+                                   "performance",
+                                   "async"
+                               ],
+                      "links":  {
+                                    "pdca":  "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-004-morpho-async/PDCA.json",
+                                    "log":  "backlog/topics/TOPIC-20251028_223000-refactoring/tasks/REFAC-004-morpho-async/log.jsonl"
+                                }
+                  },
+                  {
+                      "id":  "I18N-001-font-stack",
+                      "title":  "Define typography \u0026 font strategy for multi-language",
+                      "topic":  "TOPIC-20251029_120000-i18n",
+                      "status":  "pending",
+                      "owner":  "Lumen"
+                  },
+                  {
+                      "id":  "I18N-002-localization-pipeline",
+                      "title":  "Set up localization pipeline",
+                      "topic":  "TOPIC-20251029_120000-i18n",
+                      "status":  "pending",
+                      "owner":  "Orin"
+                  },
+                  {
+                      "id":  "POI-001-research-science",
+                      "title":  "Research PoI scientific foundations",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "done",
+                      "owner":  "Echo",
+                      "tags":  [
+                                   "research",
+                                   "science"
+                               ],
+                      "links":  {
+                                    "task":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/task.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/PDCA.json",
+                                    "log":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/log.jsonl"
+                                }
+                  },
+                  {
+                      "id":  "POI-002-research-architecture",
+                      "title":  "Research PoI architecture \u0026 technology stack",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "done",
+                      "owner":  "Vireal",
+                      "tags":  [
+                                   "research",
+                                   "architecture"
+                               ],
+                      "links":  {
+                                    "task":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/task.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/PDCA.json",
+                                    "log":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/log.jsonl"
+                                }
+                  },
+                  {
+                      "id":  "POI-101-light-ledger-prototype",
+                      "title":  "Prototype PoI Light Ledger on device",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "done",
+                      "owner":  "Lumen",
+                      "tags":  [
+                                   "implementation",
+                                   "ledger"
+                               ],
+                      "links":  {
+                                    "task":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/task.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/PDCA.json",
+                                    "log":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/log.jsonl"
+                                }
+                  },
+                  {
+                      "id":  "POI-102-validator-pipeline",
+                      "title":  "Build PoI validator \u0026 aggregation pipeline",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "done",
+                      "owner":  "Nodus",
+                      "closed_at":  "2025-11-02",
+                      "tags":  [
+                                   "implementation",
+                                   "backend"
+                               ],
+                      "links":  {
+                                    "task":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/task.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/PDCA.json",
+                                    "log":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/log.jsonl"
+                                }
+                  },
+                  {
+                      "id":  "POI-103-quality-framework",
+                      "title":  "Define PoI quality \u0026 test framework",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "in_progress",
+                      "owner":  "Kai",
+                      "tags":  [
+                                   "implementation",
+                                   "quality"
+                               ],
+                      "links":  {
+                                    "task":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/task.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/PDCA.json",
+                                    "log":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/log.jsonl"
+                                }
+                  },
+                  {
+                      "id":  "POI-201-android-scaffold",
+                      "title":  "Set up PoI Android prototype \u0026 Rust bridge",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "pending",
+                      "owner":  "Lumen",
+                      "tags":  [
+                                   "implementation",
+                                   "setup"
+                               ]
+                  },
+                  {
+                      "id":  "POI-202-validator-bootstrap",
+                      "title":  "Bootstrap PoI validator service",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "pending",
+                      "owner":  "Nodus",
+                      "tags":  [
+                                   "implementation",
+                                   "setup"
+                               ]
+                  },
+                  {
+                      "id":  "POI-203-cloudhsm-provisioning",
+                      "title":  "Provision CloudHSM + Terraform pipeline",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "pending",
+                      "owner":  "Nodus",
+                      "tags":  [
+                                   "infrastructure",
+                                   "terraform"
+                               ]
+                  },
+                  {
+                      "id":  "POI-204-qa-toolchain",
+                      "title":  "Bootstrap PoI QA tooling \u0026 telemetry stack",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "pending",
+                      "owner":  "Kai",
+                      "tags":  [
+                                   "qa",
+                                   "tooling"
+                               ]
+                  },
+                  {
+                      "id":  "POI-205-solana-program",
+                      "title":  "Implement PoI Solana program \u0026 CI",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "pending",
+                      "owner":  "Nodus",
+                      "tags":  [
+                                   "implementation",
+                                   "blockchain"
+                               ]
+                  },
+                  {
+                      "id":  "POI-206-attestation-integration",
+                      "title":  "Integrate attestation \u0026 secure aggregation",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "pending",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Nodus"
+                                       ],
+                      "tags":  [
+                                   "integration",
+                                   "security"
+                               ]
+                  },
+                  {
+                      "id":  "POI-207-sensor-capture",
+                      "title":  "Build PoI sensor capture harness",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "pending",
+                      "owner":  "Lumen",
+                      "contributors":  [
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "implementation",
+                                   "sensors"
+                               ]
+                  },
+                  {
+                      "id":  "POI-208-sui-spike",
+                      "title":  "Run PoI Sui spike",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "pending",
+                      "owner":  "Vireal",
+                      "contributors":  [
+                                           "Nodus",
+                                           "Kai"
+                                       ],
+                      "tags":  [
+                                   "research",
+                                   "blockchain"
+                               ]
+                  },
+                  {
+                      "id":  "POI-209-deployment-coordination",
+                      "title":  "Coordinate PoI rollout",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "status":  "pending",
+                      "owner":  "Orin",
+                      "tags":  [
+                                   "coordination"
+                               ]
+                  },
+                  {
+                      "id":  "POI-210-play-console-setup",
+                      "tags":  [
+                                   "release",
+                                   "ops"
+                               ],
+                      "owner":  "Nodus",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "links":  {
+                                    "task":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-210-play-console-setup/task.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-210-play-console-setup/PDCA.json",
+                                    "log":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-210-play-console-setup/log.jsonl"
+                                },
+                      "title":  "Configure Play Console (Play App Signing)",
+                      "status":  "pending"
+                  },
+                  {
+                      "id":  "POI-211-play-integrity-integration",
+                      "tags":  [
+                                   "security",
+                                   "attestation"
+                               ],
+                      "owner":  "Lumen",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "links":  {
+                                    "task":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-211-play-integrity-integration/task.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-211-play-integrity-integration/PDCA.json",
+                                    "log":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-211-play-integrity-integration/log.jsonl"
+                                },
+                      "title":  "Integrate Play Integrity (client + validator)",
+                      "status":  "pending"
+                  },
+                  {
+                      "id":  "POI-212-android-uploader",
+                      "tags":  [
+                                   "implementation",
+                                   "android",
+                                   "grpc"
+                               ],
+                      "owner":  "Lumen",
+                      "topic":  "TOPIC-20251029_200000-proof-of-information",
+                      "links":  {
+                                    "task":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-212-android-uploader/task.json",
+                                    "pdca":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-212-android-uploader/PDCA.json",
+                                    "log":  "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-212-android-uploader/log.jsonl"
+                                },
+                      "title":  "Android gRPC uploader (debug-to-prod)",
+                      "status":  "in_progress"
+                  }
+              ],
+    "_docs":  "Board (under backlog/) is the single source of truth for task status."
 }
