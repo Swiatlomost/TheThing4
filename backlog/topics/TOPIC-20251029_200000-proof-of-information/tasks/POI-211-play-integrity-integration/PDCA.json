@@ -1,0 +1,17 @@
+{
+  "plan": [
+    "Dodać w kliencie pobieranie werdyktu + nonce",
+    "Backend: weryfikacja JWT (Play Integrity) z cache JWK",
+    "Test E2E na fizycznym urządzeniu + logi"
+  ],
+  "do": [
+    "Przygotowano instrukcje (nonce/token/walidator) i potwierdzono dostęp do Play Integrity API key (secrets/play-integrity-api-key.txt).",
+    "Zmapowano pliki do zmian: app/build.gradle.kts (play-integrity), BatchUploader/LightLedgerRuntimeSmoke, validator/service.rs oraz docker-compose.",
+    "Zebrano środowisko testowe: urządzenia Pixel 5 i Xiaomi 13T Pro (konto testerskie) + lokalny walidator docker-compose."
+  ],
+  "check": [],
+  "act": [],
+  "meta": {
+    "updated_at": "2025-11-15"
+  }
+}

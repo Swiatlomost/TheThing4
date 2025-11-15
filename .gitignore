@@ -21,3 +21,5 @@ dist/
 .gradle/
 /native/*/target/
 /validator/target/
+signing/
+secrets/

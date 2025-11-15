@@ -1,0 +1,24 @@
+{
+  "plan": [
+    "Włączyć Play App Signing i dodać upload key",
+    "Skonfigurować kanał testowy (kraje, testerzy)",
+    "Zaktualizować dokumentację kluczy/fingerprintów"
+  ],
+  "do": [
+    "Przejrzano instructions.md i przygotowano listę kroków/dostępów dla konfiguracji Play Console.",
+    "Utworzono docs/reference/release-keys.md – procedury generowania/rotacji upload key oraz tabela fingerprintów.",
+    "Zweryfikowano lokalizację upload-keystore.jks (poza repo) oraz obecność zmiennych/secretów POI_UPLOAD_* w CI."
+  ],
+  "check": [
+    "Play App Signing aktywne; app-release.aab udostępniony na tracku internal (link testerski zapisany w logu).",
+    "Play Integrity API key wygenerowany i ograniczony do usługi; zapisany w secrets/play-integrity-api-key.txt oraz sejfie zespołu.",
+    "release-keys.md uzupełnione o inwentarz kluczy i lokalizacje tracku/testerów."
+  ],
+  "act": [
+    "Monitorować zgłoszenia testerów i w razie rotacji klucza aktualizować secrets oraz release-keys.md.",
+    "Po wypełnieniu fingerprintów App Signing/Upload przekazać dane do CI i Kai (dowody bezpieczeństwa)."
+  ],
+  "meta": {
+    "updated_at": "2025-11-15"
+  }
+}
