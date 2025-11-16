@@ -12,7 +12,8 @@
     "Walidator wywołuje decodeIntegrityToken (reqwest) i sprawdza packageName, verdict i zgodność nonce; docker-compose przyjmuje PLAY_INTEGRITY_* env."
   ],
   "check": [
-    "versionCode 2 (1.1) opublikowany na internal track; upload bez tokenu jest blokowany przez walidator."
+    "versionCode 2 (1.1) opublikowany na internal track; upload bez tokenu jest blokowany przez walidator.",
+    "Po ustawieniu host=127.0.0.1 (debug) i adb reverse walidator przyjmuje batch (status=STATUS_ACCEPTED, logcat evidence + docker logs)."
   ],
   "act": [],
   "meta": {

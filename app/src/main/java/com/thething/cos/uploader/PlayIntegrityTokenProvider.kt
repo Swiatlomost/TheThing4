@@ -5,6 +5,8 @@ import android.util.Log
 import com.google.android.gms.tasks.Tasks
 import com.google.android.play.core.integrity.IntegrityManagerFactory
 import com.google.android.play.core.integrity.IntegrityTokenRequest
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.concurrent.TimeUnit
 
 /**
@@ -15,16 +17,19 @@ object PlayIntegrityTokenProvider {
     private const val TAG = "PlayIntegrityToken"
     private const val TIMEOUT_SECONDS = 30L
 
-    fun obtain(context: Context, nonce: String): String? {
-        return runCatching {
-            val manager = IntegrityManagerFactory.create(context)
-            val request = IntegrityTokenRequest.builder()
-                .setNonce(nonce)
-                .build()
-            val response = Tasks.await(manager.requestIntegrityToken(request), TIMEOUT_SECONDS, TimeUnit.SECONDS)
-            response.token()
-        }.onFailure { error ->
-            Log.w(TAG, "Play Integrity token request failed", error)
-        }.getOrNull()
+    suspend fun obtain(context: Context, nonce: String): String? {
+        return withContext(Dispatchers.IO) {
+            runCatching {
+                val manager = IntegrityManagerFactory.create(context)
+                val request = IntegrityTokenRequest.builder()
+                    .setNonce(nonce)
+                    .build()
+                val response =
+                    Tasks.await(manager.requestIntegrityToken(request), TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                response.token()
+            }.onFailure { error ->
+                Log.w(TAG, "Play Integrity token request failed", error)
+            }.getOrNull()
+        }
     }
 }

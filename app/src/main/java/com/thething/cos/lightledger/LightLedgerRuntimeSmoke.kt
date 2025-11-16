@@ -7,6 +7,9 @@ import com.thething.cos.lightledger.internal.LightLedgerBenchmarkRunner
 import com.thething.cos.lightledger.internal.LightLedgerRepository
 import com.thething.cos.lightledger.internal.LightLedgerSigner
 import com.thething.cos.lightledger.model.SessionFingerprint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.Base64
 
 /**
@@ -37,11 +40,13 @@ object LightLedgerRuntimeSmoke {
         Log.i(TAG, "Native ledger ready; produced ${digest.size}-byte digest.")
         if (BuildConfig.DEBUG) {
             LightLedgerBenchmarkRunner.logOnce(enabled = true)
-            demoMerkleProof(context)
+            CoroutineScope(Dispatchers.Default).launch {
+                demoMerkleProof(context)
+            }
         }
     }
 
-    private fun demoMerkleProof(context: Context) {
+    private suspend fun demoMerkleProof(context: Context) {
         val repository = LightLedgerRepository(context)
         repository.clear() // start clean, leave snapshot after run
 

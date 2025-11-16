@@ -3,6 +3,7 @@
 import android.content.Context
 import android.util.Log
 import com.google.protobuf.ByteString
+import com.thething.cos.BuildConfig
 import io.grpc.ManagedChannel
 import io.grpc.okhttp.OkHttpChannelBuilder
 import io.thething.poi.validator.AttestationPayload
@@ -20,7 +21,7 @@ import kotlin.text.Charsets
 object BatchUploader {
     private const val TAG = "BatchUploader"
 
-    fun submitSingle(
+    suspend fun submitSingle(
         context: Context,
         merkleRootBase64: String,
         hashBase64: String,
@@ -30,7 +31,7 @@ object BatchUploader {
         deviceId: String = "EMU-PIXEL5"
     ) {
         val channel: ManagedChannel = OkHttpChannelBuilder
-            .forAddress("10.0.2.2", 50051)
+            .forAddress(BuildConfig.VALIDATOR_HOST, BuildConfig.VALIDATOR_PORT)
             .usePlaintext()
             .build()
         try {
@@ -42,6 +43,7 @@ object BatchUploader {
                 Log.w(TAG, "Play Integrity token unavailable; upload skipped")
                 return
             }
+            Log.i(TAG, "Integrity token obtained (nonce=$nonce)")
 
             val metrics = BatchEntryMetrics.newBuilder()
                 .setLedgerIndex(0)
@@ -71,7 +73,10 @@ object BatchUploader {
                 .build()
 
             val response = stub.submitBatch(request)
-            Log.i(TAG, "Upload result: status=${response.status} reason=${response.reason} batch=${response.batchId}")
+            Log.i(
+                TAG,
+                "Upload result: status=${response.status} reason=${response.reason} batch=${response.batchId}"
+            )
         } catch (t: Throwable) {
             Log.e(TAG, "Upload failed", t)
         } finally {
@@ -89,5 +94,5 @@ private fun generateNonce(deviceId: String, merkleRootBase64: String, timestampM
     val digest = MessageDigest.getInstance("SHA-256")
     val input = "$deviceId|$merkleRootBase64|$timestampMs"
     val hash = digest.digest(input.toByteArray(Charsets.UTF_8))
-    return Base64.getEncoder().encodeToString(hash)
+    return Base64.getUrlEncoder().withoutPadding().encodeToString(hash)
 }

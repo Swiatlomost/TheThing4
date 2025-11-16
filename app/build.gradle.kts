@@ -21,6 +21,8 @@ android {
     val uploadStorePassword = project.propOrEnv("poiUploadStorePassword")
     val uploadKeyAlias = project.propOrEnv("poiUploadKeyAlias")
     val uploadKeyPassword = project.propOrEnv("poiUploadKeyPassword")
+    val validatorHostDefault = project.propOrEnv("poiValidatorHost") ?: "10.0.2.2"
+    val validatorPortDefault = (project.propOrEnv("poiValidatorPort") ?: "50051").toInt()
     val requiresUploadSigning = gradle.startParameter.taskNames.any { it.contains("Release", ignoreCase = true) }
 
     signingConfigs {
@@ -66,6 +68,8 @@ android {
         versionCode = 2
         versionName = "1.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "VALIDATOR_HOST", "\"$validatorHostDefault\"")
+        buildConfigField("int", "VALIDATOR_PORT", "$validatorPortDefault")
     }
 
     buildTypes {
@@ -76,6 +80,12 @@ android {
                 "proguard-rules.pro"
             )
             signingConfig = signingConfigs.getByName("upload")
+            buildConfigField("String", "VALIDATOR_HOST", "\"$validatorHostDefault\"")
+            buildConfigField("int", "VALIDATOR_PORT", "$validatorPortDefault")
+        }
+        debug {
+            buildConfigField("String", "VALIDATOR_HOST", "\"127.0.0.1\"")
+            buildConfigField("int", "VALIDATOR_PORT", "50051")
         }
     }
 

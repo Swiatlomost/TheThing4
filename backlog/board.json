@@ -717,7 +717,7 @@
         "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-211-play-integrity-integration/log.jsonl"
       },
       "title": "Integrate Play Integrity (client + validator)",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "id": "POI-212-android-uploader",
