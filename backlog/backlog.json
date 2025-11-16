@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-15T21:03:24",
+  "generated_at": "2025-11-16T09:22:35",
   "areas": [
     {
       "area": "okno-glowne",
@@ -316,7 +316,7 @@
         {
           "id": "TOPIC-20251028_223000-refactoring",
           "title": "Refactoring Guardrails",
-          "status": "backlog",
+          "status": "ready",
           "brief": null,
           "pdca": null,
           "tasks": [
@@ -363,6 +363,22 @@
                 "performance",
                 "async"
               ]
+            },
+            {
+              "id": "REFAC-005-agp-compat",
+              "title": "Align AGP with compileSdk 35",
+              "status": "pending",
+              "owner": "Nodus",
+              "deferred": null,
+              "tags": null
+            },
+            {
+              "id": "REFAC-006-kotlin-warnings",
+              "title": "Resolve Kotlin/Compose warnings",
+              "status": "pending",
+              "owner": "Lumen",
+              "deferred": null,
+              "tags": null
             }
           ]
         },
