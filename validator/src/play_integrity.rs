@@ -27,15 +27,13 @@ impl PlayIntegrityClient {
         let api_key = std::env::var("PLAY_INTEGRITY_API_KEY").ok();
         let auth_manager = std::env::var("PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON")
             .ok()
-            .and_then(
-                |path| match AuthenticationManager::from_service_account_key_file(&path) {
-                    Ok(manager) => Some(Arc::new(manager)),
-                    Err(err) => {
-                        tracing::warn!("Failed to load service account from {}: {}", path, err);
-                        None
-                    }
-                },
-            );
+            .and_then(|path| match AuthenticationManager::new(&path) {
+                Ok((manager, _)) => Some(Arc::new(manager)),
+                Err(err) => {
+                    tracing::warn!("Failed to load service account from {}: {}", path, err);
+                    None
+                }
+            });
         if api_key.is_none()
             && auth_manager.is_none()
             && !WARNED_MISSING_CREDS.swap(true, Ordering::SeqCst)
