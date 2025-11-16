@@ -51,7 +51,14 @@ impl PlayIntegrityClient {
             .await
             .map_err(|err| format!("decode_http_error:{}", err))?;
         if !response.status().is_success() {
-            return Err(format!("decode_http_status:{}", response.status()));
+            let status = response.status();
+            let body = response.text().await.unwrap_or_default();
+            tracing::warn!(
+                "PlayIntegrity decode failed: status={} body={}",
+                status,
+                body
+            );
+            return Err(format!("decode_http_status:{} body={}", status, body));
         }
         let payload: DecodeResponse = response
             .json()

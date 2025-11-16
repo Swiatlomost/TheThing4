@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-16T09:22:35",
+  "generated_at": "2025-11-16T17:04:07",
   "areas": [
     {
       "area": "okno-glowne",
@@ -586,7 +586,7 @@
             {
               "id": "POI-211-play-integrity-integration",
               "title": "Integrate Play Integrity (client + validator)",
-              "status": "in_progress",
+              "status": "done",
               "owner": "Lumen",
               "deferred": null,
               "tags": [
@@ -597,7 +597,7 @@
             {
               "id": "POI-212-android-uploader",
               "title": "Android gRPC uploader (debug-to-prod)",
-              "status": "in_progress",
+              "status": "done",
               "owner": "Lumen",
               "deferred": null,
               "tags": [
@@ -605,6 +605,14 @@
                 "android",
                 "grpc"
               ]
+            },
+            {
+              "id": "POI-213-validator-tls",
+              "title": "Validator TLS uplink",
+              "status": "pending",
+              "owner": "Nodus",
+              "deferred": null,
+              "tags": null
             }
           ]
         }

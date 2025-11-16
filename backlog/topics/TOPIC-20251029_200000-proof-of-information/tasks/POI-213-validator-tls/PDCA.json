@@ -4,8 +4,13 @@
     "Udokumentować konfigurację docker-compose (.env z VALIDATOR_TLS_CERT/KEY, mount certów).",
     "Potwierdzić handshake (openssl/grpcurl) oraz Androidowy upload (logcat + docker evidence)."
   ],
-  "do": [],
-  "check": [],
+  "do": [
+    "Uruchomiono walidator TLS na Hetznerze (certbot + docker-compose, port 443) i potwierdzono handshake (openssl, grpcurl).",
+    "Android debug build przełączony na validator.poi-lab.pl:443 z wymuszonym TLS; zebrano logcat + docker evidence (obecnie HTTP 401 z Play Integrity API)."
+  ],
+  "check": [
+    "Logcat i docker logs potwierdzają nawiązanie TLS oraz 401 z Play Integrity (do rozwiązania)."
+  ],
   "act": [],
   "links": {},
   "meta": {

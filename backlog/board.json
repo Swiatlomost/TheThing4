@@ -754,7 +754,7 @@
       "id": "POI-213-validator-tls",
       "title": "Validator TLS uplink",
       "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "pending",
+      "status": "in_progress",
       "owner": "Nodus"
     }
   ],
