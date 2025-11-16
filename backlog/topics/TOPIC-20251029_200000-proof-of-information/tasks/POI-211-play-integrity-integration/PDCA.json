@@ -7,11 +7,15 @@
   "do": [
     "Przygotowano instrukcje (nonce/token/walidator) i potwierdzono dostęp do Play Integrity API key (secrets/play-integrity-api-key.txt).",
     "Zmapowano pliki do zmian: app/build.gradle.kts (play-integrity), BatchUploader/LightLedgerRuntimeSmoke, validator/service.rs oraz docker-compose.",
-    "Zebrano środowisko testowe: urządzenia Pixel 5 i Xiaomi 13T Pro (konto testerskie) + lokalny walidator docker-compose."
+    "Zebrano środowisko testowe: urządzenia Pixel 5 i Xiaomi 13T Pro (konto testerskie) + lokalny walidator docker-compose.",
+    "Dodano dependency Play Integrity na Androidzie (nonce SHA-256 + pobranie tokenu przed wysyłką) oraz przekazywanie tokenu w BatchUploader.",
+    "Walidator wywołuje decodeIntegrityToken (reqwest) i sprawdza packageName, verdict i zgodność nonce; docker-compose przyjmuje PLAY_INTEGRITY_* env."
   ],
-  "check": [],
+  "check": [
+    "versionCode 2 (1.1) opublikowany na internal track; upload bez tokenu jest blokowany przez walidator."
+  ],
   "act": [],
   "meta": {
-    "updated_at": "2025-11-15"
+    "updated_at": "2025-11-16"
   }
 }

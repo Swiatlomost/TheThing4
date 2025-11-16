@@ -1,3 +1,4 @@
+mod play_integrity;
 mod service;
 
 use std::net::SocketAddr;

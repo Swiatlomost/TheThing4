@@ -2,13 +2,16 @@
 
 import android.content.Context
 import android.util.Log
+import com.google.protobuf.ByteString
 import io.grpc.ManagedChannel
 import io.grpc.okhttp.OkHttpChannelBuilder
-import io.thething.poi.validator.BatchProofRequest
-import io.thething.poi.validator.BatchEntryMetrics
 import io.thething.poi.validator.AttestationPayload
+import io.thething.poi.validator.BatchEntryMetrics
+import io.thething.poi.validator.BatchProofRequest
 import io.thething.poi.validator.PoIValidatorGrpc
+import java.security.MessageDigest
 import java.util.Base64
+import kotlin.text.Charsets
 
 /**
  * Minimal gRPC uploader for dev: sends a single-entry batch to 10.0.2.2:50051.
@@ -33,13 +36,20 @@ object BatchUploader {
         try {
             val stub = PoIValidatorGrpc.newBlockingStub(channel)
 
+            val nonce = generateNonce(deviceId, merkleRootBase64, timestampMs)
+            val integrityToken = PlayIntegrityTokenProvider.obtain(context, nonce)
+            if (integrityToken.isNullOrBlank()) {
+                Log.w(TAG, "Play Integrity token unavailable; upload skipped")
+                return
+            }
+
             val metrics = BatchEntryMetrics.newBuilder()
                 .setLedgerIndex(0)
                 .setEntropy(0.0)
                 .setTrustScore(0.0)
                 .setFar(0.0)
                 .setFrr(0.0)
-                .setHash(Base64.getDecoder().decode(hashBase64).let { com.google.protobuf.ByteString.copyFrom(it) })
+                .setHash(decodeBase64(hashBase64))
                 .setTimestampMs(timestampMs)
                 .build()
 
@@ -47,15 +57,15 @@ object BatchUploader {
                 .setDeviceId(deviceId)
                 .setBatchStart(timestampMs)
                 .setBatchEnd(timestampMs)
-                .setMerkleRoot(Base64.getDecoder().decode(merkleRootBase64).let { com.google.protobuf.ByteString.copyFrom(it) })
+                .setMerkleRoot(decodeBase64(merkleRootBase64))
                 .addMetrics(metrics)
-                .setSignature(Base64.getDecoder().decode(signatureBase64).let { com.google.protobuf.ByteString.copyFrom(it) })
-                .setPublicKey(Base64.getDecoder().decode(publicKeyBase64).let { com.google.protobuf.ByteString.copyFrom(it) })
+                .setSignature(decodeBase64(signatureBase64))
+                .setPublicKey(decodeBase64(publicKeyBase64))
                 .setAttestation(
                     AttestationPayload.newBuilder()
                         .setProvider("play_integrity")
-                        .setToken(com.google.protobuf.ByteString.copyFromUtf8("dummy"))
-                        .setNonce("dev-emulator")
+                        .setToken(ByteString.copyFromUtf8(integrityToken))
+                        .setNonce(nonce)
                         .build()
                 )
                 .build()
@@ -68,4 +78,16 @@ object BatchUploader {
             channel.shutdownNow()
         }
     }
+}
+
+private fun decodeBase64(value: String): ByteString {
+    val decoded = Base64.getDecoder().decode(value)
+    return ByteString.copyFrom(decoded)
+}
+
+private fun generateNonce(deviceId: String, merkleRootBase64: String, timestampMs: Long): String {
+    val digest = MessageDigest.getInstance("SHA-256")
+    val input = "$deviceId|$merkleRootBase64|$timestampMs"
+    val hash = digest.digest(input.toByteArray(Charsets.UTF_8))
+    return Base64.getEncoder().encodeToString(hash)
 }

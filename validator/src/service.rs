@@ -2,6 +2,7 @@ pub mod generated {
     tonic::include_proto!("poi.validator");
 }
 
+use crate::play_integrity::PlayIntegrityClient;
 use base64::engine::general_purpose::STANDARD as BASE64;
 use base64::Engine;
 use generated::batch_proof_response::Status;
@@ -10,6 +11,7 @@ use generated::{
     AttestationPayload, BatchProofRequest, BatchProofResponse, BatchStatusRequest,
     BatchStatusResponse,
 };
+use once_cell::sync::Lazy;
 use p256::ecdsa::signature::Verifier;
 use p256::ecdsa::{Signature as EcdsaSignature, VerifyingKey};
 use p256::pkcs8::DecodePublicKey;
@@ -24,6 +26,8 @@ use uuid::Uuid;
 pub struct ValidatorService {
     registry: Arc<Mutex<HashMap<String, BatchState>>>,
 }
+
+static PLAY_INTEGRITY_CLIENT: Lazy<PlayIntegrityClient> = Lazy::new(PlayIntegrityClient::new);
 
 #[derive(Clone)]
 struct BatchState {
@@ -46,7 +50,7 @@ impl ValidatorService {
             .and_then(|map| map.get(batch_id).cloned())
     }
 
-    fn validate_batch(batch: &BatchProofRequest) -> Result<(), ValidationError> {
+    async fn validate_batch(batch: &BatchProofRequest) -> Result<(), ValidationError> {
         if batch.metrics.is_empty() {
             return Err(ValidationError::MetricsEmpty);
         }
@@ -80,7 +84,7 @@ impl ValidatorService {
         }
 
         verify_signature(&batch.public_key, &batch.signature, &batch.merkle_root)?;
-        verify_attestation(batch.attestation.as_ref())?;
+        verify_attestation(batch.attestation.as_ref()).await?;
 
         Ok(())
     }
@@ -101,7 +105,7 @@ impl PoIValidator for ValidatorService {
             merkle_b64
         );
 
-        let validation_result = Self::validate_batch(&batch);
+        let validation_result = Self::validate_batch(&batch).await;
         let (status, reason) = match validation_result {
             Ok(_) => {
                 tracing::info!(
@@ -320,20 +324,28 @@ fn verify_signature(
         .map_err(|_| ValidationError::SignatureInvalid("verification_failed"))
 }
 
-fn verify_attestation(payload: Option<&AttestationPayload>) -> Result<(), ValidationError> {
+async fn verify_attestation(payload: Option<&AttestationPayload>) -> Result<(), ValidationError> {
     let attestation = payload.ok_or(ValidationError::AttestationMissing)?;
     if attestation.provider != "play_integrity" {
-        return Err(ValidationError::AttestationInvalid("unsupported_provider"));
+        return Err(ValidationError::AttestationInvalid(
+            "unsupported_provider".into(),
+        ));
     }
     if attestation.token.is_empty() {
-        return Err(ValidationError::AttestationInvalid("token_empty"));
+        return Err(ValidationError::AttestationInvalid("token_empty".into()));
     }
     if attestation.nonce.is_empty() {
-        return Err(ValidationError::AttestationInvalid("nonce_empty"));
+        return Err(ValidationError::AttestationInvalid("nonce_empty".into()));
     }
     if attestation.nonce.len() > 128 {
-        return Err(ValidationError::AttestationInvalid("nonce_too_long"));
+        return Err(ValidationError::AttestationInvalid("nonce_too_long".into()));
     }
+    let token = std::str::from_utf8(&attestation.token)
+        .map_err(|_| ValidationError::AttestationInvalid("token_utf8".into()))?;
+    PLAY_INTEGRITY_CLIENT
+        .verify(token, &attestation.nonce)
+        .await
+        .map_err(ValidationError::AttestationInvalid)?;
     Ok(())
 }
 
@@ -356,5 +368,5 @@ enum ValidationError {
     #[error("attestation_missing")]
     AttestationMissing,
     #[error("attestation_invalid_{0}")]
-    AttestationInvalid(&'static str),
+    AttestationInvalid(String),
 }

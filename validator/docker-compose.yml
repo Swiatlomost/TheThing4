@@ -8,6 +8,8 @@ services:
       - "50051:50051"
     environment:
       RUST_LOG: info
+      PLAY_INTEGRITY_API_KEY: ${PLAY_INTEGRITY_API_KEY:-}
+      PLAY_INTEGRITY_PACKAGE_NAME: ${PLAY_INTEGRITY_PACKAGE_NAME:-com.thething.cos}
     depends_on:
       - softhsm
 

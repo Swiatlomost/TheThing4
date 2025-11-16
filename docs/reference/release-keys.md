@@ -57,3 +57,10 @@ keytool -export -rfc -alias poi-upload -file poi-upload.pem -keystore upload-key
 - [ ] Wpisać realne fingerprinty po zakończeniu POI-210.
 - [ ] Dodać link do zaproszenia internal tracku.
 - [ ] Zweryfikować, że secrets w GitHub Actions odpowiadają aktualnemu keystore.
+
+## 8. Play Integrity API (backend)
+- Klucz API przechowujemy w `secrets/play-integrity-api-key.txt` (lokalnie) oraz w zaszyfrowanym sejfie zespołu.
+- Validator oczekuje zmiennych środowiskowych:
+  - `PLAY_INTEGRITY_API_KEY` – wartość JWT decode (w docker-compose przekazywana z hosta).
+  - `PLAY_INTEGRITY_PACKAGE_NAME` – domyślnie `com.thething.cos`.
+- Bez tych zmiennych walidator loguje ostrzeżenie i pomija weryfikację (tylko lokalne dev). Na środowiskach dzielonych ustawiaj zmienne przed `docker compose up validator`.
