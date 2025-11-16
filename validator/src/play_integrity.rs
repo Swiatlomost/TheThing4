@@ -15,7 +15,7 @@ pub struct PlayIntegrityClient {
 struct PlayIntegrityConfig {
     api_key: Option<String>,
     package_name: String,
-    service_account_path: Option<String>,
+    use_oauth: bool,
 }
 
 impl PlayIntegrityClient {
@@ -24,24 +24,27 @@ impl PlayIntegrityClient {
             .build()
             .expect("failed to build reqwest client");
         let api_key = std::env::var("PLAY_INTEGRITY_API_KEY").ok();
-        let service_account_path = std::env::var("PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON").ok();
-        if api_key.is_none()
-            && auth_manager.is_none()
-            && !WARNED_MISSING_CREDS.swap(true, Ordering::SeqCst)
-        {
+        let use_oauth = std::env::var("PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON")
+            .ok()
+            .map(|path| {
+                std::env::set_var("GOOGLE_APPLICATION_CREDENTIALS", path);
+                true
+            })
+            .unwrap_or(false);
+        if api_key.is_none() && !use_oauth && !WARNED_MISSING_CREDS.swap(true, Ordering::SeqCst) {
             tracing::warn!("Play Integrity credentials missing: set PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON or PLAY_INTEGRITY_API_KEY");
         }
         let package_name = std::env::var("PLAY_INTEGRITY_PACKAGE_NAME")
             .unwrap_or_else(|_| "com.thething.cos".into());
         Self {
             http,
-            config: if api_key.is_none() && auth_manager.is_none() {
+            config: if api_key.is_none() && !use_oauth {
                 None
             } else {
                 Some(PlayIntegrityConfig {
                     api_key,
                     package_name,
-                    service_account_path,
+                    use_oauth,
                 })
             },
         }
@@ -59,13 +62,10 @@ impl PlayIntegrityClient {
             .http
             .post(url)
             .json(&serde_json::json!({ "integrity_token": token }));
-        if let Some(path) = &config.service_account_path {
+        if config.use_oauth {
             let manager = AuthenticationManager::new()
                 .await
                 .map_err(|err| format!("decode_oauth_init_error:{}", err))?;
-            let manager = manager
-                .from_service_account_key_file(path)
-                .map_err(|err| format!("decode_oauth_load_error:{}", err))?;
             let bearer = manager
                 .get_token(&[PLAY_SCOPE])
                 .await
