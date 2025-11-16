@@ -1,8 +1,11 @@
+use gcp_auth::AuthenticationManager;
 use reqwest::Client;
 use serde::Deserialize;
 use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::Arc;
 
-static WARNED_MISSING_KEY: AtomicBool = AtomicBool::new(false);
+static WARNED_MISSING_CREDS: AtomicBool = AtomicBool::new(false);
+const PLAY_SCOPE: &str = "https://www.googleapis.com/auth/playintegrity";
 
 pub struct PlayIntegrityClient {
     http: Client,
@@ -11,8 +14,9 @@ pub struct PlayIntegrityClient {
 
 #[derive(Clone)]
 struct PlayIntegrityConfig {
-    api_key: String,
+    api_key: Option<String>,
     package_name: String,
+    auth_manager: Option<Arc<AuthenticationManager>>,
 }
 
 impl PlayIntegrityClient {
@@ -21,17 +25,36 @@ impl PlayIntegrityClient {
             .build()
             .expect("failed to build reqwest client");
         let api_key = std::env::var("PLAY_INTEGRITY_API_KEY").ok();
-        if api_key.is_none() && !WARNED_MISSING_KEY.swap(true, Ordering::SeqCst) {
-            tracing::warn!("PLAY_INTEGRITY_API_KEY not set; attestation verification is disabled");
+        let auth_manager = std::env::var("PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON")
+            .ok()
+            .and_then(
+                |path| match AuthenticationManager::from_service_account_key_file(&path) {
+                    Ok(manager) => Some(Arc::new(manager)),
+                    Err(err) => {
+                        tracing::warn!("Failed to load service account from {}: {}", path, err);
+                        None
+                    }
+                },
+            );
+        if api_key.is_none()
+            && auth_manager.is_none()
+            && !WARNED_MISSING_CREDS.swap(true, Ordering::SeqCst)
+        {
+            tracing::warn!("Play Integrity credentials missing: set PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON or PLAY_INTEGRITY_API_KEY");
         }
         let package_name = std::env::var("PLAY_INTEGRITY_PACKAGE_NAME")
             .unwrap_or_else(|_| "com.thething.cos".into());
         Self {
             http,
-            config: api_key.map(|key| PlayIntegrityConfig {
-                api_key: key,
-                package_name,
-            }),
+            config: if api_key.is_none() && auth_manager.is_none() {
+                None
+            } else {
+                Some(PlayIntegrityConfig {
+                    api_key,
+                    package_name,
+                    auth_manager,
+                })
+            },
         }
     }
 
@@ -40,13 +63,25 @@ impl PlayIntegrityClient {
             return Ok(());
         };
         let url = format!(
-            "https://playintegrity.googleapis.com/v1/{}:decodeIntegrityToken?key={}",
-            config.package_name, config.api_key
+            "https://playintegrity.googleapis.com/v1/{}:decodeIntegrityToken",
+            config.package_name
         );
-        let response = self
+        let mut request = self
             .http
             .post(url)
-            .json(&serde_json::json!({ "integrity_token": token }))
+            .json(&serde_json::json!({ "integrity_token": token }));
+        if let Some(manager) = &config.auth_manager {
+            let bearer = manager
+                .get_token(&[PLAY_SCOPE])
+                .await
+                .map_err(|err| format!("decode_oauth_error:{}", err))?;
+            request = request.bearer_auth(bearer.as_str());
+        } else if let Some(api_key) = &config.api_key {
+            request = request.query(&[("key", api_key)]);
+        } else {
+            return Err("play_integrity_credentials_missing".into());
+        }
+        let response = request
             .send()
             .await
             .map_err(|err| format!("decode_http_error:{}", err))?;
