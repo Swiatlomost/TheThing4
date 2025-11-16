@@ -2,7 +2,6 @@ use gcp_auth::AuthenticationManager;
 use reqwest::Client;
 use serde::Deserialize;
 use std::sync::atomic::{AtomicBool, Ordering};
-use std::sync::Arc;
 
 static WARNED_MISSING_CREDS: AtomicBool = AtomicBool::new(false);
 const PLAY_SCOPE: &str = "https://www.googleapis.com/auth/playintegrity";
@@ -16,7 +15,7 @@ pub struct PlayIntegrityClient {
 struct PlayIntegrityConfig {
     api_key: Option<String>,
     package_name: String,
-    auth_manager: Option<Arc<AuthenticationManager>>,
+    service_account_path: Option<String>,
 }
 
 impl PlayIntegrityClient {
@@ -25,15 +24,7 @@ impl PlayIntegrityClient {
             .build()
             .expect("failed to build reqwest client");
         let api_key = std::env::var("PLAY_INTEGRITY_API_KEY").ok();
-        let auth_manager = std::env::var("PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON")
-            .ok()
-            .and_then(|path| match AuthenticationManager::new(&path) {
-                Ok((manager, _)) => Some(Arc::new(manager)),
-                Err(err) => {
-                    tracing::warn!("Failed to load service account from {}: {}", path, err);
-                    None
-                }
-            });
+        let service_account_path = std::env::var("PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON").ok();
         if api_key.is_none()
             && auth_manager.is_none()
             && !WARNED_MISSING_CREDS.swap(true, Ordering::SeqCst)
@@ -50,7 +41,7 @@ impl PlayIntegrityClient {
                 Some(PlayIntegrityConfig {
                     api_key,
                     package_name,
-                    auth_manager,
+                    service_account_path,
                 })
             },
         }
@@ -68,7 +59,13 @@ impl PlayIntegrityClient {
             .http
             .post(url)
             .json(&serde_json::json!({ "integrity_token": token }));
-        if let Some(manager) = &config.auth_manager {
+        if let Some(path) = &config.service_account_path {
+            let manager = AuthenticationManager::new()
+                .await
+                .map_err(|err| format!("decode_oauth_init_error:{}", err))?;
+            let manager = manager
+                .from_service_account_key_file(path)
+                .map_err(|err| format!("decode_oauth_load_error:{}", err))?;
             let bearer = manager
                 .get_token(&[PLAY_SCOPE])
                 .await
