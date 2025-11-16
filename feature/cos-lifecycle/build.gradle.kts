@@ -16,12 +16,11 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    namespace = "com.example.cos.lifecycle"
-    compileSdk = 34
+    namespace = "com.thething.cos.lifecycle"
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
-        targetSdk = 34
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

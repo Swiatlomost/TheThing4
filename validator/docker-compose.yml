@@ -1,0 +1,23 @@
+services:
+  validator:
+    build:
+      context: ..
+      dockerfile: validator/Dockerfile
+    image: poi-validator:dev
+    ports:
+      - "50051:50051"
+    environment:
+      RUST_LOG: info
+    depends_on:
+      - softhsm
+
+  softhsm:
+    build:
+      context: ..
+      dockerfile: validator/softhsm/Dockerfile
+    restart: unless-stopped
+    volumes:
+      - softhsm-data:/var/lib/softhsm
+
+volumes:
+  softhsm-data:

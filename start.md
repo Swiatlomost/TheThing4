@@ -13,6 +13,7 @@ Goal: load a compact, actionable context so you can work effectively with this r
   - Task meta: `tasks/<TASK-ID>/{task.json, PDCA.json, log.jsonl}`
 - Central team memory: `agents/memory.json` (map `agents.{Name}`)
 - Chronicle: `reports/chronicle.md`
+- ROI updates: `docs/ai-first-development-roi-20251029.md`
 
 ## Roles, Tags, Modes
 - Address agents via tags: `[AGENT::NAME]` (Orin, Echo, Vireal, Lumen, Kai, Scribe, Nyx, Nodus, Aurum, Mira)
@@ -87,6 +88,7 @@ Goal: load a compact, actionable context so you can work effectively with this r
 - Example task: `backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-008-autosort/PDCA.json`
 - Memory: `agents/memory.json`
 - Chronicle: `reports/chronicle.md`
+- ROI updates: `docs/ai-first-development-roi-20251029.md`
 
 If you need me to scaffold a new topic or tasks, reply with area name, short WHY/WHAT, and owners; I will create the JSON files, link them in the board, and build a context bundle.
 

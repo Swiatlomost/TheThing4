@@ -1,0 +1,2 @@
+{"ts": "2025-11-16T09:15:15", "who": "Nodus", "why": "Scaffold task", "what": "Align AGP with compileSdk 35", "next": "Fill PDCA and start work", "tags": ["scaffold"]}
+{"ts":"2025-11-16T09:16:48","who":"Orin","why":"AGP ostrze¿enia","what":"Utworzy³em zadanie REFAC-005 i rozpisa³em plan migracji AGP/compileSdk 35.","next":"Nodus ma oceniæ AGP 8.6+ i zaktualizowaæ build + CI.","tags":["release","build"]}

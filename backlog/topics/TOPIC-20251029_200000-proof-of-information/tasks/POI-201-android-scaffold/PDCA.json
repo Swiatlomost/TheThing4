@@ -6,14 +6,25 @@
   ],
   "do": [
     "Wygenerowano moduł core:lightledger + rust/native/light_ledger jako szkic JNI.",
-    "Rozszerzono LightLedgerHasher o payload + fallback, dodano JNI funkcje oraz integrację cargo-ndk tasków."
+    "Rozszerzono LightLedgerHasher o payload + fallback, dodano JNI funkcje oraz integrację cargo-ndk tasków.",
+    "Dodano scripts/build_poi_android.sh dla kroku CI oraz LightLedgerRuntimeSmoke.verify() w CosApplication, aby logowac gotowosc liblight_ledger.",
+    "Wprowadzono upload signing config (env/gradle properties) i wygenerowano upload-keystore.jks.",
+    "Podniesiono compileSdk/targetSdk do 35 we wszystkich modułach (wymóg Google Play)."
   ],
   "check": [
     "Gradle build :app:assembleDebug wykonany z powodzeniem po ustawieniu JAVA_HOME.",
     "Uruchomiono ./gradlew :core:lightledger:test (bez enableCargoNdk) – sukces.",
-    "Przebudowano ./gradlew :app:assembleDebug (bez cargo-ndk) – sukces."
+    "Przebudowano ./gradlew :app:assembleDebug (bez cargo-ndk) – sukces.",
+    "Wykonano ./gradlew :core:lightledger:assembleDebug -PenableCargoNdk=true (cargo-ndk arm64/x86); biblioteki liblight_ledger.so trafily do build/generated/jniLibs.",
+    "Skonfigurowano workflow .github/workflows/poi-android.yml (GitHub Actions) uruchamiajacy scripts/build_poi_android.sh z SDK/NDK.",
+    "Logcat (Pixel 5 emulator) po installDebug: LightLedgerRuntimeSmoke -> Native ledger ready; produced 32-byte digest.",
+    "./gradlew bundleRelease (z POI_UPLOAD_* ustawionymi) wygenerowa� podpisany app-release.aab.",
+    "./gradlew assembleDebug na API 35 przechodzi (ostrzeżenie AGP o wersji pluginu)."
   ],
-  "act": [],
+  "act": [
+    "Monitoruj scripts/build_poi_android.sh w CI i reaguj na regresje cargo-ndk przed kolejnymi gałęziami.",
+    "Po konfiguracji Play Console (POI-210) zsynchronizuj dokumentację release z upload-keystore i workflow .yml."
+  ],
   "links": {
     "reference": [
       "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/jni-bridge-plan.md",
@@ -22,6 +33,6 @@
     ]
   },
   "meta": {
-    "updated_at": "2025-10-29"
+    "updated_at": "2025-11-02"
   }
 }

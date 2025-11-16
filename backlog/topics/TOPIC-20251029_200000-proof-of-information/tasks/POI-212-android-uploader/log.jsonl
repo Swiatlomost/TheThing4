@@ -1,0 +1,1 @@
+{"ts":"2025-11-02T11:45:00","who":"Lumen","why":"Dev gRPC uploader","what":"Dodano BatchUploader (10.0.2.2), integracjê w LightLedgerRuntimeSmoke, build z cargo-ndk oraz potwierdzono upload na emulatorze Pixel 5 (status=STATUS_ACCEPTED).","next":"Po Play Integrity (POI-211) prze³¹czyæ na realny token + TLS i dodaæ WorkManager retry.","tags":["android","grpc","debug"]}

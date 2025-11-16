@@ -9,15 +9,43 @@
       "title": "Device FAR/FRR calibration",
       "metrics": {
         "FAR_max": 0.05,
-        "FRR_max": 0.10,
+        "FRR_max": 0.1,
         "entropy_min": 0.75
       },
       "procedure": [
         "Replay captured sensor sessions with ground-truth labels.",
         "Verify Light Ledger rejects low-entropy samples (<0.75).",
-        "Validate FAR/FRR thresholds on aggregated batches."
+        "Zbuduj natywną bibliotekę (`./gradlew :core:lightledger:cargoBuildLightLedgerArm64 :core:lightledger:cargoBuildLightLedgerX86 :app:assembleDebug -PenableCargoNdk=true`), następnie `./gradlew installDebug` i po uruchomieniu `adb shell am start -n com.thething.cos/.MainActivity` sprawdź `adb logcat -d | Select-String \"LightLedgerRuntimeSmoke\"` aby potwierdzić komunikat o 32-bajtowym digescie.",
+        "Validate FAR/FRR thresholds on aggregated batches.",
+        "Zweryfikuj podpis i hash-chain z fizycznego urządzenia (Xiaomi 13T Pro) według instrukcji w ledger-signature-handshake.md."
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "type": "logcat",
+          "path": "adb logcat (Pixel 5 emulator)",
+          "details": "10-30 22:07:51.303 I LightLedgerRuntimeSmoke: Native ledger ready; produced 32-byte digest."
+        },
+        {
+          "type": "benchmark",
+          "details": "LightLedgerBenchmarkRunner (Pixel 5 emulator): 1k native 211 ms vs fallback 234 ms; 5k native 625 vs 949 ms; 10k native 878 vs 1012 ms.",
+          "path": "adb logcat"
+        },
+        {
+          "type": "benchmark",
+          "details": "LightLedgerBenchmarkRunner (Xiaomi 13T Pro, API 35): 1k native 9.79 ms vs fallback 7.83 ms; 5k native 31.52 ms vs 36.17 ms; 10k native 36.89 ms vs 59.18 ms.",
+          "path": "adb logcat"
+        },
+        {
+          "type": "logcat",
+          "path": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/evidence/light-ledger-runtime-smoke-2025-10-31.log",
+          "details": "Xiaomi 13T Pro runtime smoke: Merkle root, hash, signature, signer public key (LightLedgerRuntimeSmoke)."
+        },
+        {
+          "type": "hash_chain_snapshot",
+          "path": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/evidence/hash-chain-snapshot-2025-10-31.txt",
+          "details": "Hash-chain entry z urządzenia (timestamp|hash|signature|publicKey)."
+        }
+      ]
     },
     {
       "id": "POI-QA-002",

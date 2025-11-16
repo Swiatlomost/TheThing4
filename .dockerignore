@@ -1,0 +1,13 @@
+.git
+.github
+.gradle
+**/target
+**/.idea
+**/.vscode
+**/*.iml
+**/node_modules
+backlog
+reports
+docs
+sessions
+.DS_Store

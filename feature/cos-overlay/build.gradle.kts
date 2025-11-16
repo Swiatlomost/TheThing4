@@ -16,12 +16,11 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    namespace = "com.example.cos.overlay"
-    compileSdk = 34
+    namespace = "com.thething.cos.overlay"
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
-        targetSdk = 34
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

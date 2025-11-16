@@ -1,21 +1,21 @@
 {
   "plan": [
-    "Zdefiniować pytania badawcze: behawioralne biometrie, sensory entropy, federated trust, kryptografia PoI.",
-    "Zebrać i zrecenzować min. 5 publikacji/standardów, tworząc tabelę wniosków i ograniczeń.",
-    "Zmapować ryzyka naukowe (spoofing, prywatność, fałszywe alarmy) i pytania do Vireal/Lumen."
+    "Zdefiniowac pytania badawcze: behawioralne biometrie, entropia sensorow, federated trust, kryptografia PoI.",
+    "Zebrac i zrecenzowac co najmniej piec publikacji lub standardow, budujac tabele wnioskow i ograniczen.",
+    "Zmapowac ryzyka naukowe (spoofing, prywatnosc, falszywe alarmy) oraz pytania do Vireal i Lumen."
   ],
   "do": [
-    "Echo: rozpoczęła kwerendę literatury (IEEE/ACM) + tworzy tabelę porównawczą wyników.",
-    "Podsumowano 3 kluczowe publikacje (Touchalytics, ZEBRA, PerCom 2020) z metrykami autentyczności i budżetami prywatności.",
-    "Uzupełniono notatkę research-notes.md o secure aggregation (Bonawitz, Ramaswamy) i blockchain attestation (Zhang 2021)."
+    "Echo: rozpoczal kwerende literatury (IEEE/ACM) i buduje tabele porownawcza wynikow.",
+    "Podsumowano trzy kluczowe publikacje (Touchalytics, ZEBRA, PerCom 2020) z metrykami autentycznosci i budzetami prywatnosci.",
+    "Uzupelniono research-notes.md o secure aggregation (Bonawitz, Ramaswamy) oraz blockchain attestation (Zhang 2021)."
   ],
   "check": [
-    "Wstępna mapa ryzyk: spoofing sensorów, koszty DP, fałszywe alarmy przekazane do konsultacji z Vireal.",
-    "Spełniono kryteria zadania: min. 5 źródeł opisanych, ryzyka zmapowane, notatka podlinkowana w briefie."
+    "Wstepna mapa ryzyk (spoofing sensorow, koszty DP, falszywe alarmy) przekazana do konsultacji z Vireal.",
+    "Spelniono kryteria zadania: opisano ponad piec zrodel, ryzyka zmapowane, notatka podlinkowana w briefie."
   ],
   "act": [
-    "Przekazać Kai parametry FAR/FRR i budżety ε do test-plan (POI-103).",
-    "Monitorować nowe publikacje 2025Q4 nt. zk-proofs dla IoT (follow-up)."
+    "Przekazac Kai parametry FAR/FRR i budzety DP do test-plan (POI-103).",
+    "Monitorowac nowe publikacje 2025Q4 dotyczace zk-proofs dla IoT jako follow-up."
   ],
   "links": {
     "reference": [
@@ -25,7 +25,7 @@
     "notes": [
       "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/research-notes.md"
     ]
-  },
+  ],
   "meta": {
     "updated_at": "2025-10-29"
   }

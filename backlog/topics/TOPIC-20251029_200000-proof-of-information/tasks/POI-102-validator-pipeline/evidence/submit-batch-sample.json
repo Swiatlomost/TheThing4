@@ -1,0 +1,24 @@
+{
+  "deviceId": "C0S-XIAOMI-13TPRO",
+  "batchStart": 1761924794000,
+  "batchEnd": 1761924795000,
+  "merkleRoot": "JH8RuLauG/T1AqholC1AMkKJKFqVBD5iRGDvGd3i/Zg=",
+  "metrics": [
+    {
+      "ledgerIndex": 0,
+      "entropy": 0.82,
+      "trustScore": 92,
+      "far": 0,
+      "frr": 0,
+      "hash": "JH8RuLauG/T1AqholC1AMkKJKFqVBD5iRGDvGd3i/Zg=",
+      "timestampMs": 1761924794783
+    }
+  ],
+  "signature": "MEUCIDF8XnnxaKOVc+BNokofqz8lGd8FOFOsayISacj5cB1dAiEA2/I0LL4m04FA3juWNLdayYLJGwjEVDwhmTsw/0yLpN4=",
+  "publicKey": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEjgSymnlgYBmuG82v3kDo1wj+hMNnyskoGGzwUyI4pMbVfSU1akEMOxyTznOQfI+ZDI54E0i/PB/IF0ctaxl8/w==",
+  "attestation": {
+    "provider": "play_integrity",
+    "token": "ZHVtbXktYXR0ZXN0YXRpb24tdG9rZW4=",
+    "nonce": "sample-nonce-20251031"
+  }
+}

@@ -8,12 +8,11 @@ plugins {
 }
 
 android {
-    compileSdk = 34
-    namespace = "com.example.cos.morphogenesis"
+    compileSdk = 35
+    namespace = "com.thething.cos.morphogenesis"
 
     defaultConfig {
         minSdk = 26
-        targetSdk = 34
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

@@ -4,8 +4,8 @@ use std::net::SocketAddr;
 use tonic::transport::Server;
 use tracing_subscriber::{EnvFilter, FmtSubscriber};
 
-use service::ValidatorService;
 use service::generated::po_i_validator_server::PoIValidatorServer;
+use service::ValidatorService;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {

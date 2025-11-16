@@ -11,7 +11,10 @@
     "Uruchomiono ./gradlew :feature:sensor-harness:test (sukces, cargo-ndk opcjonalny).",
     "APK zainstalowany na emulatorze: ./gradlew installDebug (PoI harness widoczny)."
   ],
-  "act": [],
+  "act": [
+    "Połącz harness z generatorami fingerprintów opisanymi w qa-generator-plan, aby zebrać baseline do POI-103.",
+    "Przygotuj instrukcję dla testerów (zgody/anonimizacja) zanim dane trafią do validatora."
+  ],
   "links": {
     "reference": [
       "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/light-ledger-design.md",

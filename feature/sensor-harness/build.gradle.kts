@@ -8,8 +8,8 @@ plugins {
 }
 
 android {
-    namespace = "com.example.cos.sensorharness"
-    compileSdk = 34
+    namespace = "com.thething.cos.sensorharness"
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26

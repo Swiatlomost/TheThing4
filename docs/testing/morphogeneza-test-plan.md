@@ -19,7 +19,7 @@
 | MORPH-002 | Alert niskiego limitu | Zmniejsz liczbe dostepnych komorek do progu 10% | Alert `Niski zapas komorek: X` | `./gradlew test` (ViewModel) |
 | MORPH-003 | Kolizje | Sprobuj umiescic komorki w tej samej pozycji (po wdrozeniu walidacji) | Czerwony outline + komunikat o kolizji | Manual |
 | MORPH-004 | Aktywacja formy | Zapisz nowa forme i aktywuj ja | Toast + log `MorfoEvent` + overlay aktualizuje forme | Checklista ADB |
-| MORPH-005 | Fallback broadcast | Symuluj brak SharedFlow i aktywuj forme | Broadcast `com.example.cos.FORMA_AKTYWNA` widoczny w `dumpsys` | Checklista ADB |
+| MORPH-005 | Fallback broadcast | Symuluj brak SharedFlow i aktywuj forme | Broadcast `com.thething.cos.FORMA_AKTYWNA` widoczny w `dumpsys` | Checklista ADB |
 | MORPH-006 | Regresja UI | `./gradlew connectedDebugAndroidTest` na Pixel_5 | Wszystkie testy przechodza | Instrumentacja |
 | MORPH-007 | Wybor zapisanej formy | Zapisz nowa forme, wybierz ja z dropdownu/listy zapisow | Podglad edytora laduje wybrana forme, editor.formId/ormName odzwierciedlaja wybor | Unit + Compose test |
 | MORPH-008 | Aktywacja formy (overlay) | Zapisz i aktywuj nowa forme | SharedFlow MorphoFormChannel emituje forme, overlay aktualizuje layout, logcat/dumpsys zawiera nowe orma_aktywna | Instrumentacja + Checklista ADB |

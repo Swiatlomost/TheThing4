@@ -1,14 +1,15 @@
 {
   "id": "POI-102-validator-pipeline",
-  "status": "pending",
+  "status": "done",
   "owner": "Nodus",
   "title": "Build PoI validator & aggregation pipeline",
-  "description": "Utworzyć usługę walidatora przyjmującą Merkle rooty i statystyki federacyjne, wykonującą weryfikację kryptograficzną oraz batching do blockchain.",
+  "description": "Deliver validator service that ingests Merkle roots and federated metrics, performs cryptographic validation, and stages batches for blockchain upload.",
   "acceptance": [
-    "Specyfikacja API (protobuf/openapi) dla przesyłania dowodów z urządzeń.",
-    "Prototyp walidatora (Rust/Go/Node) z testami unit/integration pokazującymi weryfikację podpisu i Merkle proof.",
-    "Plan integracji z docelowym łańcuchem (np. Solana/Polygon) + lista wymagań infrastrukturalnych."
+    "API specification (protobuf/openapi) for submitting device proofs.",
+    "Validator prototype (Rust/Go/Node) with unit/integration tests demonstrating signature and Merkle proof verification.",
+    "Integration plan for the target chain (e.g., Solana/Polygon) plus infrastructure requirements list."
   ],
+  "closed_at": "2025-11-02",
   "links": {
     "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/PDCA.json",
     "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/log.jsonl"

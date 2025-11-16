@@ -6,7 +6,7 @@
     "Uruchomic ./gradlew testDebugUnitTest oraz sanity overlay (emulator/Pixel 5) dla regresji."
   ],
   "do": [
-    "2025-10-28 Lumen: Manifest definiuje com.example.cos.permission.CONTROL_LIFECYCLE, receiver wymaga uprawnienia, a MorphoEventDispatcher wymusza permission i scope do paczki.",
+    "2025-10-28 Lumen: Manifest definiuje com.thething.cos.permission.CONTROL_LIFECYCLE, receiver wymaga uprawnienia, a MorphoEventDispatcher wymusza permission i scope do paczki.",
     "2025-10-28 Lumen: ./gradlew testDebugUnitTest PASS; connectedDebugAndroidTest FAIL (UiTokensInstrumentedTest oczekuje starych wartosci tokenow).",
     "2025-10-28 Lumen: Zaktualizowalem UiTokensInstrumentedTest do wersji 0.3-cyan-noir; connectedDebugAndroidTest PASS."
   ],

@@ -3,6 +3,7 @@
 ### Kotlin Layer
 - `LightLedgerRepository`
   - Persists sessions into `sessions` table and manages hash-chain entries.
+  - Signs each entry via `LightLedgerSigner` (StrongBox / Keystore) and stores signature + public key alongside the hash.
   - Interface:
     ```kotlin
     interface LightLedgerRepository {

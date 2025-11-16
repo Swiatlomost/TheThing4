@@ -7,8 +7,8 @@ plugins {
 }
 
 android {
-    namespace = "com.example.cos.lightledger"
-    compileSdk = 34
+    namespace = "com.thething.cos.lightledger"
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
@@ -47,7 +47,7 @@ fun cargoCommand(target: String): List<String> = listOf(
     "-t",
     target,
     "-o",
-    generatedJniDir.get().asFile.resolve(target).absolutePath,
+    generatedJniDir.get().asFile.absolutePath,
     "build",
     "--release"
 )

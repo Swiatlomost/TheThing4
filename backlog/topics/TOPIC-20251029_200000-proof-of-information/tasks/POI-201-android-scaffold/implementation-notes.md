@@ -1,4 +1,4 @@
-## POI-201 – Android Prototype Bootstrap Notes
+﻿## POI-201 - Android Prototype Bootstrap Notes
 
 ### Repo Structure (proposed)
 ```
@@ -9,7 +9,7 @@ android/
 rust/
   light_ledger/       # Cargo crate compiled via cargo-ndk
 scripts/
-  build_android.sh    # gradlew assembleDebug + cargo-ndk build
+  build_poi_android.sh    # gradlew assembleDebug + cargo-ndk build
 ```
 
 ### Immediate TODOs (after repo exists)
@@ -34,7 +34,7 @@ scripts/
    - Measure build time and capture output for PDCA `do`.
 
 ### Dependencies / Blocking
-- Repo Android/Rust not yet present – need scaffolding approval.  
+- Repo Android/Rust not yet present - need scaffolding approval.  
 - Access to sensor data harness (POI-207) before real fingerprints.  
 - CI runner with Android SDK + Rust toolchain.
 
@@ -43,5 +43,24 @@ scripts/
 - `backlog/topics/.../jni-bridge-plan.md`
 
 ### Native build
-- U�yj `cargo install cargo-ndk` i uruchom Gradle z `-PenableCargoNdk=true`, aby generowa� biblioteki (.so) dla arm64-v8a i x86_64.
-- Domy�lnie Gradle pomija budow� natywn�, fallback hash dzia�a w Kotlinie.
+- Use `cargo install cargo-ndk` and run Gradle with `-PenableCargoNdk=true` to produce `.so` libraries for arm64-v8a and x86_64 (automation in `scripts/build_poi_android.sh`).
+- After installation verify with `cargo ndk --version`; on Windows the binary lands in `%USERPROFILE%\.cargo\bin\` so either add it to `PATH` or invoke via the full path.
+- By default Gradle skips the native build; the Kotlin fallback hash remains available.
+
+### Release signing (Play Console upload)
+- Gradle expects the following properties or environment variables:
+  - `poiUploadStoreFile` / `POI_UPLOAD_STORE_FILE` – ścieżka do `upload-keystore.jks` (może być względna względem root).
+  - `poiUploadStorePassword` / `POI_UPLOAD_STORE_PASSWORD`
+  - `poiUploadKeyAlias` / `POI_UPLOAD_KEY_ALIAS`
+  - `poiUploadKeyPassword` / `POI_UPLOAD_KEY_PASSWORD`
+- Jeśli któraś wartość nie jest ustawiona, `./gradlew bundleRelease` przerwie build jasnym komunikatem.
+- Generowanie klucza upload (`upload-keystore.jks`):
+  ```bash
+  keytool -genkeypair \
+    -alias poi-upload \
+    -keyalg RSA \
+    -keysize 4096 \
+    -validity 10000 \
+    -keystore upload-keystore.jks
+  ```
+- Nie commitujemy keystore do repo; trzymaj plik poza VCS i dodaj do `.gitignore`. W Play Console zarejestruj fingerprint tego klucza jako Upload Key.

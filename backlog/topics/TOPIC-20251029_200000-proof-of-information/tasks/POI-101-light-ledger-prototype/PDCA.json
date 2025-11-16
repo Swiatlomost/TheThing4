@@ -1,22 +1,33 @@
 {
   "plan": [
     "Design Light Ledger with hardware-backed signatures (StrongBox/TitanM) and attestation fallback.",
-    "Implement Merkle root generator with ≤15 min batching and validator upload.",
-    "Calibrate authenticity thresholds: FAR ≤5%, FRR ≤10%, entropy >0.75 per research notes."
+    "Implement Merkle root generator with +/- 15 min batching and validator upload.",
+    "Calibrate authenticity thresholds: FAR <=5%, FRR <=10%, entropy >=0.75 per research notes."
   ],
   "do": [
     "Integrated research insights into implementation plan.",
     "Authored light-ledger-design.md covering storage, pipeline, metrics, retention, cell lifecycle thresholds.",
-    "Documented light-ledger-architecture.md with Kotlin↔Rust interfaces and data flow.",
-    "Prepared jni-bridge-plan.md detailing native signatures, build setup, performance benchmarks."
+    "Documented light-ledger-architecture.md with Kotlin <-> Rust interfaces and data flow.",
+    "Prepared jni-bridge-plan.md detailing native signatures, build setup, performance benchmarks.",
+    "Added LightLedgerBenchmarkRunner (JNI vs fallback) and runtime logging hooks.",
+    "Implemented LightLedgerRepository (file-based hash chain + Merkle root) with README describing batching policy.",
+    "Provisioned LightLedgerSigner via Android Keystore (StrongBox when available) to sign each hash.",
+    "Extended debug runtime smoke to append a demo entry, log the Merkle root, and verify the ECDSA signature."
   ],
   "check": [
     "Design reviewed with Vireal/Kai; telemetry and retention requirements confirmed.",
-    "JNI bridge plan accepted; cargo-ndk and Gradle integration steps noted."
+    "JNI bridge plan accepted; cargo-ndk and Gradle integration steps noted.",
+    "Benchmark JNI vs fallback (Pixel 5 emulator): 1k native 211 ms vs fallback 234 ms, 5k native 625 ms vs 949 ms, 10k native 878 ms vs 1012 ms.",
+    "Benchmark JNI vs fallback (Xiaomi 13T Pro): 1k native 9.79 ms vs fallback 7.83 ms, 5k native 31.52 ms vs 36.17 ms, 10k native 36.89 ms vs 59.18 ms.",
+    "Warm-up benchmark (Xiaomi 13T Pro): 1k native 13.43 ms vs fallback 11.93 ms; 5k native 37.74 ms vs 40.46 ms; 10k native 57.05 ms vs 66.79 ms.",
+    "Debug logcat evidence (Xiaomi 13T Pro): LightLedgerRuntimeSmoke logs Merkle root + signature artefacts (`evidence/light-ledger-runtime-smoke-2025-10-31.log`).",
+    "Hash-chain snapshot zapisany z debug smoke (Xiaomi 13T Pro) – `evidence/hash-chain-snapshot-2025-10-31.txt`."
   ],
   "act": [
-    "Implement JNI bridge and repository layer; execute performance benchmarks on Pixel 5/7.",
-    "Record benchmark results and telemetry outputs in log for Kai."
+    "Monitor batches <2000 hashed via fallback and adjust policy if needed.",
+    "Configure JNI vs fallback alerts with Kai (tracked in POI-103).",
+    "Capture benchmark from a second physical device for additional validation.",
+    "Udokumentowano przekazanie klucza publicznego oraz procedurę weryfikacji (ledger-signature-handshake.md) i przekazano Kai/Nodus."
   ],
   "links": {
     "reference": [
@@ -26,8 +37,8 @@
       "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/light-ledger-architecture.md",
       "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-101-light-ledger-prototype/jni-bridge-plan.md"
     ]
-  },
+  ],
   "meta": {
-    "updated_at": "2025-10-29"
+    "updated_at": "2025-11-01"
   }
 }

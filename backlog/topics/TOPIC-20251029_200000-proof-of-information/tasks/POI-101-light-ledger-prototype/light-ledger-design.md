@@ -9,11 +9,13 @@
   - `trust_score` (INTEGER) – 0–100 trust metric delivered to validator.
   - `signature` (BLOB) – ECDSA signature using hardware-backed key.
 - **Ledger chain table (`ledger_chain`)**
-  - `index` (INTEGER, autoincrement) – order of entries.
-  - `session_hash` (BLOB) – SHA-256 of session record.
-  - `prev_hash` (BLOB) – SHA-256 of previous ledger entry.
-  - `created_at` (INTEGER) – epoch seconds.
-  - `proof_status` (TEXT) – `pending`, `batched`, `confirmed`.
+  - `index` (INTEGER, autoincrement) — order of entries.
+  - `session_hash` (BLOB) — SHA-256 of session record.
+  - `prev_hash` (BLOB) — SHA-256 of previous ledger entry.
+  - `created_at` (INTEGER) — epoch seconds.
+  - `proof_status` (TEXT) — `pending`, `batched`, `confirmed`.
+  - `signature` (BLOB) — ECDSA signature produced via hardware key (StrongBox when available).
+  - `signer_public_key` (BLOB) — cached public key corresponding to the signature for validator replay.
 
 ### Key Management
 - Prefer **Android StrongBox / Titan M** via `KeyGenParameterSpec` with ECDSA P-256.

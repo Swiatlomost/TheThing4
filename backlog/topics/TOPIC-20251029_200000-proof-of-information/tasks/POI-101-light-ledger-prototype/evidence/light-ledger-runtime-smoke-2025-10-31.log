@@ -1,0 +1,12 @@
+Device: Xiaomi 13T Pro (API 35)
+Command: `adb -s JRCEU8AM7LJNSKD6 logcat -d | Select-String "LightLedgerRuntimeSmoke" -Context 0,4`
+Run: 2025-10-31T16:28:22Z
+
+```
+10-31 16:28:22.239 21256 21256 I LightLedgerRuntimeSmoke: Native ledger ready; produced 32-byte digest.
+10-31 16:28:22.936 21256 21256 I LightLedgerRuntimeSmoke: Merkle root demo: leaves=1, root=S/QtrqCwoxHxv3e3A9/gZLecaUpPjO3e7gZydsRTNGA=
+10-31 16:28:22.936 21256 21256 I LightLedgerRuntimeSmoke: Ledger signature valid=true
+10-31 16:28:22.936 21256 21256 I LightLedgerRuntimeSmoke: Ledger hash (Base64 SHA-256): S/QtrqCwoxHxv3e3A9/gZLecaUpPjO3e7gZydsRTNGA=
+10-31 16:28:22.936 21256 21256 I LightLedgerRuntimeSmoke: Ledger signature (Base64 DER): MEUCIHxrBkF9YGR/GI/FgzPnAuN0CdTlnu1zt7FkUyxsQVcoAiEAmMrpv2e72OzBgRT1nvZhSGt5eGfSZXgvTuE98yUPBGc=
+10-31 16:28:22.936 21256 21256 I LightLedgerRuntimeSmoke: Ledger signer public key (Base64 X.509): MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEjgSymnlgYBmuG82v3kDo1wj+hMNnyskoGGzwUyI4pMbVfSU1akEMOxyTznOQfI+ZDI54E0i/PB/IF0ctaxl8/w==
+```

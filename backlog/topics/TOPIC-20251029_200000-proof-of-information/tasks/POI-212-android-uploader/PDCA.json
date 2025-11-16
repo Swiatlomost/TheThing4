@@ -1,0 +1,17 @@
+﻿{
+  "plan": [
+    "Dodać plugin protobuf i zależności gRPC",
+    "Wygenerować stuby z proto/validator.proto (lite)",
+    "Dodać BatchUploader i debug trigger (10.0.2.2)",
+    "Przełączyć na TLS + WorkManager po POI-211"
+  ],
+  "do": [
+    "Dodano plugin protobuf/gRPC w app/build.gradle.kts i zależności (grpc-okhttp, protobuf-lite).",
+    "Skopiowano validator.proto do app/src/main/proto i wygenerowano stuby lite.",
+    "Utworzono BatchUploader (10.0.2.2:50051) i wywołanie dev uploadu w LightLedgerRuntimeSmoke.",
+    "Potwierdzono na emulatorze Pixel 5: logcat pokazuje STATUS_ACCEPTED, walidator przyjął batch (nowy build natywny)."
+  ],
+  "check": [],
+  "act": [],
+  "meta": {"updated_at": "2025-11-02"}
+}

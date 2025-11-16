@@ -1,0 +1,11 @@
+﻿{
+  "id": "POI-212-android-uploader",
+  "status": "in_progress",
+  "owner": "Lumen",
+  "title": "Android gRPC uploader (debug-to-prod)",
+  "description": "Dodać klienta gRPC w aplikacji: debug wysyła do 10.0.2.2:50051, prod przez TLS + WorkManager. Mapa payloadu: Merkle root, metrics.hash/timestamp, signature/public key, attestation token.",
+  "links": {
+    "pdca": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-212-android-uploader/PDCA.json",
+    "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-212-android-uploader/log.jsonl"
+  }
+}

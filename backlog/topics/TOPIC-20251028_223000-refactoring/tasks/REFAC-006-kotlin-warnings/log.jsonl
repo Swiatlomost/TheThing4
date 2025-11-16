@@ -1,0 +1,2 @@
+{"ts": "2025-11-16T09:15:30", "who": "Lumen", "why": "Scaffold task", "what": "Resolve Kotlin/Compose warnings", "next": "Fill PDCA and start work", "tags": ["scaffold"]}
+{"ts":"2025-11-16T09:17:40","who":"Orin","why":"Warning cleanup","what":"Zg³osi³em REFAC-006, opisuj¹c w PDCA jak usun¹æ ostrze¿enia Kotlin/Compose (nieu¿ywane parametry, shadowed extensions).","next":"Lumen ma przygotowaæ poprawki w app/feature modu³ach i potwierdziæ czystoœæ builda.","tags":["lint","compose"]}

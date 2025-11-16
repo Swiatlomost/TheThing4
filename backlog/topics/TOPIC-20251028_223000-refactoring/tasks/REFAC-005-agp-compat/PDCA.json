@@ -1,0 +1,22 @@
+{
+  "plan": [
+    "Zbadać dostępne wersje Android Gradle Plugin kompatybilne z compileSdk 35 i zaplanować upgrade.",
+    "Dostosować gradle.properties (suppressUnsupportedCompileSdk) lub przejść na AGP 8.6+ wraz z wymaganymi wrapperami.",
+    "Zweryfikować build (assembleDebug/bundleRelease) i CI scripts/build_poi_android.sh."
+  ],
+  "do": [],
+  "check": [],
+  "act": [],
+  "links": {
+    "reference": [
+      "docs/reference/release-keys.md",
+      "scripts/build_poi_android.sh"
+    ],
+    "evidence": [
+      "app/build.gradle.kts"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-11-16"
+  }
+}

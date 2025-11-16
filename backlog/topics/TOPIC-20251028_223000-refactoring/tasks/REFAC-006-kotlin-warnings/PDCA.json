@@ -1,0 +1,20 @@
+{
+  "plan": [
+    "Usunąć nieużywane parametry (coreStop/glowStop/context) lub oznaczyć @Suppress lint w app/feature modułach.",
+    "Rozwiązać konfliktujące rozszerzenia (shadowed extension) poprzez zmianę nazw lub wykorzystanie nowych API Compose.",
+    "Uruchomić ./gradlew lintRelease / kotlinc, by upewnić się, że warningi zniknęły."
+  ],
+  "do": [],
+  "check": [],
+  "act": [],
+  "links": {
+    "reference": [
+      "feature/cos-lifecycle/src/main/java/com/thething/cos/lifecycle/CosLifecycleScreen.kt",
+      "feature/morphogenesis/src/main/java/com/thething/cos/morphogenesis/MorphogenesisScreen.kt",
+      "app/src/main/java/com/thething/cos/SkinDemoScreen.kt"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-11-16"
+  }
+}

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <permission
-        android:name="com.example.cos.permission.CONTROL_LIFECYCLE"
+        android:name="com.thething.cos.permission.CONTROL_LIFECYCLE"
         android:protectionLevel="signature"
         android:label="@string/permission_control_lifecycle_label"
         android:description="@string/permission_control_lifecycle_description" />
@@ -10,7 +10,7 @@
         android:name=".CosApplication"
         android:allowBackup="false"
         android:theme="@style/Theme.Cos">
-        <activity android:name="com.example.cos.MainActivity" android:exported="true">
+        <activity android:name="com.thething.cos.MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,13 +20,13 @@
             android:name=".LifecycleStageReceiver"
             android:enabled="true"
             android:exported="true"
-            android:permission="com.example.cos.permission.CONTROL_LIFECYCLE">
+            android:permission="com.thething.cos.permission.CONTROL_LIFECYCLE">
             <intent-filter>
-                <action android:name="com.example.cos.action.SET_STAGE" />
-                <action android:name="com.example.cos.action.SEED" />
-                <action android:name="com.example.cos.action.NARODZINY" />
-                <action android:name="com.example.cos.action.DOJRZEWANIE" />
-                <action android:name="com.example.cos.action.NOWA_KOMORKA" />
+                <action android:name="com.thething.cos.action.SET_STAGE" />
+                <action android:name="com.thething.cos.action.SEED" />
+                <action android:name="com.thething.cos.action.NARODZINY" />
+                <action android:name="com.thething.cos.action.DOJRZEWANIE" />
+                <action android:name="com.thething.cos.action.NOWA_KOMORKA" />
             </intent-filter>
         </receiver>
     </application>
@@ -34,4 +34,6 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
+

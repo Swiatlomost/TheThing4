@@ -12,9 +12,15 @@
   ],
   "check": [
     "Pending prototype data to calibrate thresholds; test-plan requires review with Orin/Lumen.",
-    "Telemetry stream needs alignment with Nodus' gRPC implementation."
+    "Telemetry stream needs alignment with Nodus' gRPC implementation.",
+    "Captured Pixel 5 logcat evidence after native build; test-plan scenario POI-QA-001 updated with reproduce steps.",
+    "Hardware benchmark captured on Xiaomi 13T Pro (API 35); native faster for 5k/10k batches but slower for 1k—track in test-plan evidence.",
+    "Dodano logcat + hash-chain z fizycznego urządzenia do test-plan (artefakty Light Ledger)."
   ],
   "act": [
+    "Monitorować batch'e <2000 (fallback vs JNI) i ustawić alerty zgodnie z POI-QA-001.",
+    "Define regression alert when native avg per hash exceeds fallback for batch <= 1k.",
+    "Plan second-device capture (Pixel 7 / Galaxy S23) to confirm behaviour.",
     "Collaborate with Lumen/Nodus once prototypes available to automate evidence collection.",
     "Kick off synthetic data capture once Light Ledger exports initial batches."
   ],
@@ -30,6 +36,6 @@
     ]
   },
   "meta": {
-    "updated_at": "2025-10-29"
+    "updated_at": "2025-11-01"
   }
 }

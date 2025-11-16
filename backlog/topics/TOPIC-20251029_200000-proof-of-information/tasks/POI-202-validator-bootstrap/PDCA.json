@@ -13,7 +13,10 @@
     "cargo check nie wykonany – narzędzie cargo nie dostępne w środowisku.",
     "Skonfigurowano PROTOC (D:/protoc-33.0-win64) i wykonano cargo check z sukcesem."
   ],
-  "act": [],
+  "act": [
+    "Zaplanuj integrację z CloudHSM (POI-203) – przygotuj interfejs na podpisy hardware.",
+    "Dodaj pipeline CI (Github Actions) uruchamiający testy tokio + fmt/clippy zanim task przejdzie w utrzymanie."
+  ],
   "links": {
     "reference": [
       "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-102-validator-pipeline/validator.proto",
