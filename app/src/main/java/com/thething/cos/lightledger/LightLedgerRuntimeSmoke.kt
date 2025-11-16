@@ -41,11 +41,9 @@ object LightLedgerRuntimeSmoke {
         }
 
         Log.i(TAG, "Native ledger ready; produced ${digest.size}-byte digest.")
-        if (BuildConfig.DEBUG) {
-            LightLedgerBenchmarkRunner.logOnce(enabled = true)
-            CoroutineScope(Dispatchers.Default).launch {
-                demoMerkleProof(context)
-            }
+        LightLedgerBenchmarkRunner.logOnce(enabled = BuildConfig.DEBUG)
+        CoroutineScope(Dispatchers.Default).launch {
+            demoMerkleProof(context)
         }
     }
 

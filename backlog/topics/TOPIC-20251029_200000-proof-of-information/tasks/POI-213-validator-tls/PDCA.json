@@ -11,7 +11,9 @@
   "check": [
     "Logcat i docker logs potwierdzają nawiązanie TLS oraz 401 z Play Integrity (do rozwiązania)."
   ],
-  "act": [],
+  "act": [
+    "Należy przejść z klucza API na konto usługi/OAuth (Play Integrity Verifier) i wdrożyć Bearer token w validatorze zanim wznowimy testy."
+  ],
   "links": {},
   "meta": {
     "updated_at": "2025-11-16"
