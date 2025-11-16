@@ -217,7 +217,7 @@ mod tests {
             .await
             .unwrap()
             .into_inner();
-        assert_eq!(response.status, Status::Accepted.into());
+        assert_eq!(response.status, Status::Accepted as i32);
         assert_eq!(response.reason, "validated");
     }
 
@@ -243,7 +243,7 @@ mod tests {
             .await
             .unwrap()
             .into_inner();
-        assert_eq!(response.status, Status::Rejected.into());
+        assert_eq!(response.status, Status::Rejected as i32);
         assert_eq!(response.reason, "metrics_empty");
     }
 
@@ -257,7 +257,7 @@ mod tests {
             .await
             .unwrap()
             .into_inner();
-        assert_eq!(response.status, Status::Rejected.into());
+        assert_eq!(response.status, Status::Rejected as i32);
         assert_eq!(response.reason, "merkle_mismatch");
     }
 
@@ -271,7 +271,7 @@ mod tests {
             .await
             .unwrap()
             .into_inner();
-        assert_eq!(response.status, Status::Rejected.into());
+        assert_eq!(response.status, Status::Rejected as i32);
         assert!(response.reason.starts_with("signature_invalid"));
     }
 
@@ -285,7 +285,7 @@ mod tests {
             .await
             .unwrap()
             .into_inner();
-        assert_eq!(response.status, Status::Rejected.into());
+        assert_eq!(response.status, Status::Rejected as i32);
         assert_eq!(response.reason, "attestation_missing");
     }
 }

@@ -1,0 +1,14 @@
+{
+  "plan": [
+    "Przygotować środowisko walidatora z publicznym hostem (domena lub IP) i certyfikatem TLS.",
+    "Udokumentować konfigurację docker-compose (.env z VALIDATOR_TLS_CERT/KEY, mount certów).",
+    "Potwierdzić handshake (openssl/grpcurl) oraz Androidowy upload (logcat + docker evidence)."
+  ],
+  "do": [],
+  "check": [],
+  "act": [],
+  "links": {},
+  "meta": {
+    "updated_at": "2025-11-16"
+  }
+}

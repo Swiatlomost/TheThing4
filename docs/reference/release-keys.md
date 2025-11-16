@@ -64,3 +64,22 @@ keytool -export -rfc -alias poi-upload -file poi-upload.pem -keystore upload-key
   - `PLAY_INTEGRITY_API_KEY` – wartość JWT decode (w docker-compose przekazywana z hosta).
   - `PLAY_INTEGRITY_PACKAGE_NAME` – domyślnie `com.thething.cos`.
 - Bez tych zmiennych walidator loguje ostrzeżenie i pomija weryfikację (tylko lokalne dev). Na środowiskach dzielonych ustawiaj zmienne przed `docker compose up validator`.
+
+## 9. Validator TLS (PoI uplink)
+- Walidator obsługuje TLS, gdy zmienne `VALIDATOR_TLS_CERT` oraz `VALIDATOR_TLS_KEY` wskazują na pliki PEM w kontenerze. Brak kompletu skutkuje trybem plaintext (ostrzeżenie w logach) – w środowiskach współdzielonych zawsze ustawiaj certyfikat i klucz.
+- W `validator/docker-compose.yml` dodaj w `.env` np.:
+  ```
+  VALIDATOR_TLS_CERT=/certs/dev-cert.pem
+  VALIDATOR_TLS_KEY=/certs/dev-key.pem
+  ```
+  i zamontuj katalog `validator/certs` jako wolumen tylko do odczytu.
+- Przykładowe wygenerowanie samopodpisanego certyfikatu z użyciem Dockera (bez lokalnego OpenSSL):
+  ```bash
+  docker run --rm -v ${PWD}/validator/certs:/certs alpine/openssl \
+    req -x509 -nodes -newkey rsa:2048 \
+    -keyout /certs/dev-key.pem \
+    -out /certs/dev-cert.pem \
+    -subj "/CN=poi-validator" \
+    -days 365
+  ```
+- Androidowy klient ma pole `BuildConfig.VALIDATOR_USE_TLS`; release domyślnie ma `true`, debug `false`. Zachowanie można nadpisać poprzez właściwości Gradle (`-PpoiValidatorUseTls=false`, `-PpoiValidatorDebugUseTls=true`) albo zmienne środowiskowe `POI_VALIDATOR_USE_TLS` / `POI_VALIDATOR_DEBUG_USE_TLS`.

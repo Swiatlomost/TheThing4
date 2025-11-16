@@ -1,0 +1,2 @@
+{"ts": "2025-11-16T14:03:33", "who": "Nodus", "why": "Scaffold task", "what": "Validator TLS uplink", "next": "Fill PDCA and start work", "tags": ["scaffold"]}
+{"ts": "2025-11-16T14:04:08", "who": "Lumen", "why": "Scaffolding POI-213", "what": "Zadanie dodane po zamknięciu POI-212 – zakres: host/cert TLS dla walidatora, konfiguracja docker-compose i evidence handshake.", "next": "Zebrać wymagania na host/domenę z Orin/Nodus i przygotować plan wdrożenia TLS.", "tags": ["planning", "tls"]}

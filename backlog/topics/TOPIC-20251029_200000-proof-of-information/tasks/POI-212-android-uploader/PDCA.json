@@ -3,15 +3,22 @@
     "Dodać plugin protobuf i zależności gRPC",
     "Wygenerować stuby z proto/validator.proto (lite)",
     "Dodać BatchUploader i debug trigger (10.0.2.2)",
-    "Przełączyć na TLS + WorkManager po POI-211"
+    "Przełączyć na TLS + WorkManager po POI-211",
+    "TLS: BuildConfig flag + kanał TLS w Androidzie oraz ServerTlsConfig sterowany ENV (docker-compose + dokumentacja).",
+    "WorkManager: worker z retry/backoff, scheduler z Constraints CONNECTED i wyzwalanie z LightLedgerRuntimeSmoke."
   ],
   "do": [
     "Dodano plugin protobuf/gRPC w app/build.gradle.kts i zależności (grpc-okhttp, protobuf-lite).",
     "Skopiowano validator.proto do app/src/main/proto i wygenerowano stuby lite.",
     "Utworzono BatchUploader (10.0.2.2:50051) i wywołanie dev uploadu w LightLedgerRuntimeSmoke.",
-    "Potwierdzono na emulatorze Pixel 5: logcat pokazuje STATUS_ACCEPTED, walidator przyjął batch (nowy build natywny)."
+    "Potwierdzono na emulatorze Pixel 5: logcat pokazuje STATUS_ACCEPTED, walidator przyjął batch (nowy build natywny).",
+    "Dodano BuildConfig flagę TLS, przełącznik kanału (plaintext/TLS), walidatorowy ServerTlsConfig z ENV + docker/env/docs i katalogiem certs.",
+    "Zaimplementowano WorkManagerowy pipeline (payload, worker, scheduler), obsługę wyjątków w BatchUploader oraz wpięcie do LightLedgerRuntimeSmoke."
   ],
-  "check": [],
+  "check": [
+    "Gradle :app:assembleDebug przechodzi z nowymi zależnościami (WorkManager + TLS).",
+    "validator cargo test przechodzi z TLS (tonic tls feature)."
+  ],
   "act": [],
-  "meta": {"updated_at": "2025-11-02"}
+  "meta": {"updated_at": "2025-11-16"}
 }

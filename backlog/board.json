@@ -734,7 +734,7 @@
         "log": "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-212-android-uploader/log.jsonl"
       },
       "title": "Android gRPC uploader (debug-to-prod)",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "id": "REFAC-005-agp-compat",
@@ -749,6 +749,13 @@
       "topic": "TOPIC-20251028_223000-refactoring",
       "status": "pending",
       "owner": "Lumen"
+    },
+    {
+      "id": "POI-213-validator-tls",
+      "title": "Validator TLS uplink",
+      "topic": "TOPIC-20251029_200000-proof-of-information",
+      "status": "pending",
+      "owner": "Nodus"
     }
   ],
   "_docs": "Board (under backlog/) is the single source of truth for task status."

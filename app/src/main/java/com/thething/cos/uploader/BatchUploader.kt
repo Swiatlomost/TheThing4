@@ -30,18 +30,26 @@ object BatchUploader {
         timestampMs: Long,
         deviceId: String = "EMU-PIXEL5"
     ) {
-        val channel: ManagedChannel = OkHttpChannelBuilder
+        val builder = OkHttpChannelBuilder
             .forAddress(BuildConfig.VALIDATOR_HOST, BuildConfig.VALIDATOR_PORT)
-            .usePlaintext()
-            .build()
+        if (BuildConfig.VALIDATOR_USE_TLS) {
+            builder.useTransportSecurity()
+        } else {
+            builder.usePlaintext()
+        }
+        Log.d(
+            TAG,
+            "Connecting to ${BuildConfig.VALIDATOR_HOST}:${BuildConfig.VALIDATOR_PORT} tls=${BuildConfig.VALIDATOR_USE_TLS}"
+        )
+        val channel: ManagedChannel = builder.build()
+        val stub = PoIValidatorGrpc.newBlockingStub(channel)
         try {
-            val stub = PoIValidatorGrpc.newBlockingStub(channel)
 
             val nonce = generateNonce(deviceId, merkleRootBase64, timestampMs)
             val integrityToken = PlayIntegrityTokenProvider.obtain(context, nonce)
             if (integrityToken.isNullOrBlank()) {
                 Log.w(TAG, "Play Integrity token unavailable; upload skipped")
-                return
+                throw UploadSkippedException("integrity_token_unavailable")
             }
             Log.i(TAG, "Integrity token obtained (nonce=$nonce)")
 
@@ -79,6 +87,7 @@ object BatchUploader {
             )
         } catch (t: Throwable) {
             Log.e(TAG, "Upload failed", t)
+            throw t
         } finally {
             channel.shutdownNow()
         }
@@ -96,3 +105,5 @@ private fun generateNonce(deviceId: String, merkleRootBase64: String, timestampM
     val hash = digest.digest(input.toByteArray(Charsets.UTF_8))
     return Base64.getUrlEncoder().withoutPadding().encodeToString(hash)
 }
+
+class UploadSkippedException(message: String) : Exception(message)
