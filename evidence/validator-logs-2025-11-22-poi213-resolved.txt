@@ -1,0 +1,63 @@
+POI-213 Resolution Evidence
+===========================
+Date: 2025-11-22T13:09:12Z
+Device: Xiaomi 13T Pro (23078PND5G)
+Validator: validator.poi-lab.pl:443 (TLS)
+Build: Release from Google Play (internal track)
+
+Issue
+-----
+Release builds from Google Play failed with attestation_invalid_nonce_mismatch
+Debug builds worked fine through adb reverse
+
+Root Cause
+----------
+Base64 padding mismatch:
+- Client (Android): Base64 URL-safe no-padding (43 chars, no trailing '=')
+- Play Integrity API: Base64 standard with padding (44 chars, with trailing '=')
+
+Example:
+  expected='6v0mU5-uNuvuIh6mTVWtIWJrc7kRpkG698xubmrjUis'  (len=43)
+  token=   '6v0mU5-uNuvuIh6mTVWtIWJrc7kRpkG698xubmrjUis=' (len=44)
+                                                        ^^^
+
+Fix
+---
+Normalize both nonces by removing trailing '=' before comparison:
+  let expected_normalized = expected_nonce.trim_end_matches('=');
+  let token_normalized = nonce.trim_end_matches('=');
+
+Deployment
+----------
+Commits:
+- 4997e21: debug(poi-213): add NONCE_DEBUG logging for nonce mismatch analysis
+- 2484fdc: fix(poi-213): normalize nonce Base64 padding before comparison
+
+Deployed to: validator.poi-lab.pl:443
+Method: git pull + docker-compose build + docker-compose up -d
+
+Verification Logs
+-----------------
+validator_1  | 2025-11-22T13:08:51.229559Z  INFO poi_validator: Starting PoI validator on 0.0.0.0:50051
+validator_1  | 2025-11-22T13:08:51.229985Z  INFO poi_validator: TLS enabled for validator gRPC endpoint
+validator_1  | 2025-11-22T13:09:12.681794Z  INFO poi_validator::service: Received batch: device_id=23078PND5G, entries=1, merkle_root=0w4eLiOpaB+1ps0EFEIoTvRuJ+eAKrnaQD6I6qEJeA0=
+validator_1  | 2025-11-22T13:09:12.786660Z  WARN poi_validator::play_integrity: NONCE_DEBUG: expected='6v0mU5-uNuvuIh6mTVWtIWJrc7kRpkG698xubmrjUis' (len=43), token='6v0mU5-uNuvuIh6mTVWtIWJrc7kRpkG698xubmrjUis=' (len=44), match=false
+validator_1  | 2025-11-22T13:09:12.786781Z  INFO poi_validator::service: Batch validated: device_id=23078PND5G, merkle_root=0w4eLiOpaB+1ps0EFEIoTvRuJ+eAKrnaQD6I6qEJeA0=
+
+Result
+------
+✅ STATUS_ACCEPTED
+✅ Batch validated successfully
+✅ Release build from Google Play now works with Play Integrity verification
+
+Impact
+------
+- POI-213 (Validator TLS uplink): RESOLVED after 6 days in_progress
+- POI-103 (Quality framework): UNBLOCKED after 21 days waiting
+- PoI milestone: 14/16 done (87.5%)
+
+Next Steps
+----------
+- Monitor production for 1-2 days
+- Consider removing NONCE_DEBUG logging after stable verification
+- Resume POI-103 (Kai - quality framework)

@@ -23,6 +23,11 @@ android {
     val uploadKeyPassword = project.propOrEnv("poiUploadKeyPassword")
     val validatorHostDefault = project.propOrEnv("poiValidatorHost") ?: "10.0.2.2"
     val validatorPortDefault = (project.propOrEnv("poiValidatorPort") ?: "50051").toInt()
+    val validatorUseTlsDefault = (project.propOrEnv("poiValidatorUseTls") ?: "true").toBoolean()
+    val debugValidatorHost =
+        project.propOrEnv("poiValidatorDebugHost") ?: "validator.poi-lab.pl"
+    val debugValidatorPort = (project.propOrEnv("poiValidatorDebugPort") ?: "443").toInt()
+    val debugValidatorUseTls = (project.propOrEnv("poiValidatorDebugUseTls") ?: "true").toBoolean()
     val requiresUploadSigning = gradle.startParameter.taskNames.any { it.contains("Release", ignoreCase = true) }
 
     signingConfigs {
@@ -65,11 +70,12 @@ android {
         applicationId = "com.thething.cos"
         minSdk = 26
         targetSdk = 35
-        versionCode = 2
-        versionName = "1.1"
+        versionCode = 5
+        versionName = "1.4"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "VALIDATOR_HOST", "\"$validatorHostDefault\"")
         buildConfigField("int", "VALIDATOR_PORT", "$validatorPortDefault")
+        buildConfigField("boolean", "VALIDATOR_USE_TLS", validatorUseTlsDefault.toString())
     }
 
     buildTypes {
@@ -82,10 +88,12 @@ android {
             signingConfig = signingConfigs.getByName("upload")
             buildConfigField("String", "VALIDATOR_HOST", "\"$validatorHostDefault\"")
             buildConfigField("int", "VALIDATOR_PORT", "$validatorPortDefault")
+            buildConfigField("boolean", "VALIDATOR_USE_TLS", validatorUseTlsDefault.toString())
         }
         debug {
-            buildConfigField("String", "VALIDATOR_HOST", "\"127.0.0.1\"")
-            buildConfigField("int", "VALIDATOR_PORT", "50051")
+            buildConfigField("String", "VALIDATOR_HOST", "\"$debugValidatorHost\"")
+            buildConfigField("int", "VALIDATOR_PORT", debugValidatorPort.toString())
+            buildConfigField("boolean", "VALIDATOR_USE_TLS", debugValidatorUseTls.toString())
         }
     }
 
@@ -127,6 +135,7 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
 
     implementation("com.google.dagger:hilt-android:2.51")
     kapt("com.google.dagger:hilt-android-compiler:2.51")

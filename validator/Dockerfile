@@ -14,7 +14,7 @@ COPY validator/src ./validator/src
 WORKDIR /workspace/validator
 RUN cargo build --release
 
-FROM debian:12-slim AS runtime
+FROM rustlang/rust:${RUST_VERSION} AS runtime
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=builder /workspace/validator/target/release/poi-validator /usr/local/bin/validator

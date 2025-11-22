@@ -1,11 +1,14 @@
 package com.thething.cos.lightledger
 
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import com.thething.cos.BuildConfig
 import com.thething.cos.lightledger.internal.LightLedgerBenchmarkRunner
 import com.thething.cos.lightledger.internal.LightLedgerRepository
 import com.thething.cos.lightledger.internal.LightLedgerSigner
+import com.thething.cos.uploader.BatchUploadPayload
+import com.thething.cos.uploader.BatchUploadScheduler
 import com.thething.cos.lightledger.model.SessionFingerprint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,11 +41,9 @@ object LightLedgerRuntimeSmoke {
         }
 
         Log.i(TAG, "Native ledger ready; produced ${digest.size}-byte digest.")
-        if (BuildConfig.DEBUG) {
-            LightLedgerBenchmarkRunner.logOnce(enabled = true)
-            CoroutineScope(Dispatchers.Default).launch {
-                demoMerkleProof(context)
-            }
+        LightLedgerBenchmarkRunner.logOnce(enabled = BuildConfig.DEBUG)
+        CoroutineScope(Dispatchers.Default).launch {
+            demoMerkleProof(context)
         }
     }
 
@@ -80,19 +81,22 @@ object LightLedgerRuntimeSmoke {
         Log.i(TAG, "Ledger signer public key (Base64 X.509): $publicKeyBase64")
 
         // Dev-only: upload to local validator on host
-        if (BuildConfig.DEBUG) {
-            try {
-                com.thething.cos.uploader.BatchUploader.submitSingle(
-                    context = context,
-                    merkleRootBase64 = snapshot.merkleRootBase64,
-                    hashBase64 = hashBase64,
-                    signatureBase64 = signatureBase64,
-                    publicKeyBase64 = publicKeyBase64,
-                    timestampMs = System.currentTimeMillis()
-                )
-            } catch (t: Throwable) {
-                Log.w(TAG, "Dev upload skipped", t)
-            }
+        val payload = BatchUploadPayload(
+            merkleRootBase64 = snapshot.merkleRootBase64,
+            hashBase64 = hashBase64,
+            signatureBase64 = signatureBase64,
+            publicKeyBase64 = publicKeyBase64,
+            timestampMs = System.currentTimeMillis(),
+            deviceId = Build.MODEL ?: "UNKNOWN"
+        )
+        try {
+            BatchUploadScheduler.enqueue(
+                context = context,
+                payload = payload,
+                expedite = BuildConfig.DEBUG
+            )
+        } catch (t: Throwable) {
+            Log.w(TAG, "Batch upload scheduling failed", t)
         }
     }
 }

@@ -4,14 +4,22 @@ services:
       context: ..
       dockerfile: validator/Dockerfile
     image: poi-validator:dev
+    env_file:
+      - .env
     ports:
       - "50051:50051"
+      - "443:50051"
     environment:
-      RUST_LOG: info
+      RUST_LOG: debug
       PLAY_INTEGRITY_API_KEY: ${PLAY_INTEGRITY_API_KEY:-}
       PLAY_INTEGRITY_PACKAGE_NAME: ${PLAY_INTEGRITY_PACKAGE_NAME:-com.thething.cos}
+      VALIDATOR_TLS_CERT: ${VALIDATOR_TLS_CERT:-}
+      VALIDATOR_TLS_KEY: ${VALIDATOR_TLS_KEY:-}
     depends_on:
       - softhsm
+    volumes:
+      - ./src:/app/src
+      - /etc/letsencrypt:/certs:ro
 
   softhsm:
     build:

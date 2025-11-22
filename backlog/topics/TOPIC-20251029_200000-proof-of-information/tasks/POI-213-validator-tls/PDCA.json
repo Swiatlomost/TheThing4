@@ -1,0 +1,39 @@
+{
+  "plan": [
+    "Przygotować środowisko walidatora z publicznym hostem (domena lub IP) i certyfikatem TLS.",
+    "Udokumentować konfigurację docker-compose (.env z VALIDATOR_TLS_CERT/KEY, mount certów).",
+    "Potwierdzić handshake (openssl/grpcurl) oraz Androidowy upload (logcat + docker evidence).",
+    "Rozwiązać Play Integrity OAuth i nonce validation dla release builds."
+  ],
+  "do": [
+    "Uruchomiono walidator TLS na Hetznerze (certbot + docker-compose, port 443) i potwierdzono handshake (openssl, grpcurl).",
+    "Android debug build przełączony na validator.poi-lab.pl:443 z wymuszonym TLS; zebrano logcat + docker evidence.",
+    "Wdrożono OAuth (service account + Bearer token) dla Play Integrity API - 401 resolved.",
+    "Release build z Google Play wykrył nonce mismatch - added NONCE_DEBUG logging.",
+    "Root cause: Base64 padding mismatch (client: 43 chars no-padding, Play Integrity: 44 chars with-padding).",
+    "Fix: Normalizacja nonce przez trim_end_matches('=') przed porównaniem.",
+    "Deploy fix na validator.poi-lab.pl - verified with release build."
+  ],
+  "check": [
+    "TLS handshake: ✅ (openssl, grpcurl)",
+    "OAuth authentication: ✅ (service account)",
+    "Release build upload: ✅ (STATUS_ACCEPTED)",
+    "Evidence: evidence/validator-logs-2025-11-22-poi213-resolved.txt",
+    "Nonce validation: ✅ (Base64 padding normalized)"
+  ],
+  "act": [
+    "POI-213 done - TLS uplink operational with Play Integrity verification.",
+    "Consider removing NONCE_DEBUG logging after 1-2 days of stable production.",
+    "Next: Resume POI-103 (quality framework) - now unblocked."
+  ],
+  "links": {
+    "evidence": "evidence/validator-logs-2025-11-22-poi213-resolved.txt",
+    "commits": [
+      "4997e21 - debug: add NONCE_DEBUG logging",
+      "2484fdc - fix: normalize nonce Base64 padding"
+    ]
+  },
+  "meta": {
+    "updated_at": "2025-11-22"
+  }
+}

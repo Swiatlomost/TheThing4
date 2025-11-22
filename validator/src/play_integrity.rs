@@ -1,9 +1,10 @@
-use once_cell::sync::Lazy;
+use gcp_auth::AuthenticationManager;
 use reqwest::Client;
 use serde::Deserialize;
 use std::sync::atomic::{AtomicBool, Ordering};
 
-static WARNED_MISSING_KEY: AtomicBool = AtomicBool::new(false);
+static WARNED_MISSING_CREDS: AtomicBool = AtomicBool::new(false);
+const PLAY_SCOPE: &str = "https://www.googleapis.com/auth/playintegrity";
 
 pub struct PlayIntegrityClient {
     http: Client,
@@ -12,8 +13,9 @@ pub struct PlayIntegrityClient {
 
 #[derive(Clone)]
 struct PlayIntegrityConfig {
-    api_key: String,
+    api_key: Option<String>,
     package_name: String,
+    use_oauth: bool,
 }
 
 impl PlayIntegrityClient {
@@ -22,17 +24,29 @@ impl PlayIntegrityClient {
             .build()
             .expect("failed to build reqwest client");
         let api_key = std::env::var("PLAY_INTEGRITY_API_KEY").ok();
-        if api_key.is_none() && !WARNED_MISSING_KEY.swap(true, Ordering::SeqCst) {
-            tracing::warn!("PLAY_INTEGRITY_API_KEY not set; attestation verification is disabled");
+        let use_oauth = std::env::var("PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON")
+            .ok()
+            .map(|path| {
+                std::env::set_var("GOOGLE_APPLICATION_CREDENTIALS", path);
+                true
+            })
+            .unwrap_or(false);
+        if api_key.is_none() && !use_oauth && !WARNED_MISSING_CREDS.swap(true, Ordering::SeqCst) {
+            tracing::warn!("Play Integrity credentials missing: set PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON or PLAY_INTEGRITY_API_KEY");
         }
         let package_name = std::env::var("PLAY_INTEGRITY_PACKAGE_NAME")
             .unwrap_or_else(|_| "com.thething.cos".into());
         Self {
             http,
-            config: api_key.map(|key| PlayIntegrityConfig {
-                api_key: key,
-                package_name,
-            }),
+            config: if api_key.is_none() && !use_oauth {
+                None
+            } else {
+                Some(PlayIntegrityConfig {
+                    api_key,
+                    package_name,
+                    use_oauth,
+                })
+            },
         }
     }
 
@@ -41,18 +55,40 @@ impl PlayIntegrityClient {
             return Ok(());
         };
         let url = format!(
-            "https://playintegrity.googleapis.com/v1/{}:decodeIntegrityToken?key={}",
-            config.package_name, config.api_key
+            "https://playintegrity.googleapis.com/v1/{}:decodeIntegrityToken",
+            config.package_name
         );
-        let response = self
+        let mut request = self
             .http
             .post(url)
-            .json(&serde_json::json!({ "integrity_token": token }))
+            .json(&serde_json::json!({ "integrity_token": token }));
+        if config.use_oauth {
+            let manager = AuthenticationManager::new()
+                .await
+                .map_err(|err| format!("decode_oauth_init_error:{}", err))?;
+            let bearer = manager
+                .get_token(&[PLAY_SCOPE])
+                .await
+                .map_err(|err| format!("decode_oauth_error:{}", err))?;
+            request = request.bearer_auth(bearer.as_str());
+        } else if let Some(api_key) = &config.api_key {
+            request = request.query(&[("key", api_key)]);
+        } else {
+            return Err("play_integrity_credentials_missing".into());
+        }
+        let response = request
             .send()
             .await
             .map_err(|err| format!("decode_http_error:{}", err))?;
         if !response.status().is_success() {
-            return Err(format!("decode_http_status:{}", response.status()));
+            let status = response.status();
+            let body = response.text().await.unwrap_or_default();
+            tracing::warn!(
+                "PlayIntegrity decode failed: status={} body={}",
+                status,
+                body
+            );
+            return Err(format!("decode_http_status:{} body={}", status, body));
         }
         let payload: DecodeResponse = response
             .json()
@@ -65,7 +101,28 @@ impl PlayIntegrityClient {
             .request_details
             .ok_or_else(|| "request_details_missing".to_string())?;
         let nonce = request.nonce.ok_or_else(|| "nonce_missing".to_string())?;
-        if nonce != expected_nonce {
+
+        // NONCE DEBUG: dual-side logging for POI-213
+        tracing::warn!(
+            "NONCE_DEBUG: expected='{}' (len={}), token='{}' (len={}), match={}",
+            expected_nonce,
+            expected_nonce.len(),
+            nonce,
+            nonce.len(),
+            nonce == expected_nonce
+        );
+
+        // POI-213 FIX: Normalize nonce by removing Base64 padding
+        // Client sends Base64 URL-safe no-padding, Play Integrity returns with padding
+        let expected_normalized = expected_nonce.trim_end_matches('=');
+        let token_normalized = nonce.trim_end_matches('=');
+
+        if token_normalized != expected_normalized {
+            tracing::warn!(
+                "NONCE_MISMATCH: after normalization: expected='{}', token='{}'",
+                expected_normalized,
+                token_normalized
+            );
             return Err("nonce_mismatch".into());
         }
         let app = external

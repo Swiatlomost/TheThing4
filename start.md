@@ -20,10 +20,57 @@ Goal: load a compact, actionable context so you can work effectively with this r
 - Intent tags: `[TASK::ANALYZE]`, `[TASK::BUILD]`, `[TASK::REVIEW]`, `[TASK::LOG]`
 - Reply modes: `[MODE::PRO]` (concise, actionable), `[MODE::META]` (reflective)
 
+## Guard Rails (Hygiene) - RUN FIRST
+
+Before starting work on ANY task, ALWAYS run hygiene check:
+```bash
+python scripts/check_hygiene.py
+```
+
+If hygiene check fails, **address issues FIRST** before new work:
+
+1. **Memory staleness (>7 days)**:
+   - Read recent PDCA.json + log.jsonl for stale agents
+   - Update their context/insights/todos/risks
+   - Update last_updated to today
+
+2. **Long in_progress (>7 days)**:
+   - Review with Orin: break down or checkpoint?
+   - Update PDCA with interim progress
+   - Consider architectural review (Vireal) if blocked
+
+3. **Chronicle gap (>14 days)**:
+   - Identify recent done tasks not in chronicle
+   - Write milestone entry (Scene, Plot Beats, Artefacts, Cliffhanger)
+   - Or escalate to Scribe
+
 ## Session Ritual (LLM)
-1. Validate structure: `python scripts/validate.py` (report only)
-2. Update index: `python scripts/update_backlog_index.py`
-3. If instructed to start work: promote first `pending` (nondeferred) with `[SESSION::START]` (hook calls `scripts/session_start_hook.ps1`). By default we keep backlog idle.
+1. **NEW: Check hygiene: `python scripts/check_hygiene.py`** (address issues first)
+2. Validate structure: `python scripts/validate.py` (report only)
+3. Update index: `python scripts/update_backlog_index.py`
+4. If instructed to start work: promote first `pending` (non-deferred) with `[SESSION::START]` (hook calls `scripts/session_start_hook.ps1`). By default we keep backlog idle.
+
+## Architectural Review Trigger
+
+If you encounter a blocker that:
+- Persists >3 debugging attempts, OR
+- Suggests architectural issue (e.g., WorkManager conflicts with nonce freshness), OR
+- Requires changes to core assumptions
+
+**STOP debugging and:**
+1. Tag `[ARCH::REVIEW]` in log.jsonl
+2. Notify Vireal + Echo (add to their memory todos)
+3. Wait for architectural decision before implementing patch
+
+Example:
+```json
+{
+  "why": "3 attempts failed, suggests architectural conflict",
+  "what": "[ARCH::REVIEW] WorkManager retry conflicts with nonce freshness",
+  "next": "Wait for Vireal architectural decision",
+  "tags": ["arch-review", "blocker"]
+}
+```
 
 ## Working on a Topic / Task
 - Discover topics: open `backlog/backlog.json` or `backlog/board.json`
@@ -89,110 +136,5 @@ Goal: load a compact, actionable context so you can work effectively with this r
 - Memory: `agents/memory.json`
 - Chronicle: `reports/chronicle.md`
 - ROI updates: `docs/ai-first-development-roi-20251029.md`
-
-If you need me to scaffold a new topic or tasks, reply with area name, short WHY/WHAT, and owners; I will create the JSON files, link them in the board, and build a context bundle.
-
-
-
-# Start Prompt for LLM - Backlog-First Workflow
-
-Note: See BACKLOG_VISION.md for the backlog structure (globals -> topics -> tasks). All topics live under backlog/topics/.
-
-Goal: load a compact, actionable context so you can work effectively with this repository using our lean, backlog-first process.
-
-## Load Context (once per session)
-- Read: `README.md`, `PROJECT_CONTEXT.md`, `AGENTS.md`, `WORKFLOW.md`, `AI_GUIDE.md`, `MEMORY_SPEC.md`.
-- Prefer backlog files as the source of truth:
-  - Board: `backlog/board.json`
-  - Topics: `backlog/topics/TOPIC-.../`
-  - Topic meta: `topic.json`, `BRIEF-*.json`, `PDCA.json`, `test-plan.json`, `event-checklist.json`
-  - Task meta: `tasks/<TASK-ID>/{task.json, PDCA.json, log.jsonl}`
-- Central team memory: `agents/memory.json` (map `agents.{Name}`)
-- Chronicle: `reports/chronicle.md`
-
-## Roles, Tags, Modes
-- Address agents via tags: `[AGENT::NAME]` (Orin, Echo, Vireal, Lumen, Kai, Scribe, Nyx, Nodus, Aurum, Mira)
-- Intent tags: `[TASK::ANALYZE]`, `[TASK::BUILD]`, `[TASK::REVIEW]`, `[TASK::LOG]`
-- Reply modes: `[MODE::PRO]` (concise, actionable), `[MODE::META]` (reflective)
-
-## Session Ritual (LLM)
-1. Validate structure: `python scripts/validate.py` (report only)
-2. Update index: `python scripts/update_backlog_index.py`
-3. If instructed to start work: promote first `pending` (non-deferred) with `[SESSION::START]` (hook calls `scripts/session_start_hook.ps1`). By default we keep backlog idle.
-
-## Working on a Topic / Task
-- Discover topics: open `backlog/backlog.json` or `backlog/board.json`
-- Build context bundle (read-only snapshot for you / tools):
-  - Topic: `python scripts/context.py topic <TOPIC-ID>`
-  - Task: `python scripts/context.py task <TASK-ID>`
-- For a task you own:
-  - PDCA: edit `backlog/topics/<TOPIC-ID>/tasks/<TASK-ID>/PDCA.json`
-  - Log entries: append to `log.jsonl` via:
-    - `python scripts/log_add.py <TOPIC-ID> <TASK-ID> --who <Agent> --why "..." --what "..." --next "..." --tags tag1,tag2`
-  - Status transitions (by Orin or on request):
-    - `python scripts/board.py move <TASK-ID> in_progress|done`
-
-## JSON Conventions
-- `PDCA.json` keys: `plan`, `do`, `check`, `act`, `links`, `meta.updated_at`
-- `log.jsonl` (one JSON per line): `{ "ts": "YYYY-MM-DDTHH:MM:SS", "who": "Kai", "why": "...", "what": "...", "next": "...", "tags": ["checkpoint"] }`
-- Topic support files: `BRIEF-*.json`, `test-plan.json`, `event-checklist.json`, and local redirect stubs `ADR.json`, `UX.json`, `UI.json` (point to canonical docs under `docs/` or code paths).
-
-## Guard Rails
-- Single source of truth for work: `backlog/board.json`. Do not use legacy `agents/status.json` or per-agent `task.json`.
-- Keep 'Why -> What -> Next' visible in logs and PDCA.
-- Favor minimal, verifiable increments; avoid broad refactors unless asked.
-- Archival copies live under `archive/legacy/` (read-only for context).
-
-## Useful Commands (cheat-sheet)
-- Validate: `python scripts/validate.py`
-- Validate + scaffold missing: `python scripts/validate.py --scaffold`
-- Index: `python scripts/update_backlog_index.py`
-- Build context: `python scripts/context.py task <TASK-ID>`
-- Board list/move/add: `python scripts/board.py ls|move|add ...`
-- Append log: `python scripts/log_add.py <TOPIC-ID> <TASK-ID> --who ... --why ... --what ... --next ...`
-- Edit PDCA: `python scripts/pdca_edit.py topic|task <TOPIC-ID> [<TASK-ID>] --add plan|do|check|act "text"`
-- Hooks setup (git): `pwsh scripts/setup_hooks.ps1`
-- Scaffold topic: `python scripts/scaffold_topic.py --id TOPIC-YYYYMMDD_HHMMSS-XXX --title "..." --area <area> --owners Orin,Echo`
-- Scaffold task: `python scripts/scaffold_task.py <TASK-ID> --topic <TOPIC-ID> --title "..." --owner <Owner> [--status pending]`
-
-## Quick Start (scaffold)
-1. Create a topic:
-   - `python scripts/scaffold_topic.py --id TOPIC-20251101_090000-onboarding --title "Onboarding" --area okno-glowne --owners Orin,Echo`
-2. Add a task to the topic:
-   - `python scripts/scaffold_task.py ONB-001 --topic TOPIC-20251101_090000-onboarding --title "Welcome flow" --owner Lumen`
-3. Validate and index:
-   - `python scripts/validate.py --scaffold`
-   - `python scripts/update_backlog_index.py`
-4. Build context:
-   - `python scripts/context.py task ONB-001`
-
-## Typical Flows
-- Refinement with Mira
-  - `[AGENT::MIRA] [TASK::ANALYZE]` gather WHY/WHAT/HOW/WHAT_IF -> create/update `BRIEF-*.json`
-  - Draft `topic.json` + `PDCA.json`; add `UX.json`/`ADR.json` stubs
-  - Orin adds tasks into `backlog/board.json` (tag `refinement`)
-- Implementation with Lumen
-  - Build task context -> fill `PDCA.json` -> append `log.jsonl` for each checkpoint
-  - Request move to `in_progress` / `done` via board script
-- QA with Kai / CI with Nodus
-  - Maintain `test-plan.json` / `event-checklist.json`; log sanity evidence in `log.jsonl`
-- Documentation with Scribe
-  - Add chapter to `reports/chronicle.md` citing files with path references
-
-## When to Ask
-- Clarify ambiguous acceptance criteria before coding.
-- Escalate via `[CONFLICT]` with options and a preferred recommendation.
-
-## Commit Messages (LLM style)
-- Prefix with the smallest scope (topic/task), summarize intent, list key files touched. Example:
-  - `feat(morpho/MORPHO-008): autosort heuristics + tests; update PDCA/log`
-
-## Quick Pointers (clickable)
-- Board: `backlog/board.json`
-- Index: `backlog/backlog.json`
-- Example topic: `backlog/topics/TOPIC-20251025_120000-001/topic.json`
-- Example task: `backlog/topics/TOPIC-20251025_120000-001/tasks/MORPHO-008-autosort/PDCA.json`
-- Memory: `agents/memory.json`
-- Chronicle: `reports/chronicle.md`
 
 If you need me to scaffold a new topic or tasks, reply with area name, short WHY/WHAT, and owners; I will create the JSON files, link them in the board, and build a context bundle.
