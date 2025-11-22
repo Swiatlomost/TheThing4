@@ -549,8 +549,9 @@
       "id": "POI-103-quality-framework",
       "title": "Define PoI quality & test framework",
       "topic": "TOPIC-20251029_200000-proof-of-information",
-      "status": "in_progress",
+      "status": "done",
       "owner": "Kai",
+      "closed_at": "2025-11-22",
       "tags": [
         "implementation",
         "quality"
