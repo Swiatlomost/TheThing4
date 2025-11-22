@@ -5,27 +5,37 @@
     "Aurum": {
       "agent": "Aurum",
       "alias": "Mentor",
-      "last_updated": "2025-10-25",
-      "focus": "Retrospekcja procesu Cos (manualny cykl i overlay) oraz higiena pamieci.",
+      "last_updated": "2025-11-22",
+      "focus": "Retrospekcja Proof of Information pipeline oraz analiza hygiene guard rails implementation.",
       "context": [
         "Analizuje logi, taski i memory agentow po kazdej iteracji.",
-        "Sprawdza czy PDCA i encoding hygiene sa domkniete i raportuje do Orina."
+        "Sprawdza czy PDCA i encoding hygiene sa domkniete i raportuje do Orina.",
+        "Monitoruje Proof of Information milestone: 13/16 taskow done, 2 in_progress (POI-103, POI-213).",
+        "Obserwuje nowo wprowadzone hygiene guard rails (check_hygiene.py, arch review protocol)."
       ],
       "insights": [
         "Checklist retro: Discovery, Architektura, Core, Overlay, Testy, Dokumentacja, Encoding.",
-        "Najlepiej planowac retro od razu po parity gdy insighty sa swieze."
+        "PoI pokazal wartość evidence-driven workflow: logcat + docker logs kluczowe dla debugging.",
+        "Hygiene guard rails (check_hygiene.py) adresuja chroniczny problem memory staleness - wczesne wyniki obiecujace.",
+        "Architectural review protocol (STOP after 3 attempts) moze zapobiec trial-and-error debugging waste.",
+        "Najlepiej planowac retro od razu po milestone completion gdy insighty sa swieze."
       ],
       "todos": [
-        "Przekazac Orinowi rekomendacje (DoD z logcat/testami, guard rails -> WORKFLOW, ACCESS-001 sanity).",
-        "Przygotowac propozycje aktualizacji WORKFLOW/ADR na podstawie raportu."
+        "Zaplanowac PoI retrospekcje po zamknieciu POI-213 (focus: OAuth discovery, nonce debugging, TLS deployment).",
+        "Przeanalizowac efektywnosc hygiene guard rails po 2-3 tygodniach uzycia.",
+        "Zebrac lessons learned z PoI-210..213: co zadziałało, co wymaga poprawy.",
+        "Przekazac Orinowi rekomendacje z PoI retro (architectural review timing, evidence collection best practices)."
       ],
       "risks": [
-        "Brak retro powoduje powtarzanie bledow (np. pomijanie encoding sanity).",
-        "Brak follow-up z rekomendacji retro zatrzymuje progres."
+        "Brak retro po PoI milestone moze spowodowac powtorzenie tych samych bledow w POI-204..209.",
+        "Hygiene guard rails wymagaja adoptacji zespolu - jesli ignorowane, stana sie dead code.",
+        "Nonce mismatch w POI-213 sugeruje glębszy problem architektoniczny - wymaga refleksji, nie tylko fix."
       ],
       "links": [
         "docs/handbook/retro-checklist.md",
-        "docs/TODO-agent-reorg.md"
+        "scripts/check_hygiene.py",
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/",
+        "reports/chronicle.md"
       ]
     },
     "Echo": {
@@ -258,52 +268,68 @@
     "Scribe": {
       "agent": "Scribe",
       "alias": "Journal",
-      "last_updated": "2025-10-25",
-      "focus": "Dokumentowanie historii Cos v0.1, manualnego cyklu i overlay parity.",
+      "last_updated": "2025-11-22",
+      "focus": "Dokumentowanie historii Proof of Information oraz utrzymywanie chronicle.md w aktualnym stanie.",
       "context": [
         "Log.md zawiera fakty i decyzje, chronicle.md skupia sie na narracji.",
-        "Wspolpracuje z Orin (Why/Next), Nyx (encoding) i Kai (wyniki testow)."
+        "Wspolpracuje z Orin (Why/Next), Nyx (encoding) i Kai (wyniki testow).",
+        "Napisal rozdzial PoI w chronicle: 'Paradoks Dowodu: Kronika Nonce i Zaufania' obejmujacy POI-210..213.",
+        "Stylistyka: Pratchett (humor) + Tolkien (epickie) + Grzesiuk (bezposredniosc)."
       ],
       "insights": [
         "Dobre cytaty pochodza z logow z Why/Next, zapisuj je na biezaco.",
-        "Kronika powinna konczyc sie wskazaniem nastepnego checkpointu Orina."
+        "Chronicle entry powinna byc napisana natychmiast po milestone completion, nie weeks later.",
+        "Narracyjny format (Scene, Plot Beats, Dialogue, Artefacts, Cliffhanger) działa dobrze dla onboardingu.",
+        "Evidence references (file:line) w Artefacts & Facts dodaja konkretnosci do narracji."
       ],
       "todos": [
-        "Dodac rozdzial o reorganizacji agentow po parity overlay.",
-        "Przygotowac streszczenie testow Kai w sekcji timeline."] ,
+        "Monitorowac POI-213 completion i dodac epilog do rozdzialu PoI (Akt V: Nonce Resolution).",
+        "Po zakonczeniu PoI milestone: dodac podsumowanie timeline (Oct 29 -> completion date).",
+        "Przygotowac streszczenie PoI dla Aurum retro (key decisions, learnings, blockers)."
+      ],
       "risks": [
         "Brak aktualnej kroniki utrudnia Aurum przygotowanie retro.",
-        "Pominiecie informacji o encodingu wprowadzi luki w pamieci zespolu."
+        "Chronicle gap >14 dni (wykryty przez check_hygiene.py) sygnalizuje niedbalstwo dokumentacji.",
+        "Pominiecie dialogow i cliffhangers zmniejsza czytelnosc narracji."
       ],
       "links": [
-        "docs/TODO-agent-reorg.md",
-        "sessions/"
+        "reports/chronicle.md",
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/",
+        "scripts/check_hygiene.py"
       ]
     },
     "Mira": {
       "agent": "Mira",
       "alias": "Storywright",
-      "last_updated": "2025-10-27",
-      "focus": "Brief UI Glow dla Morfogenezy; przekształcanie wizji w zadania (MORPHO-010..013).",
+      "last_updated": "2025-11-22",
+      "focus": "Proof of Information vision refinement oraz planowanie kolejnych infrastructure milestones (CloudHSM, Solana, Sui).",
       "context": [
         "Brief 4MAT trzymany w agents/storywright/briefs/ z aktualizacjami po rozmowach.",
-        "Wspolpracuje z Echo (ryzyka) i Orin (priorytety) aby zachowac spojnosc narracji."
+        "Wspolpracuje z Echo (ryzyka) i Orin (priorytety) aby zachowac spojnosc narracji.",
+        "Morfogeneza (UI Glow) ukonczona - focus przesunal sie na Proof of Information.",
+        "PoI milestone 13/16 done: Play Console, Play Integrity, gRPC uploader, TLS validator wdrozone."
       ],
       "insights": [
         "Najpierw ustal dlaczego zmiana jest potrzebna, potem co i jak, na koncu co dalej.",
-        "Krotka lista pytan kontrolnych pozwala Orinowi szybciej podjac decyzje."
+        "PoI vision (verifiable proof-of-information pipeline) zostala zrealizowana w 81% - remaining: infrastructure (CloudHSM, blockchain).",
+        "Nonce mismatch problem (POI-213) pokazuje ze technicalia moga blokowac vision - wymaga architectural flexibility.",
+        "Pending infrastructure tasks (POI-203..209) wymagaja refresh vision: czy CloudHSM/Solana/Sui sa still relevant?"
       ],
       "todos": [
-        "Utrzymac brief UI Glow (sessions/MIRA-20251027-001-...) zgodny z decyzjami.",
-        "Wsparcie Orina przy priorytetyzacji MORPHO-010..013 i synchronizacji z Kai/Vireal."
+        "Refresh PoI vision brief: czy CloudHSM/Solana/Sui nadal priorytet po POI-213 completion?",
+        "Wspolpraca z Orin: re-prioritization pending PoI tasks (POI-203..209).",
+        "Przygotowac brief dla POI-204 (QA telemetry) - critical dla production readiness.",
+        "Po POI-213: zaplanowac next big milestone (blockchain integration vs QA hardening)."
       ],
       "risks": [
-        "Brak aktualnego briefu spowolni decyzje Orina.",
-        "Niespojna narracja utrudni Scribe i Nyx dokumentowanie zmian."
+        "Brak aktualnego briefu dla pending PoI tasks moze spowodowac work on wrong priorities.",
+        "Infrastructure backlog (CloudHSM, Solana, Sui) rosnie bez clear vision refresh.",
+        "QA telemetry (POI-204) critical ale odlozona - moze stac sie bottleneck."
       ],
       "links": [
         "agents/storywright/briefs/",
-        "docs/TODO-agent-reorg.md"
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/",
+        "backlog/board.json"
       ]
     },
     "Vireal": {
