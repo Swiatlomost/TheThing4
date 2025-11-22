@@ -101,6 +101,17 @@ impl PlayIntegrityClient {
             .request_details
             .ok_or_else(|| "request_details_missing".to_string())?;
         let nonce = request.nonce.ok_or_else(|| "nonce_missing".to_string())?;
+
+        // NONCE DEBUG: dual-side logging for POI-213
+        tracing::warn!(
+            "NONCE_DEBUG: expected='{}' (len={}), token='{}' (len={}), match={}",
+            expected_nonce,
+            expected_nonce.len(),
+            nonce,
+            nonce.len(),
+            nonce == expected_nonce
+        );
+
         if nonce != expected_nonce {
             return Err("nonce_mismatch".into());
         }
