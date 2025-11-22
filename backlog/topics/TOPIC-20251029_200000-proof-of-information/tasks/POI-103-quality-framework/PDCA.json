@@ -1,28 +1,70 @@
 {
   "plan": [
-    "Produce test plan covering FAR ≤5%, FRR ≤10%, entropy >0.75 with DP budgets ε≤2.",
-    "Define validator scenarios: attestation failure, secure aggregation dropout, Solana outage fallback.",
-    "Prepare monitoring and alert tooling for entropy, DP budgets, batch latency."
+    "Phase 1: Research (2-3h) - Play Integrity verdicts, latency benchmarks, SLA definition.",
+    "Phase 2: Documentation (3-4h) - monitoring-strategy.md, production-readiness.md, update qa-tooling-notes.md.",
+    "Phase 3: Evidence (1h) - Extract QA-002/003 evidence from existing pipeline (POI-211/213 done).",
+    "Phase 4: Close (1h) - Update PDCA, log.jsonl, close POI-103 in board.json."
   ],
   "do": [
-    "Pulled metrics from research-notes; populated test-plan.json with scenarios and thresholds.",
-    "Authored qa-tooling-notes.md for telemetry capture and Play Integrity mocks.",
-    "Created qa-generator-plan.md scheduling synthetic data generator work.",
-    "Added telemetry-proto-plan.md describing BatchTelemetry message and baseline capture."
+    "Kai completed (2025-10-29 to 2025-11-01):",
+    "- Pulled metrics from research-notes; populated test-plan.json with scenarios and thresholds (FAR ≤5%, FRR ≤10%, entropy ≥0.75, DP ε≤2).",
+    "- Authored qa-tooling-notes.md for telemetry capture and Play Integrity mocks.",
+    "- Created qa-generator-plan.md scheduling synthetic data generator work (3-week plan).",
+    "- Added telemetry-proto-plan.md describing BatchTelemetry message and baseline capture.",
+    "- Captured Pixel 5 + Xiaomi 13T Pro benchmarks; added Light Ledger logcat + hash-chain evidence to POI-QA-001.",
+    "",
+    "Phase 1 (Research) - DONE (2025-11-22):",
+    "[x] Review Play Integrity API docs: Accept BOTH MEETS_DEVICE_INTEGRITY and MEETS_STRONG_INTEGRITY (authenticity priority #1). Documented in sla-definition.md.",
+    "[x] Benchmark end-to-end latency: Single sample 2.17s (baseline). Bottleneck: Play Integrity API 1.4s (65%). Conservative estimates: p50≤3s, p95≤5s, p99≤10s. Requires production validation (POI-204).",
+    "[x] Define SLA: Created sla-definition.md with 7 sections (upload success ≥99%, latency targets, uptime ≥99.5%, data quality FAR/FRR/entropy, Solana confirmation ≤30s, resilience, Play Integrity verdicts).",
+    "",
+    "Phase 2 (Documentation) - DONE (2025-11-22):",
+    "[x] Write monitoring-strategy.md: 8 Prometheus metrics defined (upload_attempts, latency histogram, validator_up, entropy, etc.), AlertManager rules (3 critical → PagerDuty, 4 warnings → Slack), 2 Grafana dashboards (System Overview 8 panels, Debugging 4 panels), TimescaleDB 90-day retention, Loki/CloudWatch 30-day logs.",
+    "[x] Write production-readiness.md: Quality gates (testing, security, monitoring), performance baselines (SLA targets), security requirements (TLS 1.3, OAuth secrets, CVE scan), failure modes & fallbacks (5 scenarios with runbooks), deployment checklist (blue-green, rollback plan), capacity planning (500 batch/s capacity, growth projections).",
+    "[x] Update qa-tooling-notes.md: Konkretyzacja tooling - Prometheus metrics table (8 metrics with types/labels), evidence extraction scripts (extract_play_integrity_evidence.sh, extract_validator_grpc_samples.sh, parse_latency_breakdown.sh), AlertManager config (PagerDuty + Slack webhooks), Grafana dashboard specs (panel details), synthetic generator (qa/generator/), load tester (1000 batches/24h), Play Integrity mock (unit tests), Loki LogQL queries, 3-week implementation timeline.",
+    "",
+    "Phase 3 (Evidence) - DONE (2025-11-22):",
+    "[x] Extract QA-002 evidence: Created evidence/qa-002-play-integrity-success.md with 3 samples (POI-211/212/213), attestation_success_rate 100% (3/3), verified validator accepts DEVICE+STRONG verdicts. Updated test-plan.json.",
+    "[x] Extract QA-003 evidence: Created evidence/qa-003-validator-grpc-partial.md with 3 gRPC responses (STATUS_ACCEPTED), validator processing ~2ms. PARTIAL: Solana integration blocked by POI-205 (solana_tx=null). Updated test-plan.json with status='partial'.",
+    "[x] Optional QA-004: Skipped to POI-204 (resilience testing requires production monitoring stack).",
+    "",
+    "Phase 4 (Close) - DONE (2025-11-22):",
+    "[x] Update PDCA do/check/act with completion details.",
+    "[x] Add final log.jsonl entry documenting POI-103 closure: All deliverables complete, acceptance criteria met, ready for handoff to POI-204.",
+    "[x] Update board.json: POI-103 status in_progress → done, closed_at 2025-11-22."
   ],
   "check": [
-    "Pending prototype data to calibrate thresholds; test-plan requires review with Orin/Lumen.",
-    "Telemetry stream needs alignment with Nodus' gRPC implementation.",
-    "Captured Pixel 5 logcat evidence after native build; test-plan scenario POI-QA-001 updated with reproduce steps.",
-    "Hardware benchmark captured on Xiaomi 13T Pro (API 35); native faster for 5k/10k batches but slower for 1k—track in test-plan evidence.",
-    "Dodano logcat + hash-chain z fizycznego urządzenia do test-plan (artefakty Light Ledger)."
+    "Phase 1 verification:",
+    "✅ Play Integrity verdicts decision documented: sla-definition.md §7 (accept BOTH DEVICE+STRONG, log type for analytics).",
+    "✅ End-to-end latency benchmarked: 2.17s baseline (1 sample), p50/p95/p99 estimates documented in sla-definition.md §2.",
+    "✅ SLA defined: sla-definition.md with success ≥99%, p95 latency ≤5s, uptime ≥99.5%, data quality thresholds.",
+    "",
+    "Phase 2 verification:",
+    "✅ monitoring-strategy.md exists: 8 Prometheus metrics, AlertManager rules, 2 Grafana dashboards, TimescaleDB/Loki retention policies (§1-4).",
+    "✅ production-readiness.md exists: Quality gates (§1), performance baselines (§2), security requirements (§3), 5 failure modes with runbooks (§4), deployment checklist (§5), capacity planning (§7).",
+    "✅ qa-tooling-notes.md updated: Concrete tooling specs (Prometheus metrics table, evidence scripts, AlertManager config, Grafana panel details, synthetic generator CLI, load tester, 3-week timeline §1-8).",
+    "",
+    "Phase 3 verification:",
+    "✅ test-plan.json updated: QA-002 has evidence (evidence/qa-002-play-integrity-success.md, 100% success rate, 3 samples).",
+    "✅ test-plan.json updated: QA-003 has evidence (evidence/qa-003-validator-grpc-partial.md, STATUS_ACCEPTED gRPC responses, status='partial' due to POI-205 blocker).",
+    "",
+    "Phase 4 verification:",
+    "✅ PDCA.json updated with do/check/act completion (all 4 phases DONE, all checkboxes [x] marked, completion details added).",
+    "✅ log.jsonl has final entry (POI-103 closure): ts=2025-11-22T17:00:00, all deliverables listed, handoff to POI-204 documented.",
+    "✅ board.json shows POI-103 status=done, closed_at=2025-11-22 (line 552-554).",
+    "",
+    "Overall acceptance (from task.json):",
+    "✅ Dokument test-plan z kryteriami: test-plan.json updated with QA-002/003 evidence (QA-001 done earlier by Kai, QA-004 deferred to POI-204).",
+    "✅ Lista automatyzacji/narzędzi: qa-tooling-notes.md (8 sections with concrete tools), qa-generator-plan.md, telemetry-proto-plan.md.",
+    "✅ Rekomendacje monitoringu i alertów: monitoring-strategy.md (metrics/alerts/dashboards), production-readiness.md (deployment/runbooks), sla-definition.md (targets)."
   ],
   "act": [
-    "Monitorować batch'e <2000 (fallback vs JNI) i ustawić alerty zgodnie z POI-QA-001.",
-    "Define regression alert when native avg per hash exceeds fallback for batch <= 1k.",
-    "Plan second-device capture (Pixel 7 / Galaxy S23) to confirm behaviour.",
-    "Collaborate with Lumen/Nodus once prototypes available to automate evidence collection.",
-    "Kick off synthetic data capture once Light Ledger exports initial batches."
+    "After POI-103 closure:",
+    "- Hand off to POI-204 (QA Tooling implementation): build tools from POI-103 framework (synthetic generator, telemetry stream, Grafana dashboards).",
+    "- Monitor production uploads for 1-2 days: validate Play Integrity success rate ≥99%, batch latency p95 ≤30s.",
+    "- Collaborate with Nodus on POI-203 (CloudHSM provisioning): ensure monitoring covers HSM metrics.",
+    "- Plan POI-206 (Attestation Integration): use POI-103 quality gates as acceptance criteria.",
+    "- Before POI-209 (Deployment): verify all POI-103 quality gates met in staging environment."
   ],
   "links": {
     "reference": [
@@ -32,10 +74,20 @@
     "notes": [
       "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/qa-tooling-notes.md",
       "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/qa-generator-plan.md",
-      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/telemetry-proto-plan.md"
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/telemetry-proto-plan.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/test-plan.json"
+    ],
+    "deliverables": [
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/monitoring-strategy.md",
+      "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/production-readiness.md"
     ]
   },
   "meta": {
-    "updated_at": "2025-11-01"
+    "updated_at": "2025-11-22",
+    "estimated_effort": "7-9h (across 4 phases)",
+    "blockers_resolved": [
+      "POI-213 done → TLS validator operational, Play Integrity working",
+      "POI-211/212 done → Android client ready for evidence collection"
+    ]
   }
 }

@@ -58,7 +58,14 @@
         "Simulate devices with/without StrongBox, ensure Play Integrity verdict required.",
         "Trigger secure aggregation dropout by removing 10-20% clients and ensure batch still accepted."
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "type": "play_integrity_success",
+          "path": "evidence/qa-002-play-integrity-success.md",
+          "details": "3 successful Play Integrity verifications (STATUS_ACCEPTED) from POI-211/212/213. Attestation success rate: 100% (3/3 samples). Validator accepts both MEETS_DEVICE_INTEGRITY and MEETS_STRONG_INTEGRITY verdicts.",
+          "date_collected": "2025-11-22"
+        }
+      ]
     },
     {
       "id": "POI-QA-003",
@@ -72,7 +79,15 @@
         "Verify Solana transaction contains expected root and signature.",
         "Measure confirmation latency and log any retries/outages."
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "type": "validator_grpc_responses",
+          "path": "evidence/qa-003-validator-grpc-partial.md",
+          "details": "PARTIAL: 3 successful gRPC responses (STATUS_ACCEPTED) from POI-212/213. Validator processing ~2ms. Solana integration NOT YET IMPLEMENTED (blocked by POI-205).",
+          "date_collected": "2025-11-22",
+          "status": "partial"
+        }
+      ]
     },
     {
       "id": "POI-QA-004",
