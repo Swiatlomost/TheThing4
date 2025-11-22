@@ -112,7 +112,17 @@ impl PlayIntegrityClient {
             nonce == expected_nonce
         );
 
-        if nonce != expected_nonce {
+        // POI-213 FIX: Normalize nonce by removing Base64 padding
+        // Client sends Base64 URL-safe no-padding, Play Integrity returns with padding
+        let expected_normalized = expected_nonce.trim_end_matches('=');
+        let token_normalized = nonce.trim_end_matches('=');
+
+        if token_normalized != expected_normalized {
+            tracing::warn!(
+                "NONCE_MISMATCH: after normalization: expected='{}', token='{}'",
+                expected_normalized,
+                token_normalized
+            );
             return Err("nonce_mismatch".into());
         }
         let app = external
