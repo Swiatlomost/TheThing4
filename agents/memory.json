@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-27",
+  "last_updated": "2025-11-22",
   "agents": {
     "Aurum": {
       "agent": "Aurum",
@@ -31,168 +31,222 @@
     "Echo": {
       "agent": "Echo",
       "alias": "Analyst",
-      "last_updated": "2025-10-26",
-      "focus": "Discovery manualnego cyklu, guard rails Morfogenezy (etap 006) i katalog ryzyk overlay.",
+      "last_updated": "2025-11-22",
+      "focus": "Proof of Information risk analysis: Play Integrity security, TLS deployment, OAuth complexity, nonce mismatch root causes.",
       "context": [
-        "Startuje od dokumentow PROJECT_CONTEXT, WORKFLOW i TODO-agent-reorg.",
-        "Uzgadniam potrzeby z Orinem i pytania dla Vireal zanim Lumen rozszerzy implementacje.",
-        "Wspieram Kai pod katem miejsc wymagajacych dodatkowych testow.",
-        "Notatki Morfogenezy 006 i backlog undo/redo/autosort trzymam w docs/ux/morphogeneza-ux-research.md."
+        "Przeprowadzil research POI-001 (scientific foundations) - katalog ryzyk PoI.",
+        "Analizuje ryzyka Play Integrity: OAuth flow, nonce encoding, release/debug differences.",
+        "Monitoruje nonce mismatch blocker: timestamp drift, WorkManager retry logic, release signing impact.",
+        "Wspiera Nodusa i Lumena w debugowaniu przez identyfikacje potencjalnych root causes.",
+        "Dokumentuje lessons learned z PoI milestones dla future reference."
       ],
       "insights": [
-        "Ryzyka overlay wynikaja glownie z braku synchronizacji animacji i uprawnien okna.",
-        "Wartosc discovery rosnie gdy pytania sa dostarczone przed decyzjami architekta."
+        "Play Integrity bardziej zlozony niz oczekiwano: API keys nie wspierane, wymaga OAuth service account.",
+        "Nonce mismatch prawdopodobnie zwiazany z timestamp drift lub WorkManager retry - wymaga dual-side logging.",
+        "Release vs debug builds maja rozne zachowania Play Integrity - trzeba testowac oba separately.",
+        "TLS deployment wymaga monitoringu uptime i cert renewal automation.",
+        "Evidence-driven debugging kluczowy: logcat + docker logs + PDCA updates."
       ],
       "todos": [
-        "Zebrac info o wymaganiach adb i overlay permission na Pixel_5.",
-        "Przygotowac liste testow dymnych do przekazania Kai."
+        "Przeanalizowac nonce generation flow: timestamp sync, WorkManager delays, release obfuscation.",
+        "Zidentyfikowac risk mitigation strategies dla production deployment (cert renewal, OAuth token refresh).",
+        "Zebrac lessons learned z POI-210..213 dla dokumentacji.",
+        "Wspierac Kai w quality framework: zidentyfikowac edge cases Play Integrity."
       ],
       "risks": [
-        "Brak historii decyzji powoduje powtorne odkrywanie tych samych faktow.",
-        "Niepelna lista ryzyk opozni guard rails Vireal."
+        "Nonce mismatch moze wymagac architektural changes - impact timeline.",
+        "OAuth flow adds complexity - production secrets management critical.",
+        "Play Integrity verdicts vary by device/OEM - testing matrix duzy.",
+        "Brak automated monitoring TLS validator moze spowolnic incident response."
       ],
       "links": [
-        "docs/TODO-agent-reorg.md",
-        "docs/testing/cos-v0.1-test-plan.md"
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-001-research-science/",
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-213-validator-tls/PDCA.json",
+        "docs/reference/release-keys.md"
       ]
     },
     "Kai": {
       "agent": "Kai",
       "alias": "Evaluator",
-      "last_updated": "2025-10-26",
-      "focus": "Kontrola jakosci manualnego cyklu, overlay oraz sanity Morfogenezy etapu 006.",
+      "last_updated": "2025-11-22",
+      "focus": "Proof of Information quality framework: metryki QA, test scenarios, evidence collection, benchmarki urzadzen.",
       "context": [
-        "Po kazdej dostawie uruchamiam ./gradlew test oraz feature:cos-overlay:connectedDebugAndroidTest.",
-        "Dokumentuje kroki manualne na Pixel_5 wraz ze statusem PASS/FAIL.",
-        "Raportuje Orinowi natychmiast gdy pojawi sie regresja lub problem z encodingiem logow.",
-        "Scenariusze undo/redo/autosort trzymam jako backlog w docs/testing/morphogeneza-test-plan.md."
+        "Definiuje progi jakosci PoI (POI-103): FAR<=5%, FRR<=10%, entropy>=0.75, DP budget <=2.",
+        "Utworzyl test-plan.json z scenariuszami PoI i dokumentacja (qa-tooling-notes.md, telemetry-proto-plan.md).",
+        "Zebral evidence benchmarkow: Pixel 5, Xiaomi 13T Pro (Light Ledger runtime smoke tests, hash-chain snapshots).",
+        "Monitoruje performance batch (<2000 items: fallback vs JNI).",
+        "Wspolpracuje z Lumen/Nodus przy zbieraniu logcat evidence dla Play Integrity i TLS uploads."
       ],
       "insights": [
-        "Manualny cykl wymaga sekwencji Reset -> Narodziny -> Dojrzewanie -> Nowa komorka, oba kanaly musza byc zsynchronizowane.",
-        "Nagrania wideo pomagaja, gdy overlay reaguje inaczej niz aplikacja."
+        "Quality thresholds musza byc zapisane centralnie (POI-103 PDCA) aby uniknac driftu kryteriow.",
+        "Evidence collection kluczowy: logcat + docker logs + benchmark data dla kazdego milestone.",
+        "Play Integrity nonce errors widoczne w logcat - wymaga Base64 URL encoding.",
+        "Synthetic data capture z Light Ledger pomoze w regression testing.",
+        "Device diversity testing critical: rozne OEM (Pixel, Xiaomi) maja rozne Play Integrity verdicts."
       ],
       "todos": [
-        "Przygotowac checklisty regresji overlay po parity.",
-        "Dodac skrypt shell/PowerShell uruchamiajacy oba zestawy testow i zapisujacy wynik.",
-        "Zaktualizowac test plan o wyniki UI-OVERLAY-003 i spisac dowody (logcat + connectedDebugAndroidTest)."
+        "Wznoiwc POI-103 po zamknieciu POI-213: zaktualizowac test plan o POI-210..213 scenarios.",
+        "Dodac Play Integrity OAuth flow do test scenarios.",
+        "Dodac TLS handshake verification scenario.",
+        "Zaplanowac second-device capture (Pixel 7 / Galaxy S23).",
+        "Ustawic regression alerts dla native vs fallback performance."
       ],
       "risks": [
-        "Brak testow overlay zablokuje release parity.",
-        "Niejednoznaczne wyniki testow opoznia decyzje Orina."
+        "POI-103 wstrzymany od 21 dni - moze spowolnic kolejne milestones.",
+        "Brak automated telemetry pipeline utrudni monitoring prod quality.",
+        "Rozne Play Integrity verdicts miedzy debug/release builds wymagaja osobnych test cases."
       ],
       "links": [
-        "docs/testing/cos-v0.1-test-plan.md",
-        "docs/TODO-agent-reorg.md"
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/PDCA.json",
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/log.jsonl",
+        "evidence/logcat-2025-11-16-accepted.txt",
+        "docs/testing/morphogeneza-test-plan.md"
       ]
     },
     "Lumen": {
       "agent": "Lumen",
       "alias": "Developer",
-      "last_updated": "2025-10-26",
-      "focus": "Utrzymanie stabilnego etapu canvas 006 Morfogenezy; brak aktywnego zadania.",
+      "last_updated": "2025-11-22",
+      "focus": "Proof of Information Android client: Play Integrity integration, gRPC uploader, TLS connectivity, nonce debugging.",
       "context": [
-        "Po kazdej iteracji sanity uruchamiam ./gradlew test oraz connectedDebugAndroidTest.",
-        "Canvas korzysta z lokalnych wspolrzednych [0..1]; clamp w moveCell pilnuje, aby komorki nie wyszly poza boundary.",
-        "Aktualne zadania wstrzymane; oczekiwanie na nowe priorytety Morfogenezy."
+        "Zintegrowal Play Integrity w Android (POI-211): nonce SHA-256, IntegrityManager token, przekazywanie do BatchUploader.",
+        "Zbudowal gRPC uploader (POI-212): protobuf stuby lite, BatchUploader z TLS flag, WorkManager retry/backoff.",
+        "Opublikowal versionCode 2 (1.1) na internal track Google Play.",
+        "Przeszedl z debug (10.0.2.2 plaintext) na TLS (validator.poi-lab.pl:443).",
+        "Wspiera Nodusa w debugowaniu nonce mismatch - release buildy z Google Play odrzucane przez walidator."
       ],
       "insights": [
-        "Promien komorki musi pozostac spojny miedzy engine, viewmodelem i overlay.",
-        "Gest tap/drag korzysta z odczytu layoutu w momencie gestu, co minimalizuje dryf kursora; clamp wykonywany w ViewModelu pozwala utrzymac wtorne zrodla prawdy.",
-        "Canvas powinien skalowac sie wedlug stalego boundary (nie wedlug aktualnej pozycji komorek), inaczej uzytkownik widzi \"kurczenie\" sie organizmu.",
-        "Historia operacji wymaga limitu krokow i deterministycznego zapisu stanu komorek (pozycja, promien, selekcja)."
+        "Play Integrity wymaga nonce Base64 web-safe (URL encoding), nie zwykly Base64.",
+        "Debug buildy z adb reverse (127.0.0.1) lacza sie pomyslnie, release buildy z Google Play maja nonce drift.",
+        "TLS handshake dziala, OAuth flow wymagany zamiast API key.",
+        "WorkManager Constraints (CONNECTED) i retry logic moze wpływac na timestamp nonce - wymaga analizy.",
+        "Evidence collection (logcat) kluczowy dla debugowania attestation failures."
       ],
       "todos": [
-        "Monitorowac Morfogeneze 006 i reagowac na nowe wytyczne Orina."
+        "Dodac client-side logging: nonce generation timestamp, WorkManager state przy uploadzie.",
+        "Przeanalizowac roznice nonce generation: debug vs release builds.",
+        "Po fix nonce: przebudowac release APK i potwierdzic upload przez Google Play.",
+        "Kontynuowac sensor capture harness (POI-207) po zamknieciu POI-213."
       ],
       "risks": [
-        "Brak synchronizacji overlay i aplikacji spowoduje dwoiste zachowanie w testach.",
-        "Pominiecie testow przed przekazaniem Kai oslabia zaufanie do releasu."
+        "Nonce mismatch moze wymagac przebudowy logiki timestamp synchronization.",
+        "WorkManager retry moze powodowac stale nonce z nowym tokenem Play Integrity.",
+        "Release signing i obfuscation moze wplywac na Play Integrity verdicts."
       ],
       "links": [
-        "feature/cos-lifecycle/src/main/java/com/example/cos/lifecycle/CosLifecycleEngine.kt",
-        "docs/testing/cos-v0.1-test-plan.md"
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-211-play-integrity-integration/PDCA.json",
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-212-android-uploader/PDCA.json",
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-213-validator-tls/log.jsonl",
+        "evidence/logcat-2025-11-16-accepted.txt"
       ]
     },
     "Nodus": {
       "agent": "Nodus",
       "alias": "Integrator",
-      "last_updated": "2025-10-26",
-      "focus": "Srodowiska i automatyzacja dla Cos oraz sanity kanalu forma_aktywna (etap 006).",
+      "last_updated": "2025-11-22",
+      "focus": "Proof of Information infrastructure: TLS validator deployment, Play Console setup, OAuth flow for Play Integrity.",
       "context": [
-        "Monitoruje adb, emulator Pixel_5, uprawnienia overlay oraz sanity encoding.",
-        "Checklisty trzyma w docs/handbook/ops-checklists.md i aktualizuje po kazdym uruchomieniu.",
-        "Checklisty ADB/logcat dla undo/redo czekaja w backlogu, stan 006 opisany w docs/testing/morphogeneza-event-checklist.md."
+        "Wdrozyl walidator TLS na Hetznerze (validator.poi-lab.pl:443) z certbotem i docker-compose.",
+        "Skonfigurowal Play Console (POI-210): Play App Signing, internal track, Play Integrity API key.",
+        "Zaimplementowal walidator Play Integrity JWT z dekodowaniem tokenu i weryfikacja nonce/packageName.",
+        "Przeszedl z Play Integrity API key na konto uslugi OAuth (Bearer token) po odkryciu 401 error.",
+        "Aktualnie debuguje nonce mismatch w release builds z Google Play (POI-213)."
       ],
       "insights": [
-        "Automatyczny script sanity (adb devices + logcat) skraca feedback dla Kai.",
-        "Warto testowac zarowno Windows PowerShell jak i Git Bash, bo zespol uzywa obu."
+        "Play Integrity API NIE wspiera kluczy API - wymaga konta uslugi z rola Play Integrity Verifier i OAuth flow.",
+        "TLS handshake dziala (openssl, grpcurl), Android debug buildy lacza sie pomyslnie przez TLS.",
+        "Release buildy z Google Play maja problem z nonce mismatch - prawdopodobnie timestamp drift lub WorkManager retry.",
+        "Dokumentacja kluczy release w docs/reference/release-keys.md (upload key, App Signing, fingerprinty).",
+        "Evidence collection kluczowy: logcat + docker logs pozwalaja szybko zidentyfikowac blokery."
       ],
       "todos": [
-        "Dodac sekcje UTF-8/bez BOM do checklisty srodowisk.",
-        "Przygotowac aliasy adb dla Reset/Narodziny/Dojrzewanie/Nowa komorka."
+        "Dodac server-side logging: expected_nonce vs token nonce w validatorze.",
+        "Przeanalizowac roznice w generowaniu nonce: debug vs release builds.",
+        "Po naprawie nonce mismatch: potwierdzic STATUS_ACCEPTED z Google Play release.",
+        "Przygotowac CloudHSM provisioning (POI-203) po zamknieciu POI-213."
       ],
       "risks": [
-        "Nieaktualny emulator lub uprawnienia zablokuja parity overlay.",
-        "Brak sanity script pozostawia Orina bez dowodu gotowego srodowiska."
+        "Nonce mismatch blokuje release builds - moze wymagac zmian w logice WorkManager retry.",
+        "OAuth flow dodaje zlozonosc do deployment - trzeba pilnowac PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON w prod.",
+        "Brak monitoringu validator uptime moze spowolnic debugging."
       ],
       "links": [
-        "docs/handbook/ops-checklists.md",
-        "docs/TODO-agent-reorg.md"
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-213-validator-tls/PDCA.json",
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-210-play-console-setup/PDCA.json",
+        "docs/reference/release-keys.md",
+        "evidence/logcat-2025-11-16-tls.txt"
       ]
     },
     "Nyx": {
       "agent": "Nyx",
       "alias": "Memory",
-      "last_updated": "2025-10-25",
-      "focus": "Konsolidacja pamieci dlugiej oraz higiena encodingu UTF-8 bez BOM.",
+      "last_updated": "2025-11-17",
+      "focus": "Konsolidacja pamieci dlugiej, Proof of Information snapshoty oraz higiena encodingu UTF-8 bez BOM.",
       "context": [
-        "Synchronizuje memory.json agentow z ich logami i agents/status.json.",
-        "Po wiekszych iteracjach tworzy snapshot w sessions/ z opisem zmian.",
-        "Uruchamia sanity encoding (Python) i raportuje wynik w logu."
+        "Synchronizuje agents/memory.json z backlog/board.json oraz PDCA/logami; legacy agents/status.json traktuje jako tylko-do-odczytu.",
+        "Po wiekszych iteracjach tworzy snapshot w sessions/ z opisem zmian (Morfogeneza, Proof of Information).",
+        "Monitoruje Proof of Information: TLS walidator (validator.poi-lab.pl:443) dziala, ale wymaga konta uslugi Play Integrity i logowania nonce (artefakty w backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-213-validator-tls).",
+        "Pilnuje by progi FAR<=5%, FRR<=10%, entropy>=0.75 oraz DP<=2 z POI-103 pozostaly widoczne dla Orina i Kai dopoki telemetry nie zostanie skalibrowana."
       ],
       "insights": [
-        "Checklist: status.json, task.json, log.md, memory.json oraz powiazane dokumenty.",
-        "Jesli pojawia sie krzaki w kodzie trzeba wrocic do narzedzia zapisu i poprawic proces."
+        "Checklist: board.json -> task PDCA -> log.md -> memory.json -> kronika; zachowaj UTF-8 bez BOM.",
+        "Przejscie z Play Integrity API key na konto uslugi (Bearer token) jest blokujace dla TLS uploads; aktualizuj pamiec aby uniknac powrotu do 401.",
+        "Kataloguj najwazniejsze progi jakosci (FAR/FRR/entropy/DP) w jednym miejscu aby kolejne sesje nie resetowaly kryteriow."
       ],
       "todos": [
         "Zautomatyzowac sprawdzanie UTF-8 i udostepnic skrypt Lumen i Kai.",
-        "Przygotowac template snapshotu pod kolejny brief (po nowym celu)."
+        "Przygotowac template snapshotu pod kolejny brief (po nowym celu).",
+        "Po potwierdzeniu OAuth + nonce fix w POI-213 zapisac snapshot (sessions/) z referencja do evidence/logcat + PDCA."
       ],
       "risks": [
         "Brak snapshotu po zmianach utrudni retros Aurum.",
-        "Pliki z BOM lub CP1250 zatrzymaja pipeline i testy."
+        "Pliki z BOM lub CP1250 zatrzymaja pipeline i testy.",
+        "Nieodnotowany stan PoI moze doprowadzic do ponownego uzycia API key i blokady TLS testow."
       ],
       "links": [
         "docs/TODO-agent-reorg.md",
-        "MEMORY_SPEC.md"
+        "MEMORY_SPEC.md",
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-103-quality-framework/PDCA.json",
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-213-validator-tls/PDCA.json"
       ]
     },
     "Orin": {
       "agent": "Orin",
       "alias": "Coordinator",
-      "last_updated": "2025-10-25",
-      "focus": "Planowanie przyrostow Cos v0.1, synchronizacja agentow i higiena procesu Why/Next oraz encoding.",
+      "last_updated": "2025-11-22",
+      "focus": "Proof of Information coordination: priorytetyzacja POI-210..213, synchronizacja Lumen/Nodus/Kai, planowanie kolejnych milestones.",
       "context": [
-        "Przed kazda iteracja wykonuje pre-task validation: status.json, task.json, logi i memory.",
-        "Pilnuje aby kazde zadanie mialo przypisane testy (Kai) oraz sanity encoding (Nyx).",
-        "Aktualizuje katalog sessions oraz agents/status.json po kazdym checkpointcie."
+        "Koordynuje Proof of Information pipeline: Play Console setup -> Play Integrity -> gRPC uploader -> TLS validator.",
+        "Monitoruje postep POI-213 (TLS validator): nonce mismatch blocker, wymaga wspolpracy Lumen/Nodus.",
+        "Przesunal fokus z Morfogenezy na PoI; Morfogeneza ukonczona (50/50 taskow done).",
+        "Pilnuje aby pending infrastructure tasks (CloudHSM, Solana, Sui) nie blokowaly critical path.",
+        "Aktualizuje backlog/board.json po kazdym milestone i deleguje follow-up tasks."
       ],
       "insights": [
-        "Rozbijaj prace na discovery -> architektura -> core -> overlay -> testy -> dokumentacja.",
-        "Zapisuj decyzje w logu wraz z Why/Next od razu, ulatwia to prace Scribe i Nyx."
+        "PoI wymaga scislej wspolpracy Lumen (Android) + Nodus (backend) - feedback loop musi byc szybki.",
+        "Evidence-driven workflow kluczowy: logcat + docker logs pozwalaja szybko identyfikowac blokery.",
+        "Play Integrity integration bardziej zlozony niz oczekiwano: OAuth flow, nonce encoding, release/debug differences.",
+        "Memory staleness (26 dni) ryzyko - trzeba regularnie odswiezac po milestones.",
+        "Pending tasks (POI-203..209) czekaja na POI-213 completion - nie blokowac critical path."
       ],
       "todos": [
-        "Ustalic harmonogram checkpointow z Echo, Vireal, Lumen, Kai i Nodus na manualny cykl.",
-        "Sprawdzic czy kazdy agent wprowadza PDCA przed oznaczeniem zadania jako in_progress."
+        "Priorytet: rozwiazac POI-213 nonce mismatch (Lumen + Nodus).",
+        "Po POI-213: wznowic POI-103 (Kai quality framework).",
+        "Zaplanowac POI-204 (QA telemetry) i POI-203 (CloudHSM) po odblokowanie POI-213.",
+        "Zaktualizowac chronicle (Scribe) o POI-210..213 milestones.",
+        "Regularnie odswiezac agents/memory.json (target: <=3 dni staleness)."
       ],
       "risks": [
-        "Brak testow lub encoding check przed zamknieciem iteracji moze wprowadzic regresje.",
-        "Zbyt wiele rownoleglych taskow u jednego agenta spowalnia petle feedbacku."
+        "Nonce mismatch moze wymagac glebszych zmian architektonicznych w WorkManager.",
+        "Dlugie in_progress tasks (POI-103: 21 dni, POI-213: 6 dni) sygnalizuja potrzebe re-prioritization.",
+        "Infrastructure backlog (CloudHSM, Solana, Sui) rosnie - trzeba planowac capacity.",
+        "Brak chronicle updates utrudni retros i onboarding nowych agentow."
       ],
       "links": [
-        "WORKFLOW.md",
-        "agents/status.json",
-        "docs/TODO-agent-reorg.md"
+        "backlog/board.json",
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/",
+        "agents/memory.json",
+        "WORKFLOW.md"
       ]
     },
     "Scribe": {
@@ -249,28 +303,38 @@
     "Vireal": {
       "agent": "Vireal",
       "alias": "Architect",
-      "last_updated": "2025-10-25",
-      "focus": "Guard rails dla manualnego cyklu oraz overlay parity.",
+      "last_updated": "2025-11-22",
+      "focus": "Proof of Information architecture: validator pipeline, Play Integrity integration, TLS security, nonce verification flow.",
       "context": [
-        "Bazuje na ADR-2025-10-24 oraz na obserwacjach z implementacji Lumen.",
-        "W porozumieniu z Echo i Nodus aktualizuje wymagania sprzetowe i adb.",
-        "Uzgadnia z Kai minimalny zestaw testow regresyjnych."
+        "Zaprojektowal architekture PoI (POI-002): on-device ledger, validator pipeline, Play Integrity attestation, blockchain integration.",
+        "Definiuje guard rails dla TLS deployment: cert management, OAuth flow, nonce verification.",
+        "Wspiera Nodusa w architectural decisions: docker-compose setup, env variables, secrets management.",
+        "Monitoruje nonce mismatch problem: architectural implications WorkManager retry vs timestamp sync.",
+        "Planuje kolejne milestones: CloudHSM, Solana program, Sui spike."
       ],
       "insights": [
-        "Spokojny stan overlay zalezy od identycznych animacji i promieni komorek w obu kanalach.",
-        "Kazda zmiana w engine wymaga natychmiastowej aktualizacji guard rails i komunikatu do Kai."
+        "PoI pipeline wymaga scislej integracji: Android client <-> gRPC <-> validator <-> Play Integrity <-> blockchain.",
+        "Nonce verification critical: musi byc synchronizowany miedzy client (generation) i validator (verification).",
+        "TLS deployment architecture: certbot automation, docker volumes, env-based config.",
+        "OAuth flow architectural decision: service account JSON mounted securely, token refresh handling.",
+        "WorkManager retry logic moze konfliktowac z nonce freshness - wymaga architectural review."
       ],
       "todos": [
-        "Dodac do ADR sekcje o synchronizacji overlay service po wynikach Lumen.",
-        "Zamknac otwarte pytania od Echo przed 2025-10-26."
+        "Review nonce generation architecture: timestamp sync strategy, WorkManager integration.",
+        "Zaprojektowac monitoring architecture dla TLS validator (uptime, latency, error rates).",
+        "Przygotowac ADR dla CloudHSM integration (POI-203).",
+        "Zaktualizowac architecture docs o Play Integrity OAuth flow i nonce verification."
       ],
       "risks": [
-        "Brak jednolitych guard rails prowadzi do rozejscia implementacji i overlay.",
-        "Spore opoznienie w ADR opozni prace Kai nad testami."
+        "Nonce mismatch moze wymagac redesign WorkManager integration - timeline impact.",
+        "TLS cert renewal automation critical - brak moze spowodowac production outage.",
+        "OAuth token refresh handling must be robust - stale tokens = failed uploads.",
+        "CloudHSM/blockchain integration adds complexity - trzeba planowac capacity i expertise."
       ],
       "links": [
-        "docs/architecture/ADR-2025-10-24-cos-architecture.md",
-        "docs/TODO-agent-reorg.md"
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-002-research-architecture/",
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-213-validator-tls/PDCA.json",
+        "docs/architecture/"
       ]
     }
   }
