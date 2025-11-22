@@ -175,3 +175,42 @@ This is the consolidated narrative journal maintained by Scribe. Previous per-ag
 ---
 
 _Archive past stories below this line (newest on top)._
+
+## Epilog Dowodu: Base64 i Ceremonia Normalizacji
+- "Jeśli nonce ma jeden znak za dużo, wyrównaj go jak starego szlifierkę."
+
+## Scene
+- Validator.poi-lab.pl stoi na Hetznerze jak strażnik TLS, a Lumen ze świeżym release buildem z Google Play stuka w bramę - lecz batch wpada w odmowę z tajemniczym `attestation_invalid_nonce_mismatch`. Nodus obok trzyma logcat, Xiaomi 13T Pro wysyła batche, a każdy wpada w ten sam dół.
+
+## Plot Beats
+
+### Akt I: Odkrycie Padding (2025-11-22T13:01:09Z)
+1. **NONCE_DEBUG logging** - Lumen dodaje dual-side logging do `validator/src/play_integrity.rs:106` by zobaczyć expected vs token nonce side-by-side.
+2. **Evidence przemawia** - Log pokazuje prawdę:
+   ```
+   expected='AK1o6xnuy7j8TkgH6s1jlZsm0VZmK5rGvrUQaiNsNsE' (len=43)
+   token=   'AK1o6xnuy7j8TkgH6s1jlZsm0VZmK5rGvrUQaiNsNsE=' (len=44)
+                                                        ^^^
+   ```
+3. **Root cause**: Base64 padding mismatch - client wysyła URL-safe no-padding (43 chars), Play Integrity API zwraca standard with-padding (44 chars, trailing `=`).
+
+### Akt II: Normalizacja i Triumph (2025-11-22T13:09:12Z)
+4. **Fix**: Normalizacja przez `trim_end_matches('=')` przed porównaniem w `validator/src/play_integrity.rs:117-118`.
+5. **Deploy**: `git pull + docker-compose build + docker-compose up -d` na validator.poi-lab.pl.
+6. **Verification**: Release build z Xiaomi → `INFO Batch validated: device_id=23078PND5G` 🎉
+
+## Dialogue Snippet
+- "Jeden znak `=` za dużo?" - zdziwił się Nodus. "Nie problem," odparł Lumen, "wyrównajmy oba nonce zanim je porównamy, jak dobry szlifierz wyrównuje kamienie." I batch przeszedł zielono.
+
+## Artefacts & Facts
+- `validator/src/play_integrity.rs:106` - NONCE_DEBUG logging
+- `validator/src/play_integrity.rs:117` - Normalizacja: `trim_end_matches('=')`
+- `evidence/validator-logs-2025-11-22-poi213-resolved.txt` - STATUS_ACCEPTED proof
+- Commits: `4997e21` (debug logging), `2484fdc` (fix normalization)
+- Impact: POI-213 resolved (6 dni in_progress), POI-103 unblocked (21 dni waiting)
+
+## Cliffhanger / Next Chapter Hook
+- Validator TLS stoi teraz jak niewzruszona wieża z OAuth i znormalizowanym nonce. Czy Kai quality framework (POI-103) wskrzesi testy i wzmocni proof pipeline, czy kolejny blocker pojawi się na horyzoncie?
+
+---
+

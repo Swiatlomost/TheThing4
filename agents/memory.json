@@ -117,74 +117,75 @@
       "agent": "Lumen",
       "alias": "Developer",
       "last_updated": "2025-11-22",
-      "focus": "Proof of Information Android client: Play Integrity integration, gRPC uploader, TLS connectivity, nonce debugging.",
+      "focus": "Proof of Information Android client: Play Integrity integration complete, POI-213 resolved (Base64 padding fix), ready for POI-207 sensor capture.",
       "context": [
         "Zintegrowal Play Integrity w Android (POI-211): nonce SHA-256, IntegrityManager token, przekazywanie do BatchUploader.",
         "Zbudowal gRPC uploader (POI-212): protobuf stuby lite, BatchUploader z TLS flag, WorkManager retry/backoff.",
         "Opublikowal versionCode 2 (1.1) na internal track Google Play.",
-        "Przeszedl z debug (10.0.2.2 plaintext) na TLS (validator.poi-lab.pl:443).",
-        "Wspiera Nodusa w debugowaniu nonce mismatch - release buildy z Google Play odrzucane przez walidator."
+        "Rozwiazal POI-213 nonce mismatch: Root cause = Base64 padding (client 43 chars no-padding, Play Integrity 44 chars with-padding). Fix: normalizacja przez trim_end_matches('=') w validatorze.",
+        "Release build z Google Play verified STATUS_ACCEPTED (2025-11-22T13:09:12Z)."
       ],
       "insights": [
         "Play Integrity wymaga nonce Base64 web-safe (URL encoding), nie zwykly Base64.",
-        "Debug buildy z adb reverse (127.0.0.1) lacza sie pomyslnie, release buildy z Google Play maja nonce drift.",
+        "Base64 padding mismatch (client URL-safe no-padding vs API standard with-padding) byl root cause POI-213 - normalizacja przez trim_end_matches('=') rozwiazala problem.",
         "TLS handshake dziala, OAuth flow wymagany zamiast API key.",
-        "WorkManager Constraints (CONNECTED) i retry logic moze wpływac na timestamp nonce - wymaga analizy.",
-        "Evidence collection (logcat) kluczowy dla debugowania attestation failures."
+        "NONCE_DEBUG logging kluczowy dla diagnostyki - pokazal length diff (43 vs 44 chars).",
+        "Evidence collection (logcat + docker logs) pozwolil szybko zidentyfikowac root cause."
       ],
       "todos": [
-        "Dodac client-side logging: nonce generation timestamp, WorkManager state przy uploadzie.",
-        "Przeanalizowac roznice nonce generation: debug vs release builds.",
-        "Po fix nonce: przebudowac release APK i potwierdzic upload przez Google Play.",
-        "Kontynuowac sensor capture harness (POI-207) po zamknieciu POI-213."
+        "Kontynuowac sensor capture harness (POI-207) - PoI client gotowy.",
+        "Monitor production uploads przez 1-2 dni dla stabilnosci.",
+        "Rozwazyc cleanup NONCE_DEBUG logging po stabilnej weryfikacji.",
+        "Wspolpracowac z Kai na POI-103 (quality framework) - teraz odblokowany."
       ],
       "risks": [
-        "Nonce mismatch moze wymagac przebudowy logiki timestamp synchronization.",
-        "WorkManager retry moze powodowac stale nonce z nowym tokenem Play Integrity.",
-        "Release signing i obfuscation moze wplywac na Play Integrity verdicts."
+        "Zmiana Base64 encoding w przyszlosci moze wymagac ponownej normalizacji.",
+        "WorkManager retry logic moze wplywac na timestamp drift - monitorowac.",
+        "Release signing i obfuscation moze wplywac na Play Integrity verdicts w nowych buildach."
       ],
       "links": [
         "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-211-play-integrity-integration/PDCA.json",
         "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-212-android-uploader/PDCA.json",
-        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-213-validator-tls/log.jsonl",
-        "evidence/logcat-2025-11-16-accepted.txt"
+        "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-213-validator-tls/PDCA.json",
+        "evidence/validator-logs-2025-11-22-poi213-resolved.txt"
       ]
     },
     "Nodus": {
       "agent": "Nodus",
       "alias": "Integrator",
       "last_updated": "2025-11-22",
-      "focus": "Proof of Information infrastructure: TLS validator deployment, Play Console setup, OAuth flow for Play Integrity.",
+      "focus": "Proof of Information infrastructure: POI-213 resolved (Base64 padding fix), TLS validator operational, ready for CloudHSM provisioning (POI-203).",
       "context": [
         "Wdrozyl walidator TLS na Hetznerze (validator.poi-lab.pl:443) z certbotem i docker-compose.",
         "Skonfigurowal Play Console (POI-210): Play App Signing, internal track, Play Integrity API key.",
         "Zaimplementowal walidator Play Integrity JWT z dekodowaniem tokenu i weryfikacja nonce/packageName.",
         "Przeszedl z Play Integrity API key na konto uslugi OAuth (Bearer token) po odkryciu 401 error.",
-        "Aktualnie debuguje nonce mismatch w release builds z Google Play (POI-213)."
+        "Rozwiazal POI-213 nonce mismatch: Root cause = Base64 padding (client 43 chars, API 44 chars). Fix: normalizacja trim_end_matches('=') w play_integrity.rs.",
+        "Validator verified STATUS_ACCEPTED z release build (2025-11-22T13:09:12Z)."
       ],
       "insights": [
         "Play Integrity API NIE wspiera kluczy API - wymaga konta uslugi z rola Play Integrity Verifier i OAuth flow.",
-        "TLS handshake dziala (openssl, grpcurl), Android debug buildy lacza sie pomyslnie przez TLS.",
-        "Release buildy z Google Play maja problem z nonce mismatch - prawdopodobnie timestamp drift lub WorkManager retry.",
-        "Dokumentacja kluczy release w docs/reference/release-keys.md (upload key, App Signing, fingerprinty).",
-        "Evidence collection kluczowy: logcat + docker logs pozwalaja szybko zidentyfikowac blokery."
+        "Base64 padding mismatch byl root cause POI-213 - client wysyla URL-safe no-padding, API zwraca standard with-padding. Normalizacja przez trim_end_matches('=') rozwiazala problem.",
+        "NONCE_DEBUG logging (dual-side) kluczowy dla diagnostyki - pokazal length diff i trailing '='.",
+        "TLS handshake dziala (openssl, grpcurl), OAuth flow stabilny.",
+        "Evidence collection (docker logs) pozwolil szybko zidentyfikowac root cause w 1 debugging session."
       ],
       "todos": [
-        "Dodac server-side logging: expected_nonce vs token nonce w validatorze.",
-        "Przeanalizowac roznice w generowaniu nonce: debug vs release builds.",
-        "Po naprawie nonce mismatch: potwierdzic STATUS_ACCEPTED z Google Play release.",
-        "Przygotowac CloudHSM provisioning (POI-203) po zamknieciu POI-213."
+        "Monitor validator uptime przez 1-2 dni dla stabilnosci produkcyjnej.",
+        "Rozwazyc cleanup NONCE_DEBUG logging po weryfikacji stabilnosci.",
+        "Przygotowac CloudHSM provisioning (POI-203) - TLS validator gotowy.",
+        "Wspolpracowac z Kai na POI-103 (quality framework) - teraz odblokowany."
       ],
       "risks": [
-        "Nonce mismatch blokuje release builds - moze wymagac zmian w logice WorkManager retry.",
-        "OAuth flow dodaje zlozonosc do deployment - trzeba pilnowac PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON w prod.",
-        "Brak monitoringu validator uptime moze spowolnic debugging."
+        "OAuth flow wymaga PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON w prod - pilnowac secret management.",
+        "Zmiana Base64 encoding standardu w przyszlosci moze wymagac ponownej normalizacji.",
+        "Brak monitoringu validator uptime moze spowolnic debugging przyszlych issue."
       ],
       "links": [
         "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-213-validator-tls/PDCA.json",
         "backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-210-play-console-setup/PDCA.json",
-        "docs/reference/release-keys.md",
-        "evidence/logcat-2025-11-16-tls.txt"
+        "evidence/validator-logs-2025-11-22-poi213-resolved.txt",
+        "validator/src/play_integrity.rs"
       ]
     },
     "Nyx": {
