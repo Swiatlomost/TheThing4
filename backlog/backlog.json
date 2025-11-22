@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-17T00:11:34",
+  "generated_at": "2025-11-22T14:18:39",
   "areas": [
     {
       "area": "okno-glowne",
@@ -609,10 +609,14 @@
             {
               "id": "POI-213-validator-tls",
               "title": "Validator TLS uplink",
-              "status": "in_progress",
+              "status": "done",
               "owner": "Nodus",
               "deferred": null,
-              "tags": null
+              "tags": [
+                "tls",
+                "play-integrity",
+                "nonce"
+              ]
             }
           ]
         }
