@@ -180,9 +180,12 @@
     "Nyx": {
       "agent": "Nyx",
       "alias": "Memory",
-      "last_updated": "2025-11-17",
+      "last_updated": "2025-11-22",
       "focus": "Konsolidacja pamieci dlugiej, Proof of Information snapshoty oraz higiena encodingu UTF-8 bez BOM.",
       "context": [
+        "HYGIENE: Proactively update memory after milestones (target: ≤3 days staleness, max 7 days).",
+        "HYGIENE: Daily check memory staleness via check_hygiene.py - alert Orin if any agent >7 days stale.",
+        "HYGIENE: Create snapshot in sessions/ after major milestones (POI, Morfogeneza completion).",
         "Synchronizuje agents/memory.json z backlog/board.json oraz PDCA/logami; legacy agents/status.json traktuje jako tylko-do-odczytu.",
         "Po wiekszych iteracjach tworzy snapshot w sessions/ z opisem zmian (Morfogeneza, Proof of Information).",
         "Monitoruje Proof of Information: TLS walidator (validator.poi-lab.pl:443) dziala, ale wymaga konta uslugi Play Integrity i logowania nonce (artefakty w backlog/topics/TOPIC-20251029_200000-proof-of-information/tasks/POI-213-validator-tls).",
@@ -216,6 +219,9 @@
       "last_updated": "2025-11-22",
       "focus": "Proof of Information coordination: priorytetyzacja POI-210..213, synchronizacja Lumen/Nodus/Kai, planowanie kolejnych milestones.",
       "context": [
+        "HYGIENE: Run check_hygiene.py at session start BEFORE delegating work. Address memory staleness, long in_progress tasks, chronicle gaps.",
+        "HYGIENE: Monitor all in_progress tasks - if >7 days, review for breakdown or architectural escalation.",
+        "HYGIENE: Ensure chronicle updated after each milestone (delegate to Scribe if needed).",
         "Koordynuje Proof of Information pipeline: Play Console setup -> Play Integrity -> gRPC uploader -> TLS validator.",
         "Monitoruje postep POI-213 (TLS validator): nonce mismatch blocker, wymaga wspolpracy Lumen/Nodus.",
         "Przesunal fokus z Morfogenezy na PoI; Morfogeneza ukonczona (50/50 taskow done).",
